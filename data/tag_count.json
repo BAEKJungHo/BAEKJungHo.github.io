@@ -4,19 +4,11 @@
   "size": 1
  },
  {
-  "name": "iterator",
-  "size": 1
- },
- {
   "name": "kotlin",
   "size": 1
  },
  {
   "name": "latex",
-  "size": 1
- },
- {
-  "name": "sequence",
   "size": 1
  }
 ]

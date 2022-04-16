@@ -7,7 +7,11 @@ comment : false
 regenerate: true
 ---
 
-## wiki items
+## [[kotlin]]
+
+* [[kotlin-sequence]]
+
+## etc
 
 * [[mathjax-latex]]
 

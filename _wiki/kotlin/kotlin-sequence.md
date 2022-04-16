@@ -77,7 +77,7 @@ println(lengthsSequence.toList())
 최종 연산자인 toList() 가 호출되는 순간 중간 연산자들이 호출된다. 즉, 아래 그림에 나와있는 것 처럼,
 데이터를 하나씩 꺼내서 `filter > map > take` 순서로 반복하여 처리한다.
 
-![IMAGES](../../resource/images/sequence.png)
+![sequence](https://user-images.githubusercontent.com/47518272/163670924-a3467e70-28b3-4bd3-ace7-7a5740762ac1.png)
 
 ### 특징
 
@@ -116,7 +116,7 @@ println(lengthsList)
 
 Iterable 에는 중간 연산과 최종 연산이라는 개념이 없으며, 모든 아이템들이 pipe-line 을 다같이 통과하고, 각 pipe-line 마다 새로운 리스트를 생성한다. 위의 경우에는 컬렉션이 세 번 만들어진다.
 
-![IMAGES](../../resource/images/iterator.png)
+![iterator](https://user-images.githubusercontent.com/47518272/163670923-f78b3a7a-c7f0-41bf-9d35-fac6ca9b6e6c.png)
 
 ### 특징
 
@@ -126,7 +126,7 @@ Iterable 에는 중간 연산과 최종 연산이라는 개념이 없으며, 모
 
 ## Sequences vs. Collections: Performance
 
-![IMAGES](../../resource/images/seqvsit.png)
+![seqvsit](https://user-images.githubusercontent.com/47518272/163670925-8df08af4-6d5f-44ed-90be-69f9cae53fc4.png)
 
 ## 시퀀스가 빠르지 않은 경우
 
@@ -137,14 +137,14 @@ Iterable 에는 중간 연산과 최종 연산이라는 개념이 없으며, 모
 
 > Sequence 는 Stream 과 철학이 비슷하다.
 
-자바 Stream 과 비교하여 어떤 Kotlin 의 Sequence 가 어떤 장점을 갖고 있을까?
+kotlin 의 Sequence 와 Java 의 Stream 은 어떤 기준으로 선택해야 할까?
 
 - __플랫폼 / 함수__
-  - 더 많은 처리 함수를 보유
-  - 사용하기 쉽다
+  - Sequence 가 더 많은 처리 함수를 보유
+  - Sequence 가 더 사용하기 쉽다
     - Stream 등장 이후에 나와서 몇 가지 문제를 해결
       - Ex. collect(Collectors.toList()) 를 toList() 로 해결
-  - Kotlin/JVM, Kotlin/JS, Kotlin/Native 등 일반적인 모듈에서 모두 사용 가능
+  - Sequence 는 Kotlin/JVM, Kotlin/JS, Kotlin/Native 등 일반적인 모듈에서 모두 사용 가능
     - Java 의 Stream 은 Kotlin/JVM 위에서만 동작하며, JVM 버전이 8 이상이어야 한다.
 - __병렬__
   - 단, 병렬 처리를 하여 성능적 이득을 보아야 한다면 자바의 Stream 을 사용해야 한다.
@@ -186,5 +186,5 @@ Iterable 에는 중간 연산과 최종 연산이라는 개념이 없으며, 모
 - [When to Use Sequence](https://typealias.com/guides/when-to-use-sequences/)
 - Effective Kotlin Item 49
 - [Stateless and stateful operations](https://www.oreilly.com/library/view/introduction-to-programming/9781788839129/50f54a6f-dd25-40bc-89d2-31b73d95b6b7.xhtml)
-- https://kt.academy/article/cc-sequence
-- https://medium.com/androiddevelopers/collections-and-sequences-in-kotlin-55db18283aca
+- [kt.academy.cc-sequence](https://kt.academy/article/cc-sequence)
+- [collections-and-sequences in kotlin](https://medium.com/androiddevelopers/collections-and-sequences-in-kotlin-55db18283aca)

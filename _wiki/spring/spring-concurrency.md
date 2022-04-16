@@ -186,7 +186,7 @@ public class FileService {
 
 ### Client
 
-```java
+```java 
 @Bean
 public ApplicationRunner appRunner() throws Exception {
     // FileService 를 싱글톤 처럼 객체 하나를 생성한 다음, 각 스레드에서 공유하여 사용
@@ -250,7 +250,7 @@ public class FileService {
 
 ### Client
 
-```java
+```java 
 @Bean
     public ApplicationRunner appRunner() throws Exception {
         FileService fileService = new FileService();

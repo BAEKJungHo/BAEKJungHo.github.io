@@ -101,6 +101,7 @@ DDD 의 하위 도메인, 경계 컨텍스트 개념은 마이크로서비스 �
 ## Links
 
 - [Eternity's Chit-Chat Domain-Driven Design](http://aeternum.egloos.com/category/Domain-Driven%20Design)
+- [Archfirst Domain-Driven Design](https://archfirst.org/domain-driven-design/)
 - [DDD 관련 인용문 모음](https://johngrib.github.io/wiki/ddd-quotes/)
 
 ## 참고 문헌

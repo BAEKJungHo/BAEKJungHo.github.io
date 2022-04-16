@@ -6,5 +6,9 @@
  {
   "name": "latex",
   "size": 1
+ },
+ {
+  "name": "spring",
+  "size": 1
  }
 ]

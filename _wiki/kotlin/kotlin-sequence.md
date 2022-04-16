@@ -184,7 +184,10 @@ kotlin 의 Sequence 와 Java 의 Stream 은 어떤 기준으로 선택해야 할
 
 - [Kotlin Sequences](https://kotlinlang.org/docs/sequences.html)
 - [When to Use Sequence](https://typealias.com/guides/when-to-use-sequences/)
-- Effective Kotlin Item 49
 - [Stateless and stateful operations](https://www.oreilly.com/library/view/introduction-to-programming/9781788839129/50f54a6f-dd25-40bc-89d2-31b73d95b6b7.xhtml)
 - [kt.academy.cc-sequence](https://kt.academy/article/cc-sequence)
 - [collections-and-sequences in kotlin](https://medium.com/androiddevelopers/collections-and-sequences-in-kotlin-55db18283aca)
+
+## 참고 문헌
+
+- Effective Kotlin Item 49 / Marcin Moskala 저 / 인사이트

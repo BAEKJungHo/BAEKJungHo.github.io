@@ -17,6 +17,11 @@ regenerate: true
 * [[spring]]
   * [[/spring-pojo]]
 
+## [[ddd]]
+
+* [[ddd]]
+  * [[/ddd-concepts]]
+
 ## etc
 
 * [[mathjax-latex]]

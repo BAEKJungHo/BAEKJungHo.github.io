@@ -9,18 +9,15 @@ regenerate: true
 
 ## kotlin
 
-* [[kotlin]]
-  * [[/kotlin-sequence]]
+* [[/kotlin/kotlin-sequence]]
 
 ## spring
 
-* [[spring]]
-  * [[/spring-pojo]]
+* [[/spring/spring-pojo]]
 
 ## ddd
 
-* [[ddd]]
-  * [[/ddd-quotes]]
+* [[/ddd/ddd-quotes]]
 
 ## etc
 

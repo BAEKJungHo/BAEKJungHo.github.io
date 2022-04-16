@@ -14,6 +14,7 @@ regenerate: true
 ## spring
 
 * [[/spring/spring-pojo]]
+* [[/spring/spring-concurrency]]
 
 ## ddd
 

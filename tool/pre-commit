@@ -2,5 +2,4 @@
 
 ./generateData.js
 ./tool/save-images.sh
-git add _data
 git add data

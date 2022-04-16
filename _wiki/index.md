@@ -20,7 +20,7 @@ regenerate: true
 ## [[ddd]]
 
 * [[ddd]]
-  * [[/ddd-concepts]]
+  * [[/ddd-quotes]]
 
 ## etc
 

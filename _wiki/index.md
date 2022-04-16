@@ -9,7 +9,8 @@ regenerate: true
 
 ## [[kotlin]]
 
-* [[kotlin/kotlin-sequence]]
+* [[kotlin]]
+  * [[/kotlin-sequence]]
 
 ## etc
 

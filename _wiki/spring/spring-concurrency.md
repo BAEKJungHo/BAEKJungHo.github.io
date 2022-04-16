@@ -76,7 +76,7 @@ public class UserService {
 
 스레드는 별도의 Stack 영역을 갖기 때문에, 인스턴스를 갖도록 설계하지 않고 지역변수나, 매개변수등으로 객체를 넘겨서 사용하게 되면 적은 노력으로 동시성 이슈를 피할 수 있습니다.
 
-## 그러면 싱글톤 객체에서 상태값을 갖도록 설계할 수는 없을까?
+## 싱글톤 객체에서 상태값을 갖도록 설계할 수 없을까?
 
 싱글톤 객체를 만들면서 상태값을 갖도록 해야하는 경우가 있을 수 있습니다.
 
@@ -97,7 +97,7 @@ public class UserService {
 
 위 처럼 ThreadLocal 을 적용하여 사용하면, 각 쓰레드는 UserId 를 가져오기 위해 `자신만의 별도의 내부 저장소`에서 꺼내기 때문에 동시성 이슈로부터 안전합니다.
 
-## ThreadLocal 을 사용할 때도 주의점이 있는데 ..
+## ThreadLocal 을 사용할 때도 주의점이 있는데
 
 ThreadLocal 사용 시, 주의해야하는 점이 있습니다. 바로 ThreadLocal 을 모두 사용하고 나면 `ThreadLocal.remove()` 를 호출해서 스레드 로컬에 저장된 값을 제거해주어야 합니다.
 
@@ -227,7 +227,7 @@ public ApplicationRunner appRunner() throws Exception {
 }
 ```
 
-## Test Case 2: 매개변수로 넘겨서 별도의 Stack Area 로 사용하는 경우
+## Test Case 2: 별도의 Stack Area 로 사용하는 경우
 
 ### Server
 
@@ -252,41 +252,41 @@ public class FileService {
 
 ```java 
 @Bean
-    public ApplicationRunner appRunner() throws Exception {
-        FileService fileService = new FileService();
-        return args -> {
-            Thread threadA = new Thread(() -> {
-                try {
-                    System.out.println("A call");
-                    fileService.write("A", new BufferedWriter(new FileWriter("D:\\file.txt")));
-                    System.out.println("A End");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-            threadA.start();
-            Thread threadB = new Thread(() -> {
-                try {
-                    System.out.println("B call");
-                    fileService.write("B", new BufferedWriter(new FileWriter("D:\\file.txt")));
-                    System.out.println("B End");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-            threadB.start();
-            Thread threadC = new Thread(() -> {
-                try {
-                    System.out.println("C call");
-                    fileService.write("C", new BufferedWriter(new FileWriter("D:\\file.txt")));
-                    System.out.println("C End");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            });
-            threadC.start();
-        };
-    }
+public ApplicationRunner appRunner() throws Exception {
+    FileService fileService = new FileService();
+    return args -> {
+        Thread threadA = new Thread(() -> {
+            try {
+                System.out.println("A call");
+                fileService.write("A", new BufferedWriter(new FileWriter("D:\\file.txt")));
+                System.out.println("A End");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        threadA.start();
+        Thread threadB = new Thread(() -> {
+            try {
+                System.out.println("B call");
+                fileService.write("B", new BufferedWriter(new FileWriter("D:\\file.txt")));
+                System.out.println("B End");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        threadB.start();
+        Thread threadC = new Thread(() -> {
+            try {
+                System.out.println("C call");
+                fileService.write("C", new BufferedWriter(new FileWriter("D:\\file.txt")));
+                System.out.println("C End");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        threadC.start();
+    };
+}
 ```
 
 ## 해설
@@ -295,6 +295,8 @@ public class FileService {
 
 저희는 지금 까지 동시성 이슈를 피하기 위해서 가급적 상태를 갖도록 설계하면 안된다는 것과, 상태를 가지면 동시성 이슈가 발생할 수도 있다고 했습니다. 하지만 write() 메서 내부에서 synchronized lock 을
 제공하고 있는데 그러면 동시성 이슈가 발생하지 않을까요?
+
+![]( /resource/wiki/spring-concurrency/giphy.gif)
 
 ### Case 1
 

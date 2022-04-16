@@ -96,7 +96,7 @@ DDD 의 하위 도메인, 경계 컨텍스트 개념은 마이크로서비스 �
 
 ## From: Expert One-on-One J2EE Design and Development
 
-> 객체-지향 설계가 어떤 특별핚 구현 기술(J2EE 나 심지어늒 Java)보다 더 중요하다.
+> 객체-지향 설계가 어떤 특별한 구현 기술(J2EE 나 심지어는 Java)보다 더 중요하다.
 
 ## Links
 

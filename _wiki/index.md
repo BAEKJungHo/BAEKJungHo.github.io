@@ -7,17 +7,17 @@ comment : false
 regenerate: true
 ---
 
-## [[kotlin]]
+## kotlin
 
 * [[kotlin]]
   * [[/kotlin-sequence]]
 
-## [[spring]]
+## spring
 
 * [[spring]]
   * [[/spring-pojo]]
 
-## [[ddd]]
+## ddd
 
 * [[ddd]]
   * [[/ddd-quotes]]

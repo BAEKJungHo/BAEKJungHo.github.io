@@ -111,6 +111,7 @@ EJB 의 중심에는 분산 컴퓨팅기술이 있다. 이를 통해 여러 서�
 
 ## Links
 
+- [Martin Fowler POJO](https://www.martinfowler.com/bliki/POJO.html)
 - [당신의 코드는 POJO 하신가요?](https://www.youtube.com/watch?v=5NcqgXgmmjg)
 
 ## 참고 문헌

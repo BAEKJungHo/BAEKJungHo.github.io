@@ -157,8 +157,8 @@ kotlin 의 Sequence 와 Java 의 Stream 은 어떤 기준으로 선택해야 할
 ## Benchmark
 
 > 시퀀스와 컬렉션의 성능적 차이를 확실하게 알고 싶다면 벤치마크 툴을 사용하는게 좋다.
-
-- https://openjdk.java.net/projects/code-tools/jmh/
+>
+> [JMH Benchmark Tool](https://openjdk.java.net/projects/code-tools/jmh/)
 
 ## 결론
 

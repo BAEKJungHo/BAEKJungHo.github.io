@@ -296,8 +296,6 @@ public class FileService {
 저희는 지금 까지 동시성 이슈를 피하기 위해서 가급적 상태를 갖도록 설계하면 안된다는 것과, 상태를 가지면 동시성 이슈가 발생할 수도 있다고 했습니다. 하지만 write() 메서 내부에서 synchronized lock 을
 제공하고 있는데 그러면 동시성 이슈가 발생하지 않을까요?
 
-![]( /resource/wiki/spring-concurrency/giphy.gif)
-
 ### Case 1
 
 - Client 의 Thread-A 입장에서는 파일을 쓰고 읽을때, A 가 찍히길 기대할테지만 원하는 읽기 일관성을 얻지 못한다.

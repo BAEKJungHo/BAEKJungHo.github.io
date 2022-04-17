@@ -100,7 +100,7 @@ PSA 를 적용하여 리팩토링 하였더니 `테스트하기 쉬운 코드`�
 
 ## Links
 
-- - [스프링 제대로 공부했는가?](https://www.youtube.com/watch?v=bJfbPWEMj_c&t=12s)
+- [스프링 제대로 공부했는가?](https://www.youtube.com/watch?v=bJfbPWEMj_c&t=12s)
 
 ## 참고 문헌
 

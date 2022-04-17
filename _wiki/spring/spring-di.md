@@ -128,9 +128,7 @@ MemberService memberService = ac.getBean("memberService", MemberService.class); 
 
 스프링 컨테이너 구현체 `AnnotationConfigApplicationContext` 에서 파라미터로 `클래스 객체`를 받는 것을 볼 수 있다.
 
-우리가 [Reflection](https://github.com/BAEKJungHo/deepdiveinreflection/blob/main/contents/03.%20Java%20Reflection.md) 에서 배웠듯이, 리플렉션의 시작은 클래스 객체로부터 시작된다고 배웠다.
-
-즉, AnnotationConfigApplicationContext 내부에서는 `Class<AppConfig>` 클래스 객체를 사용하여 어노테이션 정보를 읽어서 빈들을 등록한다는 것을 알 수 있다.
+DI 도 리플렉션을 사용하며, 리플렉션의 시작은 클래스 객체로부터 시작된다. AnnotationConfigApplicationContext 내부에서는 `Class<AppConfig>` 클래스 객체를 사용하여 어노테이션 정보를 읽어서 빈들을 등록한다는 것을 알 수 있다.
 
 세부적인 동작 과정을 살펴보자.
 

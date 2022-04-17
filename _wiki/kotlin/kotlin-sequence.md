@@ -8,7 +8,7 @@ tag     : kotlin
 toc     : true
 comment : true
 public  : true
-parent  : [[kotlin]]
+parent  : [[/kotlin]]
 latex   : true
 ---
 * TOC

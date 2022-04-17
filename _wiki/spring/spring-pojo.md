@@ -8,7 +8,7 @@ tag     : spring
 toc     : true
 comment : true
 public  : true
-parent  : [[spring]]
+parent  : [[/spring]]
 latex   : true
 ---
 * TOC

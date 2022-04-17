@@ -17,6 +17,7 @@ regenerate: true
 * [[/spring/spring-concurrency]]
 * [[/spring/spring-converter]]
 * [[/spring/spring-psa]]
+* [[/spring/spring-di]]
 
 ## ddd
 

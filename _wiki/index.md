@@ -10,6 +10,7 @@ regenerate: true
 ## kotlin
 
 * [[/kotlin/kotlin-sequence]]
+* [[/kotlin/kotlin-philosophy]]
 
 ## spring
 

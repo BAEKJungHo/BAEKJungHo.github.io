@@ -18,14 +18,14 @@ latex   : true
 
 ## Test Code Is Required ?
 
-> 대부분의 경우 테스트 가능한 애플리케이션을 목표로 할 경우 훌륭한 애플리케이션 코드를 작성하게 된다. - Rod Johnson
+> 대부분의 경우 테스트 가능한 애플리케이션을 목표로 할 경우 훌륭한 애플리케이션 코드를 작성하게 된다.   - Rod Johnson
 
 ### Testing Motivators
 
-- Validate the System
-- Code Coverage
-- Enable Refactoring
-- Document the Behavior of the System
+- __Validate the System__
+- __Code Coverage__
+- __Enable Refactoring__
+- __Document the Behavior of the System__
 
 테스트 코드가 잘 작성된 프로그램은 리팩토링이 쉽다. 테스트 코드가 작성되지 않은 상태에서 새로운 기능을 추가하거나 리팩토링을 해야하는 경우 내가 작성/변경한 코드가 Side Effect 없이 잘 작성된 코드인지 어떻게 검증할 것인가?
 
@@ -34,7 +34,7 @@ __테스트 코드가 해결해 준다.__
 ### Good Test is ?
 
 - __Atomic__
-  - Atomic 의 기준은 Scenario 일 수도 있고(ATDD), Method 일 수도 있고(TDD), Behavior 일 수도 있다(BDD). Atomic 의 기준은 `목적(purpose)`에 따라 달라진다. 
+  - Atomic 의 기준은 Scenario 일 수도 있고, Method 일 수도 있고, Behavior 일 수도 있다. Atomic 의 기준은 목적(purpose)에 따라 달라진다. 
 - __Isolated__
   - 다른 테스트로부터 독립 되어있어야 하며, 다른 테스트에 영향을 주어서는 안된다.
 

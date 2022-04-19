@@ -24,6 +24,10 @@ regenerate: true
 
 * [[/ddd/ddd-quotes]]
 
+## Test Methodology
+
+* [[/driven/test-methodology]]
+
 ## etc
 
 * [[mathjax-latex]]

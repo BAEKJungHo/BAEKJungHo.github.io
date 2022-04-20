@@ -138,7 +138,7 @@ MDC(Mapped Diagnostic Context) 는 스레드별로 로깅을 관리할 수 있�
 
 로깅 레벨은 다음과 같은 규칙을 따른다.
 
-> A log request of level p issued to a logger having an effective level q, is enabled if p >= q.
+> A log request of level p issued to a logger having an effective level q, is enabled if p >= q
 
 ![](/resource/wiki/spring-logging/loglevel.png)
 
@@ -171,7 +171,3 @@ barlogger.debug("Exiting gas station search");
 - [Logback Manual](https://logback.qos.ch/manual/)
 - [Logback Mapped Diagnostic Context](https://logback.qos.ch/manual/mdc.html)
 - [Logback Filters](https://logback.qos.ch/manual/filters.html)
-
-## 참고 문헌
-
-- 토비의 스프링 3 / 이일민 저 / 에이콘 출판사

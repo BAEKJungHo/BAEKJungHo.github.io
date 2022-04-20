@@ -112,7 +112,7 @@ MDC(Mapped Diagnostic Context) 는 스레드별로 로깅을 관리할 수 있�
   - 서블릿 컨테이너와 통합되어 HTTP 액세스 로그 기능을 제공
   - [HTTP-access logs with logback-access, Jetty and Tomcat](https://logback.qos.ch/access.html)
 
-### LoggingEvent Sending Sequence Diagram
+### [LoggingEvent Sending Sequence Diagram](https://logback.qos.ch/manual/underTheHood.html)
 
 ![](/resource/wiki/spring-logging/logbackdiagram.png)
 

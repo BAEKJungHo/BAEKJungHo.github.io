@@ -19,6 +19,7 @@ regenerate: true
 * [[/spring/spring-converter]]
 * [[/spring/spring-psa]]
 * [[/spring/spring-di]]
+* [[/spring/spring-logging]]
 
 ## ddd
 

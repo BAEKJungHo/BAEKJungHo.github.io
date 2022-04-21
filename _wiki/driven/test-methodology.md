@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Test Methodology
+title   : Software Development Methodology
 summary : 
 date    : 2022-04-18 19:54:32 +0900
 updated : 2022-04-18 21:15:24 +0900
@@ -14,13 +14,13 @@ latex   : true
 * TOC
 {:toc}
 
-# Test Methodology
+# Software Development Methodology
 
 ## Test Code Is Required ?
 
 > 대부분의 경우 테스트 가능한 애플리케이션을 목표로 할 경우 훌륭한 애플리케이션 코드를 작성하게 된다.   - Rod Johnson
 
-### Testing Motivators
+## Testing Motivators
 
 - __Validate the System__
 - __Code Coverage__
@@ -31,14 +31,16 @@ latex   : true
 
 __테스트 코드가 해결해 준다.__
 
-### Good Test is ?
+## Good Test is ?
 
 - __Atomic__
   - Atomic 의 기준은 Scenario 일 수도 있고, Method 일 수도 있고, Behavior 일 수도 있다. Atomic 의 기준은 목적(purpose)에 따라 달라진다. 
 - __Isolated__
   - 다른 테스트로부터 독립 되어있어야 하며, 다른 테스트에 영향을 주어서는 안된다.
 
-## TDD
+# Extreme Programming
+
+# TDD
 
 ![](/resource/wiki/test-methodology/tdd.png)
 
@@ -52,11 +54,26 @@ In essence you follow three simple steps repeatedly:
 
 TDD 는 시스템 기능을 구축하면서 한 번에 한 테스트씩 이 세 단계를 계속 반복하는 프로세스이다.
 
+## Unit Test
+
+Unit Test 는 특정 단위(테스트 대상)가 의도한대로 작동하는지 검증하는 것을 말한다.
+
+![](/resource/wiki/test-methodology/unittest.png)
+
+### Sociable and Solitary
+
+- 단위 테스트 작성 시 관계를 맺고있는 대상(협력 객체)이 있는 경우를 고려해야 함
+- 협력 객체를 실제 객체로 사용하는지 Mock 객체로 사용하는지에 따라 테스트 구현이 달라짐
+
+> 단위의 정의를 논하기 앞서 테스트하는 단위가 통합(Sociable)되어야 하는지 고립(Solitary)되어야 하는지 먼저 고려해야 한다.
+
 ## Links
 
 - [Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html)
+- [Unit Test](https://martinfowler.com/bliki/UnitTest.html)
+- [Extreme Programming](https://martinfowler.com/bliki/ExtremeProgramming.html)
 
 ## 참고 문헌
 
-- Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘
-- Effective Kotlin / Marcin Moskala 저 / 인사이트
+- Extreme Programming / Kent Beck / 인사이트
+- Extreme Programming Installed / Ron Jeffries, Ann Anderson, Chet Handrickson 공저 / 인사이트

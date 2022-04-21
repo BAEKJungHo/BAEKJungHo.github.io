@@ -28,6 +28,7 @@ regenerate: true
 ## Test Methodology
 
 * [[/driven/test-methodology]]
+* [[/driven/extreme-programming]]
 
 ## etc
 

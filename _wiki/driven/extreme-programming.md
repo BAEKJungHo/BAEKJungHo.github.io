@@ -58,7 +58,7 @@ XP 가 여타 방법론과 다른 점은 다음과 같다.
 > 
 > 단순함과 명쾌함의 가치를 고찰한다.
 > 
-> Leonard Coren, "[^Wabi-Sabi]: For Artists, Designers, Poets, and Philosophers". Stone Bridge Press, 1994; ISBN 1880656124
+> Leonard Coren, "Wabi-Sabi[^Wabi-Sabi]: For Artists, Designers, Poets, and Philosophers". Stone Bridge Press, 1994; ISBN 1880656124
 >
 > 와비사비는 소박하고 실용적인 미의식이다.
 > 

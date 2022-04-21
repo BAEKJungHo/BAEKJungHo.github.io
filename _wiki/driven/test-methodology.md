@@ -38,7 +38,7 @@ __테스트 코드가 해결해 준다.__
 - __Isolated__
   - 다른 테스트로부터 독립 되어있어야 하며, 다른 테스트에 영향을 주어서는 안된다.
 
-# Extreme Programming
+# [Extreme Programming](https://baekjungho.github.io/wiki/driven/extreme-programming)
 
 # TDD
 

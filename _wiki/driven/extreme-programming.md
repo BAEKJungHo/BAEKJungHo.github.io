@@ -124,7 +124,7 @@ XP 가 여타 방법론과 다른 점은 다음과 같다.
 
 사용자 스토리에 대해 생각하는 편리한 방법은 3C’s; card, conversation, and confirmation 이다. XP 의 초기에는 이야기가 3×5 또는 4×6의 실제 메모 카드에 기록되었다. 카드를 테이블에 놓을 수 있고, 정렬 및 우선 순위를 지정할 수 있으며, 회의에서 전달하고 논의할 수도 있다. 이야기에 대한 구체적인 세부 사항을 팀에 상기시키기 위해 토론하는 동안 메모가 카드에 기록되었다.
 
-![](/resource/wiki/extreme-programming/3c .jpg)
+![](/resource/wiki/extreme-programming/3c.jpg)
 
 ### 일주일별 주기
 

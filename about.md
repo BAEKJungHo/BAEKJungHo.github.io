@@ -10,8 +10,6 @@ latex: true
 
 # About Me
 
-> REFACTORING ..
-
 ## Profile
 
 - Name: BAEKJungHo
@@ -24,7 +22,8 @@ latex: true
 
 > 2022.03.07 ~ ING
 
-- __[IN-PROGRESS] 픽업 서비스 개발__
+- __[IN-PROGRESS] [2022.04.01 ~ ] 픽업 서비스 개발__
+  - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline) Service
 - __[IN-PROGRESS] 테스트 코드 작성을 문화로 정착시키기__
     - [DONE] 사내 세미나 진행
     - [DONE] 테스트 코드 작성에 대한 필요성 내용 공유

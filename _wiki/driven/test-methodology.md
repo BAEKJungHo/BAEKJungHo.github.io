@@ -159,16 +159,200 @@ class AServiceDummy(): AService {
 - 인수 테스트로 인해서 우리는 어떤 컨트롤러가 나와야 하는지 알고 있으므로 컨트롤러를 먼저 작성해도 좋고
 도메인 모델의 기능 정의가 나와있는 상황에서 도메인을 먼저 작성해도 좋다.
 
+# ATDD
+
+![](/resource/wiki/test-methodology/atddcycle.png)
+
+## ATDD 란
+
+- 원래는 다양한 관점을 가진 팀원(기획, 개발, 테스트 등)들과 협업을 위한 애자일 방법 중 하나
+- 다른 관점에서 원활한 커뮤니케이션 없이 논의를 한다면 서로 다른 결과물을 상상하여 작업을 진행할 수 있음
+- 따라서 프로덕트 결과물이 나오는 시점에서야 이해하고 있던 내용이 다름을 인지하게 되는 경우 발생
+- ATDD 는 이러한 리스크를 사전에 방지하고자 기획 단계부터 인수 테스트를 통해 공통의 이해를 도모하여 프로젝트를 진행
+
+## TDD vs ATDD
+
+- TDD 는 개발자 영역을 다루며 시스템을 구성하는 유닛이나 모듈을 테스트 함
+- TDD 설계 이슈는 특정 모듈이나 클래스가 인수 테스트 전체 또는 일부분을 통과할 수 있도록 책임을 할당
+- TDD 와 ATDD 는 동일한 품질 목표를 갖고, 서로 상호 관계에 있다.
+- 궁극적으로 TDD를 통해 특정 모듈이나 클래스를 담당하고 이 들이 모여 인수 테스트 전체 또는 일부분을 통과할 수 있도록 책임을 할당
+
+## 인수 테스트의 중요성
+
+테스트 가능한 요구사항은 인수 테스트(acceptance test)에 꼭 필요한 사항이다. 인수 테스트가 개발 방향을 정하기 때문이다. ATDD 에서 양질의 제품을 생산하기 위해서는 실제 테스트를 할 수 있을 만큼의 명확한 요구사항이 있어야 한다.
+
+- 고객은 인수 테스트를 이해하고 구체화한다.
+- 구현은 변할 수 있어도 인수 테스트는 변경되지 않는다.
+
+## Acceptance Criteria
+
+> 인수 기준(Acceptance Criteria)은 구체화 되지 않은 일반적인 인수 조건을 의미한다.
+
+예를 들어, '속도를 내는 가속기, 최고 속도, 분명히 빨라야 한다' 같은 조건을 의미한다.
+
+## Acceptance Test 
+
+> 인수 테스트(Acceptance Test)는 인수를 하기 위한 특정 조건을 의미한다.
+
+예를 들어, '4.5 초 이내에 60 마일 까지 속도를 내야 한다' 등이 될 수 있다.
+
+- 사용자의 관점에서 올바르게 작동하는지 테스트
+- __UserStory 에서 Scenario 를 도출하고 요구사항들을 테스트 하여, 사용자 관점에서 올바르게 작동하는지 테스트__
+- 인수 조건은 기술(개발) 용어가 사용되지 않고 일반 사용자들이 이해할 수 있는 단어를 사용
+- 클라이언트가 의뢰했던 소프트웨어를 인수 받을 때, 미리 전달했던 요구사항이 충족되었는지를 확인하는 테스트
+- 인수 테스트는 소프트웨어가 기능적으로 어떤일을 해야 하는지 알려주고 확실하고 믿을 만한 원천
+- 사용자 인수 테스트, 애자일에서의 인수 테스트 등
+- __자동화 된 테스트__
+  - 인수 테스트는 수동으로도 가능하지만, 자동화되면 새로운 시스템 변경 사항이 이미 구현된 요구사항에 영향을 미치지 않는지를 확인하는 `회귀 테스트`로도 사용할 수 있음
+  - 회귀 테스트가 가능한 이유가 뭘까?
+    - 보통 UserStory -> Scenario 를 만들고 테스트를 함
+    - __중요한 것은 Test Code 가 최대한 Production Code 와 결합하지 않도록 하는 것이 중요__
+- __시나리오 기반 테스트__
+  - 도메인이나 기술에 대한 배경 지식이 없어도 이해할 수 있음
+  - 요구사항을 명확하게 이해할 수 있음
+- __Black Box Test__
+  - 인수 테스트는 Black Box 테스트 형식이다.
+  - 세부 구현에 영향을 받지 않게 구현하기
+  > 인수 테스트는 블랙 박스 테스트의 성격을 가지는게 좋다. 시스템 내부 코드를 가능한 직접 호출하지 말고 외부에서 요청하는 방식으로 검증하는 것을 추천
+
+```
+Feature : 테스트에 대상의 기능/책임을 명시한다.
+
+Scenario : 테스트 목적에 대한 상황을 설명한다.
+  Given : 시나리오 진행에 필요한 값을 설정한다.
+  When : 시나리오를 진행하는데 필요한 조건을 명시한다.
+  Then : 시나리오를 완료했을 때 보장해야 하는 결과를 명시한다.
+```
+
+## User Story
+
+```
+“As a <user or stakeholder type>
+I want <some software feature>
+So that <some business value>”
+```
+
+- [User Stories and User Story Examples by Mike Cohn](https://www.mountaingoatsoftware.com/agile/user-stories)
+- [User Story Template Advantages](https://www.mountaingoatsoftware.com/blog/advantages-of-the-as-a-user-i-want-user-story-template)
+- [올바른 유저 스토리 작성을 위한 엔지니어링 가이드](https://wholeman.dev/posts/guide-to-writing-correct-user-stories/)
+- [“As a, I want, So that” Considered Harmful](https://blog.crisp.se/2014/09/25/david-evans/as-a-i-want-so-that-considered-harmful)
+
+### 스토리 포인트 추정
+
+- [What are story points and how do you estimate them?](https://www.atlassian.com/agile/project-management/estimation)
+- Planning Poker : <https://github.com/ahastudio/til/blob/main/agile/planning-poker.md>
+
+### Xper 위키의 사용자 스토리 사례
+
+[Xper:Xper Wiki Tests](https://web.archive.org/web/20061012054901/http://xper.org/wiki/xp/XperWikiTests)
+
+## ATDD 개발 프로세스
+
+- 인수 조건 정의
+- 인수 테스트 작성
+- 문서화
+- 기능 구현
+- 테스트 리팩터링
+
+## ATDD + TDD Cycle
+
+![](/resource/wiki/test-methodology/tddcycle.png)
+
+## ATDD Example
+
+- __인수 조건__
+  - 인수 테스트가 충족해야하는 조건
+  - 인수 조건을 표현하는 여러가지 포맷이 있음
+    - 시나리오 기반 표현 방식
+    - Given-When-Then
+
+> [Acceptance Criteria: Purposes, Formats, and Best Practices](https://www.altexsoft.com/blog/business/acceptance-criteria-purposes-formats-and-best-practices/)
+
+```java
+Feature: 최단 경로 구하기
+
+  Scenario: 지하철 최단 경로 조회
+    Given 지하철역들이 등록되어 있다.
+    And 지하철노선이 등록되어 있다.
+    And 지하철노선에 지하철역들이 등록되어 있다.
+    When 사용자는 출발역과 도착역의 최단 경로 조회를 요청한다.
+    Then 사용자는 최단 경로의 역 정보를 응답받는다.
+```
+
+```
+Feature: 지하철 노선 관리 기능
+
+  Scenario: 지하철 노선 생성
+    When 지하철 노선 생성을 요청 하면
+    Then 지하철 노선 생성이 성공한다.
+    
+  ...
+```
+
+```java 
+/**
+ * When 지하철 노선 생성을 요청 하면
+ * Then 지하철 노선 생성이 성공한다.
+ */
+@DisplayName("지하철 노선 생성")
+@Test
+void createLine() {
+}
+```
+
+> [Cucumber Gherkin Syntax](https://cucumber.io/docs/gherkin/)
+
+### 문서화
+
+- Spring Rest Docs 를 활용하여 API 문서화
+- 문서화를 위해서는 Mock 서버 & DTO 정의가 필요
+- 프론트엔드, 다른 백엔드 개발자와 병렬로 작업하는데 유리함
+- 인수 테스트와는 별개로 API 테스트를 수행
+- 다른 개발자들과 협업 시 커뮤니케이션에 큰 장점
+
+## 문서 자동화와 테스트
+
+### Spring Rest Docs vs Swagger
+
+- __Spring REST Docs__
+  - 코드의 추가 및 수정이 없다.
+  - 테스트 코드 작성이 필요하며, 테스트 성공 시 문서가 생성된다.
+  - Spring Rest Doc 는 테스트 코드에 설정(및 작성)하여 프로덕션 코드에 영향이 적음
+    - 버전 변화에 유연하고 정확성이 높다.
+- __Swagger__
+  - 코드에 어노테이션등을 추가해야 한다.
+  - 테스트 코드 없이 서비스 쪽 코드 및 어노테이션 추가로 문서를 생성할 수 있다.
+  - 버전 변화에 맞춰 재 작성해야 하며 이를 하지 않을 때 정확성이 낮다.
+  - Swagger 는 API call 하여 테스트하는 기능에 특화
+  - 비개발직군 입장에서 Swagger 보다는 Spring Rest Docs 가 가독성이 좋다고 함
+  - Swagger 는 (상대적으로) 기능이 많은 반면에 Spring Rest Docs 는 단순히 문서임
+  - Swagger 사용 시 불필요한 프로덕션 코드 오염이 발염
+  - Swagger 의 api call 기능은 intellij(local) 에서 Http Request 하는 기능을 사용하여 대체함
+
+### 개발 전 문서화 장점
+
+- __병렬 작업이 가능__
+  - 백엔드 개발자간 병렬 작업
+  - 백엔드 & 프론트엔드 개발자간 병렬 작업
+- __특히 백엔드 & 프론트엔드 병렬 작업 시 유용함__
+  - 커뮤니케이션 비용 줄일 수 있음
+  - 동작하는 Mock API 생성
+- __문서화 테스트 자체가 API 테스트__
+  - 문서화 테스트 자체가 API 테스트가 되기 때문에 따로 컨트롤러 테스트를 만들 필요 없음
+
 ## Links
 
+- [Acceptance Test Driven Development](https://mysoftwarequality.wordpress.com/2013/11/12/when-something-works-share-it/)
 - [Test Driven Development](https://martinfowler.com/bliki/TestDrivenDevelopment.html)
 - [Unit Test](https://martinfowler.com/bliki/UnitTest.html)
 - [Extreme Programming](https://martinfowler.com/bliki/ExtremeProgramming.html)
 - [Mocks Aren't Stubs](https://martinfowler.com/articles/mocksArentStubs.html)
 - [Test Double](https://martinfowler.com/bliki/TestDouble.html)
 - [Test Double By Tecoble](https://tecoble.techcourse.co.kr/post/2020-09-19-what-is-test-double/)
+- [Asciidoctor](https://docs.asciidoctor.org/asciidoc/latest/)
 
 ## 참고 문헌
 
 - Extreme Programming / Kent Beck / 인사이트
 - Extreme Programming Installed / Ron Jeffries, Ann Anderson, Chet Handrickson 공저 / 인사이트
+- 린 애자일 기법을 활용한 테스트 주도 개발 / Kenneth Pugh 저 / 에이콘

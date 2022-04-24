@@ -20,7 +20,7 @@ latex   : true
 
 ### 디스크가 느린 이유
 
-데이터를 읽기 위해서는 `헤드`를 움직여 데이터가 저장된 위치(트랙)를 찾아야 한다. 이때 소요되는 시간을 `탐색 시간(seek time)`이라고 한다. 그 후 원하는 정보가 있는 `섹터`가 다가올 때까지 기다리는데 이때의 시간을 `회전 대기 시간(rotational latency time)`이라고 한다.
+데이터를 읽기 위해서는 헤드를 움직여 데이터가 저장된 위치(트랙)를 찾아야 한다. 이때 소요되는 시간을 `탐색 시간(seek time)`이라고 한다. 그 후 원하는 정보가 있는 섹터가 다가올 때까지 기다리는데 이때의 시간을 `회전 대기 시간(rotational latency time)`이라고 한다.
 
 - 헤드 : 상단 이미지에서 디스크 오른쪽에 있는 회색 꺾쇠의 디스크와 닿는 부분
 - 트랙 : 디스크(플래터)의 한 면에서 중심으로부터 같은 거리에 있는 섹터들의 집합
@@ -361,12 +361,46 @@ create index member_info_idx on member(groupno, lastname, firstname, age);
 >
 > 클러스터링 인덱스에 비해서 빠르다는거지, 인덱스 자체의 특징은 검색 속도를 올리고 CUD 성능을 조금 포기하는 것이라고 위에서 배웠다.
 
+## 모든 컬럼에 Index 를 걸면 좋을까?
+
+Index 는 검색 속도를 향상 시키기 위해 사용되는데, 모든 컬럼에 Index 를 걸면 좋은거 아닌가?
+
+결론부터 말하자면 그렇지 않다.
+
+우선, 첫번째 이유는 INDEX 를 생성하게 되면 INSERT, DELETE, UPDATE 쿼리문을 실행할 때 별도의 과정이 추가적으로 발생한다. INSERT 의 경우 INDEX 에 대한 데이터도 추가해야 하므로 그만큼 성능에 손실이 따른다.
+
+DELETE 의 경우 INDEX 에 존재하는 값은 삭제하지 않고 사용 안한다는 표시로 남게 된다. 즉 row 의 수는 그대로인 것이다. 이 작업이 반복되면 어떻게될까?
+
+실제 데이터는 10 만건인데 데이터가 100 만건 있는 결과를 낳을 수도 있는 것이다. 이렇게되면 인덱스는 더 이상 제 역할을 못하게 되는 것이다. UPDATE 의 경우는 INSERT 의 경우,DELETE 의 경우의 문제점을 동시에 수반한다. 이전 데이터가 삭제되고 그 자리에 새 데이터가 들어오는 개념이기 때문이다. 즉 변경 전 데이터는 삭제되지 않고 insert 로 인한 split 도 발생하게 된다.
+
+하지만 더 중요한 것은 컬럼을 이루고 있는 데이터의 형식에 따라서 인덱스의 성능이 악영향을 미칠 수 있다는 것이다. 즉, 데이터의 형식에 따라 인덱스를 만들면 효율적이고 만들면 비효율적은 데이터의 형식이 존재한다는 것이다. 어떤 경우에 그럴까? 이름, 나이, 성별 세 가지의 필드를 갖고 있는 테이블을 생각해보자. 이름은 온갖 경우의 수가 존재할 것이며 나이는 INT 타입을 갖을 것이고, 성별은 남, 녀 두 가지 경우에 대해서만 데이터가 존재할 것임을 쉽게 예측할 수 있다. 이 경우 어떤 컬럼에 대해서 인덱스를 생성하는것이 효율적일까? __결론부터 말하자면 이름에 대해서만 인덱스를 생성하면 효율적이다.__ 왜 성별이나 나이는 인덱스를 생성하면 비효율적일까? 10000 레코드에 해당하는 테이블에 대해서 2000 단위로 성별에 인덱스를 생성했다고 가정하자. __값의 range 가 적은 성별은 인덱스를 읽고 다시 한 번 디스크 I/O 가 발생하기 때문에 그 만큼 비효율적인 것이다.__
+
+> 테이블 내 100개 데이터 중 pk=1을 검색했을 때, 1개의 데이터가 나올 경우 1/100 = 0.01 즉 1%의일치율을 보인다.
+
+```sql
+select * from test where name like'이%'
+select * from test where name like'%이%' -- 처음 %가 붙으면 table scan 이 되어 속도가 느리게 된다.
+```
+
+## Index 생성 시 고려할 점
+
+- where, join, order by 등과 관련된 사용 빈도가 높고 키 값의 선별도가 좋은 컬럼을 대상으로 인덱스를 생성해야 함
+- 선택한 키의 검색 일치율이 10% 미만인 경우에는 Index 를 사용하는 것이 좋고, 그 이상일 경우에는 풀 스캔 방식이 더 좋을 수 있음
+- LIKE `%~`는 조심 (table scan 이여서 성능 감소) % 는 뒤에만 사용하도록 해야함
+- Foreign key (1:1 매핑)이 많을 때 -> 클러스터, 논클러스터 인덱스 둘 다 상관 없음 (상황에 따라 클러스터인덱스 사용)
+- Foreign key (1:N 매핑)이 많을 때 -> 클러스터 인덱스 사용
+- not 연산자는 긍정문으로 변경
+- insert, delete 등 데이터의 변경이 많은 컬럼은 인덱스를 걸지 않은 편이 좋음. 인덱스를 만드는데 시간과 저장공간이 소비되고 만들고 난 후에도 추가적인 공간이 필요. 데이터를 변경 (insert, update, delete)를 하면 (특히 insert) 인덱스를 다시 조정해야하기 때문에 자원이 많이 소모됨
+
+
 ## Links
 
+- [How MySQL Uses Indexes](https://dev.mysql.com/doc/refman/8.0/en/mysql-indexes.html)
 - [InnoDB Mutex and Read/Write Lock Implementation](https://dev.mysql.com/doc/internals/en/innodb-mutex-rwlock-implementation.html)
 - [레드 블랙 트리는 매우 효율적임에도, MySQL 에서 사용하지 않는 이유](https://cdmana.com/2021/12/202112240514366766.html)
 - [MySQL 데이터베이스 인덱스가 B + 트리를 사용하도록 선택하는 이유는 무엇입니까?](https://developpaper.com/why-does-mysql-database-index-choose-to-use-b-tree/)
 - [B-tree 와 Binary Tree 의 차이점](https://ko.gadget-info.com/difference-between-b-tree)
+- [Index 란](https://valuefactory.tistory.com/496)
 - [InnoDB Adaptive Hash Index](https://tech.kakao.com/2016/04/07/innodb-adaptive-hash-index/)
 
 ## 참고 문헌

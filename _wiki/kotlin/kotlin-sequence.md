@@ -74,10 +74,32 @@ println("Lengths of first 4 words longer than 3 chars")
 println(lengthsSequence.toList())
 ```
 
+Sequence 안에는 iterator 라는 단 하나의 메서드가 존재하며, 그 메서드를 통해 시퀀스로부터 원소 값을 얻을 수 있다.
+
 최종 연산자인 toList() 가 호출되는 순간 중간 연산자들이 호출된다. 즉, 아래 그림에 나와있는 것 처럼,
 데이터를 하나씩 꺼내서 `filter > map > take` 순서로 반복하여 처리한다.
 
 ![sequence](https://user-images.githubusercontent.com/47518272/163670924-a3467e70-28b3-4bd3-ace7-7a5740762ac1.png)
+
+### generateSequence
+
+asSequence() 외에 generateSequence 를 사용해서 시퀀스를 생성할 수도 있다.
+
+```kotlin
+val naturalNumbers = generateSequence(0) { it + 1 }
+val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }
+println(numbersTo100.sum()) // 모든 지연 연산은 sum 의 결과를 계산할 때 수행된다.
+```
+
+naturalNumbers 와 numbersTo100 는 모두 시퀀스이다.
+
+```kotlin
+/** 상위 디렉터리의 시퀀스를 생성하고 사용하기 */
+fun File.isInsideHiddenDirectory() = 
+    generateSequence(this) { it.parentFile }.any { it.isHidden }
+val file = File("/Users/a.txt")
+println(file.isInsideHiddenDirectory())
+```
 
 ### 특징
 
@@ -191,3 +213,4 @@ kotlin 의 Sequence 와 Java 의 Stream 은 어떤 기준으로 선택해야 할
 ## 참고 문헌
 
 - Effective Kotlin Item 49 / Marcin Moskala 저 / 인사이트
+- Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

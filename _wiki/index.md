@@ -24,15 +24,26 @@ regenerate: true
 ## ddd
 
 * [[/ddd/ddd-quotes]]
+* [[/ddd/ddd-aggregate]]
 
 ## Test Methodology
 
 * [[/driven/test-methodology]]
 * [[/driven/extreme-programming]]
+* [[/driven/oop-oo]]
 
 ## Database
 
 * [[/database/mysql-index]]
+* [[/database/hikaricp-concepts]]
+
+## Clean Code
+
+* [[/cleancode/cleancode-guide]]
+
+## Network
+
+* [[/network/network-layeredarchitectures]]
 
 ## etc
 

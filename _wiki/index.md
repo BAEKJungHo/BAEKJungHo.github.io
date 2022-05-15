@@ -11,6 +11,7 @@ regenerate: true
 
 * [[/kotlin/kotlin-sequence]]
 * [[/kotlin/kotlin-philosophy]]
+* [[/kotlin/kotlin-singleton]]
 
 ## spring
 

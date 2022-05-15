@@ -8,8 +8,12 @@
   "size": 2
  },
  {
+  "name": "hikaricp",
+  "size": 1
+ },
+ {
   "name": "kotlin",
-  "size": 2
+  "size": 3
  },
  {
   "name": "latex",

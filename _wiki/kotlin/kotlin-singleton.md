@@ -22,22 +22,22 @@ latex   : true
 
 > 자바에서는 LazyHolder 라는 방식을 사용하여 싱글톤을 구현한다. Double-Checked Locking, Eager initialization, Lazy initialization 등 다양한 방법이 있지만 LazyHolder 가 JVM 의 성능을 최대로 끌어내서 사용하는 방식이다.
 
-### Eager initialization
+### Eager Initialization
 
 ```java
 public class Singleton {
 
-	private static Singleton instance;
+    private static Singleton instance;
     
     static {
         instance = new Singleton();
     }
 	
-	private Singleton() {}
-	
-	public static Singleton getInstance() {
-		return instance;
-	}
+    private Singleton() {}
+    
+    public static Singleton getInstance() {
+        return instance;
+    }
 }
 ```
 
@@ -67,17 +67,19 @@ LazyHolder 는 JVM(Java Virtual Machine)의 클래스의 초기화 과정에서 
 
 LazyHolder 클래스가 초기화 되면서 instance 객체의 생성도 이루어 지는데, JVM 은 이러한 클래스 초기화 과정에서 원자성을 보장한다.
 
-따라서, final 로 선언한 instance 는 getInstance() 호출 시 LazyHolder 클래스의 초기화가 이루어 지면서 원자성이 보장된 상태로 단 한번 생성되고, final 변수 이므로 이후로 다시 instance 가 할당되는 것 또한 막을 수 있다.
+따라서, final 로 선언한 instance 는 getInstance() 호출 시 LazyHolder 클래스의 초기화가 이루어 지면서 원자성이 보장된 상태로 단 한번만 생성되고, final 변수 이므로 이후로 다시 instance 가 할당되는 것 또한 막을 수 있다.
 
-이러한 방법에 장점은 Synchronized 를 사용하지 않아도 JVM 자체가 보장하는 원자성을 사용하여 Thread-Safe 하게 싱글톤 패턴을 구현할 수 있는 것이다.
+이러한 방법의 장점은 Synchronized 를 사용하지 않아도 JVM 자체가 보장하는 원자성을 사용하여 Thread-Safe 하게 싱글톤 패턴을 구현할 수 있는 것이다.
 
-> [위키피디아](https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom)를 참고하면 JVM 의 클래스 초기화 과정에서 원자성을 보장한다는 내용을 조금 더 자세히 살펴볼 수 있다.
->
+[위키피디아](https://en.wikipedia.org/wiki/Initialization-on-demand_holder_idiom)를 참고하면 JVM 의 클래스 초기화 과정에서 원자성을 보장한다는 내용을 조금 더 자세히 살펴볼 수 있다.
+
 > Since the class initialization phase is guaranteed by the JLS to be sequential, i.e., non-concurrent, no further synchronization is required in the static getInstance method during loading and initialization.
 
 Java Language Specification 에 명시된 대로 JVM 의 클래스 초기화 과정이 sequential, non-concurrent 하므로, 추가적인 Synchronized 를 사용하여 스레드 동기화를 더 할 필요가 없다는 걸 알 수 있다.
 
 ## Singleton In Kotlin
+
+### Eager Initialization
 
 > Kotlin 에서는 object 라는 키워드를 사용하여 쉽게 싱글톤 객체를 만들 수 있다.
 

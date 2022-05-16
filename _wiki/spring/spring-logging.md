@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-# Spring Boot Logging Best Practice
+# Logging
 
 ## Dependency
 

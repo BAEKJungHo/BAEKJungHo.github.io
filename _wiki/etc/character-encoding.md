@@ -43,15 +43,31 @@ latex   : true
 
 ## ASCII
 
-아스키 코드(American Standard Code for Information Interchange, ASCII)는 처음으로 표준을 정립한 문자열 인코딩 방식이다. 0 ~ 127 까지 총 128개의 숫자를 사용한다.
+아스키 코드(American Standard Code for Information Interchange, ASCII)는 처음으로 표준을 정립한 문자열 인코딩 방식이다. 출력 가능한 문자들은 0 ~ 127 까지 총 128개의 숫자를 사용하며, 52개의 영문 알파벳 대소문자와, 10개의 숫자, 32개의 특수 문자, 그리고 하나의 공백 문자로 이루어진다.
 
 > 과거에는 7비트 2진수만 사용했지만, 현대 운영체제들은 성능 향상과 편의를 위해 8비트를 사용한다.
 
 ![](/resource/wiki/character-encoding/ascii.png)
 
+## EUC-KR
+
+EUC-KR 은 한국 산업 표준(Korean Industrial Standards, KS)으로 지정된 한국어 문자 집합으로 문자 하나를 표현하기 위해 2바이트를 사용한다. 단, 아스키 코드 문자를 표현할 때는 1바이트를 사용하기 때문에 아스키 코드와 호환된다.
+
+```
+Hello: 5byte
+안녕하세요: 10byte
+```
+
+> [EUC-KR Chart](http://i18nl10n.com/korean/euckr.html)
+
+EUC-KR 은 모든 글자가 완성된 형태로 존재하는 `완성형` 코드이다. 따라서 한글의 초성, 중성, 종성을 조합해 문자를 만들 수 없기 때문에 EUC-KR 로 표현할 수 없는 한글도 일부 존재한다.
+
+> CP949 는 EUC-KR 을 확장한 문자 집합으로 EUC-KR 과 같은 문자열 인코딩이며, 더 많은 문자를 표현할 수 있다. 실제로 EUC-KR 로 표기하더라도 CP949 문자 집합을 사용하는 경우가 많다.
+
 ## Links
 
 - [ASCII](https://ko.wikipedia.org/wiki/ASCII)
+- [EUC-KR Chart](http://i18nl10n.com/korean/euckr.html)
 
 ## 참고 문헌
 

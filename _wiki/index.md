@@ -49,6 +49,7 @@ regenerate: true
 ## etc
 
 * [[mathjax-latex]]
+* [[character-encoding]]
 
 ---
 

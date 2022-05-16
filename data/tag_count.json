@@ -8,6 +8,10 @@
   "size": 2
  },
  {
+  "name": "etc",
+  "size": 2
+ },
+ {
   "name": "hikaricp",
   "size": 1
  },

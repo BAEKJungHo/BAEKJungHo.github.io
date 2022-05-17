@@ -21,6 +21,7 @@ regenerate: true
 * [[/spring/spring-psa]]
 * [[/spring/spring-di]]
 * [[/spring/spring-logging]]
+* [[/spring/spring-async]]
 
 ## ddd
 

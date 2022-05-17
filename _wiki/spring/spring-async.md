@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : @Async
+title   : Async Annotation
 summary : 
-date    : 2022-05-17 21:28:32 +0900
-updated : 2022-05-17 22:15:24 +0900
+date    : 2022-05-17 20:28:32 +0900
+updated : 2022-05-17 21:15:24 +0900
 tag     : spring
 toc     : true
 comment : true

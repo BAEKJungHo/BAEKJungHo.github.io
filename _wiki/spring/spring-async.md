@@ -20,6 +20,37 @@ latex   : true
 - 기본 전략은 비동기 작업마다 스레드를 생성하는 SimpleAsyncTaskExecutor 를 사용한다.
 - 스레드 관리 전략을 ThreadPoolTaskExecutor 로 바꿔서 스레드풀을 사용하게끔 할 수 있다.
 
+### Runnable based Async
+
+```java
+public class Async {
+
+    static ExecutorService executorService = Executors.newFixedThreadPool(5);
+
+    public void asyncMethod(final String message) throws Exception {
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                // do something
+            }            
+        });
+    }
+}
+```
+
+비동기 관련 코드를 작성할 때마다 Runnable 을 구현하고 run 메서드를 오버라이딩 해줘야 하는 불편함이 있다. 또한 비동기 코드를 작성하기 위해서 많은 노력을 들여야한다.
+
+### Annotation based Async
+
+```kotlin
+@Async("asyncThreadPoolTaskExecutor")
+fun asyncMethod(message: String) {
+    // do something
+}
+```
+
+@Async 어노테이션을 사용하면 비동기 관련 코드를 작성하기 위한 불편함이 사라진다.
+
 ## How Does @Async Work?
 
 > When you put an Async annotation on a method underlying it, it creates a proxy of that object where Async is defined (JDK Proxy/CGlib) based on the proxyTargetClass property. Then, Spring tries to find a thread pool associated with the context to submit this method's logic as a separate path of execution. To be exact, it searches a unique TaskExecutor bean or a bean named as taskExecutor. If it is not found, then use the default SimpleAsyncTaskExecutor.
@@ -95,51 +126,6 @@ Trigger mail in a New Thread :: main
 Key::body Value ::A Ask2Shamik Article
 ```
 
-## 자바에서의 비동기 코드
-
-```java
-public class Async {
-
-    static ExecutorService executorService = Executors.newFixedThreadPool(5);
-
-    public void asyncMethod(final String message) throws Exception {
-        executorService.submit(new Runnable() {
-            @Override
-            public void run() {
-                // do something
-            }            
-        });
-    }
-}
-```
-
-비동기 관련 코드를 작성할 때마다 Runnable 을 구현하고 run 메서드를 오버라이딩 해줘야 하는 불편함이 있다. 또한 비동기 코드를 작성하기 위해서 많은 노력을 들여야한다.
-
-## 어노테이션 기반 비동기 코드
-
-```kotlin
-@Async("asyncThreadPoolTaskExecutor")
-fun asyncMethod(message: String) {
-    // do something
-}
-```
-
-@Async 어노테이션을 사용하면 비동기 관련 코드를 작성하기 위한 불편함이 사라진다.
-
-## @Async 를 사용하기 위한 설정
-
-```kotlin
-@EnableAsync
-@SpringBootApplication
-class AsyncServiceApplication
-
-fun main(args: Array<String>) {
-	runApplication<AsyncServiceApplication>(*args)
-}
-```
-
-이 경우에는 `SimpleAsyncTaskExecutor` 를 사용하게된다.
-
 ## SimpleAsyncTaskExecutor
 
 > TaskExecutor implementation that fires up a new Thread for each task, executing it asynchronously.
@@ -150,6 +136,18 @@ Supports limiting concurrent threads through the "concurrencyLimit" bean propert
 SimpleAsyncTaskExecutor 는 각 작업에 대해서 새로운 스레드를 생성하여 TaskExecutor 를 구현하여 비동기적으로 실행시킨다.
 
 SimpleAsyncTaskExecutor 는 __스레드를 재사용하지 않기 때문에__ thread-pooling TaskExecutor 구현을 고려하라고 제시하고 있다.
+
+### Config
+
+```kotlin
+@EnableAsync
+@SpringBootApplication
+class AsyncServiceApplication
+
+fun main(args: Array<String>) {
+	runApplication<AsyncServiceApplication>(*args)
+}
+```
 
 ## ThreadPoolExecutor
 
@@ -216,13 +214,13 @@ public class AsyncConfig extends AsyncConfigurerSupport {
 - __maxPoolSize__
   - 스레드 풀의 최대 사이즈: 최대로 생성되는 스레드 사이즈 
   - maxPoolSize 는 ThreadPoolTaskExecutor 가 대기열의 항목 수가 queueCapacity 를 초과하는 경우에만 새 스레드를 생성 한다는 점 에서 queueCapacity 에 의존한다.
-- __setQueueCapacity__
+- __queueCapacity__
   - 스레드 풀의 큐 사이즈 
   - corePoolSize 를 넘어서는 요청이 들어왔을 때, queue 에 task 가 쌓이게 되고, 최대로 maxPoolSize 만큼 쌓일 수 있다.
 
 ### Test
 
-> 옵션을 어떻게 설정해야 하는지 도움을 주는 테스트 코드다.
+> 옵션을 어떻게 설정해야 하는지 도움을 주는 테스트 코드다. corePoolSize, maxPoolSize, queueCapacity 를 조정해가면서 테스트하면 된다.
 
 ```kotlin
 import org.junit.jupiter.api.Assertions.assertEquals

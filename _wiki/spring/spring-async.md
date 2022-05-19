@@ -16,7 +16,7 @@ latex   : true
 
 ## @Async
 
-- @Async 는 Spring 에서 제공하는 Thread Pool 을 활용하는 비동기 메소드 지원 Annotation 이다.
+- @Async 는 Spring 에서 제공하는 Thread Pool 을 활용하는 비동기 메서드 지원 Annotation 이다.
 - 기본 전략은 비동기 작업마다 스레드를 생성하는 SimpleAsyncTaskExecutor 를 사용한다.
 - 스레드 관리 전략을 ThreadPoolTaskExecutor 로 바꿔서 스레드풀을 사용하게끔 할 수 있다.
 
@@ -25,6 +25,75 @@ latex   : true
 > When you put an Async annotation on a method underlying it, it creates a proxy of that object where Async is defined (JDK Proxy/CGlib) based on the proxyTargetClass property. Then, Spring tries to find a thread pool associated with the context to submit this method's logic as a separate path of execution. To be exact, it searches a unique TaskExecutor bean or a bean named as taskExecutor. If it is not found, then use the default SimpleAsyncTaskExecutor.
 >
 > Now, as it creates a proxy and submits the job to the TaskExecutor thread pool, it has a few limitations that have to know. Otherwise, you will scratch your head as to why your Async did not work or create a new thread! Let's take a look.
+
+## Limitations of @Async
+
+- private method 는 사용 불가, public method 만 사용 가능
+- self-invocation(자가 호출) 불가, 즉 inner method 는 사용 불가
+- QueueCapacity 초과 요청에 대한 비동기 method 호출시 방어 코드 작성
+  - 최대 수용 가능한 Thread Pool 수와 QueueCapacity 까지 초과된 요청이 들어오면 TaskRejectedException 에러가 발생한다.
+  - 따라서, TaskRejectedException 에러에 대한 추가적인 핸들링이 필요하다.
+  
+@Async 의 동작은 AOP 가 적용되어 Spring Context 에서 등록된 Bean Object 의 method 가 호출 될 시에, Spring 이 확인할 수 있고 @Async 가 적용된 method 의 경우 Spring 이 method 를 가로채 다른 Thread 에서 실행 시켜주는 동작 방식이다. 이 때문에 Spring 이 해당 @Async method 를 가로챈 후, 다른 Class 에서 호출이 가능해야 하므로, private method 는 사용할 수 없는 것이다.
+
+또한 Spring Context 에 등록된 Bean 의 method 의 호출이어야 Proxy 적용이 가능하므로, inner method 의 호출은 Proxy 영향을 받지 않기에 self-invocation 이 불가능하다.
+
+> AsyncExecutionAspectSupport 클래스의 doSubmit() 메서드에 의해서 @Async 어노테이션을 달면 해당 메서드가 비동기로 동작할 수 있는 것이다.
+
+### Async Annotation Uses in a Class
+
+```java
+@Component
+public class AsyncMailTrigger {
+
+  @Async
+  public void senMail(Map<String,String> properties) {
+      System.out.println("Trigger mail in a New Thread :: "  + Thread.currentThread().getName());
+      properties.forEach((K,V)->System.out.println("Key::" + K + " Value ::" + V));
+  }
+}
+```
+
+### Caller Class
+
+```java
+@Component
+public class AsyncCaller {
+
+  @Autowired
+  AsyncMailTrigger asyncMailTriggerObject;
+  
+  public void rightWayToCall() {
+    System.out.println("Calling From rightWayToCall Thread " + Thread.currentThread().getName());
+    asyncMailTriggerObject.senMail(populateMap());
+  }
+  
+  public void wrongWayToCall() {
+    System.out.println("Calling From wrongWayToCall Thread " + Thread.currentThread().getName());
+    AsyncMailTrigger asyncMailTriggerObject = new AsyncMailTrigger();
+    asyncMailTriggerObject.senMail(populateMap());
+  }
+  
+  private Map<String,String> populateMap(){
+    Map<String,String> mailMap= new HashMap<String, String>();
+    mailMap.put("body", "A Ask2Shamik Article");
+    return mailMap;
+  }
+}
+```
+
+### Outcome
+
+```
+Calling From rightWayToCall Thread main
+2019-03-09 14:08:28.893  INFO 8468 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+Trigger mail in a New Thread :: task-1
+Key::body Value ::A Ask2Shamik Article
+++++++++++++++++
+Calling From wrongWayToCall Thread main
+Trigger mail in a New Thread :: main
+Key::body Value ::A Ask2Shamik Article
+```
 
 ## 자바에서의 비동기 코드
 

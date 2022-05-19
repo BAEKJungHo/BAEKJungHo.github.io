@@ -26,7 +26,7 @@ latex   : true
 >
 > Now, as it creates a proxy and submits the job to the TaskExecutor thread pool, it has a few limitations that have to know. Otherwise, you will scratch your head as to why your Async did not work or create a new thread! Let's take a look.
 
-### 자바에서의 비동기 코드
+## 자바에서의 비동기 코드
 
 ```java
 public class Async {
@@ -46,7 +46,7 @@ public class Async {
 
 비동기 관련 코드를 작성할 때마다 Runnable 을 구현하고 run 메서드를 오버라이딩 해줘야 하는 불편함이 있다. 또한 비동기 코드를 작성하기 위해서 많은 노력을 들여야한다.
 
-### 어노테이션 기반 비동기 코드
+## 어노테이션 기반 비동기 코드
 
 ```kotlin
 @Async("asyncThreadPoolTaskExecutor")
@@ -57,7 +57,7 @@ fun asyncMethod(message: String) {
 
 @Async 어노테이션을 사용하면 비동기 관련 코드를 작성하기 위한 불편함이 사라진다.
 
-### @Async 를 사용하기 위한 설정
+## @Async 를 사용하기 위한 설정
 
 ```kotlin
 @EnableAsync
@@ -86,16 +86,15 @@ SimpleAsyncTaskExecutor 는 __스레드를 재사용하지 않기 때문에__ th
 
 - [java.util.concurrent.ThreadPoolExecutor](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/concurrent/ThreadPoolExecutor.html)
 - Executors 와 Spring Framework 의 ThreadPoolTaskExecutor 가 사용하는 쓰레드 풀 구현체
-- 기본적으로 corePoolSize 만큼의 쓰레드를 만들고,
-- corePool 이 꽉차면 workQueue(queueCapacity 만큼의 크기로 된 큐)에 넣는데
-- workQueue 조차도 꽉차면 그제서야 maxPoolSize 까지 쓰레드를 생성해가면서 작업.
-- 따라서 corePoolSize 가 0이 아니고 일정 수준 이상되고 queueCapacity 가 매우 크다면(보통 Integer.MAX_VALUE) 별다른 문제가 없는한 쓰레드 풀의 크기는 corePoolSize 를 넘길 수 없다.
+- 기본적으로 corePoolSize 만큼의 쓰레드를 만들고, corePool 이 꽉차면 workQueue(queueCapacity 만큼의 크기로 된 큐)에 넣음
+- workQueue 조차도 꽉차면 그제서야 maxPoolSize 까지 쓰레드를 생성해가면서 작업 함
+- 따라서 corePoolSize 가 0이 아니고 일정 수준 이상되고 queueCapacity 가 매우 크다면(보통 Integer.MAX_VALUE) 별다른 문제가 없는한 쓰레드 풀의 크기는 corePoolSize 를 넘길 수 없음
 
 ## ThreadPoolTaskExecutor
 
-- SpringFramework 에서는 ThreadPoolTaskExecutor 를 사용한다.
-  - Spring 이 자동으로 bean lifecycle 을 관리해준다.
-  - 따라서 애플리케이션 종료시 shutdown 을 해준다.
+- SpringFramework 에서는 ThreadPoolTaskExecutor 를 사용
+  - Spring 이 자동으로 bean lifecycle 을 관리
+  - 따라서 애플리케이션 종료시 shutdown 을 해줌
 
 ### Config
 
@@ -119,7 +118,7 @@ public class SpringAsyncConfig {
 }
 ```
 
-스레드 관리 전략을 여러개 가져간다면 저렇게 빈 이름을 지정해주면 된다.
+스레드 관리 전략을 여러개 가져간다면 빈 이름을 지정해주면 된다.
 
 AsyncConfigurerSupport 클래스를 상속 받아서 스레드 관리 전략을 설정할 수도 있다.
 
@@ -248,11 +247,11 @@ internal class ThreadPoolTest {
 ## ThreadPoolTaskExecutor 를 FixedThreadPool 처럼 사용하는 방법
 
 - corePoolSize : 원하는 고정 크기 쓰레드 갯수
-- maxPoolSize : corePoolSize 와 동일하게.
+- maxPoolSize : corePoolSize 와 동일하게
 - queueCapacity : Integer.MAX_VALUE
-- 위와 같이 설정하면 실제로는 corePoolSize 만큼만 쓰레드가 생성된다.
-- 만약 쓰레드가 적체되어 corePoolSize 이상의 작업이 들어오면 workQueue 에 queueCapacity 만큼 들어가고, corePool 에 남는 자리가 생기면 workQueue 에 있던것이 들어간다.
-- queueCapacity=Integer.MAX_VALUE 일 경우에는 여기까지 가는 것은 불가능하다고 보는게 맞다. 만약 queueCapacity 를 넘어간다면 이미 그 자체로 커다란 문제가 발생한 것이다.
+- 위와 같이 설정하면 실제로는 corePoolSize 만큼만 쓰레드가 생성된다
+- 만약 쓰레드가 적체되어 corePoolSize 이상의 작업이 들어오면 workQueue 에 queueCapacity 만큼 들어가고, corePool 에 남는 자리가 생기면 workQueue 에 있던것이 들어간다
+- queueCapacity=Integer.MAX_VALUE 일 경우에는 여기까지 가는 것은 불가능하다고 보는게 맞다. 만약 queueCapacity 를 넘어간다면 이미 그 자체로 커다란 문제가 발생한 것이다
 
 > 쓰레드 작업에 적체가 발생할 가능성이 큰 경우에는 fixedThreadPool 을 사용하는게 낫다. 단점은, 일단 corePoolSize 만큼의 쓰레드가 생성되면 불필요하게 항상 고정 크기 쓰레드가 생성된 상태로 유지된다. 실제로 사용되지 않아도 유지된다. 쓰레드 생성요청이 매우 많이 들어와도 애플리케이션이 죽지는 않지만 해당 쓰레드풀을 사용하는 작업이 매우 느려지기만 한다.
 
@@ -261,6 +260,6 @@ internal class ThreadPoolTest {
 - [Effective Advice on Spring Async](https://dzone.com/articles/effective-advice-on-spring-async-part-1)
 - [Spring Async](https://www.baeldung.com/spring-async)
 - [Java: What is the limit to the number of threads you can create](http://blog.vanillajava.blog/2011/07/java-what-is-limit-to-number-of-threads.html)
-- [java-spring-thread-pool-test](https://github.com/kwon37xi/java-spring-thread-pool-test)
+- [Java Spring Thread-pool Test](https://github.com/kwon37xi/java-spring-thread-pool-test)
 - [SimpleAsyncTaskExecutor Spring Docs](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/task/SimpleAsyncTaskExecutor.html)
 - [corePoolSize vs maxPoolSize](https://www.baeldung.com/java-threadpooltaskexecutor-core-vs-max-poolsize)

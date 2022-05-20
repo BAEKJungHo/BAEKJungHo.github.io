@@ -19,9 +19,9 @@ latex   : true
 ![](/resource/wiki/execution-java/executionofjavaprogram.png)
 
 1. IDE(Ex. IntelliJ)를 사용하여 Program.java 코드를 작성한다.
-2. `Java Compiler(javac)` 가 자바 소스 코드를 참고하여 클래스 파일(Program.class)을 생성한다.
+2. Java Compiler(javac) 가 자바 소스 코드를 참고하여 클래스 파일(Program.class)을 생성한다.
 3. 생성된 클래스 파일은 JVM 이 설치되어있는 환경이면 어디에서든지 실행 가능하다.
-4. JVM 은 바이트 코드를 `Interpreter` 를 사용하여 한 줄 씩 기계어로 번역한다.
+4. JVM 은 바이트 코드를 Interpreter 를 사용하여 한 줄 씩 기계어로 번역한다.
 
 ## Compiler
 
@@ -31,7 +31,7 @@ latex   : true
 - Object Code: 목적 코드
   - Compiler 에 의해 생성된 코드를 의미한다.
 
-그러면 `저수준 언어는(low level language)`는 무엇일까? 저수준 언어는 기계어나 어셈블리어를 의미하며, 고수준 프로그래밍 언어보다 하드웨어에 더 밀접한 언어이다.
+그러면 저수준 언어(low level language)는 무엇일까? 저수준 언어는 기계어나 어셈블리어를 의미하며, 고수준 프로그래밍 언어보다 하드웨어에 더 밀접한 언어이다.
 
 컴파일러와 인터프리터는 `HLL` 로 작성된 프로그램을 기계어로 변환한다는 공통점이 있다. 단, 변환 과정에서 차이가 존재한다.
 
@@ -51,7 +51,7 @@ latex   : true
 
 > 중간 단계 언어 : Java 로 따지면 ByteCode, C# 으로 따지면 IL(Intermediate Language)
 
-자바에서는 `ClassLoader` 를 사용하여 클래스를 `동적 적재(Dynamic Loading)`를 할 수 있다.
+자바에서는 ClassLoader 를 사용하여 클래스를 동적 적재(Dynamic Loading)를 할 수 있다.
 
 ## 자바에서 Compiler 와 Interpreter 를 같이 사용하는 이유
 
@@ -67,13 +67,13 @@ latex   : true
 
 ![](/resource/wiki/execution-java/jvmisdependentonos.png)
 
-개발 환경에서는 Windows 를 사용하고 배포 환경에서는 Linux 를 사용한다. 각 OS 에서는 Java 로 작성된 프로그램을 실행시키기 위해 `JDK`가 설치되어있어야 한다. 즉, 플랫폼에 종속적인것을 볼 수 있다.
+개발 환경에서는 Windows 를 사용하고 배포 환경에서는 Linux 를 사용한다. 각 OS 에서는 Java 로 작성된 프로그램을 실행시키기 위해 JDK 가 설치되어있어야 한다. 즉, 플랫폼에 종속적인것을 볼 수 있다.
 
 Oracle 에서 JDK 를 다운로드 받으려고하면 플랫폼을 선택할 수 있게 나온다. 자바로 작성된 프로그램은 어떤 OS 던지간에 JVM 만 설치되어있으면, JVM 이 Interpreter 를 사용하여 기계어로 해석하기 때문에, 자바는 플랫폼에 독립적이고, JVM 은 플랫폼에 종속적이다.
 
 ## JIT Compiler
 
-자바로 작성된 프로그램은 느리다라는 말이 있다. Compiler 와 Interpreter 의 특징을 기억하면 된다. 이러한 특징들 때문에, 자바에서 `JIT Compiler` 를 도입했다.
+자바로 작성된 프로그램은 느리다라는 말이 있다. Compiler 와 Interpreter 의 특징을 기억하면 된다. 이러한 특징들 때문에, 자바에서 JIT Compiler 를 도입했다.
 
 자바는 Profile-Guided Optimization(PGO) 프로필 기반 최적화를 응용하는 환경이므로 AOT 플랫폼에서 불가능한 방식으로, 런타임 정보를 활용할 여지가 있다. 따라서 동적 인라이닝, 가상 호출 등으로 성능을 개선할 수 있다.
 

@@ -16,8 +16,12 @@
   "size": 1
  },
  {
+  "name": "java",
+  "size": 2
+ },
+ {
   "name": "kotlin",
-  "size": 3
+  "size": 4
  },
  {
   "name": "latex",
@@ -37,6 +41,6 @@
  },
  {
   "name": "spring",
-  "size": 13
+  "size": 12
  }
 ]

@@ -13,6 +13,10 @@ regenerate: true
 * [[/kotlin/kotlin-philosophy]]
 * [[/kotlin/kotlin-singleton]]
 
+## java
+
+* [[/java/execution-java]]
+
 ## spring
 
 * [[/spring/spring-pojo]]

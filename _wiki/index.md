@@ -49,8 +49,8 @@ regenerate: true
 
 ## etc
 
-* [[mathjax-latex]]
-* [[character-encoding]]
+* [[/etc/mathjax-latex]]
+* [[/etc/character-encoding]]
 
 ---
 

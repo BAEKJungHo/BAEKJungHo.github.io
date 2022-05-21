@@ -55,6 +55,18 @@ latex: true
 
 ## Skills
 
+### Main
+
+- [Language] Kotlin/Java
+- [Framework] Spring Framework
+- [Test] Junit, Kotest
+- [Infra] AWS
+  - Lambda
+  - API Gateway
+  - Elastic Beanstalk
+  - Cloud Watch
+- [Monitoring] Whatap
+
 - __Programming Languages__
   - [Main] Kotlin
   - [Main] Java

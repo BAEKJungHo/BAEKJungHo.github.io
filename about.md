@@ -33,7 +33,7 @@ latex: true
   - 흩어져 있던 결제 관련 정보를 한 곳으로 문서화
   - Nicepay, Eximbay, Kakaopay, KBpay ...
 - __[2022.04 ~ 2020.05] Pickup Service__
-  - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline) Service
+  - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline)
   - 아워홈 픽업 서비스를 위한 프로젝트 
 - __[2022.03 ~ ing] 테스트 코드 작성을 문화로 정착시키기__
     - 사내 세미나 진행

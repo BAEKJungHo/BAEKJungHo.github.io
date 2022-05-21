@@ -23,8 +23,11 @@ latex: true
 > 2022.03.07 ~ ING
 
 - __[2022.05 ~ 2022.06] Gateway Service__
+  - KT 통화비서란 KT 와 TableManager 의 협업 프로젝트이며, KT 통화비서라는 앱을 통해 예약 관련 기능들을 제공해주는 서비스
+    - KT 는 TableManager 의 예약 관련 Backend Service 와 Webview 를 사용
+    - KT App 과 TableManager Backend Service 간의 요청/응답을 위한 Gateway 필요
   - KT 통화비서 프로젝트를 위한 Gateway Service 기능 구현
-  - Authentication, Wrapping Response 
+    - Authentication, Wrapping Response
 - __[2022.05] Payment Service__
   - 담당 개발자 퇴사로 인한 인수인계 받기
   - 흩어져 있던 결제 관련 정보를 한 곳으로 문서화

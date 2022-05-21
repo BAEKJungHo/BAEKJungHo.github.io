@@ -72,32 +72,15 @@ latex: true
 - [Issue Tracker] JIRA
 - [Document] Confluence
 
-- __Programming Languages__
-  - [Main] Kotlin
-  - [Main] Java
-  - [Sub] Javascript
-  - [Sub] Typescript
-- __Framework__
-  - Spring Framework
-  - Junit 
-  - Kotest
-- __VCS__
-  - Git
-  - GitHub
-  - GitLab
-- __Documents__
-  - Confluence
-- __Issue Tracker__
-  - JIRA
-- __RDB__
-  - MySQL
-  - Oracle
-- __NoSQL__
-  - MongoDB
-- __ORM__
-    - Spring Data JPA
-    - Spring Data JDBC
-    - TypeORM
+### Sub
+
+> 해당 기술을 사용하여 유지보수 할 수 있을 정도
+
+- [Language] Javascript/Typescript
+- [Javascript Runtime] NodeJS
+- [ORM] TypeORM
+- [Database] Oracle, MongoDB
+- [VCS] SVN
 
 ## Study
 

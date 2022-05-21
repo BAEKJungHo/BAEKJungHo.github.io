@@ -51,6 +51,14 @@ regenerate: true
 
 * [[/network/network-layeredarchitectures]]
 
+## Http
+
+* [[/http/http-localstorage]]
+
+## Javascript
+
+* [[/javascript/js-eventloop]]
+
 ## etc
 
 * [[/etc/mathjax-latex]]

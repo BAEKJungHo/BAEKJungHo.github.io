@@ -59,13 +59,18 @@ latex: true
 
 - [Language] Kotlin/Java
 - [Framework] Spring Framework
+- [ORM] Spring Data JPA/JDBC
 - [Test] Junit, Kotest
+- [Database] MySQL
 - [Infra] AWS
   - Lambda
   - API Gateway
   - Elastic Beanstalk
   - Cloud Watch
 - [Monitoring] Whatap
+- [VCS] Git
+- [Issue Tracker] JIRA
+- [Document] Confluence
 
 - __Programming Languages__
   - [Main] Kotlin

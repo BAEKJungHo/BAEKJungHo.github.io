@@ -12,6 +12,8 @@ regenerate: true
 * [[/kotlin/kotlin-sequence]]
 * [[/kotlin/kotlin-philosophy]]
 * [[/kotlin/kotlin-singleton]]
+* [[/kotlin/kotlin-range]]
+* [[/kotlin/kotlin-range-progression]]
 
 ## java
 

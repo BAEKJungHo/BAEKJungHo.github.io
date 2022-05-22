@@ -37,6 +37,7 @@ latex   : true
 ## Links
 
 - [Java Philosophy](http://semantic-portal.net/concept:1397)
+- [kotlin Java and Interoperability](https://developersbreach.com/kotlin-java-and-interoperability/)
 
 ## 참고 문헌
 

@@ -277,7 +277,7 @@ public static int factorialTail(int n, int total) {
 - [Java 에서 꼬리 재귀 사용하기](https://blog.knoldus.com/tail-recursion-in-java-8/)
     - Java 는 컴파일러 레벨에서는 직접적으로 꼬리 재귀 최적화를 지원하지는 않지만, Java 8의 람다식과 함수형 인터페이스(Functional Interface)로 꼬리 재귀와 같은 컨셉을 적용해볼 수 있다고 한다.
 
-## Java 8의 람다식과 함수형 인터페이스(Functional Interface)로 구현
+## Java 8의 람다식과 함수형 인터페이스로 구현
 
 ```java
 package jungho.chapter5.factorial;

@@ -96,7 +96,7 @@ public class Main {
 
 __재귀 함수를 사용했을 때의 장점은 코드가 더 간결해진다는 것이다. 이렇게 간결해진 이유는 재귀 함수가 수학의 점화식(재귀식)을 그대로 소스코드로 옮겼기 때문이다.__ 
 
-> 수학에서 점화식은 특정한 함수를 자신보다 더 작은 변수에 대한 함수와의 관계로 표현한 것을 의미한다. 이 개념은 다이나믹 프로그래밍을 배울 때 중요하다. 즉, 재귀를 사용할 생각이라면 `점화식으로 표현할 수 있는지`를 생각해보는 것이 좋다.
+> 수학에서 점화식은 특정한 함수를 자신보다 더 작은 변수에 대한 함수와의 관계로 표현한 것을 의미한다. 이 개념은 다이나믹 프로그래밍을 배울 때 중요하다. 즉, 재귀를 사용할 생각이라면 점화식으로 표현할 수 있는지를 생각해보는 것이 좋다.
 
 - __Factorial 점화식__
     - n 이 0이거나 1일때 : factorial(n) = 1
@@ -111,7 +111,7 @@ __재귀 함수를 사용했을 때의 장점은 코드가 더 간결해진다�
 
 ## Stack
 
-재귀(Recursive)를 제대로 이해하는 것은 마냥 쉽진 않다. 일단 재귀가 스택(Stack)으로 동작한다는 것을 설명하기 위해 `Factorial` 구현을 예시로 들었다.
+재귀(Recursive)를 제대로 이해하는 것은 마냥 쉽진 않다. 일단 재귀가 스택(Stack)으로 동작한다는 것을 설명하기 위해 Factorial 구현을 예시로 들었다.
 
 ```java
 public class Recursive {
@@ -179,17 +179,17 @@ main
 
 1. 메인 스레드에 의해 factorial 함수가 호출되었으므로 return address (Ex. a)를 저장하고, 매개변수 n 과 원시 값을 저장한다. (n = 5)
     - 스택 메모리의 특징에서 원시 값은 스택에 저장된다고 배웠다.
-    - 여기서 주소 값 a 는 `T.factorial(n)` 이 코드에 대한 주소 값이다.
+    - 여기서 주소 값 a 는 T.factorial(n) 이 코드에 대한 주소 값이다.
 2. 다음으로 n 이 1이하가 아니므로 재귀 함수가 호출된다.
 3. 점화식이 호출되면서 새로운 return address (Ex. b) 값과 매개변수 n 과 원시 값을 저장한다. (n = 4)
     - 여기서 주소 값 b 는 재귀 함수 호출에 대한 주소 값이다.
-4. 종료 조건인 `n <= 1` 이 될때 까지 반복하여 스택에 저장한다.
+4. 종료 조건인 n <= 1 이 될때 까지 반복하여 스택에 저장한다.
 5. 종료 조건을 만나 return 문을 호출하면서, 스택의 top 부분이 pop 되면서 return n 의 값과, return address 를 참고하여 다음 함수 호출 주소로 이동하여 계산할 준비를 한다.
 6. 메인 함수가 종료되면서 stack 에 있는 모든 메모리들이 사라진다.
 
 ## 재귀 함수의 문제: Stack Overflow
 
-재귀 함수는 호출 시 마다 함수의 지역변수, 매개변수, 리턴 후 돌아갈 위치, 리턴 값 등을 스택에 저장한다. 따라서 무리하게 호출을 하다보면 스택 공간이 다 차버리는 `스택 오버플로우(Stack Overflow )`현상이 발생할 수 있다.
+재귀 함수는 호출 시 마다 함수의 지역변수, 매개변수, 리턴 후 돌아갈 위치, 리턴 값 등을 스택에 저장한다. 따라서 무리하게 호출을 하다보면 스택 공간이 다 차버리는 `스택 오버플로우(Stack Overflow)` 현상이 발생할 수 있다.
 
 ## Tail Recursion
 
@@ -203,7 +203,7 @@ main
 
 꼬리 재귀는 재귀 호출이 끝나면 아무 일도 하지 않고 결과만 바로 반환되도록 하는 방법이다. 이 방식을 사용하면 이전 함수의 상태를 유지하지도 않고 추가 연산을 하지도 않아서 스택이 넘쳐나는 문제를 해결할 수 있게 된다.
 
-꼬리 재귀 함수는 이름처럼 항상 함수의 꼬리부분(마지막)에서 실행되는데, return 되기 전에 값이 정해지며 `호출당한 함수의 결과값이 → 호출하는 함수의 결과값` 으로 반환된다.
+꼬리 재귀 함수는 이름처럼 항상 함수의 꼬리부분(마지막)에서 실행되는데, return 되기 전에 값이 정해지며 __호출당한 함수의 결과값이 → 호출하는 함수의 결과값__ 으로 반환된다.
 
 - __꼬리 재귀__
     - 호출 당한 함수의 결과 > 호출한 함수의 결과
@@ -274,7 +274,7 @@ public static int factorialTail(int n, int total) {
 
 - [지원하지 않는 이유](http://wiki.sys4u.co.kr/display/SOWIKI/Tail+call+Optimization)
     - JDK 클래스에는 보안에 민감한 메소드가 있다고 한다. 이 메소드들은 메소드 호출을 누가 했는지 알아내기 위해 JDK 라이브러리 코드와 호출 코드간의 스택 프레임 갯수에 의존한다. 스택 프레임 수의 변경을 유발하게 되면 이 의존관계를 망가뜨려 에러가 발생할 수 있다.
-- [Java 에서 꼬리 재귀 사용하기?](https://blog.knoldus.com/tail-recursion-in-java-8/)
+- [Java 에서 꼬리 재귀 사용하기](https://blog.knoldus.com/tail-recursion-in-java-8/)
     - Java 는 컴파일러 레벨에서는 직접적으로 꼬리 재귀 최적화를 지원하지는 않지만, Java 8의 람다식과 함수형 인터페이스(Functional Interface)로 꼬리 재귀와 같은 컨셉을 적용해볼 수 있다고 한다.
 
 ## Java 8의 람다식과 함수형 인터페이스(Functional Interface)로 구현
@@ -407,6 +407,22 @@ public static TailCall factorialTail(int n, int total) {
 - Java 언어는 '아직' Tail Call Optimization 을 지원하지 않고 있으며, '언젠가는 지원하지 않을까?' 라는게 자바 아키텍트의 의견이다.
 
 ## Tail Recursion In Kotlin
+
+> To implement a function in Kotlin using tail recursion, there is one rule to follow: the recursive call must be the very last call of the method.
+
+코틀린에서 꼬리 재귀를 구현하기 위해서 지켜야하는 규칙이 있는데, 메서드의 마지막 라인에서 호출되어야 한다는 것이다.
+
+### 일반적인 Factorial
+
+```kotlin
+fun recursiveFactorial(n: Long) : Long {
+    return if (n <= 1) {
+        n
+    } else {
+        n * recursiveFactorial(n - 1)
+    }
+}
+```
 
 # Memoization
 
@@ -550,3 +566,4 @@ fibonacci(5) 를 호출하게되면 점화식에 의해 좌측으로 fibonacci(n
 
 - [Tail call Optimization](http://wiki.sys4u.co.kr/display/SOWIKI/Tail+call+Optimization)
 - [Tail Recursion In Kotlin]()
+- [Kotlin and Tail Recursion](https://www.baeldung.com/kotlin/tail-recursion)

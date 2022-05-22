@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Recursion
+title   : Recursion and Memoization
 summary : 스택과 재귀, 자바와 코틀린에서의 꼬리 재귀
 date    : 2022-05-22 10:54:32 +0900
 updated : 2022-05-22 11:15:24 +0900

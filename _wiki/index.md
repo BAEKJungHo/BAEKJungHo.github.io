@@ -58,6 +58,10 @@ regenerate: true
 
 * [[/http/http-localstorage]]
 
+## DataStructures
+
+* [[/datastructures/datastructures-recursion]]
+
 ## Javascript
 
 * [[/javascript/js-eventloop]]

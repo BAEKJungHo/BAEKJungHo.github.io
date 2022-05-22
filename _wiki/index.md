@@ -28,6 +28,7 @@ regenerate: true
 * [[/spring/spring-di]]
 * [[/spring/spring-logging]]
 * [[/spring/spring-async]]
+* [[/spring/spring-data]]
 
 ## ddd
 

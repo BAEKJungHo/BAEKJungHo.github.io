@@ -410,9 +410,9 @@ public static TailCall factorialTail(int n, int total) {
 
 > To implement a function in Kotlin using tail recursion, there is one rule to follow: the recursive call must be the very last call of the method.
 
-코틀린에서 꼬리 재귀를 구현하기 위해서 지켜야하는 규칙이 있는데, 메서드의 마지막 라인에서 호출되어야 한다는 것이다.
+코틀린에서 꼬리 재귀를 구현하기 위해서 지켜야하는 규칙이 있는데, 재귀의 호출이 함수의 마지막 호출이어야 한다.
 
-### 일반적인 Factorial
+### Implementing Factorial
 
 ```kotlin
 fun recursiveFactorial(n: Long) : Long {
@@ -424,13 +424,83 @@ fun recursiveFactorial(n: Long) : Long {
 }
 ```
 
+1. n 이 <= 1이면 n을 반환
+2. 누적 계산 = recursiveFactorial(n – 1)
+3. 반환 n * 누적
+
+따라서 재귀 호출이 함수의 마지막 호출이 아니다.
+
+### Implementing Factorial as Tail Recursion
+
+꼬리 재귀를 사용하여 재귀를 구현하려면 코드 일부를 수정해야 한다.
+
+곱셈이 재귀 호출 이후가 아니라 재귀 호출 이전에 수행되었는지 확인해야한다.
+
+```kotlin
+fun factorial(n: Long, accum: Long = 1): Long {
+    val soFar = n * accum
+    return if (n <= 1) {
+        soFar
+    } else {
+        factorial(n - 1, soFar)
+    }
+}
+```
+
+1. 지금까지 계산 = n * 누적
+2. n <= 1 이면 soFar 를 반환
+3. 재귀 함수를 호출하고 n – 1 및 soFar 를 전달
+
+
+올바른 형식의 재귀 함수가 있으면 `tailrec` 키워드 를 사용하여 꼬리 재귀를 고려하도록 Kotlin 에 지시 한다. 
+꼬리 재귀가 가능한 경우 함수를 반복문으로 다시 작성할 수 있음을 컴파일러에 알린다. 이 키워드는 함수 자체에 적용되므로 다음과 같이 된다.
+
+```kotlin
+tailrec fun factorial(n: Long, accum: Long = 1): Long
+```
+
+### Compilation
+
+> 꼬리 재귀의 목적은 스택 오버플로 문제를 피하기 위해 명령적 방식으로 실행되는 재귀 코드를 작성하는 것이다.
+
+```java
+public final long factorial(long n, long accum) {
+   while(n > (long) 1) {
+      long var10000 = n - (long)1;
+      accum = n * accum;
+      n = var10000;
+   }
+
+   return n * accum;
+}
+```
+
+꼬리 재귀는 반복문으로 컴파일되므로 Stack Overflow 의 위험이 전혀 없다.
+
+### Conclusion
+
+```kotlin
+tailrec fun factorial(n: Int, result: BigInteger = 1.toBigInteger()): BigInteger =
+  if (n <= 0) result else factorial(n - 1, result * n.toBigInteger())
+  
+fun main() {
+  println(factorial(5))  // 120
+}
+```
+
+- 코틀린에서 꼬리 재귀를 사용하기 위해서는 재귀 호출이 함수 호출의 마지막이어야 한다.
+- 꼬리 재귀 함수에 tailrec 키워드를 사용하면 컴파일러가 꼬리 재귀가 사용가능한 함수인지 먼저 판단한 다음, 반복문 형태의 코드로 컴파일하여 실행한다.
+  - 메서드 호출이 루프를 도는 것보다 더 많은 비용이 든다.
+
 # Memoization
 
-자바에서 직접 꼬리 재귀를 사용하도록 구현하는 것은 힘들다라는 것을 느꼈을 것이다. 재귀를 사용하는 알고리즘에서 성능을 극대화 하는 방법 중 하나가 `메모이제이션(Memoization)`이라는 기법이 있다. 메모이제이션(Memoization)은 컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, `이전에 계산한 값을 메모리에 저장함으로써 동일한 계산의 반복 수행을 제거`하여 프로그램 실행 속도를 빠르게 하는 기술이다. 동적 계획법(Dynamic Programming)의 핵심이 되는 기술이다.
+자바에서 직접 꼬리 재귀를 사용하도록 구현하는 것은 힘들다라는 것을 느꼈을 것이다. 재귀를 사용하는 알고리즘에서 성능을 극대화 하는 방법 중 하나가 `메모이제이션(Memoization)`이라는 기법이 있다. 
+메모이제이션(Memoization)은 컴퓨터 프로그램이 동일한 계산을 반복해야 할 때, __이전에 계산한 값을 메모리에 저장함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를 빠르게 하는 기술__ 이다. 
+동적 계획법(Dynamic Programming)의 핵심이 되는 기술이다.
 
-"이전에 계산한 값을 메모리(배열, 리스트 등)에 저장함으로써 동일한 계산의 반복 수행을 제거" 이 부분이 핵심이다.
+이번엔 피보나치 수열(Fibonacci numbers)을 예시로 들어설명하겠다.
 
-이번엔 피보나치 수열(Fibonacci numbers)을 예시로 들어설명하겠다. 문제에서 요구하는 사항은 다음과 같다. 입력값 N 이 주어졌을 때 N 만큼의 피보나치 수열을 구하여 출력하라는 것이다.
+문제에서 요구하는 사항은 다음과 같다. 입력값 N 이 주어졌을 때 N 만큼의 피보나치 수열을 구하여 출력하라는 것이다.
 
 > 피보나치 수열(Fibonacci numbers) : 앞의 2개의 수를 합하여 다음 숫자가 되는 수열
 
@@ -443,7 +513,7 @@ Output : 1 1 2 3 5
 
 위에서 재귀를 사용하기 전에 `점화식`을 작성하라고 배웠다. 피보나치 수열의 점화식을 작성하면 다음과 같다.
 
-- `Fibonacci(n) = Fibonacci(n-2) + Fibonacci(n-1)`
+- __Fibonacci(n) = Fibonacci(n-2) + Fibonacci(n-1)__
 
 ```java
 public class Main {

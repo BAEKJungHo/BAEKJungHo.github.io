@@ -14,8 +14,6 @@ latex   : true
 * TOC
 {:toc}
 
-# HikariCP
-
 ## What is HikariCP
 
 > 光 HikariCP・A solid, high-performance, JDBC connection pool at last.
@@ -109,6 +107,102 @@ HikariCP 는 getConnection 의 수가 다른 JDBC 에 비해서 적다.
 
 Spring Boot 는 기존에 tomcat-jdbc 를 기본 Datasource 로 제공했었는데 2.0부터 HikariCP가 기본으로 변경되었다.
 
+## Connection Pool
+
+커넥션 풀을 사용하는 목적은 다음과 같다.
+
+- __처리량 증가__
+  - DB 와 네트워크 연결하는 시간을 단축하여, 응답 시간을 단축하고 이로 인한 처리량 증가
+- __일관된 DB 성능 유지__
+  - DB 에 대한 커넥션 개수를 일정 수준으로 제한하여 DB 포화를 방지하고 이로 인한 일관된 DB 성능 유지
+
+커넥션 풀을 올바르게 설정하지 않으면 오히려 성능 문제를 유발할 수 있다.
+
+## Configuration Hikaricp Connection Pool
+
+### maximumPoolSize
+
+- __최대 커넥션 개수__
+  - 커넥션 풀이 제공할 수 있는 최대 커넥션 개수
+  - ACTIVE + IDLE
+- __계산에 필요한 항목__
+  - 한 커넥션 당 쿼리 실행 시간, 최대(목표) TPS
+- __단순 계산 식__
+  - 최대 TPS = 1개 커넥션의 초당 처리 요청 개수 * 동시 커넥션 개수
+  - 동시 커넥션 개수 = 최대 TPS / 1개 커넥션의 초당 요청 처리 개수
+  - 동시 커넥션 개수 = 최대 TPS / (1초  / 쿼리 실행 시간)
+- __예시__
+  - 하나의 웹 요청이 한 개의 커넥션을 사용하고, 한 웹 요청이 실행하는 쿼리 총 실행 시간은 0.1 초
+  - 목표는 100 TPS
+  - __동시에 필요한 커넥션 개수를 단순 계산__
+    - 동시 커넥션 개수 = 목표 TPS / (1초 / 쿼리 실행 시간)
+      - 100 / (1초 / 0.1초) = `10`
+    - 즉, 커넥션 풀 최대 개수가 10고 평균 0.1초 소요되면 100TPS 처리 가능
+- __최대 커넥션 개수 고려 사항__
+  - 평균 이상으로 실행 시간이 튀는 개수나 비율 검토
+  - 0.1초가 평균인데 1초 걸리는 쿼리가 순간적으로 발생하면?
+  - 커넥션 풀 최대 개수가 10개일 때 TPS 는 100 -> 55로 떨어짐
+    - 1초/1초 * 5개 요청: 5 TPS
+    - 1초/0.1 초 * 5 요청: 50 TPS
+  - __느린 쿼리를 염두하고 최대 개수를 높여야 함__
+    - 느린 쿼리의 발생 개수와 빈도를 고려, 부하 테스트 같은 것을 하면 조금 더 명확한 값을 얻을 수 있다.
+
+### connectionTimeout
+
+- __커넥션 풀에서 커넥션을 구하기 위해 대기하는 시간__
+  - 커넥션 풀의 모든 커넥션이 사용중일 때 대기 발생
+- __고려 사항__
+  - 기본 값은 30초: 너무 큼 
+    - 순간적인 트래픽 증가 시 스레드 풀 기반 WAS 는 모든 스레드가 대기할 수 있음
+    - 따라서, 사용자는 응답 없는 상태 지속
+  - 기본 값 대신 0.5 ~ 3초 이내로 설정
+    - 응답 없는 것보다는 빨리 에러 화면이라도 응답주는게 나음
+
+### maxLifetime
+
+- __커넥션의 최대 유지 시간__
+  - 커넥션을 생성한 이후 이 시간이 지나면 커넥션을 닫고 풀에서 제거
+  - 제거한 뒤 커넥션을 새로 생성
+- __기본 규칙__
+  - 네트워크나 DB 의 관련 설정 값보다 작은 값 사용
+    - 그래야 네트워크가 끊기 면서 발생하는 에러를 발생시키지 않을 것이다.
+    - 관련 설정 예: 네트워크 장비의 최대 TCP 커넥션 유지 시간
+- __이 값이 관련 설정보다 크면__
+  - 이미 유효하지 않은 커넥션이 풀에 남게 됨
+  - 풀에서 유효하지 않은 커넥션을 구하는 과정에서 커넥션을 새로 생성
+  - 트래픽이 몰리는 시점일 경우 성능 저하 유발
+
+### keepaliveTime
+
+- __커넥션이 살아 있는지 확인하는 주기__
+  - 유휴 커넥션에 대해 커넥션 확인
+  - 유효하지 않은 커넥션은 풀에서 제거
+  - 제거한 뒤 커넥션을 새로 생성
+- __기본 규칙__
+  - 네트워크나 DB 의 관련 설정 값보다 작은 값 사용
+    - 관련 설정 예: DB 의 미활동 커넥션 대기 시간
+
+### minimumIdle
+
+- __커넥션 풀에서 유지할 최소 유효 커넥션 개수__
+  - 설정하지 않으면 maximumPoolSize 와 동일
+- __기본 규칙__
+  - Hikari Docs: 설정하지 않는 거승ㄹ 추천
+    - 즉, maximumPoolSize 와 동일 크기를 추천(= 고정 크기 풀 추천)
+    - 이 값이 작으면 급격한 트래픽 증가 시 성능 저하 일으킬 가능성
+  - 설정할 경우 다음 고려
+    - 트래픽이 서서히 증가 -> 최소 TPS 기준
+    - 트래픽이 특정 시점에 급격히 증가 -> 설정하지 말 것
+- __트래픽 적은 시간대 DB 자원 사용을 줄이기 위함__
+
+### idleTimeout
+
+- __최대 유휴 시간: 사용되지 않고 풀에 머무를 수 있는 시간__
+  - 풀에서 이 시간동안 머무른 커넥션은 종료하고 풀에서 제거
+  - minimumIdle < maximumPoolSize 인 경우에 적용
+  - 이 시간이 지났다고 바로 빠지진 않음 (Hikari Docs: 15초+)
+- __기본 규칙__
+  - 트래픽이 빠지는 시간 간격
 
 ## Links
 
@@ -116,6 +210,8 @@ Spring Boot 는 기존에 tomcat-jdbc 를 기본 Datasource 로 제공했었는�
 - [Down the Rabbit Hole](https://github.com/brettwooldridge/HikariCP/wiki/Down-the-Rabbit-Hole)
 - [Using HikariCP connection pool](https://zetcode.com/articles/hikaricp/#:~:text=HikariCP%20is%20solid%20high%2Dperformance,reduce%20the%20overall%20resource%20usage.)
 - [HikariCP BenchMark](https://github.com/brettwooldridge/HikariCP/issues/7)
+- [HikariCP Configuration](https://github.com/brettwooldridge/HikariCP#gear-configuration-knobs-baby)
 - [About-Pool-Sizing](https://github.com/brettwooldridge/HikariCP/wiki/About-Pool-Sizing)
 - [Spring-Boot-2.0-Migration-Guide configuring-a-datasource](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-2.0-Migration-Guide#configuring-a-datasource)
 - [Spring Boot 와 Hikaricp 연동하기](https://jojoldu.tistory.com/296)
+- [커넥션 풀 설정](https://www.youtube.com/watch?v=6Q7iRTb4tQE)

@@ -4,6 +4,10 @@
   "size": 1
  },
  {
+  "name": "datastructures",
+  "size": 2
+ },
+ {
   "name": "ddd",
   "size": 2
  },
@@ -16,12 +20,20 @@
   "size": 1
  },
  {
+  "name": "http",
+  "size": 2
+ },
+ {
   "name": "java",
   "size": 2
  },
  {
+  "name": "javascript",
+  "size": 2
+ },
+ {
   "name": "kotlin",
-  "size": 4
+  "size": 6
  },
  {
   "name": "latex",
@@ -41,6 +53,6 @@
  },
  {
   "name": "spring",
-  "size": 12
+  "size": 13
  }
 ]

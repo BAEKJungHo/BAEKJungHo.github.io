@@ -13,6 +13,7 @@ regenerate: true
 * [[/kotlin/kotlin-philosophy]]
 * [[/kotlin/kotlin-range]]
 * [[/kotlin/kotlin-range-progression]]
+* [[/kotlin/kotlin-delegate]]
 
 ## java
 

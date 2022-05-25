@@ -11,7 +11,6 @@ regenerate: true
 
 * [[/kotlin/kotlin-sequence]]
 * [[/kotlin/kotlin-philosophy]]
-* [[/kotlin/kotlin-singleton]]
 * [[/kotlin/kotlin-range]]
 * [[/kotlin/kotlin-range-progression]]
 
@@ -29,6 +28,10 @@ regenerate: true
 * [[/spring/spring-logging]]
 * [[/spring/spring-async]]
 * [[/spring/spring-data]]
+
+## design pattern
+
+* [[/designpattern/designpattern-singleton]]
 
 ## ddd
 

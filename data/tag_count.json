@@ -4,11 +4,19 @@
   "size": 1
  },
  {
+  "name": "database",
+  "size": 1
+ },
+ {
   "name": "datastructures",
   "size": 2
  },
  {
   "name": "ddd",
+  "size": 2
+ },
+ {
+  "name": "designpattern",
   "size": 2
  },
  {
@@ -33,7 +41,7 @@
  },
  {
   "name": "kotlin",
-  "size": 6
+  "size": 5
  },
  {
   "name": "latex",
@@ -53,6 +61,6 @@
  },
  {
   "name": "spring",
-  "size": 13
+  "size": 12
  }
 ]

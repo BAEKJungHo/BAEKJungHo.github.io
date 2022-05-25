@@ -1,14 +1,14 @@
 ---
 layout  : wiki
-title   : Kotlin Singleton
+title   : Singleton
 summary : 코틀린에서의 싱글톤과 자바의 싱글톤
 date    : 2022-05-09 15:54:32 +0900
 updated : 2022-05-09 20:15:24 +0900
-tag     : kotlin
+tag     : designpattern
 toc     : true
 comment : true
 public  : true
-parent  : [[/kotlin]]
+parent  : [[/designpattern]]
 latex   : true
 ---
 * TOC

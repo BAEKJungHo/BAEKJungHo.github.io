@@ -48,6 +48,7 @@ regenerate: true
 
 * [[/database/mysql-index]]
 * [[/database/hikaricp-concepts]]
+* [[/database/query-index]]
 
 ## Clean Code
 

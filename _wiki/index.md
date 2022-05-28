@@ -30,6 +30,10 @@ regenerate: true
 * [[/spring/spring-async]]
 * [[/spring/spring-data]]
 
+## msa
+
+* [[/msa/msa-business-agility]]
+
 ## design pattern
 
 * [[/designpattern/designpattern-singleton]]

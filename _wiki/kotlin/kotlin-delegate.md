@@ -22,17 +22,13 @@ latex   : true
 
 <script async="" class="speakerdeck-embed" data-id="fcd3b563bce247fe86f66b8d29d08324" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
-[What does ‘by’ keyword do in Kotlin? - StackOverflow](https://stackoverflow.com/questions/38250022/what-does-by-keyword-do-in-kotlin) 해당 글에서는
-Delegation 에 대해서 크게 두 가지로 나타내고 있다.
-
-- by 키워드를 활용한 Properties 에서의 활용
-- interface 를 class delegation 에서의 활용
-
 ## Delegate Property
 
 kotlin.properties.ReadOnlyProperty, kotlin.properties.ReadWriteProperty 두 개를 각각 상속받아 property 활용이 가능하다.
 
 ![]( /resource/wiki/kotlin-delegate/delgate.png)
+
+> Origin. [What does ‘by’ keyword do in Kotlin? - StackOverflow](https://stackoverflow.com/questions/38250022/what-does-by-keyword-do-in-kotlin)
 
 ### Syntax
 
@@ -74,6 +70,100 @@ class Delegate {
     }
 }
 ```
+
+### lazy initialization
+
+> 지연 초기화(lazy initialization)는 객체의 일부분을 초기화하지 않고 남겨뒀다가 실제로 그 부분이 값이 필요할 경우 초기화할 때 흔히 쓰이는 패턴이다.
+> 초기화 과정에 자원을 많이 사용하거나 객체를 사용할 때마다 꼭 초기화하지 않아도 되는 프로퍼티에 대해 지연 초기화 패턴을 사용할 수 있다.
+
+The syntax is:
+
+```kotlin
+public actual fun <T> lazy(initializer: () -> T): Lazy<T> = SynchronizedLazyImpl(initializer)
+```
+
+결국 by 이후에 오는 lazy 에게 프로퍼티 생성을 위임하고, lazy 의 내부 동작에 따라 코드를 초기화한다.
+
+Lazy 의 최상위는 interface 로 구성되어 있고, property 인 value 와 함수인 isInitialized 로 구성되어 있다.
+결국 value 는 Properties 를 getter 로 구성해 값을 리턴하는데, 이때 lazy 패턴을 활용하는 형태로 구성되어 있다.
+
+```java
+/**
+ * Represents a value with lazy initialization.
+ *
+ * To create an instance of [Lazy] use the [lazy] function.
+ */
+public interface Lazy<out T> {
+    /**
+     * Gets the lazily initialized value of the current Lazy instance.
+     * Once the value was initialized it must not change during the rest of lifetime of this Lazy instance.
+     */
+    public val value: T
+
+    /**
+     * Returns `true` if a value for this Lazy instance has been already initialized, and `false` otherwise.
+     * Once this function has returned `true` it stays `true` for the rest of lifetime of this Lazy instance.
+     */
+    public fun isInitialized(): Boolean
+}
+```
+
+by lazy {} 를 사용하는 경우 기본적으로 SynchronizedLazyImpl 를 사용하게 된다. 
+
+```kotlin
+private class SynchronizedLazyImpl<out T>(initializer: () -> T, lock: Any? = null) : Lazy<T>, Serializable {
+    private var initializer: (() -> T)? = initializer
+    @Volatile private var _value: Any? = UNINITIALIZED_VALUE
+    // final field is required to enable safe publication of constructed instance
+    private val lock = lock ?: this
+
+    override val value: T
+        get() {
+            val _v1 = _value
+            if (_v1 !== UNINITIALIZED_VALUE) {
+                @Suppress("UNCHECKED_CAST")
+                return _v1 as T
+            }
+
+            return synchronized(lock) {
+                val _v2 = _value
+                if (_v2 !== UNINITIALIZED_VALUE) {
+                    @Suppress("UNCHECKED_CAST") (_v2 as T)
+                } else {
+                    val typedValue = initializer!!()
+                    _value = typedValue
+                    initializer = null
+                    typedValue
+                }
+            }
+        }
+
+    override fun isInitialized(): Boolean = _value !== UNINITIALIZED_VALUE
+
+    override fun toString(): String = if (isInitialized()) value.toString() else "Lazy value not initialized yet."
+
+    private fun writeReplace(): Any = InitializedLazyImpl(value)
+}
+```
+
+외부에서 value 를 호출하면 value 안에 있는 get() 에서 이를 늦은 처리하도록 한다.
+
+따라서, by lazy {} 호출 시 lazy 에게 위임해 내부 코드의 동작에 따라 delegation 처리를 함을 알 수 있다.
+
+지연 초기화를 위임 프로퍼티를 통해 구현하면 다음과 같다.
+
+```kotlin
+class Person(val name: String) {
+    val emails by lazy { loadEmails(this) }
+}
+```
+
+lazy 함수는 코틀린 관례에 맞는 시그니처의 getValue 메서드가 들어있는 객체를 반환한다.
+따라서, lazy 를 by 키워드와 함께 사용해 위임 프로퍼티를 만들 수 있다.
+
+lazy 함수는 기본적으로 `Thread-safe` 하다. 하지만, SynchronizedLazyImpl 에서 보면 알 수 있듯이
+필요에 따라 동기화에 사용할 락을 함수의 인자로 전달할 수 있으며, 멀티 스레드 환경에서 사용하지 않을 프로퍼티를 위해
+lazy 함수가 동기화를 하지 못하게 막을 수도 있다.
 
 ## Links
 

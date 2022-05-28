@@ -4,7 +4,7 @@ title   : Business Agility
 summary : 비지니스 민첩성
 date    : 2022-05-28 15:54:32 +0900
 updated : 2022-05-28 20:15:24 +0900
-tag     : kotlin
+tag     : msa
 toc     : true
 comment : true
 public  : true

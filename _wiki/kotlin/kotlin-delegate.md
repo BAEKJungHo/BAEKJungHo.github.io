@@ -20,7 +20,7 @@ latex   : true
 
 2019년 한국 코틀린 행사에서 Pluu 님이 발표했던 Kotlin 을 여행하는 히치하이커의 준비서를 보면 자세하게 설명하고 있으니 참고하면 좋다.
 
-![](https://speakerdeck.com/pluu/kotlineul-yeohaenghaneun-hicihaikeoyi-junbiseo)
+<script async="" class="speakerdeck-embed" data-id="fcd3b563bce247fe86f66b8d29d08324" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
 [What does ‘by’ keyword do in Kotlin? - StackOverflow](https://stackoverflow.com/questions/38250022/what-does-by-keyword-do-in-kotlin) 해당 글에서는
 Delegation 에 대해서 크게 두 가지로 나타내고 있다.

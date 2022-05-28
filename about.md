@@ -8,13 +8,17 @@ latex: true
 * TOC
 {:toc}
 
-# About Me
+## Motto
+
+> 겸손하자 
 
 ## Profile
 
-- Name: BAEKJungHo
-- Position: Backend Developer
-- Since: 2019.07.01 ~ 
+> 취미는 공부, 특기는 문서화
+
+- __Name: BAEKJungHo__
+- __Position: Backend Developer__
+- __Since: 2019.07.01__
 
 ## Work Experiences
 

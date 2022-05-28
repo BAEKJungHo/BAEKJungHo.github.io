@@ -22,7 +22,7 @@ latex   : true
 
 <script async="" class="speakerdeck-embed" data-id="fcd3b563bce247fe86f66b8d29d08324" data-ratio="1.77777777777778" src="//speakerdeck.com/assets/embed.js"></script>
 
-## Delegate Property
+## Delegation Property
 
 kotlin.properties.ReadOnlyProperty, kotlin.properties.ReadWriteProperty 두 개를 각각 상속받아 property 활용이 가능하다.
 
@@ -164,6 +164,69 @@ lazy 함수는 코틀린 관례에 맞는 시그니처의 getValue 메서드가 
 lazy 함수는 기본적으로 `Thread-safe` 하다. 하지만, SynchronizedLazyImpl 에서 보면 알 수 있듯이
 필요에 따라 동기화에 사용할 락을 함수의 인자로 전달할 수 있으며, 멀티 스레드 환경에서 사용하지 않을 프로퍼티를 위해
 lazy 함수가 동기화를 하지 못하게 막을 수도 있다.
+
+## Delegation Interface
+
+상속대신 위임을 사용할 수 있다.
+
+```kotlin
+interface BaseInterface {
+    val value: String
+    fun f()
+}
+
+class ClassA: BaseInterface {
+    override val value = "property from ClassA"
+    override fun f() { println("fun from ClassA") }
+}
+
+// The ClassB can implement the BaseInterface by delegating all public 
+// members from the ClassA.
+class ClassB(classA: BaseInterface): BaseInterface by classA {}
+
+object SampleBy {
+    @JvmStatic fun main(args: Array<String>) {
+        val classB = ClassB(ClassA())
+        println(classB.value)
+        classB.f()
+    }
+}
+```
+
+결과는 다음과 같다.
+
+```idle
+property from ClassA
+fun from ClassA
+```
+
+## Delegation parameters
+
+```kotlin
+// for val properties Map is used; for var MutableMap is used
+class User(mapA: Map<String, Any?>, mapB: MutableMap<String, Any?>) {
+    val name: String by mapA
+    val age: Int by mapA
+    var address: String by mapB
+    var id: Long by mapB
+}
+
+object SampleBy {
+    @JvmStatic fun main(args: Array<String>) {
+        val user = User(mapOf("name" to "John", "age" to 30),
+            mutableMapOf("address" to "city, street", "id" to 5000L))
+
+        println("name: ${user.name}; age: ${user.age}; " +
+            "address: ${user.address}; id: ${user.id}")
+    }
+}
+```
+
+결과는 다음과 같다.
+
+```idle
+name: John; age: 30; address: city, street; id: 5000
+```
 
 ## Links
 

@@ -34,7 +34,8 @@ regenerate: true
 
 * [[/msa/msa-business-agility]]
 * [[/msa/msa-iac]]
-
+* [[/msa/msa-polyglot]]
+* [[/msa/msa-eventual-consistency]]
 
 ## design pattern
 

@@ -33,6 +33,8 @@ regenerate: true
 ## msa
 
 * [[/msa/msa-business-agility]]
+* [[/msa/msa-iac]]
+
 
 ## design pattern
 

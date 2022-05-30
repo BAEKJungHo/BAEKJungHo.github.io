@@ -1,5 +1,9 @@
 [
  {
+  "name": "auth",
+  "size": 2
+ },
+ {
   "name": "cleancode",
   "size": 1
  },

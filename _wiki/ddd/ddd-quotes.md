@@ -8,7 +8,7 @@ tag     : ddd
 toc     : true
 comment : true
 public  : true
-parent  : [[ddd]]
+parent  : [[/ddd]]
 latex   : true
 ---
 * TOC

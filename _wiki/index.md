@@ -37,6 +37,10 @@ regenerate: true
 * [[/msa/msa-polyglot]]
 * [[/msa/msa-eventual-consistency]]
 
+## auth
+
+* [[/auth/auth-hmac]]
+
 ## design pattern
 
 * [[/designpattern/designpattern-singleton]]

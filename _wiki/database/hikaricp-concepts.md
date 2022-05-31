@@ -187,7 +187,7 @@ Spring Boot 는 기존에 tomcat-jdbc 를 기본 Datasource 로 제공했었는�
 - __커넥션 풀에서 유지할 최소 유효 커넥션 개수__
   - 설정하지 않으면 maximumPoolSize 와 동일
 - __기본 규칙__
-  - Hikari Docs: 설정하지 않는 거승ㄹ 추천
+  - Hikari Docs: 설정하지 않는 것을 추천
     - 즉, maximumPoolSize 와 동일 크기를 추천(= 고정 크기 풀 추천)
     - 이 값이 작으면 급격한 트래픽 증가 시 성능 저하 일으킬 가능성
   - 설정할 경우 다음 고려

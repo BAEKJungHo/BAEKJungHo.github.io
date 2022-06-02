@@ -8,6 +8,10 @@ latex: true
 * TOC
 {:toc}
 
+# About Me
+
+__BAEKJungHo. Backend Developer__
+
 ## Motto
 
 > 겸손하자 
@@ -15,8 +19,6 @@ latex: true
 ## Profile
 
 > 취미는 공부, 특기는 문서화
-
-- __BAEKJungHo. Backend Developer__
 
 # Work Experiences
 
@@ -78,9 +80,9 @@ latex: true
 - __[2020.06 ~ 2020.09] 소상공인 임차인 확인서 발급 시스템 구축__
 - __[2020.04 ~ 2020.05] 보령시청 긴급재난지원금 신청/관리 기능 개발__
 
-## Skills
+# Skills
 
-### Main
+## Main
 
 - [Language] Kotlin/Java
 - [Framework] Spring Framework
@@ -97,7 +99,7 @@ latex: true
 - [Issue Tracker] JIRA
 - [Document] Confluence
 
-### Sub
+## Sub
 
 > 해당 기술을 사용하여 유지보수 할 수 있을 정도
 
@@ -107,7 +109,7 @@ latex: true
 - [Database] Oracle, MongoDB
 - [VCS] SVN
 
-## Study
+# Study
 
 > 모든 스터디는 직접 운영하고 있습니다.
 
@@ -116,7 +118,7 @@ latex: true
 - [Computer Science](https://github.com/NKLCWDT/cs)
 - [Algorithms](https://github.com/NKLCWDT/algorithms)
 
-## Educations
+# Educations
 
 - __NEXTSTEP. ATDD 와 함께 클린 API 로 가는 길 4기__
     - 2022.01.20 ~ 2022.02.23

@@ -18,30 +18,53 @@ latex: true
 
 - __BAEKJungHo. Backend Developer__
 
-## Work Experiences
+# Work Experiences
 
-### TableManager
+## TableManager
 
 > 2022.03.07 ~ ING
 
-- __[2022.05 ~ 2022.06] Gateway Service__
-  - KT 통화비서란 KT 와 TableManager 의 협업 프로젝트이며, KT 통화비서라는 앱을 통해 예약 관련 기능들을 제공해주는 서비스
-    - KT 는 TableManager 의 예약 관련 Backend Service 와 Webview 를 사용
-    - KT App 과 TableManager Backend Service 간의 요청/응답을 위한 Gateway 필요
-  - KT 통화비서 프로젝트를 위한 Gateway Service 기능 구현
-    - Authentication, Wrapping Response
-- __[2022.05] Payment Service__
+### 업무 성과
+
+- __[2022.05 ~ 2022.06] KT 통화비서 인증 서비스 구축__
+  - `프로젝트 소개`
+    - KT 통화비서란 KT 와 TableManager 의 협업 프로젝트이며, KT 통화비서라는 앱을 통해 예약, 매장 관리 등의 기능들을 제공해주는 서비스
+    - KT APP - Webview - Gateway - TableManager Backend Service
+  - `담당 업무`
+    - KT-TableManager 서버간 통신을 위한 인증 체계 구축: HMAC 단방향 암호화 사용
+    - Webview-TableManager 간 통신을 위한 인증 체계 구축: JWT Token 사용
+  - `기술 스택`
+    - NodeJS, Express, MySQL, Typescript, TypeORM
+    - AWS Lambda, AWS API Gateway, AWS CloudWatch, Whatap
+- __[2022.05] 결제 서비스__
   - 담당 개발자 퇴사로 인한 인수인계 받기
-  - 흩어져 있던 결제 관련 정보를 한 곳으로 문서화
+  - 흩어져 있던 결제 관련 정보를 Confluence 한 곳으로 문서화
   - Nicepay, Eximbay, Kakaopay, KBpay ...
-- __[2022.04 ~ 2020.05] Pickup Service__
-  - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline)
-  - 아워홈 픽업 서비스를 위한 프로젝트 
-- __[2022.03 ~ ing] 테스트 코드 작성을 문화로 정착시키기__
+- __[2022.04 ~ 2022.06] 픽업 서비스 구축__
+  - `프로젝트 소개`
+    - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline)
+    - 아워홈 픽업 서비스를 위한 프로젝트
+  - `담당 업무`
+    - 해당 프로젝트의 메인 담당 개발자로 참여
+    - 앞으로 다양한 브랜드/매장에서 사용 할 수 있도록 픽업 서비스의 기반 구축
+  - `기술 스택`
+    - Kotlin 1.6.10
+    - Spring Boot 2.6.3 Spring Data JDBC, Spring Security, Spring AOP
+    - Retrofit, Kotest, p6spy
+    - AWS Elastic Beanstalk, AWS CloudWatch, Whatap
+- __[PENDING] 예약 상품권 구매에 대한 결제 Flow 변경 작업__
+  - 기존에 Client To PG 로 결제 팝업을 요청하던 작업을 Payment Server To PG 로 변경
+  
+### 조직문화 개발 및 기여
+
+- __문서화__
+  - 모든 컨텍스트들을 최대한 Confluence 에 정리
+  - 픽업 서비스, 결제 서비스, 대기 시스템 등
+- __개발 문화__
+  - [2022.03 ~ ing] 테스트 코드 작성을 문화로 정착
     - 사내 세미나 진행
     - 테스트 코드 작성에 대한 필요성 내용 공유
-- __[PENDING] 예약 상품권 구매에 대한 결제 Flow 변경 작업__
-    - 기존에 Client To PG 로 결제 팝업을 요청하던 작업을 Payment Server To PG 로 변경
+  - Confluence 에 기술문서 항목을 만들어서 여러 기술에 대해 정리한 내용을 공유
 
 ### Mayeye
 

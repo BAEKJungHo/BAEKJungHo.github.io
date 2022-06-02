@@ -53,7 +53,7 @@ __BAEKJungHo. Backend Developer__
     - Kotlin 1.6.10
     - Spring Boot 2.6.3 Spring Data JDBC, Spring Security, Spring AOP
     - Retrofit, Kotest, p6spy
-    - AWS Elastic Beanstalk, AWS CloudWatch, Whatap
+    - AWS Elastic Beanstalk, AWS Cloud Watch, Whatap
 - __[PENDING] 예약 상품권 구매에 대한 결제 Flow 변경 작업__
   - 기존에 Client To PG 로 결제 팝업을 요청하던 작업을 Payment Server To PG 로 변경
   
@@ -110,8 +110,6 @@ __BAEKJungHo. Backend Developer__
 - [VCS] SVN
 
 # Study
-
-> 모든 스터디는 직접 운영하고 있습니다.
 
 - [Expedia Clone Coding](https://github.com/cIonecoder/expedia)
 - [Kotlin In Action](https://github.com/kotlint/kotlin-in-action)

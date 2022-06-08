@@ -168,4 +168,4 @@ In the JWE Compact Serialization, a JWE is represented as the
 
 ## 주석
 
-- [^claims]: : [ReservedClaimName](https://openid.net/specs/draft-jones-json-web-token-07.html#ReservedClaimName)
+[^claims]: : [ReservedClaimName](https://openid.net/specs/draft-jones-json-web-token-07.html#ReservedClaimName)

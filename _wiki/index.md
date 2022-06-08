@@ -40,6 +40,7 @@ regenerate: true
 ## auth
 
 * [[/auth/auth-hmac]]
+* [[/auth/auth-jwt]]
 
 ## design pattern
 

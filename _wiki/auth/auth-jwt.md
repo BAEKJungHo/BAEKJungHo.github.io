@@ -74,7 +74,7 @@ JWT 에 담길 내용이다. 페이로드(Payload)에 있는 속성들을 클레
 }
 ```
 
-페이로드는 Registered claims, Public claims, Private claims 로 나뉜다.
+페이로드는 Registered claims, Public claims, Private claims 로 나뉜다. [^claims]
 
 ![](/resource/wiki/auth-jwt/claims.png)
 
@@ -95,7 +95,7 @@ JWT 에 담길 내용이다. 페이로드(Payload)에 있는 속성들을 클레
 
 점(.)을 구분자로 해서 헤더와 페이로드를 합친 문자열을 서명한 값이다. 서명은 헤더의 alg 에 정의된 알고리즘과 비밀 키를 이용해 생성하고 Base64 URL-Safe 로 인코딩한다.
 
-```json
+```idle
 HMACSHA256(
   base64UrlEncode(header) + "." + base64UrlEncode(payload),
   secret-key
@@ -130,7 +130,7 @@ JWK(JSON Web Key)는 JSON 형식으로 암호화 키를 표현한 것이며, JWA
 
 __즉, JWT 는 JWS Compact Serialization 으로 직렬화한 문자열을 의미한다.__
 
-```json
+```idle
 In the JWS Compact Serialization, a JWS is represented as the
    concatenation:
 
@@ -145,7 +145,7 @@ NHN Cloud toast meetup 글에서, JWE 는 이름에서 알 수 있듯이 데이�
 
 ### JWE Compact Serialization
 
-```json
+```idle
 In the JWE Compact Serialization, a JWE is represented as the
   concatenation:
 
@@ -164,4 +164,8 @@ In the JWE Compact Serialization, a JWE is represented as the
 - [RFC 8725. JSON Web Token Best Current Practices](https://datatracker.ietf.org/doc/html/rfc8725)
 - [Javascript Object Signing and Encryption(JOSE)](https://jose.readthedocs.io/en/latest/)
 - [Draft Jones Json Web Token](https://openid.net/specs/draft-jones-json-web-token-07.html)
-- https://meetup.toast.com/posts/239
+- [NHN Toast Meetup - JWT](https://meetup.toast.com/posts/239)
+
+## 주석
+
+- [^claims]: : [ReservedClaimName](https://openid.net/specs/draft-jones-json-web-token-07.html#ReservedClaimName)

@@ -30,9 +30,9 @@ __BAEKJungHo. Backend Developer__
 
 - __[2022.05 ~ 2022.06] KT 통화비서 인증 서비스 구축__
   - `프로젝트 소개`
-    - KT 통화비서란 KT 와 TableManager 의 협업 프로젝트이며, KT 통화비서라는 앱을 통해 예약, 매장 관리 등의 기능들을 제공해주는 서비스
-    - KT APP - Webview - Gateway - TableManager Backend Service
+    - KT 통화비서란 KT 와 TableManager 의 협업 프로젝트이며, KT 통화비서라는 앱을 통해 예약 관련 매장 관리 등의 기능들을 제공해주는 서비스
   - `담당 업무`
+    - Gateway Application Service 구조 설계 
     - KT-TableManager 서버간 통신을 위한 인증 체계 구축: HMAC 단방향 암호화 사용
     - Webview-TableManager 간 통신을 위한 인증 체계 구축: JWT Token 사용
   - `기술 스택`
@@ -41,21 +41,21 @@ __BAEKJungHo. Backend Developer__
 - __[2022.05] 결제 서비스__
   - 담당 개발자 퇴사로 인한 인수인계 받기
   - 흩어져 있던 결제 관련 정보를 Confluence 한 곳으로 문서화
-  - Nicepay, Eximbay, Kakaopay, KBpay ...
+  - 개선 및 유지보수
+  - [PENDING] 예약 상품권 구매에 대한 결제 Flow 변경 작업
+    - 기존에 Client To PG 로 결제 팝업을 요청하던 작업을 Payment Server To PG 로 변경
 - __[2022.04 ~ 2022.06] 픽업 서비스 구축__
   - `프로젝트 소개`
     - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline)
     - 아워홈 픽업 서비스를 위한 프로젝트
   - `담당 업무`
-    - 해당 프로젝트의 메인 담당 개발자로 참여
-    - 앞으로 다양한 브랜드/매장에서 사용 할 수 있도록 픽업 서비스의 기반 구축
+    - 픽업 주문 서비스 개발
+    - 주문/결제/정산 관련 로직 담당
   - `기술 스택`
     - Kotlin 1.6.10
     - Spring Boot 2.6.3 Spring Data JDBC, Spring Security, Spring AOP
     - Retrofit, Kotest, p6spy
     - AWS Elastic Beanstalk, AWS Cloud Watch, Whatap
-- __[PENDING] 예약 상품권 구매에 대한 결제 Flow 변경 작업__
-  - 기존에 Client To PG 로 결제 팝업을 요청하던 작업을 Payment Server To PG 로 변경
   
 ### 조직문화 개발 및 기여
 

@@ -37,6 +37,7 @@ regenerate: true
 * [[/msa/msa-polyglot]]
 * [[/msa/msa-eventual-consistency]]
 * [[/msa/msa-fault-tolerance]]
+* [[/msa/msa-reactive-manifesto]]
 
 ## auth
 

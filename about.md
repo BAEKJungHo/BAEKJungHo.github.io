@@ -32,7 +32,7 @@ __BAEKJungHo. Backend Developer__
   - `프로젝트 소개`
     - KT 통화비서란 KT 와 TableManager 의 협업 프로젝트이며, KT 통화비서라는 앱을 통해 예약 관련 매장 관리 등의 기능들을 제공해주는 서비스
   - `담당 업무`
-    - Gateway Application Service 구조 설계 
+    - Gateway Application 구조 설계 
     - KT-TableManager 서버간 통신을 위한 인증 체계 구축: HMAC 단방향 암호화 사용
     - Webview-TableManager 간 통신을 위한 인증 체계 구축: JWT Token 사용
   - `기술 스택`
@@ -44,7 +44,7 @@ __BAEKJungHo. Backend Developer__
   - 개선 및 유지보수
   - [PENDING] 예약 상품권 구매에 대한 결제 Flow 변경 작업
     - 기존에 Client To PG 로 결제 팝업을 요청하던 작업을 Payment Server To PG 로 변경
-- __[2022.04 ~ 2022.06] 픽업 서비스 구축__
+- __[2022.04 ~ 2022.06] 픽업 서비스 개발__
   - `프로젝트 소개`
     - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline)
     - 아워홈 픽업 서비스를 위한 프로젝트
@@ -118,6 +118,10 @@ __BAEKJungHo. Backend Developer__
 
 # Educations
 
+- __NEXTSTEP. 인프라 공방 6기__
+  - 2022.06.19 ~ 2022.07.17
+  - 망구성/배포, 성능 진단, 부하 테스트, 모니터링, 성능 튜닝, 쿼리튜닝, 인덱스 설계
 - __NEXTSTEP. ATDD 와 함께 클린 API 로 가는 길 4기__
     - 2022.01.20 ~ 2022.02.23
+    - REST, 단위 테스트, TDD/ATDD, OOP, Refactoring
 

@@ -14,6 +14,8 @@ regenerate: true
 * [[/kotlin/kotlin-range]]
 * [[/kotlin/kotlin-range-progression]]
 * [[/kotlin/kotlin-delegate]]
+* [[/kotlin/kotlin-source-machine]]
+* [[/kotlin/kotlin-compiler-k2]]
 
 ## java
 

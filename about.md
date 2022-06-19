@@ -37,7 +37,7 @@ __BAEKJungHo. Backend Developer__
     - Webview-TableManager 간 통신을 위한 인증 체계 구축: JWT Token 사용
   - `기술 스택`
     - NodeJS, Express, MySQL, Typescript, TypeORM
-    - AWS Lambda, AWS API Gateway, AWS CloudWatch, Whatap
+    - AWS Lambda, AWS API Gateway, AWS Cloud Watch, Whatap
 - __[2022.05] 결제 서비스__
   - 담당 개발자 퇴사로 인한 인수인계 받기
   - 흩어져 있던 결제 관련 정보를 Confluence 한 곳으로 문서화
@@ -100,8 +100,6 @@ __BAEKJungHo. Backend Developer__
 - [Document] Confluence
 
 ## Sub
-
-> 해당 기술을 사용하여 유지보수 할 수 있을 정도
 
 - [Language] Javascript/Typescript
 - [Javascript Runtime] NodeJS

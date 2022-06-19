@@ -47,6 +47,7 @@ regenerate: true
 * [[/infra/infra-network-segmentation]]
 * [[/infra/infra-collision-domain]]
 * [[/infra/infra-vpc-subnet]]
+* [[/infra/infra-docker]]
 
 ## auth
 

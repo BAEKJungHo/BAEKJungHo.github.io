@@ -46,6 +46,7 @@ regenerate: true
 * [[/infra/infra-cloud]]
 * [[/infra/infra-network-segmentation]]
 * [[/infra/infra-collision-domain]]
+* [[/infra/infra-vpc-subnet]]
 
 ## auth
 
@@ -84,6 +85,7 @@ regenerate: true
 ## Http
 
 * [[/http/http-localstorage]]
+* [[/http/http-famous-api]]
 
 ## DataStructures
 

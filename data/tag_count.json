@@ -33,7 +33,11 @@
  },
  {
   "name": "http",
-  "size": 2
+  "size": 3
+ },
+ {
+  "name": "infra",
+  "size": 1
  },
  {
   "name": "java",

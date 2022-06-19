@@ -41,6 +41,10 @@ regenerate: true
 * [[/msa/msa-fault-tolerance]]
 * [[/msa/msa-reactive-manifesto]]
 
+## infra
+
+* [[/infra/infra-cloud]]
+
 ## auth
 
 * [[/auth/auth-hmac]]

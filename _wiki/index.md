@@ -44,6 +44,8 @@ regenerate: true
 ## infra
 
 * [[/infra/infra-cloud]]
+* [[/infra/infra-network-segmentation]]
+* [[/infra/infra-collision-domain]]
 
 ## auth
 

@@ -31,6 +31,7 @@ regenerate: true
 * [[/spring/spring-logging]]
 * [[/spring/spring-async]]
 * [[/spring/spring-data]]
+* [[/spring/spring-sqlinjection]]
 
 ## msa
 

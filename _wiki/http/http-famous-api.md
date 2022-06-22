@@ -61,4 +61,5 @@ Used by **all of them**: 200, 400
 
 ## Links
 
+- [RFC 2616. Status Code Definitions](https://datatracker.ietf.org/doc/html/rfc2616#section-10)
 - [HTTP status codes used by world-famous APIs](https://gist.github.com/vkostyukov/32c84c0c01789425c29a)

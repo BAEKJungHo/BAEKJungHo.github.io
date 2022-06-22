@@ -61,7 +61,7 @@ Databases generally cache statements until something evicts them from the cache.
 SQL query processing workflow 와 거의 유사하다.
 
 - __Parsing and Semantics Check are the same__
-- __Binding 을 사용하면 데이터베이스 엔진이 placeholders 를 감지하고 쿼리가 placeholders 로 컴파일된다.
+- __Binding__ 을 사용하면 데이터베이스 엔진이 placeholders 를 감지하고 쿼리가 placeholders 로 컴파일된다.
 - __Cache is Same__
 - Cache 와 Execution 사이에 `Placeholder Replacement` 라는 추가 단계가 있다.
   - 이 시점에서 자리 표시자(placeholders)는 사용자 데이터로 바뀐다. 그러나 쿼리는 이미 미리 __컴파일되어 있으므로(Binding) 최종 쿼리는 다시 컴파일 단계를 거치지 않는다.__

@@ -45,7 +45,7 @@ __따라서, 코루틴이란 서로 협력해서 실행을 주고 받으면서 �
 ## Links
 
 - [kotlinx.coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/index.html)
-- [wikipedia coroutines](https://en.wikipedia.org/wiki/Coroutine
+- [wikipedia coroutines](https://en.wikipedia.org/wiki/Coroutine)
 - [taehwandev kotlin coroutines](https://speakerdeck.com/taehwandev/kotlin-coroutines)
 
 ## 참고 문헌

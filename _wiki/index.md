@@ -16,6 +16,8 @@ regenerate: true
 * [[/kotlin/kotlin-delegate]]
 * [[/kotlin/kotlin-source-machine]]
 * [[/kotlin/kotlin-compiler-k2]]
+* [[/kotlin/kotlin-coroutines]]
+* [[/kotlin/kotlin-simplesyntax]]
 
 ## java
 

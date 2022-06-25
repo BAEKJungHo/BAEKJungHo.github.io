@@ -42,6 +42,38 @@ __따라서, 코루틴이란 서로 협력해서 실행을 주고 받으면서 �
 - The biggest difference is that coroutines are very cheap, almost free: we can create thousands of them, and pay very little in terms of performance.
 - __Light-weight thread__
 
+## suspend
+
+코루틴 안에서 delay(), yield() 는 일시 중단(suspending) 함수라고 불린다. 코루틴이 아닌 일반 함수 속에서 일시 중단 함수를 사용하게 되면 __Suspend function 'yield' should be called only from a coroutine or another suspend function__ 이라는 오류가 표시된다. 즉, 일시 중단 함수를 코루틴이나 일시 중단 함수가 아닌 함수에서 호출하는 것은 컴파일러 수준에서 금지된다.
+
+### Continuation passing style
+
+일시 중단 함수는 어떻게 만들어질까? 일시 중단 함수 안에서 yield() 를 해야 하는 경우 어떤 동작이 필요할까?
+
+- 코루틴에 진입할 때와 코루틴에서 나갈 때 __코루틴이 실행 중이던 상태를 저장하고 복구하는 등의 작업__ 을 할 수 있어야 한다.
+- 현재 실행 중이던 위치를 저장하고 다시 코루틴이 재개될 때 해당 위치부터 실행을 재개할 수 있어야 한다.
+- 다음에 어떤 코루틴을 실행할지 결정한다.
+
+마지막 동작은 코루틴 컨텍스트에 있는 디스패처에 의해 수행된다. 일시 중단 함수를 컴파일하는 컴파일러는 앞의 두 가지 작업을 할 수 있는 코드를 생성해 내야 한다. 이때  코틀린은 __CPS(Continuation passing style) 변환과 상태 기계(state machine)__ 를 활용해 코드를 생성해낸다.
+
+CPS 변환은 프로그램의 실행 중 특정 시점 이후에 진행해야 하는 내용을 별도의 함수로 뽑고(이런 함수를 `Continuation` 이라 함), 그 함수에게 현재 시점까지 실행한 결과를 넘겨서 처리하게 만드는 소스코드 변환 기술이다.
+
+CPS 를 사용하는 경우 프로그램이 다음에 해야 할 일이 항상 컨티뉴에이션이라는 함수 형태로 전달된다.
+
+```kotlin
+suspend fun example(v: Int): Int {
+    return v*2
+}
+```
+
+코틀린 컴파일러는 이 함수를 컴파일하면서 뒤에 Continuation 을 인자로 만들어 붙여준다.
+
+```kotlin
+public static final Object example(int v, @NotNull Continuation var1)
+```
+
+그리고 이 함수를 호출할 때는 함수 호출이 끝난 후 수행해야 할 작업을 var1 에 Continuation 으로 전달하고, 함수 내부에서는 필요한 모든 일을 수행한 다음에 결과를 var1 에 넘기는 코드를 추가한다. (이 예제에서는 v*2 를 인자로 Continuation 을 호출하는 코드가 들어간다.)
+
 ## Links
 
 - [kotlinx.coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/index.html)

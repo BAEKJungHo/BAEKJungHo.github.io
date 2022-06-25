@@ -22,7 +22,7 @@ latex   : true
 |1.to("one")| 1 to "one" | 중위 호출|
 |set.add(2)|set+=2|연산자 오버로딩|
 |map.get("key")|map["key"]|get 메서드에 대한 관례|
-|file.use({f -> f.read()})|file.use { it.read() }|람다를 관호 밖으로 빼내는 관례|
+|file.use({f -> f.read()})|file.use { it.read() }|람다를 괄호 밖으로 빼내는 관례|
 |sb.append("yes") sb.append("no")|with (Sb) { append("yes") append("no") } |수신 객체 지정 람다|
 
 ## 참고 문헌

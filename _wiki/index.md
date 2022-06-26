@@ -88,6 +88,7 @@ regenerate: true
 ## Network
 
 * [[/network/network-layeredarchitectures]]
+* [[/network/network-polling]]
 
 ## Http
 

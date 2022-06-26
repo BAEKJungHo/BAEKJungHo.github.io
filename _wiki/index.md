@@ -18,6 +18,7 @@ regenerate: true
 * [[/kotlin/kotlin-compiler-k2]]
 * [[/kotlin/kotlin-coroutines]]
 * [[/kotlin/kotlin-simplesyntax]]
+* [[/kotlin/kotlin-receiver-lambda]]
 
 ## java
 
@@ -52,7 +53,7 @@ regenerate: true
 * [[/infra/infra-vpc-subnet]]
 * [[/infra/infra-docker]]
 * [[/infra/infra-bastion]]
-
+* [[/infra/infra-reverse-proxy]]
 
 ## auth
 

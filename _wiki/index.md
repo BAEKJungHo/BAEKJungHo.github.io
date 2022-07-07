@@ -54,6 +54,7 @@ regenerate: true
 * [[/infra/infra-docker]]
 * [[/infra/infra-bastion]]
 * [[/infra/infra-reverse-proxy]]
+* [[/infra/infra-bashrc]]
 
 ## auth
 

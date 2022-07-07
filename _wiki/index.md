@@ -59,6 +59,7 @@ regenerate: true
 * [[/infra/infra-customer]]
 * [[/infra/infra-webpagetest]]
 * [[/infra/infra-web-performance-budget]]
+* [[/infra/infra-load-test]]
 
 ## auth
 

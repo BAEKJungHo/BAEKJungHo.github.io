@@ -55,6 +55,7 @@ regenerate: true
 * [[/infra/infra-bastion]]
 * [[/infra/infra-reverse-proxy]]
 * [[/infra/infra-bashrc]]
+* [[/infra/infra-gateway]]
 
 ## auth
 

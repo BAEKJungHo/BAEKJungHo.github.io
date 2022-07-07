@@ -57,6 +57,7 @@ regenerate: true
 * [[/infra/infra-bashrc]]
 * [[/infra/infra-gateway]]
 * [[/infra/infra-customer]]
+* [[/infra/infra-webpagetest]]
 
 ## auth
 

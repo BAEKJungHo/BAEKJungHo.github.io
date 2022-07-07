@@ -60,6 +60,7 @@ regenerate: true
 * [[/infra/infra-webpagetest]]
 * [[/infra/infra-web-performance-budget]]
 * [[/infra/infra-load-test]]
+* [[/infra/infra-serverless]]
 
 ## auth
 

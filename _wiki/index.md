@@ -56,6 +56,7 @@ regenerate: true
 * [[/infra/infra-reverse-proxy]]
 * [[/infra/infra-bashrc]]
 * [[/infra/infra-gateway]]
+* [[/infra/infra-customer]]
 
 ## auth
 

@@ -152,10 +152,63 @@ ps = c.prepareStatement("delete from users")
   - 전략 패턴
   - 템플릿 콜백 패턴
 
+## HikariCP
 
+SpringBoot 2.x가 출범하면서 HikariCP를 기본 JDBC Connection Pool 로 사용할 수 있게 되었다. HikariCP 는 다른 Connection Pool 에 비해 성능이 압도적이라고 한다.
+
+HikariPool 에서는 Connection 객체를 한번 wrapping 한 `PoolEntry` 라는 Type 으로 내부적으로 Connection 을 관리한다.
+
+HikariCP에 서는 내부적으로 ConcurrentBag 이라는 구조체를 이용해 Connection 을 관리한다.
+HikariPool.getConnection() -> ConcurrentBag.borrow()라는 메서드를 통해 사용 가능한(idle) Connection 을
+리턴하도록 되어있다.
+
+### getConnection()
+
+HikariPool 에서 getConnection() 로직은 총 3단계를 통해 Connection 을 리턴하고 있다.
+
+![](/resource/wiki/spring-jdbc/hikaricp.png)
+
+Thread 가 repository.save(entity) 를 실행하기 위해 Root Transaction 용 Connection 을 가져온 상태에서, save 를 수행하기 위해 하나의 Connection 이 더 필요하다고 가정.
+
+- __Thread-1 은 Hikari Pool 에 Connection 을 요청__
+  - 현재 자기 Thread 의 방문 내역을 살펴본다.
+    - (PoolStats : total=1, active=1, idle=0, waiting=0)
+  - 전체 Hikari Pool 에서 idle 상태의 Connection 을 스캔한다.
+    - Pool Size 는 1개이고 1개 있던 Connection 은 Thread-1에서 이미 사용중이다.
+  - 마지막으로 handOffQueue 에서 누군가 반납한 Connection 이 있길 기대하면 30초 동안 기다린다.
+    - 이 기간이 지날 동안 Connection 을 얻지 못하면 Connection Timeout 이 발생한다.
+      - `hikari-pool-1 - Connection is not available, request timed out after 30000ms`
+    - (PoolStats : total=1, active=1, idle=0, waiting=1)
+- SQLTransientConnectionException 으로 인해 Sub Transaction 이 Rollback 된다.
+- Sub Transaction 의 Rollback 으로 인해 Root Transaction 이 rollbackOnly = true 가 되며 Root Transaction 이 롤백
+- Rollback 됨과 동시에 Root Transaction 용 Connection 은 다시 Pool 에 반납 된다.
+  - (PoolStats : total=1, active=0, idle=1, waiting=0)
+
+이렇게 Thread 내에서 하나의 Task  에 수행하는데 필요한 Connection 갯수가 모자라게 되면 Dead Lock 상태에 빠져 Insert Query 를 실행할 수 없게 된다.
+
+### Connection Pool 이 커지면 무조건 성능이 좋아질까?
+
+Connection Pool 의 크기가 작으면 Connection 을 획득하기 위해 대기하는 Thread 가 많아지고 TPS 가 감소하게 된다.
+
+Connection Pool 의 크기가 커진다고 해서 무조건 성능이 좋아지는 것은 아니다.
+
+WAS 에서 Connection 을 사용하는 주체는 Thread 이고, Thread Pool 의 크기보다 Connection Pool 의 크기가 크면 사용되지 않는 Connection 을 메모리 공간을 차지하게 된다.
+
+실제 CPU 코어는 한 번에 Thread 하나의 작업만 처리할 수 있다.(CPU 의 처리속도가 워낙 빨라서 동시에 처리되는 것처럼 보이는 것이다.) 다음 Thread 의 작업을 수행하기 위해서 Context Switching 이 일어나는데 이 순간 작업에 필요한 Thread 의 Stack 영역 데이터를 로드하는 등 추가적인 작업이 필요하기 때문에 오버헤드가 발생하게 된다. 따라서, Connection Pool 을 늘려서 많은 Thread 를 받았다 하더라도 Disk I/O, Context Switching 등으로 인한 성능적인 한계가 존재하게 된다.
+
+### 최적의 Connection Pool 설정 방법
+
+HikariCP 에서는 다음과 같은 공식을 제안하고 있다.
+
+- __pool size = Tn x (Cm - 1) + 1__
+  - `-1`: 마지막 Connection 이 필요한 Sub Transaction 에 대해
+  - `+1`: Connection 1개가 마지막 Sub Transaction 을 해결할 수 있게 해준다.
+
+하지만, Dead lock 을 피하기 위한 최적의 pool size 를 설정하기 위해서는 `pool 갯수 + a` 가 되어야 한다. 이에 대해 성능 테스트를 수행하면서 최적의 Pool Size 를 찾는 방법이 있다.
 
 ## Links
 
+- [HikariCP](https://baekjungho.github.io/wiki/database/hikaricp-concepts/)
 - [MySQL Enterprise Thread Pool](https://dev.mysql.com/doc/refman/8.0/en/thread-pool.html)
 - [MySQL deep dive to inner details](https://medium.com/@zxue2011/mysql-from-5000ft-above-to-inner-details-i-6a81186064de)
 - [Why Too Many Threads Hurts Performance, and What to do About It](https://www.codeguru.com/cplusplus/why-too-many-threads-hurts-performance-and-what-to-do-about-it/)

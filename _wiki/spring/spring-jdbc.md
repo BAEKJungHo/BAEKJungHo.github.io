@@ -21,6 +21,8 @@ latex   : true
 - __Connection Pool 이 필요한 이유__
   - DB Connection 객체를 생성하고 최초로 커넥션을 맺는 과정은 Cost 가 많이 든다. 
   - 물리적으로 DB 에 최초로 커넥션을 맺는 과정에서 TCP 3-way Handshake 를 거치고, 연결을 끊는 과정에서는 TCP 4-way Handshake 를 거치기 때문에 많은 시간이 소요된다. 따라서, Connection Pool 을 사용해서 위 연결 과정을 매번 반복하지 않게 하는게 핵심이다.
+  - 즉, DB 와 네트워크 연결하는 시간을 단축하여, 응답 시간을 단축하고 이로 인한 처리량 증가가 목적이다.
+  - 또한, DB 에 대한 커넥션 개수를 일정 수준으로 제한하여 DB 포화를 방지하고 이로 인한 일관된 DB 성능 유지할 수 있다.
 
 ### TCP Handshake
 
@@ -156,7 +158,9 @@ ps = c.prepareStatement("delete from users")
 
 SpringBoot 2.x가 출범하면서 HikariCP를 기본 JDBC Connection Pool 로 사용할 수 있게 되었다. HikariCP 는 다른 Connection Pool 에 비해 성능이 압도적이라고 한다.
 
-HikariPool 에서는 Connection 객체를 한번 wrapping 한 `PoolEntry` 라는 Type 으로 내부적으로 Connection 을 관리한다.
+__가장 큰 이유는, HikariCP 는 getConnection 의 수가 다른 JDBC 에 비해서 적다.__
+
+HikariPool 에서는 Connection 객체를 한번 wrapping 한 PoolEntry 라는 Type 으로 내부적으로 Connection 을 관리한다.
 
 HikariCP에 서는 내부적으로 ConcurrentBag 이라는 구조체를 이용해 Connection 을 관리한다.
 HikariPool.getConnection() -> ConcurrentBag.borrow()라는 메서드를 통해 사용 가능한(idle) Connection 을
@@ -209,6 +213,7 @@ HikariCP 에서는 다음과 같은 공식을 제안하고 있다.
 ## Links
 
 - [HikariCP](https://baekjungho.github.io/wiki/database/hikaricp-concepts/)
+- [MySQL time out](http://www.linuxchannel.net/docs/mysql-timeout.txt)
 - [MySQL Enterprise Thread Pool](https://dev.mysql.com/doc/refman/8.0/en/thread-pool.html)
 - [MySQL deep dive to inner details](https://medium.com/@zxue2011/mysql-from-5000ft-above-to-inner-details-i-6a81186064de)
 - [Why Too Many Threads Hurts Performance, and What to do About It](https://www.codeguru.com/cplusplus/why-too-many-threads-hurts-performance-and-what-to-do-about-it/)

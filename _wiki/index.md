@@ -77,11 +77,12 @@ regenerate: true
 * [[/ddd/ddd-quotes]]
 * [[/ddd/ddd-aggregate]]
 
-## Test Methodology
+## Methodology
 
 * [[/driven/test-methodology]]
 * [[/driven/extreme-programming]]
 * [[/driven/oop-oo]]
+* [[/driven/driven-use]]
 
 ## Database
 
@@ -97,6 +98,7 @@ regenerate: true
 
 * [[/network/network-layeredarchitectures]]
 * [[/network/network-polling]]
+* [[/network/network-tcp]]
 
 ## Http
 

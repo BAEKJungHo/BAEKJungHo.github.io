@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : JDBC
-summary : 
+summary : Connection Pool, HikariCP, TCP 3-way Handshake
 date    : 2022-07-03 15:05:32 +0900
 updated : 2022-07-03 15:15:24 +0900
 tag     : spring
@@ -13,10 +13,6 @@ latex   : true
 ---
 * TOC
 {:toc}
-
-# JDBC
-
-JDBC(Java Database Connectivity) 는 자바 프로그램이 DBMS 에 접근할 수 있도록 하는 표준 API 를 의미한다.
 
 ## Connection Pool
 
@@ -47,13 +43,27 @@ JDBC(Java Database Connectivity) 는 자바 프로그램이 DBMS 에 접근할 �
 
 [wireshark](https://www.wireshark.org/) 를 활용해서 TCP 연결 과정을 직접 눈으로 확인할 수 있다.
 
-### Thread Pool
+## Thread Pool
 
-![](/resource/wiki/spring-jdbc/tps.png)
+> WAS Thread Pool 뿐만 아니라, MySQL 또한 Thread Pool 이 존재한다.
+
+![](/resource/wiki/spring-jdbc/mysql-thread.png)
 
 - MySQL 에서는 Foreground Thread 를 미리 생성하여 대기 시켜 놓으며, 대기 공간을 Thread Pool 이라 한다.
 - 최소한 서버에 접속된 클라이언트 수 만큼 존재해야 하며, 더 많을 수도 있다.
 - 사용자가 DB Connection 을 종료하면 해당 스레드는 스레드 풀로 돌아간다.
+
+![](/resource/wiki/spring-jdbc/tps.png)
+
+- __Connection Pool vs Thread Pool__
+  - Connection Pool 은 커넥션 재사용을 가능하게 하며 MySQL 서버 연결 수행 비용을 절약. 클라이언트 측(Application)에서 동작
+  - Thread Pool 은 동시적인 쿼리 수행 수를 제한하기 위해 서버 측(MySQL)에서 동작
+- __Thread Pool 의 이점__
+  - 많은 수의 데이터베이스 연결을 처리할 수 있으며 리소스 경합 및 컨텍스트 전환이 줄어듦
+  - MySQL 서버가 쿼리 수행을 위한 충분한 CPU 와 메모리 리소스를 확보할 때까지 쿼리 수행을 기다림
+  - 커넥션에 대한 진행중인 트랜잭션 쿼리의 우선순위를 매김
+  - 쓰레드를 그룹으로 나누어 그룹당 하나의 액티브 쓰레드를 관리하는데 목표를 두고 동작
+  - 쿼리가 지연(stalled) 되거나 오랜시간 수행될 때 데드락을 피함
 
 ## MySQL Inner Details
 
@@ -75,6 +85,75 @@ MySQL 은 일반적으로 쿼리 처리 속도가 매우 빠른데 그 이유는
     - 인덱스 키, 페이지 주소 값 쌍으로 구성
     - 자주 요청되는 페이지에 대해 InnoDB 가 자동으로 생성하는 인덱스
 
+## JDBC
+
+> JDBC(Java Database Connectivity) 는 자바 프로그램이 DBMS 에 접근할 수 있도록 하는 표준 API 를 의미한다. 각 DB Vendor 가 JDBC 표준을 따라 만들어진 드라이버를 제공해 준다. `내부 구현은 다를지라도` JDBC 의 Connection, Statement, ResultSet 등의 `표준 인터페이스`를 통해 기능을 제공하기 때문에 DB Vendor 에 상관 없이 일관된 방법으로 프로그램을 개발할 수 있다. 즉 구현에 의존하는 것이 아닌 역할에 의존하는 객체지향 프로그래밍 방법의 장점을 잘 활용한 사례라 할 수 있다.
+
+```java
+public void deleteAll() throws SQLException {
+    Connection c = dataSource.getConnection();
+    
+    // 이 과정에서 에러가 발생하면 메서드 실행이 중단된다.
+    PreparedStatement ps = c.prepareStatement("delete from users");
+    ps.executeUpdate();
+    
+    ps.close();
+    c.close();
+}
+```
+
+리소를 반환하기 전에 예외가 발생하게 되면, 메서드 실행이 중단되어 제대로 리소스가 반환되지 않을 수 있다. 따라서, JDBC 에서는 어떤 상황에서도 리소스를 반환하도록 `try-catch-finally` 구문을 사용하도록 권장하고 있다.
+
+DB 커넥션과 같이 제한적인 리소스를 공유해서 사용하는 서버에서는 반드시 예외처리를 해줘야 한다 예외가 발생했을 경우, 사용한 리소스를 반드시 반환해야 하기 때문이다.
+
+Connection 이나 PreparedStatement 에서 제공하는 close() 메서드는 "리소스를 반환하다" 라고 이해하는 것이 좋다.
+
+```java
+public void deleteAll() throws SQLException {
+    Connection c = null;
+    PreparedStatement ps = null;
+    
+    try {
+        c = dataSource.getConnection();
+        ps = c.prepareStatement("delete from users");
+        ps.executeUpdate();
+    } catch (SQLException e) {
+        throw e;     
+    } finally{
+        if(ps!=null) {
+            try {
+              ps.close();
+            } catch (SQLException e) {}
+        }
+        if(c!=null) {
+          try {
+          c.close();
+          } catch (SQLException e) {}
+        }
+    }
+}
+```
+
+### 변하는 것과 변하지 않는 것
+
+- __JDBC try/catch/finally 코드의 문제점__
+  - `폭탄 같은 코드`
+  - try/catch/finally 블록의 2중 중첩과 모든 메서드 마다 반복
+- __이러한 코드를 효과적으로 다루는 방법__
+  - 변하는 것과 변하지 않는 것을 분리해내는 작업이 필요
+
+```java
+// 변하는 부분은 이 곳 뿐이다.
+ps = c.prepareStatement("delete from users")
+```
+
+- __어떻게 리팩토링 할 것인가?__
+  - 템플릿 메서드 패턴 
+  - 전략 패턴
+  - 템플릿 콜백 패턴
+
+
+
 ## Links
 
 - [MySQL Enterprise Thread Pool](https://dev.mysql.com/doc/refman/8.0/en/thread-pool.html)
@@ -82,6 +161,7 @@ MySQL 은 일반적으로 쿼리 처리 속도가 매우 빠른데 그 이유는
 - [Why Too Many Threads Hurts Performance, and What to do About It](https://www.codeguru.com/cplusplus/why-too-many-threads-hurts-performance-and-what-to-do-about-it/)
 - [HikariCP Dead lock 에서 벗어나기](https://techblog.woowahan.com/2664/)
 - [내가 만든 서비스는 얼마나 많은 사용자가 이용할 수 있을까? - 3편(DB Connection Pool)](https://hyuntaeknote.tistory.com/12)
+- [How to prevent SQL Injection In Spring Framework](https://baekjungho.github.io/wiki/spring/spring-sqlinjection/)
 
 ## 참고 문헌
 

@@ -4,7 +4,7 @@ title   : Git basic
 summary : 깃 기초
 date    : 2022-07-04 15:54:32 +0900
 updated : 2022-07-04 20:15:24 +0900
-tag     : http
+tag     : git
 toc     : true
 comment : true
 public  : true

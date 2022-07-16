@@ -31,7 +31,9 @@ latex   : true
 ### INDEX
 
 - __Staging Area: INDEX__
-  - git add 에 의해 저장되는 공간
+  - git add 에 의해 저장되는 공간 (git add 를 하게 되면 index 파일이 수정됨)
+  - git 은 index 와 마지막 커밋을 비교하여 커밋할 파일이 있는지 판단 함
+  - git 은 index 와 현재 파일을 비교하여 수정된 파일이 있는지 판단 함
   - .git directory 내에 INDEX 파일과 함께 .git/objects 디렉터리 안에 파일로 관리됨
 
 ![](/resource/wiki/git-basic/index.png)
@@ -49,6 +51,8 @@ SHA-1 을 사용하면 소스 코드의 일부만 바뀌더라도 별개의 해�
     - tree: commit 을 통해 관리된 파일들의 이름과 내용에 대한 구조
 
 > git branch  명령을 실행할 때 Git 이 마지막 커밋의 해시 값(SHA-1)을 아는 이유는, 바로 .git 디렉토리에 `HEAD` 라는 파일을 사용하여 관리하기 때문이다.
+
+HEAD 는 현재 로컬 저장소가 가르키고 있는 브랜치를 참조한다. 특정 브랜치가 아닌 특정 커밋으로 checkout 하면 detach 됐다는 메시지가 뜨는데, 커밋의 해시값이 HEAD 에 들어가게 된다.
 
 ### Remote Repository
 

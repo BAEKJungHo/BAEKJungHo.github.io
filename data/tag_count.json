@@ -28,12 +28,16 @@
   "size": 3
  },
  {
+  "name": "git",
+  "size": 1
+ },
+ {
   "name": "hikaricp",
   "size": 1
  },
  {
   "name": "http",
-  "size": 4
+  "size": 5
  },
  {
   "name": "infra",

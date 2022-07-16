@@ -67,6 +67,7 @@ regenerate: true
 ## git
 
 * [[/git/git-basic]]
+* [[/git/git-internal]]
 
 ## auth
 

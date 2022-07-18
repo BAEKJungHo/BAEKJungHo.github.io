@@ -63,6 +63,7 @@ regenerate: true
 * [[/infra/infra-load-test]]
 * [[/infra/infra-serverless]]
 * [[/infra/infra-availability]]
+* [[/infra/infra-elasticbeanstalk]]
 
 ## git
 

@@ -23,6 +23,7 @@ regenerate: true
 ## java
 
 * [[/java/execution-java]]
+* [[/java/java-memoryleak]]
 
 ## spring
 

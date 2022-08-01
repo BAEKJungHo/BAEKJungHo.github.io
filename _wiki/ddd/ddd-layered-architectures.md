@@ -20,7 +20,7 @@ latex   : true
 
 | Layer  | Description  |  Object |
 |--------|--------------|---------|
-| 사용자 인터페이스(interfaces) | 사용자에게 정보를 보여주고 사용자의 명령을 해석하는 책임  | Controller |
+| 사용자 인터페이스(interfaces) | 사용자에게 정보를 보여주고 사용자의 명령을 해석하는 책임  | Controller, Dto, Mapper |
 | 응용 계층(application) | 수행할 작업을 정의하고 표현력 있는 도메인 객체가 문제를 해결하게 한다. 이 계층에서 책임지는 작업은 업무상 중요하거나 다른 시스템의 응용 계층과 상호 작용하는 데 필요한 것들이다. 이 계층은 얇게 유지되고, 오직 작업을 조정하고 아래에 위치한 계층에 포함된 도메인 객체의 협력자에게 작업을 위임한다.      | Facade |
 | 도메인 계층(domain) | 업무 개념과 업무 상황에 대한 정보, 업무 규칙을 표현하는 일을 책임진다. 이 계층에서는 업무 상황을 반영하는 상태를 제어하고 사용하며, 그와 같은 상태 저장과 관련된 기술적인 세부사항은 인프라 스트럭쳐에 위임한다. 이 계층이 업무용 소프트웨어의 핵심이다.  | Service, Command, Criteria, Info, Reader, Store, Executor, Factory(interface) |
 | 인프라 스트럭쳐 계층(infrastructure) | 상위 계층을 지원하는 일반화된 기술적 기능을 제공한다. 이러한 기능에는 애플리케이션에 대한 메시지 전송, 도메인 영속화, UI 에 위젯을 그리는 것 등이 있다. | low level 구현체, HttpServiceImpl, Spring JPA, RedisConnector |
@@ -31,9 +31,9 @@ latex   : true
 
 만약에, Domain 과 Entity 라는 개념을 분리해서 관리한다고 하면 Entity 는 Infrastructure Layer 에 속할 수도 있다. 단, 도메인 로직은 Domain Class 에 잘 응집이 되어 있어야 한다.
 
-이렇게 분리하는 이유 중 하나는, Domain 객체가 여러 미들웨어 실체들과 연결될 수도 있기 때문이다. 엔티티 클래스에 인터페이스가 있다면 나중에 데이터베이스나 ORM 을 교체하기가 쉬워진다. 또한 SOLID 원칙을 생각했을 때는 Entity 랑 Domain 을 분리해서 관리하는게 좋다고 생각한다.
+Domain 과 Entity 를 분리하는 이유는 `변경에 대한 유연함` 이다. Domain 객체가 여러 미들웨어 실체들과 연결될 수도 있기 때문이다. 엔티티 클래스에 인터페이스가 있다면 나중에 데이터베이스나 ORM 을 교체하기가 쉬워진다. 또한 SOLID 원칙을 생각했을 때는 Entity 랑 Domain 을 분리해서 관리하는게 좋다고 생각한다. 
 
-그럼에도 불구하고 Entity 에 Domain 로직들을 모아두는 방법도 나쁘지는 않다고 생각한다. 이 경우의 가장 큰 장점은 생산성이라고 생각한다.
+그럼에도 불구하고 Entity 에 Domain 로직들을 모아두는 방법도 나쁘지는 않다고 생각한다. 이 경우의 가장 큰 장점은 `생산성`이라고 생각한다.
 
 ## DTO 
 
@@ -148,9 +148,8 @@ fun completeOrder(registerOrder: OrderCommand.RegisterOrder): String {
   - Response 의 경우도 불필요한 응답을 제공하고 있고 이를 가져다 쓰는 로직이 있다면, 추후 해당 Response 에서 특정 프로퍼티는 제거하기 어렵게 될 수 있다.__
   - API 는 한번 외부에 오픈하면 바꿀 수 없는 것이라고 생각하자. 처음부터 제한적으로 설계하고 구현해야 한다.
     - 경우에 따라서 resource 중간에 버전을 명시하기도 한다.(Ex. v1, v2)
-- http, gRPC, 비동기 메시징과 같은 서비스간 통신 기술은 interfaces layer 에서만 사용되도록 한다.
-  - 가령 json 처리 관련 로직이나 http cookie 파싱 로직 등이 Domain layer 에서 사
-    용되는 식의 구현은 피해야 한다.
+- __http, gRPC, 비동기 메시징과 같은 서비스간 통신 기술은 interfaces layer 에서만 사용되도록 한다.__
+  - 가령 json 처리 관련 로직이나 http cookie 파싱 로직 등이 Domain layer 에서 사용되는 식의 구현은 피해야 한다.
   - 그렇게 하지 않으면 언제든지 교체될 수 있는 외부 통신 기술로 인해 domain 로직까지 변경되어야 하는 상황이 발생한다.
 
 ## Links

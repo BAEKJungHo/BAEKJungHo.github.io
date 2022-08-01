@@ -84,6 +84,7 @@ regenerate: true
 
 * [[/ddd/ddd-quotes]]
 * [[/ddd/ddd-aggregate]]
+* [[/ddd/ddd-layered-architectures]]
 
 ## Methodology
 
@@ -101,6 +102,7 @@ regenerate: true
 ## Clean Code
 
 * [[/cleancode/cleancode-guide]]
+* [[/cleancode/cleancode-good-implementation]]
 
 ## Network
 

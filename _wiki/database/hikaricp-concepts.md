@@ -4,7 +4,7 @@ title   : HikariCP
 summary : 
 date    : 2022-05-02 15:02:32 +0900
 updated : 2022-05-02 15:12:24 +0900
-tag     : hikaricp
+tag     : database
 toc     : true
 comment : true
 public  : true

@@ -9,7 +9,7 @@
  },
  {
   "name": "database",
-  "size": 1
+  "size": 4
  },
  {
   "name": "datastructures",
@@ -30,10 +30,6 @@
  {
   "name": "git",
   "size": 3
- },
- {
-  "name": "hikaricp",
-  "size": 1
  },
  {
   "name": "http",
@@ -66,10 +62,6 @@
  {
   "name": "msa",
   "size": 7
- },
- {
-  "name": "mysql",
-  "size": 2
  },
  {
   "name": "network",

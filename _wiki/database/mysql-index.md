@@ -4,7 +4,7 @@ title   : Index
 summary : MySQL Index
 date    : 2022-04-22 15:28:32 +0900
 updated : 2022-04-22 18:15:24 +0900
-tag     : mysql
+tag     : database
 toc     : true
 comment : true
 public  : true

@@ -4,7 +4,7 @@ title   : Considerations for Queries and Indexing
 summary : 쿼리와 인덱스 작성시 고려해야할 점
 date    : 2022-05-23 15:28:32 +0900
 updated : 2022-05-23 18:15:24 +0900
-tag     : mysql
+tag     : database
 toc     : true
 comment : true
 public  : true
@@ -29,6 +29,10 @@ latex   : true
 
 > 데이터베이스는 Cost Based 이기 때문에, 인덱스 비용과 Table Full Scan 비용을 알아서 고려해서 인덱스가 걸려있다 하더라도 Table Full Scan 시 성능이 더 뛰어나다면 그것을 적용한다.
 
+- 날짜 조건 시 LocalDateTime 으로 처리
+  - Ex. 2022-08-01 00:00:00 ~ 2022-08-02 23:59:59
+  - 애플리케이션에서 string 타입으로 바인딩하게 되면 컨버팅 과정이 일어나서 인덱스가 안 탈 수 있음
+- 복합 인덱스에 날짜(범위) 인덱스가 있다면 뒤에 생성해야 함
 - where, join, order by 등과 관련된 사용 빈도가 높고 키 값의 선별도가 좋은 컬럼을 대상으로 인덱스를 생성해야 함
 - where 조건에 case 문 같은 것은 사용하지 않는 것이 좋음
   - case 문을 계산하고나서 뒤에 있는 and 문들을 실행한다. case 문 같은 것은 쿼리를 던질 때마다 계산한다.

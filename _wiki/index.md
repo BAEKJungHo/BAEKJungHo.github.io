@@ -66,6 +66,7 @@ regenerate: true
 * [[/infra/infra-availability]]
 * [[/infra/infra-elasticbeanstalk]]
 * [[/infra/infra-security-group]]
+* [[/infra/infra-incident]]
 
 ## git
 

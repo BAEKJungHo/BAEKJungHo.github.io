@@ -29,7 +29,7 @@ SSH 를 사용하여 Linux 인스턴스에 연결할 때 로그인하려면 퍼�
 - __(IPv6) 또는 인스턴스에 IPv6 주소가 있는 경우, 인스턴스의 IPv6 주소를 사용하여 연결하는 방법__
   - ssh -i /path/key-pair-name.pem instance-user-name@instance-IPv6-address
 
-```
+```shell
 # 터미널 접속한 후 생성한 key(private key) 가 위치한 곳으로 이동한다.
 # SERVER_IP 는 공인 IP(퍼블릭 IP)
 $ chmod 400 [pem파일명]
@@ -42,8 +42,8 @@ $ ssh -i [pem파일명] ubuntu@[SERVER_IP]
 
 ### Bastion Server 에서 서비스용 서버에 ssh 연결하기
 
-```
-## Bastion Server에서 공개키를 생성
+```shell
+## Bastion Server 에서 공개키를 생성
 ## id_rsa.pub 가 public key 이다.
 bastion $ ssh-keygen -t rsa
 bastion $ cat ~/.ssh/id_rsa.pub

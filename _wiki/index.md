@@ -119,6 +119,7 @@ regenerate: true
 
 * [[/http/http-localstorage]]
 * [[/http/http-famous-api]]
+* [[/http/http-headers]]
 
 ## DataStructures
 

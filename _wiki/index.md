@@ -97,6 +97,7 @@ regenerate: true
 * [[/driven/extreme-programming]]
 * [[/driven/oop-oo]]
 * [[/driven/driven-use]]
+* [[/driven/development-design-docs]]
 
 ## Database
 

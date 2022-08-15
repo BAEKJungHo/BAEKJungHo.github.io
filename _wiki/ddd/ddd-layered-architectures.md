@@ -29,7 +29,7 @@ latex   : true
 
 ## Domain vs Entity
 
-만약에, Domain 과 Entity 라는 개념을 분리해서 관리한다고 하면 Entity 는 Infrastructure Layer 에 속할 수도 있다. 단, 도메인 로직은 Domain Class 에 잘 응집이 되어 있어야 한다.
+만약에, Domain 과 Entity 라는 개념을 분리해서 관리한다고 하면 Entity 는 Infrastructure Layer 에 속할 수도 있다. 단, 도메인 로직은 Domain Class 에 잘 응집이 되어 있어야 한다. 혹은, Entity 도 Domain Layer 에 두어서 관리할 수 있다.
 
 Domain 과 Entity 를 분리하는 이유는 `변경에 대한 유연함` 이다. Domain 객체가 여러 미들웨어 실체들과 연결될 수도 있기 때문이다. 엔티티 클래스에 인터페이스가 있다면 나중에 데이터베이스나 ORM 을 교체하기가 쉬워진다. 또한 SOLID 원칙을 생각했을 때는 Entity 랑 Domain 을 분리해서 관리하는게 좋다고 생각한다. 
 
@@ -61,6 +61,7 @@ Layered Architecture 에서 대부분의 로직들은 추상화 된다. 이러�
 - 업무 개념과 업무 상황에 대한 정보, 업무 규칙을 표현하는 일을 책임진다.
 - 이 계층에서는 업무 상황을 반영하는 상태를 제어하고 사용하며 그와 같은 상태 저장과 관련된 기술적인 세무사항은 인프라스트럭쳐에 위임한다.
 - 이 계층이 업무용 소프트웨어의 핵심이다.
+- 외부(interfaces)의 변경에 영향을 받지 않도록 추상화 수준이 높아야 한다.
 
 ### 표준 구현
 
@@ -143,6 +144,9 @@ fun completeOrder(registerOrder: OrderCommand.RegisterOrder): String {
 
 ### 표준 구현
 
+- __DTO 를 interfaces layer 에 두는 이유__
+  - DTO 와 Mapper(도메인 Layer 에서 사용되는 Command, Criteria 객체로 변환하는 역할)등을 interfaces layer 에 두는 이유는, interfaces layer 가 사용자의 요청을 해석하고, 응답을 전달하는 곳이기 때문이다.
+  - 즉, 사용자의 요청을 DTO 로 받아서 해석(Mapper 를 통해 다른 객체로 변환)하는 역할을 담당하는 Layer 라고 생각하면 된다.
 - __API 를 설계할 때에는 없어도 되는 Request Parameter 는 제거하고, 외부에 리턴하는 Response 도 최소한을 유지하도록 노력하자__
   - 요구하는 Request Parameter 가 많다는 것은 관련된 메서드나 객체에서 처리해야하는 로직이 많다는 것을 의미하고, 이는 관련된 객체가 생각보다 많은 역할을 하고 있다는 신호일 수 있다.
   - Response 의 경우도 불필요한 응답을 제공하고 있고 이를 가져다 쓰는 로직이 있다면, 추후 해당 Response 에서 특정 프로퍼티는 제거하기 어렵게 될 수 있다.

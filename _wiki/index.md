@@ -140,6 +140,8 @@ regenerate: true
 * [[/etc/mathjax-latex]]
 * [[/etc/character-encoding]]
 * [[/etc/environment-settings]]
+* [[/etc/regular-expression]]
+
 
 ---
 

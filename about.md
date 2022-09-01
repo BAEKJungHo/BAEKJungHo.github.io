@@ -10,7 +10,7 @@ latex: true
 
 # About Me
 
-__BAEKJungHo. Backend Developer__
+__[BAEKJungHo](https://github.com/BAEKJungHo). Backend Developer__
 
 ## Motto
 
@@ -24,11 +24,11 @@ __BAEKJungHo. Backend Developer__
 
 ## TableManager
 
-> 2022.03.07 ~ ING
+> 2022.03.07 ~ 2022.08.26
 
 ### 업무 성과
 
-- __[2022.05 ~ 2022.06] KT 통화비서 인증 서비스 구축__
+- __[2022.05 ~ 2022.07] KT 통화비서 인증 서비스 구축__
   - `프로젝트 소개`
     - KT 통화비서란 KT 와 TableManager 의 협업 프로젝트이며, KT 통화비서라는 앱을 통해 예약 관련 매장 관리 등의 기능들을 제공해주는 서비스
   - `담당 업무`
@@ -39,8 +39,6 @@ __BAEKJungHo. Backend Developer__
     - AWS Lambda, AWS API Gateway, AWS Cloud Watch, Whatap
 - __[2022.05] 결제 서비스__
   - 픽업 주문 서비스 개발과 함께 카카오페이 원클릭 결제 플로우 및, 아워홈 RF 결제 플로우 유지보수
-  - [PENDING] 예약 상품권 구매에 대한 결제 Flow 변경 작업
-    - 기존에 Client To PG 로 결제 팝업을 요청하던 작업을 Payment Server To PG 로 변경
 - __[2022.04 ~ 2022.06] 픽업 서비스 개발__
   - `프로젝트 소개`
     - 온라인 서비스의 기술을 적용해 오프라인 매장에서 새로운 매출을 창출해내는 O4O(Online for Offline)
@@ -59,9 +57,8 @@ __BAEKJungHo. Backend Developer__
   - 모든 컨텍스트들을 최대한 Confluence 에 정리
   - 픽업 서비스, 결제 서비스, 대기 시스템 등
 - __개발 문화__
-  - [2022.03 ~ ing] 테스트 코드 작성을 문화로 정착
-    - 사내 세미나 진행
-    - 테스트 코드 작성에 대한 필요성 내용 공유
+  - 테스트 코드 작성 사내 세미나 진행
+  - 테스트 코드 작성에 대한 필요성 내용 공유
   - Confluence 에 기술문서 항목을 만들어서 여러 기술에 대해 정리한 내용을 공유
 
 ## Mayeye
@@ -84,13 +81,13 @@ __BAEKJungHo. Backend Developer__
 - [Framework] Spring Framework
 - [ORM] Spring Data JPA/JDBC
 - [Test] Junit, Kotest
-- [Database] MySQL
+- [Database] MySQL, PostgreSQL
 - [Infra] AWS
   - Lambda
   - API Gateway
   - Elastic Beanstalk
   - Cloud Watch
-- [Monitoring] Whatap
+- [Monitoring] Whatap, Datadog
 - [VCS] Git
 - [Issue Tracker] JIRA
 - [Document] Confluence

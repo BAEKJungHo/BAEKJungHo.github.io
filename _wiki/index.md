@@ -90,6 +90,7 @@ regenerate: true
 * [[/ddd/ddd-quotes]]
 * [[/ddd/ddd-aggregate]]
 * [[/ddd/ddd-layered-architectures]]
+* [[/ddd/ddd-service]]
 
 ## Methodology
 

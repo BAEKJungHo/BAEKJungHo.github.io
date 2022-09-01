@@ -382,7 +382,7 @@ public static TailCall factorialTail(int n, int total) {
 
 ### Debugging
 
-> [Sources](https://github.com/BAEKJungHo/algorithms/tree/master/src/src/main/java/thisiscodingtest/chapter5/factorial)
+> [Sources](https://github.com/BAEKJungHo/algorithms/tree/master/src/src/main/java/thisiscodingtest/part02/chapter5/factorial)
 
 ### Iterative Factorial
 

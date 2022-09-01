@@ -42,7 +42,7 @@ latex   : true
   
 DIP 를 적용했을때의 장점은 [Portable Service Abstraction](https://baekjungho.github.io/wiki/spring/spring-psa/) 의 장점과 같다. 
 
-__서비스 추상화로 제공되는 기술을 다른 기술 스택을 간편하게 바꿀 수 있는 확장성이 생긴다.__
+__서비스 추상화로 제공되는 기술을 다른 기술 스택으로 간편하게 바꿀 수 있는 확장성이 생긴다.__
 
 ## 애플리케이션 서비스의 네이밍에 대해서
 

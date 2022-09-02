@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Surrogate Key
-summary : 대체키의 필요성
+summary : 대체키의 필요성과 정렬된 UUID
 date    : 2022-08-01 15:28:32 +0900
 updated : 2022-08-01 18:15:24 +0900
 tag     : database
@@ -25,6 +25,12 @@ latex   : true
   - Ex. 별도의 인증 절차 없이 URL 을 통해 상세 데이터를 조회할 수 있는 경우. URL 의 키값만 바꿔주면 다른 사람의 상세 정보도 볼 수 있다.
   - Ex. 외부와 협력하여 서비스를 개발하는 경우, 외부 시스템의 PK 값을 우리 쪽 데이터베이스에 저장하거나 혹은 그 반대인 경우, 데이터베이스를 NoSQL 기반으로 바꾸게 되면 PK 체계가 달라지기 때문에 이슈가 발생할 수 있다. 따라서 UUID 같은 대체키를 사용하는 것이 좋다.
 - 대체키를 사용할 때에는 역시 성능에 대한 고민이 많을 것인데 MySQL 기준으로 1천만 건 이상으로 넘어가기 전까지는 random string 으로 사용해도 조회 성능에 크게 이슈가 없고, 성능을 고려한다면 UUID 를 rearranged 하여 사용하는 것을 검토할 수 있다.
+
+### Ordered UUID
+
+UUID 는 생성될때 중간에 시간 값이 들어간다. 이 시간 값을 앞 쪽으로 빼고, 뒤에 random string 을 붙여서 대체키를 생성하면 성능 최적화를 끌어낼 수 있다.
+
+![](/resource/wiki/database-surrogatekey/uuid.png)
 
 ## Links
 

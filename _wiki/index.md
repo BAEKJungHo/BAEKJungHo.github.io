@@ -105,6 +105,7 @@ regenerate: true
 * [[/database/mysql-index]]
 * [[/database/hikaricp-concepts]]
 * [[/database/query-index]]
+* [[/database/database-surrogatekey]]
 
 ## Clean Code
 

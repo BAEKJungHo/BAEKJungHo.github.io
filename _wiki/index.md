@@ -85,6 +85,7 @@ regenerate: true
 
 * [[/designpattern/designpattern-singleton]]
 * [[/designpattern/designpattern-template-method]]
+* [[/designpattern/designpattern-strategy]]
 
 ## ddd
 

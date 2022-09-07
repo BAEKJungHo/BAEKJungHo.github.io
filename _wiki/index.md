@@ -94,6 +94,7 @@ regenerate: true
 * [[/ddd/ddd-aggregate]]
 * [[/ddd/ddd-layered-architectures]]
 * [[/ddd/ddd-service]]
+* [[/ddd/ddd-factory]]
 
 ## Methodology
 

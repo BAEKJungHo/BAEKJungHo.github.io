@@ -123,30 +123,149 @@ public synchronized void decrease(Long id, Long quantity) {
 ### synchronized 문제점
 
 - synchronized 는 하나의 프로세스 안에서만 보장됨. 따라서, 서버가 1대일 때는 문제 없지만, 서버가 여러대라면 문제가 발생할 수 있음
+- synchronized 는 2대이상의 서버를 사용할 때 문제가 발생할 수 있으므로 실무에서는 거의 사용되지 않음
+- 사용되는 경우는 서버가 1대로만 운영이 되거나, 서버내에서만 정합성이 보장되면 될 때 사용
 
 ## Lock
 
 > Database 에서 제공하는 Lock 을 활용하여 Race Condition 을 해결할 수 있다.
 
-- __Optimistic lock__
-  - 실제로 lock 을 걸지 않고 버전(version column)을 이용함으로써 정합성을 맞추는 방법
-  - 먼저 데이터를 읽은 후에 update 를 수행할 대 현재 내가 읽은 버전이 맞는지 확인하여 업데이트
-  - 내가 읽은 버전에서 수정사항이 생겼을 경우에는 application 에서 다시 읽은 후에 작업을 수행해야 함
-- __Pessimistic lock__
+- __Pessimistic Lock__
   - 실제로 데이터에 lock 을 걸어서 정합성을 맞추는 방법. exclusive lock 을 걸게 되면 다른 트랜잭션에서는 lock 이 해제되기 전에 데이터를 가져갈 수 없음. Deadlock 이 걸릴 수 있기 때문에 주의하여 사용해야 함
+  - 실제로 Lock 을 걸기 때문에 성능 이슈가 있을 수 있음
   - 다른 트랜잭션이 특정 row 의 lock 을 얻는 것을 방지
     - A 트랜잭션이 끝날 때 까지 기다렸다가 B 트랜잭션이 lock 을 획득
   - 특정 row 를 update 하거나 delete 할 수 있음
   - 일반 select 는 별다른 lock 이 없기 때문에 조회 가능
-- __Named lock__
+- __Optimistic Lock__
+  - 실제로 lock 을 걸지 않고 버전(version column)을 이용함으로써 정합성을 맞추는 방법
+  - 먼저 데이터를 읽은 후에 update 를 수행할 대 현재 내가 읽은 버전이 맞는지 확인하여 업데이트
+  - 내가 읽은 버전에서 수정사항이 생겼을 경우에는 application 에서 다시 읽은 후에 작업을 수행해야 함
+- __Named Lock__
   - 이름을 가진 metadata locking
   - 이름과 함께 lock 을 획득. 해당 lock 은 다른 세션에서 획득 및 해제가 불가능
   - 주의할 점은 transaction 이 종료될 때 lock 이 자동으로 해제되지 않음. 별도의 명령어로 해제를 수행해주거나 선점시간이 끝나야 해제가 됨
 
+### Pessimistic Lock
+
+- __Spring Data Jpa 에서 제공하는 @Lock 어노테이션 사용__
+
+```java
+public interface StockRepository extends JpaRepository<Stock, Long> {
+
+    @Lock(value = LockModeType.PESSIMISTIC_WRITE)
+    @Query("select s from Stock s where s.id=:id")
+    Stock findByIdWithPessimisticLock(@Param("id") Long id);
+}
+```
+
+- __@Transactional + saveAndFlush + Pessimistic lock__
+
+```java
+@Transactional
+public void decrease(Long id, Long quantity) {
+    Stock stock = stockRepository.findByIdWithPessimisticLock(id);
+    stock.decrease(quantity);
+    stockRepository.saveAndFlush(stock);
+}
+```
+
+- __Test Code__
+
+```java
+@Test
+void requests_100_at_the_same_time() throws InterruptedException {
+    int threadCount = 100;
+    ExecutorService executorService = Executors.newFixedThreadPool(32);
+    CountDownLatch latch = new CountDownLatch(threadCount);
+
+    for (int i = 0; i < threadCount; i++) {
+        executorService.submit(() -> {
+            try {
+                stockService.decrease(1L, 1L);
+            } finally {
+                latch.countDown();
+            }
+        });
+    }
+
+    latch.await();
+
+    Stock stock = stockRepository.findById(1L).orElseThrow();
+    assertEquals(0L, stock.getQuantity());
+}
+```
+
+- __Console 에 찍힌 쿼리 로그__
+
+```sql
+-- for update 구문이 추가됨
+select stock0_.id as id1_0_, stock0_.product_id as product_2_0_, stock0_.quantity as quantity3_0_ from stock stock0_ where stock0_.id=? for update
+```
+
+### Optimistic Lock
+
+- __Optimistic Lock 을 사용하기 위해서 Entity 에 Version Column 을 추가__
+
+```java
+@Entity
+public class Stock {
+    // 생략 
+  
+    @Version
+    private Long version;
+}
+```
+
+- __Spring Data Jpa 에서 제공하는 @Lock 어노테이션 사용__
+
+```java
+public interface StockRepository extends JpaRepository<Stock, Long> {
+    @Lock(value = LockModeType.OPTIMISTIC)
+    @Query("select s from Stock s where s.id = :id")
+    Stock findByIdWithOptimisticLock(@Param("id") Long id);
+}
+```
+
+- __실패 시 재시도를 위한 로직 작성__
+
+```java
+@Service
+public class OptimisticLockStockFacade {
+
+  private final OptimisticLockStockService optimisticLockStockService;
+
+  public OptimisticLockStockFacade(OptimisticLockStockService optimisticLockStockService) {
+    this.optimisticLockStockService = optimisticLockStockService;
+  }
+
+  public void decrease(Long id, Long quantity) throws InterruptedException {
+    while (true) {
+      try {
+        optimisticLockStockService.decrease(id, quantity);
+
+        break;
+      } catch (Exception e) {
+        Thread.sleep(50);
+      }
+    }
+  }
+}
+```
+
+- __Console 에 찍힌 쿼리 로그__
+
+```sql
+-- where 조건에 version 이 추가됨
+update stock set product_id=?, quantity=?, version=? where id=? and version=?
+```
+
 ## Links
 
 - [재고시스템으로 알아보는 동시성 이슈 해결방법](https://www.inflearn.com/course/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%B4%EC%8A%88-%EC%9E%AC%EA%B3%A0%EC%8B%9C%EC%8A%A4%ED%85%9C/dashboard)
-- [concurrency stock source code](https://github.com/BAEKJungHo/concurrency-stock)
+- [Concurrency and Locking With JPA: Everything You Need to Know](https://dzone.com/articles/concurrency-and-locking-with-jpa-everything-you-ne)
 - [https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_exclusive_lock](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_exclusive_lock)
 - [https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
 - [https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html](https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html)
+- [Pessimistic Locking in JPA](https://www.baeldung.com/jpa-pessimistic-locking)
+- [Optimistic Locking in JPA](https://www.baeldung.com/jpa-optimistic-locking)

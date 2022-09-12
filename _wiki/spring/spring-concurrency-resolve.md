@@ -147,6 +147,7 @@ public synchronized void decrease(Long id, Long quantity) {
   - 이름과 함께 lock 을 획득. 해당 lock 은 다른 세션에서 획득 및 해제가 불가능
   - Pessimistic Lock 은 Stock 자체에 Lock 을 걸었다면, Named Lock 은 별도 Lock 이라는 공간을 통해서 Lock 을 설정
   - 주의할 점은 transaction 이 종료될 때 lock 이 자동으로 해제되지 않음. 별도의 명령어로 해제를 수행해주거나 선점시간이 끝나야 해제가 됨
+  - Named Lock 사용 시 데이터 소스를 분리(Ex. JDBCTemplate 등) 해야 함. 데이터소스를 분리하지않고 하나로 사용하게되면 커넥션풀이 부족해지는 현상을 겪을 수 있어서 락을 사용하지 않는 다른서비스까지 영향을 끼칠 수 있음
 
 ### Pessimistic Lock
 
@@ -241,6 +242,8 @@ public class OptimisticLockStockFacade {
     this.optimisticLockStockService = optimisticLockStockService;
   }
 
+  // 실패 시 재시도 로직은, 어떻게 구현할 것인지 정책에 따라 달라질 수 있다.
+  // Ex. 3번만 재시도 등
   public void decrease(Long id, Long quantity) throws InterruptedException {
     while (true) {
       try {
@@ -347,6 +350,7 @@ select release_lock(?)
         2. Thread-B 가 setnx 로 lock 획득 시도 -> 실패 -> 락을 획득할 때 까지 일정시간(Ex. 100ms) 후 재시도
     - 단점은 Lock 을 획득하려고 계속 시도하기 때문에 트래픽이 증가하고, 요청/응답시간이 늘어남
 - __Redisson__
+  - redisson-spring-boot-starter Library 를 별도로 추가해야 함
   - pubsub 기반 으로 Lock 구현 제공(Spin Lock 사용 X)
     - channel 을 하나 만들고, Lock 을 점유 중인 스레드가 Lock 을 획득하려고 대기중인 스레드에게 해제를 알려주면, 안내를 받은 스레드가 Lock 획득을 시도하는 방식
     - pubsub 기능을 사용해 Spin Lock 이 레디스에 주는 엄청난 트래픽을 줄임
@@ -363,6 +367,18 @@ select release_lock(?)
     - 대기 없는 tryLock 오퍼레이션을 하여 락 획득에 성공하면 true 반환. 이는 경합이 없을 때 아무런 오버헤드 없이 락을 획득할 수 있도록 해줌
     - pubsub 을 이용하여 메시지가 올 때까지 대기하다가 락이 해제되었다는 메시지가 오면 대기를 풀고 다시 락 획득을 시도. 락 획득에 실패하면 다시 락 해제 메시지를 기다림. 이 프로세스를 타임아웃시까지 반복함
     - 타임아웃이 지나면 최종적으로 false 를 반환하고 락 획득에 실패했음을 알림. 대기가 풀릴 때 타임아웃 여부를 체크하므로 타임아웃이 발생하는 순간은 파라미터로 넘긴 타임아웃시간과 약간 차이가 있을 수 있음
+- __실무에서는__
+  - 재시도가 필요하지 않은 lock 은 Lettuce 사용
+  - 재시도가 필요한 경우에는 redisson 사용
+
+## MySQL vs Redis
+
+- __MySQL__
+  - 이미 MySQL 을 사용하고 있다면 별도의 비용 없이 사용 가능
+  - Redis 보다는 성능이 좋지 않음
+- __Redis__
+  - 활용 중인 Redis 가 없다면 별도의 구축비용과 인프라 관리비용이 발생함
+  - In Memory DB 이기 때문에 MySQL 보다 성능이 좋아서 더 많은 요청을 처리함
 
 ## Links
 
@@ -375,3 +391,4 @@ select release_lock(?)
 - [Optimistic Locking in JPA](https://www.baeldung.com/jpa-optimistic-locking)
 - [Hyperconnect Redis Distributed Lock](https://hyperconnect.github.io/2019/11/15/redis-distributed-lock-1.html)
 - [Redisson](https://github.com/redisson/redisson/wiki/Table-of-Content)
+- [Talking about Several Ways of Using Distributed Locks](https://developpaper.com/talking-about-several-ways-of-using-distributed-locks-redis-zookeeper-database/)

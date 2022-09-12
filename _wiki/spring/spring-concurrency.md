@@ -326,6 +326,10 @@ __모든 스레드가 공유하고 있는 하나의 파일안의 내용을 인�
 
 Writer 객체를 메서드 내부에서 생성해서 쓰던, 필드로 관리하던, 파일을 쓰고/읽는 메서드를 호출하는 클라이언트의 입장에서는 동시성 이슈가 발생한 것처럼 보일 것입니다.
 
+## Next
+
+- [Concurrency resolution](https://baekjungho.github.io/wiki/spring/spring-concurrency-resolve/)
+
 ## Links
 
 - [Process and Thread](https://github.com/NKLCWDT/cs/blob/main/Operating%20System/%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%EC%99%80%20%EC%93%B0%EB%A0%88%EB%93%9C.md)

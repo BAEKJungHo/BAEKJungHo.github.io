@@ -29,6 +29,7 @@ regenerate: true
 
 * [[/spring/spring-pojo]]
 * [[/spring/spring-concurrency]]
+* [[/spring/spring-concurrency-resolve]]
 * [[/spring/spring-converter]]
 * [[/spring/spring-psa]]
 * [[/spring/spring-di]]

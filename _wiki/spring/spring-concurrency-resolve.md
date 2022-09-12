@@ -335,6 +335,22 @@ select get_lock(?, 3000)
 select release_lock(?)
 ```
 
+## Distributed Lock
+
+- __Lettuce__
+  - setnx(SET IF NOT EXIST, KEY 와 VALUE 를 SET 할 때 기존에 값이 없을 때만 SET) 명령어를 활용하여 분산락 구현
+  - Spin Lock 방식
+    - Retry 로직을 개발자가 작성해야 함
+    - Lock 을 획득하려는 스레드가 Lock 을 사용할 수 있는 반복적으로 확인하면서 Lock 획득(acquire)을 시도하는 방식
+      - ```
+        1. Thread-A 가 setnx 로 lock 획득  
+        2. Thread-B 가 setnx 로 lock 획득 시도 -> 실패 -> 락을 획득할 때 까지 일정시간(Ex. 100ms) 후 재시도
+        ```
+    - 단점은 Lock 을 획득하려고 계속 시도하기 때문에 트래픽이 증가하고, 요청/응답시간이 늘어남
+- __Redisson__
+  - pub-sub 기반 으로 Lock 구현 제공
+    - channel 을 하나 만들고, Lock 을 점유 중인 스레드가 Lock 을 획득하려고 대기중인 스레드에게 해제를 알려주면, 안내를 받은 스레드가 Lock 획득을 시도하는 방식
+
 ## Links
 
 - [재고시스템으로 알아보는 동시성 이슈 해결방법](https://www.inflearn.com/course/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%B4%EC%8A%88-%EC%9E%AC%EA%B3%A0%EC%8B%9C%EC%8A%A4%ED%85%9C/dashboard)
@@ -344,3 +360,5 @@ select release_lock(?)
 - [https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html](https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html)
 - [Pessimistic Locking in JPA](https://www.baeldung.com/jpa-pessimistic-locking)
 - [Optimistic Locking in JPA](https://www.baeldung.com/jpa-optimistic-locking)
+- [Hyperconnect Redis Distributed Lock](https://hyperconnect.github.io/2019/11/15/redis-distributed-lock-1.html)
+- [Redisson](https://github.com/redisson/redisson/wiki/Table-of-Content)

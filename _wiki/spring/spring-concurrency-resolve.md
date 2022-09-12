@@ -139,11 +139,13 @@ public synchronized void decrease(Long id, Long quantity) {
   - 일반 select 는 별다른 lock 이 없기 때문에 조회 가능
 - __Optimistic Lock__
   - 실제로 lock 을 걸지 않고 버전(version column)을 이용함으로써 정합성을 맞추는 방법
+  - 별도의 lock 을 걸지 않기 때문에 Pessimistic Lock 보다 성능상 이점이 있음. 단점으로는 업데이트가 실패했을 때 재시도 로직을 개발자가 직접 작성해야 함. 또한 충돌이 빈번하게 일어나거나 그렇게 예상 되면 Pessimistic Lock 이 더 좋을 수 있음
   - 먼저 데이터를 읽은 후에 update 를 수행할 대 현재 내가 읽은 버전이 맞는지 확인하여 업데이트
   - 내가 읽은 버전에서 수정사항이 생겼을 경우에는 application 에서 다시 읽은 후에 작업을 수행해야 함
 - __Named Lock__
   - 이름을 가진 metadata locking
   - 이름과 함께 lock 을 획득. 해당 lock 은 다른 세션에서 획득 및 해제가 불가능
+  - Pessimistic Lock 은 Stock 자체에 Lock 을 걸었다면, Named Lock 은 별도 Lock 이라는 공간을 통해서 Lock 을 설정
   - 주의할 점은 transaction 이 종료될 때 lock 이 자동으로 해제되지 않음. 별도의 명령어로 해제를 수행해주거나 선점시간이 끝나야 해제가 됨
 
 ### Pessimistic Lock
@@ -258,6 +260,79 @@ public class OptimisticLockStockFacade {
 ```sql
 -- where 조건에 version 이 추가됨
 update stock set product_id=?, quantity=?, version=? where id=? and version=?
+```
+
+### Named Lock
+
+- __Query 작성__
+
+```java
+public interface LockRepository extends JpaRepository<Stock, Long> {
+    @Query(value = "select get_lock(:key, 3000)", nativeQuery = true)
+    void getLock(@Param("key") String key);
+
+    @Query(value = "select release_lock(:key)", nativeQuery = true)
+    void releaseLock(@Param("key") String key);
+}
+```
+
+- __부모 트랜잭션 로직 작성__
+
+```java
+@Component
+public class NamedLockStockFacade {
+
+  private final LockRepository lockRepository;
+
+  private final NamedLockStockService stockService;
+
+  public NamedLockStockFacade(LockRepository lockRepository, NamedLockStockService stockService) {
+    this.lockRepository = lockRepository;
+    this.stockService = stockService;
+  }
+
+  public void decrease(Long id, Long quantity) {
+    try {
+      lockRepository.getLock(id.toString());
+      stockService.decrease(id, quantity);
+    } finally {
+      lockRepository.releaseLock(id.toString());
+    }
+  }
+}
+```
+
+- __StockService 로직 작성__
+
+```java
+@Service
+public class NamedLockStockService {
+
+    private final StockRepository stockRepository;
+
+    public NamedLockStockService(StockRepository stockRepository) {
+        this.stockRepository = stockRepository;
+    }
+
+    /**
+     * 부모의 트랜잭션과 동일한 범위로 묶인다면 Database 에 commit 되기 전에 Lock 이 풀리는 현상이 발생함
+     * 그렇기 때문에 별도의 트랜잭션으로 분리하여 Database 에 commit 이 된 후, Lock 을 해제하도록 함
+     * 즉, Propagation.REQUIRES_NEW 설정을 통해, Lock 을 해제하기 전에 Database 에 commit 이 되도록 함
+     */
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
+    public void decrease(Long id, Long quantity) {
+        Stock stock = stockRepository.findById(id).orElseThrow();
+        stock.decrease(quantity);
+        stockRepository.saveAndFlush(stock);
+    }
+}
+```
+
+- __Console 에 찍힌 쿼리 로그__
+
+```sql
+select get_lock(?, 3000)
+select release_lock(?)
 ```
 
 ## Links

@@ -104,6 +104,7 @@ public class TransactionStockService {
 
 ```java
 // Race Condition 이 발생하지 않는 코드
+// decrease 메서드가 트랜잭션으로 묶여있지 않기 때문에, saveAndFlush 호출하는 시점에 값이 DB 에 갱신 됨
 public synchronized void decrease(Long id, Long quantity) {
     Stock stock = stockRepository.findById(id).orElseThrow();
     stock.decrease(quantity);

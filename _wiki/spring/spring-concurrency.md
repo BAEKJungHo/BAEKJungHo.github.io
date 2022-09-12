@@ -311,7 +311,7 @@ public ApplicationRunner appRunner() throws Exception {
 - __매개변수로 넘겨서 사용하면 각 스레드마다 별도의 Stack area 가 생기므로, 동시성 이슈가 발생하지 않을 것만 같다.__
 - 출력 결과는 마지막에 작업이 끝난 Thread 를 기준으로 해당 문자열만 파일에 적혀있을 것이다.
 - 읽기 일관성은 보장하지 못한다.
-- __만약에 FileService 의 write 메서드에 synchronzied 를 적어주면 어떻게 될까?__
+- __만약에 FileService 의 write 메서드에 synchronized 를 적어주면 어떻게 될까?__
   - 동시성 이슈가 발생하지 않을 것만 같다.
   - 읽기 일관성이 보장이 된다.
   - 별도의 writer 객체를 사용하기 때문에, Thread A - C - B 순서대로 작업을 하게되면 마지막에 끝난 Thread-B 를 기준으로 해당 문자열만 파일에 적혀있다.

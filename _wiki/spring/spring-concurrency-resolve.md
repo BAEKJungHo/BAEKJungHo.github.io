@@ -124,7 +124,29 @@ public synchronized void decrease(Long id, Long quantity) {
 
 - synchronized 는 하나의 프로세스 안에서만 보장됨. 따라서, 서버가 1대일 때는 문제 없지만, 서버가 여러대라면 문제가 발생할 수 있음
 
+## Lock
+
+> Database 에서 제공하는 Lock 을 활용하여 Race Condition 을 해결할 수 있다.
+
+- __Optimistic lock__
+  - 실제로 lock 을 걸지 않고 버전(version column)을 이용함으로써 정합성을 맞추는 방법
+  - 먼저 데이터를 읽은 후에 update 를 수행할 대 현재 내가 읽은 버전이 맞는지 확인하여 업데이트
+  - 내가 읽은 버전에서 수정사항이 생겼을 경우에는 application 에서 다시 읽은 후에 작업을 수행해야 함
+- __Pessimistic lock__
+  - 실제로 데이터에 lock 을 걸어서 정합성을 맞추는 방법. exclusive lock 을 걸게 되면 다른 트랜잭션에서는 lock 이 해제되기 전에 데이터를 가져갈 수 없음. Deadlock 이 걸릴 수 있기 때문에 주의하여 사용해야 함
+  - 다른 트랜잭션이 특정 row 의 lock 을 얻는 것을 방지
+    - A 트랜잭션이 끝날 때 까지 기다렸다가 B 트랜잭션이 lock 을 획득
+  - 특정 row 를 update 하거나 delete 할 수 있음
+  - 일반 select 는 별다른 lock 이 없기 때문에 조회 가능
+- __Named lock__
+  - 이름을 가진 metadata locking
+  - 이름과 함께 lock 을 획득. 해당 lock 은 다른 세션에서 획득 및 해제가 불가능
+  - 주의할 점은 transaction 이 종료될 때 lock 이 자동으로 해제되지 않음. 별도의 명령어로 해제를 수행해주거나 선점시간이 끝나야 해제가 됨
+
 ## Links
 
 - [재고시스템으로 알아보는 동시성 이슈 해결방법](https://www.inflearn.com/course/%EB%8F%99%EC%8B%9C%EC%84%B1%EC%9D%B4%EC%8A%88-%EC%9E%AC%EA%B3%A0%EC%8B%9C%EC%8A%A4%ED%85%9C/dashboard)
 - [concurrency stock source code](https://github.com/BAEKJungHo/concurrency-stock)
+- [https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_exclusive_lock](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_exclusive_lock)
+- [https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html](https://dev.mysql.com/doc/refman/8.0/en/innodb-locking.html)
+- [https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html](https://dev.mysql.com/doc/refman/8.0/en/locking-functions.html)

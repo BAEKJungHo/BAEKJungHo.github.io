@@ -35,6 +35,17 @@ latex   : true
           - JPA 관련 객체를 생성하는 설정 클래스
       - 사용자 정의 BatchConfigurer 인터페이스를 구현하여 사용할 수 있음
 
+### Job, Step, Tasklet
+
+> Job > Step > Tasklet 순서로 실행
+
+1. Configuration 설정: 하나의 배치 Job 을 정의하고 빈 설정
+2. JobBuilderFactory: Job 을 생성하는 빌더 팩토리
+3. StepBuilderFactory: Step 을 생성하는 빌더 팩토리
+4. Job: Job 생성
+5. Step: Step 생성
+6. Tasklet: Step 안에서 단일 태스크로 수행되는 로직 구현
+
 ## Test
 
 - [JobLauncherTestUtils](https://docs.spring.io/spring-batch/docs/current/api/org/springframework/batch/test/JobLauncherTestUtils.html) 로 테스트 가능
@@ -87,3 +98,4 @@ latex   : true
 - [Spring Batch Exception Handling Example, Examples Java Code Geeks - 2018](https://examples.javacodegeeks.com/enterprise-java/spring/batch/spring-batch-exception-handling-example/)
 - [egovframework:rte2:brte:batch_core:parallel_process [eGovFrame]](http://www.egovframe.go.kr/wiki/doku.php?id=egovframework:rte2:brte:batch_core:parallel_process)
 - [Conditional Flow in Spring Batch - Baeldung](https://www.baeldung.com/spring-batch-conditional-flow)
+- [Spring Boot 기반으로 개발하는 Spring Batch](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-%EB%B0%B0%EC%B9%98/dashboard)

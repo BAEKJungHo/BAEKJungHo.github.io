@@ -39,6 +39,7 @@ regenerate: true
 * [[/spring/spring-sqlinjection]]
 * [[/spring/spring-jdbc]]
 * [[/spring/spring-graceful-shutdown]]
+* [[/spring/spring-batch]]
 
 ## msa
 

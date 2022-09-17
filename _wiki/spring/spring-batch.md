@@ -4,7 +4,7 @@ title   : Spring Framework Batch
 summary : 
 date    : 2022-08-18 15:05:32 +0900
 updated : 2022-08-18 15:15:24 +0900
-tag     : spring, batch
+tag     : spring batch
 toc     : true
 comment : true
 public  : true

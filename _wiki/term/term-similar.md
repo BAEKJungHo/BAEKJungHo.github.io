@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Similar Terminology Theorem
-summary : 
+summary : 유사 용어 정리
 date    : 2022-08-19 15:05:32 +0900
 updated : 2022-08-19 15:15:24 +0900
 tag     : term

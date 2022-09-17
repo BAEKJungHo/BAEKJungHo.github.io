@@ -45,3 +45,4 @@ latex   : true
 - [Backpressure mechanism in Spring Web-Flux - stackoverflow](https://stackoverflow.com/questions/52244808/backpressure-mechanism-in-spring-web-flux)
 - [Webflux 공부하자 1편 - nurinamu](https://www.nurinamu.com/dev/2020/04/09/why-webflux-1/)
 - [Spring’s WebFlux / Reactor Parallelism and Backpressure](https://www.e4developer.com/2018/04/28/springs-webflux-reactor-parallelism-and-backpressure/)
+- [On Backpressure and Ways to Reshape Requests](https://projectreactor.io/docs/core/release/reference/#_on_backpressure_and_ways_to_reshape_requests)

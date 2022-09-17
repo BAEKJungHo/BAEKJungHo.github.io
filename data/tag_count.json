@@ -4,6 +4,10 @@
   "size": 3
  },
  {
+  "name": "batch",
+  "size": 1
+ },
+ {
   "name": "cleancode",
   "size": 2
  },
@@ -73,6 +77,10 @@
  },
  {
   "name": "spring",
-  "size": 17
+  "size": 16
+ },
+ {
+  "name": "spring,",
+  "size": 1
  }
 ]

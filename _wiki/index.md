@@ -144,6 +144,10 @@ regenerate: true
 
 * [[/nodejs/node-express]]
 
+## terms
+
+* [[/term/term-similar]]
+
 ## etc
 
 * [[/etc/mathjax-latex]]

@@ -78,5 +78,9 @@
  {
   "name": "spring",
   "size": 17
+ },
+ {
+  "name": "term",
+  "size": 2
  }
 ]

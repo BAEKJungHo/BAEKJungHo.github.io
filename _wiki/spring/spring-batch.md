@@ -52,6 +52,16 @@ latex   : true
 
 - DB 와 연동하기 위해서 꼭 생성되어야 하는 테이블
 - org.springframework.batch.core 에 `schmea-*.sql` 형태로 존재
+- 스키마 생성
+  - 수동 생성: 쿼리 복사 후 직접 실행
+  - 자동 생성: spring.batch.jdbc.initialize-schema 설정
+    - ALWAYS: 스크림트 항상 실행, RDBMS 설정이 되어있을 경우 내장 DB 보다 우선으로 실행
+    - EMBEDDED: 내장 DB 일때만 실행되며 스키마가 자동생성됨. 기본값
+    - NEVER
+      - 스크림트 항상 실행 안함
+      - 내장 DB 일 경우 스크립트가 생성이 안되기 때문에 오류 발생
+      - __운영에서 수동으로 스크립트 생성 후 NEVER 옵션으로 설정하는 것을 권장__
+  - MySQL 이나 PostgreSQL 을 사용하는 경우 별도의 [Sequence Table](https://docs.spring.io/spring-batch/docs/current/reference/html/schema-appendix.html#metaDataIdentity)을 생성해야 함
 
 ## Test
 

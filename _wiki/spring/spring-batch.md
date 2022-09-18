@@ -63,6 +63,20 @@ latex   : true
       - __운영에서 수동으로 스크립트 생성 후 NEVER 옵션으로 설정하는 것을 권장__
   - MySQL 이나 PostgreSQL 을 사용하는 경우 별도의 [Sequence Table](https://docs.spring.io/spring-batch/docs/current/reference/html/schema-appendix.html#metaDataIdentity)을 생성해야 함
 
+## Job
+
+- 배치 계층 구조에서 가장 상위에 있는 개념
+- 하나의 배치 작업을 의미
+- 배치 Job 을 구성하기 위한 최상위 인터페이스
+  - 기본 구현체는 스프링 배치가 제공
+    - SimpleJob
+      - 순차적으로 Step 을 실행시키는 Job
+    - FlowJob
+      - 특정한 조건과 흐름에 따라 Step 을 실행시키는 Job
+      - Flow 객체를 실행시켜서 작업을 진행
+  - 이 구현체를 Bean 으로 생성해서 실행시키는 구조
+- Job 은 한 개 이상의 Step 으로 구성
+
 ## Test
 
 - [JobLauncherTestUtils](https://docs.spring.io/spring-batch/docs/current/api/org/springframework/batch/test/JobLauncherTestUtils.html) 로 테스트 가능

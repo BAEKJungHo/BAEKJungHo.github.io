@@ -46,6 +46,13 @@ latex   : true
 5. Step: Step 생성
 6. Tasklet: Step 안에서 단일 태스크로 수행되는 로직 구현
 
+## Metadata Schema
+
+![](/resource/wiki/spring-batch/meta-data-erd.png)
+
+- DB 와 연동하기 위해서 꼭 생성되어야 하는 테이블
+- org.springframework.batch.core 에 `schmea-*.sql` 형태로 존재
+
 ## Test
 
 - [JobLauncherTestUtils](https://docs.spring.io/spring-batch/docs/current/api/org/springframework/batch/test/JobLauncherTestUtils.html) 로 테스트 가능

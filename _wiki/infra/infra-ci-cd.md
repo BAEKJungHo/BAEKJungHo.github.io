@@ -4,7 +4,7 @@ title   : cicd devops
 summary : Continuous Integration/Delivery/Deployment
 date    : 2022-09-05 15:54:32 +0900
 updated : 2022-09-05 20:15:24 +0900
-tag     : infra devops ci/cd
+tag     : infra devops
 toc     : true
 comment : true
 public  : true

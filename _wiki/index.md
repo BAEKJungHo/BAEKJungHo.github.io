@@ -9,7 +9,7 @@ regenerate: true
 
 ## build tool
 
-* [[/buildtool/gradle-kotlin-multi-module]]
+* [[/buildtool/gradle-standard]]
 
 ## kotlin
 

@@ -8,6 +8,10 @@
   "size": 1
  },
  {
+  "name": "buildtool",
+  "size": 2
+ },
+ {
   "name": "cleancode",
   "size": 2
  },
@@ -40,6 +44,10 @@
   "size": 4
  },
  {
+  "name": "gradle",
+  "size": 1
+ },
+ {
   "name": "http",
   "size": 6
  },
@@ -57,7 +65,7 @@
  },
  {
   "name": "kotlin",
-  "size": 11
+  "size": 12
  },
  {
   "name": "latex",

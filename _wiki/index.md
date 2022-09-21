@@ -7,6 +7,10 @@ comment : false
 regenerate: true
 ---
 
+## build tool
+
+* [[/buildtool/gradle-kotlin-multi-module]]
+
 ## kotlin
 
 * [[/kotlin/kotlin-sequence]]

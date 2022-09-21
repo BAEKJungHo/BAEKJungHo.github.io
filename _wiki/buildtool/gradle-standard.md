@@ -47,7 +47,7 @@ pluginManagement {
 
 rootProject.name = "platform-server"
 include(
-    "auth-server",
+    "auth-server"
 )
 ```
 

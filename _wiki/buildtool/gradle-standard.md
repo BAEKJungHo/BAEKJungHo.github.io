@@ -69,3 +69,4 @@ id 에는 artifact 를 지정하면 된다.
   - [Gradle Dependencies](https://kwonnam.pe.kr/wiki/gradle/dependencies)
 - [Gradle Logging](https://docs.gradle.org/current/userguide/logging.html)
   - [Gradle Logging - kwonnam](https://kwonnam.pe.kr/wiki/gradle/logging)
+- [Kotlin 으로 Spring 개발할 때](https://cheese10yun.github.io/spring-kotlin/)

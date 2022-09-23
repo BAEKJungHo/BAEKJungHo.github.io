@@ -79,6 +79,7 @@ regenerate: true
 * [[/infra/infra-awsec2ssh]]
 * [[/infra/infra-ip]]
 * [[/infra/infra-ci-cd]]
+* [[/infra/infra-deployment]]
 
 ## git
 

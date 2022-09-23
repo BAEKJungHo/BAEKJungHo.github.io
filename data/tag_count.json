@@ -33,7 +33,7 @@
  },
  {
   "name": "devops",
-  "size": 1
+  "size": 2
  },
  {
   "name": "etc",
@@ -53,7 +53,7 @@
  },
  {
   "name": "infra",
-  "size": 21
+  "size": 22
  },
  {
   "name": "java",

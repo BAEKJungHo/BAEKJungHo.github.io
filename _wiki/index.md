@@ -23,6 +23,7 @@ regenerate: true
 * [[/kotlin/kotlin-coroutines]]
 * [[/kotlin/kotlin-simplesyntax]]
 * [[/kotlin/kotlin-receiver-lambda]]
+* [[/kotlin/kotlin-mockk]]
 
 ## java
 

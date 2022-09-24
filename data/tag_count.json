@@ -65,7 +65,7 @@
  },
  {
   "name": "kotlin",
-  "size": 12
+  "size": 13
  },
  {
   "name": "latex",
@@ -74,6 +74,10 @@
  {
   "name": "methodology",
   "size": 5
+ },
+ {
+  "name": "mockk",
+  "size": 1
  },
  {
   "name": "msa",

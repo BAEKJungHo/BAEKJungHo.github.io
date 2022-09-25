@@ -18,7 +18,8 @@ latex   : true
 
 ## SecurityContextHolder
 
-- 기본전략은 ThreadLocal 이다.
+- Default Strategy: ThreadLocal
+  - [Thread Local 사용 시 주의해야할 점](https://baekjungho.github.io/wiki/spring/spring-concurrency/#threadlocal-%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%A0-%EB%95%8C%EB%8F%84-%EC%A3%BC%EC%9D%98%EC%A0%90%EC%9D%B4-%EC%9E%88%EB%8A%94%EB%8D%B0)
 - SecurityContext 를 저장
   - MODE_THREADLOCAL: 스레드당 SecurityContext 객체 할당
   - MODE_INHERITABLETHREADLOCAL: 메인 스레드와 자식 스레드에 관하여 동일한 SecurityContext 유지

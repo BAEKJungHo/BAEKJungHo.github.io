@@ -25,6 +25,7 @@ regenerate: true
 * [[/kotlin/kotlin-receiver-lambda]]
 * [[/kotlin/kotlin-mockk]]
 * [[/kotlin/kotlin-utils]]
+* [[/kotlin/kotlin-companion-object]]
 
 ## java
 

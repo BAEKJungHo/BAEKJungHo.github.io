@@ -87,6 +87,38 @@ latex   : true
 - [Spring Batch unit test example - Mkyoung.com](https://mkyong.com/spring-batch/spring-batch-unit-test-example/)
 - [JobLauncherTestUtils 를 이용한 Spring Batch Test](http://hwannnn.blogspot.com/2018/06/spring-batch-test-joblaunchertestutils_5.html)
 
+## JobExecutionAlreadyRunningException
+
+CI/CD 설정을 통해 배치 애플리케이션에 대해 잦은 배포를 하게된다면 JobExecutionAlreadyRunningException 에러가 발생할 수 있다. 이때 아래 쿼리를 통해서 문제를 해결할 수 있다.
+
+- __BatchStatus 와 ExitStatus 를 이용한 문제 해결 방법__
+
+```sql
+UPDATE 
+    batch_job_execution 
+SET 
+    end_time = current_timestamp, 
+    status = 'FAILED', 
+    exit_code = 'COMPLETED' 
+WHERE 
+   job_execution_id =
+      (SELECT 
+         MAX(job_execution_id) 
+       FROM
+         batch_job_execution 
+       WHERE 
+         job_instance_id = #{jobInstanceId}
+      );
+```
+
+- [ExitStatus (Spring Batch 4.3.7 API)](https://docs.spring.io/spring-batch/docs/current/api/org/springframework/batch/core/ExitStatus.html)
+  - Step 실행 후의 상태를 의미
+  - 기본적으로 COMPLETED 상태를 가진 Step 은 Job 재시작 시 실행하지 않고 스킵함
+- [BatchStatus (Spring Batch 4.3.6 API)](https://docs.spring.io/spring-batch/docs/current/api/org/springframework/batch/core/BatchStatus.html)
+  - Job 이 FAILED 상태이면 실패한 STEP 부터 재시작 함
+
+__따라서, FAILED(BatchStatus) + COMPLETED(ExitStatus) 인 경우에는 Job 을 재시작 하지 않는다.__
+
 ## Links
 
 - [Spring Batch - Docs](https://spring.io/projects/spring-batch)

@@ -47,6 +47,7 @@ regenerate: true
 * [[/spring/spring-graceful-shutdown]]
 * [[/spring/spring-batch]]
 * [[/spring/spring-backpressure]]
+* [[/spring/spring-security]]
 
 ## msa
 

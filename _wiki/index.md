@@ -24,6 +24,7 @@ regenerate: true
 * [[/kotlin/kotlin-simplesyntax]]
 * [[/kotlin/kotlin-receiver-lambda]]
 * [[/kotlin/kotlin-mockk]]
+* [[/kotlin/kotlin-utils]]
 
 ## java
 

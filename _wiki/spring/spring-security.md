@@ -123,6 +123,7 @@ Spring Security enables CSRF protection by default since version 4
   - [CSRF With Stateless REST API](https://www.baeldung.com/csrf-stateless-rest-api)
   - [How to get CSRF for Current Session](https://rusyasoft.github.io/java/2019/02/15/spring-security-csrf-from-context/)
   - [Cross Site Request Forgery (CSRF) - What is a CSRF Attack](https://docs.spring.io/spring-security/reference/features/exploits/csrf.html#csrf-explained)
+  - [Spring Security + Ajax 호출 시 CSRF 관련 403 Forbidden 에러](https://www.popit.kr/spring-security-ajax-%ED%98%B8%EC%B6%9C-%EC%8B%9C-csrf-%EA%B4%80%EB%A0%A8-403-forbidden-%EC%97%90%EB%9F%AC/)
 
 ### Does REST API Require CSRF Protection?
 

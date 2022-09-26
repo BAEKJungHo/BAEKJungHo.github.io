@@ -58,7 +58,7 @@ If you don't use a SAM conversion, you will need to write code like this:
 
 ```kotlin
 // Creating an instance of a class
-val isEven = object : IntPredicate {
+val isEven = object: IntPredicate {
    override fun accept(i: Int): Boolean {
        return i % 2 == 0
    }
@@ -124,14 +124,14 @@ Stub 을 생성하는 것은 kotlinc 의 분석 비용의 3분의 1이나 차지
 
 KSP 는 Java 관점이 아닌 Kotlin 의 관점에서 접근하며, kapt 에 비해 약 2배 빨라졌다고 한다. kotlin 사이트에서도 KSP 를 소개하고 있지만 공식적으론 Google 에서 관리하는 오픈소스 프로젝트이다.
 
-Another way to think of KSP is as a preprocessor framework of Kotlin programs. the data flow in a compilation can be described in the following steps:
+Another way to think of KSP is as a preprocessor framework of Kotlin programs. The data flow in a compilation can be described in the following steps:
 
 1. Processors read and analyze source programs and resources.
 2. Processors generate code or other forms of output.
 3. The Kotlin compiler compiles the source programs together with the generated code.
 
 - __장점__
-  - 기존에는 코틀린 전용 애노테이션 프로세서가 없었기 때문에, javax.lang.model 패키지에서 제공하는 API 를 통해 어노테이션 프로세서를 작성했다. 이 프로세서를 수행하기 위해 KAPT 는 코틀린 코드를 자바 Stub 으로 컴파일하게 되며 이 비용은 컴파일 전체의 1/3 을 차지한다. KSP 를 사용하면 약 2배 가량 컴파일 시간이 빨라짐
+  - 기존에는 코틀린 전용 어노테이션 프로세서가 없었기 때문에, javax.lang.model 패키지에서 제공하는 API 를 통해 어노테이션 프로세서를 작성했다. 이 프로세서를 수행하기 위해 KAPT 는 코틀린 코드를 자바 Stub 으로 컴파일하게 되며 이 비용은 컴파일 전체의 1/3 을 차지한다. KSP 를 사용하면 약 2배 가량 컴파일 시간이 빨라짐
   - 코틀린 친화적. extension function, Declaration-Site Variance, local functions 등을 이해함
   - 타입을 모델링하고 동등성 및 할당호환성(assign-compatibility)과 같은 기본적인 타입을 검사하는 기능을 제공
   - KSP 는 JVM 에 종속되지 않도록 설계되었기 때문에 향후 다른 플랫폼에 보다 쉽게 적용할 수 있음

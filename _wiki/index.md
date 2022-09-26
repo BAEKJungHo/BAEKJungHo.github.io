@@ -26,6 +26,7 @@ regenerate: true
 * [[/kotlin/kotlin-mockk]]
 * [[/kotlin/kotlin-utils]]
 * [[/kotlin/kotlin-companion-object]]
+* [[/kotlin/kotlin-ksp]]
 
 ## java
 

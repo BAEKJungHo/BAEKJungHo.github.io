@@ -65,7 +65,11 @@
  },
  {
   "name": "kotlin",
-  "size": 15
+  "size": 16
+ },
+ {
+  "name": "ksp",
+  "size": 1
  },
  {
   "name": "latex",
@@ -90,6 +94,10 @@
  {
   "name": "nodejs",
   "size": 2
+ },
+ {
+  "name": "sam",
+  "size": 1
  },
  {
   "name": "security",

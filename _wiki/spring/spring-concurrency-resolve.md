@@ -340,36 +340,147 @@ select release_lock(?)
 
 ## Distributed Lock
 
-- __Lettuce__
-  - setnx(SET IF NOT EXIST, KEY 와 VALUE 를 SET 할 때 기존에 값이 없을 때만 SET) 명령어를 활용하여 분산락 구현
-  - Spin Lock 방식
-    - Retry 로직을 개발자가 작성해야 함
-    - Lock 에 타임아웃이 지정되지 않아서 락을 획득하지 못하면 무한 루프를 돌게 됨. 따라서 일정 시간이 지나면 락이 만료되도록 구현해야 함. 그래서 락을 획득하는 최대 허용시간을 정해주거나, 최대 허용 횟수를 정해주는 것이 좋음. 만약 락을 획득하는데에 실패한다면 연산을 수행할 수 없는 상태이기에 Exception 을 던짐
-    - Lock 을 획득하려는 스레드가 Lock 을 사용할 수 있는 반복적으로 확인하면서 Lock 획득(acquire)을 시도하는 방식
-        1. Thread-A 가 setnx 로 lock 획득  
-        2. Thread-B 가 setnx 로 lock 획득 시도 -> 실패 -> 락을 획득할 때 까지 일정시간(Ex. 100ms) 후 재시도
-    - 단점은 Lock 을 획득하려고 계속 시도하기 때문에 트래픽이 증가하고, 요청/응답시간이 늘어남
-- __Redisson__
-  - redisson-spring-boot-starter Library 를 별도로 추가해야 함
-  - pubsub 기반 으로 Lock 구현 제공(Spin Lock 사용 X)
-    - channel 을 하나 만들고, Lock 을 점유 중인 스레드가 Lock 을 획득하려고 대기중인 스레드에게 해제를 알려주면, 안내를 받은 스레드가 Lock 획득을 시도하는 방식
-    - pubsub 기능을 사용해 Spin Lock 이 레디스에 주는 엄청난 트래픽을 줄임
-  - tryLock 메서드에 타임아웃을 명시하도록 되어있음
-    - ```java
-      // RedissonLock 의 tryLock 메소드 시그니처
-      // @Param waitTIme 락 획득을 대기할 타임아웃
-      // @Param leaseTime 락이 만료되는 시간
-      public boolean tryLock(long waitTime, long leaseTime, TimeUnit unit) throws InterruptedException
-      ```
-    - waitTime 만큼의 시간이 지나면 false 가 반환되며 락 획득에 실패했다고 알려줌
-    - leaseTime 만큼의 시간이 지나면 락이 만료되어 사라지기 때문에 애플리케이션에서 락을 해제해주지 않아도 다른 스레드 혹은 애플리케이션에서 락을 획득할 수 있음. 따라서 무한 루프에 빠질 위험이 사라짐
-  - __Redisson Lock 획득 프로세스__
-    - 대기 없는 tryLock 오퍼레이션을 하여 락 획득에 성공하면 true 반환. 이는 경합이 없을 때 아무런 오버헤드 없이 락을 획득할 수 있도록 해줌
-    - pubsub 을 이용하여 메시지가 올 때까지 대기하다가 락이 해제되었다는 메시지가 오면 대기를 풀고 다시 락 획득을 시도. 락 획득에 실패하면 다시 락 해제 메시지를 기다림. 이 프로세스를 타임아웃시까지 반복함
-    - 타임아웃이 지나면 최종적으로 false 를 반환하고 락 획득에 실패했음을 알림. 대기가 풀릴 때 타임아웃 여부를 체크하므로 타임아웃이 발생하는 순간은 파라미터로 넘긴 타임아웃시간과 약간 차이가 있을 수 있음
+### Lettuce
+
+- setnx(SET IF NOT EXIST, KEY 와 VALUE 를 SET 할 때 기존에 값이 없을 때만 SET) 명령어를 활용하여 분산락 구현
+- Spin Lock 방식
+  - Retry 로직을 개발자가 작성해야 함
+  - Lock 에 타임아웃이 지정되지 않아서 락을 획득하지 못하면 무한 루프를 돌게 됨. 따라서 일정 시간이 지나면 락이 만료되도록 구현해야 함. 그래서 락을 획득하는 최대 허용시간을 정해주거나, 최대 허용 횟수를 정해주는 것이 좋음. 만약 락을 획득하는데에 실패한다면 연산을 수행할 수 없는 상태이기에 Exception 을 던짐
+  - Lock 을 획득하려는 스레드가 Lock 을 사용할 수 있는 반복적으로 확인하면서 Lock 획득(acquire)을 시도하는 방식
+      1. Thread-A 가 setnx 로 lock 획득  
+      2. Thread-B 가 setnx 로 lock 획득 시도 -> 실패 -> 락을 획득할 때 까지 일정시간(Ex. 100ms) 후 재시도
+  - 단점은 Lock 을 획득하려고 계속 시도하기 때문에 트래픽이 증가하고, 요청/응답시간이 늘어남
+
+### Redisson
+
+- redisson-spring-boot-starter Library 를 별도로 추가해야 함
+- pubsub 기반 으로 Lock 구현 제공(Spin Lock 사용 X)
+  - channel 을 하나 만들고, Lock 을 점유 중인 스레드가 Lock 을 획득하려고 대기중인 스레드에게 해제를 알려주면, 안내를 받은 스레드가 Lock 획득을 시도하는 방식
+  - pubsub 기능을 사용해 Spin Lock 이 레디스에 주는 엄청난 트래픽을 줄임
+- tryLock 메서드에 타임아웃을 명시하도록 되어있음
+  - ```java
+    // RedissonLock 의 tryLock 메소드 시그니처
+    // @Param waitTIme 락 획득을 대기할 타임아웃
+    // @Param leaseTime 락이 만료되는 시간
+    public boolean tryLock(long waitTime, long leaseTime, TimeUnit unit) throws InterruptedException
+    ```
+  - waitTime 만큼의 시간이 지나면 false 가 반환되며 락 획득에 실패했다고 알려줌
+  - leaseTime 만큼의 시간이 지나면 락이 만료되어 사라지기 때문에 애플리케이션에서 락을 해제해주지 않아도 다른 스레드 혹은 애플리케이션에서 락을 획득할 수 있음. 따라서 무한 루프에 빠질 위험이 사라짐
+- __Redisson Lock 획득 프로세스__
+  - 대기 없는 tryLock 오퍼레이션을 하여 락 획득에 성공하면 true 반환. 이는 경합이 없을 때 아무런 오버헤드 없이 락을 획득할 수 있도록 해줌
+  - pubsub 을 이용하여 메시지가 올 때까지 대기하다가 락이 해제되었다는 메시지가 오면 대기를 풀고 다시 락 획득을 시도. 락 획득에 실패하면 다시 락 해제 메시지를 기다림. 이 프로세스를 타임아웃시까지 반복함
+  - 타임아웃이 지나면 최종적으로 false 를 반환하고 락 획득에 실패했음을 알림. 대기가 풀릴 때 타임아웃 여부를 체크하므로 타임아웃이 발생하는 순간은 파라미터로 넘긴 타임아웃시간과 약간 차이가 있을 수 있음
 - __실무에서는__
   - 재시도가 필요하지 않은 Lock 은 Lettuce 사용
   - 재시도가 필요한 경우에는 Redisson 사용
+
+### @DistributedLock
+
+> AOP + Custom Annotation + Reflection + Redisson 을 사용하여 분산락을 구현할 수 있다.
+
+- __고려 사항__
+  - 선착순 콘서트 티켓 100장을 판매하려함
+
+#### CustomAnnotation
+
+```kotlin
+@Target(AnnotationTarget.TYPE, AnnotationTarget.FUNCTION)
+@Retention
+annotation class DistributedLock(
+    val fieldName: String = ""
+)
+```
+
+#### AOP 설정
+
+- __Config__
+  - spring-boot-starter-aop dependency 
+  - @EnableAspectJAutoProxy 
+  - @Aspect 
+  - @Component(or component scan 가능한 어노테이션 사용)
+
+```kotlin
+@Component
+@EnableAspectJAutoProxy
+@Aspect
+class DistributedLockAdvice {
+
+  private val log = LoggerFactory.getLogger(this::class.java)
+
+  @Around("execution(* org.ticket.server..controller..*Controller.*(..))")
+  fun invoke(point: ProceedingJoinPoint): Any {
+      val methodSignature = point.getSignature() as MethodSignature
+      val method = methodSignature.getMethod()
+      val payload = point.getArgs()?.[0]
+      val lockAnnotation = method.getDeclaredAnnotation(DistributedLock::class.java)
+
+      val acquireLock = lockAnnotation?.let {
+          lock = getLock(payload, lockAnnotation.fieldName)
+      }
+    
+      if (acquireLock != null) {
+          // TODO tryLock implementation
+      }
+    
+      return try {
+          point.proceed()
+      } finally {
+          if (acquireLock != null && acquireLock.isLocked()) {
+              try {
+                  acquireLock.forceUnlock()
+              } catch(e: Exception) {
+                  log.error(e.message)
+              }
+          }
+      }
+  }
+
+  private fun getLock(payload: Any?, fieldName: String): RLock? {
+      if (payload == null) {
+          return null   
+      }
+    
+      val field = getField(payload.javaClass, fieldName)
+      field.setAccessible(true)
+      val value = field.get(request)?.toString() ?: null
+    
+      return redisClient.getLock(value)
+  }
+  
+  private fun getField(payload: Any, fieldName: String) {
+      // TODO Reflection 
+  }
+}
+```
+
+#### Controller
+
+```kotlin
+class TicketDto {
+    data class OrderRequest(
+      private val convertId: Long,
+      private val dateTime: LocalDateTime
+    )
+
+    data class CancelRequest(
+      private val convertId: Long,
+      private val ticketId: Long,
+      private val dateTime: LocalDateTime
+    )
+}
+
+// 예매
+@DistributedLock(fieldName = "concertId")
+fun cancel(@RequestBody request: TicketDto.OrderRequest) {
+  // TODO implementation
+}
+
+// 예매 취소
+@DistributedLock(fieldName = "concertId")
+fun cancel(@RequestBody request: TicketDto.CancelRequest) {
+    // TODO implementation
+}
+```
 
 ## MySQL vs Redis
 
@@ -396,3 +507,5 @@ select release_lock(?)
 - [Locking in JPA (LockModeType)](https://www.byteslounge.com/tutorials/locking-in-jpa-lockmodetype)
 - [Read/Write Locks in Java (ReentrantReadWriteLock)](https://www.byteslounge.com/tutorials/read-write-locks-in-java-reentrantreadwritelock)
 - [Lock Conditions in Java](https://www.byteslounge.com/tutorials/lock-conditions-in-java)
+- [Distributed Java Locks With Redis](https://dzone.com/articles/distributed-java-locks-with-redis)
+- [Distributed Lock Implementation With Redis](https://dzone.com/articles/distributed-lock-implementation-with-redis)

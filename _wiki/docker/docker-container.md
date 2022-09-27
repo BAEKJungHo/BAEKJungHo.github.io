@@ -79,8 +79,6 @@ __a. veth interface__
 __b. NET namespace__
 - 리눅스 격리 기술인 namespace 중 네트워크와 관련된 부분을 말합니다. 네트워크 인터페이스를 각각 다른 namespace 에 할당함으로써 서로가 서로를 모르게끔 설정할 수 있습니다.
 
-### 도커 네트워크 구조
-
 ![](/resource/wiki/docker-container/docker-network.png)
 
 도커는 위에서 언급한 veth interface 와 NET namespace 를 사용해 네트워크를 구성합니다. 참고로 mac 이나 window 는 veth interface 가 VM 안에 감쳐져 있어 확인하기 어렵습니다.

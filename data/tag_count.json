@@ -33,6 +33,10 @@
  },
  {
   "name": "devops",
+  "size": 3
+ },
+ {
+  "name": "docker",
   "size": 2
  },
  {
@@ -53,7 +57,7 @@
  },
  {
   "name": "infra",
-  "size": 22
+  "size": 23
  },
  {
   "name": "java",

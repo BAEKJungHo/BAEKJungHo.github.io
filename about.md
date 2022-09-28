@@ -21,11 +21,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo). Backend Developer__
 
 ## Motto
 
-> 겸손하자 
-
-## Profile
-
-> 취미는 공부, 특기는 문서화
+> 겸손하자
 
 # Work Experiences
 

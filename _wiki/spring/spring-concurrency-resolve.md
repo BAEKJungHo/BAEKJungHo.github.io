@@ -482,6 +482,85 @@ fun cancel(@RequestBody request: TicketDto.CancelRequest) {
 }
 ```
 
+### Test
+
+```java
+@SpringBootTest
+class DistributedLockTest {
+
+    @Autowired private RedisClient redisClient;
+
+    static class ThreadConstraints {
+        private static final int THREAD_COUNT = 10;
+        private static final int THREAD_POOL = 5;
+        private static final int COMPLETE_TASK_DURATION_MILLIS_TIME = 2000;
+    }
+
+    static class LockConstraints {
+        private static final String LOCK_ID = "ticketId";
+        private static final int WAIT_TIME = 60;
+        private static final int LEASE_TIME = 5;
+        private static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
+    }
+
+    @Test
+    void tryLock() throws InterruptedException {
+        ExecutorService executorService = Executors.newFixedThreadPool(ThreadConstraints.THREAD_POOL);
+        CountDownLatch countDownLatch = new CountDownLatch(ThreadConstraints.THREAD_COUNT);
+
+        for (int i = 0; i < ThreadConstraints.THREAD_COUNT; i++) {
+            int index = i;
+            executorService.submit(() -> {
+                try {
+                    proceedTask(index);
+                } finally {
+                    countDownLatch.countDown();
+                }
+            });
+        }
+
+        countDownLatch.await();
+    }
+
+    private void proceedTask(int index) {
+        log.info("Index{} - Current Thread Name {}", index, Thread.currentThread().getName());
+        RLock acquireLock = redisClient.getLock(LockConstraints.LOCK_ID);
+        boolean isAcquisitionFailure = false;
+        try {
+            isAcquisitionFailure = !acquireLock.tryLock(
+                    LockConstraints.WAIT_TIME, 
+                    LockConstraints.LEASE_TIME,
+                    LockConstraints.TIME_UNIT
+            );
+            log.info("Index{} - isAcquisitionFailure {}", index, isAcquisitionFailure);
+            if (isAcquisitionFailure) {
+                log.info("Index{} - AcquisitionFailure {}", index, Thread.currentThread().getName());
+                throw new Exception();
+            } else {
+                // Acquisition Lock
+                log.info("Index{} - Acquisition Lock and Task Proceeding", index);
+                Thread.sleep(ThreadConstraints.COMPLETE_TASK_DURATION_MILLIS_TIME);
+                log.info("Index{} - Task Completed", index);
+            }
+        } catch (InterruptedException e) {
+            log.info("Index{} - InterruptedException Occur. stackTrace : {}", index, e.getMessage());
+        } finally {
+            // After All The Processes are finished then Unlock
+            if (!isAcquisitionFailure && acquireLock.isLocked()) {
+                log.info("Index{} - forceUnlock", index);
+                acquireLock.forceUnlock();
+            }
+        }
+    }
+}
+```
+
+1. ThreadPool 에 1,2,3,4,5 스레드가 초기에 할당되고 1이 락을 획득
+2. 1의 Task 가 완료되고 락을 해제한 다음, 스레드 6이 스레드 풀에 진입
+3. 2,3,4,5,6 상태에서 기존에 있던 2,3,4,5 중 하나의 스레드가 락을 획득하길 예상했지만 예상과 달리 스레드 6이 락을 선점
+
+이 결과로 미루어보아, 스레드 풀에 먼저들어온 순서대로 락을 획득하는 것은 아닌 것 같음. 경우에 따라서는 락을 먼저 획득해야하는 스레드에 우선순위를 높게 줘서, 순서와 상관없이 스레드 풀에 존재하고, 아직 락을 획득하지 못한 상태라면 락이 해제되고 해당 스레드가 락을 획득할 수 있도록 해주는 방법도 있을 것 같음.
+
 ## MySQL vs Redis
 
 - __MySQL__
@@ -509,3 +588,7 @@ fun cancel(@RequestBody request: TicketDto.CancelRequest) {
 - [Lock Conditions in Java](https://www.byteslounge.com/tutorials/lock-conditions-in-java)
 - [Distributed Java Locks With Redis](https://dzone.com/articles/distributed-java-locks-with-redis)
 - [Distributed Lock Implementation With Redis](https://dzone.com/articles/distributed-lock-implementation-with-redis)
+- [About Redisson Lock](https://www.sobyte.net/post/2021-08/about-redisson-lock/)
+- [Distributed locks and synchronizers](https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-synchronizers)
+- [Why Do We Need Thread.currentThread().interrupt() in Interruptible Methods?])(https://dzone.com/articles/why-do-we-need-threadcurrentthreadinterrupt-in-int)
+- [The Redlock Algorithm](https://redis.io/docs/reference/patterns/distributed-locks/#the-redlock-algorithm)

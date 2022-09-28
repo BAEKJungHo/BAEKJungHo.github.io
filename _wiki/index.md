@@ -65,6 +65,10 @@ regenerate: true
 
 * [[/docker/docker-container]]
 
+## kubernetes
+
+* [[/kubernetes/kubernetes-architecture]]
+
 ## infra
 
 * [[/infra/infra-cloud]]

@@ -1,1 +1,1 @@
-["docker/docker-container","infra/infra-ci-cd","infra/infra-deployment"]
+["docker/docker-container","infra/infra-ci-cd","infra/infra-deployment","kubernetes/kubernetes-architecture"]

@@ -40,7 +40,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo). Backend Developer__
 - __테이블매니저(주)__ - 2022.03.07 ~ 2022.08.26
   - [회사소개] 예약 솔루션, 예약 상품권을 제공하는 IT 스타트업
   - [프로젝트] 카카오 챗봇을 통한 아워홈 픽업 주문 서비스, KT 통화비서 인증 서비스 구축 및 결제 서비스 유지보수
-  - [Main] Kotlin 백엔드 개발
+  - [Main Language] Kotlin
   - [경험]
     - Spring Data JPA, Spring Data JDBC, Spring Security
     - AWS Gateway, AWS Lambda, AWS Cloud Watch, NodeJS, Typescript, Javascript
@@ -48,7 +48,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo). Backend Developer__
 - __(주)메이아이__ - 2019.07.01 ~ 2021.10.08
   - [회사소개] SI, Agency 회사
   - [프로젝트] 보령시청 긴급재난지원금 신청/관리 기능, 소상공인 임차인 확인서 발급 시스템, 소상공인 교육 나눔터 시스템 구축
-  - [Main] Java 웹 개발
+  - [Main Language] Java
   - [경험]
     - Spring, Spring Boot, Spring Security
     - JSP, Mybatis, MySQL, Oracle, GitLab, SVN

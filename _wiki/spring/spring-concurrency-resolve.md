@@ -590,5 +590,5 @@ class DistributedLockTest {
 - [Distributed Lock Implementation With Redis](https://dzone.com/articles/distributed-lock-implementation-with-redis)
 - [About Redisson Lock](https://www.sobyte.net/post/2021-08/about-redisson-lock/)
 - [Distributed locks and synchronizers](https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-synchronizers)
-- [Why Do We Need Thread.currentThread().interrupt() in Interruptible Methods?])(https://dzone.com/articles/why-do-we-need-threadcurrentthreadinterrupt-in-int)
+- [Why Do We Need Thread.currentThread().interrupt() in Interruptible Methods](https://dzone.com/articles/why-do-we-need-threadcurrentthreadinterrupt-in-int)
 - [The Redlock Algorithm](https://redis.io/docs/reference/patterns/distributed-locks/#the-redlock-algorithm)

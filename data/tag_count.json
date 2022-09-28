@@ -16,6 +16,10 @@
   "size": 2
  },
  {
+  "name": "concurrency",
+  "size": 2
+ },
+ {
   "name": "database",
   "size": 5
  },
@@ -80,6 +84,10 @@
   "size": 1
  },
  {
+  "name": "lock",
+  "size": 1
+ },
+ {
   "name": "methodology",
   "size": 5
  },
@@ -98,6 +106,10 @@
  {
   "name": "nodejs",
   "size": 2
+ },
+ {
+  "name": "redis",
+  "size": 1
  },
  {
   "name": "sam",

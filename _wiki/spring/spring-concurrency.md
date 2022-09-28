@@ -4,7 +4,7 @@ title   : Concurrency
 summary : Concurrency Issue
 date    : 2022-04-17 00:02:32 +0900
 updated : 2022-04-17 00:15:24 +0900
-tag     : spring
+tag     : spring concurrency
 toc     : true
 comment : true
 public  : true

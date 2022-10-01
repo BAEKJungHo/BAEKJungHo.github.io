@@ -59,7 +59,7 @@ docker run -it -p 5005:5005 centos
 
 ### docker-compose.yml
 
-[Docker Compose](https://docs.docker.com/compose/) 는 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 도구이다. . Compose 에서 YAML 파일을 사용하여 애플리케이션의 서비스를 구성한다.
+[Docker Compose](https://docs.docker.com/compose/) 는 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 도구이다. Compose 에서 YAML 파일을 사용하여 애플리케이션의 서비스를 구성한다.
 
 YAML 파일은 배포할 모든 서비스를 정의한다. 이러한 서비스는 `Dockerfile` 또는 기존 컨테이너 이미지를 기반으로 한다.
 

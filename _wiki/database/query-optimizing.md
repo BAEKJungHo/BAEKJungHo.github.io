@@ -125,6 +125,60 @@ SELECT * FROM emp WHERE deptno = 30 AND sal >= 2000
 
 위 질의 결과에 해당하는 데이터는 BLAKE 한명인데, 이를 찾기 위해 테이블에 여섯 번 액세스하는 것을 볼 수 있다. 물론 DEPTNO + SAL 순으로 인덱스 구성을 변경하면 해결될 문제이지만, 실 운영환경에서 인덱스 구성을 변경하기는 쉽지 않다. 따라서 기존 인덱스에 SAL 컬럼을 추가하여 (인덱스 스캔량은 줄지 않지만) 테이블 랜덤 액세스 횟수를 줄일 수 있다.
 
+## Driving Table
+
+드라이빙 테이블(outer table)은 join 시에 먼저 엑세스 되는 테이블을 의미한다. 반대로 나중에 엑세스되는 테이블은 드리븐 테이블(inner table)이라고 한다.
+
+데이터베이스는 Optimizer 를 사용하여 드라이빙 테이블을 정하는데, 일반적으로는 Cost-Based Optimizer 를 사용한다.
+
+## Optimizer
+
+SQL 을 최적화해서 실행 계획을 수립한다.
+
+### Rule-Based Optimizer
+
+규칙 기반 옵티마이저는 대상 테이블의 레코드 건수나 선택도 등을 고려하지 않고 옵티마이저에 내장된 우선순위에 따라 실행 계획을 수립한다. 규칙 기반 옵티마이저는 이미 오래 전부터 많은 DBMS 에서 거의 지원되지 않거나 업데이트 되지 않은 상태로 남아있다.
+
+### Cost-Based Optimizer
+
+비용 기반 최적화는 작업의 비용(부하)과 대상 테이블의 통계 정보를 활용해서 실행 계획 수립한다. 대부분의 DBMS 가 비용 기반의 옵티마이저를 채택하고 있다.
+
+비용 기반 최적화에서 가장 중요한 것은 `통계 정보`이다.
+
+- __통계 정보 확인__
+
+```sql
+SHOW TABLE STATUS LIKE 'tb_test'\G 
+SHOW INDEX FROM tb_test;
+```
+
+- __통계 정보 갱신: ANALYZE__
+  - ANALYZE 는 인덱스 키값의 분포도(선택도)만 업데이트 한다.
+
+```sql
+-- 파티션을 사용하지 않은 일반 테이블의 통계 정보 수집
+ANALYZE TABLE tb_test;
+
+-- 파티션을 사용하는 테이블에서 특정 파티션의 통계 정보 수집
+ANALYZE TABLE tb_test ANALYZE PARTITION p3;
+```
+
+InnoDB 에서는 ANALYZE 도중에 데이터의 읽기 쓰기가 모두 불가능하므로 서비스 도중에는 ANALYZE 를 실행하지 않는 것이 좋다.
+
+## Covered Index
+
+인덱스 스캔과정에서 얻은 정보만으로 처리할 수 있어 테이블 액세스가 발생하지 않는 쿼리를 의미한다.
+
+```sql
+EXPLAIN SELECT a.*
+FROM (
+	-- 서브쿼리에서 커버링 인덱스로만 데이터 조건과 select column을 지정하여 조인
+	SELECT id 
+    FROM subway.member 
+    WHERE age BETWEEN 30 AND 39
+) AS b JOIN programmer a ON b.id = a.id
+```
+
 ## Optimizing Tips
 
 ### 인덱스 컬럼을 가공하지 않는다.
@@ -187,7 +241,7 @@ SELECT * FROM sys.schema_redundant_indexes;
 
 ### 조인 연결 key 들은 양쪽 다 인덱스를 갖도록 하자
 
-한쪽에만 인덱스가 있을 경우, Join Buffer 를 사용하여 성능 개선을 하나 일반적인 중첩 루프 조인에 비해 효율이 떨어진다. 인덱스가 없는 테이블이 드라이븐 테이블이 된다.
+한쪽에만 인덱스가 있을 경우, Join Buffer 를 사용하여 성능 개선을 하나 일반적인 중첩 루프 조인에 비해 효율이 떨어진다. 인덱스가 없는 테이블이 드라이빙 테이블이 된다.
 
 > MySQL 옵티마이저는 조인 되는 두 테이블에 있는 각 컬럼에서 인덱스를 조사하고, 인덱스가 없는 테이블이 있으면 그 테이블을 먼저 읽어서 조인을 실행한다. 뒤에 읽는 테이블은 검색 위주로 사용되기 때문에 인덱스가 없으면 성능에 미치는 영향이 매우 크다.
 >
@@ -238,60 +292,6 @@ WHERE employee.id = salary.id;
 ![](/resource/wiki/query-optimizing/sub-join.png)
 
 - MySQL 5.6 이후로 [서브쿼리 최적화](https://dev.mysql.com/doc/refman/5.6/en/subquery-optimization.html)가 이루어진다. (SEMI JOIN, MATERIALIZED 등) 다만, 8.0 까지도 UPDATE, DELETE 등는 서브쿼리 최적화가 지원되지 않는다. 가능하면 JOIN 을 사용하는 것이 좋다.
-
-## Driving Table
-
-드라이빙 테이블(outer table)은 join 시에 먼저 엑세스 되는 테이블을 의미한다. 반대로 나중에 엑세스되는 테이블은 드리븐 테이블(inner table)이라고 한다.
-
-데이터베이스는 Optimizer 를 사용하여 드라이빙 테이블을 정하는데, 일반적으로는 Cost-Based Optimizer 를 사용한다.
-
-## Optimizer
-
-SQL 을 최적화해서 실행 계획을 수립한다.
-
-### Rule-Based Optimizer
-
-규칙 기반 옵티마이저는 대상 테이블의 레코드 건수나 선택도 등을 고려하지 않고 옵티마이저에 내장된 우선순위에 따라 실행 계획을 수립한다. 규칙 기반 옵티마이저는 이미 오래 전부터 많은 DBMS 에서 거의 지원되지 않거나 업데이트 되지 않은 상태로 남아있다.
-
-### Cost-Based Optimizer
-
-비용 기반 최적화는 작업의 비용(부하)과 대상 테이블의 통계 정보를 활용해서 실행 계획 수립한다. 대부분의 DBMS 가 비용 기반의 옵티마이저를 채택하고 있다.
-
-비용 기반 최적화에서 가장 중요한 것은 `통계 정보`이다.
-
-- __통계 정보 확인__
-
-```sql
-SHOW TABLE STATUS LIKE 'tb_test'\G 
-SHOW INDEX FROM tb_test;
-```
-
-- __통계 정보 갱신: ANALYZE__
-  - ANALYZE 는 인덱스 키값의 분포도(선택도)만 업데이트 한다.
-
-```sql
--- 파티션을 사용하지 않은 일반 테이블의 통계 정보 수집
-ANALYZE TABLE tb_test;
-
--- 파티션을 사용하는 테이블에서 특정 파티션의 통계 정보 수집
-ANALYZE TABLE tb_test ANALYZE PARTITION p3;
-```
-
-InnoDB 에서는 ANALYZE 도중에 데이터의 읽기 쓰기가 모두 불가능하므로 서비스 도중에는 ANALYZE 를 실행하지 않는 것이 좋다.
-
-## Covered Index
-
-인덱스 스캔과정에서 얻은 정보만으로 처리할 수 있어 테이블 액세스가 발생하지 않는 쿼리를 의미한다.
-
-```sql
-EXPLAIN SELECT a.*
-FROM (
-	-- 서브쿼리에서 커버링 인덱스로만 데이터 조건과 select column을 지정하여 조인
-	SELECT id 
-    FROM subway.member 
-    WHERE age BETWEEN 30 AND 39
-) AS b JOIN programmer a ON b.id = a.id
-```
 
 ## Links
 

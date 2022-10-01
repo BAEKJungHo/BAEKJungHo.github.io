@@ -67,6 +67,7 @@ regenerate: true
 ## docker
 
 * [[/docker/docker-container]]
+* [[/docker/docker-dockerizing]]
 
 ## kubernetes
 

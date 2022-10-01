@@ -299,7 +299,6 @@ WHERE employee.id = salary.id;
 - [MySQL Query Performance Optimization Tips](https://www.section.io/engineering-education/mysql-query-performance-optimization-tips/)
 - [MySQL workbench](https://www.mysql.com/products/workbench/)
 - [Query Performance Optimization in MySQL](https://www.databasejournal.com/mysql/query-performance-optimization-in-mysql/)
-- [드라이빙 테이블(DRIVING TABLE)의 개념/결정 규칙](https://devuna.tistory.com/36)
 
 ## 참고 문헌
 

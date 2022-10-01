@@ -137,6 +137,7 @@ regenerate: true
 * [[/database/hikaricp-concepts]]
 * [[/database/query-index]]
 * [[/database/database-surrogatekey]]
+* [[/database/query-optimizing]]
 
 ## Clean Code
 

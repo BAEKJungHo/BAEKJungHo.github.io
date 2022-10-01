@@ -27,7 +27,7 @@ latex   : true
      println(sum(1, 2))
     ```
     - 위와 같은 구문은 읽기 어렵고 쓸모가 없다.
-- __Good_
+- __Good__
   - ```kotlin
     run { println(42) }
     ``` 
@@ -45,7 +45,21 @@ latex   : true
     // Compiler Type inference
     product.maxBy { p -> p.stock }
     ```
+  - 컴파일러가 타입 추론을 못하는 경우도 있다. 이 때는 타입을 명시하면 된다.
 
+### 인자 없는 람다
+
+람다에 인자가 없으면 화살표 기호(->)를 생략할 수 있다.
+
+```kotlin
+fun measureTime(action: () -> Unit): Long {
+  val start = System.nanoTime()
+  aciton()
+  return System.nanoTime() - start
+}
+
+val time = measureTime { 1 + 2 }
+```
 
 ## Links
 

@@ -16,9 +16,7 @@ latex   : true
 
 ## First Citizen
 
-One of the core values of functional programming is that functions should be __first-class__.
-
-A language that considers procedures to be "first-class" __allows functions to be passed around just like any other value__.
+One of the core values of functional programming is that functions should be first-class. A language that considers procedures to be "first-class" allows functions to be passed around just like any other value.
 
 __First-class be used as a parameter to another function or used as the return value from another function.__
 

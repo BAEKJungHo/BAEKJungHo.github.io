@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Query Optimizing
-summary : 쿼리 최적화, 실행계획과 인덱스
+summary : 쿼리 최적화, 실행 계획과 인덱스
 date    : 2022-09-28 15:28:32 +0900
 updated : 2022-09-28 18:15:24 +0900
 tag     : database

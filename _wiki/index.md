@@ -27,6 +27,8 @@ regenerate: true
 * [[/kotlin/kotlin-utils]]
 * [[/kotlin/kotlin-companion-object]]
 * [[/kotlin/kotlin-ksp]]
+* [[/kotlin/kotlin-first-citizen]]
+* [[/kotlin/kotlin-first-inline]]
 
 ## java
 

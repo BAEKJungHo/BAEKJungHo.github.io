@@ -14,9 +14,9 @@ latex   : true
 * TOC
 {:toc}
 
-## graceful shutdown
+## Graceful shutdown
 
-> graceful shutdown 은 서버 다운 시, 정상적인 종료 처리를 지원하는 기능이다.
+> Graceful shutdown 은 서버 다운 시, 정상적인 종료 처리를 지원하는 기능이다.
 
 기존에 떠있던 인스턴스를 바로 kill 하게 되면 현재 실행중인 프로세스가 온전히 처리되지 않았기 때문에 데이터 정합성 등의 크리티컬한 이슈가 발생하게 된다. 이를 방지하기 위해 서버 다운 시, 정상적인 종료 처리가 필요하고 Spring boot 2.3.0 이상 버전부터는 `graceful shutdown` 기능을 자체적으로 지원하고 있다. Spring boot 2.3.0 이전 버전에서는 ContextClosedEvent 를 확장하여 자체적으로 구현해야 한다.
 

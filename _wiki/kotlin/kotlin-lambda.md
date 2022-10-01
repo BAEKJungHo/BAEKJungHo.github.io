@@ -115,11 +115,92 @@ fun lambdaWithAsycn(button: Button): Int {
 }
 ```
 
+### callable reference
+
+호출 가능 참조(callable reference) 혹은 멤버 참조(member reference)는 프로퍼티나 메서드를 단 하나만 호출하는 함수 값을 만들어 준다. `::` 는 참조하려는 멤버(프로퍼티나 메서드) 이름사이에 위치한다.
+
+```kotlin
+people.maxBy(People::age)
+```
+
+최상위에 선언된 함수나 프로퍼티도 참조할 수 있다.
+
+```kotlin
+fun salute() = println("Salute!")
+run(::salute)
+```
+
+클래스 이름앞에 적용하면 클래스의 생성자에 대한 호출 가능 참조를 얻는다.
+
+```kotlin
+class Person(val firstName: String, val lastName: String)
+
+fun main() {
+  val createPerson = ::Person
+  createPerson("Jungho", "Baek")  
+}
+```
+
+### bound callable reference
+
+코틀린 1.1부터는 바인딩된 호출 가능 참조(bound callable reference) 라는 사용법이 도입됐다.
+
+```kotlin
+class Person(val firstName: String, val lastName: String) {
+    fun hasNameOf(name: String) = name.equals(firstName, ignoreCase = true)
+}
+
+fun main() {
+  val isJungHo = Person("Jungho", "Baek")::hasNameOf
+  println(isJungHo("John")) // false 
+}
+```
+
+### property callable reference
+
+프로퍼티에 대한 호출 가능 참조를 만들 수있다. 이런 참조 자체는 실제로는 함숫값이 아니고, 프로퍼티 정보를 담고있는 리플렉션(reflection) 객체이다.
+
+```kotlin
+import kotlin.reflect.jvm.isAccessible
+
+class Person(val firstName: String, val lastName: String)
+
+fun main() {
+  val person = Person("Jungho", "Baek")
+  val readName = person::firstName::getter
+  val writeLastName = person::lastName::isAccessible::setter
+  
+  println(readName) // Jungho
+  writeLastName("Lion")
+  println(person.lastName) // Lion
+}
+```
+
+### 수신 객체가 있는 호출 가능 참조
+
+```kotlin
+fun aggregate(numbers: IntArray, op:Int.(Int) -> Int): Int {
+  val result = numbers.firstOrNull() ?: throw IllegalArgumentException("Empty Array")
+  for (i in 1..numbers.lastIndex) result = result.op(numbers[i])
+  return result
+}
+
+fun Int.max(other: Int) = if (this > other) this else other
+
+fun main() {
+  val numbers = intArrayOf(1, 2, 3, 4)
+  println(aggregate(numbers, Int::plus))
+  println(aggregate(numbers, Int::max))
+}
+```
+
+### SAM
+
+- [SAM with receiver](https://baekjungho.github.io/wiki/kotlin/kotlin-ksp/#sam-with-receiver)
+
 ## Links
 
 - [High-order functions and lambdas](https://kotlinlang.org/docs/lambdas.html)
-- [Inline functions](https://kotlinlang.org/docs/inline-functions.html)
-- [Kotlin inline class 와 inline functions 을 적절하게 사용하는 방법](https://thdev.tech/kotlin/2020/09/29/kotlin_effective_04/)
 
 ## 참고 문헌
 

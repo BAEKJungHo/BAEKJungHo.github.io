@@ -29,6 +29,7 @@ regenerate: true
 * [[/kotlin/kotlin-ksp]]
 * [[/kotlin/kotlin-first-citizen]]
 * [[/kotlin/kotlin-lambda]]
+* [[/kotlin/kotlin-inline]]
 
 ## java
 

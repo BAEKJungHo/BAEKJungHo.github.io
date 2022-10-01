@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : cicd devops
+title   : CI/CD
 summary : Continuous Integration/Delivery/Deployment
 date    : 2022-09-05 15:54:32 +0900
 updated : 2022-09-05 20:15:24 +0900

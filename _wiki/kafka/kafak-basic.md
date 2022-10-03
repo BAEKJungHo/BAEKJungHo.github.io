@@ -228,6 +228,137 @@ producer.close()
     - 이 값이 1보다 크면 재시도 시점에 따라 메시지 순서가 바뀔 수 있음
       - 전송 순서가 중요하면 이 값을 1로 지정
 
+## Consumer
+
+컨슈머는 토픽 파티션에서 레코드를 조회하는 역할을 담당한다.
+
+- __Config__
+
+```kotlin
+@EnableKafka
+@Configuration
+class KafkaConsumerConfig {
+
+    companion object {
+        val BOOT_STRAP_SERVERS = listOf("localhost:9092")
+        const val GROUP_ID = "dev.asterisk.delivery.by.order"
+    }
+
+    @Bean
+    fun deliveryKafkaListenerContainerFactory(): ConcurrentKafkaListenerContainerFactory<String, DeliverySubscriber.DeliveryProcessMessage> {
+        val factory: ConcurrentKafkaListenerContainerFactory<String, DeliverySubscriber.DeliveryProcessMessage> =
+            ConcurrentKafkaListenerContainerFactory<String, DeliverySubscriber.DeliveryProcessMessage>()
+        return factory.apply { consumerFactory = deliveryConsumerFactory() }
+    }
+
+    @Bean
+    fun deliveryConsumerFactory(): DefaultKafkaConsumerFactory<String, DeliverySubscriber.DeliveryProcessMessage> {
+        val deserializer = deliveryJsonDeserializer()
+        return DefaultKafkaConsumerFactory(
+            deliveryConsumerFactoryConfig(deserializer),
+            StringDeserializer(),
+            deserializer
+        )
+    }
+
+    private fun deliveryConsumerFactoryConfig(deserializer: JsonDeserializer<DeliverySubscriber.DeliveryProcessMessage>) =
+        mapOf(
+            ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG to BOOT_STRAP_SERVERS,
+            ConsumerConfig.GROUP_ID_CONFIG to GROUP_ID,
+            ConsumerConfig.AUTO_OFFSET_RESET_CONFIG to "latest",
+            ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG to StringDeserializer::class,
+            ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG to deserializer
+        )
+
+    private fun deliveryJsonDeserializer(): JsonDeserializer<DeliverySubscriber.DeliveryProcessMessage> {
+        val deserializer: JsonDeserializer<DeliverySubscriber.DeliveryProcessMessage> = JsonDeserializer(
+            DeliverySubscriber.DeliveryProcessMessage::class.java
+        )
+        return deserializer.apply {
+            setRemoveTypeHeaders(false)
+            addTrustedPackages("*")
+            setUseTypeMapperForKey(true)
+        }
+    }
+}
+```
+
+- 토픽의 파티션은 그룹 단위로 할당된다.
+
+### commit and offset
+
+![](/resource/wiki/kafka-basic/offset.png)
+
+- __커밋된 오프셋이 없는 경우__
+  - 처음 접근이거나 커밋한 오프셋이 없는 경우
+  - auto.offset.reset 설정 사용
+    - earliest: 맨 처음 오프셋 사용
+    - latest: 가장 마지막 오프셋 사용(기본 값)
+    - none: 컨슈머 그룹에 대한 이전 커밋이 없으면 Exception 발생
+
+### 조회에 영향을 주는 주요 설정
+
+- __fetch.min.bytes__
+  - 조회 시 브로커가 전송할 최소 데이터 크기
+  - 기본값 1
+  - 이 값이 크면 대기 시간을 늘지만 처리량 증가
+- __fetch.max.wait.ms__
+  - 데이터가 최소 크기가 될 때까지 기다릴 시간
+  - 기본값 500ms(0.5sec)
+  - 브로커가 리턴할 때까지 대기하는 시간으로 poll() 의 대기 시간과 다름
+- __max.partition.fetch.bytes__
+  - 파티션 당 서버가 리턴할 수 있는 최대 크기
+  - 기본값: 1048576(1MB)
+
+### 커밋 설정
+
+- __enable.auto.commit__
+  - true: 일정 주기로 컨슈머가 읽은 오프셋을 커밋(기본 값)
+  - false: 수동으로 커밋 실행
+    - consumer.commitSync(), consumer.commitAsync()
+- __auto.commit.interval.ms__
+  - 자동 커밋 주기
+  - 기본값 500ms(0.5sec)
+- __poll(), close() 메서드 호출 시 자동 커밋 실행__
+
+### 재처리와 순서
+
+- __동일 메시지 조회 가능성__
+  - 일시적 커밋 실패, 리밸런스 등에 의해 발생
+- __컨슈머는 멱등성(idempotence)을 고려해야 함__
+  - Ex. 아래 메시지를 재처리할 경우
+  - 조회수 1증가 -> 좋아요 1증가 -> 조회수 1증가
+  - 단순 처리하면 조회수는 2가 아닌 4가될 수 있음
+- __데이터 특성에 따라 타임스탬프, 일련 번호 등을 활용__
+
+### session-timeout and heartbeat
+
+- __컨슈머는 하트비트를 전송해서 연결 유지__
+  - 브로커는 일정 시간 컨슈머로부터 하트비트가 없으면 컨슈머를 그룹에서 빼고 리밸런스 진행
+  - 관련 설정
+    - session.timeout.ms: 세션 타임아웃 시간(기본값 10초)
+    - heartbeat.interval.ms: 하트비트 전송 주기(기본값 3초)
+      - session.timeout.ms 의 1/3 이하 추천
+- __max.poll.interval.ms: poll() 메서드의 최대 호출 간격__
+  - 이 시간이 지나도록 poll() 하지 않으면 컨슈머를 그룹에서 빼고 리밸런스 진행
+
+### 종료 처리
+
+- __다른 스레드에서 wakeup() 메서드 호출__
+  - poll() 메서드가 WakeupException 발생 -> close() 메서드로 종료 처리
+
+### 주의할 점
+
+- __KafkaConsumer 는 스레드에 안전하지 않음__
+  - 여러 스레드에서 동시에 사용하지 말 것
+  - wakeup() 메서드 예외
+
+### offset handling
+
+- 메시지 처리에 실패했을 때 메시지를 다시 읽어와서 처리할 건지, 실패한 메시지를 다른 곳에 보관해서 후처리로 복구할 건지
+- 메시지 처리를 멱등성으로 처리 가능한지
+- 메시지를 반드시 순서대로 처리해야 하는지
+
 ### QNA
 
 > 최범균님 유튜브 댓글 링크에서 발췌

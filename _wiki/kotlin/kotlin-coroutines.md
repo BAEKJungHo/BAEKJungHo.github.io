@@ -410,7 +410,7 @@ class AddressReactiveRepository : AddressRepositoryBase(), AddressAsyncRepositor
         val addressIterator = prepareAddresses().iterator()
 
         return Flow.Publisher<Address> { subscriber ->
-            subscriber.onSubscribe(object : Flow.Subscription {
+            subscriber.onSubscribe(object: Flow.Subscription {
                 override fun request(n: Long) {
                     Thread.sleep(TIME_DELAY_MS)
                     var cnt = n
@@ -753,12 +753,388 @@ class CreateOrderSyncStateMachineUseCase(
                 }
             }
             5 -> {
+                // 마지막에서는 recursive call 을 하지 않고 마지막 값을 반환
                 shared.order = shared.result as Order
                 shared.order
             }
             else -> throw IllegalAccessException()
         }
     }
+}
+```
+
+### FSM 기반의 비동기 코드
+
+- SharedDataContinuation 을 통해서 여러가지 context 를 저장
+- label 은 state machine 의 현재 state 값
+- 이전 state 에서 찾은 값들을 buyer, address, products, stores, order 에 저장
+- resumeWith 으로 재귀 호출을 하여 결과를 result 에 저장
+- 인자로 sharedData 가 SharedDataContinuation 타입이 아니라면 생성
+
+```kotlin
+class CreateOrderAsyncStateMachine2UseCase(
+    private val userRepository: UserAsyncRepository,
+    private val addressRepository: AddressAsyncRepository,
+    private val productRepository: ProductAsyncRepository,
+    private val storeRepository: StoreAsyncRepository,
+    private val orderRepository: OrderAsyncRepository,
+) : CreateOrderUseCaseBase() {
+    data class InputValues(
+        val userId: String,
+        val productIds: List<String>,
+    )
+
+    class SharedDataContinuation(
+        val completion: Continuation<Any>,
+    ) : Continuation<Any> {
+        var label: Int = 0
+        lateinit var result: Any
+        lateinit var buyer: User
+        lateinit var address: Address
+        lateinit var products: List<Product>
+        lateinit var stores: List<Store>
+        lateinit var order: Order
+        lateinit var resume: () -> Unit
+
+        override val context: CoroutineContext = completion.context
+        override fun resumeWith(result: Result<Any>) {
+            this.result = result
+            this.resume()
+        }
+    }
+
+    fun execute(inputValues: InputValues, completion: Continuation<Any>) {
+        val (userId, productIds) = inputValues
+
+        val that = this
+        val cont = completion as? SharedDataContinuation
+            ?: SharedDataContinuation(completion).apply {
+                resume = fun() {
+                    // recursive self
+                    that.execute(inputValues, this)
+                }
+            }
+
+        when (cont.label) {
+            0 -> {
+                cont.label = 1
+                userRepository.findUserByIdAsMaybe(userId)
+                    .subscribe { user ->
+                        cont.resumeWith(Result.success(user))
+                    }
+            }
+            1 -> {
+                cont.label = 2
+                cont.buyer = (cont.result as Result<User>).getOrThrow()
+                addressRepository.findAddressByUserAsPublisher(cont.buyer)
+                    .subscribe(LastItemSubscriber { address ->
+                        cont.resumeWith(Result.success(address))
+                    })
+            }
+            2 -> {
+                cont.label = 3
+                cont.address = (cont.result as Result<Address>).getOrThrow()
+                checkValidRegion(cont.address)
+                productRepository.findAllProductsByIdsAsFlux(productIds)
+                    .collectList()
+                    .subscribe { products ->
+                        cont.resumeWith(Result.success(products))
+                    }
+            }
+            3 -> {
+                cont.label = 4
+                cont.products = (cont.result as Result<List<Product>>).getOrThrow()
+                check(cont.products.isNotEmpty())
+                storeRepository.findStoresByProductsAsMulti(cont.products)
+                    .collect().asList()
+                    .subscribe().with { stores ->
+                        cont.resumeWith(Result.success(stores))
+                    }
+            }
+            4 -> {
+                cont.label = 5
+                cont.stores = (cont.result as Result<List<Store>>).getOrThrow()
+                check(cont.stores.isNotEmpty())
+                orderRepository.createOrderAsFuture(
+                    cont.buyer, cont.products, cont.stores, cont.address
+                ).whenComplete { order, _ ->
+                    cont.resumeWith(Result.success(order))
+                }
+            }
+            5 -> {
+                cont.order = (cont.result as Result<Order>).getOrThrow()
+                cont.completion.resumeWith(Result.success(cont.order))
+            }
+            else -> throw IllegalAccessException()
+        }
+    }
+}
+```
+
+#### FSM 기반의 비동기 코드 실행
+
+- testContinuation 을 생성해서 execute 함수에 주입
+
+```kotlin
+import kotlin.coroutines.Continuation
+import kotlin.coroutines.EmptyCoroutineContext
+
+@ExtendWith(MockKExtension::class)
+class CreateOrderAsyncStateMachine2UseCaseTests {
+    @InjectMockKs
+    private lateinit var createOrderUseCase: CreateOrderAsyncStateMachine2UseCase
+
+    @SpyK
+    private var spyUserRepository: UserRxRepository = UserRxRepository()
+
+    @SpyK
+    private var spyProductRepository: ProductReactorRepository = ProductReactorRepository()
+
+    @SpyK
+    private var spyStoreRepository: StoreMutinyRepository = StoreMutinyRepository()
+
+    @SpyK
+    private var spyOrderRepository: OrderFutureRepository = OrderFutureRepository()
+
+    @SpyK
+    private var spyAddressRepository: AddressReactiveRepository = AddressReactiveRepository()
+
+    @Test
+    fun `should return a createdOrder in async with state machine`() {
+        // given
+        val userId = "user1"
+        val productIds = listOf("product1", "product2", "product3")
+
+        // when
+        val watch = StopWatch().also { it.start() }
+        val lock = CountDownLatch(1)
+        val testContinuation = object: Continuation<Any> {
+            override val context = EmptyCoroutineContext
+            override fun resumeWith(result: Result<Any>) {
+                watch.stop()
+                lock.countDown()
+
+                println("Time Elapsed: ${watch.time}ms")
+                println(result.getOrThrow())
+            }
+        }
+
+        val inputValues = CreateOrderAsyncStateMachine2UseCase.InputValues(userId, productIds)
+
+        createOrderUseCase.execute(inputValues, testContinuation)
+
+        // then
+        lock.await(3000, TimeUnit.MILLISECONDS)
+    }
+}
+```
+
+### FSM 기반의 Coroutines 
+
+- 각각의 비동기 라이브러리에서 사용하는 객체에 대한 extension function 생성
+- Flux.toList, Multi.toList, CompletionStage.awaitSingle 은 실제와 다름
+
+```kotlin
+import com.karrot.example.repository.shipment.LastItemSubscriber
+import io.reactivex.rxjava3.core.Maybe
+import io.smallrye.mutiny.Multi
+import reactor.core.publisher.Flux
+import java.util.concurrent.CompletionStage
+import java.util.concurrent.Flow
+import kotlin.coroutines.Continuation
+
+fun <T: Any> Maybe<T>.awaitSingle(cont: Continuation<Any>) {
+    this.subscribe { user ->
+        cont.resumeWith(Result.success(user))
+    }
+}
+
+fun <T: Any> Flow.Publisher<T>.awaitLast(cont: Continuation<Any>) {
+    this.subscribe(LastItemSubscriber { address ->
+        cont.resumeWith(Result.success(address))
+    })
+}
+
+fun <T: Any> Flux<T>.toList(cont: Continuation<Any>) {
+    this.collectList()
+        .subscribe { products ->
+            cont.resumeWith(Result.success(products))
+        }
+}
+
+fun <T: Any> Multi<T>.toList(cont: Continuation<Any>) {
+    this.collect()
+        .asList()
+        .subscribeAsCompletionStage()
+        .whenComplete { stores, _ ->
+            cont.resumeWith(Result.success(stores))
+        }
+}
+
+fun <T: Any> CompletionStage<T>.awaitSingle(cont: Continuation<Any>) {
+    this.whenComplete { order, _ ->
+        cont.resumeWith(Result.success(order))
+    }
+}
+```
+
+대체한 코드는 아래와 같다.
+
+```kotlin
+class SharedDataContinuation(
+      private val continuation: Continuation<Any>,
+  ) : Continuation<Any> {
+      var label: Int = 0
+      lateinit var result: Any
+      lateinit var buyer: User
+      lateinit var address: Address
+      lateinit var products: List<Product>
+      lateinit var stores: List<Store>
+      lateinit var order: Order
+      lateinit var resume: () -> Unit
+
+      override val context: CoroutineContext = continuation.context
+
+      override fun resumeWith(result: Result<Any>) {
+          this.result = result
+          this.resume()
+      }
+
+      fun complete(result: Result<Any>) {
+          this.continuation.resumeWith(result)
+      }
+  }
+
+  fun execute(inputValues: InputValues, continuation: Continuation<Any>) {
+      val (userId, productIds) = inputValues
+
+      val that = this
+      val cont = continuation as? SharedDataContinuation
+          ?: SharedDataContinuation(continuation).apply {
+              resume = fun() {
+                  that.execute(inputValues, this)
+              }
+          }
+
+      when (cont.label) {
+          0 -> {
+              cont.label = 1
+              userRepository.findUserByIdAsMaybe(userId).awaitSingle(cont)
+          }
+          1 -> {
+              cont.label = 2
+              cont.buyer = (cont.result as Result<User>).getOrThrow()
+              addressRepository.findAddressByUserAsPublisher(cont.buyer).awaitLast(cont)
+          }
+          2 -> {
+              cont.label = 3
+              cont.address = (cont.result as Result<Address>).getOrThrow()
+              checkValidRegion(cont.address)
+              productRepository.findAllProductsByIdsAsFlux(productIds).toList(cont)
+          }
+          3 -> {
+              cont.label = 4
+              cont.products = (cont.result as Result<List<Product>>).getOrThrow()
+              check(cont.products.isNotEmpty())
+              storeRepository.findStoresByProductsAsMulti(cont.products).toList(cont)
+          }
+          4 -> {
+              cont.label = 5
+              cont.stores = (cont.result as Result<List<Store>>).getOrThrow()
+              check(cont.stores.isNotEmpty())
+              orderRepository.createOrderAsFuture(
+                  cont.buyer, cont.products, cont.stores, cont.address
+              ).awaitSingle(cont)
+          }
+          5 -> {
+              cont.order = (cont.result as Result<Order>).getOrThrow()
+              cont.complete(Result.success(cont.order))
+          }
+          else -> throw IllegalAccessException()
+      }
+  }
+```
+
+Coroutines 최종 코드는 아래와 같다.
+
+```kotlin
+suspend fun execute(inputValues: InputValues): Order {
+    val (userId, productIds) = inputValues
+
+    // 1. 구매자 조회
+    val buyer = userRepository.findUserByIdAsMaybe(userId).awaitSingle()
+
+    // 2. 주소 조회 및 유효성 체크
+    val address = addressRepository.findAddressByUserAsPublisher(buyer)
+        .awaitLast()
+    checkValidRegion(address)
+
+    // 3. 상품들 조회
+    val products = productRepository.findAllProductsByIdsAsFlux(productIds).asFlow().toList()
+    check(products.isNotEmpty())
+
+    // 4. 스토어 조회
+    val stores = storeRepository.findStoresByProductsAsMulti(products).asFlow().toList()
+    check(stores.isNotEmpty())
+
+    // 5. 주문 생성
+    val order = orderRepository.createOrderAsFuture(buyer, products, stores, address).await()
+
+    return order
+}
+```
+
+### Async 를 사용한 동시성 처리
+
+- CoroutineDispatcher
+- 여러 Thread 를 오고가며 로직 처리가능
+- Dispatchers.IO 를 사용하면 완전히 별개의 스레드에서 동작함
+
+```kotlin
+suspend fun execute(inputValues: InputValues): Order {
+    val (userId, productIds) = inputValues
+
+    // 1. 구매자 조회
+    val buyer = userRepository.findUserByIdAsMaybe(userId).awaitSingle()
+
+    // 2. 주소 조회 및 유효성 체크
+    val addressDeferred = CoroutineScope(Dispatchers.IO).async {
+        addressRepository.findAddressByUserAsPublisher(buyer)
+            .awaitLast()
+    }
+
+    // 3. 상품들 조회
+    val products = productRepository.findAllProductsByIdsAsFlux(productIds).asFlow().toList()
+    check(products.isNotEmpty())
+
+    // 4. 스토어 조회
+    val storesDeferred = CoroutineScope(Dispatchers.IO).async {
+        storeRepository.findStoresByProductsAsMulti(products).asFlow().toList()
+    }
+
+    val address = addressDeferred.await()
+    val stores = storesDeferred.await()
+
+    checkValidRegion(address)
+    check(stores.isNotEmpty())
+
+    // 5. 주문 생성
+    val order = orderRepository.createOrderAsFuture(buyer, products, stores, address).await()
+
+    return order
+}
+```
+
+### try-catch 를 이용한 에러 핸들링
+
+- try/catch 를 통해서 일관성 있게 에러 핸들링 가능
+
+```kotlin
+// 1. 구매자 조회
+val buyer = try {
+    userRepository.findUserByIdAsMaybe(userId).awaitSingle()
+} catch (e: Exception) {
+    throw NoSuchElementException("no such user")
 }
 ```
 

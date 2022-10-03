@@ -35,6 +35,7 @@ latex   : true
 - 프로듀서가 넣은 메시지는 파티션의 맨 뒤에 추가
 - 컨슈머는 오프셋 기준으로 메시지를 순서대로 읽음
 - 메시지는 삭제되지 않음(설정에 따라 일정 시간이 지난 뒤 삭제)
+- 특정 토픽의 파티션이 3개일 경우 각 파티션은 서로 다른 데이터를 보관함. 그래서 파티션 수준에서만 순서를 보장함
 
 #### with Producer
 
@@ -84,6 +85,157 @@ latex   : true
   - 팔로워는 리더로부터 복제
 - __장애 대응__
   - 리더가 속한 브로커 장애 시 다른 팔로워가 리더가 됨
+
+## Producer
+
+프로듀서는 토픽에 메시지를 전송하는 역할을 담당한다.
+
+- __Config__
+
+```kotlin
+@Configuration
+class KafkaProducerConfig {
+
+    companion object {
+        val BOOT_STRAP_SERVERS = listOf("localhost:9092")
+    }
+
+    @Bean
+    fun kafkaTemplate() = KafkaTemplate(producerFactory())
+
+    @Bean
+    fun producerFactory(): ProducerFactory<String, OrderPublisher.RegisteredMessage> =
+        DefaultKafkaProducerFactory(producerFactoryConfig())
+
+    private fun producerFactoryConfig() =
+        mapOf(
+            ProducerConfig.BOOTSTRAP_SERVERS_CONFIG to BOOT_STRAP_SERVERS,
+            ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG to StringSerializer::class,
+            ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG to JsonSerializer::class
+        )
+}
+```
+
+- KafkaProducer or KafkaTemplate 는 send 메서드를 제공함
+
+```kotlin
+val producer = KafkaProducer(prop)
+producer.send(ProducerRecord("topicName", "key", "value"))
+producer.close()
+```
+
+- __기본 흐름__
+
+![](/resource/wiki/kafka-basic/producer.png)
+
+![](/resource/wiki/kafka-basic/producer2.png)
+
+- __처리량 관련 주요 속성__
+  - batch.size: 배치 크기, 배치가 다 차면 바로 전송
+  - linger.ms: 전송 대기 시간(기본값 0)
+    - 대기 시간이 없으면 배치가 덜 차도 바로 브로커로 전송
+    - 대기 시간을 주면 그 시간 만큼 배치에 메시지 추가가 가능해서 한 번의 전송 요청에 더 많은 데이터 처리 가능
+
+### 전송 결과
+
+- __전송 결과 확인 X__
+  - 이 경우은 실패에 대한 별도 처리가 필요 없는 메시지 전송에 사용한다.
+- __전송 결과 확인 O: Future 사용__
+  - 단점은 배치 효과가 떨어진다.(처리량 저하) 따라서 처리량이 낮아도 되는 경우에만 사용하는 것이 좋다.
+  - ```java
+    Future<RecordMetadata> future = producer.send(ProducerRecord<>("topic", "value"));
+    try {
+        RecordMetadata meta = future.get() // Blocking
+    } catch (ExecutionException e) { // ... }
+    ``` 
+- __전송 결과 확인: Callback 사용__
+  - 처리량 저하가 없다.
+  - ```kotlin
+     val future = kafkaTemplate.send(message)
+     future.addCallback(object: ListenableFutureCallback<SendResult<String, OrderPublisher.RegisteredMessage>> {
+         override fun onSuccess(result: SendResult<String, OrderPublisher.RegisteredMessage>?) {
+             log.info("Sent message = [ ${result?.producerRecord?.value().toString()} with offset ${result?.recordMetadata?.offset()}") 
+         }
+
+         override fun onFailure(ex: Throwable) {
+             log.error("Unable to send message due to: ${ex.message}")
+         }
+     })
+    ```
+
+### 전송 보장과 ack
+
+- __ack = 0__
+  - 서버 응답을 기다리지 않음
+  - 전송을 보장하지 않음
+  - 처리량은 높지만, 전송이 되었는지 확인이 필요한 경우에는 사용 하면 안됨
+- __ack = 1__
+  - 파티션의 리더에 저장되면 응답 받음
+  - 리더 장애 시 메시지 유실 가능
+- __ack = all(또는 -1)__
+  - 모든 리플리카에 저장되면 응답 받음
+  - 엄격하게 전송을 보장해야하는 경우 사용
+  - 브로커 min.insync.replicas 설정에 따라 달라짐
+- __min.insync.replicas(브로커 옵션)__
+  - 프로듀서 ack 옵션이 all 일 때 저장에 성공했다고 응답할 수 있는 동기화된 리플리카 최소 개수
+  - Ex. 리플리카 개수 3, ack = all, min.insync.replicas = 2
+    - 리더에 저장하고 팔로워 두 개중 한 개에 저장하면 성공 응답
+  - Ex. 리플리카 개수 3, ack = all, min.insync.replicas = 1
+    - 리더에 저장되면 성공 응답
+    - ack = 1 과 동일(리더 장애 시 메시지 유실 가능)
+  - Ex. 리플리카 개수 3, ack = all, min.insync.replicas = 3
+    - 리더와 팔로워 2개에 저장되면 성공 응답
+    - 팔로워 중 한 개라도 장애가 나면 리플리카 부족으로 저장에 실패
+
+### 에러 유형
+
+- __전송 과정에서 실패__
+  - 전송 타임 아웃(네트워크 오류 등)
+  - 리더 다운에 의한 새 리더 선출 진행 중
+  - 브로커 설정 메시지 크기 한도 초과
+  - 등등
+- __전송 전에 실패__
+  - 직렬화 실패, 프로듀서 자체 요청 크기 제한 초과
+  - 프로듀서 버퍼가 차서 기다린 시간이 최대 대기 시간 초과
+  - 등등
+
+### 실패 대응
+
+- __재시도__
+  - 재시도 가능한 에러는 재시도 처리
+    - Ex. 브로커 응답 타임 아웃, 일시적인 리더 없음 등
+- __재시도 위치__
+  - 프로듀서는 자체적으로 브로커 전송 과정에서 에러가 발생하면 재시도 가능한 에러에 대해 재전송 시도
+    - retries 속성
+  - send() 메서드에서 Exception 발생 시 Exception 타입에 따라 send() 재호출
+  - 콜백 메서드에서 Exception 받으면 타입에 따라 send() 재호출
+- __아주 아주 특별한 이유가 없다면 무한 재시도 X__
+- __기록__
+  - 추후에 처리를 위해 기록
+    - 별도 파일, DB 등을 이용해서 실패한 메시지 기록
+    - 추후에 수동(또는 자동) 보정 작업 진행
+  - 기록 위치
+    - send() 메서드에서 Exception 발생 시
+    - send() 메서드에 전달한 콜백에서 Exception 받는 경우
+    - send() 메서드가 리턴한 Future 의 get() 메서드에서 Exception 발생 시
+- __재시도와 메시지 중복 전송 가능성__
+  - 브로커 응답이 늦게 와서 재시도할 경우 중복 발송 가능
+  - enable.idempotence 속성을 설정하면 중복 발송 가능을 줄일 수 있다고 함
+  - ![](/resource/wiki/kafka-basic/producer3.png)
+- __재시도와 순서__
+  - max.in.flight.requests.per.connection
+    - 블로킹 없이 한 커넥션에서 전송할 수 있는 최대 전송중인 요청 개수
+    - 이 값이 1보다 크면 재시도 시점에 따라 메시지 순서가 바뀔 수 있음
+      - 전송 순서가 중요하면 이 값을 1로 지정
+
+### QNA
+
+> 최범균님 유튜브 댓글 링크에서 발췌
+>
+> Q. send로 데이터를 전송할 때 buffer.memory 값을 초과할 경우 약 5초간의 delay 시간이 걸리던데, 혹시 해당 시간이 발생하는 이유와 시간을 줄일 수 있는 방법이 있나요? (delay는 close 또는 flush API를 호출했을 때 동일하게 발생하더라구요) 참고로 설정은 buffer.memory=기본값 (32MB), linger.ms=1000, batch.size=16384를 사용했고,
+크기가 500Byte 인 데이터 8만개를 send 하게 될 경우 위의 현상이 발생합니다.
+> 
+> A. 문서를 보니 서버에 전송하는 속도보다 더 빠르게 쌓이면 프로듀서는 max.block.ms 시간만큼 블로킹을 하네요. 500바이트*8만개는 32M를 넘기니까 buffer.memory 크기를 좀 더 늘리는 게 가장 쉬운 방법일 것 같습니다.
 
 ## Links
 

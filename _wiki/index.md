@@ -73,6 +73,10 @@ regenerate: true
 
 * [[/kubernetes/kubernetes-architecture]]
 
+## kafka
+
+* [[/kafka/basic]]
+
 ## infra
 
 * [[/infra/infra-cloud]]
@@ -180,7 +184,6 @@ regenerate: true
 * [[/etc/character-encoding]]
 * [[/etc/environment-settings]]
 * [[/etc/regular-expression]]
-
 
 ---
 

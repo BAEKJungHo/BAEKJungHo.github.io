@@ -96,6 +96,13 @@ networks:
     driver: bridge
 ```
 
+## Assign Static IP to Docker Container and Docker-Compose
+
+- [Assign Static IP to Docker Container and Docker-Compose - Baeldung](https://www.baeldung.com/ops/docker-assign-static-ip-container)
+- [Kafka config with docker compose - Asterlsk](https://github.com/asterlsker/kafka/pull/17)
+- [How to Assign Static IP Addresses to Docker Compose Containers](https://devtonight.com/articles/how-to-assign-static-ip-addresses-to-docker-compose-containers)
+- [Set a static IP for docker-compose containers](https://mklasen.com/set-a-static-ip-for-docker-compose-containers/)
+
 ## Command options overview and help
 
 > You can use Docker Compose binary, `docker compose [-f <arg>...] [options] [COMMAND] [ARGS...]`, to build and manage multiple services in Docker containers.

@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-# Coroutines
+## Coroutines
 
 코루틴은 컴퓨터 프로그램 구성 요소 중 하나로 비선점형 멀티태스킹(non-preemptive multitasking)을 수행하는 일반화한 서브루틴(subroutine)이다. 코루틴은 실행을 일시 중단(suspend) 하고, 재개(resume)할 수 있는 여러 진입 지점(entry point)을 허용한다.
 
@@ -318,12 +318,457 @@ public static final Object example(int v, @NotNull Continuation var1)
 
 그리고 이 함수를 호출할 때는 함수 호출이 끝난 후 수행해야 할 작업을 var1 에 Continuation 으로 전달하고, 함수 내부에서는 필요한 모든 일을 수행한 다음에 결과를 var1 에 넘기는 코드를 추가한다. (이 예제에서는 v*2 를 인자로 Continuation 을 호출하는 코드가 들어간다.)
 
+## Kotlin Coroutines with async libraries
+
+> [[Kotlin Coroutines 톺아보기 - 당근마켓 로컬 커머스팀](https://www.youtube.com/watch?v=eJF60hcz3EU&list=LL&index=1&t=1s)]
+
+### 비동기에 대한 고민
+
+- __동기 프로그래밍과 다르다__
+  - 한번에 이해하기 힘들다
+  - 추적이 어렵다
+  - 에러 핸들링이 어렵다
+- __다양한 비동기 라이브러리__
+  - Spring Reactor
+  - CompletableFuture
+  - Hibernate React MUTINY
+  - 어떻게 혼용해서 써야할까?
+  - 어떤 결과 타입을 반환해야 할까?
+  - 또 다른 비동기 라이브러리가 추가되면?
+- __Coroutine 이 해결사?__
+  - 우수한 가독성
+  - 에러 핸들링
+  - 동시성 처리
+  - Flow
+  - Channel
+
+Coroutine 의 가장 큰 장점은 비동기 매커니즘을 언어 레벨에서 지원하다는 점이다.
+
+주문 생성에 관한 동기와 비동기 코드를 보자.
+
+- __주문 생성 과정__
+  - 구매자 조회
+  - 주소 조회 및 유효성 체크
+  - 상품 목록 조회
+  - 스토어 목록 조회
+  - 주문 생성
+
+### sync
+
+
+```kotlin
+fun execute(inputValues: InputValues): Order {
+    val (userId, productsIds) = inputValues
+    
+    // 1. 구매자 조회
+    val buyer = userRepository.findUserByIdSync(userId)
+    
+    // 2. 주소 조회 및 유효성 체크
+    val address = addressRepotiroy.findAddressByUserSync(buyer).last()
+    
+    // 3. 상품들 조회
+    val products = productRepository.findAllProductsByIdsSync(productIds)
+    check(products.isNotEmpty())
+    
+    // 4. 스토어 조회
+    val stores = storeRepository.findStoresByProductsSync(products)
+    check(stores.isNotEmpty())
+    
+    // 5. 주문 생성
+    val order = orderRepository.createOrderSync(buyer, products, stores, address)
+    
+    return order
+}
+```
+
+### async - RxJava3 Maybe
+
+- Maybe: 결과가 없거나 혹은 1개의 결과 또는 에러를 반환하는 타입
+
+```kotlin
+import io.reactivex.rxjava3.core.Maybe
+
+class UserRxRepository : UserRepositoryBase(), UserAsyncRepository {
+    override fun findUserByIdAsMaybe(userId: String): Maybe<User> {
+        val user = prepareUser(userId)
+        return Maybe.just(user)
+            .delay(TIME_DELAY_MS, TimeUnit.MILLISECONDS)
+    }
+}
+```
+
+### async - JDK9 Flow
+
+- 주소 조회를 JDK9 Flow 로 구현한 코드
+- JDK9 Flow: item 을 publish 하고 complete 이벤트로 flow 종료
+
+```kotlin
+import java.util.concurrent.Flow
+
+class AddressReactiveRepository : AddressRepositoryBase(), AddressAsyncRepository {
+    override fun findAddressByUserAsPublisher(user: User): Flow.Publisher<Address> {
+        val addressIterator = prepareAddresses().iterator()
+
+        return Flow.Publisher<Address> { subscriber ->
+            subscriber.onSubscribe(object : Flow.Subscription {
+                override fun request(n: Long) {
+                    Thread.sleep(TIME_DELAY_MS)
+                    var cnt = n
+                    while (cnt-- > 0) {
+                        if (addressIterator.hasNext()) {
+                            subscriber.onNext(addressIterator.next())
+                        } else {
+                            subscriber.onComplete()
+                            break
+                        }
+                    }
+                }
+
+                override fun cancel() {
+                    // do nothing
+                }
+            })
+        }
+    }
+}
+```
+
+### async - reactor Flux 
+
+- 상품 조회를 reactor Flux 로 구현한 코드
+- o .. n, Error
+
+```kotlin
+import reactor.core.publisher.Flux
+
+class ProductReactorRepository : ProductRepositoryBase(), ProductAsyncRepository {
+    override fun findAllProductsByIdsAsFlux(productIds: List<String>): Flux<Product> {
+        val products = productIds.map { prepareProduct(it) }
+        return Flux.fromIterable(products)
+            .delayElements(Duration.ofMillis(TIME_DELAY_MS))
+    }
+}
+```
+
+### async - mutiny Multi 
+
+- 스토어 조회를 mutiny Multi 로 구현한 코드
+- 0 .. n, Error
+
+```kotlin
+import io.smallrye.mutiny.Multi
+
+class StoreMutinyRepository : StoreRepositoryBase(), StoreAsyncRepository {
+    override fun findStoresByProductsAsMulti(products: List<Product>): Multi<Store> {
+        return Multi.createFrom().iterable(
+            products.map { prepareStore(it) }
+        )
+    }
+}
+```
+
+### async - JDK8 CompletableFuture
+
+- 주문 생성은 JDK8 의 CompletableFuture 사용
+- complete 되는 시점에 결과 반환
+
+```kotlin
+import java.util.concurrent.CompletableFuture
+
+class OrderFutureRepository : OrderAsyncRepository {
+    override fun createOrderAsFuture(
+        buyer: User,
+        products: List<Product>,
+        stores: List<Store>,
+        address: Address,
+    ): CompletableFuture<Order> {
+        val orderItems = products.zip(stores).map { (product, store) ->
+            OrderItem(product, store)
+        }
+
+        val createdOrder = Order(
+            buyer = buyer,
+            items = orderItems,
+            address = address,
+        )
+
+        val delayed = CompletableFuture.delayedExecutor(TIME_DELAY_MS, TimeUnit.MILLISECONDS)
+        return CompletableFuture.supplyAsync({ createdOrder }, delayed)
+    }
+}
+```
+
+### subscribe hell 
+
+- 위 코드들을 다모아서 처리하는 경우 아래와 같은 모양의 코드가 작성된다.
+- subscribe 는 결과를 얻은 시점에 주어진 subscriber(consumer)를 실행하는 일종의 callback
+- 반환값들이 아래에서 계속 필요해서 subscribe 가 중첩
+
+```kotlin
+fun execute(inputValues: InputValues): Mono<Order> {
+    val (userId, productIds) = inputValues
+
+    return Mono.create { emitter ->
+        userRepository.findUserByIdAsMaybe(userId)
+            .subscribe { buyer ->
+                addressRepository.findAddressByUserAsPublisher(buyer)
+                    .subscribe(LastItemSubscriber { address ->
+                        checkValidRegion(address)
+                        productRepository.findAllProductsByIdsAsFlux(productIds)
+                            .collectList()
+                            .subscribe { products ->
+                                check(products.isNotEmpty())
+                                storeRepository.findStoresByProductsAsMulti(products)
+                                    .collect().asList()
+                                    .subscribe().with { stores ->
+                                        check(stores.isNotEmpty())
+                                        orderRepository.createOrderAsFuture(
+                                            buyer, products, stores, address
+                                        ).whenComplete { order, _ ->
+                                            emitter.success(order)
+                                        }
+                                    }
+                            }
+                    })
+            }
+    }
+}
+```
+
+### flatMap hell
+
+- 각각의 비동기 함수를 Reactor 로 변경
+- RxJava3Adapter
+- JdkFlowAdapter
+- Flux.collectList
+- Flux.form
+- Mono.fromFuture
+
+```kotlin
+fun execute(inputValues: InputValues): Mono<Order> {
+    val (userId, productIds) = inputValues
+
+    return RxJava3Adapter.maybeToMono(userRepository.findUserByIdAsMaybe(userId))
+        .flatMap { buyer ->
+            JdkFlowAdapter.flowPublisherToFlux(
+                addressRepository.findAddressByUserAsPublisher(buyer))
+                .last()
+                .flatMap { address ->
+                    checkValidRegion(address)
+                    productRepository.findAllProductsByIdsAsFlux(productIds)
+                        .collectList()
+                        .flatMap { products ->
+                            check(products.isNotEmpty())
+                            Flux.from(storeRepository.findStoresByProductsAsMulti(products))
+                                .collectList()
+                                .flatMap { stores ->
+                                    check(stores.isNotEmpty())
+                                    Mono.fromFuture(
+                                        orderRepository.createOrderAsFuture(
+                                            buyer, products, stores, address
+                                        )
+                                    )
+                                }
+                        }
+                }
+        }
+}
+```
+
+### Coroutine 적용
+
+- Mayebe`<T>`.awiatSingle
+- Publisher`<T>`.awaitList
+- Flow`<T>`.toList
+- CompletableFuture`<T>`.await
+
+위 함수들은 suspend 내에서 동작할 수 있도록 하는 Bridge 역할을 하는 함수이다.
+
+```kotlin
+suspend fun execute(inputValues: InputValues): Order {
+    val (userId, productIds) = inputValues
+
+    // 1. 구매자 조회
+    val buyer = userRepository.findUserByIdAsMaybe(userId).awaitSingle()
+
+    // 2. 주소 조회 및 유효성 체크
+    val addressDeferred = CoroutineScope(Dispatchers.IO).async {
+        addressRepository.findAddressByUserAsPublisher(buyer)
+            .awaitLast()
+    }
+
+    // 3. 상품들 조회
+    val products = productRepository.findAllProductsByIdsAsFlux(productIds).asFlow().toList()
+    check(products.isNotEmpty())
+
+    // 4. 스토어 조회
+    val storesDeferred = CoroutineScope(Dispatchers.IO).async {
+        storeRepository.findStoresByProductsAsMulti(products).asFlow().toList()
+    }
+
+    val address = addressDeferred.await()
+    val stores = storesDeferred.await()
+
+    checkValidRegion(address)
+    check(stores.isNotEmpty())
+
+    // 5. 주문 생성
+    val order = orderRepository.createOrderAsFuture(buyer, products, stores, address).await()
+
+    return order
+}
+```
+
+동기 코드랑 비교해봤을때 큰 차이가 없다는 것이 장점이다.
+
+### Coroutine 실행
+
+- runBlocking 은 동기 코드에서 coroutine 을 실행할 수 있게 bridge 역할을 함
+
+```kotlin
+@Test
+fun `should return a createdOrder in coroutine`() = runBlocking {
+    // given
+    val userId = "user1"
+    val productIds = listOf("product1", "product2", "product3")
+
+    // when
+    val watch = StopWatch().also { it.start() }
+
+    val inputValues = CreateOrderCoroutineUseCase.InputValues(userId, productIds)
+    val createdOrder = createOrderUseCase.execute(inputValues)
+
+    watch.stop()
+    println("Time Elapsed: ${watch.time}ms")
+
+    // then
+    println(createdOrder)
+}
+```
+
+## Coroutine 톺아보기
+
+- __Kotlin Compiler__
+  - Finite State Machine(FSM) 기반의 재귀함수로 변환
+- Kotlin Compiler 가 suspend 가 붙은 함수에 추가적인 코드를 추가
+  - Continuation 인자를 타겟 함수에 추가하고 Continuation 구현체를 생성
+  - 타겟 함수 내의 모든 suspend 함수에 생성한 continuation 객체를 패스
+  - 코드를 분리해서 switch case 안에 넣고 label 을 이용해서 state 를 변경
+
+### FSM 기반의 재귀함수
+
+![](/resource/wiki/kotlin-coroutines/fms.png)
+
+- execute 함수가 실행되면 재귀 호출을 이용해서 스스로 execute 함수를 실행하면서 state 를 변경
+- state 가 최종에 도달하면 값을 caller 에 반환
+
+### FSM 기반의 동기 코드
+
+- SharedData 를 통해서 여러가지 context 를 저장
+- label 은 state machine 의 현재 state 값
+- 이전 state 에서 찾은 값들을 buyer, address, products, stores, order 에 저장
+- resumeWith 으로 재귀 호출을 하고 결과를 result 에 저장
+- 인자의 sharedData 가 null 이라면 생성하고, 아니면 있는 sharedData 를 사용
+
+```kotlin
+class CreateOrderSyncStateMachineUseCase(
+    private val userRepository: UserSyncRepository,
+    private val addressRepository: AddressSyncRepository,
+    private val productRepository: ProductSyncRepository,
+    private val storeRepository: StoreSyncRepository,
+    private val orderRepository: OrderSyncRepository,
+) : CreateOrderUseCaseBase() {
+    data class InputValues(
+        val userId: String,
+        val productIds: List<String>,
+    )
+
+    class SharedData {
+        var label: Int = 0
+        lateinit var result: Any
+        lateinit var buyer: User
+        lateinit var address: Address
+        lateinit var products: List<Product>
+        lateinit var stores: List<Store>
+        lateinit var order: Order
+        lateinit var resumeWith: (result: Any) -> Order
+    }
+
+    fun execute(
+        inputValues: InputValues,
+        sharedData: SharedData? = null,
+    ): Order {
+        val (userId, productIds) = inputValues
+
+        val that = this
+        val shared = sharedData ?: SharedData().apply {
+            this.resumeWith = fun (result: Any): Order {
+                this.result = result
+                return that.execute(inputValues, this)
+            }
+        }
+
+        return when (shared.label) {
+            0 -> {
+                shared.label = 1
+                userRepository.findUserByIdSync(userId)
+                    .let { user ->
+                        shared.resumeWith(user)
+                    }
+            }
+            1 -> {
+                shared.label = 2
+                shared.buyer = shared.result as User
+                addressRepository.findAddressByUserSync(shared.buyer).last()
+                    .let { address ->
+                        shared.resumeWith(address)
+                    }
+            }
+            2 -> {
+                shared.label = 3
+                shared.address = shared.result as Address
+                checkValidRegion(shared.address)
+                productRepository.findAllProductsByIdsSync(productIds)
+                    .let { products ->
+                        shared.resumeWith(products)
+                    }
+            }
+            3 -> {
+                shared.label = 4
+                shared.products = shared.result as List<Product>
+                check(shared.products.isNotEmpty())
+                storeRepository.findStoresByProductsSync(shared.products)
+                    .let { stores ->
+                        shared.resumeWith(stores)
+                    }
+            }
+            4 -> {
+                shared.label = 5
+                shared.stores = shared.result as List<Store>
+                check(shared.stores.isNotEmpty())
+                orderRepository.createOrderSync(
+                    shared.buyer, shared.products, shared.stores, shared.address
+                ).let { order ->
+                    shared.resumeWith(order)
+                }
+            }
+            5 -> {
+                shared.order = shared.result as Order
+                shared.order
+            }
+            else -> throw IllegalAccessException()
+        }
+    }
+}
+```
+
 ## Links
 
 - [kotlinx.coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/index.html)
 - [wikipedia coroutines](https://en.wikipedia.org/wiki/Coroutine)
-- [taehwandev kotlin coroutines](https://speakerdeck.com/taehwandev/kotlin-coroutines)
+- [kotlin coroutines - taehwandev](https://speakerdeck.com/taehwandev/kotlin-coroutines)
 
 ## 참고 문헌
 
+- 코틀린 완벽 가이드 / Aleksei Sedunov 저 / 길벗
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

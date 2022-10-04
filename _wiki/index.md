@@ -75,7 +75,7 @@ regenerate: true
 
 ## kafka
 
-* [[/kafka/basic]]
+* [[/kafka/kafka-basic]]
 
 ## infra
 
@@ -101,6 +101,7 @@ regenerate: true
 * [[/infra/infra-ip]]
 * [[/infra/infra-ci-cd]]
 * [[/infra/infra-deployment]]
+* [[/infra/infra-load-stress-smoke]]
 
 ## git
 

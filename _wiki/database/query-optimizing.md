@@ -299,6 +299,7 @@ WHERE employee.id = salary.id;
 - [MySQL Query Performance Optimization Tips](https://www.section.io/engineering-education/mysql-query-performance-optimization-tips/)
 - [MySQL workbench](https://www.mysql.com/products/workbench/)
 - [Query Performance Optimization in MySQL](https://www.databasejournal.com/mysql/query-performance-optimization-in-mysql/)
+- [awesome mysql performance - Releem](https://github.com/Releem/awesome-mysql-performance)
 
 ## 참고 문헌
 

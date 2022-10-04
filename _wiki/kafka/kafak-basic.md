@@ -4,7 +4,7 @@ title   : Kafka - Pretending to know a little
 summary : Kafka 조금 아는 척 하기
 date    : 2022-09-29 20:54:32 +0900
 updated : 2022-09-29 21:15:24 +0900
-tag     : kafka devops infra
+tag     : kafka
 toc     : true
 comment : true
 public  : true

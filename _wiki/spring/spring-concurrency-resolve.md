@@ -425,7 +425,8 @@ class DistributedLockAdvice {
       return try {
           point.proceed()
       } finally {
-          if (acquireLock != null && acquireLock.isLocked()) {
+          val locked = "락이 설정되었는지" //  isLocked or isHeldByCurrentThread 
+          if (locked) {
               try {
                   acquireLock.forceUnlock()
               } catch(e: Exception) {
@@ -482,26 +483,13 @@ fun cancel(@RequestBody request: TicketDto.CancelRequest) {
 }
 ```
 
-### Test
+#### Test
 
 ```java
 @SpringBootTest
 class DistributedLockTest {
 
     @Autowired private RedisClient redisClient;
-
-    static class ThreadConstraints {
-        private static final int THREAD_COUNT = 10;
-        private static final int THREAD_POOL = 5;
-        private static final int COMPLETE_TASK_DURATION_MILLIS_TIME = 2000;
-    }
-
-    static class LockConstraints {
-        private static final String LOCK_ID = "ticketId";
-        private static final int WAIT_TIME = 60;
-        private static final int LEASE_TIME = 5;
-        private static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
-    }
 
     @Test
     void tryLock() throws InterruptedException {
@@ -552,6 +540,19 @@ class DistributedLockTest {
             }
         }
     }
+    
+    static class ThreadConstraints {
+      private static final int THREAD_COUNT = 10;
+      private static final int THREAD_POOL = 5;
+      private static final int COMPLETE_TASK_DURATION_MILLIS_TIME = 2000;
+    }
+  
+    static class LockConstraints {
+      private static final String LOCK_ID = "ticketId";
+      private static final int WAIT_TIME = 60;
+      private static final int LEASE_TIME = 5;
+      private static final TimeUnit TIME_UNIT = TimeUnit.SECONDS;
+    }
 }
 ```
 
@@ -560,6 +561,19 @@ class DistributedLockTest {
 3. 2,3,4,5,6 상태에서 기존에 있던 2,3,4,5 중 하나의 스레드가 락을 획득하길 예상했지만 예상과 달리 스레드 6이 락을 선점
 
 이 결과로 미루어보아, 스레드 풀에 먼저들어온 순서대로 락을 획득하는 것은 아닌 것 같음. 경우에 따라서는 락을 먼저 획득해야하는 스레드에 우선순위를 높게 줘서, 순서와 상관없이 스레드 풀에 존재하고, 아직 락을 획득하지 못한 상태라면 락이 해제되고 해당 스레드가 락을 획득할 수 있도록 해주는 방법도 있을 것 같음.
+
+#### leaseTime
+
+leaseTime 은 Lock 의 유지 시간을 의미한다. Task 가 실패하거나 혹은 Task Duration 이 leaseTime 을 넘어가더라도 leaseTime 이후에는 락이 해제된다.
+
+- __주의 사항__
+  - leaseTime 은 Task Duration 보다 크게 설정하는 것이 좋다. (leaseTime > taskDuration)
+  - leaseTime 이 작은 경우 락을 해제할 때 isLocked() 가 아닌 isHeldByCurrentThread() 사용을 고려해야 한다.
+    - isLocked() 는 any thread 에 대해서 락이 걸려있는지를 확인한다.
+
+#### waitTime
+
+waitTime 은 락을 획득하기 위해 얼마만큼까지 대기할 것인지를 의미한다. waitTime 은 애플리케이션 상황에 따라 다르게 설정되어야 하기 때문에 로그 분석등을 통해 상황에 맞게 값을 설정하면 된다. 
 
 ## MySQL vs Redis
 

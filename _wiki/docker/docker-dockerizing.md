@@ -64,7 +64,7 @@ docker run -it -p 8081:8081 auth-server
 YAML 파일은 배포할 모든 서비스를 정의한다. 이러한 서비스는 `Dockerfile` 또는 기존 컨테이너 이미지를 기반으로 한다.
 
 ```yml
-# docker compose -f docker-compose.yml up -d
+# docker compose -f docker-compose.yml up -d --build
 # docker compose -f docker-compose.yml build --no-cache
 version: "3.9"
 

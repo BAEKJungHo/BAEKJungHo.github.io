@@ -27,7 +27,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo). Backend Developer__
 
 - __포티투닷(주)__ - 2022.08.29 ~ ing
   - [회사소개] 자율주행 모빌리티 회사
-  - [프로젝트] Distributed TryLock 기술을 활용하여 Driver 및 Rider 에게 신뢰 높은 서비스를 제공
+  - [프로젝트] Distributed tryLock 기술을 활용하여 배차 동시성 이슈 처리, 배치 서버 분리 작업
   - [Main Language] Kotlin, Java
   - [경험]
     - Spring Batch

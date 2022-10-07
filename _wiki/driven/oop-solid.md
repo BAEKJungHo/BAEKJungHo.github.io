@@ -18,7 +18,7 @@ latex   : true
 
 ### From: UncleBob
 
-> __Gather together the things that change for the same reasons. Separate things that change for different reasons.__
+> Gather together the things that change for the same reasons. Separate things that change for different reasons.
 > 
 > Microservices do not solve this problem. You can create a tangled microservice, or a tangled set of microservices if you mix code that changes for different reasons.
 > 
@@ -36,13 +36,15 @@ latex   : true
 > 
 > 역사적으로 SRP 는 다음과 같이 기술되어 왔다.
 > 
-> __단일 모듈은 변경의 이유가 하나, 오직 하나 뿐이어야 한다.__
+> 단일 모듈은 변경의 이유가 하나, 오직 하나 뿐이어야 한다.
 >
-> 변경의 이유란 바로 사용자와 이해관계자를 가리키며, 다음과 같이 바꿔 말할 수도 있다. __하나의 모듈은 하나의, 오직 하나의 사용자 또는 이해관계자에 대해서만 책임져야 한다.__
+> 변경의 이유란 바로 사용자와 이해관계자를 가리키며, 다음과 같이 바꿔 말할 수도 있다. 
+> 
+> 하나의 모듈은 하나의, 오직 하나의 사용자 또는 이해관계자에 대해서만 책임져야 한다.
 > 
 > 사용자와 이해관계자란 단어를 여기에 쓰는 것은 올바르지 않다. 이러한 집단을 액터라고 하는데 SRP 의 최종 버전은 아래와 같다.
 > 
-> __하나의 모듈은 하나의, 오직 하나의 액터에 대해서만 책임져야 한다.__
+> 하나의 모듈은 하나의, 오직 하나의 액터에 대해서만 책임져야 한다.
 > 
 > 모듈은 함수와 데이터 구조로 구성된 응집된 집합이다.
 > 
@@ -118,6 +120,121 @@ latex   : true
 ### From: Real-World Software Development
 
 > OCP 는 코드베이스에 유연성을 추가하고 유지보수성을 개선하는 데 도움을 주는 원칙이다.
+
+## Liskov Substitution Principle
+
+### From: UncleBob
+
+> A program that uses an interface must not be confused by an implementation of that interface.
+> 
+> This principle is about keeping abstractions crisp and well-defined.
+> 
+> Dan’s slides are entirely correct on this topic; he simply missed the point of the principle. Simple code is code that maintains crisp subtype relationships.
+
+### From: Clean Architecture
+
+> 1998년 Barbara Liskov 는 subtype 을 아래와 같이 정의했다.
+> 
+> 여기에서 필요한 것은 다음과 같은 치환(substitution) 원칙이다. S 타입의 객체 o1 각각에 대응하는 T 타입 객체 o2 가 있고, T 타입을 이용해서 정의한 모든 프로그램 P 에서 o2 의 자리에 o1 을 치환하더라도 P 의 행위가 변하지 않는다면 S 는 T 의 하위타입이다.
+
+### From: 오브젝트
+
+> LSP 를 한 마디로 정리하면 "서브타입은 그것의 기반 타입에 대해 대체 가능해야 한다" 는 것으로 클라이언트가 "차이점을 인식하지 못한 채 파생 클래스의 인터페이스를 통해 서브 클래스를 사용할 수 있어야 한다" 는 것이다.
+
+### From: 한 번 읽으면 두 번 깨닫는 객체지향 프로그래밍
+
+> LSP 란 "자식 클래스는 부모 클래스가 사용되는 곳(이 클래스 그룹을 사용하는 다른 클래스)에 대체될 수 있어야 한다" 는 원칙이다.
+
+### From: Real-World Software Development
+
+> LSP 는 클래스 상속과 인터페이스 구현을 올바르게 사용하도록 도와준다. 
+> 
+> 형식(type)이라는 용어가 등장하면 클래스나 인터페이스를 떠올리자. 하위형식(subtype)이라는 용어는 두 형식이 부모와 자식 관계를 이루었음을 의미한다. 즉, 클래스 상속이나 인터페이스 구현이 이에 해당한다.
+> 
+> LSP 를 자세히 들여다보면 LSP 를 네 개의 부분으로 쪼갤 수 있다.
+> 
+> q(x) 는 T 형식의 x 객체를 증명할 수 있는 공식이다. 그러면 S 형식의 객체 y 가 있고 S 가 T 의 하위형식이라면 q(y) 는 참이다.
+> 
+> - __하위형식에서 선행조건을 더 할 수 없음__
+>   - 선행조건은 어떤 코드가 동작하는 조건을 결정한다. 
+>   - LSP 란 부모가 지정한 것보다 더 많은 선행조건을 요구할 수 없음을 의미한다.
+> - __하위형식에서 후행조건을 악화시킬 수 없음__
+>   - 후행조건은 어떤 코드를 실행한 다음에 만족해야 하는 규칙이다.
+>   - 부모가 부작용을 포함하거나 어떤 값을 반환한다면 자식도 그래야 한다.
+> - __슈퍼형식의 불변자는 하위형식에서 보존됨__
+>   - 불변자란 밀물과 썰물처럼 항상 변하지 않는 어떤 것을 가리킨다.
+>   - 상속 관계의 부모와 자식 클래스가 있을 때, 부모 클래스에서 유지되는 모든 불변자는 자식 클래스에서도 유지되어야 한다.
+> - __히스토리 규칙__
+>   - 기본적으로 자식 클래스는 부모가 허용하지 않은 상태 변화를 허용하지 않아야 한다. 
+
+## Interface Segregation Principle
+
+### From: UncleBob
+
+> Keep interfaces small so that users don’t end up depending on things they don’t need.
+
+### From: Clean Architecture
+
+> ![](/resource/wiki/oop-solid/isp.png
+> 
+> User1 의 소스 코드는 U1Ops 와 op1 에는 의존하지만 OPS 에는 의존하지 않게 된다. 따라서 OPS 에서 발생한 변경이 User1 과는 전혀 관계없는 변경이 라면, User 1을 다시 컴파일하고 새로 배포하는 상황은 초래되지 않는다.
+
+### From: 오브젝트
+
+> 인터페이스를 클라이언트의 기대에 따라 분리함으로써 변경에 의해 영향을 제어하는 설계원칙을 ISP 라고 한다. 
+> 
+> 이 원칙은 비대한 인터페이스의 단점을 해결한다. 비대한 인터페이스를 가지는 클래스는 응집성이 없는 인터페이스를 가지는 클래스다.
+
+### From: 한 번 읽으면 두 번 깨닫는 객체지향 프로그래밍
+
+> ISP 는 SRP 와 비슷하다. SRP 는 클래스 관점에서 클래스가 하나의 일만 해야 한다고 가이드라인을 제시한다. ISP 는 "인터페이스 관점에서 클래스는 자신이 사용하지 않는 메서드에 의존하면 안된다" 라는 인터페이스 사용 가이드라인을 제시한다.
+
+### From: Real-World Software Development
+
+> ISP 는 다음 사상을 추구한다. 어떤 클래스도 사용하지 않는 메서드에 의존성을 갖지 않아야 한다. 이는 불필요한 결합을 만들기 때문이다. 이 원칙을 따르면 응집도도 높아진다.
+
+## Dependency Inversion Principle
+
+### From: UncleBob
+
+> Depend in the direction of abstraction. High level modules should not depend upon low level details.
+> 
+> In every case Dan’s slides end with: Just write simple code. This is good advice. However, if the years have taught us anything it is that simplicity requires disciplines guided by principles. It is those principles that define simplicity. It is those disciplines that constrain the programmers to produce code that leans towards simplicity.
+> 
+> In every case Dan’s slides end with: Just write simple code. This is good advice. However, if the years have taught us anything it is that simplicity requires disciplines guided by principles. It is those principles that define simplicity. It is those disciplines that constrain the programmers to produce code that leans towards simplicity.
+
+### From: Clean Architecture
+
+> DIP 에서 말하는 유연성이 극대화된 시스템이란 소스 코드 의존성이 추상(abstraction)에 의존하며 구체(concretion)에는 의존하지 않는 시스템을 말한다.
+> 
+> 우리가 의존하지 않도록 피하고자 하는 것은 바로 변동성이 큰(volatile) 구체적이 요소다. 그리고 이 구체적인 요소는 우리가 열심히 개발하는 중이라 자주 변경될 수밖에 없는 모듈들이다.
+> 
+> - 변동성이 큰 구체 클래스를 참조하지 말라. 대신 추상 인터페이스를 참조하라.
+> - 변동성이 큰 구체 클래스로부터 파생하지 말라.
+> - 구체 함수를 오버라이드 하지 말라. 대체로 구체함수는 소스코드 의존성을 필요로 한다.
+
+### From: 오브젝트
+
+> DIP 는 다음과 같다.
+>
+> - 상위 수준의 모듈은 하위 수준의 모듈에 의존해서는 안된다. 둘 모두 추상화에 의존해야 한다.
+> - 추상화는 구체적인 사항에 의존해서는 안 된다. 구체적인 사항은 추상화에 의존해야 한다.
+
+### From: 한 번 읽으면 두 번 깨닫는 객체지향 프로그래밍
+
+> DIP 는 구체적인 클래스 대신 추상적인 클래스에 의존하라는 뜻이다.
+> 
+> - __AS-IS__
+>   - ArrayList list = new ArrayList()
+> - __TO-BE__
+>   - List list = new ArrayList()
+
+### From: Real-World Software Development
+
+> 의존관계 역전의 정의는 다음과 같다.
+> 
+> - 높은 수준의 모듈은 낮은 수준의 모듈에 의존하지 않아야 한다. 두 모듈 모두 추상화에 의존해야 한다.
+> - 추상화는 세부 사항에 의존하지 않아야 한다. 세부 사항은 추상화에 의존해야 한다.
 
 ## Links
 

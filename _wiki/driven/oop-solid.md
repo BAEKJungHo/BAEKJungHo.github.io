@@ -203,15 +203,24 @@ latex   : true
 > 
 > In every case Dan’s slides end with: Just write simple code. This is good advice. However, if the years have taught us anything it is that simplicity requires disciplines guided by principles. It is those principles that define simplicity. It is those disciplines that constrain the programmers to produce code that leans towards simplicity.
 
+### From: Architecture Patterns with Python
+
+> 고수준 모듈(high-level module)은 여러분의 조직에서 정말 중요하게 여기는 코드다. 제약 회사에 근무한다면 고수준 모듈은 환자와 임상시험을 관리한다. 은행에서 근무한다면 고수준 모듈은 거래나 외환을 관리한다. 고수준 모듈은 실세게의 개념을 처리하는 함수, 클래스, 패키지를 말한다.
+>
+> 반대로 저수준 모듈(low-level module)은 여러분의 조직에서 신경 쓰지 않는 코드다. HR 부서가 파일 시스템이나 네트워크 소켓에 관심을 갖을 가능성이 낮다. 여러분이 SMTP, HTTP, AMQP 등을 재무팀과 의논하는 경우도 드물 것이다. 기술적이지 않은 관련자들에게 이런 저수준 개념은 흥미로운 대상이 아니거나 중요하지 않다. 이런 관련자들은 고수준의 개념이 정상으로 작동되는지만 신경 쓴다. 급여 시스템이 정시에 정상적 실행되면 사업 부서는 급여 시스템이 크론 잡(cron job)인지, 쿠버네티스(Kubernetes)에서 실행되는 일시적인 함수인지에 대해 신경 쓰지 않는다.
+>
+> 의존성은 꼭 임포트나 호출만을 뜻하지 않는다. 대신 한 모듈이 다른 모듈을 필요로 하거나, 안다는 좀더 일반적인 생각이 의존성이다.
+
 ### From: Clean Architecture
 
 > DIP 에서 말하는 유연성이 극대화된 시스템이란 소스 코드 의존성이 추상(abstraction)에 의존하며 구체(concretion)에는 의존하지 않는 시스템을 말한다.
 > 
 > 우리가 의존하지 않도록 피하고자 하는 것은 바로 변동성이 큰(volatile) 구체적이 요소다. 그리고 이 구체적인 요소는 우리가 열심히 개발하는 중이라 자주 변경될 수밖에 없는 모듈들이다.
-> 
-> - 변동성이 큰 구체 클래스를 참조하지 말라. 대신 추상 인터페이스를 참조하라.
-> - 변동성이 큰 구체 클래스로부터 파생하지 말라.
-> - 구체 함수를 오버라이드 하지 말라. 대체로 구체함수는 소스코드 의존성을 필요로 한다.
+>
+> - __변동성이 큰 구체 클래스를 참조하지 말라.__ 대신 추상 인터페이스를 참조하라. 이 규칙은 언어가 정적 타입이든 동적 타입이든 관계없이 모두 적용된다. 또한 이 규칙은 객체 생성 방식을 강하게 제약하며, 일반적으로 추상 팩토리(Abstract Factory)를 사용하도록 강제한다.
+> - __변동성이 큰 구체 클래스로부터 파생하지 말라.__ 이 규칙은 이전 규칙의 따름 정리이지만, 별도로 언급할 만한 가치가 있다. 정적 타입 언어에서 상속은 소스 코드에 존재하는 모든 관계 중에서 가장 강력한 동시에 뻣뻣해서 변경하기 어렵다. 따라서 상속은 아주 신중하게 사용해야 한다. 동적 타입 언어라면 문제가 덜 되지만, 의존성을 가진다는 사실에는 변함이 없다. 따라서 신중에 신중을 거듭하는 게 가장 현명한 선택이다.
+> - __구체 함수를 오버라이드 하지 말라.__ 대체로 구체 함수는 소스 코드 의존성을 필요로 한다. 따라서 구체 함수를 오버라이드 하면 이러한 의존성을 제거할 수 없게 되며, 실제로는 그 의존성을 상속하게 된다. 이러한 의존성을 제거하려면, 차라리 추상 함수로 선언하고 구현체들에서 각자의 용도에 맞게 구현해야 한다.
+> -__구체적이며 변동성이 크다면 절대로 그 이름을 언급하지 말라.__ 사실 이 실천법은 DIP 원칙을 다른 방식으로 풀어쓴 것이다.
 
 ### From: 오브젝트
 
@@ -224,10 +233,8 @@ latex   : true
 
 > DIP 는 구체적인 클래스 대신 추상적인 클래스에 의존하라는 뜻이다.
 > 
-> - __AS-IS__
->   - ArrayList list = new ArrayList()
-> - __TO-BE__
->   - List list = new ArrayList()
+> - __AS-IS__: ArrayList list = new ArrayList()
+> - __TO-BE__: List list = new ArrayList()
 
 ### From: Real-World Software Development
 
@@ -249,3 +256,4 @@ latex   : true
 - 오브젝트 / 조영호 저 / 위키북스
 - 한 번 읽으면 두 번 깨닫는 객체지향 프로그래밍 / 김동헌 저 / e 비즈북스
 - Real-World Software Development 실전 자바 소프트웨어 개발 / 라울-게이브리얼 우르마, 리처드 워버턴 저 / O'REILLY
+- Architecture Patterns with Python / 해리 퍼시벌, 밥 그레고리 저 / O'REILLY

@@ -175,7 +175,7 @@ latex   : true
 
 ### From: Clean Architecture
 
-> ![](/resource/wiki/oop-solid/isp.png
+> ![](/resource/wiki/oop-solid/isp.png)
 > 
 > User1 의 소스 코드는 U1Ops 와 op1 에는 의존하지만 OPS 에는 의존하지 않게 된다. 따라서 OPS 에서 발생한 변경이 User1 과는 전혀 관계없는 변경이 라면, User 1을 다시 컴파일하고 새로 배포하는 상황은 초래되지 않는다.
 

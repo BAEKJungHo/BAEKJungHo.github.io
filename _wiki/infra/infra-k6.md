@@ -96,12 +96,12 @@ networks:
 
 ## Links
 
-- https://intrepidgeeks.com/tutorial/load-test-with-k6
-- https://k6.io/docs/
-- https://github.com/grafana/k6
-- https://k6.io/blog/load-test-your-kafka-producers-and-consumers-using-k6/
-- https://k6.io/docs/javascript-api/
-- https://k6.io/blog/integrating-k6-with-apache-kafka/
-- https://issuecloser.com/blog/how-to-load-test-your-kafka-producers-and-consumers-using-k6
-- https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3
-- https://docs.influxdata.com/influxdb/v2.0/security/tokens/create-token/
+- [load-test-with-k6](https://intrepidgeeks.com/tutorial/load-test-with-k6)
+- [k6 docs](https://k6.io/docs/)
+  - https://github.com/grafana/k6
+  - https://k6.io/blog/load-test-your-kafka-producers-and-consumers-using-k6/
+  - https://k6.io/docs/javascript-api/
+  - https://k6.io/blog/integrating-k6-with-apache-kafka/
+- [how to load test your kafka producers and consumers using k6](https://issuecloser.com/blog/how-to-load-test-your-kafka-producers-and-consumers-using-k6)
+- [beautiful-load-testing-with-k6-and-docker-compose](https://medium.com/swlh/beautiful-load-testing-with-k6-and-docker-compose-4454edb3a2e3)
+- [influxdb create token](https://docs.influxdata.com/influxdb/v2.0/security/tokens/create-token/)

@@ -101,7 +101,7 @@
  },
  {
   "name": "methodology",
-  "size": 5
+  "size": 6
  },
  {
   "name": "mockk",
@@ -117,6 +117,10 @@
  },
  {
   "name": "nodejs",
+  "size": 2
+ },
+ {
+  "name": "oop",
   "size": 2
  },
  {

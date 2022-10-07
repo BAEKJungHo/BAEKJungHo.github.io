@@ -136,6 +136,7 @@ regenerate: true
 * [[/driven/oop-oo]]
 * [[/driven/driven-use]]
 * [[/driven/development-design-docs]]
+* [[/driven/oop-solid]]
 
 ## Database
 

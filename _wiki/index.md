@@ -102,6 +102,7 @@ regenerate: true
 * [[/infra/infra-ci-cd]]
 * [[/infra/infra-deployment]]
 * [[/infra/infra-load-stress-smoke]]
+* [[/infra/infra-k6]]
 
 ## git
 

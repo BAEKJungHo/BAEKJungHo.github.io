@@ -63,9 +63,14 @@ docker run -it -p 8081:8081 auth-server
 
 YAML 파일은 배포할 모든 서비스를 정의한다. 이러한 서비스는 `Dockerfile` 또는 기존 컨테이너 이미지를 기반으로 한다.
 
+- [Compose specification](https://docs.docker.com/compose/compose-file/)
+
 ```yml
 # docker compose -f docker-compose.yml up -d --build
 # docker compose -f docker-compose.yml build --no-cache
+# redis-cli: docker exec -it {containerId} redis-cli
+# keys *
+# get key {keyName}
 version: "3.9"
 
 services:
@@ -77,24 +82,59 @@ services:
     ports:
       - "6379:6379"
     command: redis-server
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    networks:
+      - internal-network
   membrer-server:
-    container_name: member
+    container_name: expedia-member
     build: ../member-server
     ports:
       - "8081:8081"
+    links:
+      - auth-server
     networks:
       - internal-network
   auth-server:
-    container_name: auth
+    container_name: expedia-auth
     build: ../auth-server
     ports:
       - "8082:8082"
+    links:
+      - redis
+    depends_on:
+      - redis
     networks:
       - internal-network
 networks:
   internal-network:
     driver: bridge
 ```
+
+- __links__: links 항목을 사용하지 않더라도 한 네트워크 안에 있는 서비스끼리 통신을 할 수 있음
+- __depends_on__: depends_on 에 명시된 컨테이너가 실행되어야, 해당 컨테이너도 실행할 수 있음
+- __ports__: 외부에 공개하는 포트번호(호스트 머신의 포트번호:컨테이너의 포트번호)
+
+내 로컬환경에서 컨테이너에 접근할 때는 `localhost:포트번호` 로 가능하다. 컨테이너끼리 통신하기 위해서는 yaml 파일에서 host 에 컨테이너명(Ex. expedia-auth)으로 적어서 사용해야 한다.
+
+```yaml
+# Member-server application.yml
+auth-server:
+  endpoint: http://expedia-auth:8082
+```
+
+## Networking in Compose
+
+- [Networking in Compose](https://docs.docker.com/compose/networking/)
 
 ## Assign Static IP to Docker Container and Docker-Compose
 

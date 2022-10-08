@@ -57,7 +57,7 @@ ENTRYPOINT ["java", "-jar", "/app/app.jar"]
 docker run -it -p 8081:8081 auth-server
 ```
 
-### docker-compose.yml
+### Docker Compose
 
 [Docker Compose](https://docs.docker.com/compose/) 는 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 도구이다. Compose 에서 YAML 파일을 사용하여 애플리케이션의 서비스를 구성한다.
 
@@ -124,7 +124,7 @@ networks:
 - __depends_on__: depends_on 에 명시된 컨테이너가 실행되어야, 해당 컨테이너도 실행할 수 있음
 - __ports__: 외부에 공개하는 포트번호(호스트 머신의 포트번호:컨테이너의 포트번호)
 
-내 로컬환경에서 컨테이너에 접근할 때는 `localhost:포트번호` 로 가능하다. 컨테이너끼리 통신하기 위해서는 yaml 파일에서 host 에 컨테이너명(Ex. expedia-auth)으로 적어서 사용해야 한다.
+내 로컬환경에서 컨테이너에 접근할 때는 `localhost:포트번호` 로 가능하다. 컨테이너끼리 통신하기 위해서는 yaml 파일에서 host 에 `컨테이너명`으로 적어서 사용해야 한다.
 
 ```yaml
 # Member-server application.yml

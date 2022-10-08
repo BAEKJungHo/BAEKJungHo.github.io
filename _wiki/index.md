@@ -30,6 +30,7 @@ regenerate: true
 * [[/kotlin/kotlin-first-citizen]]
 * [[/kotlin/kotlin-lambda]]
 * [[/kotlin/kotlin-inline]]
+* [[/kotlin/kotlin-deserialize-dataclass]]
 
 ## java
 

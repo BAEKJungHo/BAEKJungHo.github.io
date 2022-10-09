@@ -126,6 +126,7 @@ regenerate: true
 * [[/designpattern/designpattern-singleton]]
 * [[/designpattern/designpattern-template-method]]
 * [[/designpattern/designpattern-strategy]]
+* [[/designpattern/designpattern-observer]]
 
 ## ddd
 

@@ -57,6 +57,10 @@ regenerate: true
 * [[/spring/spring-backpressure]]
 * [[/spring/spring-security]]
 
+## reactive
+
+* [[/reactive/reactive-duality]]
+
 ## msa
 
 * [[/msa/msa-business-agility]]

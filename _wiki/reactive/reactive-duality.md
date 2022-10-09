@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Duality in Reactive
-summary : Reactive 에서의 상대성 이론
+summary : Reactive 에서의 상대성 이론과 Reactive Streams 인터페이스
 date    : 2022-10-04 15:05:32 +0900
 updated : 2022-10-04 15:15:24 +0900
 tag     : reactive
@@ -102,7 +102,7 @@ ReactiveX 를 처음 만든 Microsoft Engineers 가 Observer Pattern 은 좋지�
 2. __Error 처리를 어떻게 할 것인가.__
   - Recoverable Exception(복구 가능한 예외, Ex. Network Error 등)가 발생했을 때 어떻게 복구할 것인가에 대한 패턴이 녹아져 있지 않다.
 
-Observer Pattern 에서 위 두 가지의 개념을 보완한 것인 Reactive Programming 의 한 축이다.
+Observer Pattern 에서 위 두 가지의 개념을 보완한 것이 Reactive Programming 의 한 축이다.
 
 ## Reactive Streams
 
@@ -110,13 +110,133 @@ Reactive Streams 란 비동기 스트림 처리(asynchronous stream processing) 
 
 - [Package org.reactivestreams Interfaces](https://www.reactive-streams.org/reactive-streams-1.0.4-javadoc/org/reactivestreams/package-summary.html)
 
+![](/resource/wiki/reactive-duality/uml.png)
+
+A Publisher is a provider of a potentially unbounded number of sequenced elements, publishing them according to the demand received from its Subscriber(s).
+
+### Flow
+
+JDK9 made the reactive streams interfaces available under [java.util.concurrent.Flow](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html), which is semantically equivalent to org.reactivestreams APIs. RxJava, Reactor, and Akka Streams all implement the interfaces under Flow.
+
+![](/resource/wiki/reactive-duality/flow.png)
+
+- [The Reactive Streams interfaces are:](https://developer.ibm.com/articles/defining-the-term-reactive/)
+  - __Subscriber and Publisher__
+    - (1) subscribe(): sub -> pub
+      - A Subscriber subscribes to a Publisher via the method Publisher.subscribe().
+    - (2) onSubscribe(sub): pub -> sub
+      - Then the Publisher calls Subscriber.onSubscribe to pass over the Subscription.
+      - The Subscriber calls subscription.request(), which takes care of [backpressure](https://baekjungho.github.io/wiki/spring/spring-backpressure/) or subscription.cancel()
+  - __Subscription__
+    - (3) request(x): sub -> pub
+      - x: Number of data subscriber want to receive
+    - (4) onNext(i1) .. onNext(iX): pub -> sub
+      - The publisher will not send more than 4 unless the subscriber requests more.
+    - (5) onComplete(): pub -> sub
+      - The Publisher invokes onNext() when an item is published or onComplete() if no item is to be published.
+  - __Processor__
+    - A processor is an intermediary between Publisher and Subscriber. It subscribes to a Publisher and then a Subscriber subscribes to Processor.
+
 ### Pub/Sub Implementation
 
+- __Reactive Streams interfaces 를 구현한 코드__
 
+```java
+import java.util.concurrent.Flow;
+
+public class PubSub {
+    public static void main(String[] args) {
+        Iterable<Integer> iter = Arrays.asList(1,2,3,4,5);
+        Flow.Publisher pub = createPublisher();
+        Flow.Subscriber sub = createSubscriber();
+    }
+    
+    private Flow.Publisher createPublisher() {
+        return new Flow.Publisher() {
+            @Override
+            public void subscribe(Flow.Subscriber subscriber) {
+                // onSubscribe 는 무조건 호출되어야 하는 메서드: subscribe 하는 즉시 호출해줘야 함
+                subscriber.onSubscribe(new Flow.Subscription() {
+                    Iterator<Integer> it = iter.iterator();
+
+                    @Override
+                    public void request(long n) {
+                        try {
+                            // Subscriber.onSubscribe() 안에서 호출
+                            while (n-- > 0) {
+                                if (it.hasNext()) {
+                                    subscriber.onNext(it.next()); // 데이터 통지
+                                } else {
+                                    subscriber.onComplete(); // 통지 완료
+                                    break;
+                                }
+                            }
+                        } catch (RuntimeException e) {
+                            // 에러 발생시 Subscriber 에서 처리
+                            subscriber.onError(e);
+                        }
+                    }
+
+                    @Override
+                    public void cancel() {
+
+                    }
+                });
+            }
+        };
+    }
+    
+    private Flow.Subscriber createSubscriber() {
+        Flow.Subscriber<Integer> s  = new Flow.Subscriber<Integer>() {
+            Flow.Subscription subscription;
+
+            @Override
+            public void onSubscribe(Flow.Subscription subscription) { 
+                System.out.println("onSubscribe");
+                this.subscription = subscription;
+                this.subscription.request(1); // Long.MAX_VALUE = 모든 데이터 다 받기
+            }
+
+            int bufferSize = 2;
+
+            /**
+             * publisher 에서 통지한 데이터를 처리
+             * @param item the item
+             */
+            @Override
+            public void onNext(Integer item) {
+                // 다음 데이터를 다시 요청
+                if (--bufferSize <= 0) {
+                    bufferSize = 2;
+                    this.subscription.request(2); 
+                }
+            }
+
+            /**
+             * Error Processing
+             * Publisher 에서 어떤 종류의 에러가 발생하더라도 이 메서드에서 처리함
+             * @param throwable the exception
+             */
+            @Override
+            public void onError(Throwable throwable) {
+                System.out.println("onError");
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("onComplete");
+            }
+        };
+    }
+}
+```
 
 ## Links
 
+- [The Reactive Manifesto](https://www.reactivemanifesto.org/)
 - [Spring Reactive Programming - Toby](https://www.youtube.com/watch?v=8fenTR3KOJo&list=LL&index=2&t=3s)
 - [ReactiveX](https://reactivex.io/)
 - [Reactive Streams](https://www.reactive-streams.org/)
 - [Spring Reactive](https://spring.io/reactive)
+- [Build Reactive REST APIs With Spring WebFlux - DZone](https://dzone.com/articles/build-reactive-rest-apis-with-spring-webflux)
+- [Defining the term reactive](https://developer.ibm.com/articles/defining-the-term-reactive/)

@@ -146,12 +146,14 @@ import java.util.concurrent.Flow;
 
 public class PubSub {
     public static void main(String[] args) {
-        Iterable<Integer> iter = Arrays.asList(1,2,3,4,5);
-        Flow.Publisher pub = createPublisher();
+        Iterable<Integer> iter = Arrays.asList(1,2,3,4,5); // Collection Data
+        Flow.Publisher pub = createPublisher(iter);
         Flow.Subscriber sub = createSubscriber();
+        
+        pub.subscribe(sub);
     }
     
-    private Flow.Publisher createPublisher() {
+    private Flow.Publisher createPublisher(Iterable<Integer> iter) {
         return new Flow.Publisher() {
             @Override
             public void subscribe(Flow.Subscriber subscriber) {
@@ -162,17 +164,15 @@ public class PubSub {
                     @Override
                     public void request(long n) {
                         try {
-                            // Subscriber.onSubscribe() 안에서 호출
                             while (n-- > 0) {
-                                if (it.hasNext()) {
-                                    subscriber.onNext(it.next()); // 데이터 통지
-                                } else {
-                                    subscriber.onComplete(); // 통지 완료
+                                if (it.hasNext()) { // exists data
+                                    subscriber.onNext(it.next()); // notify
+                                } else { // empty data
+                                    subscriber.onComplete(); // notify complete
                                     break;
                                 }
                             }
                         } catch (RuntimeException e) {
-                            // 에러 발생시 Subscriber 에서 처리
                             subscriber.onError(e);
                         }
                     }
@@ -194,7 +194,7 @@ public class PubSub {
             public void onSubscribe(Flow.Subscription subscription) { 
                 System.out.println("onSubscribe");
                 this.subscription = subscription;
-                this.subscription.request(1); // Long.MAX_VALUE = 모든 데이터 다 받기
+                this.subscription.request(1); // Long.MAX_VALUE: 모든 데이터 다 받기
             }
 
             int bufferSize = 2;
@@ -205,7 +205,7 @@ public class PubSub {
              */
             @Override
             public void onNext(Integer item) {
-                // 다음 데이터를 다시 요청
+                // 기존 bufferSize 에 대한 요청이 끝나고 나면 다음 데이터를 다시 요청
                 if (--bufferSize <= 0) {
                     bufferSize = 2;
                     this.subscription.request(2); 
@@ -231,6 +231,8 @@ public class PubSub {
 }
 ```
 
+추가적으로 grpc 의 자바 구현을 보면, Observable 과 Subscriber API 로 구현되어있다.
+
 ## Links
 
 - [The Reactive Manifesto](https://www.reactivemanifesto.org/)
@@ -240,3 +242,4 @@ public class PubSub {
 - [Spring Reactive](https://spring.io/reactive)
 - [Build Reactive REST APIs With Spring WebFlux - DZone](https://dzone.com/articles/build-reactive-rest-apis-with-spring-webflux)
 - [Defining the term reactive](https://developer.ibm.com/articles/defining-the-term-reactive/)
+- [Reactive in practice: A complete guide to event-driven systems development in Java](https://developer.ibm.com/series/reactive-in-practice/)

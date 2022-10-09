@@ -33,6 +33,18 @@ latex   : true
 - 어떤 이벤트가 발생했을 때 한 객체(주제(subject) 라 불리는)가 다른 객체 리스트(옵저버(observer) 라 불리는)에 자동으로 알림을 보내야 하는 상황에서 옵저버 디자인 패턴을 사용한다. GUI 애플리케이션에서 옵저버 패턴이 자주 등장한다. 버튼 GUI 컴포넌트에 옵저버를 설정할 수 있다. 그리고 사용자가 버튼을 클릭하면 옵저버에 알림이 전달되고 정해진 동작이 수행된다.
 - 옵저버 패턴은 어떤 객체에 이벤트가 발생했을 때, 이 객체와 관련된 객체들(옵저버들)에게 통지하도록 하는 디자인 패턴을 말한다. 즉, 객체의 상태가 변경되었을 때, 특정 객체에 의존하지 않으면서 상태의 변경을 관련된 객체들에게 통지하는 것이 가능해진다. 이 패턴은 __Pub/Sub(발행/구독)__ 모델으로 불리기도 한다.
 
+### advantages
+
+- 상태를 변경하는 객체(publisher)와 변경을 감지하는 객체(subscriber)의 관계를 느슨하게 유지할 수 있음
+- Subject 의 상태 변경을 주기적으로 조회하지 않고 자동으로 감지할 수 있음
+- 런타임에 옵저버를 추가하거나 제거할 수 있음
+
+### disadvantages
+
+- 복잡도가 증가함
+- 다수의 Observer 객체를 등록 이후 해지하지 않는다면 [Memory leak](https://baekjungho.github.io/wiki/java/java-memoryleak/) 이 발생할 수도 있음
+  - Ex. private Map<String, List<Subscriber>> subscribers = new HashMap<>(); 코드에서 subscribers 를 다른 곳에서 참조하지 않는다면 Map 에 [WeakReference](https://docs.oracle.com/javase/8/docs/api/java/lang/ref/WeakReference.html) 를 적용할 수 있다. 이 경우 해지 메서드를 호출하지 않아도 GC 에 의한 회수 대상이 된다. 하지만 베스트 프랙티스는 __명시적으로 해지하는 코드를 작성__ 하는 것이 가장 좋다.
+
 ## Loose coupling
 
 두 객체가 느슨하게 결합되어 있다는 것은, 그 둘이 상호작용을 하긴 하지만 서로에 대해 잘 모른다는 것을 의미한다. 옵저버 패턴은 느슨한 결합을 제공한다. 
@@ -48,6 +60,8 @@ latex   : true
 - 주제나 옵저버가 바뀌더라도 서로한테 영향을 미치지는 않는다.
 
 ## Implementation
+
+### First Example
 
 옵저버 패턴으로 트위터 같은 커스터마이즈된 알림 시스템을 설계하고 구현할 수 있다. 다양한 신문 매체(뉴욕타임스, 가디언 등)가 뉴스 트윗을 구독하고 있으며 큭정 키워드를 포함하는 트윗이 등록되면 알림을 받고 싶어한다. 옵저버 인터페이스는 새로운 트윗이 있을 때 주제(Feed)가 호출할 수 있도록 notify 라고 하는 하나의 메서드를 제공한다.
 
@@ -130,9 +144,101 @@ f.registerObserver(String(tweet) -> {
 });
 ```
 
+### Second Example
+
+Chatting Service 처럼 polling 방식이 적합하지 않은 곳에서 pub/sub 패턴을 활용할 수 있다.
+
+- __Subscriber__
+
+```java
+public interface Subscriber {
+    void handleMessage(String message);
+}
+```
+
+- __Concrete Subscriber__
+
+```java
+@Getter
+public class User implements Subscriber {
+    private String name;
+    
+    public User(String name) {
+        this.name = name;
+    }
+    
+    @Override
+    public void handleMessage(String message) {
+        System.out.println(message);
+    }
+}
+```
+
+- __ChatServer: Observer 패턴에 해당하는 Subject__
+
+```java
+public class ChatServer {
+  
+    private Map<String, List<Subscriber>> subscribers = new HashMap<>();
+    
+    // 등록
+    public void register(String subject, Subscriber subscriber) {
+        if (subscribers.containsKey(subject)) {
+            subscribers.get(subject).add(subscriber);
+        } else {
+            List<Subscriber> list = new ArrayList<>();
+            list.add(subscriber);
+            subscribers.put(subject, list);
+        }
+    }
+    
+    // 해지
+    public void release(String subject, Subscriber subscriber) {
+        if (subscribers.containsKey(subject)) {
+            subscribers.get(subject).remove(subscriber);
+        }
+    }
+    
+    // 알림
+    public void notify(User user, String subject, String message) {
+        if (subscribers.containsKey(subject)) {
+            String userMessage = user.getName() + ": " + message;
+            subscribers.get(subject).forEach(s -> s.handleMessage(userMessage));
+        }
+    }
+}
+```
+
+- __사용 코드__
+
+```java
+public class Client {
+    public static void main(String[] args) {
+        ChatServer chatServer = new ChatServer();
+        User user1 = new User("BAEK-1");
+        User user2 = new User("BAEK-2");
+        
+        chatServer.register("오징어게임", user1);
+        chatServer.register("오징어게임", user2);
+
+        chatServer.register("디자인패턴", user1);
+        
+        chatServer.notify(user1, "오징어게임", "squid game");
+        chatServer.notify(user2, "디자인패턴", "observer");
+    }
+}
+```
+
 ## Java Observer
 
 java.util.Observable 클래스와 java.util.Observer 인터페이스가 있다. 이 두개는 직접 구현하는것 보다 훨씬 많은 기능을 지원한다. `푸시 방식` 으로 갱신할 수도 있고, `풀 방식` 으로 갱신할 수도 있다.
+
+- Observable 과 Observer (자바 9부터 deprecated)
+- 자바 9 이후 부터는 PropertyChangeListener, PropertyChangeEvent, Flow API, SAX (Simple API for XML) 라이브러리
+
+## Spring Observer
+
+ApplicationContext 와 ApplicationEvent 에 적용되어 있다.
 
 ## Links
 

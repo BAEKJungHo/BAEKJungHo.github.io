@@ -41,6 +41,7 @@ latex   : true
 
 ## Links
 
+- [Backpressure explained — the resisted flow of data through software](https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7)
 - [Spring Webflux backpressure - baeldung](https://www.baeldung.com/spring-webflux-backpressure)
 - [Backpressure mechanism in Spring Web-Flux - stackoverflow](https://stackoverflow.com/questions/52244808/backpressure-mechanism-in-spring-web-flux)
 - [Webflux 공부하자 1편 - nurinamu](https://www.nurinamu.com/dev/2020/04/09/why-webflux-1/)

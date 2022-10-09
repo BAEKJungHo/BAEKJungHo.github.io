@@ -236,9 +236,134 @@ java.util.Observable 클래스와 java.util.Observer 인터페이스가 있다. 
 - Observable 과 Observer (자바 9부터 deprecated)
 - 자바 9 이후 부터는 PropertyChangeListener, PropertyChangeEvent, Flow API, SAX (Simple API for XML) 라이브러리
 
+### Flow
+
+- __SubmissionPublisher__
+
+```java
+/**
+ * Creates a new SubmissionPublisher using the {@link
+ * ForkJoinPool#commonPool()} for async delivery to subscribers
+ * (unless it does not support a parallelism level of at least two,
+ * in which case, a new Thread is created to run each task), with
+ * maximum buffer capacity of {@link Flow#defaultBufferSize}, and no
+ * handler for Subscriber exceptions in method {@link
+ * Flow.Subscriber#onNext(Object) onNext}.
+ */
+public SubmissionPublisher() {
+    this(ASYNC_POOL, Flow.defaultBufferSize(), null);
+}
+```
+
+- __사용 코드__
+
+```java
+public class FlowInJava {
+
+    public static void main(String[] args) throws InterruptedException {
+        Flow.Publisher<String> publisher = new SubmissionPublisher<>();
+
+        Flow.Subscriber<String> subscriber = new Flow.Subscriber<String>() {
+
+            private Flow.Subscription subscription;
+
+            @Override
+            public void onSubscribe(Flow.Subscription subscription) {
+                System.out.println("sub!");
+                this.subscription = subscription;
+                this.subscription.request(1);
+            }
+
+            @Override
+            public void onNext(String item) {
+                System.out.println("onNext called");
+                System.out.println(Thread.currentThread().getName());
+                System.out.println(item);
+            }
+
+            @Override
+            public void onError(Throwable throwable) {
+            }
+
+            @Override
+            public void onComplete() {
+                System.out.println("completed");
+            }
+        };
+
+        publisher.subscribe(subscriber);
+
+        ((SubmissionPublisher)publisher).submit("hello java");
+
+        System.out.println("이게 먼저 출력될 수도 있습니다.");
+    }
+}
+```
+
+- Reactive Stream API 의 주요 목적 중 하나는 BackPressure 를 관리하는 것이다. 구독을 하는 쪽에서 BackPressure 기능을 활용할 수 있다.
+
 ## Spring Observer
 
-ApplicationContext 와 ApplicationEvent 에 적용되어 있다.
+ApplicationContext(IoC Container, EventPublisher) 와 ApplicationEvent 에 Observer 패턴이 적용되어 있다.
+
+### @EventListener
+
+- __Event Object__
+
+```java
+public class MyEvent {
+
+    private String message;
+
+    public MyEvent(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+}
+```
+
+- __EventListener__
+
+```java
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyEventListener {
+
+    @EventListener(MyEvent.class)
+    public void onApplicationEvent(MyEvent event) {
+        System.out.println(event.getMessage());
+    }
+}
+```
+
+- __Runner__
+
+```java
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyRunner implements ApplicationRunner {
+
+    private ApplicationEventPublisher publisher;
+
+    public MyRunner(ApplicationEventPublisher publisher) {
+        this.publisher = publisher;
+    }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        publisher.publishEvent(new MyEvent("hello spring event"));
+    }
+}
+```
 
 ## Links
 

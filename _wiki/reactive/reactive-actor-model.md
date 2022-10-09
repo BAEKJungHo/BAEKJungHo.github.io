@@ -8,7 +8,7 @@ tag     : reactive
 toc     : true
 comment : true
 public  : true
-parent  : [[/Reactive]]
+parent  : [[/reactive]]
 latex   : true
 ---
 * TOC

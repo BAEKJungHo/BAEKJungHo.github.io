@@ -365,6 +365,20 @@ public class MyRunner implements ApplicationRunner {
 }
 ```
 
+- __Application__
+
+```java
+@SpringBootApplication
+public class ObserverInSpring {
+
+    public static void main(String[] args) {
+        SpringApplication app = new SpringApplication(ObserverInSpring.class);
+        app.setWebApplicationType(WebApplicationType.NONE);
+        app.run(args);
+    }
+}
+```
+
 ## Links
 
 - [Observer Pattern - wikipedia](https://en.wikipedia.org/wiki/Observer_pattern#:~:text=The%20Observer%20design%20pattern%20is%20a%20behavioural%20pattern%2C,easier%20to%20implement%2C%20change%2C%20test%2C%20and%20reuse.%20)

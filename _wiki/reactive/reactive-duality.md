@@ -20,8 +20,8 @@ latex   : true
   - 무엇에 반응? = Event
 - Reactive Programming = 반응성 프로그래밍
   - __이벤트가 발생__ 했을 때 그에 대한 __반응__ 을 하는 코드를 작성하는 프로그래밍
-- ReactiveX 를 이해하기 위한 핵심 개념이 Observable 이다.
-  - 그리고 Observable 을 공부하다보면 등장하는 개념이 상대성(Duality)이다.
+- ReactiveX 를 이해하기 위한 핵심 개념이 [Observable](https://reactivex.io/documentation/observable.html) 이다.
+  - 그리고 Observable 을 공부하다보면 등장하는 개념이 [Dual(category theory)](https://en.wikipedia.org/wiki/Dual_(category_theory))이다.
   - 상대성(Duality) 을 이해하기 위해서 Iterable 의 next() 와 Observable 의 notify() 를 비교해보면 좋다.
     - [Observer Design Pattern](https://baekjungho.github.io/wiki/designpattern/designpattern-observer/)
     - [Iterable](https://baekjungho.github.io/wiki/java/java-iterable/)
@@ -29,6 +29,8 @@ latex   : true
 ## Duality
 
 ReactiveX 에서 비슷한 의미로 사용되는 용어가 많다. ReactiveX 에서 핵심이 되는 개념이 상대성(이중성, Duality) 이다.  해당 용어들이 Duality 를 설명하기 좋다고 생각한다.
+
+> In category theory, a branch of mathematics, __duality__ is a correspondence between the properties of a category C and the dual properties of the opposite category Cop.
 
 Duality 에서 __Push : Pull = One : Many__ 의 관계를 가진다.
 
@@ -44,7 +46,7 @@ Duality 에서 __Push : Pull = One : Many__ 의 관계를 가진다.
 
 위 표의 관계(push vs pull)를 pseudo code 로 나타내면 다음과 같다.
 
-__DATA method(void) <-> void method(DATA)__
+__Push : void method(DATA) ↔ Pull: DATA method(void)__
 
 ## Observable
 
@@ -93,5 +95,4 @@ public class ObservableApp {
 - [토비의 봄 TV - Spring Reactive Programming](https://www.youtube.com/watch?v=8fenTR3KOJo&list=LL&index=2&t=3s)
 - [ReactiveX](https://reactivex.io/)
 - [ReactiveX - intro](https://reactivex.io/intro.html)
-- [Duality Theory](https://www.dam.brown.edu/people/huiwang/classes/am121/Archive/dual_121.pdf#:~:text=Duality%20Theory%20Duality%20Theory%20Every%20LP%20is%20associated,understanding%20the%20linear%20programming%20%28and%20non-linear%20programming%2C%20indeed%29.)
 - [What are the advantages of Observables over an iterable of futures?](https://softwareengineering.stackexchange.com/questions/317809/what-are-the-advantages-of-observables-over-an-iterable-of-futures)

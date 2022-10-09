@@ -60,6 +60,8 @@ regenerate: true
 ## reactive
 
 * [[/reactive/reactive-duality]]
+* [[/reactive/reactive-reactor-pattern]]
+* [[/reactive/reactive-actor-model]]
 
 ## msa
 

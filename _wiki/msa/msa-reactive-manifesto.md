@@ -4,7 +4,7 @@ title   : Reactive Manifesto
 summary : 리액티브 선언문
 date    : 2022-06-03 17:54:32 +0900
 updated : 2022-06-03 20:15:24 +0900
-tag     : msa
+tag     : msa reactive
 toc     : true
 comment : true
 public  : true

@@ -43,6 +43,10 @@ ism, and an inherent ability to scale horizontally.
 The actor model does require you to think differently in your
 approach to programming, but there are languages and frameworks
 to help out.
+> 
+> - __Anatomy of Actor Model__
+>
+> ![](/resource/wiki/reactive-actor-model/actor.png)
 
 ### Akka
 
@@ -67,10 +71,6 @@ tem resources given that actors are quite small (less than one kilo‐
 byte), even if there are hundreds of thousands of them on a given
 node. The result is a highly efficient use of processor resources.
  
-- __Anatomy of Actor Model__
-
-![](/resource/wiki/reactive-actor-model/actor.png)
-
 ## From: Akka Docs
 
 ### Akka Streams

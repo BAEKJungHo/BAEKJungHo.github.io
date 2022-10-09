@@ -37,6 +37,7 @@ regenerate: true
 * [[/java/execution-java]]
 * [[/java/java-memoryleak]]
 * [[/java/java-javaagent]]
+* [[/java/java-iterable]]
 
 ## spring
 

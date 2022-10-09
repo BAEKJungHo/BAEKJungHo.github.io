@@ -28,9 +28,9 @@ latex   : true
 
 ## Duality
 
-ReactiveX 에서 비슷한 의미로 사용되는 용어가 많다. ReactiveX 에서 핵심이 되는 개념이 상대성(이중성, Duality) 이다.  해당 용어들이 Duality 를 설명하기 좋다고 생각한다.
-
 > In category theory, a branch of mathematics, __duality__ is a correspondence between the properties of a category C and the dual properties of the opposite category Cop.
+
+ReactiveX 에서 비슷한 의미로 사용되는 용어가 많다. ReactiveX 에서 핵심이 되는 개념이 상대성(이중성, Duality) 이다.  해당 용어들이 Duality 를 설명하기 좋다고 생각한다.
 
 Duality 에서 __Push : Pull = One : Many__ 의 관계를 가진다.
 

@@ -4,7 +4,7 @@ title   : Observer
 summary : 옵저버 패턴
 date    : 2022-10-01 15:54:32 +0900
 updated : 2022-10-01 20:15:24 +0900
-tag     : designpattern
+tag     : designpattern reactive
 toc     : true
 comment : true
 public  : true
@@ -14,7 +14,19 @@ latex   : true
 * TOC
 {:toc}
 
+## UML
+
+### From: Wikipedia
+
+![](/resource/wiki/designpattern-observer/observer1.png)
+
+### From: whiteship
+
+![](/resource/wiki/designpattern-observer/observer2.png)
+
 ## Design Principle
+
+> Observer Design Pattern: 다수의 객체가 특정 객체 상태 변화를 감지하고 알림을 받는 패턴. pub-sub(발행-구독) 패턴을 구현할 수 있다. polling (주기적으로 요청해서 데이터를 가져오는 방식) 방식이 적합하지 않을 때 유용하다.
 
 - 서로 상호작용을 하는 객체 사이에서는 가능하면 느슨하게 결합하는 디자인을 사용해야 한다.
 - 옵저버 패턴에서는 한 객체의 상태가 바뀌면 그 객체에 의존하는 다른 객체들한테 연락이 가고 자동으로 내용이 갱신되는 방식으로 __일대다(one-to-many)__ 의존성을 정의한다. __one 이 주제(subject) 이며, many 는 옵저버(observer)__ 이다.
@@ -124,7 +136,7 @@ java.util.Observable 클래스와 java.util.Observer 인터페이스가 있다. 
 
 ## Links
 
-- [Observer Pattern 이야기 #1](https://luckygg.tistory.com/181)
+- [Observer Pattern - wikipedia](https://en.wikipedia.org/wiki/Observer_pattern#:~:text=The%20Observer%20design%20pattern%20is%20a%20behavioural%20pattern%2C,easier%20to%20implement%2C%20change%2C%20test%2C%20and%20reuse.%20)
 - [Design Pattern - whiteship](https://www.inflearn.com/course/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/dashboard)
 
 ## 참고 문헌

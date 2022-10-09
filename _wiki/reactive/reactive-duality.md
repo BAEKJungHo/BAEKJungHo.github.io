@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Duality in ReactiveX
-summary : Reactive Streams 에서의 상대성 이론
+title   : Duality in Reactive
+summary : Reactive 에서의 상대성 이론
 date    : 2022-10-04 15:05:32 +0900
 updated : 2022-10-04 15:15:24 +0900
 tag     : reactive
@@ -104,9 +104,19 @@ ReactiveX 를 처음 만든 Microsoft Engineers 가 Observer Pattern 은 좋지�
 
 Observer Pattern 에서 위 두 가지의 개념을 보완한 것인 Reactive Programming 의 한 축이다.
 
+## Reactive Streams
+
+Reactive Streams 란 비동기 스트림 처리(asynchronous stream processing) 과 논-블러킹(non-blocking) 과 배압(back pressure) 처리를 위한 JVM, Javascript 환경에서의 표준이다. 
+
+- [Package org.reactivestreams Interfaces](https://www.reactive-streams.org/reactive-streams-1.0.4-javadoc/org/reactivestreams/package-summary.html)
+
+### Pub/Sub Implementation
+
+
+
 ## Links
 
-- [토비의 봄 TV - Spring Reactive Programming](https://www.youtube.com/watch?v=8fenTR3KOJo&list=LL&index=2&t=3s)
+- [Spring Reactive Programming - Toby](https://www.youtube.com/watch?v=8fenTR3KOJo&list=LL&index=2&t=3s)
 - [ReactiveX](https://reactivex.io/)
 - [Reactive Streams](https://www.reactive-streams.org/)
 - [Spring Reactive](https://spring.io/reactive)

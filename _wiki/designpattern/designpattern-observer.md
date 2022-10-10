@@ -43,7 +43,7 @@ latex   : true
 
 - 복잡도가 증가함
 - 다수의 Observer 객체를 등록 이후 해지하지 않는다면 [Memory leak](https://baekjungho.github.io/wiki/java/java-memoryleak/) 이 발생할 수도 있음
-  - Ex. private Map<String, List<Subscriber>> subscribers = new HashMap<>(); 코드에서 subscribers 를 다른 곳에서 참조하지 않는다면 Map 에 WeakReference 를 적용할 수 있다. 이 경우 해지 메서드를 호출하지 않아도 GC 에 의한 회수 대상이 된다. 하지만 베스트 프랙티스는 __명시적으로 해지하는 코드를 작성__ 하는 것이 가장 좋다.
+  - Ex. `private Map<String, List<Subscriber>> subscribers = new HashMap<>();` 코드에서 subscribers 를 다른 곳에서 참조하지 않는다면 Map 에 WeakReference 를 적용할 수 있다. 이 경우 해지 메서드를 호출하지 않아도 GC 에 의한 회수 대상이 된다. 하지만 베스트 프랙티스는 __명시적으로 해지하는 코드를 작성__ 하는 것이 가장 좋다.
 
 ## Loose coupling
 

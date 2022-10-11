@@ -302,6 +302,20 @@ public class FlowInJava {
 
 - Reactive Stream API 의 주요 목적 중 하나는 BackPressure 를 관리하는 것이다. 구독을 하는 쪽에서 BackPressure 기능을 활용할 수 있다.
 
+## Kotlin Observer
+
+프로퍼티의 변경 사항을 로그로 출력하고 싶은 경우나, 변경 내용을 통지하고 싶은 경우 stdlib 의 observable delegate 를 사용할 수 있다.
+
+```kotlin
+var items: List<Items> by Delegates.observable(listOf()) {
+    _, _, _ -> notifyDataSetChanged()
+}
+
+var key: String? by Delegates.observable(null) {
+    _, old, new -> Log.e("key changed form $old to $new")
+}
+```
+
 ## Spring Observer
 
 ApplicationContext(IoC Container, EventPublisher) 와 ApplicationEvent 에 Observer 패턴이 적용되어 있다.

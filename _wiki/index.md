@@ -31,6 +31,7 @@ regenerate: true
 * [[/kotlin/kotlin-lambda]]
 * [[/kotlin/kotlin-inline]]
 * [[/kotlin/kotlin-deserialize-dataclass]]
+* [[/kotlin/kotlin-property]]
 
 ## java
 

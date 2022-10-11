@@ -203,7 +203,6 @@ public class GenericPubSub {
                             iter.forEach(s -> sub.onNext(s));
                             sub.onComplete();
                         } catch (Throwable t) {
-                            // 에러 처리
                             sub.onError(t);
                         }
                     }

@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Chain to Publisher and Subscriber
-summary : Pub
+summary : 
 date    : 2022-10-07 15:05:32 +0900
 updated : 2022-10-07 15:15:24 +0900
 tag     : reactive

@@ -4,7 +4,7 @@ title   : POJO
 summary : POJO 와 스프링의 철학
 date    : 2022-04-16 21:28:32 +0900
 updated : 2022-04-16 22:15:24 +0900
-tag     : spring
+tag     : spring java kotlin oop
 toc     : true
 comment : true
 public  : true

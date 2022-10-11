@@ -90,7 +90,7 @@ __If you don't explicitly specify serialVersionUID, a value is generated automat
 
 They often just represents real world data
 
-- __ Just a few reasons why JavaBeans should be used__
+- __Just a few reasons why JavaBeans should be used__
   - They serialize nicely. 
   - Can be instantiated using reflection. 
   - Can otherwise be controlled using reflection very easily. 
@@ -260,6 +260,23 @@ class Person(private val firstName: String, familyName: String) {
     
     fun printFirstName() {
         println(firstName) // property call
+    }
+}
+```
+
+### Secondary Constructor
+
+부 생성자를 이용해서 프로퍼티를 초기화 시킬 수도 있다.
+
+```kotlin
+class Person {
+    val firstName: String
+    val familyName: String
+    
+    // Secondary Constructor 에는 val, var 키워드를 사용할 수 없다.
+    constructor(firstName: String, familyName: String) {
+        this.firstName = firstName
+        this.familyName = familyName
     }
 }
 ```

@@ -163,6 +163,8 @@ class Person {
 }
 ```
 
+val 키워드를 사용해서 만든 프로퍼티를 읽기 전용 프로퍼티(readonly property)라고 부른다.
+
 - __Decompile__
 
 ```java
@@ -176,6 +178,16 @@ public final class Person {
    }
 }
 ```
+
+### Derived Property
+
+```kotlin
+class Person {
+    var firstName = "John"
+}
+```
+
+var 키워드를 사용해서 만든 읽고 쓸 수 있는 프로퍼티를 파생 프로퍼티(derived property)라고 한다.
 
 ### Initialize Property by Constructor
 
@@ -307,6 +319,60 @@ public final class Room {
    }
 }
 ```
+
+### Backing field
+
+Backing field 란 프로퍼티의 데이터를 저장해 두는 래퍼런스이다.
+
+```kotlin
+// Property
+var name: String? = null
+    get() = field?.toUpperCase()
+    set(value) {
+        if (!value.isNullOrBlank()) {
+            field = value
+        }
+    }
+```
+
+Backing field 는 getter/setter 디폴트 구현에 사용되므로, 따로 만들지 않아도 자동으로 생성된다. val 키워드를 이용해서 읽기 전용 프로퍼티를 만들 때는 field 가 만들어지지 않는다.
+
+### Property in Interface
+
+프로퍼티는 필드가 아니기 때문에 Interface 에서도 정의할 수 있다.
+
+```kotlin
+interface Person {
+    val name: String
+}
+```
+
+### Extension Property
+
+프로퍼티의 본질은 `함수`이므로 확장 프로퍼티를 만들 수도 있다.
+
+```kotlin
+val Context.perferences: SharedPreferences
+  get() = PreferenceManager.getDefaultSharedPreferences(this)
+```
+
+프로퍼티를 함수대신 사용할 수 있지만, 완전히 대체하여, 프로퍼티 get/set 안에 분기를 태우는 로직을 구현하거나 알고리즘의 동작을 나타내는 것은 좋지 않다.
+
+- __Bad__
+
+```kotlin
+// 큰 컬렉션의 경우 답을 찾을 때 많은 계산량이 필요하게 된다. 
+// 누구도 게터에 그런 계산량이 필요하다고 예상하지 않는다.
+val Tree<Int>.sum: Int
+  get() = when (this) {
+      is Leaf -> value
+      is Node -> left.sum + right.sum
+  }
+```
+
+- __프로퍼티는 동작이 아닌 상태를 나타내거나 설정하기 위한 목적으로만 사용되어야 한다.__
+  - 행동은 함수로 구현
+  - 프로퍼티는 상태 집합을 의미
 
 ## Links
 

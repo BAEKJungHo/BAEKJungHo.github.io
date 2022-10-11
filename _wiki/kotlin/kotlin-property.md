@@ -374,6 +374,10 @@ val Tree<Int>.sum: Int
   - 행동은 함수로 구현
   - 프로퍼티는 상태 집합을 의미
 
+## Next
+
+- [POJO](https://baekjungho.github.io/wiki/spring/spring-pojo/)
+
 ## Links
 
 - [JavaBeans - Wikipedia](https://en.wikipedia.org/wiki/JavaBeans)
@@ -382,10 +386,6 @@ val Tree<Int>.sum: Int
 - [JavaBeans Spec](https://www.oracle.com/java/technologies/javase/javabeans-spec.html)
 - [JavaBeans API Definitions](https://docs.oracle.com/javase/6/docs/api/java/beans/package-summary.html)
 - [Java PropertyUtils Example - getting and setting properties by name](https://javarevisited.blogspot.com/2012/04/java-propertyutils-example-getting-and.html#axzz7hPyjSePO)
-
-## Next
-
-- [POJO](https://baekjungho.github.io/wiki/spring/spring-pojo/)
 
 ## 참고 문헌
 

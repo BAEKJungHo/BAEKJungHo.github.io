@@ -156,6 +156,7 @@ regenerate: true
 * [[/database/query-index]]
 * [[/database/database-surrogatekey]]
 * [[/database/query-optimizing]]
+* [[/database/data-cleansing]]
 
 ## Clean Code
 

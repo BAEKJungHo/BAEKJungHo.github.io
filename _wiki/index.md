@@ -164,6 +164,10 @@ regenerate: true
 * [[/cleancode/cleancode-guide]]
 * [[/cleancode/cleancode-good-implementation]]
 
+## Operating System
+
+* [[/operatingsystem/os-kernel]]
+
 ## Network
 
 * [[/network/network-layeredarchitectures]]

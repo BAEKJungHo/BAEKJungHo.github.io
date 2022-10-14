@@ -16,7 +16,9 @@ latex   : true
 
 ## Kernel
 
-![](/resource/wiki/os-kernel/kernel.png)
+> ![](/resource/wiki/os-kernel/kernel-architecture.png)
+> 
+> Image showing Fundamental Architecture of Linux
 
 - 소프트웨어와 하드웨어 사이의 __인터페이스__ 역할을 함
 - 소프트웨어와 하드웨어 사이에서 상호작용을 하며 __자원을 가능한한 효율적으로 관리__ 한다.
@@ -73,3 +75,4 @@ The mode bit is set to 0 in the kernel mode. It is changed from 0 to 1 when swit
 - [User Mode vs Kernel Mode](https://www.tutorialspoint.com/User-Mode-vs-Kernel-Mode#:~:text=The%20transition%20from%20user%20mode%20to%20kernel%20mode,when%20switching%20from%20user%20mode%20to%20kernel%20mode.)
 - [Understanding User and Kernel Mode](https://blog.codinghorror.com/understanding-user-and-kernel-mode/)
 - [TryParse and the Exception Tax](https://blog.codinghorror.com/tryparse-and-the-exception-tax/)
+- [Kernel Architecture Of Linux (Part 7/15)](https://www.engineersgarage.com/kernel-architecture-of-linux-part-7-15/)

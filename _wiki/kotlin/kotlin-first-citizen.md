@@ -32,8 +32,10 @@ __Functions that accept other functions as parameters and/or use functions as re
 - __Most famous higher-order functions__
   - map()
     - The map() higher-order function takes a function parameter and uses it to convert one or more items to a new value and/or type.
+    - ![](/resource/wiki/kotlin-first-citizen/map.png)
   - reduce()
     - The reduce() higher-order function takes a function parameter and uses it to reduce a collection of multiple items down to a single item.
+    - ![](/resource/wiki/kotlin-first-citizen/reduce.png)
 - __Benefits__
   - One of the benefits of using higher-order functions to work with data is that the actual how of processing the data is left as an implementation detail to the framework that has the higher-order function.
 
@@ -42,3 +44,4 @@ __Functions that accept other functions as parameters and/or use functions as re
 - [First-Class Functions - O'REILLY](https://www.oreilly.com/library/view/learning-scala/9781449368814/ch05.html#:%7E:text=A%20first%2Dclass%20function%20may,return%20value%20from%20another%20function.)
 - [First-class citizen - wikipedia](https://en.wikipedia.org/wiki/First-class_citizen)
 - [What is a first-class-citizen function?](https://stackoverflow.com/questions/5178068/what-is-a-first-class-citizen-function)
+- [ProjectReactor API Docs](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html)

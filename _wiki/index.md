@@ -58,6 +58,7 @@ regenerate: true
 * [[/spring/spring-backpressure]]
 * [[/spring/spring-security]]
 * [[/spring/spring-componentscan]]
+* [[/spring/spring-jar-bootjar]]
 
 ## reactive
 

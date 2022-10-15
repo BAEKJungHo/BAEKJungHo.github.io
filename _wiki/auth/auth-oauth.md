@@ -130,7 +130,7 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 >
 > What then if the refresh token itself doesn’t work? The client can always bother the resource owner again, when they’re available. In other words, the fallback state for an OAuth client is to do OAuth again.
 
-## How is OAuth2 different from OAuth 1
+## How is OAuth2 different from OAuth1
 
 - __Related Articles__
   - [How is OAuth 2 different from OAuth 1](https://stackoverflow.com/questions/4113934/how-is-oauth-2-different-from-oauth-1)

@@ -81,6 +81,10 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 
 ## The OAuth 2.0 Protocol
 
+> __Major components of the OAuth 2.0 protocol__
+> 
+> ![](/resource/wiki/auth-oauth/oauth-protocol.png)
+
 ### Authorization code flow
 
 > ![](/resource/wiki/auth-oauth/authorization-code.png)
@@ -109,10 +113,21 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 
 > ![](/resource/wiki/auth-oauth/implicit-grant.png)
 
-
 ### Proof Key for Code Exchange by OAuth Public Clients
 
 > [PKCE (RFC 7636)](https://www.rfc-editor.org/rfc/rfc7636) is an extension to the Authorization Code flow to prevent CSRF and authorization code injection attacks.
+
+### Using a refresh token
+
+> ![](/resource/wiki/auth-oauth/using-refreshtoken.png)
+> 
+> Why would a client need to bother with a refresh token? In OAuth, an access token could stop working for a client at any point. The user could have revoked the token, the token could have expired, or some other system trigger made the token invalid. The client will usually find out about the token being invalid by using it and receiving an error response. Of course, the client could have the resource owner authorize it again, but what if the resource owner’s no longer there?
+>
+> In OAuth 1.0, the client had no recourse but to wait for the resource owner’s return. To avoid this, tokens in OAuth 1.0 tended to live forever until explicitly revoked. This is a bit problematic as it increases the attack surface for a stolen token: the attacker can keep using the stolen token forever. In OAuth 2.0, access tokens were given the option to expire automatically, but we still need a way to access resources when the user was no longer there. The refresh token now takes the place of the long-lived token, but instead of it being used to obtain resources, it’s used only to get new access tokens that, in turn, can get the resources. This limits the exposure of the refresh token and the access token in separate but complementary ways.
+>
+> Refresh tokens also give the client the ability to down-scope its access. If a client is granted scopes A, B, and C, but it knows that it needs only scope A to make a particular call, it can use the refresh token to request an access token for only scope A. This lets a smart client follow the security principle of least privilege without burdening less-smart clients with trying to figure out what privileges an API needs. Years of deployment experience have shown that OAuth clients tend to be anything but smart, but it’s still good to have the advanced capability there for those that want to exercise it.
+>
+> What then if the refresh token itself doesn’t work? The client can always bother the resource owner again, when they’re available. In other words, the fallback state for an OAuth client is to do OAuth again.
 
 ## How is OAuth2 different from OAuth 1
 
@@ -130,3 +145,7 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 - [Differences Between OAuth 1 and 2](https://www.oauth.com/oauth2-servers/differences-between-oauth-1-2/)
 - [OAuth2 승인 방식의 종류](https://cheese10yun.github.io/oauth2/)
 - [Resource Owner Password Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow)
+
+## 참고 문헌
+
+- OAuth 2 in Action / 저스틴 리처, 안토니오 산소 저 / 에이콘출판사

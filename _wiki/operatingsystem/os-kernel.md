@@ -47,7 +47,7 @@ A kernel is always built the same way and consists of several layers:
 
 ## The kernel in the operating system
 
-- __Hardware_: The foundation of the system, made up of RAM, the processor and input and output devices. The CPU carries out reading and writing operations and calculations for the memory.
+- __Hardware__: The foundation of the system, made up of RAM, the processor and input and output devices. The CPU carries out reading and writing operations and calculations for the memory.
 - __Kernel__: The nucleus of the operating system in contact with the CPU.
 - __User processes__: All running processes that the kernel manages. The kernel makes communication between processes and servers possible, also known as Inter-Process Communication (IPC).
 

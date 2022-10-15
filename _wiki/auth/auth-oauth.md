@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Open Authorization
-summary : OAuth
+title   : OAuth
+summary : Open Authorization
 date    : 2022-10-12 15:54:32 +0900
 updated : 2022-10-12 20:15:24 +0900
 tag     : auth

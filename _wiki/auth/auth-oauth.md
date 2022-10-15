@@ -26,7 +26,7 @@ The following concepts are common for both OAuth 1.0 and OAuth 2.0.
 
 An entity capable of authorizing access to a protected resource. When the resource owner is a person, it is called an end user.
 
-### OAuth client
+### OAuth Client
 
 A third-party application that wants access to the private resources of the resource owner. The OAuth client can make protected resource requests on behalf of the resource owner after the resource owner grants it authorization.
 
@@ -79,9 +79,46 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 > 8. The OAuth server validates the request and returns an access token to the OAuth client to access the protected resource.
 > - [OAuth 1.0 Workflow](https://www.ibm.com/docs/en/tfim/6.2.2.7?topic=overview-oauth-10-workflow)
 
+## The OAuth 2.0 Protocol
+
+### Authorization code flow
+
+> ![](/resource/wiki/auth-oauth/authorization-code.png)
+>
+> - 응답 타입은 code, token 사용 가능 
+> - 응답 타입이 token 일 경우 암시적 승인 타입에 해당
+
+### Authorization code flow with refresh token
+
+> ![](/resource/wiki/auth-oauth/authorization-code-refreshtoken.png)
+
+### Implicit Grant flow
+
+> ![](/resource/wiki/auth-oauth/implicit-grant.png)
+>
+> - 응답 타입은 code, token 사용 가능
+> - 응답 타입이 token 일 경우 암시적 승인 타입에 해당
+
+### Resource owner password credentials flow
+
+> ![](/resource/wiki/auth-oauth/ropcg.png)
+> 
+> - ID, Password 를 통해 자격 증명을 진행
+
+### Client credentials flow
+
+> ![](/resource/wiki/auth-oauth/implicit-grant.png)
+
+
+### Proof Key for Code Exchange by OAuth Public Clients
+
+> [PKCE (RFC 7636)](https://www.rfc-editor.org/rfc/rfc7636) is an extension to the Authorization Code flow to prevent CSRF and authorization code injection attacks.
+
 ## How is OAuth2 different from OAuth 1
 
-> [How is OAuth 2 different from OAuth 1](https://stackoverflow.com/questions/4113934/how-is-oauth-2-different-from-oauth-1)
+- __Related Articles__
+  - [How is OAuth 2 different from OAuth 1](https://stackoverflow.com/questions/4113934/how-is-oauth-2-different-from-oauth-1)
+  - [Differences between OAuth 1 and 2](https://www.oauth.com/oauth2-servers/differences-between-oauth-1-2/)
 
 ## Links
 

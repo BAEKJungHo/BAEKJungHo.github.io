@@ -77,6 +77,7 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 > 6. The resource owner is redirected to the callback URI provided by the OAuth client in the previous request.
 > 7. The OAuth client requests the access token using the temporary credentials and verification code.
 > 8. The OAuth server validates the request and returns an access token to the OAuth client to access the protected resource.
+> 
 > - [OAuth 1.0 Workflow](https://www.ibm.com/docs/en/tfim/6.2.2.7?topic=overview-oauth-10-workflow)
 
 ## The OAuth 2.0 Protocol

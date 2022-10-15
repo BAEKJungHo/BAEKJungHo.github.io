@@ -135,6 +135,10 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
   - [How is OAuth 2 different from OAuth 1](https://stackoverflow.com/questions/4113934/how-is-oauth-2-different-from-oauth-1)
   - [Differences between OAuth 1 and 2](https://www.oauth.com/oauth2-servers/differences-between-oauth-1-2/)
 
+## Next
+
+- [JWT](https://baekjungho.github.io/wiki/auth/auth-jwt/)
+
 ## Links
 
 - [OAuth - Docs](https://oauth.net/2/)
@@ -142,7 +146,6 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 - [OAuth 2.0 and the Road to Hell](https://web.archive.org/web/20120731155632/http://hueniverse.com/2012/07/oauth-2-0-and-the-road-to-hell/)
 - [OAuth Framework - RFC 6749](https://www.rfc-editor.org/rfc/rfc6749)
 - [OAuth 1.0 - RFC 5849](https://www.rfc-editor.org/rfc/rfc5849)
-- [Differences Between OAuth 1 and 2](https://www.oauth.com/oauth2-servers/differences-between-oauth-1-2/)
 - [OAuth2 승인 방식의 종류](https://cheese10yun.github.io/oauth2/)
 - [Resource Owner Password Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow)
 

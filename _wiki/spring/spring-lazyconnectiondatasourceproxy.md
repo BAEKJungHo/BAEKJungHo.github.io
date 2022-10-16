@@ -18,7 +18,7 @@ latex   : true
 
 > Proxy for a target DataSource, fetching actual JDBC Connections lazily. This DataSource proxy allows to avoid fetching JDBC Connections from a pool unless actually necessary.
 
-- 스프링은 트랜잭션 시작시 컨넥션의 실제 사용여부와 무관하게 커넥션을 확보한다.
+- 스프링은 트랜잭션 시작시 커넥션의 실제 사용여부와 무관하게 커넥션을 확보한다.
   - __단점__
     - Cache 를 사용하는 경우 Database 에 접근하지 않음에도 불필요한 커넥션을 점유
     - Hibernate 의 영속성 컨텍스트 1차 캐시에도 불필요한 커넥션을 점유

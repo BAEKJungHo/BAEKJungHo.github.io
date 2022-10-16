@@ -23,7 +23,7 @@ latex   : true
     - Cache 를 사용하는 경우 Database 에 접근하지 않음에도 불필요한 커넥션을 점유
     - Hibernate 의 영속성 컨텍스트 1차 캐시에도 불필요한 커넥션을 점유
     - 외부 서비스에 접근해서 작업을 수행한 이후 그 결과값을 Database 에 Read/Write 하는 경우 외부 서비스에 의존하는 시간 만큼 불필요한 커넥션을 점유
-    - Multi DataSource 환경에서 트랜잭션 진입한 이후, DataSource 를 결정해야할 때, 이미 트랜잭션 진입 시점에서 DataSource 가 결정되므로 분기 불가능
+    - Multi DataSource 환경에서 트랜잭션 진입한 이후 DataSource 를 결정 해야할 때, 이미 트랜잭션 진입 시점에서 DataSource 가 결정되므로 분기 불가능
 - 이로인해 트랜잭션 시작 후 커넥션과 무관한 다른 작업으로 많은 시간이 지체되면 그 시간 동안 해당 트랜잭션의 커넥션은 사용불가 상태가 되어, 데이터소스에 커넥션 풀이 부족해지는 사태를 유발할 수도 있다.
 - [LazyConnectionDataSourceProxy](https://docs.spring.io/spring-framework/docs/3.0.x/javadoc-api/org/springframework/jdbc/datasource/LazyConnectionDataSourceProxy.html) 를 사용하면 트랜잭션이 시작되어도 실제로 커넥션이 필요한 경우에만 데이터소스에서 커넥션을 반환한다.
 

@@ -16,7 +16,7 @@ latex   : true
 
 ## @EnableTransactionManagement
 
-> Enables Spring's annotation-driven transaction management capability, similar to the support found in Spring's <tx:*> XML namespace. To be used on @Configuration classes to configure traditional, imperative transaction management or reactive transaction management.
+> Enables Spring's annotation-driven transaction management capability, similar to the support found in Spring's tx:* XML namespace. To be used on @Configuration classes to configure traditional, imperative transaction management or reactive transaction management.
 
 ## @EnableTransactionManagement required in Spring Boot?
 

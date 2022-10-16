@@ -59,6 +59,7 @@ regenerate: true
 * [[/spring/spring-security]]
 * [[/spring/spring-componentscan]]
 * [[/spring/spring-jar-bootjar]]
+* [[/spring/spring-lazyconnectiondatasourceproxy]]
 
 ## reactive
 

@@ -4,7 +4,7 @@ title   : LazyConnectionDataSourceProxy
 summary : 
 date    : 2022-10-13 21:28:32 +0900
 updated : 2022-10-13 22:15:24 +0900
-tag     : spring
+tag     : spring database
 toc     : true
 comment : true
 public  : true

@@ -1,1 +1,1 @@
-["database","database/database-data-cleansing","database/database-surrogatekey","database/hikaricp-concepts","database/mysql-index","database/query-index","database/query-optimizing"]
+["database","database/database-data-cleansing","database/database-surrogatekey","database/hikaricp-concepts","database/mysql-index","database/query-index","database/query-optimizing","spring/spring-lazyconnectiondatasourceproxy"]

@@ -31,7 +31,7 @@ latex   : true
 
 > When asked for a Statement (or PreparedStatement or CallableStatement).
 >
-> ![](/resource/wiki/spring-lazyconnectiondatasourceproxy/proxy-getconnection.png)
+> ![](/resource/wiki/spring-lazyconnectiondatasourceproxy/lazy-connection.png)
 
 ### HikariPoolMXBean 으로 Connection Monitoring 하기
 

@@ -144,6 +144,92 @@ class TokenDto {
 
 ```
 
+### synthetic method
+
+생성자의 파라미터나, 필드를 private val/var 로 선언한 경우에는 프로퍼티가 생성되지 않는다. 따라서 @JsonProperty 혹은 @JsonAutoDetect 를 활성화 시켜야 Serialize/Deserialize 가 가능해진다.
+
+```kotlin
+class CommonResponse {
+
+    // Is Not Property
+    private var result: Result? = null
+    private var data: T? = null
+    
+    // property
+    var message: String? = null
+    var errorCode: String? = null
+    var errorFields: List<ErrorField>? = emptyList()
+    
+    // ...
+}
+```
+
+- __Decompile__
+
+```java
+public final class CommonResponse {
+    private Result result;
+    private Object data;
+    @Nullable
+    private String message;
+    @Nullable
+    private String errorCode;
+    @Nullable
+    private List errorFields = CollectionsKt.emptyList();
+    @NotNull
+    public static final Companion Companion = new Companion((DefaultConstructorMarker) null);
+
+    @Nullable
+    public final String getMessage() {
+        return this.message;
+    }
+
+    public final void setMessage(@Nullable String var1) {
+        this.message = var1;
+    }
+
+    @Nullable
+    public final String getErrorCode() {
+        return this.errorCode;
+    }
+
+    public final void setErrorCode(@Nullable String var1) {
+        this.errorCode = var1;
+    }
+
+    @Nullable
+    public final List getErrorFields() {
+        return this.errorFields;
+    }
+
+    public final void setErrorFields(@Nullable List var1) {
+        this.errorFields = var1;
+    }
+
+    // $FF: synthetic method
+    public static final Result access$getResult$p(CommonResponse $this) {
+        return $this.result;
+    }
+
+    // $FF: synthetic method
+    public static final Object access$getData$p(CommonResponse $this) {
+        return $this.data;
+    }
+   
+    // ...
+}
+```
+
+- private [Visibility Modifier](https://kotlinlang.org/docs/visibility-modifiers.html) 를 붙이지 않은 필드는 프로퍼티가 생성된다.
+- 반면, private 이 붙은 경우에는 synthetic method 라는 것이 생긴다.
+- synthetic method 는 kotlin 을 JVM 에서 컴파일 하기 위해서 컴파일러가 만드는 method 이다. 
+  - [KOTLIN-JVM-SYNTHETIC](https://en.getdocs.org/kotlin-jvm-synthetic/)
+  - Any element that the compiler marks as synthetic will be inaccessible from the Java language.
+
+## Next
+
+- [JavaBeans and Property](https://baekjungho.github.io/wiki/kotlin/kotlin-property/)
+
 ## Links
 
 - [FasterXML - jackson-module-kotlin](https://github.com/FasterXML/jackson-module-kotlin)

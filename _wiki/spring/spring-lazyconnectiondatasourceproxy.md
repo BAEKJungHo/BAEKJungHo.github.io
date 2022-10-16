@@ -65,7 +65,7 @@ class AuthService(
 
 ```java
 @Configuration
-public class DataSourceConfig{
+public class DataSourceConfig {
 
     @Bean
     public DataSource lazyDataSource(DataSourceProperties properties) {

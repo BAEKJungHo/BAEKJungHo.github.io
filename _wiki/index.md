@@ -60,6 +60,7 @@ regenerate: true
 * [[/spring/spring-componentscan]]
 * [[/spring/spring-jar-bootjar]]
 * [[/spring/spring-lazyconnectiondatasourceproxy]]
+* [[/spring/spring-enabletransactionmanagement]]
 
 ## reactive
 

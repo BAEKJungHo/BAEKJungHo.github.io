@@ -23,4 +23,5 @@ latex   : true
 ## Links
 
 - [Exploring Java Hidden Costs](https://jakewharton.com/exploring-java-hidden-costs/)
+  - [Youtube](https://www.youtube.com/watch?v=WALV33rWye4)
 

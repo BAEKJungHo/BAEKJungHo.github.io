@@ -69,7 +69,7 @@
  },
  {
   "name": "java",
-  "size": 8
+  "size": 9
  },
  {
   "name": "javascript",
@@ -129,7 +129,7 @@
  },
  {
   "name": "reactive",
-  "size": 9
+  "size": 10
  },
  {
   "name": "redis",

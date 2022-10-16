@@ -39,6 +39,7 @@ regenerate: true
 * [[/java/java-memoryleak]]
 * [[/java/java-javaagent]]
 * [[/java/java-iterable]]
+* [[/java/java-exploring-hidden-cost]]
 
 ## spring
 

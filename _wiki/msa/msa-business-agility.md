@@ -48,6 +48,6 @@ AWS, 마이크로소프트사의 Azure, 구글 클라우드 플랫폼, 오라클
 
 전체 시스템을 하나의 덩어리로 만들어서 클라우드 인프라에 올라갈 수 있게한 애플리케이션(Monolith)을 `Cloud Friendly Application` 이라고 하며, 독립적으로 분리되어 배포될 수 있는 조각으로 구성된 애플리케이션(Micro Service)을 `Cloud Native Application` 이라고 한다.
 
-## 참고 문헌
+## References
 
 - 도메인 주도 설계로 시작하는 마이크로서비스 개발 / 한정헌, 유해식, 최은정, 이주영 저 / 위키북스

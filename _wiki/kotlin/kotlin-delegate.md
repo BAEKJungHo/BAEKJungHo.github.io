@@ -234,6 +234,6 @@ name: John; age: 30; address: city, street; id: 5000
 - [What does ‘by’ keyword do in Kotlin? - StackOverflow](https://stackoverflow.com/questions/38250022/what-does-by-keyword-do-in-kotlin)
 - [Kotlin Delegation](https://thdev.tech/kotlin/2020/11/27/kotlin_delegation/)
 
-## 참고 문헌
+## References
 
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

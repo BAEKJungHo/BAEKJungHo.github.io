@@ -564,6 +564,6 @@ ${{form.localDateTime}}: 2021-01-01 00:00:00
 
 - [인프런 - 스프링 MVC 1](https://www.inflearn.com/course/%EC%8A%A4%ED%94%84%EB%A7%81-mvc-1/dashboard)
 
-## 참고 문헌
+## References
 
 - 토비의 스프링 3 / 이일민 저 / 에이콘 출판사

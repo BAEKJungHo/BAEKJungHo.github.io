@@ -160,6 +160,6 @@ interface MyInterface {
 - [Object expressions and declarations](https://kotlinlang.org/docs/object-declarations.html)
 - [Kotlin Companion Object - Baeldung](https://www.baeldung.com/kotlin/companion-object)
 
-## 참고 문헌
+## References
 
 - 코틀린 완벽 가이드 / Aleksei Sedunov 저 / 길벗

@@ -47,6 +47,6 @@ should be handled in the same manner as described earlier and run
 asynchronously on a separate thread (taken from a predefined
 thread pool).
 
-## 참고 문헌
+## References
 
 - Reactive Systems Explained / Grace Jansen & Peter Gollmar 저 / O'REILLY

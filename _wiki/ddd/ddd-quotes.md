@@ -104,7 +104,7 @@ DDD 의 하위 도메인, 경계 컨텍스트 개념은 마이크로서비스 �
 - [Archfirst Domain-Driven Design](https://archfirst.org/domain-driven-design/)
 - [DDD 관련 인용문 모음](https://johngrib.github.io/wiki/ddd-quotes/)
 
-## 참고 문헌
+## References
 
 - 도메인 주도 설계 / Eric Evans 저 / 위키북스
 - 도메인 주도 개발 시작하기 / 최범균 저 / 한빛미디어

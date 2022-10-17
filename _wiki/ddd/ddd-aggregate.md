@@ -86,7 +86,7 @@ latex   : true
 
 - [DDD-Aggregate-MartinFowler](https://martinfowler.com/bliki/DDD_Aggregate.html)
 
-## 참고 문헌
+## References
 
 - 도메인 주도 설계 / Eric Evans 저 / 위키북스
 - 도메인 주도 개발 시작하기 / 최범균 저 / 한빛미디어

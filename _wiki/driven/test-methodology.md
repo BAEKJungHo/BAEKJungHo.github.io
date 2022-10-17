@@ -351,7 +351,7 @@ void createLine() {
 - [Test Double By Tecoble](https://tecoble.techcourse.co.kr/post/2020-09-19-what-is-test-double/)
 - [Asciidoctor](https://docs.asciidoctor.org/asciidoc/latest/)
 
-## 참고 문헌
+## References
 
 - Extreme Programming / Kent Beck / 인사이트
 - Extreme Programming Installed / Ron Jeffries, Ann Anderson, Chet Handrickson 공저 / 인사이트

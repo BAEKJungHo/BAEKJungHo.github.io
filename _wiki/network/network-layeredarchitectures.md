@@ -378,6 +378,6 @@ TCP 와는 다르게 데이터를 패킷([datagram](http://www.ktword.co.kr/test
 - [르윈의 TCP, UDP](https://www.youtube.com/watch?v=ikDVGYp5dhg&list=PLgXGHBqgT2TvpJ_p9L_yZKPifgdBOzdVH&index=165)
 - [How Does The Web Work](https://webdevtechblog.com/%EC%9B%B9%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%EB%8F%99%EC%9E%91%ED%95%A0%EA%B9%8C-how-does-the-web-work-90c2286c9f4)
 
-## 참고 문헌
+## References
 
 - 컴퓨터 네트워킹 하향식 접근 제 7판 / James F. Kurose,Keith W. Ross 공저 / 퍼스트북

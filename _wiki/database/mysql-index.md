@@ -403,6 +403,6 @@ select * from test where name like'%이%' -- 처음 %가 붙으면 table scan �
 - [Index 란](https://valuefactory.tistory.com/496)
 - [InnoDB Adaptive Hash Index](https://tech.kakao.com/2016/04/07/innodb-adaptive-hash-index/)
 
-## 참고 문헌
+## References
 
 - Real MySQL / 이성욱 저 / 위키북스

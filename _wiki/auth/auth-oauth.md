@@ -150,6 +150,6 @@ A refresh token is optionally issued by the authorization server to the OAuth cl
 - [OAuth2 승인 방식의 종류](https://cheese10yun.github.io/oauth2/)
 - [Resource Owner Password Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/resource-owner-password-flow)
 
-## 참고 문헌
+## References
 
 - OAuth 2 in Action / 저스틴 리처, 안토니오 산소 저 / 에이콘출판사

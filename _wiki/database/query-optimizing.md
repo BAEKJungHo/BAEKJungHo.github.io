@@ -301,6 +301,6 @@ WHERE employee.id = salary.id;
 - [Query Performance Optimization in MySQL](https://www.databasejournal.com/mysql/query-performance-optimization-in-mysql/)
 - [awesome mysql performance - Releem](https://github.com/Releem/awesome-mysql-performance)
 
-## 참고 문헌
+## References
 
 - Real MySQL / 이성욱 저 / 위키북스

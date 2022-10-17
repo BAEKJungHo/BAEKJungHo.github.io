@@ -221,6 +221,6 @@ HikariCP 에서는 다음과 같은 공식을 제안하고 있다.
 - [내가 만든 서비스는 얼마나 많은 사용자가 이용할 수 있을까? - 3편(DB Connection Pool)](https://hyuntaeknote.tistory.com/12)
 - [How to prevent SQL Injection In Spring Framework](https://baekjungho.github.io/wiki/spring/spring-sqlinjection/)
 
-## 참고 문헌
+## References
 
 - 토비의 스프링 3 / 이일민 저 / 에이콘 출판사

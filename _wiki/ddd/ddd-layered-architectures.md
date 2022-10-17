@@ -161,7 +161,7 @@ fun completeOrder(registerOrder: OrderCommand.RegisterOrder): String {
 - [Portable Service Abstraction](https://baekjungho.github.io/wiki/spring/spring-psa/)
 - [Dependency Injection](https://baekjungho.github.io/wiki/spring/spring-di/)
 
-## 참고 문헌
+## References
 
 - 도메인 주도 설계 / Eric Evans 저 / 위키북스
 - The Red: 비지니스 성공을 위한 Java/Spring 기반 서비스 개발가 MSA 구축

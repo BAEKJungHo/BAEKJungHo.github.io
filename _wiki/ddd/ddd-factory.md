@@ -73,6 +73,6 @@ latex   : true
 
 - [factories domain driven design](https://www.culttt.com/2014/12/24/factories-domain-driven-design/)
 
-## 참고 문헌
+## References
 
 - 도메인 주도 설계 / Eric Evans 저 / 위키북스

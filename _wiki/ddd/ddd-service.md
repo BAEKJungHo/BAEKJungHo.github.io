@@ -55,6 +55,6 @@ __서비스 추상화로 제공되는 기술을 다른 기술 스택으로 간�
 - [Services in Domain-Driven Design (DDD)](http://gorodinski.com/blog/2012/04/14/services-in-domain-driven-design-ddd/)
 - [Portable Service Abstraction](https://baekjungho.github.io/wiki/spring/spring-psa/)
 
-## 참고 문헌
+## References
 
 - 도메인 주도 설계 / Eric Evans 저 / 위키북스

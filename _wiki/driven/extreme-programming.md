@@ -178,7 +178,7 @@ XP 가 여타 방법론과 다른 점은 다음과 같다.
 - [Scrum and Extreme Programming](https://www.scrum.org/resources/blog/scrum-and-extreme-programming-xp)
 - [What is the user stories](https://www.business2community.com/strategy/what-is-the-story-with-user-stories-02359706)
 
-## 참고 문헌
+## References
 
 - Extreme Programming / Kent Beck / 인사이트
 - Extreme Programming Installed / Ron Jeffries, Ann Anderson, Chet Handrickson 공저 / 인사이트

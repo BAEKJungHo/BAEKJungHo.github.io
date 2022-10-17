@@ -58,6 +58,6 @@ class CharRange(
 - [Kotlin 의 Progression 과 Range 제대로 이해하고 사용하기](https://kotlinworld.com/4)
 - [CharProgression](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-char-progression/)
 
-## 참고 문헌
+## References
 
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

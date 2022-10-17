@@ -82,6 +82,6 @@ latex   : true
 - [RFC 4229](https://www.rfc-editor.org/rfc/rfc4229)
 - [Http Headers](https://developer.mozilla.org/ko/docs/Web/HTTP/Headers)
 
-## 참고 문헌
+## References
 
 - 성공과 실패를 결정하는 1% 의 네트워크 원리 / Tsutomu Tone 저 / 성안당

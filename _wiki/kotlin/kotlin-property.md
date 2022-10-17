@@ -389,7 +389,7 @@ val Tree<Int>.sum: Int
 - [JavaBeans API Definitions](https://docs.oracle.com/javase/6/docs/api/java/beans/package-summary.html)
 - [Java PropertyUtils Example - getting and setting properties by name](https://javarevisited.blogspot.com/2012/04/java-propertyutils-example-getting-and.html#axzz7hPyjSePO)
 
-## 참고 문헌
+## References
 
 - 코틀린 완벽 가이드 / Aleksei Sedunov 저 / 길벗
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

@@ -39,7 +39,7 @@ latex   : true
 - [Java Philosophy](http://semantic-portal.net/concept:1397)
 - [kotlin Java and Interoperability](https://developersbreach.com/kotlin-java-and-interoperability/)
 
-## 참고 문헌
+## References
 
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘
 - Effective Kotlin / Marcin Moskala 저 / 인사이트

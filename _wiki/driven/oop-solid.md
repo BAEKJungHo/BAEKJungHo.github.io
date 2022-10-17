@@ -248,7 +248,7 @@ latex   : true
 - [SOLID Relevance - UncleBob](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)
   - [번역본 - 객체지향 5원칙 (SOLID)은 구시대의 유물 ?](https://mangsby.com/blog/programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-5%EC%9B%90%EC%B9%99-solid%EC%9D%80-%EA%B5%AC%EC%8B%9C%EB%8C%80%EC%9D%98-%EC%9C%A0%EB%AC%BC%EC%9D%B8%EA%B0%80/)
 
-## 참고 문헌
+## References
 
 - Clean Architecture / Robert C. Martin 저 / 인사이트
 - Head First Object-Oriented Analysis & Design / 브렛 맥래프린, 게리 폴리스, 데이빗 웨스트 저 / O'REILLY

@@ -398,7 +398,7 @@ public class ObserverInSpring {
 - [Observer Pattern - wikipedia](https://en.wikipedia.org/wiki/Observer_pattern#:~:text=The%20Observer%20design%20pattern%20is%20a%20behavioural%20pattern%2C,easier%20to%20implement%2C%20change%2C%20test%2C%20and%20reuse.%20)
 - [Design Pattern - whiteship](https://www.inflearn.com/course/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/dashboard)
 
-## 참고 문헌
+## References
 
 - GOF Design Pattern / gof 저 / 프로텍 미디어
 - Head First Design Pattern / 에릭 프리먼, 엘리자베스 프리먼, 케이시 시에라, 버트 베이츠 저 / O'REILLY

@@ -25,6 +25,6 @@ latex   : true
 |file.use({f -> f.read()})|file.use { it.read() }|람다를 괄호 밖으로 빼내는 관례|
 |sb.append("yes") sb.append("no")|with (Sb) { append("yes") append("no") } |수신 객체 지정 람다|
 
-## 참고 문헌
+## References
 
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

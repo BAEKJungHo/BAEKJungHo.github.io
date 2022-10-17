@@ -25,7 +25,7 @@ latex   : true
 - [Inline functions](https://kotlinlang.org/docs/inline-functions.html)
 - [Kotlin inline class 와 inline functions 을 적절하게 사용하는 방법](https://thdev.tech/kotlin/2020/09/29/kotlin_effective_04/)
 
-## 참고 문헌
+## References
 
 - 코틀린 완벽 가이드 / Aleksei Sedunov 저 / 길벗
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

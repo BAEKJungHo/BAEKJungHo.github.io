@@ -130,7 +130,7 @@ BOM 을 사용하여 바이트 표현 순서를 정하는 이유는, CPU 설계�
 - [byte order mark](https://docs.microsoft.com/ko-kr/globalization/encoding/byte-order-mark)
 - [Transformations of Unicode code points](https://docs.microsoft.com/ko-kr/globalization/encoding/transformations-of-unicode-code-points)
 
-## 참고 문헌
+## References
 
 - 학교에서 알려주지 않는 17가지 실무 개발 기술 / 이기곤 저 / 한빛미디어
 

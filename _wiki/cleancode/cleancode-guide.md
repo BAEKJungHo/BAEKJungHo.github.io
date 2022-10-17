@@ -449,7 +449,7 @@ private 한 함수는 구현 디테일이 들어가도 상관 없다.
 - [효과적인 이름 짓기](https://remotty.github.io/blog/2014/03/01/hyogwajeogin-ireumjisgi/)
 - [DRY Principle](https://johngrib.github.io/wiki/dry-principle/)
 
-## 참고 문헌
+## References
 
 - Clean Code / Robert C Martin 저 / 인사이트
 - Code Complete 2 / Steve McConnel 저 / 위키북스

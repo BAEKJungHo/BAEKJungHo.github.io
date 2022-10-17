@@ -215,6 +215,6 @@ public class ContainerService2 {
 
 - [Dependency Injection in Spring](https://dzone.com/articles/dependency-injection-in-spring)
 
-## 참고 문헌
+## References
 
 - 토비의 스프링 3 / 이일민 저 / 에이콘 출판사

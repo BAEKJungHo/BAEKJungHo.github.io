@@ -1144,7 +1144,7 @@ val buyer = try {
 - [wikipedia coroutines](https://en.wikipedia.org/wiki/Coroutine)
 - [kotlin coroutines - taehwandev](https://speakerdeck.com/taehwandev/kotlin-coroutines)
 
-## 참고 문헌
+## References
 
 - 코틀린 완벽 가이드 / Aleksei Sedunov 저 / 길벗
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

@@ -86,6 +86,6 @@ node. The result is a highly efficient use of processor resources.
 - [Introduction Reactive System. Akka Actor Model & Akka Modules Fundamental](https://www.linkedin.com/pulse/introduction-reactive-system-akka-actor-model-modules-oluwaseyi-otun/)
 - [Reactive Streams Interop - Akka Doc](https://doc.akka.io/docs/akka/current/stream/reactive-streams-interop.html)
 
-## 참고 문헌
+## References
 
 - Reactive Systems Explained / Grace Jansen & Peter Gollmar 저 / O'REILLY

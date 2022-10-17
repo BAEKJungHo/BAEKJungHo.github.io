@@ -42,6 +42,6 @@ IaC로 인프라 프로비저닝을 자동화하면 애플리케이션을 개발
 
 - [What is infrastructure as code](https://www.redhat.com/ko/topics/automation/what-is-infrastructure-as-code-iac)
 
-## 참고 문헌
+## References
 
 - 도메인 주도 설계로 시작하는 마이크로서비스 개발 / 한정헌, 유해식, 최은정, 이주영 저 / 위키북스

@@ -37,6 +37,6 @@ operator fun Rectangle.contains(p: Point): Boolean {
 
 `..` 연산자는 rangeTo 함수로 컴파일된다.
 
-## 참고 문헌
+## References
 
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

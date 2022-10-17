@@ -210,7 +210,7 @@ kotlin 의 Sequence 와 Java 의 Stream 은 어떤 기준으로 선택해야 할
 - [kt.academy.cc-sequence](https://kt.academy/article/cc-sequence)
 - [collections-and-sequences in kotlin](https://medium.com/androiddevelopers/collections-and-sequences-in-kotlin-55db18283aca)
 
-## 참고 문헌
+## References
 
 - Effective Kotlin Item 49 / Marcin Moskala 저 / 인사이트
 - Kotlin In Action / Dmitry Jemerov, Svetlana Isakova 공저 / 에이콘

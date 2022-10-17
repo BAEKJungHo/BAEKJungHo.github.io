@@ -69,6 +69,6 @@ latex   : true
 - [QuickRef RegEx](https://quickref.me/regex)
 - [Regular Expression Language - Quick Reference](https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference)
 
-## 참고 문헌
+## References
 
 - 학교에서 알려주지 않는 17가지 실무 개발 기술 / 이기곤 저 / 한빛미디어

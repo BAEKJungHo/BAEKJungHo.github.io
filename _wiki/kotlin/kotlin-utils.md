@@ -40,6 +40,6 @@ public final class JavaUtility {
 
 예를 들어 날짜 관련 유틸리티가 필요한 경우 DateTimeUtils 라는 파일을 하나 만들고 최상위 선언 함수를 통해 기능을 제공할 수 있다.
 
-## 참고 문헌
+## References
 
 - 코틀린 완벽 가이드 / Aleksei Sedunov 저 / 길벗

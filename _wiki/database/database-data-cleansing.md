@@ -21,7 +21,7 @@ latex   : true
 - 테이블간 관계를 설정하는 키
 - 외래키 설정 시 제약 조건 옵션을 설정할 수 있음
 - 참조의 정확성을 보장
-  -  It means you can't physically create a record that doesn't fulfill relation.
+  -  It means you can't physically create a record that dosen't fulfill relation.
 - FK 가 없더라도 조인 가능
 
 ### In Practice

@@ -56,5 +56,7 @@ select order_item_id from order_item where order_id = 1
 
 ## Links
 
-- [what are the advantages of defining a foreign key](https://stackoverflow.com/questions/10183116/what-are-the-advantages-of-defining-a-foreign-key)
+- [What are the advantages of defining a foreign key](https://stackoverflow.com/questions/10183116/what-are-the-advantages-of-defining-a-foreign-key)
 - [Why are foreign keys more used in theory than in practice?](https://stackoverflow.com/questions/1876013/why-are-foreign-keys-more-used-in-theory-than-in-practice)
+- [Operating without foreign key constraints](https://planetscale.com/docs/learn/operating-without-foreign-key-constraints)
+- [The Importance of the Foreign Key Constraint](https://www.linkedin.com/pulse/importance-foreign-key-constraint-tim-miles/)

@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Overengineering
-summary : Over-Engineering and Yagni
+summary : Overengineering and Yagni
 date    : 2022-10-16 15:05:32 +0900
 updated : 2022-10-16 15:15:24 +0900
 tag     : theory
@@ -16,7 +16,7 @@ latex   : true
 
 ## Overengineering
 
-> The dictionary just defines it as a combination of “over” (meaning “too much”) and “engineer” (meaning “design and build”). So per the dictionary, it would mean that you designed or built too much.
+> The dictionary just defines it as a combination of “over” (meaning __“too much”__) and “engineer” (meaning __“design and build”__). So per the dictionary, it would mean that you designed or built too much.
 >
 > Over-engineered code affects productivity because when someone inherits an over-engineered design, they must spend time
 learning the nuances of that design before they can comfortably extend or maintain it.
@@ -29,8 +29,8 @@ learning the nuances of that design before they can comfortably extend or mainta
 
 오버엔지니어링이 되는 방법은 많다. 그 중 두가지는 다음과 같다.
 
-1. 확장할 필요가 없는데 너무 확장하는 것
-2. 너무 일반적으로 만들어버리는 것
+1. __확장할 필요가 없는데 너무 확장하는 것__
+2. __너무 일반적으로 만들어버리는 것__
 
 1번의 경우에는 __추상화 비용__ 과도 연결 지을 수 있다. 확장성을 고려하다보면 추상화 레벨이 깊어지는 경우가 대다수인데, 다른 사람이 코드를 이해하는데 많은 노력이 필요할 수 있다. 참고로, 코드는 작성하는 비용보다 읽는데 드는 비용이 더 많이든다.
 
@@ -48,7 +48,7 @@ learning the nuances of that design before they can comfortably extend or mainta
 
 ## You Arent Gonna Need It
 
-> Yagni: Always implement things when you actually need them, never when you just foresee that you may need them.
+> Always implement things when you actually need them, never when you just foresee that you may need them.
 
 ### From: MartinFowler
 

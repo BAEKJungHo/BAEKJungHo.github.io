@@ -125,6 +125,7 @@ regenerate: true
 * [[/git/git-basic]]
 * [[/git/git-internal]]
 * [[/git/git-commands]]
+* [[/git/git-trunk-based-development]]
 
 ## auth
 

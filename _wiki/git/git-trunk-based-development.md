@@ -4,7 +4,7 @@ title   : Trunk based Development
 summary : 
 date    : 2022-10-17 15:54:32 +0900
 updated : 2022-10-17 20:15:24 +0900
-tag     : git
+tag     : git devops
 toc     : true
 comment : true
 public  : true
@@ -16,7 +16,7 @@ latex   : true
 
 ## Trunk based Development
 
-> With trunk-based development, where developers merge small, frequent updates to a core “trunk” 
+> With trunk-based development, where developers merge small, frequent updates to a core “__trunk__” 
 > 
 > ![](/resource/wiki/git-trunk-based-development/trunk.png)
 > 
@@ -43,32 +43,30 @@ latex   : true
 
 > [Alternatives to committing straight to the trunk: Short-Lived Feature Branches](https://trunkbaseddevelopment.com/short-lived-feature-branches/)
 > - Suitable for active committer counts between 2 and 1000.
-
 - Google were effectively doing the same in their Monorepo for some years before.
   - 국내 사례에서는 [Workingflow in monorepo - buzzvil](https://tech.buzzvil.com/handbook/workingflow-in-monorepo/) 를 참고하면 좋다.
-
+>
 > ![](/resource/wiki/git-trunk-based-development/shortlived.png)
-
-짧은 생명주기를 가진 feature branch 전략의 경우 몇 가지 핵심 규칙이 존재한다.
-
-- branch 의 생명 주기는 최대 2일까지만 유지한다. 2일보다 긴 경우 __long-lived feature branch__ 가 될 가능성이 높다.
-- feature 브랜치 하나당 1명의 개발자 수(페어프로그래밍의 경우 2명)를 유지하는 것이 좋고, 해당 브랜치는 팀 내에서 공유되지 않는다.(코드 리뷰를 위한 공유는 제외)
-- Do a speculative main/pull from main/trunk before attempting any push to main/trunk.
-  - Do not Attempt to merge to main/trunk and if that’s blocked do a merge/pull from main/trunk before attempting the push again.
-  - 이 방식의 장점: No trace if there’s nothing to merge in from the other branch.
+>
+> 짧은 생명주기를 가진 feature branch 전략의 경우 몇 가지 핵심 규칙이 존재한다.
+> - branch 의 생명 주기는 최대 2일까지만 유지한다. 2일보다 긴 경우 __long-lived feature branch__ 가 될 가능성이 높다.
+> - feature 브랜치 하나당 1명의 개발자 수(페어프로그래밍의 경우 2명)를 유지하는 것이 좋고, 해당 브랜치는 팀 내에서 공유되지 않는다.(코드 리뷰를 위한 공유는 제외)
+> - Do a speculative main/pull from main/trunk before attempting any push to main/trunk. 
+>   - Do not Attempt to merge to main/trunk and if that’s blocked do a merge/pull from main/trunk before attempting the push again.
+>   - 이 방식의 장점: No trace if there’s nothing to merge in from the other branch.
 
 ### Feature Flags & Branch by Abstraction
 
 > [Feature Flags](https://trunkbaseddevelopment.com/feature-flags/) & [Branch by Abstraction](https://trunkbaseddevelopment.com/branch-by-abstraction/)
-
-현업에서는 feature branch 의 생명주기가 항상 짧지만은 않다. 기획에서 의사결정이 늦어지는 경우나, 기타 다른 일정 때문에 우선순위가 밀리는 경우 등에 의한 이유로 long-lived feature branch 가 될 가능성이 많다.
-
-Feature Flags 와 Branch by Abstraction 은 long-lived feature branch 를 위한 기술이다.
-
-Branch by Abstraction 에도 몇 가지 핵심 규칙이 존재한다.
-
-- long-lived feature branch 가 공유 리포지토리에 커밋/푸시 되지 않아도, 운영에 영향이 있으면 안된다.
-- long-lived feature branch 에 의존하는 개발자가 많이 있으며, 해당 브랜치로 인해 그들의 작업이 느려지는 것을 원하지 않는다.
+>
+> 현업에서는 feature branch 의 생명주기가 항상 짧지만은 않다. 기획에서 의사결정이 늦어지는 경우나, 기타 다른 일정 때문에 우선순위가 밀리는 경우 등에 의한 이유로 long-lived feature branch 가 될 가능성이 많다. 
+> 
+> Feature Flags 와 Branch by Abstraction 은 long-lived feature branch 를 위한 기술이다.
+> 
+> Branch by Abstraction 에도 몇 가지 핵심 규칙이 존재한다.
+> 
+> - long-lived feature branch 가 공유 리포지토리에 커밋/푸시 되지 않아도, 운영에 영향이 있으면 안된다.
+> - long-lived feature branch 에 의존하는 개발자가 많이 있으며, 해당 브랜치로 인해 그들의 작업이 느려지는 것을 원하지 않는다.
 
 ### Coupled “Patch Review” System
 

@@ -14,9 +14,6 @@ latex   : true
 * TOC
 {:toc}
 
-- __Prerequisite__
-  - [Lambda](https://baekjungho.github.io/wiki/kotlin/kotlin-lambda/)
-
 ## Previous
 
 - [Kotlin Lambda](https://baekjungho.github.io/wiki/kotlin/kotlin-lambda/)
@@ -128,7 +125,7 @@ fun read(path: String): String {
 }
 ```
 
-## non-local return
+### non-local return
 
 람다 안에서 return 을 사용하면 람다로부터만 반환되는 게 아니라 그 람다를 호출하는 함수가 실행을 끝내고 반환된다. 자신을 둘러 싸고 있는 블록보다 더 바깥에 있는 다른 블록을 반환하게 만드는 return 문을 __넌로컬(non-local) return__ 이라 부른다.
 
@@ -142,7 +139,7 @@ fun lookForAlice(people: List<Person>) {
 
 이렇게 return 이 바깥쪽 함수를 반환시킬 수 있는 때는 람다를 인자로 받는 함수라 __인라인 함수__ 인 경우 뿐이다. (Ex. foreach)
 
-## label
+### label
 
 람다 식에서도 local return 을 사용할 수 있다. 람다 안에서 local return 은 for 루프의 break 와 비슷한 역할을 한다.
 
@@ -169,7 +166,7 @@ fun lookForAlice(people: List<Person>) {
 }
 ```
 
-## 무명 함수
+### anonymous function
 
 넌로컬 반환문은 장황하고, 람다 안의 여러 위치에 return 식이 들어가야 하는 경우에는 사용하기 불편하다. 코틀린은 코드 블록을 여기저기 전달하기 위한 다른 해법을 제공하는데 바로 __무명 함수__ 이다. 무명 함수 본문의 return 은 그 무명 함수를 반환시키고, 무명 함수 밖의 다른 함수를 반환시키지 못한다.
 
@@ -189,14 +186,14 @@ fun lookForAlice(people: List<Person>) {
 people.filter(fun (person) = person.age < 30)
 ```
 
-## 정리
+### 정리
 
 - __return 식은 fun 키워드로 정의된 함수를 반환 시킨다.__
   - non-local return 예제에서는 바깥 함수인 lookForAlice 를 반환하고
   - 무명 함수 예제에서는 무명 함수 자체를 반환한다.
   - 해당 예제 코드들을 자세히보면 반환되는 함수에 fun 키워드가 선언되어있음을 알 수 있다.
 
-## 성능
+### 성능
 
 > 이미 JVM 은 강력하게 inline 을 지원하고 있고, JVM 은 코드 실행 분석을 통해 가장 이익이 되는 방법으로 inline 을 하고 있다. 따라서, 함수의 파라미터에  Higher-Order functions 을 넘겨주는 형태가 아니라면 굳이 inline 을 적용할 필요가 없을 가능성이 높다.
 

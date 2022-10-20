@@ -17,19 +17,18 @@ latex   : true
 ## Identity
 
 > It calls __Referential equality__.
-> - You use `==` to compare the identities of two objects.
 > 
-> Notice that identity is something external. A reference is not part of the object it simply points to the object. __Another important point is identity doesn't change over time__: As I get older, I'm going through a lot of changes, but I'm still the same person.
->
-> In Kotlin, we use the `===(negated: !==)`. For values represented by __primitive types__ at runtime (for example, Int), the `===` equality check is equivalent to the `==` check.
+> - In Java, we use the `==` to compare the identities of two objects. Notice that identity is something external. A reference is not part of the object it simply points to the object. __Another important point is identity doesn't change over time__: As I get older, I'm going through a lot of changes, but I'm still the same person.
+> - In Kotlin, we use the `===(negated: !==)`. For values represented by __primitive types__ at runtime (for example, Int), the `===` equality check is equivalent to the `==` check.
 
 ## Equality
 
 > It calls __Structural equality__.
 > 
-> Equality refers to two objects being the same. Two objects being equal doesn't necessarily mean that they are the same object. In Java, we use the `equals()` method to check if two objects are equal. This is also called structural equality.
->
-> In Kotlin, we use the `==(negated: !=)`. That same as `equals()` method in Java.
+> Equality refers to two objects being the same. Two objects being equal doesn't necessarily mean that they are the same object.
+> 
+> - In Java, we use the `equals()` method to check if two objects are equal. This is also called structural equality.
+> - In Kotlin, we use the `==(negated: !=)`. That same as `equals()` method in Java.
 
 ```kotlin
 // a == b  is translated to in Kotlin:

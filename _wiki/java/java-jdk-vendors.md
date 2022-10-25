@@ -46,3 +46,4 @@ Oracle contributed all the JDK features to OpenJDK 11. Therefore, Oracle JDK 11 
 - [Oracle - Java](https://www.oracle.com/java/)
 - [Oracle JDK vs OpenJdk](https://www.baeldung.com/oracle-jdk-vs-openjdk)
 - [OpenJDK Update Release Map](https://shipilev.net/jdk-updates/map/)
+- [LINE 의 OpenJDK 적용기: 호환성 확인부터 주의 사항까지](https://engineering.linecorp.com/ko/blog/line-open-jdk/)

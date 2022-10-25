@@ -42,6 +42,7 @@ regenerate: true
 * [[/java/java-iterable]]
 * [[/java/java-exploring-hidden-cost]]
 * [[/java/java-firstclasscollection]]
+* [[/java/java-jdk-vendors]]
 
 ## spring
 

@@ -112,6 +112,10 @@
   "size": 7
  },
  {
+  "name": "netty",
+  "size": 1
+ },
+ {
   "name": "network",
   "size": 4
  },
@@ -129,7 +133,7 @@
  },
  {
   "name": "reactive",
-  "size": 9
+  "size": 10
  },
  {
   "name": "redis",
@@ -145,7 +149,7 @@
  },
  {
   "name": "spring",
-  "size": 24
+  "size": 25
  },
  {
   "name": "term",

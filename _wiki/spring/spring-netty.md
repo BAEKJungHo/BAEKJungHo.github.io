@@ -60,10 +60,10 @@ Besides being an asynchronous network application framework, Netty also includes
 ## Core Concepts
 
 - __Core Concepts__
-  - Channel: Channel is a basic construct of Java NIO.
-  - Callbacks: A callback is simply a method, a reference to which has been provided to another method.
-  - Future: Every IO operation on a Channel in Netty is non-blocking.
-  - Events and Handlers: Events and handlers can be related to the inbound and outbound data flow.
+  - `Channel`: Channel is a basic construct of Java NIO.
+  - `Callbacks`: A callback is simply a method, a reference to which has been provided to another method.
+  - `Future`: Every IO operation on a Channel in Netty is non-blocking.
+  - `Events and Handlers`: Events and handlers can be related to the inbound and outbound data flow.
 
 ### Channel
 
@@ -128,7 +128,7 @@ Netty is a networking framework, so events are categorized by their relevance to
 - Error events
 
 Inbound and outbound events flowing through a chain of ChannelHandlers:
-- ![](/resource/wiki/spring-netty/netty-feature.png)
+- ![](/resource/wiki/spring-netty/channelHandlers.png)
 
 ## Netty components and design
 
@@ -165,7 +165,7 @@ inbound message will be decoded; that is, converted from bytes to another format
 
 In general, base classes will have a name resembling ByteToMessageDecoder or MessageToByteEncoder. In the case of a specialized type, you may find something like ProtobufEncoder and ProtobufDecoder, provided to support Google’s protocol buffers.
 
-### Transport API
+## Transport API
 
 At the heart of the transport API is interface Channel, which is used for all I/O operations.
 
@@ -180,6 +180,30 @@ The selector is to serve as a registry where you request to be notified when the
 
 Selecting and processing state changes:
 - ![](/resource/wiki/spring-netty/selecting.png)
+
+## ByteBuf
+
+> Class ByteBuf - Netty's data container
+
+Netty’s API for data handling is exposed through two components—abstract class ByteBuf and interface ByteBufHolder.
+
+These are some of the advantages of the ByteBuf API:
+- It’s extensible to user-defined buffer types.
+- Transparent zero-copy is achieved by a built-in composite buffer type.
+- Capacity is expanded on demand (as with the JDK StringBuilder).
+- Switching between reader and writer modes doesn’t require calling ByteBuffer’s flip() method.
+- Reading and writing employ distinct indices.
+- Method chaining is supported.
+- Reference counting is supported.
+- Pooling is supported.
+
+### How it works
+
+ByteBuf maintains two distinct indices: one for reading and one for writing. When you read from a ByteBuf, its readerIndex is incremented by the number of bytes read. Similarly, when you write to a ByteBuf, its writerIndex is incremented.
+
+![](/resource/wiki/spring-netty/bytebuf.png)
+
+Trigger an IndexOutOfBoundsException, just as when you attempt to access data beyond the end of an array.
 
 ## What Is Reactor Netty?
 

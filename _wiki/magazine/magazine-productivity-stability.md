@@ -153,8 +153,9 @@ DDD 와 Clean Architecture 를 적용하면 아래와 같은 패키지 구조가
   - domain
     - Service
     - Entity
+    - Repository Interface
   - infrastructure
-    - Repository
+    - Repository Implementation
 
 interfaces 는 Presentation Layer 이며 application 은 Use Cases 를 담당합니다. domain 은 고수준 정책을 담당하는 Entities 에 속하며 infrastructure 는 Data layer 에 속합니다.
 
@@ -172,8 +173,9 @@ interfaces 는 Presentation Layer 이며 application 은 Use Cases 를 담당합
   - domain
     - Service
     - Domain
+    - Repository Interface
   - infrastructure
-    - Repository
+    - Repository Implementation
     - Entity
 
 즉, Domain Layer 에 아래와 같은 Domain Class 를 별도로 두는 것입니다. 위와 같은 구조라면 JPA 에서 R2dbc 로 변경되더라도 Domain Layer 에 아무런 영향을 주지 않습니다. (테이블 컬럼이 추가되는 경우는 제외)

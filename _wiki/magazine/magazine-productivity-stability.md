@@ -139,8 +139,6 @@ Clean Architecture 를 사용하는 것이 적합한 경우는 __비지니스 �
 
 도메인 주도 설게에서는 4가지 Layer 로 구성된 [Layered Architecture](https://baekjungho.github.io/wiki/ddd/ddd-layered-architectures/) 를 사용합니다. 핵심은 __의존성 방향이 Domain 으로 향해야 한다는 것이고, 모든 도메인 규칙들을 도메인 패키지로 잘 응집되도록 만드는 것이 중요합니다.__ 이러한 점에서 도메인 주도 설계에서 사용되는 Layered Architecture 는 Clean Architecture 와 상당히 유사합니다. 
 
-### Refactoring
-
 DDD 와 Clean Architecture 를 적용하면 아래와 같은 패키지 구조가 완성됩니다.
 
 ![](/resource/wiki/magazine-productivity-stability/four-layer.png)

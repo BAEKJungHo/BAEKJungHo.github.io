@@ -19,6 +19,15 @@ __[BAEKJungHo](https://github.com/BAEKJungHo). Backend Developer__
 - 동반 성장을 꿈꾸며 도움 주는 것을 좋아합니다.
 - 좋은 평판과 인간관계를 만들기 위해 노력합니다.
 
+## How do you work ?
+
+- __서로에게 도움이 되는 코드리뷰를 지향합니다.__
+  - [Watch my codeReview - 1](https://github.com/cIonecoder/expedia/pull/25)
+  - [Watch my codeReview - 2](https://github.com/cIonecoder/expedia/pull/45)
+- __DDD 기반의 코딩 스타일을 지향합니다.__
+  - [Authorization Server](https://github.com/asterlsker/housepit-auth-server/tree/dev)
+- __코드 작업과 문서화를 항상 같이 병행 합니다.__
+
 ## Motto
 
 > 겸손하자

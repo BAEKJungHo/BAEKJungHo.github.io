@@ -7,6 +7,10 @@ comment : false
 regenerate: true
 ---
 
+## magazine
+
+* [[/magazine/magazine-productivity-stability]]
+
 ## build tool
 
 * [[/buildtool/gradle-standard]]

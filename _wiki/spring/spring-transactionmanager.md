@@ -81,7 +81,7 @@ public interface ReactiveTransactionManager extends TransactionManager {
 }
 ```
 
-Kotlin Coroutine 을 사용 중이라면 WebMVC + JDBC 스택이 아닌 WebFLux + R2DBC 스택을 사용해야 Reactive Transaction 을 지원받을 수 있다.
+Kotlin Coroutine 을 사용 중이라면 WebMVC + JDBC 스택이 아닌 WebFlux + R2DBC 스택을 사용해야 Reactive Transaction 을 지원받을 수 있다.
 
 Coroutines are leveraging the Reactive transaction support, as a consequence they are not designed to work with thread-bound transactions. So Coroutines transactions should be used with WebFlux and R2DBC, not WebMVC and JDBC.
 

@@ -70,6 +70,7 @@ regenerate: true
 * [[/spring/spring-lazyconnectiondatasourceproxy]]
 * [[/spring/spring-enabletransactionmanagement]]
 * [[/spring/spring-netty]]
+* [[/spring/spring-transactionmanager]]
 
 ## reactive
 

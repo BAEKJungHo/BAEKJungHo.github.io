@@ -29,7 +29,7 @@ latex   : true
 ### SecurityContext
 
 - Authentication 객체가 저장되는 보관소
-- ThreadLocal 에 저장되어 아무 고셍서나 참조 가능
+- ThreadLocal 에 저장되어 아무 곳에서나 참조 가능
 - 인증이 완료되면 HttpSession 에 저장되어 애플리케이션 전바에 걸쳐 전역적인 참조 가능
 
 ### ThreadLocalSecurityContextHolderStrategy

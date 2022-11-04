@@ -89,7 +89,7 @@ Coroutines are leveraging the Reactive transaction support, as a consequence the
 
 - [TransactionManager Docs](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/TransactionManager.html)
 - [Reactive Transactions with Spring](https://spring.io/blog/2019/05/16/reactive-transactions-with-spring)
-- https://github.com/spring-projects/spring-framework/issues/26705
+- [Coroutines are leveraging the Reactive transaction support](https://github.com/spring-projects/spring-framework/issues/26705)
 - [Declarative transaction management](https://docs.spring.io/spring-framework/docs/3.0.0.M3/reference/html/ch11s05.html)
 
 ## References

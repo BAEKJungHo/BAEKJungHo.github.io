@@ -37,6 +37,7 @@ regenerate: true
 * [[/kotlin/kotlin-deserialize-dataclass]]
 * [[/kotlin/kotlin-property]]
 * [[/kotlin/kotlin-equality]]
+* [[/kotlin/kotlin-relaxed-mockk]]
 
 ## java
 

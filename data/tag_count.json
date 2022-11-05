@@ -81,7 +81,7 @@
  },
  {
   "name": "kotlin",
-  "size": 24
+  "size": 25
  },
  {
   "name": "ksp",
@@ -109,7 +109,7 @@
  },
  {
   "name": "mockk",
-  "size": 1
+  "size": 2
  },
  {
   "name": "msa",

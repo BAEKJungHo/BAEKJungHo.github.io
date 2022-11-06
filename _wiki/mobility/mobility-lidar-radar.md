@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Automotive Sensor Battle: Lidar vs Radar
+title   : Automotive Sensor and Telsa Vision
 summary : 
 date    : 2022-10-28 15:54:32 +0900
 updated : 2022-10-28 20:15:24 +0900
@@ -25,10 +25,10 @@ LIDAR is an acronym for __Light Detection and Ranging__. LIDAR normally measures
 LIDAR systems are larger and more __expensive__, usually mounted outside of the vehicle.
 
 __How a car with lidar sees the world:__
-  - ![](/resource/wiki/mobility-lidar-radar/lidar-screen.png)
+- ![](/resource/wiki/mobility-lidar-radar/lidar-screen.png)
 
 __An image from a patent filing shows how Alphabet’s self-driving cars use lidar to map the road ahead:__
-  - ![](/resource/wiki/mobility-lidar-radar/lidar-map.png)
+- ![](/resource/wiki/mobility-lidar-radar/lidar-map.png)
 
 ## Radar
 

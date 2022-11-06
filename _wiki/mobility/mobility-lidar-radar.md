@@ -70,7 +70,7 @@ After years of using a suite of sensors that included both cameras and a radar, 
 - __Related Articles__
   - [Tesla Vision Update: Replacing Ultrasonic Sensors with Tesla Vision](https://www.tesla.com/support/transitioning-tesla-vision)
   - [Tesla is changing the sensors in its cars. Here is why you should care](https://www.zdnet.com/article/tesla-removed-its-ultrasonic-sensors-from-its-cars-what-does-that-mean-for-your-tesla-vehicle-your-safety-and-teslas-future/)
-  - [Why Tesla removed Radar and Ultrasonic sensors? | Andrej Karpathy and Lex Fridman](https://www.youtube.com/watch?v=_W1JBAfV4Io)
+  - [Why Tesla removed Radar and Ultrasonic sensors? - Andrej Karpathy and Lex Fridman](https://www.youtube.com/watch?v=_W1JBAfV4Io)
 
 Safety is at the core of our design and engineering decisions. In 2021, we began our transition to Tesla Vision by removing radar from Model 3 and Model Y, followed by Model S and Model X in 2022. Today, in most regions around the globe, these vehicles now rely on __Tesla Vision, our camera-based Autopilot system__. [Tesla Model Y receives highest overall safety score in new European assessment](https://www.zdnet.com/article/tesla-model-y-received-highest-overall-safety-score-of-any-vehicle-ever-tested/).
 

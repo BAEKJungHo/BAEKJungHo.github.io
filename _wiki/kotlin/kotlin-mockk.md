@@ -4,7 +4,7 @@ title   : Mockk
 summary : Mockk 를 활용한 테스트
 date    : 2022-09-15 20:54:32 +0900
 updated : 2022-09-15 21:15:24 +0900
-tag     : kotlin mockk
+tag     : kotlin mockk test
 toc     : true
 comment : true
 public  : true

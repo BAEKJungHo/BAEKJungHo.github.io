@@ -4,7 +4,7 @@ title   : RelaxedMockk
 summary : 
 date    : 2022-10-25 20:54:32 +0900
 updated : 2022-10-25 21:15:24 +0900
-tag     : kotlin mockk
+tag     : kotlin mockk test
 toc     : true
 comment : true
 public  : true

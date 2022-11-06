@@ -11,6 +11,10 @@ regenerate: true
 
 * [[/magazine/magazine-productivity-stability]]
 
+## mobility
+
+* [[/mobility/mobility-lidar-radar]]
+
 ## build tool
 
 * [[/buildtool/gradle-standard]]

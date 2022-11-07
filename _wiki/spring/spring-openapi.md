@@ -83,9 +83,9 @@ Philosophically, we want to discourage using (swagger-core) annotations that are
 
 - __Related Articles__
   - [Spring Rest API with Swagger – Creating documentation](https://www.javacodegeeks.com/2014/10/spring-rest-api-with-swagger-creating-documentation.html)
-  - [Spring Rest API with Swagger – Exposing documentation](https://www.javacodegeeks.com/2014/11/spring-rest-api-with-swagger-exposing-documentation.html) Spring REST API 를 웹 서비스로 볼 수 있게 해줌
+  - [Spring Rest API with Swagger – Exposing documentation](https://www.javacodegeeks.com/2014/11/spring-rest-api-with-swagger-exposing-documentation.html)
   - [Setting Up Swagger 2 with a Spring REST API Using Springfox](https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api)
-- [Spring Boot 2.6.0 / Spring fox 3 - Failed to start bean 'documentationPluginsBootstrapper' - stackoverflow](https://stackoverflow.com/questions/70036953/spring-boot-2-6-0-spring-fox-3-failed-to-start-bean-documentationpluginsboo)
+- [Spring Boot 2.6.0 / Spring fox 3 - Failed to start bean documentationPluginsBootstrapper](https://stackoverflow.com/questions/70036953/spring-boot-2-6-0-spring-fox-3-failed-to-start-bean-documentationpluginsboo)
 
 ## SpringDoc - SpringFramework Open API Specification
 

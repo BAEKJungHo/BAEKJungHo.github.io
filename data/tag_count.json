@@ -157,7 +157,11 @@
  },
  {
   "name": "spring",
-  "size": 27
+  "size": 28
+ },
+ {
+  "name": "swagger",
+  "size": 1
  },
  {
   "name": "term",

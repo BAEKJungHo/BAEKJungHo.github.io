@@ -78,6 +78,7 @@ regenerate: true
 * [[/spring/spring-transactionmanager]]
 * [[/spring/spring-validation]]
 * [[/spring/spring-openapi]]
+* [[/spring/spring-i18n]]
 
 ## reactive
 

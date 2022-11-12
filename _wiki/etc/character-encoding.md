@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## 문자열 인코딩이란
+## Character Encoding
 
 문자열 인코딩(Character Encoding)은 컴퓨터가 이해할 수 있도록 인간의 언어를 2진수로 변환하는 방식을 말한다.
 
@@ -23,8 +23,8 @@ latex   : true
 01000001(10진수 65) 는 문자 A 다
 ```
 
-## 문자열 인코딩 규칙 종류
 
+__문자열 인코딩 규칙 종류__:
 - ASCII 
 - EUC-KR
 - UTF-8
@@ -64,11 +64,13 @@ EUC-KR 은 모든 글자가 완성된 형태로 존재하는 `완성형` 코드�
 
 > CP949 는 EUC-KR 을 확장한 문자 집합으로 EUC-KR 과 같은 문자열 인코딩이며, 더 많은 문자를 표현할 수 있다. 실제로 EUC-KR 로 표기하더라도 CP949 문자 집합을 사용하는 경우가 많다.
 
-## 유니코드
+## Unicode
 
-유니코드(Unicode)는 국가별로 독자적인 문자열 인코딩을 사용하는 문제를 해결하기 위해 국제 표준화 기구(International Organization for Standardization, ISO) 에서 만든 문자 집합이다.
+유니코드(Unicode)는 국가별로 독자적인 문자열 인코딩을 사용하는 문제를 해결하기 위해 국제 표준화 기구(International Organization for Standardization, ISO) 에서 만든 문자 집합이다. 즉, 국제적으로 전세계 언어를 모두 표시할 수 있는 표준코드를 의미한다.
 
-유니코드 문자열 인코딩은 UTF-8, UTF-16, UTF-32 가 있다.
+- [Unicode Area](https://ko.wikipedia.org/wiki/%EC%9C%A0%EB%8B%88%EC%BD%94%EB%93%9C_%EC%98%81%EC%97%AD)
+
+__유니코드는 국제표준 문자표이고 UTF-8 은 인코딩 방식이다.__ 유니코드 문자열 인코딩은 UTF-8, UTF-16, UTF-32 가 있다. UTF-8 등은 유니코드를 컴퓨터가 이해할 수 있도록 형태를 바꿔준다. 즉, 인코딩 방식을 의미한다.
 
 ### UTF-8
 
@@ -129,6 +131,7 @@ BOM 을 사용하여 바이트 표현 순서를 정하는 이유는, CPU 설계�
 - [UTF-32 Chart](https://www.fileformat.info/info/charset/UTF-32/list.htm)
 - [byte order mark](https://docs.microsoft.com/ko-kr/globalization/encoding/byte-order-mark)
 - [Transformations of Unicode code points](https://docs.microsoft.com/ko-kr/globalization/encoding/transformations-of-unicode-code-points)
+- [Unicode 와 UTF-8 간단히 이해하기](https://jeongdowon.medium.com/unicode%EC%99%80-utf-8-%EA%B0%84%EB%8B%A8%ED%9E%88-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-b6aa3f7edf96)
 
 ## References
 

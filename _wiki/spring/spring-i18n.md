@@ -32,6 +32,9 @@ Localization also may take into account differences in culture, such as:
 Internationalization is often written i18n, where 18 is the number of letters between i and n in the English word. 
 Internationalization (i18n) is the process of preparing software so that it can support local languages and cultural settings. __Internationalization significantly affects the ease of the product's localization.__
 
+- __Related Articles__
+  - [국제화 시 고려해야 할 49가지](https://www.abctech.software/2012/09/19/i18n-49/)
+
 ### Business process for internationalizing software
 
 Typical software internationalization tasks include:

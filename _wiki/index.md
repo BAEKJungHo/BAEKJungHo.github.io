@@ -80,6 +80,7 @@ regenerate: true
 * [[/spring/spring-openapi]]
 * [[/spring/spring-i18n]]
 * [[/spring/spring-jpa-version]]
+* [[/spring/spring-jpa-saveandflush]]
 
 ## reactive
 

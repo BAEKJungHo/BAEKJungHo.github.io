@@ -77,7 +77,7 @@
  },
  {
   "name": "jpa",
-  "size": 1
+  "size": 2
  },
  {
   "name": "kafka",
@@ -161,7 +161,7 @@
  },
  {
   "name": "spring",
-  "size": 30
+  "size": 31
  },
  {
   "name": "swagger",

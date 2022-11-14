@@ -134,7 +134,7 @@ public MessageSource messageSource() {
 
 위 코드에서는 message.properties 파일을 읽어 사용한다. 파일 경로는 /resources/message.properties 이다. 여러 파일을 한번에 지정할 수 있다. 여기서는 messages , errors 둘을 지정했다. defaultEncoding 은 인코딩 정보를 지정한다. utf-8 을 사용하면 된다.
 
-#### Auto Registration: In Spring Boot
+#### Auto Registration: in Spring Boot
 
 스프링 부트는 MessageSource 를 자동으로 스프링 빈으로 등록한다.
 

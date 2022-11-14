@@ -61,6 +61,8 @@ Details such as field length for street addresses, unique format for the address
 - [System of measurement](https://en.wikipedia.org/wiki/System_of_measurement)
 - [and so on](https://en.wikipedia.org/wiki/Internationalization_and_localization)
 
+Currency 와 같이 특정 포맷에 맞춰 Conversion 해야하는 경우 [Formatter](https://baekjungho.github.io/wiki/spring/spring-converter/#formatter) 를 사용하여 구현할 수 있다.
+
 ## Globalization
 
 Some companies, like IBM and Oracle, use the term globalization, g11n, for the combination of internationalization and localization.
@@ -132,7 +134,7 @@ public MessageSource messageSource() {
 
 위 코드에서는 message.properties 파일을 읽어 사용한다. 파일 경로는 /resources/message.properties 이다. 여러 파일을 한번에 지정할 수 있다. 여기서는 messages , errors 둘을 지정했다. defaultEncoding 은 인코딩 정보를 지정한다. utf-8 을 사용하면 된다.
 
-#### Auto Registration: In Spring Boot
+#### Auto Registration: in Spring Boot
 
 스프링 부트는 MessageSource 를 자동으로 스프링 빈으로 등록한다.
 

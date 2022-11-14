@@ -10,7 +10,7 @@ latex: true
 
 # About Me
 
-__[BAEKJungHo](https://github.com/BAEKJungHo). Backend Developer__
+__[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Building__ 
 
 - 문서화를 잘합니다.
 - 커뮤니케이션에 진심입니다.

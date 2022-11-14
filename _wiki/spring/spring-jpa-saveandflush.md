@@ -78,7 +78,7 @@ __save 는 마지막 시점의 PersistenceContext 에 존재하는 Member 의 �
 
 ## saveAndFlush
 
-saveAndFlush() method flushes the data __immediately during the execution__. But be aware, that even if you flush the changes in transaction and do not commit them, the changes still won't be visible to the outside transactions until the commit in this transaction. 단, Transaction's isolation level 이 __READ_UNCOMMITTED__ 면 외부에서 flush 되었지만 commit 되지 않은 결과를 볼 수 있다. 
+saveAndFlush() method flushes the data __immediately during the execution__. But be aware, that even if you flush the changes in transaction and do not commit them, the changes still won't be visible to the outside transactions until the commit in this transaction. 단, __Transaction's isolation level__ 이 __READ_UNCOMMITTED__ 면 외부에서 flush 되었지만 commit 되지 않은 결과를 볼 수 있다. 
 
 MySQL 은 Repeatable Read, Oracle 은 Read Committed 를 기본 isolation level 로 채택하고 있기 때문에, 한 트랜잭션 안에서 saveAndFlush 를 하더라도 해당 트랜잭션이 커밋되지 않는한, 다른 트랜잭션에서는 flush 한 결과를 볼 수 없다.
 

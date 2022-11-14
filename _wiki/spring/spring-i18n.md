@@ -61,6 +61,8 @@ Details such as field length for street addresses, unique format for the address
 - [System of measurement](https://en.wikipedia.org/wiki/System_of_measurement)
 - [and so on](https://en.wikipedia.org/wiki/Internationalization_and_localization)
 
+Currency 와 같이 특정 포맷에 맞춰 Conversion 해야하는 경우 [Formatter](https://baekjungho.github.io/wiki/spring/spring-converter/#formatter) 를 사용하여 구현할 수 있다.
+
 ## Globalization
 
 Some companies, like IBM and Oracle, use the term globalization, g11n, for the combination of internationalization and localization.

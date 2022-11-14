@@ -79,6 +79,7 @@ regenerate: true
 * [[/spring/spring-validation]]
 * [[/spring/spring-openapi]]
 * [[/spring/spring-i18n]]
+* [[/spring/spring-jpa-version]]
 
 ## reactive
 

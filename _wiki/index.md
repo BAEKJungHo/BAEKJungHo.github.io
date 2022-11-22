@@ -52,6 +52,7 @@ regenerate: true
 * [[/java/java-exploring-hidden-cost]]
 * [[/java/java-firstclasscollection]]
 * [[/java/java-jdk-vendors]]
+* [[/java/java-jdk-bigdecimal]]
 
 ## spring
 

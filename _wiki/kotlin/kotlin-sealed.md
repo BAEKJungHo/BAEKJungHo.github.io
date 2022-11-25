@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Sealed
 summary : Sealed Class and Sealed Interface
-date    : 2022-05-21 20:54:32 +0900
-updated : 2022-05-21 21:15:24 +0900
+date    : 2022-11-15 20:54:32 +0900
+updated : 2022-11-15 21:15:24 +0900
 tag     : kotlin
 toc     : true
 comment : true

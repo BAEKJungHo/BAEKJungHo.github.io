@@ -43,6 +43,7 @@ regenerate: true
 * [[/kotlin/kotlin-equality]]
 * [[/kotlin/kotlin-relaxed-mockk]]
 * [[/kotlin/kotlin-sealed]]
+* [[/kotlin/kotlin-nested]]
 
 ## java
 

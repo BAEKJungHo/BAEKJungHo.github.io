@@ -72,7 +72,7 @@ Some companies, like IBM and Oracle, use the term globalization, g11n, for the c
 국제화를 구현하기 위해서는 메시지를 어떤식으로 관리할 것인지가 중요하다:
 - [Java, Spring 국제화(MessageSource) 적용관련 질문](https://www.slipp.net/questions/530)
 
-크게 `DB` 를 사용하는 방식과 `properties` 파일을 사용하는 방식이 있다.
+크게 `DB` 를 사용하는 방식과 `json` 을 사용하는 방식, 그리고 `properties` 파일을 사용하는 방식이 있다.
 
 ### Internationalization in Spring Boot
 

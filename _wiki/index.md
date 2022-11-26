@@ -84,6 +84,7 @@ regenerate: true
 * [[/spring/spring-i18n]]
 * [[/spring/spring-jpa-version]]
 * [[/spring/spring-jpa-saveandflush]]
+* [[/spring/spring-jackson]]
 
 ## reactive
 

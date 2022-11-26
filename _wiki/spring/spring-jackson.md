@@ -147,7 +147,7 @@ Jackson ObjectMapper 를 사용하여 Serialize/Deserialize 를 사용하려면 
 Reflection 을 통해 생성자의 인자 정보는 가져오지 못한다. 따라서 기본 생성자 없이 파라미터가 있는 생성자만 존재한다면 Reflection 이 객체를 생성할 수 없게 되는 것이다.
 JPA Hibernate 를 사용할 때에도 Reflection 을 통해 Proxy 객체를 생성하기 때문에 protected or public 접근 제어자를 가진 default constructor 를 필요로 한다.
 
-The entity class should have a no-argument constructor. Both Hibernate and JPA require this.
+> The entity class should have a no-argument constructor. Both Hibernate and JPA require this.
 JPA requires that this constructor be defined as public or protected. Hibernate, for the most part, does not care about the constructor visibility, as long as the system SecurityManager allows overriding the visibility setting. That said, the constructor should be defined with at least package visibility if you wish to leverage runtime proxy generation.
 
 ## Links
@@ -155,3 +155,4 @@ JPA requires that this constructor be defined as public or protected. Hibernate,
 - [Java JSON Tutorial - JenKov](https://jenkov.com/tutorials/java-json/jackson-installation.html)
 - [Jackson – Decide What Fields Get Serialized/Deserialized](https://www.baeldung.com/jackson-field-serializable-deserializable-or-not)
 - [Hibernate - Entity pojo-constructor](https://docs.jboss.org/hibernate/orm/5.0/userguide/html_single/Hibernate_User_Guide.html#entity-pojo-constructor)
+- [Deserialize json with Java parameterized constructor](https://blogs.jsbisht.com/blogs/2016/09/12/deserialize-json-with-java-parameterized-constructor)

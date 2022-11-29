@@ -69,7 +69,7 @@
  },
  {
   "name": "java",
-  "size": 14
+  "size": 16
  },
  {
   "name": "javascript",
@@ -85,7 +85,7 @@
  },
  {
   "name": "kotlin",
-  "size": 27
+  "size": 29
  },
  {
   "name": "ksp",
@@ -161,7 +161,7 @@
  },
  {
   "name": "spring",
-  "size": 31
+  "size": 33
  },
  {
   "name": "swagger",

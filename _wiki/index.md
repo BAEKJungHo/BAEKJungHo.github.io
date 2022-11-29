@@ -55,6 +55,7 @@ regenerate: true
 * [[/java/java-firstclasscollection]]
 * [[/java/java-jdk-vendors]]
 * [[/java/java-jdk-bigdecimal]]
+* [[/java/java-jdk-date]]
 
 ## spring
 

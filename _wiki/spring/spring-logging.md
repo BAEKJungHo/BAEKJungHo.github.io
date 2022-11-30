@@ -4,7 +4,7 @@ title   : Slf4j, Logback
 summary : 
 date    : 2022-04-20 19:28:32 +0900
 updated : 2022-04-20 21:15:24 +0900
-tag     : spring
+tag     : logging spring java
 toc     : true
 comment : true
 public  : true

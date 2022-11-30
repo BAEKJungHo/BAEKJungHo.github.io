@@ -69,7 +69,7 @@
  },
  {
   "name": "java",
-  "size": 16
+  "size": 18
  },
  {
   "name": "javascript",
@@ -102,6 +102,10 @@
  {
   "name": "lock",
   "size": 1
+ },
+ {
+  "name": "logging",
+  "size": 2
  },
  {
   "name": "magazine",
@@ -161,7 +165,7 @@
  },
  {
   "name": "spring",
-  "size": 33
+  "size": 34
  },
  {
   "name": "swagger",

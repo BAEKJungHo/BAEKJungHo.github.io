@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : GMT, UTC and Date API (작성중)
+title   : GMT, UTC and Date API
 summary : Date, Calendar, LocalDateTime, ZoneDateTime
 date    : 2022-11-22 11:28:32 +0900
 updated : 2022-11-22 12:15:24 +0900
@@ -20,6 +20,9 @@ latex   : true
 
 ## Coordinated Universal Time
 
+- __Related Articles__
+  - [ISO 8601 - Coordinated Universal Time (UTC)](https://en.wikipedia.org/wiki/ISO_8601#Coordinated_Universal_Time_(UTC))
+
 협정 세계시라고 불리는 UTC 는 세계 표준시를 의미한다. 
 
 __UTC - The World's Time Standard.__ This 24-hour time standard is kept using highly precise atomic clocks combined with the Earth's rotation.
@@ -32,7 +35,35 @@ __UTC - The World's Time Standard.__ This 24-hour time standard is kept using hi
 
 UTC is the time standard commonly used across the world. The world's timing centers have agreed to keep their time scales closely synchronized - or coordinated - therefore the name Coordinated Universal Time.
 
-## Date
+### T, Z
+
+- __T__
+  - T is just a literal to separate the date from the time.
+- __Z__
+  - Z is "zero hour offset" also known as "Zulu time" (UTC).
+  - If the time is in UTC, add a Z directly after the time without a space. Z is the zone designator for the zero UTC offset. "09:30 UTC" is therefore represented as "09:30Z" or "T0930Z". "14:45:15 UTC" would be "14:45:15Z" or "T144515Z".
+
+Java SE 8 Date-Time API(java.time API or the modern Date-Time API) is based on ISO 8601 and does not require using a DateTimeFormatter object explicitly as long as the Date-Time string conforms to the ISO 8601 standards.
+
+```java
+String strDateTime = "2011-08-12T20:17:46.384Z";
+
+Instant instant = Instant.parse(strDateTime);
+OffsetDateTime odt = OffsetDateTime.parse(strDateTime);
+ZonedDateTime zdt = ZonedDateTime.parse(strDateTime);
+
+// Output
+2011-08-12T20:17:46.384Z
+2011-08-12T20:17:46.384Z
+2011-08-12T20:17:46.384Z
+```
+
+## The legacy Date-time API
+
+The legacy Date-time API (java.util Date-Time API and their formatting API, [SimpleDateFormat](https://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html)) are outdated and error-prone.
+Do not use 'Z' in the pattern with the Date-Time parsing/formatting API. 
+
+As already described above, Z (without quotes) is the timezone designator for zero-timezone offset whereas 'Z' is just a character literal and it does not hold any meaning. Use the format, y-M-d'T'H:m:s.SSSXXX.
 
 - java.util.Date Class 는 Comparable 을 구현하고 있기 때문에 비교 가능
 - 기본 생성자를 통해서 Date 객체 생성 가능
@@ -43,7 +74,10 @@ Date 클래스의 단점 - [ALL ABOUT JAVA.UTIL.DATE](https://codeblog.jonskeet.
 - 클래스 이름이 Date 인데 시간까지 다룬다.
 - 버그 발생 여지가 많다. (타입 안정성이 없고, 월이 0부터 시작)
 
-## Date Time API in Java 8
+## Modern Date-Time API
+
+- __Related Articles__
+  - [Trail: Date Time: Table of Contents](https://docs.oracle.com/javase/tutorial/datetime/TOC.html) 
 
 [Date-Time Design Principles](https://docs.oracle.com/javase/tutorial/datetime/overview/design.html):
 - Clear
@@ -82,7 +116,24 @@ LocalDateTime ldt = LocalDateTime.ofInstant(timestamp, ZoneId.systemDefault());
 System.out.printf("%s %d %d at %d:%d%n", ldt.getMonth(), ldt.getDayOfMonth(), ldt.getYear(), ldt.getHour(), ldt.getMinute ());
 ```
 
+## Joda Time
+
+만약에 Modern Date-Time API 를 사용할 수 없다면 [Joda-Time](https://www.joda.org/joda-time/) 을 사용하는것이 좋다.
+
+> Joda-Time is the de facto standard date and time library for Java prior to Java SE 8. Users are now asked to migrate to java.time (JSR-310).
+
+```java
+String dateTimeStr = "2011-08-12T20:17:46.384Z";
+DateTimeFormatter dtf = DateTimeFormat.forPattern("y-M-d'T'H:m:s.SSSZ").withOffsetParsed();
+DateTime dateTime = dtf.parseDateTime(dateTimeStr);
+System.out.println(dateTime);
+
+// Output
+2011-08-12T20:17:46.384Z
+```
+
 ## Links
 
 - [About UTC](https://www.timeanddate.com/time/aboututc.html)
+- [Java Date-Time API - stackoverflow](https://stackoverflow.com/questions/8405087/what-is-this-date-format-2011-08-12t201746-384z)
 

@@ -18,7 +18,7 @@ latex   : true
 
 > 프로젝트에서 이미 있던 코드를 복사해서 붙여넣고 있다면, 무언가가 잘못된 것이다.
 
-- __From: 실용주의 프로그래머__: Don't Repeat Yourself, DRY 규칙으로 표현하고 있다.
+- 실용주의 프로그래머에서 Don't Repeat Yourself, DRY 규칙으로 표현하고 있다.
 - WET 안티패턴이라고도 불린다.
 - DRY 는 또한 SSOT(Single Source of Truth) 라는 이름으로도 알려져 있다.
 

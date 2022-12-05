@@ -196,6 +196,7 @@ regenerate: true
 
 * [[/cleancode/cleancode-guide]]
 * [[/cleancode/cleancode-good-implementation]]
+* [[/cleancode/knowledge]]
 
 ## Operating System
 

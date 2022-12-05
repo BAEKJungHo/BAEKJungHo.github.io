@@ -13,7 +13,7 @@
  },
  {
   "name": "cleancode",
-  "size": 2
+  "size": 3
  },
  {
   "name": "concurrency",
@@ -85,7 +85,7 @@
  },
  {
   "name": "kotlin",
-  "size": 30
+  "size": 31
  },
  {
   "name": "ksp",

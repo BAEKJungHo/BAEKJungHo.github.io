@@ -164,6 +164,7 @@ regenerate: true
 * [[/designpattern/designpattern-template-method]]
 * [[/designpattern/designpattern-strategy]]
 * [[/designpattern/designpattern-observer]]
+* [[/designpattern/designpattern-intercepting-filter]]
 
 ## ddd
 

@@ -21,7 +21,7 @@
  },
  {
   "name": "database",
-  "size": 9
+  "size": 10
  },
  {
   "name": "datastructures",
@@ -77,7 +77,7 @@
  },
  {
   "name": "jpa",
-  "size": 2
+  "size": 3
  },
  {
   "name": "kafka",

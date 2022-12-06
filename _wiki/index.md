@@ -191,6 +191,7 @@ regenerate: true
 * [[/database/database-surrogatekey]]
 * [[/database/query-optimizing]]
 * [[/database/data-cleansing]]
+* [[/database/data-cascade]]
 
 ## Clean Code
 

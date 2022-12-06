@@ -201,3 +201,5 @@ __CascadeType.PERSIST + CascadeType.REMOVE__ 와 __CascadeType.PERSIST + orphanR
 - [Referential Integrity](https://www.ibm.com/docs/en/informix-servers/14.10?topic=integrity-referential)
 - [JPA cascade types - Baeldung](https://www.baeldung.com/jpa-cascade-types)
 - [JPA CascadeType.REMOVE vs orphanRemoval = true](https://tecoble.techcourse.co.kr/post/2021-08-15-jpa-cascadetype-remove-vs-orphanremoval-true/)
+- [Inflearn - Cascade 질문 1](https://www.inflearn.com/questions/193431/cascade-%EC%A7%88%EB%AC%B8%EC%9E%85%EB%8B%88%EB%8B%A4)
+- [Inflearn - Cascade 질문 2](https://www.inflearn.com/questions/31969/cascade-%EC%98%B5%EC%85%98-%EC%A7%88%EB%AC%B8)

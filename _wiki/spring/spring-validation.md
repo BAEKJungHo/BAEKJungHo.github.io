@@ -133,9 +133,7 @@ public class ItemValidator implements Validator {
 
 isAssignableFrom() 을 쓰는 이유는 자식 클래스 까지 검증이 가능하기 때문이다. 검증시 @Validated @Valid 둘다 사용가능하다. 
 
-### @InitBinder
-
-여러 객체를 대상으로 검증기를 적용할 수 있다.
+@InitBinder 를 사용하여 여러 객체를 대상으로 검증기를 적용할 수 있다.
 
 ```java
 @InitBinder("targetObject")
@@ -150,6 +148,23 @@ public void initSameObject(WebDataBinder webDataBinder) {
     webDataBinder.addValidators(/*SameObject 관련 검증기*/);
 }
 ```
+
+### BeanValidator
+
+Custom Validator 를 Bean 으로 등록하여 사용할 수 있다. 이 경우의 장점은 하나의 Validator 안에서 여러 validate 메서드를 가질 수 있다는 점이다.
+
+```java
+@Component
+public class CardValidator {
+    
+    public void registerValidate(CardDto.RegisterRequest request, Errors e) {}
+    public void updateValidate(CardDto.RegisterRequest request, Errors e) {}
+}
+```
+
+- __추천하는 전략__
+  - 컨트롤러 내에서 Global 하게 적용되어야 하는 검증의 경우에는 Spring Validator Interface 를 구현하여 사용
+  - 그 외에는 직접 BeanValidator 를 만들어서 사용
 
 ## Message
 

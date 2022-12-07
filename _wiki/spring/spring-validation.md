@@ -71,11 +71,13 @@ ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "itemName", "required")
 
 ## Validator
 
-Custom Validator 를 만드는 방식은 크게 두가지가 있다. 
+Validator 를 만드는 방식은 크게 두가지가 있다.
 
 1. 스프링에서 제공하는 Validator 인터페이스를 구현
 2. 별도 인터페이스 없이 Custom Validator 를 빈으로 등록해서 사용
-  - 컨트롤러에서 validator.validate 형식으로 호출하여 사용
+- 컨트롤러에서 validator.validate 형식으로 호출하여 사용
+
+### Spring Validator Interface
 
 스프링은 검증을 체계적으로 제공하기 위해 아래 인터페이스를 제공한다.
 
@@ -83,6 +85,7 @@ Custom Validator 를 만드는 방식은 크게 두가지가 있다.
 public interface Validator {
     // 해당 검증기를 지원하는 지 확인 
     boolean supports(Class<?> clazz);
+    
     // target: 검증 대상 객체, errors: BindingResult
     void validate(Object target, Errors errors);
 }
@@ -130,6 +133,54 @@ public class ItemValidator implements Validator {
 
 isAssignableFrom() 을 쓰는 이유는 자식 클래스 까지 검증이 가능하기 때문이다. 검증시 @Validated @Valid 둘다 사용가능하다. 
 
+### @InitBinder
+
+여러 객체를 대상으로 검증기를 적용할 수 있다.
+
+```java
+@InitBinder("targetObject")
+public void initTargetObject(WebDataBinder webDataBinder) {
+    log.info("webDataBinder={}, target={}", webDataBinder, webDataBinder.getTarget());
+    webDataBinder.addValidators(/*TargetObject 관련 검증기*/);
+}
+
+@InitBinder("sameObject")
+public void initSameObject(WebDataBinder webDataBinder) {
+    log.info("webDataBinder={}, target={}", webDataBinder, webDataBinder.getTarget());
+    webDataBinder.addValidators(/*SameObject 관련 검증기*/);
+}
+```
+
+## Message
+
+spring 의 message.properties 파일에 정의되어있는 값을 아래처럼 사용할 수 있다.
+
+```java
+public class MemberDto {
+
+  @NotEmpty(message = "{email.notempty}")
+  private String email;
+
+  // standard getter and setters
+}
+```
+```java
+@Constraint(validatedBy = EmailValidator.class)
+@Target(ElementType.FIELD)
+@Retention(value = RetentionPolicy.RUNTIME)
+@Documented
+public @interface AdvisorEmail {
+    String message() default "{com.dope.pro.validator.ValidEmail.message}";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+}
+```
+
+- message file name: __ValidationMessage_언어코드_국가코드__
+  - e.g ValidationMessage_ko_KR
+
 ## Bean Validation
 
 Bean Validation 은 [JSR-380](https://beanvalidation.org/2.0-jsr380/spec/) 이라는 기술 표준이다. 마치 JPA 가 표준 기술이고 그 구현체로 하이버네이트가 있는 것과 같다.
@@ -146,51 +197,169 @@ implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 @Validated 는 스프링 전용 검증 애노테이션이고, @Valid 는 자바 표준 검증 애노테이션이다. 둘중 아무거나 사용해도 동일하게 작동하지만, @Validated 는 내부에 groups 라는 기능을 포함하고 있다.
 
-### Bean Validation - groups
+## Container Validation
+
+Bean Validation 2.0 부터 가능하다.
 
 ```java
-@Data
-public class Item {
+public class DeleteContacts {
+    @Min(1)
+    private Collection<@Length(max = 64) @NotBlank String> uids;
+}
+```
 
-    @NotNull(groups = UpdateCheck.class) //수정 요구사항 추가
-    private Long id;
+## Custom Constraint Validation
 
-    @NotBlank(groups = {SaveCheck.class, UpdateCheck.class})
-    private String itemName;
+### Annotation
 
-    @NotNull(groups = {SaveCheck.class, UpdateCheck.class})
-    @Range(min = 1000, max = 1000000, groups = {SaveCheck.class, UpdateCheck.class})
-    private Integer price;
+- __Java__
 
-    @NotNull(groups = {SaveCheck.class, UpdateCheck.class})
-    @Max(value = 9999, groups = {SaveCheck.class})
-    private Integer quantity;
+```java
+@Constraint(validatedBy = EmailValidator.class)
+@Target(ElementType.FIELD)
+@Retention(value = RetentionPolicy.RUNTIME)
+@Documented
+public @interface AdvisorEmail {
+    String message() default "{com.dope.pro.validator.ValidEmail.message}";
 
-    public Item() {
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+}
+```
+
+- __Kotlin__
+
+```kotlin
+@Target(AnnotationTarget.FIELD)
+@Retention
+@Constraint(validatedBy = [PasswordValidator::class])
+annotation class Password(
+    val message: String = "",
+    val groups: Array<KClass<*>> = [],
+    val payload: Array<KClass<out Payload>> = []
+)
+```
+
+### Validator
+
+- __Java__
+
+```java
+@Component
+public class AdvisorEmailValidator implements ConstraintValidator<AdvisorEmail, String> {
+    private final List<String> HOSTS = List.of("dope.com");
+
+    @Override
+    public void initialize(AdvisorEmail constraintAnnotation) {
+        ConstraintValidator.super.initialize(constraintAnnotation);
     }
 
-    public Item(String itemName, Integer price, Integer quantity) {
-        this.itemName = itemName;
-        this.price = price;
-        this.quantity = quantity;
+    @Override
+    public boolean isValid(String value, ConstraintValidatorContext context) {
+        // Do Something
     }
 }
+```
 
-public interface SaveCheck {
+- __Kotlin__
+
+```kotlin
+@Component
+class PasswordValidator: ConstraintValidator<Password, String> {
+
+    companion object {
+        private const val MIN_SIZE = 12
+        private const val MAX_SIZE = 20
+        private const val pattern = "^(?=.*[A-Za-z])(?=.*[0-9])(?=.*[$@!%*#?&])[A-Za-z0-9$@!%*#?&]{$MIN_SIZE,$MAX_SIZE}$"
+    }
+
+    override fun isValid(value: String, context: ConstraintValidatorContext): Boolean {
+        val isValidPassword = value.matches(Regex(pattern))
+
+        if (!isValidPassword) {
+            context.disableDefaultConstraintViolation()
+            context.buildConstraintViolationWithTemplate(
+                MessageFormat.format("{0}자 이상의 {1}자 이하의 숫자, 영문자, 특수문자를 포함하여야 합니다.", MIN_SIZE, MAX_SIZE)
+            ).addConstraintViolation()
+        }
+
+        return isValidPassword
+    }
+}
+```
+
+### DTO
+
+```kotlin
+class AdvisorDto {
+    data class Request(@AdvisorEmail email: String)
+}
+```
+
+## Grouping
+
+### Single Group
+
+- __Validation Group__
+
+```java
+public interface ItemValidationGroup {
+    interface Create {}
+    interface Update {}
 }
 
 
 public interface UpdateCheck {
 }
 ```
+
+- __DTO__
+
 ```java
-@PostMapping("/add")
-public String addItem(
-        @Validated(SaveCheck.class) @ModelAttribute Item item, 
+@Data
+@NoArgsConstructor
+public class Item {
+
+    @NotNull(groups = ItemValidationGroup.Update.class) 
+    private Long id;
+
+    @NotBlank(groups = {ItemValidationGroup.Create.class, ItemValidationGroup.Update.class})
+    private String itemName;
+}
+```
+
+- __Controller__
+
+```java
+@PostMapping
+public String create(
+        @Validated(ItemValidationGroup.Create.class) @ModelAttribute Item item, 
         BindingResult bindingResult, 
-        RedirectAttributes redirectAttribute
-) {
-   //...
+) {}
+```
+
+@Validated 는 클래스 바로 위에 선언할 수도 있다.
+
+### GroupSequence
+
+- __Validation Group__
+
+```java
+@GroupSequence({
+        CardValidationSequence.ExpireMonth.class,
+        CardValidationSequence.ExpireYear.class,
+        CardValidationSequence.CardNumber.class,
+})
+public interface CardValidationGroup {
+    interface ExpireMonth {
+    }
+
+    interface ExpireYear {
+    }
+
+    interface CardNumber {
+    }
 }
 ```
 
@@ -204,6 +373,57 @@ HttpMessageConverter 는 @ModelAttribute 와 다르게 각각의 필드 단위�
 
 @RequestBody 는 HttpMessageConverter 단계에서 JSON 데이터를 객체로 변경하지 못하면 이후 단계 자체가 진행되지 않고 예외가 발생한다. 컨트롤러도 호출되지 않고, Validator 도 적용할 수 없다.
 
+## ConstraintViolationException
+
+제약 조건에 위배되는 경우 ConstraintViolationException 이 발생한다.
+
+### ExceptionHandler
+
+```kotlin
+@RestControllerAdvice
+class ExceptionHandlerAdvice {
+    
+    @ExceptionHandler(ConstraintViolationException::class)
+    fun constraintViolationException(e: ConstraintViolationException) {
+        // Do Something
+    }
+}
+```
+
+### ValidationErrorExtractor
+
+```java
+@UtilityClass
+public class ValidationErrorExtractor {
+    
+  public String getResultMessage(ConstraintViolationException e) {
+    final Iterator<ConstraintViolation<?>> violationIterator = e.getConstraintViolations().iterator();
+    final StringBuilder resultMessageBuilder = new StringBuilder();
+    while (violationIterator.hasNext() == true) {
+      final ConstraintViolation<?> constraintViolation = violationIterator.next();
+      resultMessageBuilder
+              .append("['")
+              .append(getPopertyName(constraintViolation.getPropertyPath().toString())) // 유효성 검사가 실패한 속성
+              .append("' is '")
+              .append(constraintViolation.getInvalidValue()) // 유효하지 않은 값
+              .append("'. ")
+              .append(constraintViolation.getMessage()) // 유효성 검사 실패 시 메시지
+              .append("]");
+
+      if (violationIterator.hasNext() == true) {
+        resultMessageBuilder.append(", ");
+      }
+    }
+
+    return resultMessageBuilder.toString();
+  }
+
+  private String getPropertyName(String propertyPath) {
+    return propertyPath.substring(propertyPath.lastIndexOf('.') + 1); // 전체 속성 경로에서 속성 이름만 가져온다.
+  }
+}
+```
+
 ## Links
 
 - [Validation, Data Binding, and Type Conversion](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/validation.html)
@@ -212,3 +432,4 @@ HttpMessageConverter 는 @ModelAttribute 와 다르게 각각의 필드 단위�
 - [Bean Validation 2.0 - you’ve put your annotations everywhere! by Gunnar Morling](https://www.youtube.com/watch?v=GdKuxmtA65I)
 - [Hibernate Validator](https://docs.jboss.org/hibernate/validator/6.2/reference/en-US/html_single/)
 - [Spring Boot 2.3, Web-starter doesn't bring Validation-starter anymore](https://www.youtube.com/watch?v=cP8TwMV4LjE)
+- [Validation - NHN](https://meetup.toast.com/posts/223)

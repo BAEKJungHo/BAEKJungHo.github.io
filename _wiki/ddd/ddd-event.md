@@ -64,6 +64,48 @@ Order 는 주문을 표현하는 도메인 객체인데 결제 도메인의 환�
 - 추가 데이터
   - e.g 주문 번호, 신규 배송지 정보 등 이벤트와 관련된 정보
 
+### The past tense
+
+이벤트를 위한 클래스는 __과거 시제__ 를 사용한다.
+
+- __Event Class__
+
+```java
+public class ShippingInfoChangedEvent {
+    // ...
+}
+```
+
+- __Event 생성 주체__
+
+```java
+public class Order {
+    public void changeShippingInfo(ShippingInfo shippingInfo) {
+        verifyNotYetShipped();
+        setShippingInfo(newShippingInfo());
+        Events.raise(new ShippingInfoChangedEvent(number, newShippingInfo()));
+    }
+}
+```
+
+- __Event Handler__
+
+```java
+public class ShippingInfoChangedHandler {
+    @EventListener(ShippingInfoChangedEvent.class)
+    public void handle(ShippingInfoChangedEvent evt) {
+        shippingInfoSynchronizer.sync(evt.getOrderNumber(), evt.getNewShippingInfo());
+    }
+}
+```
+
+### Purpose
+
+이벤트의 두가지 용도는 다음과 같다.
+- Trigger: 트리거를 통한 후처리 
+- Synchronize: 서로 다른 시스템간의 동기화 처리
+
+
 ## References
 
 - 도메인 주도 설계 / Eric Evans 저 / 위키북스

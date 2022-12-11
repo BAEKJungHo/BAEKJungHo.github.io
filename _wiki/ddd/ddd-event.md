@@ -4,7 +4,7 @@ title   : Event and High coupling between Contexts (작성중)
 summary : 이벤트와 컨텍스트간의 강결합
 date    : 2022-12-07 22:57:32 +0900
 updated : 2022-12-07 23:21:24 +0900
-tag     : ddd
+tag     : ddd msa
 toc     : true
 comment : true
 public  : true

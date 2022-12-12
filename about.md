@@ -36,7 +36,11 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 
 - __포티투닷(주)__ - 2022.08.29 ~ ing
   - [회사소개] 자율주행 모빌리티 회사
-  - [프로젝트] Distributed tryLock 기술을 활용하여 배차 동시성 이슈 처리, 배치 서버 분리 작업
+  - [프로젝트/성과] 
+    - New Business 를 위한 프로젝트에 적용될 __Application Architecture__ 와 __Convention__ 을 정립하였습니다.
+    - Distributed tryLock 기술을 활용하여 배차 동시성 이슈를 처리하였습니다. 그 결과 [청계천 자율주행](https://mediahub.seoul.go.kr/archives/2006276) 오픈 시 동시 배차 요청에 대해서 동시 호출로 인한 __에러 발생율 0%__ 를 달성하였습니다.
+      - tryLock 의 waitTime, leaseTime 을 적절하게 설정하기 위해서 __로그 분석을 통한 데이터 기반으로 의사 결정__ 을 내렸습니다.
+    - 배치 서버 분리 작업
   - [Main Language] Kotlin, Java
   - [경험]
     - Spring Batch
@@ -44,7 +48,10 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
     - Firebase, Datadog, ArgoCD, Lens, CI/CD, GitLab Actions
 - __테이블매니저(주)__ - 2022.03.07 ~ 2022.08.26
   - [회사소개] 예약 솔루션, 예약 상품권을 제공하는 IT 스타트업
-  - [프로젝트] 카카오 챗봇을 통한 아워홈 픽업 주문 서비스, KT 통화비서 인증 서비스 구축 및 결제 서비스 유지보수
+  - [프로젝트/성과] 
+    - 카카오 챗봇을 통한 아워홈 픽업 주문 서비스
+    - KT 통화비서 인증 서비스 구축
+    - 결제 서비스 유지보수
   - [Main Language] Kotlin
   - [경험]
     - Spring Data JPA, Spring Data JDBC, Spring Security
@@ -52,7 +59,11 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
     - JIRA, Confluence, MongoDB, Whatap, GitHub Actions
 - __(주)메이아이__ - 2019.07.01 ~ 2021.10.08
   - [회사소개] SI, Agency 회사
-  - [프로젝트] 보령시청 긴급재난지원금 신청/관리 기능, 소상공인 임차인 확인서 발급 시스템, 소상공인 교육 나눔터 시스템 구축
+  - [프로젝트/성과] 
+    - 보령시청 긴급재난지원금 신청/관리 기능
+    - 소상공인 임차인 확인서 발급 시스템
+    - 소상공인 교육 나눔터 시스템 구축
+    - 그 외 다양한 홈페이지 구축 경험
   - [Main Language] Java
   - [경험]
     - Spring, Spring Boot, Spring Security

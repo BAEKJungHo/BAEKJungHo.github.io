@@ -88,6 +88,7 @@ regenerate: true
 * [[/spring/spring-jpa-saveandflush]]
 * [[/spring/spring-jackson]]
 * [[/spring/spring-mdc]]
+* [[/spring/spring-responsebodyadvice]]
 
 ## reactive
 

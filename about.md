@@ -41,8 +41,9 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
     - Distributed tryLock 기술을 활용하여 배차 동시성 이슈를 처리하였습니다. 그 결과 [청계천 자율주행](https://mediahub.seoul.go.kr/archives/2006276) 동시 배차 요청에 대해서 동시 호출로 인한 __에러 발생율 0%__ 를 달성하였습니다.
       - tryLock 의 waitTime, leaseTime 을 적절하게 설정하기 위해서 __로그 분석을 통한 데이터 기반으로 의사 결정__ 을 내렸습니다.
     - TAP! Engineering Team 의 문서화 구조 정립 및 팀원분들의 문서에 대한 관심 __약 2배__ 증가
-      - 입사 전: 652 view, 14 created, 70 updated
-      - 입사 후: 1190 view, 26 created, 188 updated
+      - 입사 전: (High) 652 view, 14 created, 70 updated
+      - 입사 후: (High) 1190 view, 26 created, 188 updated
+      - 입사 전 High point = 입사 후 평균 수치
     - 배치 서버 분리 작업
   - [Main Language] Kotlin, Java
   - [경험]

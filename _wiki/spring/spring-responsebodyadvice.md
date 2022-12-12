@@ -16,19 +16,19 @@ latex   : true
 
 ## ControllerAdvice
 
-- [Docs](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html)
+- [ControllerAdvice](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/annotation/ControllerAdvice.html)
 - @ExceptionHandler 와 같이 사용하면 예외를 글로벌하게 Catch 하여 처리할 수 있다.
 - [Global Exception Handling With @ControllerAdvice - DZone](https://dzone.com/articles/global-exception-handling-with-controlleradvice)
 - [Exception Handling With @ControllerAdvice in Spring 3.2](https://javabeat.net/exception-controlleradvice-spring-3-2/)
 - [Spring From the Trenches: Adding Validation to a REST API](https://www.petrikainulainen.net/programming/spring-framework/spring-from-the-trenches-adding-validation-to-a-rest-api/)
   - [Spring Validation](https://baekjungho.github.io/wiki/spring/spring-validation/)
 - 주요 Spring MVC Exception 에 대해 오버라이드 하지 말 것
-  - [Spring MVC part V: Exception handling | DuyHai's Java Blog](https://doanduyhai.wordpress.com/2012/05/06/spring-mvc-part-v-exception-handling/)
+  - [Spring MVC part V: Exception handling - DuyHai's Java Blog](https://doanduyhai.wordpress.com/2012/05/06/spring-mvc-part-v-exception-handling/)
   - [DefaultHandlerExceptionResolver](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/support/DefaultHandlerExceptionResolver.html)
 
 ## HandlerExceptionResolver
 
-- [Docs](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/HandlerExceptionResolver.html)
+- [HandlerExceptionResolver](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/HandlerExceptionResolver.html)
 - Spring MVC 의 예외 처리를 담당한다.
 - @ControllerAdvice 를 사용하는게 더 좋다.
 - [AbstractHandlerExceptionResolver](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/handler/AbstractHandlerExceptionResolver.html) 나 [SimpleMappingExceptionResolver](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/handler/SimpleMappingExceptionResolver.html) 를 상속하여 구현하면 좋다.
@@ -44,7 +44,7 @@ latex   : true
 
 ## ResponseBodyAdvice
 
-- [Docs](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/ResponseBodyAdvice.html)
+- [ResponseBodyAdvice](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/mvc/method/annotation/ResponseBodyAdvice.html)
 - 반환된 body 의 데이터들을 선택된 converter 를 이용하여 json 으로 serialize 하기 전에 호출된다.
 
 ```java

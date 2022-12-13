@@ -390,13 +390,22 @@ public interface CardValidationGroup {
 
 ## ConstraintViolationException
 
-제약 조건에 위배되는 경우 ConstraintViolationException 이 발생한다.
+@Validated 를 사용하여 제약 조건에 위배되는 경우 [javax.validation.ConstraintViolationException](https://docs.oracle.com/javaee/7/api/javax/validation/ConstraintViolationException.html) 이 발생한다.
 
-### ExceptionHandler
+## MethodArgumentNotValidException
+
+@Valid 의 경우 바인딩이 실패 하면 [org.springframework.web.bind.MethodArgumentNotValidException](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/MethodArgumentNotValidException.html) 을 발생시킨다.
+
+## ExceptionHandler
 
 ```kotlin
 @RestControllerAdvice
 class ExceptionHandlerAdvice {
+
+    @ExceptionHandler(MethodArgumentNotValidException ::class)
+    fun methodArgumentNotValidException(e: MethodArgumentNotValidException ) {
+      // Do Something
+    }
     
     @ExceptionHandler(ConstraintViolationException::class)
     fun constraintViolationException(e: ConstraintViolationException) {
@@ -405,11 +414,38 @@ class ExceptionHandlerAdvice {
 }
 ```
 
-### ValidationErrorExtractor
+## ValidationErrorExtractor
+
+- [Validation - NHN](https://meetup.toast.com/posts/223)
 
 ```java
 @UtilityClass
 public class ValidationErrorExtractor {
+
+  public static String getResultMessage(MethodArgumentNotValidException e) {
+    BindingResult bindingResult = e.getBindingResult();
+
+    final StringBuilder resultMessageBuilder = new StringBuilder();
+    final Iterator<FieldError> fieldErrorIterator = bindingResult.getFieldErrors().iterator();
+
+    while (fieldErrorIterator.hasNext()) {
+      final FieldError fieldError = fieldErrorIterator.next();
+      resultMessageBuilder
+              .append("[")
+              .append(fieldError.getField())
+              .append("' is '")
+              .append(fieldError.getRejectedValue())
+              .append("'. ")
+              .append(fieldError.getDefaultMessage())
+              .append("]");
+
+      if (fieldErrorIterator.hasNext()) {
+        resultMessageBuilder.append(", ");
+      }
+    }
+
+    return resultMessageBuilder.toString();
+  }  
     
   public String getResultMessage(ConstraintViolationException e) {
     final Iterator<ConstraintViolation<?>> violationIterator = e.getConstraintViolations().iterator();
@@ -418,11 +454,11 @@ public class ValidationErrorExtractor {
       final ConstraintViolation<?> constraintViolation = violationIterator.next();
       resultMessageBuilder
               .append("['")
-              .append(getPopertyName(constraintViolation.getPropertyPath().toString())) // 유효성 검사가 실패한 속성
+              .append(getPopertyName(constraintViolation.getPropertyPath().toString()))
               .append("' is '")
-              .append(constraintViolation.getInvalidValue()) // 유효하지 않은 값
+              .append(constraintViolation.getInvalidValue())
               .append("'. ")
-              .append(constraintViolation.getMessage()) // 유효성 검사 실패 시 메시지
+              .append(constraintViolation.getMessage())
               .append("]");
 
       if (violationIterator.hasNext() == true) {
@@ -434,7 +470,7 @@ public class ValidationErrorExtractor {
   }
 
   private String getPropertyName(String propertyPath) {
-    return propertyPath.substring(propertyPath.lastIndexOf('.') + 1); // 전체 속성 경로에서 속성 이름만 가져온다.
+    return propertyPath.substring(propertyPath.lastIndexOf('.') + 1);
   }
 }
 ```
@@ -447,4 +483,3 @@ public class ValidationErrorExtractor {
 - [Bean Validation 2.0 - you’ve put your annotations everywhere! by Gunnar Morling](https://www.youtube.com/watch?v=GdKuxmtA65I)
 - [Hibernate Validator](https://docs.jboss.org/hibernate/validator/6.2/reference/en-US/html_single/)
 - [Spring Boot 2.3, Web-starter doesn't bring Validation-starter anymore](https://www.youtube.com/watch?v=cP8TwMV4LjE)
-- [Validation - NHN](https://meetup.toast.com/posts/223)

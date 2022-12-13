@@ -450,6 +450,7 @@ public class ValidationErrorExtractor {
   public String getResultMessage(ConstraintViolationException e) {
     final Iterator<ConstraintViolation<?>> violationIterator = e.getConstraintViolations().iterator();
     final StringBuilder resultMessageBuilder = new StringBuilder();
+    
     while (violationIterator.hasNext() == true) {
       final ConstraintViolation<?> constraintViolation = violationIterator.next();
       resultMessageBuilder

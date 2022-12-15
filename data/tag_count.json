@@ -69,7 +69,7 @@
  },
  {
   "name": "java",
-  "size": 19
+  "size": 20
  },
  {
   "name": "javascript",
@@ -85,7 +85,7 @@
  },
  {
   "name": "kotlin",
-  "size": 31
+  "size": 32
  },
  {
   "name": "ksp",

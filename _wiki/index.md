@@ -44,6 +44,7 @@ regenerate: true
 * [[/kotlin/kotlin-relaxed-mockk]]
 * [[/kotlin/kotlin-sealed]]
 * [[/kotlin/kotlin-nested]]
+* [[/kotlin/kotlin-preconditions]]
 
 ## java
 

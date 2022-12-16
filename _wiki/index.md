@@ -90,6 +90,7 @@ regenerate: true
 * [[/spring/spring-jackson]]
 * [[/spring/spring-mdc]]
 * [[/spring/spring-responsebodyadvice]]
+* [[/spring/spring-openapi-impl]]
 
 ## reactive
 

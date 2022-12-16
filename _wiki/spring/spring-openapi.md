@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : OpenAPI Specification
-summary : OpenAPI Specification, Swagger, SpringFox, Springdoc, Spring REST Docs
+summary : 
 date    : 2022-10-30 09:28:32 +0900
 updated : 2022-10-30 12:15:24 +0900
-tag     : spring swagger
+tag     : spring swagger restdocs
 toc     : true
 comment : true
 public  : true

@@ -70,7 +70,7 @@ public class AuthRequestHandler extends RequestHandler {
 
     @Override
     public void handle(Request request) {
-        System.out.println("인증");
+        System.out.println("Authorization");
         super.handle(request);
     }
 }
@@ -87,7 +87,7 @@ public class LoggingRequestHandler extends RequestHandler {
 
     @Override
     public void handle(Request request) {
-        System.out.println("로깅");
+        System.out.println("Logging");
         super.handle(request);
     }
 }

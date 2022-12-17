@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Chain of Responsibility
-summary : 행동 패턴인 책임 연쇄 패턴
+summary : 행동 패턴 - 책임 연쇄 패턴
 date    : 2022-12-13 15:28:32 +0900
 updated : 2022-12-13 18:15:24 +0900
 tag     : designpattern

@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Callback
-summary : 콜백 패턴
+title   : Callback and Reactive Streams
+summary : 
 date    : 2022-12-14 15:28:32 +0900
 updated : 2022-12-14 18:15:24 +0900
 tag     : designpattern kotlin
@@ -71,7 +71,7 @@ fun main() {
 
 ### Callback Hell
 
-아래와 같은 코드를 __'Callback Hell'__ 혹은 __'아도겐 코드'__ 라고 부른다.
+Callback Pattern 을 계속해서 사용하다 보면 아래와 같은 코드를 __'Callback Hell'__ 혹은 __'아도겐 코드'__ 라고 부른다.
 
 ```kotlin
 fun doSome() {
@@ -82,6 +82,22 @@ fun doSome() {
             }
         }
     }
+}
+```
+
+## Reactive Streams
+
+The purpose of [Reactive Streams](https://github.com/reactive-streams/reactive-streams-jvm/blob/v1.0.4/README.md) is to provide a standard for asynchronous stream processing with non-blocking backpressure.
+
+JVM 진영에서는 __Reactive Streams__ 를 활용하여 Callback Pattern 처럼 Depth 가 깊어지지 않고, 하나의 __Streams__ 안에서 해야할 일을 명시하도록 제공하고 있다.
+
+```kotlin
+fun renderSomeView() {
+    getSomePageScripting()
+        .subScribeOn(Scheduler.io())
+        .map (pprocess(it))
+        .subscribe { view.show(it) } 
+        .doOnError { e -> println(e.message) }
 }
 ```
 

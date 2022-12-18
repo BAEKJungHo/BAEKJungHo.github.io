@@ -16,7 +16,7 @@ latex   : true
 
 ## Suspension Mechanism
 
-> Coroutine 은 _suspend point(중단 지점)__ 에서 __중단(suspend)__ 될 수 있고, 다시 해당 __suspend point__ 에서 __재개(resume)__ 할 수 있다.
+> Coroutine 은 __suspend point(중단 지점)__ 에서 __중단(suspend)__ 될 수 있고, 다시 해당 __suspend point__ 에서 __재개(resume)__ 할 수 있다.
 
 - Suspend mechanism = suspend(중단) + resume(재개)
 - suspend 와 resume 을 쓰는 메커니즘에서 스레드는 Blocking 되는 것이 아니라, 다른 일을 할 수 있게 되는 것이다.

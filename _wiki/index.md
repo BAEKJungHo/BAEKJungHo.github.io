@@ -169,6 +169,7 @@ regenerate: true
 * [[/designpattern/designpattern-observer]]
 * [[/designpattern/designpattern-intercepting-filter]]
 * [[/designpattern/designpattern-chain-of-responsibility]]
+* [[/designpattern/designpattern-callback]]
 
 ## ddd
 

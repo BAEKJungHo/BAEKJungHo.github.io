@@ -33,7 +33,7 @@
  },
  {
   "name": "designpattern",
-  "size": 7
+  "size": 8
  },
  {
   "name": "devops",
@@ -85,7 +85,7 @@
  },
  {
   "name": "kotlin",
-  "size": 32
+  "size": 33
  },
  {
   "name": "ksp",

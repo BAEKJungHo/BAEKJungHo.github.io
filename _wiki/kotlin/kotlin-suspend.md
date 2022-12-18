@@ -38,9 +38,9 @@ latex   : true
 suspend fun <T> CompletableFuture<T>.await(): T =
     suspendCoroutine<T> { cont: Continuation<T> ->
         whenComplete { result, exception ->
-            if (exception == null) // 일반적으로 future가 완료될 때
+            if (exception == null) // 일반적으로 future 가 완료될 때
                 cont.resume(result)
-            else // future가 예외로 종료된 경우
+            else // future 가 예외로 종료된 경우
                 cont.resumeWithException(exception)
         }
     }

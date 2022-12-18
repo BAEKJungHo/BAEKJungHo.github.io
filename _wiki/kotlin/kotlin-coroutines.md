@@ -30,23 +30,152 @@ latex   : true
 
 멀티태스킹은 여러 작업을 동시에 수행하는 것처럼 보이거나 실제로 동시에 수행하는 것이다. 비선점형이란 멀티태스킹의 각 작업을 수행하는 참여자들의 실행을 운영체제가 강제로 일시 중단시키고 다른 참여자를 실행하게 만들 수 없다는 뜻이다. 따라서 각 참여자들이 서로 자발적으로 협력해야만 비선점형 멀티태스킹이 제대로 작동할 수 있다.
 
-### suspendable computation
-
-> suspendable computation 이란 프로그램이 특정 위치에서 유보(suspend)할 수 있고 나중에 다른 Thread 에서 실행을 재개할 수 있는 것을 말한다.
-
-코루틴은 __suspendable computation(유보가능 연산)__ 의 인스턴스라 할 수 있다. 따라서 특정 지점에서 연기시킨 코루틴은 나중에 다른 Thread 에서 재개 될 수 있다. 코루틴끼리는 서로가 데이터를 주고 받으며 호출할 수 있으므로 협업 멀티태스킹을 위한 매커니즘을 구현할 수 있다. 따라서, 코루틴이란 서로 협력해서 실행을 주고 받으면서 작동하는 여러 서브루틴을 의미한다.
-
 ### Subroutines vs Coroutines
 
 ![](/resource/wiki/kotlin-coroutines/subvsco.png)
 
-## Why use Coroutine
-
-## Coroutines Thread ?
+### Coroutines Thread ?
 
 - One can think of coroutines as a light-weight thread.
 - The biggest difference is that coroutines are very cheap, almost free: we can create thousands of them, and pay very little in terms of performance.
 - __Light-weight thread__
+
+## Why use Coroutines
+
+- __Why use Coroutines__
+  - [Callback Pattern](https://baekjungho.github.io/wiki/designpattern/designpattern-callback/)
+  - Reactive Streams 의 문제는 코드의 Flow 를 이해하기 어렵다는 것이다. 코루틴은 비동기를 처리하면서도 코드를 동기식으로 이해할 수 있다.
+
+## Continuation
+
+유보지점(suspension point) 에서의 코루틴 상태다. 개념적으로는 중지점 이후의 실행을 나타낸다.
+
+```kotlin
+sequence {
+  for (i in 1..10) yield(i * i)
+  println("over")
+}
+```
+
+위의 예에서 yield 를 호출할 때마다 실행을 유보한다. 남은 실행을 continuation 으로 표현하므로 10개의 컨티뉴에이션을 갖게 된다.
+첫번째 루프에서 i = 2인 곳에서 유보하고 두 번째 실행에서는 i = 3일 때 유보한다. 마지막에 이르러 "over"를 출력하면 컨티뉴에이션은 완료된다.
+
+- The coroutine that is created, but is not started yet, is represented by its initial continuation of type `Continuation<Unit>` that consists of its whole execution.
+  - 코루틴이 생성되면 시작되기 전에 컨티뉴에이션을 초기화하며 이때 타입은 Continuation 이 된다. 이 컨티뉴에이션이 전체 실행을 구성하게 된다.
+
+### Continuation Interface
+
+- Defined in kotlin.coroutines package
+
+```kotlin
+interface Continuation<in T> {
+   val context: CoroutineContext
+   fun resumeWith(result: Result<T>)
+}
+```
+
+### CoroutineContext
+
+> Defines a scope for new coroutines. Every coroutine builder (like launch, async, etc.) is an extension on CoroutineScope and inherits its coroutineContext to automatically propagate all its elements and cancellation.
+
+```kotlin
+interface CoroutineScope
+```
+
+프로퍼티로는 CoroutineContext 를 가지고 있다.
+
+```kotlin
+abstract val coroutineContext: CoroutineContext
+```
+
+사실 CoroutineScope 는 CoroutineContext 를 coroutine builder(Ex. launch 등) 확장 함수 내부에서 사용하기 위한 매개체 역할만을 담당한다.
+
+> CoroutineContext - Persistent context for the coroutine. It is an indexed set of Element instances. An indexed set is a mix between a set and a map. Every element in this set has a unique Key.
+
+CoroutineContext 는 Element 와 Key 라는 두 가지 타입이 있다.
+
+> Element - An element of the CoroutineContext. An element of the coroutine context is a singleton context by itself.
+>
+> Key - Key for the elements of CoroutineContext. E is a type of element with this key.
+
+CoroutineContext 는 실제로 코루틴이 실행 중인 여러 작업(Job 타입)과 디스패처를 저장하는 `Persistence Context` 라고 할 수 있다. 코틀린 런타임은 CoroutineContext 를 사용해서 다음에 실행할 작업을 선정하고, 어떻게 스레드에 배정할지에 대한 방법을 결정한다.
+
+```kotlin
+launch { // 부모 컨텍스트를 사용
+    
+}
+
+launch(Dispatchers.Unconfined) { // 특정 스레드에 종속되지 않음. 메인 스레드 사용
+    
+}
+
+launch(Dispatchers.Default) { // 기본 디스패처 사용
+    
+}
+
+launch(newSingleThreadContext("Async-Thread")) { // 새 스레드를 사용
+    
+}
+```
+
+같은 launch 를 사용하더라도 전달하는 컨텍스트에 따라 서로 다른 스레드 상에서 코루틴이 실행된다.
+
+## Suspend mechanism
+
+> Suspend mechanism - Coroutine 은 _suspend point(중단 지점)__ 에서 __중단(suspend)__ 될 수 있고, 다시 해당 __suspend point__ 에서 __재개(resume)__ 할 수 있다.
+
+- Suspend mechanism = suspend(중단) + resume(재개)
+- suspend 와 resume 을 쓰는 메커니즘에서 스레드는 Blocking 되는 것이 아니라, 다른 일을 할 수 있게 되는 것이다.
+- suspend 키워드는 이 함수가 코루틴의 실행을 일시 중지 시킬 수 있다는 것을 나타낸다.
+
+### suspendable computation
+
+> suspendable computation 이란 프로그램이 특정 위치에서 유보(suspend)할 수 있고 나중에 다른 Thread 에서 실행을 재개할 수 있는 것을 말한다.
+
+코루틴은 __suspendable computation(유보가능 연산, 일시정지 가능한 연산)__ 의 인스턴스라 할 수 있다. 따라서 특정 지점에서 연기시킨 코루틴은 나중에 다른 Thread 에서 재개 될 수 있다. 코루틴은 생성되고 시작되지만 특정 Thread 에 바인딩되진 않는다. 코루틴끼리는 서로가 데이터를 주고 받으며 호출할 수 있으므로 협업 멀티태스킹을 위한 매커니즘을 구현할 수 있다. 따라서, 코루틴이란 서로 협력해서 실행을 주고 받으면서 작동하는 여러 서브루틴을 의미한다.
+
+### suspending function
+
+> suspend 키워드를 붙여 만든 함수. 다른 suspending 함수를 호출해 현재 실행 스레드를 차단하지 않고 코드 실행을 일시 중단할 수 있다. suspending 함수는 일반 코드에서 호출할 수 없고 다른 suspend 함수나 suspending 람다(아래서 설명)에서만 호출할 수 있다.
+
+- await()같은 일반적인 유보 구현은 다음과 같다.
+
+```kotlin
+suspend fun <T> CompletableFuture<T>.await(): T =
+    suspendCoroutine<T> { cont: Continuation<T> ->
+        whenComplete { result, exception ->
+            if (exception == null) // 일반적으로 future가 완료될 때
+                cont.resume(result)
+            else // future가 예외로 종료된 경우
+                cont.resumeWithException(exception)
+        }
+    }
+```
+
+suspend 키워드는 이 함수가 코루틴의 실행을 일시 중지 시킬 수 있다는 것을 나타낸다. 이 CompletableFuture 의 확장 함수는 실제 사용 시 좌에서 우로 따라 자연스레 읽힌다.
+
+```kotlin
+doSomethingAsync(...).await()
+```
+
+suspending 함수는 보통 함수도 부를 수 있지만 __일시중지를 위해서는 반드시 다른 suspending 함수를 불러야 한다.__ 특히 이 await 구현은 표준라이브러리에 정의된 최상위 suspending 함수인 suspendCoroutine 을 호출한다.
+
+```kotlin
+suspend fun <T> suspendCoroutine(block: (Continuation<T>) -> Unit): T
+```
+
+suspendCoroutine 이 코루틴 내에서 호출될 때 컨티뉴에이션의 인스턴스가 코루틴의 상태를 캡쳐하고 지정된 블록에 인자로 전달된다. 코루틴을 다시 실행하려면 블록은 해당 쓰레드나 다른 쓰레드에서 continuation.resumeWith()를 직접 호출하거나 continuation.resume() 또는 continuation.resumeWithException()을 호출해야 한다.
+
+continuation.resumeWith()에 전달된 결과는 suspendCoroutine 호출의 결과가 되며, 이는 .await()의 결과가 된다.
+같은 continuation 은 resume 을 두번 호출할 수 없으면 그럴 경우 IllegalStateException 을 발생시킨다.
+
+### suspending lambda
+
+> 코루틴에서 실행할 코드블록. 일반 람다와 같은 모양이지만 함수타입은 suspend modifier 가 된다. 보통 람다처럼, suspending 람다는 suspending 함수의 간단한 익명 구문이다. suspending 함수를 호출해 현재 실행 스레드를 차단하지 않고 코드 실행을 일시 중지 할 수 있다. 예를 들어 launch, sequence 함수 다음에 중괄호로 묶인 코드 블록은 모두 suspending 람다다.
+
+### Coroutine builder
+
+> suspending 람다를 인자로 받는 함수로 코루틴을 생성하고 어떤 경우는 결과에 접근할 수 있는 옵션을 제공한다. 예를 들어 launch{}, future(), sequence()는 코루틴 빌더다.
 
 ## launch
 
@@ -227,52 +356,6 @@ val result = runBlocking {
 ```
 
 async 로 코드를 실행하는 데는 시간이 거의 걸리지 않는다. 병렬 처리와의 가장 큰 차이는 모든 작업이 main() 스레드 안에서 일어난다는 점이다. 비동기 코드가 늘어남에 따라 async/await 을 사용한 비동기가 빛을 발한다. 실행하려는 작업이 시간이 얼마 걸리지 않거나 I/O 에 의한 대기 시간이 크고, CPU 코어 수가 작아 동시에 실행할 수 있는 스레드 개수가 한정된 경우에는 특히 코루틴과 일반 스레드를 사용한 비동기 처리 사이에 차이가 커진다.
-
-## CoroutineContext
-
-> Defines a scope for new coroutines. Every coroutine builder (like launch, async, etc.) is an extension on CoroutineScope and inherits its coroutineContext to automatically propagate all its elements and cancellation.
-
-```kotlin
-interface CoroutineScope
-```
-
-프로퍼티로는 CoroutineContext 를 가지고 있다.
-
-```kotlin
-abstract val coroutineContext: CoroutineContext
-```
-
-사실 CoroutineScope 는 CoroutineContext 를 coroutine builder(Ex. launch 등) 확장 함수 내부에서 사용하기 위한 매개체 역할만을 담당한다.
-
-> CoroutineContext - Persistent context for the coroutine. It is an indexed set of Element instances. An indexed set is a mix between a set and a map. Every element in this set has a unique Key.
-
-CoroutineContext 는 Element 와 Key 라는 두 가지 타입이 있다.
-
-> Element - An element of the CoroutineContext. An element of the coroutine context is a singleton context by itself.
->
-> Key - Key for the elements of CoroutineContext. E is a type of element with this key.
-
-CoroutineContext 는 실제로 코루틴이 실행 중인 여러 작업(Job 타입)과 디스패처를 저장하는 `Persistence Context` 라고 할 수 있다. 코틀린 런타임은 CoroutineContext 를 사용해서 다음에 실행할 작업을 선정하고, 어떻게 스레드에 배정할지에 대한 방법을 결정한다.
-
-```kotlin
-launch { // 부모 컨텍스트를 사용
-    
-}
-
-launch(Dispatchers.Unconfined) { // 특정 스레드에 종속되지 않음. 메인 스레드 사용
-    
-}
-
-launch(Dispatchers.Default) { // 기본 디스패처 사용
-    
-}
-
-launch(newSingleThreadContext("Async-Thread")) { // 새 스레드를 사용
-    
-}
-```
-
-같은 launch 를 사용하더라도 전달하는 컨텍스트에 따라 서로 다른 스레드 상에서 코루틴이 실행된다.
 
 ## CoroutineDispatcher
 
@@ -1146,6 +1229,7 @@ val buyer = try {
 
 ## Links
 
+- [Kotlin Coroutines - KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/coroutines.md)
 - [Kotlin Coroutine series](https://github.com/tmdgusya/kotlin-coroutine-series)
 - [Kotlin CoroutineKR](https://github.com/hikaMaeng/kotlinCoroutineKR)
 - [kotlinx.coroutines](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/index.html)

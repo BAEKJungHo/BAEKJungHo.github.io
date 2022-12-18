@@ -14,9 +14,24 @@ latex   : true
 * TOC
 {:toc}
 
+## Problems at Call Stack and Suspend Function
+
+```kotlin
+fun first() {
+    val name = "Jungho"
+    val job = "Server Engineer"
+    second()
+    return "$name:$job"
+}
+```
+
+위 코드에서 first() 함수를 실행 시키면 Thread Stack 에 Local variables 들을 저장한 뒤 second() 함수를 call stack 에 올리게 된다. first -> second -> first 로 돌아오기 위해서는 first() 의 데이터를 어딘가 저장해야하는데 그 공간이 __Thread Stack__ 이다.
+
+만약 여기서 suspend 를 이용하게 된다면, suspend 되는 순간 Thread 는 코루틴을 떠나게 된다. 즉, __Thread Local 을 Clear 시켜야 한다는 것__ 이다. first -> second -> first 로 넘어갈 때 first() 의 Local 정보와 같이 연속적으로 물고 가야만 하는 데이터들이 생기는데 이러한 문제를 해결하기 위해 Kotlin 은 [Continuation(연속성)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-continuation/) 이라는 개념을 도입하였다. 
+
 ## Continuation
 
-유보지점(suspension point) 에서의 코루틴 상태다. 개념적으로는 중지점 이후의 실행을 나타낸다.
+> Continuations represent the rest of a program. They are a form of control flow.
 
 ```kotlin
 sequence {
@@ -31,14 +46,49 @@ sequence {
 - The coroutine that is created, but is not started yet, is represented by its initial continuation of type `Continuation<Unit>` that consists of its whole execution.
     - 코루틴이 생성되면 시작되기 전에 컨티뉴에이션을 초기화하며 이때 타입은 Continuation 이 된다. 이 컨티뉴에이션이 전체 실행을 구성하게 된다.
 
-### Continuation Interface
+### Compile Time
 
-- Defined in kotlin.coroutines package
+Each time Kotlin finds a suspend function, that represents a suspension point that the compiler will desugarize into a callback style.
 
 ```kotlin
+suspend fun doSomething() = "Done!"
+
+suspend fun main() { doSomething() }
+```
+
+- __Show Kotlin Bytecode__
+
+```java
+// FileKt.java
+public final class FileKt {
+   @Nullable
+   public static final Object doSomething(@NotNull Continuation $completion) {
+      return "Done!";
+   }
+
+   @Nullable
+   public static final Object main(@NotNull Continuation $completion) {
+      Object var10000 = doSomething($completion);
+      return var10000 == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? var10000 : Unit.INSTANCE;
+   }
+   
+   // ...
+}
+```
+
+The key point here is how both __suspend functions have been converted into static functions__ that get the Continuation passed as an explicit argument. This is formally called [CPS(Continuation Passing Style)](https://en.wikipedia.org/wiki/Continuation-passing_style).
+
+You can see how the main function needs to forward the $completion continuation to the doSomething() call.
+
+### Continuation Interface
+
+Continuation is associated with a suspension point. A continuation is the implicit parameter that the Kotlin compiler passes to any suspend function when compiling it
+
+```kotlin
+// Defined in kotlin.coroutines package
 interface Continuation<in T> {
-   val context: CoroutineContext
-   fun resumeWith(result: Result<T>)
+   abstract val context: CoroutineContext
+   abstract fun resumeWith(result: Result<T>)
 }
 ```
 
@@ -88,11 +138,20 @@ launch(newSingleThreadContext("Async-Thread")) { // 새 스레드를 사용
 
 같은 launch 를 사용하더라도 전달하는 컨텍스트에 따라 서로 다른 스레드 상에서 코루틴이 실행된다.
 
+## Continuation Passing Style
+
+In functional programming, continuation-passing style(CPS) is a style of programming in which control is passed explicitly in the form of a continuation. A function written in continuation-passing style takes an extra argument: an explicit "continuation"; i.e., a function of one argument.
+
+- __Related Articles__
+  - [Continuation Passing Style](https://devroach.tistory.com/149)
+
 ## Links
 
 - [Kotlin Coroutines - KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/coroutines.md)
-- [Kotlin Coroutine series](https://github.com/tmdgusya/kotlin-coroutine-series)
+- [Kotlin Coroutine series - Continuation](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/CONTINUATION.md)
 - [Kotlin CoroutineKR](https://github.com/hikaMaeng/kotlinCoroutineKR)
+- [Kotlin Continuation - jorgecastillo](https://jorgecastillo.dev/digging-into-kotlin-continuations#:~:text=A%20continuation%20is%20the%20implicit%20parameter%20that%20the,val%20context%3A%20CoroutineContext%20abstract%20fun%20resumeWith%28result%3A%20Result%3CT%3E%29%20%7D)
+- [How does continuation work in kotlin coroutine](https://stackoverflow.com/questions/73679497/how-does-continuation-work-in-kotlin-coroutine)
 
 ## References
 

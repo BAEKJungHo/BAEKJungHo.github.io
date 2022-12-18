@@ -16,7 +16,7 @@ latex   : true
 
 ## Problems
 
-## Use-case on Android
+### Use-case on Android
 
 Client side 에서는 View 를 Rendering 하는 과정에서 Main Thread 가 Block 되지 않아야 한다.
 
@@ -30,7 +30,7 @@ fun renderSomeView() {
 
 위 코드의 경우에는 Process 를 하는 과정에서 Main Thread 가 Blocking 될 수 있는 문제가 있다.
 
-## Thread Context Switching
+### Thread Context Switching
 
 ```kotlin
 fun renderSomeView() {

@@ -46,6 +46,7 @@ regenerate: true
 * [[/kotlin/kotlin-nested]]
 * [[/kotlin/kotlin-preconditions]]
 * [[/kotlin/kotlin-suspend]]
+* [[/kotlin/kotlin-generics]]
 
 ## java
 

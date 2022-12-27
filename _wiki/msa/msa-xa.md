@@ -1,9 +1,9 @@
 ---
 layout  : wiki
 title   : eXtended Architecture
-summary : X/Open XA
-date    : 2022-05-28 17:54:32 +0900
-updated : 2022-05-28 20:15:24 +0900
+summary : Distributed Transaction and Consensus Algorithm
+date    : 2022-12-21 17:54:32 +0900
+updated : 2022-12-21 20:15:24 +0900
 tag     : msa
 toc     : true
 comment : true

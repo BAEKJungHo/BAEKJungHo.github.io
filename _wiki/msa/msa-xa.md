@@ -95,7 +95,7 @@ __Two-phase Commit 이 느린 이유는 성능 비용의 많은 부분은 장애
 
 ## X/Open XA
 
-The goal of XA is to guarantee atomicity in __"global transactions"__ that are executed across heterogeneous components. To guarantee integrity, [XA](https://en.wikipedia.org/wiki/X/Open_XA) uses a [two-phase commit (2PC)](https://en.wikipedia.org/wiki/Two-phase_commit_protocol) to ensure that all of a transaction's changes either take effect (commit) or do not (roll back), i.e., atomically.
+> The goal of XA is to guarantee atomicity in __"global transactions"__ that are executed across heterogeneous components. To guarantee integrity, [XA](https://en.wikipedia.org/wiki/X/Open_XA) uses a [two-phase commit (2PC)](https://en.wikipedia.org/wiki/Two-phase_commit_protocol) to ensure that all of a transaction's changes either take effect (commit) or do not (roll back), i.e., atomically.
 
 XA 는 PostgreSQL, MySQL, Oracle 등을 포함한 여러 전통적인 관계형 데이터베이스와 메시지 브로커에서 지원된다. 자바 EE 애플리케이션 서계에서 __XA Transaction__ 은 __JTA(Java Transaction API)__ 를 사용해 구현되며 JTA 는 JDBC(Java Database Connectivity) 를 사용하는 데이터베이스용 드라이버 다수와 자바 메시지 서비스(JMS, Java Message Service) API 를 사용하는 메시지 브로커용 드라이버에서 지원된다.
 
@@ -105,7 +105,7 @@ Transaction Coordinator 는 XA API 를 구현한다. 즉, 트랜잭션 참여자
 
 Coordinator 장애가 발생하면 __Orphaned Transaction__ (어떤 이유 때문인지 그 결과를 결정할 수 없는 트랜잭션) 이 생길 수 있다. 이 경우에는 데이터베이스 서버를 재부팅해도 이 문제를 고칠 수 없으며, 관리자가 수동으로 커밋하거나 롤백할지 결정해야 한다.
 
-경험적 결정(Heuristic Decision)은 코디네이터로부터 확정적 결정을 얻지 않고 의심스러운 트랜잭션을 어보트하거나 커밋할지를 일방적으로 결정할 수 있도록 하는 것을 의미한다. 정확히 말하면 '경험적'은 2PC 의 약속 체계를 위반하기 때문에 __아마도 원자성을 깰 수 있다__ 를 완곡하게 표현한 것이다. 따라서 경험적 결정은 큰 장애 상황을 벗어나고자 할 때만 쓰도록 의도된 것이다.
+__경험적 결정(Heuristic Decision)__ 은 코디네이터로부터 확정적 결정을 얻지 않고 의심스러운 트랜잭션을 어보트하거나 커밋할지를 일방적으로 결정할 수 있도록 하는 것을 의미한다. 정확히 말하면 __'경험적'__ 은 2PC 의 약속 체계를 위반하기 때문에 __아마도 원자성을 깰 수 있다__ 를 완곡하게 표현한 것이다. 따라서 경험적 결정은 큰 장애 상황을 벗어나고자 할 때만 쓰도록 의도된 것이다.
 
 따라서, XA 를 구현하는 경우 __Heuristic Decision__ 이라는 비상 탈출구를 잘 마련해야 한다.
 
@@ -137,7 +137,9 @@ Kafka 또한 Zookeeper 에서 [KRaft](https://developer.confluent.io/learn/kraft
 - __Follower__: 리더로부터 전파된 명령을 처리하는 역할만 담당한다.
 - __Candidate__: 더가 없는 상황에서 새 리더를 정하기 위해 전환된 팔로워의 상태를 의미한다. 리더로부터 일정 시간 이상 상태 메시지(heartbeat)를 받지 못한 팔로워는 후보자로 전환된다.
 
-> Heartbeat - 리더가 다른 모든 팔로워에게 일정 시간 간격으로 반복 전달하는 메시지다. 이 메시지에는 클라이언트의 명령 전파를 위한 로그(log)가 포함되지 않으며, 오직 리더가 자신의 상태를 유지하는 수단으로만 기능한다.
+> __Heartbeat__ 
+> 
+> 리더가 다른 모든 팔로워에게 일정 시간 간격으로 반복 전달하는 메시지다. 이 메시지에는 클라이언트의 명령 전파를 위한 로그(log)가 포함되지 않으며, 오직 리더가 자신의 상태를 유지하는 수단으로만 기능한다.
 
 ### Quorum
 

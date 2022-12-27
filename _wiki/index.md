@@ -109,6 +109,7 @@ regenerate: true
 * [[/msa/msa-eventual-consistency]]
 * [[/msa/msa-fault-tolerance]]
 * [[/msa/msa-reactive-manifesto]]
+* [[/msa/msa-xa]]
 
 ## docker
 

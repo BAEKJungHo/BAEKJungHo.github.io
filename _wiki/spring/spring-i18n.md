@@ -173,3 +173,5 @@ public interface LocaleResolver {
 - [What is i18n](https://lingoport.com/what-is-i18n/)
 - [i18n next](https://www.i18next.com/)
 - [Internationalization with Spring Boot](https://springframework.guru/internationalization-with-spring-boot/)
+- [ISO-3166 Country Codes and ISO-639 Language Codes](https://docs.oracle.com/cd/E13214_01/wli/docs92/xref/xqisocodes.html)
+- [Language Code](http://www.lingoes.net/en/translator/langcode.htm)

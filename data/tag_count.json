@@ -160,6 +160,10 @@
   "size": 1
  },
  {
+  "name": "refactoring",
+  "size": 2
+ },
+ {
   "name": "restdocs",
   "size": 2
  },

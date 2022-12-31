@@ -112,6 +112,10 @@ regenerate: true
 * [[/msa/msa-xa]]
 * [[/msa/msa-stream-processing]]
 
+## refactoring
+
+* [[/refactoring/refactoring-prerequisite]]
+
 ## docker
 
 * [[/docker/docker-container]]

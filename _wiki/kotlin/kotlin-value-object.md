@@ -11,9 +11,8 @@ public  : true
 parent  : [[/kotlin]]
 latex   : true
 ---
-
 * TOC
-  {:toc}
+{:toc}
 
 ## Value semantics
 

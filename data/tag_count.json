@@ -29,7 +29,7 @@
  },
  {
   "name": "ddd",
-  "size": 9
+  "size": 10
  },
  {
   "name": "designpattern",
@@ -69,7 +69,7 @@
  },
  {
   "name": "java",
-  "size": 21
+  "size": 22
  },
  {
   "name": "javascript",
@@ -85,7 +85,7 @@
  },
  {
   "name": "kotlin",
-  "size": 36
+  "size": 37
  },
  {
   "name": "ksp",

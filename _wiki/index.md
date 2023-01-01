@@ -47,6 +47,7 @@ regenerate: true
 * [[/kotlin/kotlin-preconditions]]
 * [[/kotlin/kotlin-suspend]]
 * [[/kotlin/kotlin-generics]]
+* [[/kotlin/kotlin-value-object]]
 
 ## java
 

@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Module aka. Package
+title   : Module
 summary : 모듈, 패키지
 date    : 2023-01-02 20:57:32 +0900
 updated : 2023-01-02 21:21:24 +0900

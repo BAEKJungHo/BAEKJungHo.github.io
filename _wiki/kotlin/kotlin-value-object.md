@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Value semantics and object
-summary :
+title   : Value semantics
+summary : 값 의미론과 값 객체
 date    : 2022-12-30 20:54:32 +0900
 updated : 2022-12-30 21:15:24 +0900
 tag     : kotlin java ddd
@@ -28,7 +28,9 @@ Immutable object is an object whose state cannot be modified after it is created
 
 불변 객체는 생성되고나서 수정이 불가능한 객체를 의미한다. 생성된 __객체의 값을 수정이 불가능(immutable)__ 하도록 만들었을 때의 장점은 해당 객체를 이리 저리 넘겨서 사용하더라도 __Side Effect__ 가 없다는 것을 보장할 수 있다. 따라서 객체를 안전하게 공유할 수 있다.
 
-## Value Object at Domain Driven Design
+## Value Object
+
+### Domain Driven Design
 
 개념적 식별성이 없는 객체도 많은데, 이러한 객체는 __사물의 어떤 특징__ 을 묘사한다. Entity 와의 차이는 Entity 는 식별성을 관리한다. 모든 객체가 식별성을 갖는다면 관리도 어렵고, 시스템 성능 문제도 발생할 것이며 분석 작업도 별도로 필요하다.
 
@@ -40,8 +42,6 @@ Immutable object is an object whose state cannot be modified after it is created
 
 모델에 포함된 어떤 요소의 속성에만 관심이 있다면 그것을 VALUE OBJECT 로 분류하라. VALUE OBJECT 에서 해당 VALUE OBJECT 가 전하는 속성의 의미를 표현하게 하고 관련 기능을 부여하라. 또한 VALUE OBJECT 는 불변적(immutable)으로 다뤄라. VALUE OBJECT 에는 아무런 식별성을 부여하지 말고 ENTITY 를 유지하는 데 필요한 설계상의 복잡성을 피하라.
 
-## Advantages
-
 값을 선호하는 경우의 장점은 다음과 같다.
 
 - 맵의 키나 집합 원소로 불변 객체를 넣을 수 있다.
@@ -49,7 +49,7 @@ Immutable object is an object whose state cannot be modified after it is created
 - 초기 상태를 깊이 복사(deep copy) 하지 않고도 다양한 시나리오를 탐험할 수 있다.(불변 객체를 쓰면 되돌리기나 다시하기 등도 쉽게 구현할 수 있다.)
 - 여러 스레드에서 불변 객체를 안전하게 공유할 수 있다.
 
-## Value Object in Java 
+### Java 
 
 - __Money 구현에서 감춰야 하는 세부사항__
   - 이 클래스는 amount 필드의 정밀도가 currency 필드가 가리키는 통화의 보조 통화 단위와 일치하게 보장한다는 __불변 조건(invariant)__ 을 유지한다. 따라서 private constructor 가 불변 조건을 어기는 것을 막는다.
@@ -125,7 +125,7 @@ class Money private constructor(
 }
 ```
 
-## Refactoring Using Operators
+### Use of Operators
 
 자바에서 코틀린으로 코드를 변환할 때 토대가 되는 코드(여러 군데에서 참조하여 사용하는 코드)를 리팩토링 하기 위해서는 JVM 코드를 생성하는 방법을 제어하는 몇 가지 어노테이션을 사용하면 코틀린의 장점과 유지 보수해야 하는 자바 코드를 위해 전형적인 자바 스타일의 API 를 제공할 수 있다.
 
@@ -191,7 +191,11 @@ class Money private constructor(
 }
 ```
 
-## Inline class
+## Improve Performance 
+
+코틀린에서는 __Inlining__ 기법을 통해서 값 객체를 사용할 때 성능을 향상시킬 수 있다.
+
+### Inline class
 
 Kotlin 1.3 에서는 Inline class 라는 것이 등장했다.
 
@@ -209,7 +213,7 @@ Inline Function 과 같이 인라이닝을 통해 성능을 최적화 한다는 
 1.  Developer ease : One can easily qualify the datatype by a descriptive inline class name and not worry about accidentally putting a wrong value i.e substitute value in rupees for dollars or vice versa while creating instances of the class.
 2. Memory Overhead: The runtime never sees the inline class all it sees is the underlying value since the compiler does the dirty work here, so this
 
-## Value class
+### Value class
 
 Kotlin 1.5 에서는 Value class 라는 것이 등장했다. Inline class 는 이제 deprecated 되었다. 
 

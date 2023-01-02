@@ -18,6 +18,10 @@ latex   : true
 
 > __Eric Evans Domain-Driven Design__ - When a significant process or transformation in the domain is not a natural responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as standalone interface declared as a SERVICE. Define the interface in terms of the language of the model and make sure the operation name is part of the UBIQUITOUS LANGUAGE. Make the SERVICE stateless.
 
+## From: Domain Driven Design
+
+> 도메인의 중대한 프로세스나 변환 과정이 ENTITY 나 VALUE OBJECT 의 고유한 책임이 아니라면 연산을 SERVICE 로 선언되는 독립 인터페이스 모델에 추가하라. 모델의 언어라는 측면에서 인터페이스를 정의하고 이름을 UBIQUITOUS LANGUAGE 의 일부가 되게끔 구성하라. SERVICE 는 상태를 갖지 않게 만들어라.
+
 ## 도메인 서비스간 의존 관계는 최대한 제거
 
 도메인 레이어에 속하는 도메인 서비스간의 의존 관계는 최대한 제거하는게 좋다.

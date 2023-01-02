@@ -116,6 +116,7 @@ regenerate: true
 ## refactoring
 
 * [[/refactoring/refactoring-prerequisite]]
+* [[/refactoring/refactoring-parallelchange]]
 
 ## docker
 

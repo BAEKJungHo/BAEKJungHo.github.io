@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : DDD 관련 인용문 모음
-summary : 
+title   : DDD Meaning
+summary : DDD 관련 인용문
 date    : 2022-04-16 22:57:32 +0900
 updated : 2022-04-16 23:21:24 +0900
 tag     : ddd

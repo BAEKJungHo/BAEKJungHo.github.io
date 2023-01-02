@@ -191,6 +191,7 @@ regenerate: true
 * [[/ddd/ddd-bounded-context]]
 * [[/ddd/ddd-anticorruption-layer]]
 * [[/ddd/ddd-event]]
+* [[/ddd/ddd-module]]
 
 ## Methodology
 

@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Module aka. Package
 summary : 모듈, 패키지
-date    : 2022-01-02 20:57:32 +0900
-updated : 2022-01-02 21:21:24 +0900
+date    : 2023-01-02 20:57:32 +0900
+updated : 2023-01-02 21:21:24 +0900
 tag     : ddd
 toc     : true
 comment : true

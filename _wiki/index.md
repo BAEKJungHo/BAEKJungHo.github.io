@@ -164,6 +164,7 @@ regenerate: true
 * [[/git/git-internal]]
 * [[/git/git-commands]]
 * [[/git/git-trunk-based-development]]
+* [[/git/git-rebase]]
 
 ## auth
 

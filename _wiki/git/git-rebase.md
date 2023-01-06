@@ -53,12 +53,12 @@ commitB
 - 부모커밋이 변경됐으니 새로만들 commitA 의 __해쉬값이 변경__ 된다. 즉, 새로운 커밋이 생성된다는 말이며, 커밋 메시지는 같다. 부모의 해쉬값이 달라졌기때문에 당연히 commitA 의 해쉬값도 달라지게 된다. 만약 여기서 아무런 내용 충돌이 없다면 바로 commitZ 뒤에 commitA 를 추가하게 된다. 
 - 충돌이 난다면 충돌을 해결하고 나면 아래의 명령어를 통해서 rebase 를 계속 해 나간다.
 
-## Advantages
+### Advantages
 
 - merge 커밋이 남지 않는다.
 - 커밋 History 를 깔끔하게 관리할 수 있다.
 
-## Command
+### Command
 
 > git rebase [base]
 
@@ -81,7 +81,7 @@ git stash 와 rebase 과정을 하나로 합칠 수 있다.
 - `git rebase --autostash origin/release`
   - stash 와 stash apply 를 자동으로 해준다.
 
-## Examples
+### Examples
 
 - __새로운 작업을 위해 new-feature 브랜치 생성__
 

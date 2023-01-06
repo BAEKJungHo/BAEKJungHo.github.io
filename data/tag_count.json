@@ -1,7 +1,7 @@
 [
  {
   "name": "auth",
-  "size": 4
+  "size": 5
  },
  {
   "name": "batch",
@@ -81,7 +81,7 @@
  },
  {
   "name": "kafka",
-  "size": 2
+  "size": 3
  },
  {
   "name": "kotlin",

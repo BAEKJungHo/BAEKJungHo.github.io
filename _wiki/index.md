@@ -171,6 +171,7 @@ regenerate: true
 * [[/auth/auth-hmac]]
 * [[/auth/auth-jwt]]
 * [[/auth/auth-oauth]]
+* [[/auth/auth-scram]]
 
 ## design pattern
 

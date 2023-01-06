@@ -28,7 +28,7 @@ __Salted Challenge Response Authentication Mechanism (SCRAM)__ 은 __credentials
 
 Kafka Broker 간 SASL/PLAIN 통신을 하기 위한 구성은 아래와 같다.
 
-1. JAAS 파일을 각 Kafka 의 브로커 config 디렉터리에 추가
+- __JAAS 파일을 각 Kafka 의 브로커 config 디렉터리에 추가__
 
 ```
 KafkaServer {
@@ -38,13 +38,13 @@ KafkaServer {
 };
 ```
 
-2. JAAS 설정 파일을 JVM 매개변수로 각 Kafka 브로커에 전달
+- __JAAS 설정 파일을 JVM 매개변수로 각 Kafka 브로커에 전달__
 
 ```properties
 -Djava.security.auth.login.config=/etc/kafka/kafka_server_jaas.conf
 ```
 
-3. server.properties 에서 SASL 포트 및 SASL 메커니즘을 구성
+- __server.properties 에서 SASL 포트 및 SASL 메커니즘을 구성__
 
 ```properties
 # SASL_PLAIN 으로 listener 를 추가하고 Broker 간의 내부 통신은 SASL/PLAIN 으로 한다는 의미이다.

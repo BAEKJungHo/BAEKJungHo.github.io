@@ -130,6 +130,7 @@ regenerate: true
 ## kafka
 
 * [[/kafka/kafka-basic]]
+* [[/kafka/kafka-acknowledgement]]
 
 ## infra
 

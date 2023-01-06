@@ -38,7 +38,7 @@ Acknowledgement 는 사실 Consumer 를 위해 만들어진 매커니즘이다.
 
 >  If the broker records a message as consumed immediately every time it is handed out over the network, then if the consumer fails to process the message (say because it crashes or the request times out or whatever) that message will be lost. To solve this problem, many messaging systems add an __acknowledgement__ feature which means that messages are only marked as __sent__ not __consumed__ when they are sent; the broker waits for a specific acknowledgement from the consumer to record the message as consumed. __This strategy fixes the problem of losing messages__, but creates new problems. First of all, if the consumer processes the message but fails before it can send an acknowledgement then the message will be consumed twice. The second problem is around performance, now the broker must keep multiple states about every single message (first to lock it so it is not given out a second time, and then to mark it as permanently consumed so that it can be removed). Tricky problems must be dealt with, like what to do with messages that are sent but never acknowledged.
 
-요약하자면 메시지 충돌, Network 이슈 등으로 인한 메시지 손실을 막기 위해서 메시징 시스템이 메시지가 전송될 때 소비되지 않고 전송 된 것으로만 표기하고, 브로커는 Consumer 가 승인(Acknowledgement)을 해야하만 소비가 되었음을 Marking 한다.
+요약하자면 메시지 충돌, Network 이슈 등으로 인한 메시지 손실을 막기 위해서 메시징 시스템이 메시지가 전송될 때 소비되지 않고 전송 된 것으로만 표기하고, 브로커는 Consumer 가 승인(Acknowledgement)을 해야하만 메시지가 정상적으로 소비가 되었음을 Marking 한다.
 
 Acknowledgement 매커니즘에도 단점이 있는데, 승인을 보내기 전에 실패하면 메시지가 두 번 소비된다는 점과, 메시지에 대한 상태를 유지해야 하므로 성능적인 이슈가 있다.
 

@@ -118,6 +118,7 @@ regenerate: true
 * [[/refactoring/refactoring-prerequisite]]
 * [[/refactoring/refactoring-parallelchange]]
 * [[/refactoring/refactoring-local-variable]]
+* [[/refactoring/refactoring-aliasbug]]
 
 ## docker
 

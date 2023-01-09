@@ -69,7 +69,7 @@
  },
  {
   "name": "java",
-  "size": 22
+  "size": 23
  },
  {
   "name": "javascript",
@@ -85,7 +85,7 @@
  },
  {
   "name": "kotlin",
-  "size": 38
+  "size": 39
  },
  {
   "name": "ksp",
@@ -161,7 +161,7 @@
  },
  {
   "name": "refactoring",
-  "size": 4
+  "size": 5
  },
  {
   "name": "restdocs",

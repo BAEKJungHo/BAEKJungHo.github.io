@@ -1,1 +1,1 @@
-["ddd/ddd-aggregate","ddd/ddd-anticorruption-layer","ddd/ddd-bounded-context","ddd/ddd-event","ddd/ddd-factory","ddd/ddd-layered-architectures","ddd/ddd-module","ddd/ddd-quotes","ddd/ddd-service","kotlin/kotlin-value-object","msa/msa-stream-processing"]
+["ddd/ddd-aggregate","ddd/ddd-anticorruption-layer","ddd/ddd-bounded-context","ddd/ddd-event","ddd/ddd-factory","ddd/ddd-intention-revealing-interface","ddd/ddd-layered-architectures","ddd/ddd-module","ddd/ddd-quotes","ddd/ddd-service","kotlin/kotlin-value-object","msa/msa-stream-processing"]

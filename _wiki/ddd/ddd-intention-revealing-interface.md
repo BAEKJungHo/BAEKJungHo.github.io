@@ -4,7 +4,7 @@ title   : Intention Revealing Interface
 summary : 의도를 드러내는 인터페이스
 date    : 2023-01-08 20:57:32 +0900
 updated : 2023-01-08 21:21:24 +0900
-tag     : ddd, refactoring
+tag     : ddd refactoring
 toc     : true
 comment : true
 public  : true

@@ -197,6 +197,7 @@ regenerate: true
 * [[/ddd/ddd-anticorruption-layer]]
 * [[/ddd/ddd-event]]
 * [[/ddd/ddd-module]]
+* [[/ddd/ddd-intention-revealing-interface]]
 
 ## Methodology
 

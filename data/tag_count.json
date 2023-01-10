@@ -32,6 +32,10 @@
   "size": 11
  },
  {
+  "name": "ddd,",
+  "size": 1
+ },
+ {
   "name": "designpattern",
   "size": 8
  },
@@ -161,7 +165,7 @@
  },
  {
   "name": "refactoring",
-  "size": 5
+  "size": 6
  },
  {
   "name": "restdocs",

@@ -169,6 +169,10 @@ regenerate: true
 * [[/git/git-trunk-based-development]]
 * [[/git/git-rebase]]
 
+## gpt
+
+* [[/gpt/gpt-chat-use]]
+
 ## auth
 
 * [[/auth/auth-hmac]]

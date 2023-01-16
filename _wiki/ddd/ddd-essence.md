@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Essence of Domain Design Driven
+title   : Essence of Domain Driven Design
 summary : Domain Driven Design is Philosophy, Approach and Art
 date    : 2023-01-15 22:57:32 +0900
 updated : 2023-01-15 23:21:24 +0900

@@ -202,6 +202,7 @@ regenerate: true
 * [[/ddd/ddd-event]]
 * [[/ddd/ddd-module]]
 * [[/ddd/ddd-intention-revealing-interface]]
+* [[/ddd/ddd-claim]]
 
 ## Methodology
 

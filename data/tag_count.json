@@ -48,6 +48,10 @@
   "size": 4
  },
  {
+  "name": "flutter",
+  "size": 2
+ },
+ {
   "name": "fp",
   "size": 1
  },

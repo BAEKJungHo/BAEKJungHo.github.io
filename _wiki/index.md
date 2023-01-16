@@ -229,6 +229,10 @@ regenerate: true
 * [[/cleancode/cleancode-good-implementation]]
 * [[/cleancode/knowledge]]
 
+## Flutter
+
+* [[/flutter/widget]]
+
 ## Operating System
 
 * [[/operatingsystem/os-kernel]]

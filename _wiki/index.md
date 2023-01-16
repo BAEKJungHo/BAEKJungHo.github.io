@@ -203,6 +203,7 @@ regenerate: true
 * [[/ddd/ddd-module]]
 * [[/ddd/ddd-intention-revealing-interface]]
 * [[/ddd/ddd-claim]]
+* [[/ddd/ddd-essence]]
 
 ## Methodology
 

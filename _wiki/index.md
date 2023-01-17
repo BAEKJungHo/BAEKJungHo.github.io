@@ -48,6 +48,7 @@ regenerate: true
 * [[/kotlin/kotlin-suspend]]
 * [[/kotlin/kotlin-generics]]
 * [[/kotlin/kotlin-value-object]]
+* [[/kotlin/kotlin-action-calculate]]
 
 ## java
 

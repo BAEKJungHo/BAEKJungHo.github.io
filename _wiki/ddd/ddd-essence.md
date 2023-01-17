@@ -16,7 +16,7 @@ latex   : true
 
 ## Essence of Domain Design Driven
 
-DDD 의 본질은 패턴, 방법론이 아니라 __추상적인 철학__ 이나 __접근법__ 이다. 그리고 이러한 본질은 __전략절 설계(strategic design)__ 에 근간을 두고 있다.
+DDD 의 본질은 패턴, 방법론이 아니라 __추상적인 철학__ 이나 __접근법__ 이다. 그리고 이러한 본질은 __전략적 설계(strategic design)__ 에 근간을 두고 있다.
 
 - __Domain Driven Design is Philosophy, Approach and Art__
 

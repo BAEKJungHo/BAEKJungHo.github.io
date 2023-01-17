@@ -93,7 +93,7 @@
  },
  {
   "name": "kotlin",
-  "size": 39
+  "size": 40
  },
  {
   "name": "ksp",
@@ -197,7 +197,7 @@
  },
  {
   "name": "test",
-  "size": 3
+  "size": 4
  },
  {
   "name": "theory",

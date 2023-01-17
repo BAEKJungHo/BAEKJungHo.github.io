@@ -33,7 +33,7 @@ DDD 는 비지니스 도메인에서 문제가 되는 도메인을 추출하여 
 
 서브 도메인을 추출할 때 중요한 점은 이해 당사자들(개발자, 도메인 전문가 등)이 모여서 __Ubiquitous Language__ 를 사용하여 Communication 하는 것이다.
 
-### Knowledge crunching
+### Knowledge Crunching
 
 개발자는 처음에 도메인 지식이 전무하지만 도메인 전문가와의 의사소통을 통해서 도메인 지식이 점점 쌓이게 된다. 이러한 과정을 __지식 탐구(Knowledge crunching)__ 이라고 한다. 지식 탐구 과정에서 모든 의사소통은 __Ubiquitous Language__ 를 기반으로 진행된다.
 

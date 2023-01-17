@@ -35,7 +35,7 @@ DDD 는 비지니스 도메인에서 문제가 되는 도메인을 추출하여 
 
 ### Knowledge Crunching
 
-개발자는 처음에 도메인 지식이 전무하지만 도메인 전문가와의 의사소통을 통해서 도메인 지식이 점점 쌓이게 된다. 이러한 과정을 __지식 탐구(Knowledge crunching)__ 이라고 한다. 지식 탐구 과정에서 모든 의사소통은 __Ubiquitous Language__ 를 기반으로 진행된다.
+개발자는 처음에 도메인 지식이 전무하지만 도메인 전문가와의 의사소통을 통해서 도메인 지식이 점점 쌓이게 된다. 이러한 과정을 __지식 탐구(knowledge crunching)__ 이라고 한다. 지식 탐구 과정에서 모든 의사소통은 __Ubiquitous Language__ 를 기반으로 진행된다.
 
 > In Domain-Driven Design (DDD), "knowledge crunching" refers to the process of distilling complex domain knowledge into a simplified, easy-to-understand form that can be used to drive the design and development of software systems. This typically involves breaking down complex concepts and relationships into smaller, more manageable pieces, and then using this simplified knowledge to inform the design of the software's architecture and components. The goal of knowledge crunching is to create a software system that accurately reflects the real-world domain it is meant to model, while also being easy to understand and maintain.
 

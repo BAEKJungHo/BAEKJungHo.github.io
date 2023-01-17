@@ -99,7 +99,7 @@ Null 이 될 수 있는 타입이 들어오면 Error: Type argument is not withi
 JVM 의 제네릭스는 보통 __타입 소거(type erasure)__ 를 사용해 구현된다. 이는 실행 시점에 제네릭 클래스의 인스턴스에 타입 인자 정보가 들어있지 않다는 것이다.
 
 ```java
-public static  <E> boolean containsElement(E [] elements, E element){
+public static <E> boolean containsElement(E [] elements, E element){
     for (E e : elements){
         if(e.equals(element)){
             return true;
@@ -260,8 +260,8 @@ fun <T: R, R> copyData(source: MutableList<T>, destination: MutableList<R>) {
 ```kotlin
 // source 를 in 위치에 사용하지 않겠다는 의미 = consumer 역할로 사용하지 않겠다는 의미이다.
 fun <T> copyData(source: MutableList<out T>, destination: MutableList<T>) {
-    for (item in source) { // source - consumer
-        destination.add(item) // destination - producer
+    for (item in source) { // source - producer
+        destination.add(item) // destination - consumer
     }
 }
 ```

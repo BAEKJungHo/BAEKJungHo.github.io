@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Distributed Tracing
-summary : 분산 추적
+summary : 
 date    : 2023-01-18 15:54:32 +0900
 updated : 2023-01-18 20:15:24 +0900
 tag     : msa

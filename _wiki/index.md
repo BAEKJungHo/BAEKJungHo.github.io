@@ -113,6 +113,7 @@ regenerate: true
 * [[/msa/msa-reactive-manifesto]]
 * [[/msa/msa-xa]]
 * [[/msa/msa-stream-processing]]
+* [[/msa/msa-distributed-tracing]]
 
 ## refactoring
 

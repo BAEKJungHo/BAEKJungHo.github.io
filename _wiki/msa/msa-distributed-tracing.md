@@ -4,7 +4,7 @@ title   : Distributed Tracing
 summary : 
 date    : 2023-01-18 15:54:32 +0900
 updated : 2023-01-18 20:15:24 +0900
-tag     : msa
+tag     : msa logging
 toc     : true
 comment : true
 public  : true
@@ -44,7 +44,7 @@ fun main() {
     // Create the server
     val server = Undertow.builder()
         .addHttpListener(8080, "localhost")
-        .setHandler(object : HttpHandler {
+        .setHandler(object: HttpHandler {
             override fun handleRequest(exchange: HttpServerExchange) {
                 // Start a new span for the request
                 val span: Span = tracer.buildSpan("handle-request").start()
@@ -109,7 +109,7 @@ Temporal relationships between Spans in a single Trace
 
 위 처럼 시간의 흐름 형태로 구성하는 것이 모니터링에 더 도움이 된다. 아래는 Datadog 에서 제공하는 화면이다.
 
-![](/resource/wiki/msa-distributed-tracing/datadog.png)
+![](/resource/wiki/msa-distributed-tracing/datadog-apm.png)
 
 Span 에는 다음과 같은 정보들을 가지고 있다.
 - 작업 이름
@@ -117,7 +117,7 @@ Span 에는 다음과 같은 정보들을 가지고 있다.
 - key, value 형태의 Tags, Logs
 - Span Contexts
 
-### SpanContexts
+### SpanContext
 
 > In distributed tracing, a span context is a data structure that holds information about a span and its place in a trace. The context is propagated along with the request as it flows through the system, allowing each service and component to add information to the context, such as metadata or timing data.
 >
@@ -127,7 +127,72 @@ Span 에는 다음과 같은 정보들을 가지고 있다.
 
 Span Contexts 는 로그 추적을 더 수월하게 하기 위해 Span 에 남기는 __부가 정보(additional information)__ 들을 가지고 있는 Context 라고 생각하면 된다.
 
-- [Structure with MDC](https://baekjungho.github.io/wiki/spring/spring-mdc/)
+
+```kotlin
+// Create a new tracer
+val tracer = Configuration.fromEnv().tracer
+
+// Start a new span and set its operation name
+val span = tracer.buildSpan("my-operation").start()
+
+// Add some baggage to the span context
+span.setBaggageItem("user-id", "12345")
+
+// Propagate the span context in the request headers
+val headers = tracer.inject(span.context(), Format.Builtin.HTTP_HEADERS, object : TextMap {
+    override fun put(key: String, value: String) {
+        // Add the headers to the request
+        // ...
+    }
+
+    override fun iterator(): MutableIterator<MutableMap.MutableEntry<String, String>> {
+        throw UnsupportedOperationException("Not implemented")
+    }
+})
+
+// Use the request to call a service
+// ...
+
+// Extract the span context from the response headers
+val extractedContext = tracer.extract(Format.Builtin.HTTP_HEADERS, object : TextMap {
+    override fun put(key: String, value: String) {
+        throw UnsupportedOperationException("Not implemented")
+    }
+
+    override fun iterator(): MutableIterator<MutableMap.MutableEntry<String, String>> {
+        // Get the headers from the response
+        // ...
+    }
+})
+
+// Start a new span as a child of the extracted span
+val childSpan = tracer.buildSpan("child-operation").asChildOf(extractedContext).start()
+
+// ...
+
+// Close the span
+span.finish()
+```
+
+### Trace
+
+Span Id 는 분산 시스템에서 per-request 안에 존재하는 각각의 작업에 부여된 __작업 Id__ 를 의미하는 반면에, Trace Id 는 하나의 요청이 시작되고 처리되기까지의 모든 과정을 포함하는 Id 이다.
+
+```
+<------------------------- Same Trace Id ------------------------->
+
+––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–> time
+
+ [Span A···················································]
+   [Span B··············································]
+      [Span D··········································]
+    [Span C········································]
+         [Span E·······]        [Span F··] [Span G··] [Span H··]
+```
+
+## LogContext
+
+- [LogContext with MDC](https://baekjungho.github.io/wiki/spring/spring-mdc/)
 
 ```java
 @Slf4j
@@ -159,21 +224,15 @@ public class CustomConsoleAppender extends AsyncAppenderBase<ILoggingEvent> impl
 }
 ```
 
-### Trace
+## Different Characteristics in Contexts
 
-Span Id 는 분산 시스템에서 per-request 안에 존재하는 각각의 작업에 부여된 __작업 Id__ 를 의미하는 반면에, Trace Id 는 하나의 요청이 시작되고 처리되기까지의 모든 과정을 포함하는 Id 이다.
-
-```
-<------------------------- Same Trace Id ------------------------->
-
-––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–––––––|–> time
-
- [Span A···················································]
-   [Span B··············································]
-      [Span D··········································]
-    [Span C········································]
-         [Span E·······]        [Span F··] [Span G··] [Span H··]
-```
+> Span context and log context are both ways to propagate contextual information through a system, but they serve different purposes and have different characteristics.
+>
+> - Span context is used in distributed tracing to track the flow of a request as it propagates through a distributed system. It includes information such as the trace and span IDs, which are used to uniquely identify the trace and the current span, respectively. It also includes other information such as baggage items and flags that can be used to propagate metadata or control the sampling of traces. Span context is typically propagated in the headers of a request or response, but can also be passed in other ways such as through a message queue or in-memory data structure.
+>
+> - Log context, on the other hand, is used to propagate additional information that can be used to enrich log entries. It typically includes information such as the user ID, request ID, or other information that can be used to correlate log entries with a specific request or user. Log context is usually propagated through thread-local variables or MDC (Mapped Diagnostic Context) and it is used to enrich log statements with additional information.
+>
+> In summary, span context is used for distributed tracing and log context is used for logging. Both are used to propagate contextual information through a system, but they serve different purposes and have different characteristics.
 
 ## Links
 

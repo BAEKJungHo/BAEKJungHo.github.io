@@ -1,1 +1,1 @@
-["spring/spring-logging","spring/spring-mdc"]
+["msa/msa-distributed-tracing","spring/spring-logging","spring/spring-mdc"]

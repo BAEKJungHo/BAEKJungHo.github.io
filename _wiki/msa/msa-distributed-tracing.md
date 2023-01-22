@@ -226,7 +226,7 @@ public class CustomConsoleAppender extends AsyncAppenderBase<ILoggingEvent> impl
 
 ## Different Characteristics in Contexts
 
-> Span context and log context are both ways to propagate contextual information through a system, but they serve different purposes and have different characteristics.
+> Span context and Log context are both ways to propagate contextual information through a system, but they serve different purposes and have different characteristics.
 >
 > - Span context is used in distributed tracing to track the flow of a request as it propagates through a distributed system. It includes information such as the trace and span IDs, which are used to uniquely identify the trace and the current span, respectively. It also includes other information such as baggage items and flags that can be used to propagate metadata or control the sampling of traces. Span context is typically propagated in the headers of a request or response, but can also be passed in other ways such as through a message queue or in-memory data structure.
 >

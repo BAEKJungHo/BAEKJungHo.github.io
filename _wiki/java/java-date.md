@@ -132,6 +132,22 @@ System.out.println(dateTime);
 2011-08-12T20:17:46.384Z
 ```
 
+## LocalDateTimeDeserializer
+
+- 요청 페이로드로 `yyyy-MM-dd'T'HH:mm:ssZ` 형식의 LocalDateTime 을 받아서 파싱
+  - e.g "2019-07-16T00:00:28+0900"
+
+```java
+public class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
+    private final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern('yyyy-MM-dd'T'HH:mm:ssZ');
+    
+    @Override
+    public LocalDateTime deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException {
+        return ZonedDateTime.parse(jsonParser.getValueAsString(), dateTimeFormatter).withZoneSameInstant(ZoneId.of("UTC")).toLocalDateTime();
+    }
+}
+```
+
 ## Links
 
 - [About UTC](https://www.timeanddate.com/time/aboututc.html)

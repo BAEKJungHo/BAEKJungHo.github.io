@@ -59,9 +59,12 @@ A single instance filter in Spring can be called twice in certain circumstances.
 For example, if filter A is mapped to the URL pattern "/example/" and filter B is mapped to the URL pattern "/example/subpath/", then a request to the URL "/example/subpath/test" will cause filter A to be called followed by filter B, both are single instance filter.
 - Another scenario where a single instance filter can be called twice is when a request is forwarded to another servlet or JSP page using the RequestDispatcher.
 If a filter is mapped to a URL pattern that includes the URL of the page to which the request is forwarded, the filter will be called again when the request is processed by the forwarded page.
-- It's also worth noting that, if the filter is marked as `asyncSupported=true`, it will be called twice, once for the main request and once for the async request.
+- It's also worth noting that, if the filter is marked as asyncSupported=true, it will be called twice, once for the main request and once for the async request.
 
-In summary, a single instance filter in Spring can be called twice in certain circumstances such as if a __filter is mapped to a URL pattern that is included in the URL pattern of another filter__ or __when a request is forwarded to another servlet or JSP page using the RequestDispatcher__ or __if the filter is marked as asyncSupported=true.__
+In summary, a single instance filter in Spring can be called twice in certain circumstances such as:
+- Case1. __filter is mapped to a URL pattern that is included in the URL pattern of another filter__ 
+- Case2. __when a request is forwarded to another servlet or JSP page using the RequestDispatcher__ 
+- Case3. __if the filter is marked as asyncSupported=true.__
 
 마지막 summary 부분이 아주 중요하다. Filter 는 특정 상황에 두 번 호출될 수 있다는 것이다. 예를 들면, Spring Security 를 사용하는 경우 DispatcherServlet 까지 도달하기 전에 RequestDispatcher 에 의해서 다른 서블릿으로 dispatch 될때 Filter 가 두 번 실행될 수 있다.
 이러한 문제를 스프링에서는 `OncePerRequestFilter` 을 상속 받아서 클래스를 구현하면 단 한 번만 처리되는 필터를 만들 수 있다.
@@ -94,7 +97,7 @@ Filter 가 두 번이상 동작하기 위해서는 multiple instance filter 가 
 </filter-mapping>
 ```
 
-- create-new-instance 옵션이 true 이기 때문에 위 설정은 multiple instance filter 이다. 또한 async-supported 가 true 이기 때문에 이 설정으로 인해 필터는 두 번 호출될 수도 있다.
+create-new-instance 옵션이 true 이기 때문에 위 설정은 multiple instance filter 이다. 또한 async-supported 가 true 이기 때문에 이 설정으로 인해 필터는 두 번 호출될 수도 있다.
 
 ## RequestDispatcher
 

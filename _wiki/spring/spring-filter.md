@@ -51,6 +51,51 @@ The `init` method is invoked only once, at the time of filter instance creation 
 
 ![](/resource/wiki/spring-filter/filter.png)
 
+### Can the filter be invoked twice?
+
+A single instance filter in Spring can be called twice in certain circumstances.
+
+- If a filter is mapped to a URL pattern that is included in the URL pattern of another filter, the filter will be called twice for a request that matches both URL patterns.
+For example, if filter A is mapped to the URL pattern "/example/" and filter B is mapped to the URL pattern "/example/subpath/", then a request to the URL "/example/subpath/test" will cause filter A to be called followed by filter B, both are single instance filter.
+- Another scenario where a single instance filter can be called twice is when a request is forwarded to another servlet or JSP page using the RequestDispatcher.
+If a filter is mapped to a URL pattern that includes the URL of the page to which the request is forwarded, the filter will be called again when the request is processed by the forwarded page.
+- It's also worth noting that, if the filter is marked as `asyncSupported=true`, it will be called twice, once for the main request and once for the async request.
+
+In summary, a single instance filter in Spring can be called twice in certain circumstances such as if a __filter is mapped to a URL pattern that is included in the URL pattern of another filter__ or __when a request is forwarded to another servlet or JSP page using the RequestDispatcher__ or __if the filter is marked as asyncSupported=true.__
+
+마지막 summary 부분이 아주 중요하다. Filter 는 특정 상황에 두 번 호출될 수 있다는 것이다. 예를 들면, Spring Security 를 사용하는 경우 DispatcherServlet 까지 도달하기 전에 RequestDispatcher 에 의해서 다른 서블릿으로 dispatch 될때 Filter 가 두 번 실행될 수 있다.
+이러한 문제를 스프링에서는 `OncePerRequestFilter` 을 상속 받아서 클래스를 구현하면 단 한 번만 처리되는 필터를 만들 수 있다.
+
+### Multiple Instance Filter
+
+Filter 가 두 번이상 동작하기 위해서는 multiple instance filter 가 되어야 한다.
+
+```xml
+<filter>
+    <filter-name>myFilter</filter-name>
+    <filter-class>com.example.MyFilter</filter-class>
+    <init-param>
+        <param-name>filter-config-param</param-name>
+        <param-value>filter-config-value</param-value>
+    </init-param>
+    <init-param>
+        <param-name>filter-config-param2</param-name>
+        <param-value>filter-config-value2</param-value>
+    </init-param>
+    <async-supported>true</async-supported>
+    <init-param>
+        <param-name>create-new-instance</param-name>
+        <param-value>true</param-value>
+    </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>myFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
+```
+
+- create-new-instance 옵션이 true 이기 때문에 위 설정은 multiple instance filter 이다. 또한 async-supported 가 true 이기 때문에 이 설정으로 인해 필터는 두 번 호출될 수도 있다.
+
 ## RequestDispatcher
 
 RequestDispatcher is an interface provided by the Servlet API that is used to forward or include a request from one servlet to another resource such as a `servlet`, JSP file, or HTML file.
@@ -67,9 +112,6 @@ public interface RequestDispatcher {
 
 - `forward()` method is used to forward the request and the response from the current servlet to another resource. The resource can be a servlet, JSP file, or HTML file.
 - `include()` method is used to include the content of another resource in the response. The resource can be a servlet, JSP file, or HTML file.
-
-Spring Security 를 사용하는 경우 DispatcherServlet 까지 도달하기 전에 RequestDispatcher 에 의해서 다른 서블릿으로 dispatch 될때 Filter 가 두 번 실행될 수 있다.
-이러한 문제를 스프링에서는 OncePerRequestFilter 구현을 통해서 해결해 준다.
 
 ## GenericFilterBean
 
@@ -105,7 +147,7 @@ In summary, OncePerRequestFilter is a more convenient option if you want to ensu
 
 ### LoggingFilter
 
-- Pre-processing and Post-processing
+OncePerRequestFilter 를 구현한 LoggingFilter 예시이다. doInterInternal 에서는 전처리와 후처리를 한다.
 
 ```java
 import java.io.IOException;

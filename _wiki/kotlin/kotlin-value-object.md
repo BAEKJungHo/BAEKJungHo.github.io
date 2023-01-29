@@ -230,6 +230,41 @@ JVM 백엔드에는 특수 @JvmInline 어노테이션도 필요하다.
 value class Password(val s: String)
 ```
 
+## Value class to be immutable ?
+
+Value objects are generally considered to be immutable, meaning that their state cannot be changed after they are created. This is because the primary role of a value object is to represent a specific value or set of values, and changing that value would fundamentally change the meaning of the object.
+
+One of the main benefits of immutability is that it makes your code safer and easier to reason about. Because an immutable object cannot be changed, you don't have to worry about other parts of your code modifying it in unexpected ways, which can lead to bugs and other issues. Also, since an immutable object cannot change its state, it can be safely shared across multiple threads without the need for locks or other synchronization mechanisms.
+
+In Java, you can make an object immutable by following these steps:
+- Make all fields final and private
+- Don't provide any setter methods
+- Ensure that the object's state is fully initialized in the constructor
+- Don't allow subclasses to override methods
+- Make sure that any mutable objects stored inside the value object are also immutable or at least defensively copied.
+
+- Here is an example of an immutable LottoNumber class:
+
+```java
+final public class LottoNumber {
+    private final int number;
+
+    public LottoNumber(int number) {
+        this.number = number;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+}
+```
+
+In this example, the LottoNumber class has a single final private field, which stores the lotto number, and a constructor that initializes this field with the provided number. It also has a getter method that allows the number to be read, but no setter method that would allow the number to be modified.
+
+Note that in this example, the LottoNumber class has no mutable objects stored.
+
+It's worth noting that, in some cases, an object should not be immutable, and that's fine, as long as it's being used in a way that makes sense for the context of the application.
+
 ## Links
 
 - [Design Notes on Kotlin Value Classes](https://github.com/Kotlin/KEEP/blob/master/notes/value-classes.md)

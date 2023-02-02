@@ -116,6 +116,7 @@ regenerate: true
 * [[/msa/msa-stream-processing]]
 * [[/msa/msa-distributed-tracing]]
 * [[/msa/msa-saga]]
+* [[/msa/msa-api-gateway]]
 
 ## refactoring
 

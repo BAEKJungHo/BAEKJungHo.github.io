@@ -236,6 +236,8 @@ public class CustomConsoleAppender extends AsyncAppenderBase<ILoggingEvent> impl
 
 ## Links
 
+- [Distributed Tracing - Microservice](https://microservices.io/patterns/observability/distributed-tracing.html)
+- [Log Aggregation - Microservice](https://microservices.io/patterns/observability/application-logging.html)
 - [OpenTracing, 분산추적(Distributed Tracing) 과 Span context](https://ksr930.tistory.com/112)
 - [Distributed Tracing Key Concepts](https://docs.wavefront.com/trace_data_details.html)
 - [Understand Distributed Tracing](https://docs.lightstep.com/docs/understand-distributed-tracing)

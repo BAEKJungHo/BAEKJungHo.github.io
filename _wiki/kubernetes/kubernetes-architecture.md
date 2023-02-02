@@ -49,6 +49,13 @@ Master Node 의 관리 아래 다양한 컨테이너를 구동하여 사용자�
 
 ![](/resource/wiki/kubernetes-architecture/element.png)
 
+In Kubernetes, Ingress and Service are two important components for exposing and accessing applications running in a cluster.
+
+- __Ingress__: An Ingress is a Kubernetes resource that defines a set of rules for external access to services running in a cluster. It acts as a reverse proxy, routing incoming traffic to the appropriate service based on the request URL. Ingress provides a single entry point for external clients and can be used to expose multiple services over a single IP address or hostname.
+- __Service__: A Service in Kubernetes is a logical abstraction over a set of pods that provides a stable network endpoint for accessing the pods. A service can expose pods to the network by creating an IP address and DNS name that can be used to reach the pods. Services can also load balance traffic between multiple pods, providing resilience and high availability for the application.
+
+Together, Ingress and Service work together to provide a way for external clients to access applications running in a Kubernetes cluster. The Ingress provides a single entry point for incoming traffic, while the Service provides a stable network endpoint for accessing the underlying pods. This helps to simplify the network architecture and provides a flexible and scalable solution for exposing applications in a Kubernetes cluster.
+
 ### Pod
 
 ![](/resource/wiki/kubernetes-architecture/pod.png)

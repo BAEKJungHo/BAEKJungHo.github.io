@@ -239,6 +239,7 @@ public class CustomConsoleAppender extends AsyncAppenderBase<ILoggingEvent> impl
 - [OpenTracing, 분산추적(Distributed Tracing) 과 Span context](https://ksr930.tistory.com/112)
 - [Distributed Tracing Key Concepts](https://docs.wavefront.com/trace_data_details.html)
 - [Understand Distributed Tracing](https://docs.lightstep.com/docs/understand-distributed-tracing)
+- [MSA 아키텍쳐 구현을 위한 API 게이트웨이의 이해 #2 - API 게이트웨이 기반의 디자인 패턴](https://bcho.tistory.com/1006)
 
 ## References
 

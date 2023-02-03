@@ -103,6 +103,7 @@ regenerate: true
 * [[/reactive/reactive-reactor-pattern]]
 * [[/reactive/reactive-actor-model]]
 * [[/reactive/reactive-pubsub-chain]]
+* [[/reactive/reactive-observable]]
 
 ## msa
 

@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Reactor Pattern
-summary : Event Loop 로 잘 알려진 Reactor Pattern
+summary : 
 date    : 2022-10-05 15:05:32 +0900
 updated : 2022-10-05 15:15:24 +0900
 tag     : reactive

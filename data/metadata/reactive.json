@@ -1,1 +1,1 @@
-{"type":"wiki","title":"Reactive","summary":"","parent":"index","url":"/wiki/reactive","updated":"2022-08-20 20:55:09 +0900","children":["reactive/reactive-actor-model","reactive/reactive-duality","reactive/reactive-pubsub-chain","reactive/reactive-reactor-pattern"]}
+{"type":"wiki","title":"Reactive","summary":"","parent":"index","url":"/wiki/reactive","updated":"2022-08-20 20:55:09 +0900","children":["reactive/reactive-actor-model","reactive/reactive-duality","reactive/reactive-observable","reactive/reactive-pubsub-chain","reactive/reactive-reactor-pattern"]}

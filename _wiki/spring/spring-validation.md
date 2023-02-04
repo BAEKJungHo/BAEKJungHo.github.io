@@ -430,8 +430,9 @@ public class ValidationErrorExtractor {
     BindingResult bindingResult = e.getBindingResult();
 
     final StringBuilder resultMessageBuilder = new StringBuilder();
+    
+    // Field Errors
     final Iterator<FieldError> fieldErrorIterator = bindingResult.getFieldErrors().iterator();
-
     while (fieldErrorIterator.hasNext()) {
       final FieldError fieldError = fieldErrorIterator.next();
       resultMessageBuilder
@@ -441,6 +442,24 @@ public class ValidationErrorExtractor {
               .append(fieldError.getRejectedValue())
               .append("'. ")
               .append(fieldError.getDefaultMessage())
+              .append("]");
+
+      if (fieldErrorIterator.hasNext()) {
+        resultMessageBuilder.append(", ");
+      }
+    }
+
+    // Other Errors
+    final Iterator<ObjectError> objectErrorIterator = bindingResult.getAllErrors().iterator();
+    while (objectErrorIterator.hasNext()) {
+      ObjectError objectError = objectErrorIterator.next();
+      resultMessageBuilder
+              .append("[")
+              .append(objectError.getObjectName())
+              .append("' is '")
+              .append(objectError.getCode())
+              .append("'. ")
+              .append(objectError.getDefaultMessage())
               .append("]");
 
       if (fieldErrorIterator.hasNext()) {

@@ -388,13 +388,17 @@ public interface CardValidationGroup {
 }
 ```
 
-## ConstraintViolationException
+## ConstraintViolationException and MethodArgumentNotValidException
 
-@Validated 를 사용하여 제약 조건에 위배되는 경우 [javax.validation.ConstraintViolationException](https://docs.oracle.com/javaee/7/api/javax/validation/ConstraintViolationException.html) 이 발생한다.
+javax.validation.ConstraintValidator 를 구현한 구현체를 만들어 사용하는 경우 ConstraintViolationException 이 발생할 수 있다.
 
-## MethodArgumentNotValidException
+그러나 Spring 은 ConstraintViolationException 을 MethodArgumentNotValidException 으로 Wrapping 하여 최종적으로는 MethodArgumentNotValidException 가 발생하게 된다.
 
-@Valid 의 경우 바인딩이 실패 하면 [org.springframework.web.bind.MethodArgumentNotValidException](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/bind/MethodArgumentNotValidException.html) 을 발생시킨다.
+@Valid 를 쓰던 @Validated 를 쓰던 MethodArgumentNotValidException 이 발생한다.
+
+- [https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-exception-handlers](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html#mvc-exception-handlers)
+
+> You can use @RequestPart in combination with jakarta.validation.Valid or use Spring’s @Validated annotation, both of which cause Standard Bean Validation to be applied. By default, validation errors cause a MethodArgumentNotValidException, which is turned into a 400 (BAD_REQUEST) response. Alternatively, you can handle validation errors locally within the controller through an Errors or BindingResult argument, as the following example shows:
 
 ## ExceptionHandler
 

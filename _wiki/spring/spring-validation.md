@@ -462,7 +462,7 @@ public class ValidationErrorExtractor {
               .append(objectError.getDefaultMessage())
               .append("]");
 
-      if (fieldErrorIterator.hasNext()) {
+      if (objectErrorIterator.hasNext()) {
         resultMessageBuilder.append(", ");
       }
     }

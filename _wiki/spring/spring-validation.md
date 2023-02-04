@@ -388,7 +388,7 @@ public interface CardValidationGroup {
 }
 ```
 
-## ConstraintViolationException and MethodArgumentNotValidException
+## MethodArgumentNotValidException
 
 javax.validation.ConstraintValidator 를 구현한 구현체를 만들어 사용하는 경우 ConstraintViolationException 이 발생할 수 있다.
 

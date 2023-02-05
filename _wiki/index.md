@@ -210,6 +210,8 @@ regenerate: true
 * [[/ddd/ddd-intention-revealing-interface]]
 * [[/ddd/ddd-claim]]
 * [[/ddd/ddd-essence]]
+* [[/ddd/ddd-character-architectures]]
+* [[/ddd/ddd-reduce-dependency]]
 
 ## Methodology
 

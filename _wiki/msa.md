@@ -1,7 +1,7 @@
 ---
 layout  : category
-title   : MSA
-summary : 마이크로서비스 아키텍처
+title   : Microservice Architecture
+summary : 
 date    : 2022-04-19 18:28:40 +0900
 updated : 2022-04-19 20:55:09 +0900
 tag     : msa
@@ -12,3 +12,5 @@ latex   : false
 ---
 * TOC
   {:toc}
+
+![](/resource/wiki/msa-components/components.png)

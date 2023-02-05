@@ -22,7 +22,7 @@ __Clean Architecture__ emphasizes separating an application into layers, where t
 
 __Hexagonal Architecture__, also known as the Ports and Adapters pattern, focuses on separating the core of the application from the surrounding infrastructure. The core of the application is the hexagonal shape in the middle, and the infrastructure is represented by the adapters around it. The idea is to make the application's core independent from the infrastructure so that changes to the infrastructure don't affect the core.
 
-Reducing dependencies between layers is one of the key benefits of using a __layered architecture__. By limiting the interactions between layers and enforcing a clear separation of responsibilities, the layered architecture reduces the risk of changes in one layer affecting the behavior of another layer, making it easier to modify or replace components without affecting the entire system.
+Reducing dependencies between layers is one of the key benefits of using a __Layered architecture__. By limiting the interactions between layers and enforcing a clear separation of responsibilities, the layered architecture reduces the risk of changes in one layer affecting the behavior of another layer, making it easier to modify or replace components without affecting the entire system.
 
 In addition to reducing dependencies, using a layered architecture can also:
 

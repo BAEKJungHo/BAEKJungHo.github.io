@@ -1,10 +1,10 @@
 ---
 layout  : wiki
-title   : Layered Architectures
-summary : Layered Architectures 에 따른 각 Layer 의 구현 방식
+title   : Clean Architecture
+summary : Clean Architecture 에 따른 각 Layer 의 구현 방식
 date    : 2022-07-11 15:02:32 +0900
 updated : 2022-07-11 15:12:24 +0900
-tag     : ddd
+tag     : ddd architecture
 toc     : true
 comment : true
 public  : true
@@ -13,8 +13,6 @@ latex   : true
 ---
 * TOC
 {:toc}
-
-# Layered Architectures
 
 ## From: 도메인 주도 설계
 
@@ -155,6 +153,16 @@ fun completeOrder(registerOrder: OrderCommand.RegisterOrder): String {
 - __http, gRPC, 비동기 메시징과 같은 서비스간 통신 기술은 interfaces layer 에서만 사용되도록 한다.__
   - 가령 json 처리 관련 로직이나 http cookie 파싱 로직 등이 Domain layer 에서 사용되는 식의 구현은 피해야 한다.
   - 그렇게 하지 않으면 언제든지 교체될 수 있는 외부 통신 기술로 인해 domain 로직까지 변경되어야 하는 상황이 발생한다.
+
+## Hexagonal Architecture
+
+Clean Architecture and Hexagonal Architecture are both architectural patterns that aim to separate the concerns of software systems into isolated, independent, and interchangeable components.
+
+Clean Architecture emphasizes separating an application into layers, where the innermost layer contains business rules and the outermost layer consists of interface adapters. It also advocates for the separation of components based on their reason for change.
+
+Hexagonal Architecture, also known as the Ports and Adapters pattern, focuses on separating the core of the application from the surrounding infrastructure. The core of the application is the hexagonal shape in the middle, and the infrastructure is represented by the adapters around it. The idea is to make the application's core independent from the infrastructure so that changes to the infrastructure don't affect the core.
+
+In summary, Clean Architecture prioritizes separating concerns based on their reasons for change, while Hexagonal Architecture prioritizes separating the core of an application from the surrounding infrastructure.
 
 ## Links
 

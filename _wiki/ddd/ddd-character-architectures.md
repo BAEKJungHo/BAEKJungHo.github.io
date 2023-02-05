@@ -26,9 +26,9 @@ Reducing dependencies between layers is one of the key benefits of using a __Lay
 
 In addition to reducing dependencies, using a layered architecture can also:
 
-- Promote modularity: By breaking down the system into smaller, more manageable components, a layered architecture makes it easier to develop, test, and maintain the software.
-- Increase scalability: By allowing components to be added or removed without affecting the rest of the system, a layered architecture can help support growth and expansion of the system over time.
-- Improve reliability: By enforcing a clear separation of responsibilities and minimizing the number of interactions between layers, a layered architecture can reduce the risk of bugs and other errors, and improve the overall reliability of the system.
+- __Promote modularity__: By breaking down the system into smaller, more manageable components, a layered architecture makes it easier to develop, test, and maintain the software.
+- __Increase scalability__: By allowing components to be added or removed without affecting the rest of the system, a layered architecture can help support growth and expansion of the system over time.
+- __Improve reliability__: By enforcing a clear separation of responsibilities and minimizing the number of interactions between layers, a layered architecture can reduce the risk of bugs and other errors, and improve the overall reliability of the system.
 
 __Summary:__
 - Clean Architecture prioritizes separating concerns based on their reasons for change

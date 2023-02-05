@@ -118,6 +118,7 @@ regenerate: true
 * [[/msa/msa-distributed-tracing]]
 * [[/msa/msa-saga]]
 * [[/msa/msa-api-gateway]]
+* [[/msa/msa-antifragile]]
 
 ## refactoring
 

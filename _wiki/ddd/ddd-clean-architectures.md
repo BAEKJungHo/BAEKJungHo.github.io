@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## From: 도메인 주도 설계
+## Domain Driven Design
 
 | Layer  | Description  |  Object |
 |--------|--------------|---------|
@@ -33,13 +33,11 @@ Domain 과 Entity 를 분리하는 이유는 `변경에 대한 유연함` 이다
 
 그럼에도 불구하고 Entity 에 Domain 로직들을 모아두는 방법도 나쁘지는 않다고 생각한다. 이 경우의 가장 큰 장점은 `생산성`이라고 생각한다.
 
-## DTO 
+## Location of Data Transfer Object 
 
-DTO 는 어느 계층에 존재하는 것이 맞을까? 회사마다 다르다.
+DTO(Data Transfer Object) 는 interfaces Layer 에 위치 해야 한다. Layered Architecture 를 사용한다면 Presentation Layer 에 위치하면 된다.
 
-A 회사는 DTO 를 interface 계층에 두기도 하며, B 회사는 DTO 를 application 계층에 두기도 한다.
-
-## Layer 간 참조 관계
+## Reference in Layers
 
 ![](/resource/wiki/ddd-layered-architectures/layer.png)
 
@@ -48,9 +46,11 @@ A 회사는 DTO 를 interface 계층에 두기도 하며, B 회사는 DTO 를 ap
    - 양방향 참조를 허용하지 않게 하기 위해서는 `세부 구현 기술에 대한 인터페이스를 지원`하면 된다.
 - domain layer 는 low level 의 기술에 상관 없이 독립적으로 존재할 수 있어야 한다.
 
-## Layered Architecture 의 핵심 기술
+## Core Technologies
 
-Layered Architecture 에서 대부분의 로직들은 추상화 된다. 이러한 아키텍처에서 실제 구현체가 동작하기 위한 핵심 기술은 [PSA](https://baekjungho.github.io/wiki/spring/spring-psa/)와 + [DI](https://baekjungho.github.io/wiki/spring/spring-di/) 이다.
+Clean Architecture or Layered Architecture 에서 대부분의 로직들은 추상화 된다.
+
+이러한 아키텍처에서 실제 구현체가 동작하기 위한 핵심 기술은 [PSA](https://baekjungho.github.io/wiki/spring/spring-psa/)와 + [DI](https://baekjungho.github.io/wiki/spring/spring-di/) 이다.
 
 ## Domain Layer
 
@@ -153,16 +153,6 @@ fun completeOrder(registerOrder: OrderCommand.RegisterOrder): String {
 - __http, gRPC, 비동기 메시징과 같은 서비스간 통신 기술은 interfaces layer 에서만 사용되도록 한다.__
   - 가령 json 처리 관련 로직이나 http cookie 파싱 로직 등이 Domain layer 에서 사용되는 식의 구현은 피해야 한다.
   - 그렇게 하지 않으면 언제든지 교체될 수 있는 외부 통신 기술로 인해 domain 로직까지 변경되어야 하는 상황이 발생한다.
-
-## Hexagonal Architecture
-
-Clean Architecture and Hexagonal Architecture are both architectural patterns that aim to separate the concerns of software systems into isolated, independent, and interchangeable components.
-
-Clean Architecture emphasizes separating an application into layers, where the innermost layer contains business rules and the outermost layer consists of interface adapters. It also advocates for the separation of components based on their reason for change.
-
-Hexagonal Architecture, also known as the Ports and Adapters pattern, focuses on separating the core of the application from the surrounding infrastructure. The core of the application is the hexagonal shape in the middle, and the infrastructure is represented by the adapters around it. The idea is to make the application's core independent from the infrastructure so that changes to the infrastructure don't affect the core.
-
-In summary, Clean Architecture prioritizes separating concerns based on their reasons for change, while Hexagonal Architecture prioritizes separating the core of an application from the surrounding infrastructure.
 
 ## Links
 

@@ -120,6 +120,7 @@ regenerate: true
 * [[/msa/msa-api-gateway]]
 * [[/msa/msa-soa]]
 * [[/msa/msa-antifragile]]
+* [[/msa/msa-service-discovery]]
 
 ## refactoring
 

@@ -13,4 +13,10 @@ latex   : false
 * TOC
   {:toc}
 
+## Microservice components
+
 ![](/resource/wiki/msa-components/components.png)
+
+## Microservice Pattern Languages
+
+![](/resource/wiki/msa-components/MicroservicePatternLanguage.jpg)

@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Transactional Outbox
-summary : 
+title   : Message Delivery in Event Driven Architecture
+summary : Transactional Outbox, Polling Publisher, Message Broker
 date    : 2023-02-05 15:54:32 +0900
 updated : 2023-02-05 20:15:24 +0900
 tag     : msa
@@ -109,9 +109,11 @@ The mechanism for trailing the transaction log depends on the database:
 
 Kafka 와 같은 Message Broker 를 사용한다면 대용량 이벤트 처리를 할 수 있다.
 
+Auto-commit 을 false 로 설정하고 [Consumer Acknowledgement](https://baekjungho.github.io/wiki/kafka/kafak-acknowledgement/) 을 구현하면 좋다.
+
 In summary, if you are dealing with large amounts of events generated in a single transaction, using a message broker like Apache Kafka can be a better solution than using the Transactional Outbox pattern, as it provides more scalability, performance, and reliability for event processing.
 
 ## Links
 
 - [Eventuate Tram](https://github.com/eventuate-tram/eventuate-tram-core)
-- [NHN FORWARD 22 - 분산 시스템에서 데이터를 전달하는 효율적인 방법]()
+- [NHN FORWARD 22 - 분산 시스템에서 데이터를 전달하는 효율적인 방법](https://www.youtube.com/watch?v=uk5fRLUsBfk)

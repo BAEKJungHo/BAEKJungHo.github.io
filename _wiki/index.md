@@ -171,6 +171,7 @@ regenerate: true
 * [[/infra/infra-deployment]]
 * [[/infra/infra-load-stress-smoke]]
 * [[/infra/infra-k6]]
+* [[/infra/infra-rds-aurora]]
 
 ## git
 

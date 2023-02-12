@@ -37,7 +37,8 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 - __포티투닷(주)__ - 2022.08.29 ~ ing
   - [회사소개] 자율주행 모빌리티 회사
   - [프로젝트/성과] 
-    - New Business 에 적용될 __Application Architecture__ 와 __Convention__ 을 정립하였습니다.
+    - MSA 기반의 Spring Cloud Gateway 와 Saga Orchestrator 를 개발하였습니다.
+    - Global Business 를 위한 __Application Architecture__ 와 __Convention__ 을 정립하였습니다.
       - Clean Architectures 기반으로 도메인 정책들을 Domain Layer 에 응집되도록 설계하였습니다.
       - Domain, API Design Refactoring 을 진행하였습니다.
     - Distributed tryLock 기술을 활용하여 배차 동시성 이슈를 처리하였습니다. 그 결과 [청계천 자율주행](https://mediahub.seoul.go.kr/archives/2006276) 동시 배차 요청에 대해서 동시 호출로 인한 __에러 발생율 0%__ 를 달성하였습니다.

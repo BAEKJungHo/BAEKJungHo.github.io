@@ -122,6 +122,7 @@ regenerate: true
 * [[/msa/msa-antifragile]]
 * [[/msa/msa-service-discovery]]
 * [[/msa/msa-message-delivery]]
+* [[/msa/msa-debounce-throttle]]
 
 ## refactoring
 

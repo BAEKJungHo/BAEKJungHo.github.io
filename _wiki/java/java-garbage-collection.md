@@ -127,7 +127,7 @@ __In Summary:__
 
 ## Links
 
-- [Garbage Collection Documents](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
+- [Garbage Collection Document](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
 - [DZone The Evolution of the Java Memory Architecture](https://dzone.com/articles/evolution-of-the-java-memory-architecture-java-17)
 - [DZone Java Memory Management](https://dzone.com/articles/java-memory-management)
 - [DZone The JVM Architecture Explained](https://dzone.com/articles/jvm-architecture-explained)

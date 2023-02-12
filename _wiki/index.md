@@ -62,6 +62,7 @@ regenerate: true
 * [[/java/java-jdk-bigdecimal]]
 * [[/java/java-date]]
 * [[/java/java-mapstruct]]
+* [[/java/java-garbage-collection]]
 
 ## spring
 

@@ -109,7 +109,6 @@ Observer Pattern 에서 위 두 가지의 개념을 보완한 것이 Reactive Pr
 Reactive Streams 란 비동기 스트림 처리(asynchronous stream processing) 과 논-블러킹(non-blocking) 과 배압(back pressure) 처리를 위한 JVM, Javascript 환경에서의 표준이다. 
 
 - [Package org.reactivestreams Interfaces](https://www.reactive-streams.org/reactive-streams-1.0.4-javadoc/org/reactivestreams/package-summary.html)
-- [Reactive Streams with Armeria - LINE](https://engineering.linecorp.com/ko/blog/reactive-streams-with-armeria-1/)
 
 ![](/resource/wiki/reactive-duality/uml.png)
 
@@ -148,6 +147,8 @@ JDK9 made the reactive streams interfaces available under [java.util.concurrent.
 위의 API 를 통해서 Backpressure 를 사용할 수 있다.
 
 ### Flow
+
+- [Reactive Streams with Armeria - LINE](https://engineering.linecorp.com/ko/blog/reactive-streams-with-armeria-1/)
 
 > ![](/resource/wiki/reactive-duality/pub-sub-flow.png)
 >

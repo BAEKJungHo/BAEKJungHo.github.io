@@ -26,13 +26,6 @@ latex   : true
     - [Observer Design Pattern](https://baekjungho.github.io/wiki/designpattern/designpattern-observer/)
     - [Iterable](https://baekjungho.github.io/wiki/java/java-iterable/)
 
-## Reactive Streams and Project Reactor
-
-- Reactive Streams 는 단순히 JVM 기반에서 Async Non-Blocking 처리를 위한 스펙을 명세한 것
-- Project Reactor 는 Reactive Streams 의 구현체
-  - Project Reactor 대신 RxJava, Akka Streams 구현체를 사용할 수 있음
--  Spring Webflux 는 Netty + Project Reactor 사용
-
 ## Duality
 
 > In category theory, a branch of mathematics, __duality__ is a correspondence between the properties of a category C and the dual properties of the opposite category Cop.
@@ -100,7 +93,7 @@ public class ObservableApp {
 }
 ```
 
-## Observer Pattern 에서 부족한 점
+## Drawbacks in Observer Pattern
 
 ReactiveX 를 처음 만든 Microsoft Engineers 가 Observer Pattern 은 좋지만 두 가지가 부족하다고 지적했다.
 
@@ -121,6 +114,11 @@ Reactive Streams 란 비동기 스트림 처리(asynchronous stream processing) 
 ![](/resource/wiki/reactive-duality/uml.png)
 
 A Publisher is a provider of a potentially unbounded number of sequenced elements, publishing them according to the demand received from its Subscriber(s).
+
+- Reactive Streams 는 단순히 JVM 기반에서 Async Non-Blocking 처리를 위한 스펙을 명세한 것
+- Project Reactor 는 Reactive Streams 의 구현체
+  - Project Reactor 대신 RxJava, Akka Streams 구현체를 사용할 수 있음
+-  Spring Webflux 는 Netty + Project Reactor 사용
 
 ### Specification Enabling Backpressure
 

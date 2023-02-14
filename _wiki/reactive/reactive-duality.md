@@ -26,6 +26,13 @@ latex   : true
     - [Observer Design Pattern](https://baekjungho.github.io/wiki/designpattern/designpattern-observer/)
     - [Iterable](https://baekjungho.github.io/wiki/java/java-iterable/)
 
+## Reactive Streams and Project Reactor
+
+- Reactive Streams 는 단순히 JVM 기반에서 Async Non-Blocking 처리를 위한 스펙을 명세한 것
+- Project Reactor 는 Reactive Streams 의 구현체
+  - Project Reactor 대신 RxJava, Akka Streams 구현체를 사용할 수 있음
+-  Spring Webflux 는 Netty + Project Reactor 사용
+
 ## Duality
 
 > In category theory, a branch of mathematics, __duality__ is a correspondence between the properties of a category C and the dual properties of the opposite category Cop.
@@ -109,14 +116,17 @@ Observer Pattern 에서 위 두 가지의 개념을 보완한 것이 Reactive Pr
 Reactive Streams 란 비동기 스트림 처리(asynchronous stream processing) 과 논-블러킹(non-blocking) 과 배압(back pressure) 처리를 위한 JVM, Javascript 환경에서의 표준이다. 
 
 - [Package org.reactivestreams Interfaces](https://www.reactive-streams.org/reactive-streams-1.0.4-javadoc/org/reactivestreams/package-summary.html)
+- [Reactive Streams with Armeria - LINE](https://engineering.linecorp.com/ko/blog/reactive-streams-with-armeria-1/)
 
 ![](/resource/wiki/reactive-duality/uml.png)
 
 A Publisher is a provider of a potentially unbounded number of sequenced elements, publishing them according to the demand received from its Subscriber(s).
 
-### Flow
+### Specification Enabling Backpressure
 
 JDK9 made the reactive streams interfaces available under [java.util.concurrent.Flow](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html), which is semantically equivalent to org.reactivestreams APIs. RxJava, Reactor, and Akka Streams all implement the interfaces under Flow.
+
+- [Specification](https://github.com/reactive-streams/reactive-streams-jvm#specification)
 
 ![](/resource/wiki/reactive-duality/flow.png)
 
@@ -136,6 +146,18 @@ JDK9 made the reactive streams interfaces available under [java.util.concurrent.
       - The Publisher invokes onNext() when an item is published or onComplete() if no item is to be published.
   - __Processor__
     - A processor is an intermediary between Publisher and Subscriber. It subscribes to a Publisher and then a Subscriber subscribes to Processor.
+
+위의 API 를 통해서 Backpressure 를 사용할 수 있다.
+
+### Flow
+
+> ![](/resource/wiki/reactive-duality/pub-sub-flow.png)
+>
+> 1. Subscriber 가 subscribe 함수를 사용해 Publisher 에게 구독을 요청.
+> 2. Publisher 는 onSubscribe 함수를 사용해 Subscriber 에게 Subscription 을 전달.
+> 3. Subscription 은 Subscriber 와 Publisher 간 통신의 매개체가 된다. Subscriber 는 Publisher 에게 직접 데이터 요청을 하지 않는다. Subscription 의 request 함수를 통해 Publisher 에게 전달한다.
+> 4. Publisher 는 Subscription 을 통해 Subscriber 의 onNext 에 데이터를 전달하고, 작업이 완료되면 onComplete, 에러가 발생하면 onError 시그널을 전달한다.
+> 5. Subscriber 와 Publisher, Subscription 이 서로 유기적으로 연결되어 통신을 주고받으면서 subscribe 부터 onComplete 까지 연결되고, 이를 통해 Backpressure 가 완성된다.
 
 ### Pub/Sub Implementation
 
@@ -232,6 +254,8 @@ public class PubSub {
 ```
 
 추가적으로 grpc 의 자바 구현을 보면, Observable 과 Subscriber API 로 구현되어있다.
+
+실무에서는 직접 만들기 보다는, 이미 검증이 되어있는 구현체 e.g Flow.crate() 를 사용해서 Publisher 를 만드는 것이 좋다.
 
 ## Links
 

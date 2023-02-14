@@ -37,7 +37,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 - __포티투닷(주)__ - 2022.08.29 ~ ing
   - [회사소개] 자율주행 모빌리티 회사
   - [프로젝트/성과] 
-    - MSA 기반의 Gateway Service(Spring Cloud) Saga Orchestrator 를 개발하였습니다.
+    - MSA 기반의 Gateway Service 와 Saga Orchestrator 를 개발하였습니다.
     - Global Business 를 위한 __Application Architecture__ 와 __Convention__ 을 정립하였습니다.
       - Clean Architectures 기반으로 도메인 정책들을 Domain Layer 에 응집되도록 설계하였습니다.
       - Domain, API Design Refactoring 을 진행하였습니다.
@@ -50,7 +50,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
     - 배치 서버 분리 작업
   - [Main Language] Kotlin, Java
   - [경험]
-    - Spring Batch
+    - Spring Batch, Spring WebFlux, Spring Cloud Gateway
     - Redis, Kubernetes, Docker, PostgreSQL
     - Firebase, Datadog, ArgoCD, Lens, CI/CD, GitLab Actions
 - __테이블매니저(주)__ - 2022.03.07 ~ 2022.08.26
@@ -61,7 +61,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
     - 결제 서비스 유지보수
   - [Main Language] Kotlin
   - [경험]
-    - Spring Data JPA, Spring Data JDBC, Spring Security
+    - Spring MVC, Spring Data JPA, Spring Data JDBC, Spring Security
     - AWS Gateway, AWS Lambda, AWS Cloud Watch, NodeJS, Typescript, Javascript
     - JIRA, Confluence, MongoDB, Whatap, GitHub Actions
 - __(주)메이아이__ - 2019.07.01 ~ 2021.10.08
@@ -73,7 +73,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
     - 그 외 다양한 홈페이지 구축 경험
   - [Main Language] Java
   - [경험]
-    - Spring, Spring Boot, Spring Security
+    - Spring MVC, Spring Boot, Spring Security
     - JSP, Mybatis, MySQL, Oracle, GitLab, SVN
 
 # Study

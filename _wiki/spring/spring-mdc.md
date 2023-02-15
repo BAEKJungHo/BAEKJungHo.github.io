@@ -112,6 +112,10 @@ public class CustomConsoleAppender extends AsyncAppenderBase<ILoggingEvent> impl
 }
 ```
 
+## What Is a Good Pattern for Contextual Logging ?
+
+- [C.7. What Is a Good Pattern for Contextual Logging? (MDC) - Reactive](https://projectreactor.io/docs/core/release/reference/#faq.mdc)
+
 ## Links
 
 - [Slf4j MDC Docs](https://www.slf4j.org/api/org/slf4j/MDC.html)

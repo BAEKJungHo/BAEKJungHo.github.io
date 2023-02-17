@@ -106,7 +106,7 @@ regenerate: true
 * [[/reactive/reactive-pubsub-chain]]
 * [[/reactive/reactive-observable]]
 * [[/reactive/reactive-marble-diagram]]
-
+* [[/reactive/reactive-streams-specification]]
 
 ## msa
 

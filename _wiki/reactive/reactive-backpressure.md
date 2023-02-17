@@ -4,7 +4,7 @@ title   : Backpressure
 summary : 
 date    : 2022-09-01 21:28:32 +0900
 updated : 2022-09-01 22:15:24 +0900
-tag     : spring reactive
+tag     : reactive
 toc     : true
 comment : true
 public  : true

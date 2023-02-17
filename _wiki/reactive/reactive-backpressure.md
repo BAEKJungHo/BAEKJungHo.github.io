@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Backpressure
-summary : Spring Web-Flux Backpressure Mechanism
+summary : 
 date    : 2022-09-01 21:28:32 +0900
 updated : 2022-09-01 22:15:24 +0900
 tag     : spring reactive

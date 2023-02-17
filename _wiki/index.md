@@ -79,7 +79,6 @@ regenerate: true
 * [[/spring/spring-jdbc]]
 * [[/spring/spring-graceful-shutdown]]
 * [[/spring/spring-batch]]
-* [[/spring/spring-backpressure]]
 * [[/spring/spring-security]]
 * [[/spring/spring-componentscan]]
 * [[/spring/spring-jar-bootjar]]
@@ -107,6 +106,7 @@ regenerate: true
 * [[/reactive/reactive-observable]]
 * [[/reactive/reactive-marble-diagram]]
 * [[/reactive/reactive-streams-specification]]
+* [[/reactive/reactive-backpressure]]
 
 ## msa
 

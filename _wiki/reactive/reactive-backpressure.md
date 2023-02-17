@@ -39,6 +39,27 @@ latex   : true
   - Spring Webflux 내에서 [Project Reactor](https://projectreactor.io/docs/core/release/reference/#reactive.backpressure) 가 Backpressure 를 담당
   - ![](/resource/wiki/spring-backpressure/backpressure-handling.png)
 
+### Subscription Specification
+
+__The [Reactive Streams](https://baekjungho.github.io/wiki/reactive/reactive-streams-specification/) Subscription interface:__
+
+```java
+package org.reactivestreams;
+
+public interface Subscription {
+  public void request(long n);
+  public void cancel();
+}
+```
+
+The request method of the __Subscription interface in the Reactive Streams specification is used to implement backpressure__.
+
+Backpressure is a technique used in reactive programming to prevent overwhelming a downstream component with more data than it can handle. In a reactive system, a publisher produces data, and a subscriber consumes the data. If the publisher produces data faster than the subscriber can consume it, the subscriber can become overloaded, causing problems like increased memory usage, slower performance, or even crashes.
+
+To avoid this, the Reactive Streams specification provides a mechanism for the subscriber to request a certain amount of data from the publisher at a time. This is done using the request method of the Subscription interface. When the subscriber is ready to receive more data, it calls the request method with the number of elements it wants to receive. The publisher then sends that number of elements to the subscriber, which can process them at its own pace. Once the subscriber has processed the requested amount of data, it can call request again to request more data.
+
+By using the request method to control the flow of data, the subscriber can prevent itself from being overwhelmed with data, and the publisher can avoid sending more data than the subscriber can handle. This helps ensure that the system is stable, performs well, and avoids problems like memory leaks or other resource constraints.
+
 ## Links
 
 - [Backpressure explained — the resisted flow of data through software](https://medium.com/@jayphelps/backpressure-explained-the-flow-of-data-through-software-2350b3e77ce7)

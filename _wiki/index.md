@@ -107,6 +107,7 @@ regenerate: true
 * [[/reactive/reactive-marble-diagram]]
 * [[/reactive/reactive-streams-specification]]
 * [[/reactive/reactive-backpressure]]
+* [[/reactive/reactive-hot-cold]]
 
 ## msa
 

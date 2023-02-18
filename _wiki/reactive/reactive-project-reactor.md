@@ -27,7 +27,7 @@ latex   : true
 - __reactor.adapter.JdkFlowAdapter__: Java9 Flow API 와 Flow 의 상호간 변환을 위한 어댑터
 - __reactor.core__: Reactor is fully non-blocking and provides efficent demand management. It directly interacts with Java's Functional APIs. CompletableFuture, Stream, Duration.
 
-#### CorePublisher
+### CorePublisher
 
 react.core 에 존재하는 인터페이스.
 
@@ -127,7 +127,7 @@ Context passing is a powerful feature of reactive programming that allows you to
 
 [Mono.subscriberContext methods are deprecated, but javadoc do not describe use what to replace them #2572](https://github.com/reactor/reactor-core/issues/2572)
 
-#### CoreSubscriber
+### CoreSubscriber
 
 __Signatures:__
 

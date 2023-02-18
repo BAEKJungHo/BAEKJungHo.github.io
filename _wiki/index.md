@@ -108,6 +108,7 @@ regenerate: true
 * [[/reactive/reactive-streams-specification]]
 * [[/reactive/reactive-backpressure]]
 * [[/reactive/reactive-hot-cold]]
+* [[/reactive/reactive-project-reactor]]
 
 ## msa
 

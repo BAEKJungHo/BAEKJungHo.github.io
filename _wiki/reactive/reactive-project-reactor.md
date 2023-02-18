@@ -222,7 +222,7 @@ Disposable disposable = somePublisher.subscribe(someSubscriber);
 disposable.dispose();
 ```
 
-놀랍게도 Spring WebFlux 를 사용하면, Spring WebFlux 엔드포인트 핸들러 메서드에서 Mono 또는 Flux 를 반환하면 프레임워크가 사용자를 대신하여 Mono 또는 Flux를 구독하고 응답이 클라이언트로 전송될 때 구독을 자동으로 폐기합니다. 즉, Mono 또는 Flux 에서 획득한 리소스를 해제하기 위해 dispose() 메서드를 수동으로 호출할 필요가 없다.
+놀랍게도 Spring WebFlux 를 사용하면, Spring WebFlux 엔드포인트 핸들러 메서드에서 Mono 또는 Flux 를 반환하면 프레임워크가 사용자를 대신하여 Mono 또는 Flux를 구독하고 응답이 클라이언트로 전송될 때 구독을 자동으로 폐기한다. 즉, Mono 또는 Flux 에서 획득한 리소스를 해제하기 위해 dispose() 메서드를 수동으로 호출할 필요가 없다.
 
 ```java
 // No need to deal with code for resource release.

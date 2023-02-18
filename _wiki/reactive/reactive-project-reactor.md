@@ -4,7 +4,7 @@ title   : Deepdive in ProjectReactor
 summary : 
 date    : 2023-02-16 15:05:32 +0900
 updated : 2023-02-16 15:15:24 +0900
-tag     : reactive
+tag     : reactive webflux
 toc     : true
 comment : true
 public  : true

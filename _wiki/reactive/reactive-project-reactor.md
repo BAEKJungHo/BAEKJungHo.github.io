@@ -123,7 +123,7 @@ In this example, we are using the map operator to first concatenate each string 
 
 Context passing is a powerful feature of reactive programming that allows you to propagate important context information throughout the stream, making it available to all operators in the stream. This can simplify your code and make it easier to work with reactive streams.
 
-그러나 subscriberContext deprecated 된 것으로 보인다. 대신 `Mono.deferContextual(Mono::just)` 를 사용하면 된다.
+그러나 subscriberContext 가 deprecated 된 것으로 보인다. 대신 __Mono.deferContextual(Mono::just)__ 를 사용하면 된다.
 
 [Mono.subscriberContext methods are deprecated, but javadoc do not describe use what to replace them #2572](https://github.com/reactor/reactor-core/issues/2572)
 
@@ -140,7 +140,7 @@ __Methods__
 - default currentContext()
 - void onSubscribe(Subscription s)
   - Implementors should initialize any state used by Subscriber.onNext(Object) before calling Subscription.request(long).
-  - 해석하면 .. 구현자는 Subscription.request(long)를 호출하기 전에 Subscriber.onNext(Object)에서 사용하는 모든 상태를 초기화해야 합니다. 즉, Subscriber.onNext(Object) 에서 사용되는 `상태` 를 초기화 해야한다는 의미.
+  - 해석하면 .. 구현자는 Subscription.request(long)를 호출하기 전에 Subscriber.onNext(Object)에서 사용하는 모든 `상태`를 초기화해야 한다. 즉, Subscriber.onNext(Object) 에서 사용되는 `상태` 를 초기화 해야한다는 의미.
 
 ```java
 public class AccumulatingSubscriber<T> implements Subscriber<T> {
@@ -176,6 +176,107 @@ public class AccumulatingSubscriber<T> implements Subscriber<T> {
 In this example, the AccumulatingSubscriber class initializes an instance variable called accumulator in the constructor. This variable is used to store the accumulated value of the items that the subscriber receives. In the onNext method, the value of each item is added to the accumulator, and then the next item is requested. Finally, in the onComplete method, the accumulated value is printed out.
 
 Before calling subscription.request(1) in the onSubscribe method, the AccumulatingSubscriber class has already initialized the accumulator variable to a valid starting value (in this case, zero). This ensures that the subscriber is in a valid state to start receiving items from the publisher.
+
+### Disposable
+
+__Signatures:__
+
+```java
+@FunctionalInterface
+public interface Disposable
+```
+
+__Roles:__
+- Indicates that a task or resource can be cancelled/disposed.
+
+__Methods:__
+- void dispose(): `Cancel` or `dispose` the underlying task or resource. __리소스 해제 역할을 담당__
+- default boolean isDisposed(): Optionally return true when the resource or task is disposed.
+
+__cancelling and disposing:__
+
+In reactive programming, "cancelling" and "disposing" are often used interchangeably to mean that a task or resource should be cleaned up and released. However, there can be some subtle differences in how the terms are used depending on the context.
+
+In general, "cancelling" is often used to refer to stopping an ongoing computation or operation. For example, when you call the cancel method on a subscription to a publisher, you are telling the publisher to stop sending any more items to the subscriber. Similarly, when you cancel a running thread or task, you are telling it to stop executing its work and clean up any resources it has allocated.
+
+On the other hand, "disposing" is often used to refer to cleaning up and releasing resources that were acquired by an object. For example, when you dispose of an object that implements the AutoCloseable interface, you are telling it to release any resources that it was holding, such as file handles, network connections, or database connections. Similarly, when you dispose of an object that is no longer needed, you are telling the system to release any memory or other resources that it was using.
+
+In some cases, the terms "cancelling" and "disposing" can be used interchangeably, especially if the task or resource in question involves both ongoing computation and acquired resources. For example, if you have a long-running task that is reading from a network connection, you might use the term "cancelling" to refer to stopping the task and the term "disposing" to refer to releasing the network connection.
+
+In summary, "cancelling" and "disposing" are often used interchangeably to mean cleaning up and releasing resources, but there can be some subtle differences in how the terms are used depending on the context.
+
+Publisher 의 subscribe 메서드를 호출한다고 dispose 되는 것은 아님
+
+When you call the subscribe() method on a Subscriber, the Disposable that is returned allows you to cancel or dispose of the subscription at a later time. It does not necessarily mean that the resource is immediately released as soon as you call subscribe().
+
+In reactive programming, the __Disposable interface is used to allow the user to release resources that were acquired by a subscription__. __The Disposable interface has a dispose() method that can be called to release any resources that were acquired by the subscription__. The subscribe() method returns a Disposable so that the user can keep track of the subscription and release any acquired resources when they are no longer needed.
+
+Here is an example that demonstrates __how to use the Disposable interface to release resources acquired by a subscription__:
+
+```java
+Disposable disposable = somePublisher.subscribe(someSubscriber);
+
+// ...
+
+// When you are done with the subscription, call dispose() to release any acquired resources
+disposable.dispose();
+```
+
+놀랍게도 Spring WebFlux 를 사용하면, Spring WebFlux 엔드포인트 핸들러 메서드에서 Mono 또는 Flux 를 반환하면 프레임워크가 사용자를 대신하여 Mono 또는 Flux를 구독하고 응답이 클라이언트로 전송될 때 구독을 자동으로 폐기합니다. 즉, Mono 또는 Flux 에서 획득한 리소스를 해제하기 위해 dispose() 메서드를 수동으로 호출할 필요가 없다.
+
+```java
+// No need to deal with code for resource release.
+@GetMapping("/users/{id}")
+public Mono<User> getUserById(@PathVariable String id) {
+    return userRepository.findById(id);
+}
+```
+
+In this example, the getUserById method returns a Mono<User> that is obtained from a userRepository instance. When the endpoint is called, Spring WebFlux will automatically subscribe to the Mono and return the User object to the client. After the response has been sent, Spring WebFlux will automatically dispose of the subscription, which means that any resources that were acquired by the Mono will be released.
+
+Similarly, you can return a Flux from a Spring WebFlux endpoint handler method, and Spring WebFlux will take care of disposing the subscription when the response has been sent to the client.
+
+In summary, in Spring WebFlux, you don't have to explicitly dispose of a Mono or Flux because the framework will handle it for you automatically. When you return a Mono or Flux from an endpoint handler method, Spring WebFlux will automatically subscribe to it, send the response to the client, and dispose of the subscription when the response has been sent.
+
+#### How to cancelling ?
+
+__Example 1: Using a Disposable__
+
+```java
+Disposable disposable = somePublisher.subscribe(someSubscriber);
+
+// ...
+
+// When you are done with the subscription, call dispose() to cancel it
+disposable.dispose();
+```
+
+__Example 2: Using a Subscription__
+
+```java
+Subscription subscription = somePublisher.subscribe(someSubscriber);
+
+// ...
+
+// When you are done with the subscription, call cancel() to cancel it
+subscription.cancel(); // 구독 취소
+```
+
+__Example 3: Using a Disposable from a Flux__
+
+```java
+Flux<Integer> flux = Flux.range(1, 10);
+Disposable disposable = flux.subscribe(
+    value -> System.out.println("Received value: " + value),
+    error -> System.err.println("Error: " + error),
+    () -> System.out.println("Subscription complete")
+);
+
+// ...
+
+// When you want to cancel the subscription, call dispose() on the Disposable
+disposable.dispose();
+```
 
 ## Links
 

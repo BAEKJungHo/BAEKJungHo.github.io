@@ -348,7 +348,7 @@ __Roles:__
 - A domain representation of a Reactive Stream signal. There are 4 distinct signals and their possible sequence is defined as such: `onError | (onSubscribe onNext* (onError | onComplete)?)`
   - onError, onSubscribe, onComplete, onNext 는 Subscriber Interface 의 API 이다.
 
-1. __Combining multiple streams__: In this example, we have two Flux streams that we want to combine into a single stream using the zip() operator. We also want to log each Signal in the resulting stream:
+__Combining multiple streams__: In this example, we have two Flux streams that we want to combine into a single stream using the zip() operator. We also want to log each Signal in the resulting stream:
 
 ```java
 Flux<Integer> stream1 = Flux.just(1, 2, 3);
@@ -363,7 +363,7 @@ Flux.zip(stream1, stream2)
     .subscribe();
 ```
 
-2. __Handling errors__: In this example, we have a Mono stream that may emit an error signal. We want to log the error if it occurs, and then continue processing the stream as normal:
+__Handling errors__: In this example, we have a Mono stream that may emit an error signal. We want to log the error if it occurs, and then continue processing the stream as normal:
 
 ```java
 Mono.just("foo")
@@ -380,7 +380,7 @@ Mono.just("foo")
     .subscribe();
 ```
 
-3. __Using Signal in custom operators__: You can also use Signal to implement custom operators that work with the metadata of the stream. For example, the following operator takes a Flux of Signals, filters out any onNext() signals with a value less than 0, and then converts the resulting Signals back into onNext() events:
+__Using Signal in custom operators__: You can also use Signal to implement custom operators that work with the metadata of the stream. For example, the following operator takes a Flux of Signals, filters out any onNext() signals with a value less than 0, and then converts the resulting Signals back into onNext() events:
 
 ```java
 Flux<Integer> stream = Flux.just(1, -2, 3, -4, 5);
@@ -397,6 +397,73 @@ stream.materialize()
     .dematerialize()
     .subscribe(System.out::println);
 ```
+
+### FluxSink
+
+__Signatures:__
+
+```java
+public interface FluxSink<T>
+```
+
+__Roles:__
+- Wrapper API around a downstream Subscriber for emitting any number of next signals followed by zero or one onError/onComplete.
+
+__OverflowStrategy: Backpressure 를 위한 전략__
+
+Overflow strategy is a concept in Project Reactor that defines how to handle situations when the downstream subscriber of a reactive stream is unable to keep up with the rate at which events are being emitted.
+
+The basic strategy is to define what should happen when the buffer used to hold emitted events is full. There are several different overflow strategies that you can use, and the choice of strategy depends on the requirements of your specific use case.
+
+- __BUFFER__: In this strategy, the emitted events are buffered in a queue until the downstream subscriber can consume them. This is the default strategy for most reactive streams in Project Reactor.
+- __DROP__: In this strategy, any emitted event that cannot be immediately consumed by the downstream subscriber is dropped.
+- __LATEST__: In this strategy, any emitted event that cannot be immediately consumed by the downstream subscriber replaces the previous un-consumed event in the buffer. This ensures that the most recent event is always available for consumption.
+- __ERROR__: In this strategy, an error is thrown when the buffer is full and the downstream subscriber cannot consume any more events.
+- __IGNORE__: In this strategy, any emitted event that cannot be immediately consumed by the downstream subscriber is ignored. This can lead to loss of data.
+
+The choice of overflow strategy depends on the requirements of your specific use case. For example, if you want to ensure that the most recent event is always available for consumption, you can use the LATEST strategy. If you want to avoid loss of data, you can use the BUFFER strategy. If you want to avoid buffering and drop any un-consumed events, you can use the DROP strategy.
+
+만약, BUFFER Overflow Strategy 를 사용하는 경우 (기본 전략이긴 함) Queue 가 가득차면 어떤 현상이 발생할까 ?
+
+프로젝트 리액터에서 버퍼 오버플로 전략을 사용할 때, 방출된 이벤트를 유지하는 데 사용되는 대기열이 가득 차서 다운스트림 가입자가 방출 속도를 따라가지 못할 경우, 동작은 생산자가 동기식인지 비동기식인지에 따라 달라진다.
+
+동기식 생산자의 경우, 생산자는 대기열에 사용 가능한 공간이 있을 때까지 차단한다. 즉, 대기열이 가득 차면 공간을 사용할 수 있게 될 때까지 생성자가 이벤트 전송을 중지한다. 다운스트림 가입자도 대기열이 지워지기를 기다리는 경우 이로 인해 교착 상태가 발생할 수 있다.
+
+비동기 생산자의 경우 생산자는 계속해서 이벤트를 방출하지만, 대기열이 가득 차면 추가로 방출된 이벤트는 메모리에서 버퍼링된다. 이로 인해 메모리 사용량이 증가하고 버퍼가 너무 커지면 메모리 부족 오류가 발생할 수 있다.
+
+이러한 문제를 방지하려면 특정 사용 사례의 요구 사항에 따라 적절한 오버플로 전략을 사용하는 것이 중요다. 예를 들어, 동기화된 생산자와 함께 작업하는 경우 차단할 여유가 없는 경우 DROP 또는 ERROR 와 같은 다른 오버플로 전략을 사용하는 것을 고려할 수 있다. 또는 비동기 생산자와 함께 작업하는 경우 과도한 메모리 사용을 방지하려면 버퍼 크기가 제한된 버퍼 전략을 사용하는 것을 고려할 수 있다.
+
+__Spring WebFlux Default Overflow Strategy:__
+-  Spring WebFlux 에서 사용하는 기본 전략은 __BUFFER_OVERFLOW__ 이다. 이 전략은 특정 지점까지 이벤트를 버퍼링한 다음 용량에 도달하면 버퍼에서 가장 오래된 이벤트를 삭제하기 시작한다.
+
+__LATEST 전략을 사용하는 경우:__
+
+```java
+Flux.create(sink -> {
+    for (int i = 1; i <= 10; i++) {
+        sleep(1000); // simulate a slow producer
+        sink.next(i);
+    }
+}, OverflowStrategy.LATEST)
+.subscribe(System.out::println);
+
+// Output: 1 2 3 4 5 6 7 8 9 10
+```
+
+만약, sleep(1000) 메서드를 삭제한다면 그만 큼 버퍼가 빨리 채워지고, 버퍼가 가득차면 최신 이벤트를 제외하고 나머지를 삭제하므로 아래와 같은 결과가 나올 수 있다.
+
+```java
+// Output: 10
+```
+
+### MonoSink
+
+Mono 는 0 or 1개의 아이템만 방출하기 때문에 OverflowStrategy 가 필요 없다.
+
+The MonoSink either emits a single item, or none at all, so there is no risk of overflowing a buffer.
+
+Therefore, MonoSink does not have an overflow strategy property. It only has the success() and error(Throwable) methods for emitting a single success value or an error respectively.
+
 
 ## Links
 

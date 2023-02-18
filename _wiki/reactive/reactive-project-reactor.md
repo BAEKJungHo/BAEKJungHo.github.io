@@ -222,7 +222,7 @@ Disposable disposable = somePublisher.subscribe(someSubscriber);
 disposable.dispose();
 ```
 
-놀랍게도 Spring WebFlux 를 사용하면, Spring WebFlux 엔드포인트 핸들러 메서드에서 Mono 또는 Flux 를 반환하면 프레임워크가 사용자를 대신하여 Mono 또는 Flux를 구독하고 응답이 클라이언트로 전송될 때 구독을 자동으로 폐기한다. 즉, Mono 또는 Flux 에서 획득한 리소스를 해제하기 위해 dispose() 메서드를 수동으로 호출할 필요가 없다.
+놀랍게도 Spring WebFlux 를 사용하면, Spring WebFlux 엔드포인트 핸들러 메서드에서 Mono 또는 Flux 를 반환하면 프레임워크가 사용자를 대신하여 Mono 또는 Flux를 구독하고 응답이 클라이언트로 전송될 때 구독을 자동으로 폐기 한다. 즉, Mono 또는 Flux 에서 획득한 리소스를 해제하기 위해 dispose() 메서드를 수동으로 호출할 필요가 없다.
 
 ```java
 // No need to deal with code for resource release.
@@ -232,7 +232,13 @@ public Mono<User> getUserById(@PathVariable String id) {
 }
 ```
 
-In this example, the getUserById method returns a Mono<User> that is obtained from a userRepository instance. When the endpoint is called, Spring WebFlux will automatically subscribe to the Mono and return the User object to the client. After the response has been sent, Spring WebFlux will automatically dispose of the subscription, which means that any resources that were acquired by the Mono will be released.
+__Spring WebFlux 에 의해 내부적으로 처리되는 작업:__
+
+1. __onSubscribe and request__: 클라이언트가 Mono 객체를 구독할 때(일반적으로 응답을 작성할 때 Spring WebFlux 에 의해 암묵적으로 수행됨) `Mono<User>` 객체의 구독 메서드가 호출되며, 이는 다시 구독자의 onSubscribe 메서드를 호출한다. 구독자의 onSubscribe 메서드는 구독의 request(1) 메서드를 호출하여 `Mono<User>` 개체가 하나의 항목을 내보내도록 요청한다.
+2. __onNext__: `Mono<User>` 개체가 항목(즉, User 개체)을 내보내는 경우, 내보낸 User 개체를 사용하여 구독자의 onNext 메서드가 호출된다. 이 때 사용자 개체가 JSON 으로 직렬화되어 응답 본문의 클라이언트로 다시 전송된다.
+3. __dispose__: 모든 작업이 끝나고 Spring WebFlux 가 리소스를 해제한다.
+
+In this example, the getUserById method returns a `Mono<User>` that is obtained from a userRepository instance. When the endpoint is called, Spring WebFlux will automatically subscribe to the Mono and return the User object to the client. After the response has been sent, Spring WebFlux will automatically dispose of the subscription, which means that any resources that were acquired by the Mono will be released.
 
 Similarly, you can return a Flux from a Spring WebFlux endpoint handler method, and Spring WebFlux will take care of disposing the subscription when the response has been sent to the client.
 
@@ -276,6 +282,120 @@ Disposable disposable = flux.subscribe(
 
 // When you want to cancel the subscription, call dispose() on the Disposable
 disposable.dispose();
+```
+
+### Fuseable
+
+__Signatures:__
+
+```java
+public interface Fuseable
+```
+
+__Roles:__
+- A micro API for stream fusion, in particular marks producers that support a Fuseable.QueueSubscription.
+
+Mono 의 just 메서드 또는 Flux 의 range 메서드 등의 구현을 보면 Fuseable 인터페이스를 구현하고 있다. __Fuseable 인터페이스를 구현하면 Stream 작업을 융합할 수 있다__.
+
+```java
+Mono<Integer> mono = Mono.just(1)
+        .map(i -> i * 2)
+        .filter(i -> i % 3 == 0)
+        .map(i -> i / 3)
+        .log();
+
+if (mono instanceof Fuseable) {
+    System.out.println("Fuseable supported");
+    Mono<Integer> fusedMono = mono
+            .map(i -> i * 100)
+            .map(i -> i / 100)
+            .log();
+    fusedMono.subscribe();
+} else {
+    System.out.println("Fuseable not supported");
+    mono.subscribe();
+}
+
+Flux<Integer> flux = Flux.range(1, 5)
+        .map(i -> i * 10)
+        .filter(i -> i % 20 == 0)
+        .map(i -> i / 20)
+        .log();
+
+if (flux instanceof Fuseable) {
+    System.out.println("Fuseable supported");
+    Flux<Integer> fusedFlux = flux
+            .map(i -> i * 100)
+            .map(i -> i / 100)
+            .log();
+    fusedFlux.subscribe();
+} else {
+    System.out.println("Fuseable not supported");
+    flux.subscribe();
+}
+```
+
+### Signal
+
+__Signatures:__
+
+```java
+public interface Signal<T>
+extends Supplier<T>, Consumer<Subscriber<? super T>>
+```
+
+__Roles:__
+- A domain representation of a Reactive Stream signal. There are 4 distinct signals and their possible sequence is defined as such: `onError | (onSubscribe onNext* (onError | onComplete)?)`
+  - onError, onSubscribe, onComplete, onNext 는 Subscriber Interface 의 API 이다.
+
+1. __Combining multiple streams__: In this example, we have two Flux streams that we want to combine into a single stream using the zip() operator. We also want to log each Signal in the resulting stream:
+
+```java
+Flux<Integer> stream1 = Flux.just(1, 2, 3);
+Flux<String> stream2 = Flux.just("A", "B", "C");
+
+Flux.zip(stream1, stream2)
+    .materialize()
+    .doOnNext(signal -> {
+        System.out.println("Received signal " + signal);
+    })
+    .dematerialize()
+    .subscribe();
+```
+
+2. __Handling errors__: In this example, we have a Mono stream that may emit an error signal. We want to log the error if it occurs, and then continue processing the stream as normal:
+
+```java
+Mono.just("foo")
+    .map(s -> Integer.parseInt(s))
+    .materialize()
+    .doOnNext(signal -> {
+        if (signal.isOnError()) {
+            Throwable error = signal.getThrowable();
+            System.out.println("Error occurred: " + error);
+        }
+    })
+    .dematerialize()
+    .onErrorResume(e -> Mono.empty())
+    .subscribe();
+```
+
+3. __Using Signal in custom operators__: You can also use Signal to implement custom operators that work with the metadata of the stream. For example, the following operator takes a Flux of Signals, filters out any onNext() signals with a value less than 0, and then converts the resulting Signals back into onNext() events:
+
+```java
+Flux<Integer> stream = Flux.just(1, -2, 3, -4, 5);
+
+stream.materialize()
+    .filter(signal -> {
+        if (signal.isOnNext()) {
+            Integer value = (Integer) signal.get();
+            return value >= 0;
+        } else {
+            return true;
+        }
+    })
+    .dematerialize()
+    .subscribe(System.out::println);
 ```
 
 ## Links

@@ -110,6 +110,7 @@ regenerate: true
 * [[/reactive/reactive-hot-cold]]
 * [[/reactive/reactive-project-reactor]]
 * [[/reactive/reactive-replenishing-optimization]]
+* [[/reactive/reactive-avoid-badperformance]]
 
 ## msa
 

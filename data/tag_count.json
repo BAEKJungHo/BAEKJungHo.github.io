@@ -93,7 +93,7 @@
  },
  {
   "name": "kafka",
-  "size": 4
+  "size": 5
  },
  {
   "name": "kotlin",
@@ -165,7 +165,7 @@
  },
  {
   "name": "reactive",
-  "size": 14
+  "size": 18
  },
  {
   "name": "redis",

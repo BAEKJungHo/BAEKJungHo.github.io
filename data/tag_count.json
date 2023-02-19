@@ -206,9 +206,5 @@
  {
   "name": "theory",
   "size": 2
- },
- {
-  "name": "webflux",
-  "size": 1
  }
 ]

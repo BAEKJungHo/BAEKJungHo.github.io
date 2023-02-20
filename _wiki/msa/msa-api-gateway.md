@@ -90,6 +90,7 @@ Overall, flow control in an API gateway is an important aspect of API management
 ## Links
 
 - [Microservice Architecture](http://microservices.io/patterns/microservices.html)
+- [How To Implement Spring Cloud Gateway In Microservices](https://javatechonline.com/how-to-implement-spring-cloud-gateway-in-microservices/)
 - [Netfilx Architecture](https://netflixtechblog.com/optimizing-the-netflix-api-5c9ac715cf19)
 - [InfoQ Architecture](http://www.infoq.com/articles/microservices-intro)
 - [Micro Services: Java, the Unix Way - ThoughtWorks](https://www.infoq.com/presentations/Micro-Services/)

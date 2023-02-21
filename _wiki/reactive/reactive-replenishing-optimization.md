@@ -4,7 +4,7 @@ title   : Replenishing Optimization
 summary : 
 date    : 2023-02-18 15:05:32 +0900
 updated : 2023-02-18 15:15:24 +0900
-tag     : reactive
+tag     : reactive algorithm
 toc     : true
 comment : true
 public  : true

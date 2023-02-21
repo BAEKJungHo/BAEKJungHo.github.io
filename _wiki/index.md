@@ -273,7 +273,7 @@ regenerate: true
 * [[/http/http-headers]]
 * [[/http/http-api-spec]]
 
-## Algorithms
+## Algorithm
 
 * [[/algorithm/algorithm-token-bucket]]
 

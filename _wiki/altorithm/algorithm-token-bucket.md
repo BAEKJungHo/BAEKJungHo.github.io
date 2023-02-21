@@ -75,13 +75,13 @@ class TokenBucket(
 }
 ```
 
-- The __TokenBucket class__, which represents a bucket of tokens that can be consumed at a certain rate.
-- The __capacity property__, which represents the maximum number of tokens that can be stored in the bucket.
-- The __tokens property__, which represents the current number of tokens in the bucket.
-- The __replenishRate property__, which represents the rate at which the bucket is refilled with tokens.
-- The __lastRefillTime property__, which represents the last time the bucket was refilled with tokens.
-- The __consume() method__, which is used to consume a certain number of tokens from the bucket. If there are enough tokens in the bucket, the tokens are consumed and the method returns true. Otherwise, the method returns false.
-- The __refill() method__, which is used to refill the bucket with tokens based on the replenishRate. This method is called before consuming tokens to ensure that the bucket is refilled if necessary.
+- __The TokenBucket class__, which represents a bucket of tokens that can be consumed at a certain rate.
+- __The capacity property__, which represents the maximum number of tokens that can be stored in the bucket.
+- __The tokens property__, which represents the current number of tokens in the bucket.
+- __The replenishRate property__, which represents the rate at which the bucket is refilled with tokens.
+- __The lastRefillTime property__, which represents the last time the bucket was refilled with tokens.
+- __The consume() method__, which is used to consume a certain number of tokens from the bucket. If there are enough tokens in the bucket, the tokens are consumed and the method returns true. Otherwise, the method returns false.
+- __The refill() method__, which is used to refill the bucket with tokens based on the replenishRate. This method is called before consuming tokens to ensure that the bucket is refilled if necessary.
 
 You can create an instance of TokenBucket and use the consume() method to check if a certain number of tokens can be consumed from the bucket. For example:
 

@@ -23,6 +23,14 @@ latex   : true
 
 GC 는 참조 되지 않은 객체를 주기적으로 제거하지만, 참조 중인 객체는 수집하지 않는다. 이 과정에서 Memory Leak 이 발생할 수 있다.
 
+Memory leaks in a JVM can occur due to a variety of reasons, including:
+
+- __Unreleased resources__: When an application acquires a resource like a file handle, database connection, or network socket, it must release the resource when it is no longer needed. Failure to release these resources can lead to memory leaks, as the resources are not released and the application continues to consume more and more memory.
+- __Caches__: Applications may use caches to improve performance by storing frequently used data in memory. If these caches are not managed properly, they can cause memory leaks by storing data that is no longer needed.
+- __Circular references__: Objects that reference each other in a circular pattern can cause memory leaks, as the JVM's garbage collector is unable to detect that these objects are no longer being used and should be garbage collected.
+- __Poorly implemented data structures__: Data structures like linked lists or trees can also cause memory leaks if they are not implemented properly. For example, a linked list node that is not properly removed from the list can cause all subsequent nodes to remain in memory, even if they are no longer needed.
+- __Large objects__: Creating and storing large objects in memory can also cause memory leaks, especially if the objects are not properly managed or released.
+
 ### by static field
 
 - Java 에서 static field 는 실행 중인 애플리케이션 전체 수명과 일치한다. 

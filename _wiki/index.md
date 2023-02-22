@@ -96,6 +96,7 @@ regenerate: true
 * [[/spring/spring-responsebodyadvice]]
 * [[/spring/spring-openapi-impl]]
 * [[/spring/spring-filter]]
+* [[/spring/spring-parameterized-typeref]]
 
 ## reactive
 

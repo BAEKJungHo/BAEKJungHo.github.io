@@ -17,7 +17,7 @@ latex   : true
 ## What is GarbageCollection
 
 Automatic garbage collection is the __process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects__.
-The main purpose of garbage collection is to free up memory space and __prevent memory leaks__, which can cause an application to slow down or crash.
+The main purpose of garbage collection is to free up memory space and __prevent [memory leaks](https://baekjungho.github.io/wiki/java/java-memoryleak/)__, which can cause an application to slow down or crash.
 
 In Java, process of deallocating memory is handled automatically by the garbage collector.
 

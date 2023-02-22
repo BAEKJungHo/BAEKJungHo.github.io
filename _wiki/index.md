@@ -273,6 +273,10 @@ regenerate: true
 * [[/http/http-headers]]
 * [[/http/http-api-spec]]
 
+## Algorithm
+
+* [[/algorithm/algorithm-token-bucket]]
+
 ## DataStructures
 
 * [[/datastructures/datastructures-recursion]]

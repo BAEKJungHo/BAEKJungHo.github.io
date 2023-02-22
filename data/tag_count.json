@@ -1,5 +1,9 @@
 [
  {
+  "name": "algorithm",
+  "size": 3
+ },
+ {
   "name": "architecture",
   "size": 3
  },
@@ -165,7 +169,7 @@
  },
  {
   "name": "reactive",
-  "size": 14
+  "size": 18
  },
  {
   "name": "redis",

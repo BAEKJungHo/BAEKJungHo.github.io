@@ -38,6 +38,7 @@ List<MyObject> myObjects = response.getBody();
 Use ParameterizedTypeReference with Spring's WebClient class:
 
 ```java
+// Return type is Mono<Page<OrderSpec.SearchResponse>>
 return this.webClient.get()
         .uri(builder.build().toUri())
         .retrieve()

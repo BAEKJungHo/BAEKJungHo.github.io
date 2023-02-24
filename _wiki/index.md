@@ -281,6 +281,7 @@ regenerate: true
 ## DataStructures
 
 * [[/datastructures/datastructures-recursion]]
+* [[/datastructures/datastructures-stack-heap]]
 
 ## Javascript
 

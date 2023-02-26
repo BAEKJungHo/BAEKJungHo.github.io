@@ -8,7 +8,7 @@ tag     : ddd architecture
 toc     : true
 comment : true
 public  : true
-parent  : [[/ddd]]
+parent  : [[/architecture]]
 latex   : true
 ---
 * TOC

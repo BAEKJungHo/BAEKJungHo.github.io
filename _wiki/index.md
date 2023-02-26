@@ -11,10 +11,6 @@ regenerate: true
 
 * [[/magazine/magazine-productivity-stability]]
 
-## architecture
-
-* [[/architecture/architecture-character-architectures]]
-
 ## mobility
 
 * [[/mobility/mobility-lidar-radar]]
@@ -22,6 +18,10 @@ regenerate: true
 ## build tool
 
 * [[/buildtool/gradle-standard]]
+
+## architecture
+
+* [[/architecture/architecture-character-architectures]]
 
 ## kotlin
 

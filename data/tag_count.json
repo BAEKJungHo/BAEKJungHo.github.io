@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 3
+  "size": 2
  },
  {
   "name": "auth",
@@ -37,7 +37,7 @@
  },
  {
   "name": "ddd",
-  "size": 16
+  "size": 15
  },
  {
   "name": "designpattern",

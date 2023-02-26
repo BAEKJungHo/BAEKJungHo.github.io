@@ -13,6 +13,7 @@ regenerate: true
 
 ## architecture
 
+* [[/architecture/architecture-character-architectures]]
 
 ## mobility
 

@@ -22,6 +22,7 @@ regenerate: true
 ## architecture
 
 * [[/architecture/architecture-character-architectures]]
+* [[/architecture/architecture-hexagonal]]
 
 ## kotlin
 
@@ -135,6 +136,7 @@ regenerate: true
 * [[/msa/msa-service-discovery]]
 * [[/msa/msa-message-delivery]]
 * [[/msa/msa-debounce-throttle]]
+* [[/msa/msa-distributed-caching]]
 
 ## refactoring
 

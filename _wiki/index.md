@@ -11,6 +11,9 @@ regenerate: true
 
 * [[/magazine/magazine-productivity-stability]]
 
+## architecture
+
+
 ## mobility
 
 * [[/mobility/mobility-lidar-radar]]

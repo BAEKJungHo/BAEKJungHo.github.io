@@ -89,7 +89,7 @@
  },
  {
   "name": "java",
-  "size": 24
+  "size": 25
  },
  {
   "name": "javascript",
@@ -98,6 +98,10 @@
  {
   "name": "jpa",
   "size": 3
+ },
+ {
+  "name": "jvm",
+  "size": 1
  },
  {
   "name": "kafka",

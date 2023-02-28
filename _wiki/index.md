@@ -69,6 +69,7 @@ regenerate: true
 * [[/java/java-mapstruct]]
 * [[/java/java-garbage-collection]]
 * [[/java/java-jvm-warmup]]
+* [[/java/java-jvm-aot]]
 
 ## spring
 

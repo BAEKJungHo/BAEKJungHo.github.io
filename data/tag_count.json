@@ -89,7 +89,7 @@
  },
  {
   "name": "java",
-  "size": 25
+  "size": 26
  },
  {
   "name": "javascript",
@@ -101,7 +101,7 @@
  },
  {
   "name": "jvm",
-  "size": 1
+  "size": 2
  },
  {
   "name": "kafka",
@@ -201,7 +201,7 @@
  },
  {
   "name": "spring",
-  "size": 37
+  "size": 38
  },
  {
   "name": "swagger",

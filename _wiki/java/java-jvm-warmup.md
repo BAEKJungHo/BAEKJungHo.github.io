@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : JVM Optimization with warm up (작성중)
+title   : JVM Optimization with warm up
 summary : 
 date    : 2023-02-25 11:28:32 +0900
 updated : 2023-02-25 12:15:24 +0900

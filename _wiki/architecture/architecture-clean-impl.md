@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Clean Architecture in DDD
+title   : How to Implementation Clean Architecture ?
 summary : Clean Architecture 에 따른 각 Layer 의 구현 방식
 date    : 2022-07-11 15:02:32 +0900
 updated : 2022-07-11 15:12:24 +0900

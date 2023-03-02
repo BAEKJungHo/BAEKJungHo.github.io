@@ -23,6 +23,8 @@ regenerate: true
 
 * [[/architecture/architecture-character-architectures]]
 * [[/architecture/architecture-hexagonal]]
+* [[/architecture/architecture-clean]]
+* [[/architecture/architecture-clean-impl]]
 
 ## kotlin
 
@@ -222,7 +224,6 @@ regenerate: true
 
 * [[/ddd/ddd-quotes]]
 * [[/ddd/ddd-aggregate]]
-* [[/ddd/ddd-clean-architectures]]
 * [[/ddd/ddd-service]]
 * [[/ddd/ddd-factory]]
 * [[/ddd/ddd-bounded-context]]

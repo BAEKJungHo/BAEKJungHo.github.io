@@ -25,6 +25,7 @@ regenerate: true
 * [[/architecture/architecture-hexagonal]]
 * [[/architecture/architecture-clean]]
 * [[/architecture/architecture-clean-impl]]
+* [[/architecture/architecture-analysis-estimation]]
 
 ## kotlin
 

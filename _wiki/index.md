@@ -255,6 +255,7 @@ regenerate: true
 * [[/database/query-optimizing]]
 * [[/database/data-cleansing]]
 * [[/database/data-cascade]]
+* [[/database/database-query-offloading]]
 
 ## Clean Code
 

@@ -16,7 +16,11 @@ latex   : true
 
 ## Query Offloading
 
-Software 에서 Offload Processing 이란 기본적으로 시간이 오래걸리는 작업을 다른 방식으로 처리하는 것을 의미하는 것 같다. Reactive 에서도 [Offload Processing](https://baekjungho.github.io/wiki/reactive/reactive-offload-processing/) 이라는 개념이 있다.
+Software 에서 Offload Processing 이란 기본적으로 시간이 오래걸리는 작업을 다른 방식으로 처리하는 것을 의미하는 것 같다.
+
+__Other Offloading:__
+- [Offload Processing in Reactive](https://baekjungho.github.io/wiki/reactive/reactive-offload-processing/)
+- [SSL Offloading: A Solution For a Slow Website](https://dzone.com/articles/ssl-ofloading-a-solution-for-the-slow-website)
 
 Query Offloading 이란 읽기 처리량을 증가시키기 위한 방법이다. DB 트랜잭션의 70~90% 가 READ 처리이고 나머지가 CUD 이다. 이 Query 와 Command 성 트랜잭션을 분리하는 기법을 의미한다.
 

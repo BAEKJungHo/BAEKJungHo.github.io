@@ -26,6 +26,7 @@ regenerate: true
 * [[/architecture/architecture-clean]]
 * [[/architecture/architecture-clean-impl]]
 * [[/architecture/architecture-analysis-estimation]]
+* [[/architecture/architecture-circuit-breaker]]
 
 ## kotlin
 

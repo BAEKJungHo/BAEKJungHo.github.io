@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 7
+  "size": 8
  },
  {
   "name": "auth",
@@ -21,7 +21,7 @@
  },
  {
   "name": "caching",
-  "size": 1
+  "size": 2
  },
  {
   "name": "cleancode",

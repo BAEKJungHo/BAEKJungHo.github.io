@@ -207,6 +207,11 @@ Commands:
   version            Show the Docker Compose version information
 ```
 
+## Kubernetes vs Docker: Differences Explained
+
+[Kubernetes vs Docker: Differences Explained](https://dzone.com/articles/kubernetes-vs-docker-differences-explained):
+- The scope of Compose is limited to one host, while that of Kubernetes is for a cluster of hosts.
+
 ## Links
 
 - [Dockerizing](https://developerexperience.io/practices/dockerizing)

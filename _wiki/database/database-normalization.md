@@ -4,7 +4,7 @@ title   : Normalization
 summary : 
 date    : 2023-03-03 15:28:32 +0900
 updated : 2023-03-03 18:15:24 +0900
-tag     : database jpa
+tag     : database
 toc     : true
 comment : true
 public  : true

@@ -29,6 +29,7 @@ regenerate: true
 * [[/architecture/architecture-circuit-breaker]]
 * [[/architecture/architecture-cache-strategy]]
 * [[/architecture/architecture-layered]]
+* [[/architecture/architecture-components]]
 
 ## kotlin
 

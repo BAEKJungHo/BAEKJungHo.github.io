@@ -28,6 +28,7 @@ regenerate: true
 * [[/architecture/architecture-analysis-estimation]]
 * [[/architecture/architecture-circuit-breaker]]
 * [[/architecture/architecture-cache-strategy]]
+* [[/architecture/architecture-layered]]
 
 ## kotlin
 

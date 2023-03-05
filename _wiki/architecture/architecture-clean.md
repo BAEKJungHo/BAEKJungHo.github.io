@@ -20,7 +20,7 @@ latex   : true
 
 Entities 는 기업의 업무규칙(고수준 정책) 들을 정의하는 Layer 이며, Use Cases 는 애플리케이션 기능(사용 사례) 을 정의하는 Layer 이다.
 
-Layered Architecture 의 목적인 __"계층을 분리하여 계층간 책임을 명확히 하고 다른 영역에서의 변경으로부터 보호한다."__ 와 [Hexagonal Architecture](https://baekjungho.github.io/wiki/architecture/architecture-hexagonal/) 의 목적인 __"핵심 로직을 주변 Infrastructure 영역으로 부터 분리한다"__ 의 개념이 결합 된 아키텍처라고 생각하면 된다.
+[Layered Architecture](https://baekjungho.github.io/wiki/architecture/architecture-layered/) 의 목적인 __"계층을 분리하여 계층간 책임을 명확히 하고 다른 영역에서의 변경으로부터 보호한다."__ 와 [Hexagonal Architecture](https://baekjungho.github.io/wiki/architecture/architecture-hexagonal/) 의 목적인 __"핵심 로직을 주변 Infrastructure 영역으로 부터 분리한다"__ 의 개념이 결합 된 아키텍처라고 생각하면 된다.
 
 __Layered Architecture Flow:__
 - Presentation > Application > Persistence > Database

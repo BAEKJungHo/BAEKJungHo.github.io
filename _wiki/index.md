@@ -30,6 +30,7 @@ regenerate: true
 * [[/architecture/architecture-cache-strategy]]
 * [[/architecture/architecture-layered]]
 * [[/architecture/architecture-components]]
+* [[/architecture/architecture-lambda]]
 
 ## kotlin
 

@@ -37,7 +37,7 @@ If you have not defined a transaction manager bean with the name "transactionMan
 - If there is no single bean of type PlatformTransactionManager, Spring will look for a single bean of type DataSource. If there is exactly one such bean, it will create a DataSourceTransactionManager using that DataSource as the default transaction manager.
 - If there is no single bean of type PlatformTransactionManager or DataSource, Spring will throw an exception indicating that it could not find a default transaction manager.
 
-- So, if you have not defined a transaction manager bean with the name "fmsTransactionManager" in your code and you haven't defined a default transaction manager bean with the name "transactionManager" either, then Spring will use the above steps to try to find a default transaction manager.
+So, if you have not defined a transaction manager bean with the name "fmsTransactionManager" in your code and you haven't defined a default transaction manager bean with the name "transactionManager" either, then Spring will use the above steps to try to find a default transaction manager.
 
 ## PlatformTransactionManager
 

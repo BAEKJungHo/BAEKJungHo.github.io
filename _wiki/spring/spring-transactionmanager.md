@@ -16,6 +16,8 @@ latex   : true
 
 ## TransactionManager
 
+[Transaction Management](https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/transaction.html)
+
 > Marker interface for Spring transaction manager implementations, either __traditional__ or __reactive__.
 
 ```java
@@ -25,6 +27,17 @@ public interface TransactionManager {
 
 org.springframework.transaction Hierarchy:
 - ![](/resource/wiki/spring-transactionmanager/hierarchy.png)
+
+## How to find TransactionManager Bean by Spring
+
+If you don't specify the transaction manager, the Spring framework will look for a default transaction manager to use. The default transaction manager is typically a bean with the name "transactionManager", so if you have defined a transaction manager bean with this name, it will be used by default.
+
+If you have not defined a transaction manager bean with the name "transactionManager", Spring will try to create a transaction manager using the following steps:
+- Look for a single bean of type PlatformTransactionManager in the application context. If there is exactly one such bean, it will be used as the default transaction manager.
+- If there is no single bean of type PlatformTransactionManager, Spring will look for a single bean of type DataSource. If there is exactly one such bean, it will create a DataSourceTransactionManager using that DataSource as the default transaction manager.
+- If there is no single bean of type PlatformTransactionManager or DataSource, Spring will throw an exception indicating that it could not find a default transaction manager.
+
+- So, if you have not defined a transaction manager bean with the name "fmsTransactionManager" in your code and you haven't defined a default transaction manager bean with the name "transactionManager" either, then Spring will use the above steps to try to find a default transaction manager.
 
 ## PlatformTransactionManager
 

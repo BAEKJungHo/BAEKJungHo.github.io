@@ -37,6 +37,8 @@ Layered Architecture 는 원래 Monolithic 에 가깝기 때문에 분산 아키
 
 대규모 애플리케이션이나 시스템은 모듈러한 아키텍처 스타일이 더 잘 맞는다.
 
+MSA 로 설계를 하다보면 경우에 따라서는 Layer 가 간단한 편이 더 좋은 케이스가 있는데 (대게 Admin 쪽 작업이 그렇다) 그런 경우에는 __Presentation > Domain > Data__ 흐름으로 간단하게 설계하는 것도 방법이다. 이를 [PresentationDomainDataLayering](https://martinfowler.com/bliki/PresentationDomainDataLayering.html) 이라고 한다. 
+
 ## References
 
 - Software Architecture 101 / 마크 리처드, 닐포드 저 / O'REILLY

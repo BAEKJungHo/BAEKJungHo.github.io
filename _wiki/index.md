@@ -31,6 +31,7 @@ regenerate: true
 * [[/architecture/architecture-layered]]
 * [[/architecture/architecture-components]]
 * [[/architecture/architecture-lambda]]
+* [[/architecture/architecture-branchbyabstraction]]
 
 ## kotlin
 

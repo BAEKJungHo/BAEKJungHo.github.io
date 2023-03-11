@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Idempotency Key that resolve consistency issues with retries
 summary : 재시도에 따른 정합성 문제를 멱등키로 해결하기
-date    : 2023-03-09 15:05:32 +0900
-updated : 2023-03-09 15:15:24 +0900
+date    : 2023-03-10 15:05:32 +0900
+updated : 2023-03-10 15:15:24 +0900
 tag     : troubleshooting
 toc     : true
 comment : true

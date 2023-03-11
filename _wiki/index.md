@@ -82,7 +82,8 @@ regenerate: true
 
 ## troubleShooting
 
-* [[/java/java-jvm-aot]]
+* [[/troubleshooting/troubleshooting-thread-block]]
+* [[/troubleshooting/troubleshooting-idempotency]]
 
 ## spring
 

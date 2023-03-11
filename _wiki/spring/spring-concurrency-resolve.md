@@ -4,7 +4,7 @@ title   : Concurrency resolution
 summary : 동시성 이슈 해결방법
 date    : 2022-08-07 00:02:32 +0900
 updated : 2022-08-07 00:15:24 +0900
-tag     : spring concurrency redis lock
+tag     : spring concurrency redis lock troubleshooting
 toc     : true
 comment : true
 public  : true

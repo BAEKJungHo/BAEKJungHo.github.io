@@ -218,5 +218,9 @@
  {
   "name": "theory",
   "size": 2
+ },
+ {
+  "name": "troubleshooting",
+  "size": 3
  }
 ]

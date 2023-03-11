@@ -80,6 +80,10 @@ regenerate: true
 * [[/java/java-jvm-warmup]]
 * [[/java/java-jvm-aot]]
 
+## troubleShooting
+
+* [[/java/java-jvm-aot]]
+
 ## spring
 
 * [[/spring/spring-pojo]]

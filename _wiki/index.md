@@ -7,19 +7,19 @@ comment : false
 regenerate: true
 ---
 
-## magazine
+## Magazine
 
 * [[/magazine/magazine-productivity-stability]]
 
-## mobility
+## Mobility
 
 * [[/mobility/mobility-lidar-radar]]
 
-## build tool
+## Build tool
 
 * [[/buildtool/gradle-standard]]
 
-## architecture
+## Architecture
 
 * [[/architecture/architecture-character-architectures]]
 * [[/architecture/architecture-hexagonal]]
@@ -33,7 +33,7 @@ regenerate: true
 * [[/architecture/architecture-lambda]]
 * [[/architecture/architecture-branchbyabstraction]]
 
-## kotlin
+## Kotlin
 
 * [[/kotlin/kotlin-sequence]]
 * [[/kotlin/kotlin-philosophy]]
@@ -64,7 +64,7 @@ regenerate: true
 * [[/kotlin/kotlin-value-object]]
 * [[/kotlin/kotlin-action-calculate]]
 
-## java
+## Java
 
 * [[/java/execution-java]]
 * [[/java/java-memoryleak]]
@@ -80,12 +80,12 @@ regenerate: true
 * [[/java/java-jvm-warmup]]
 * [[/java/java-jvm-aot]]
 
-## troubleShooting
+## TroubleShooting
 
 * [[/troubleshooting/troubleshooting-thread-block]]
 * [[/troubleshooting/troubleshooting-idempotency]]
 
-## spring
+## Spring
 
 * [[/spring/spring-pojo]]
 * [[/spring/spring-concurrency]]
@@ -119,7 +119,7 @@ regenerate: true
 * [[/spring/spring-filter]]
 * [[/spring/spring-parameterized-typeref]]
 
-## reactive
+## Reactive
 
 * [[/reactive/reactive-duality]]
 * [[/reactive/reactive-reactor-pattern]]
@@ -134,7 +134,7 @@ regenerate: true
 * [[/reactive/reactive-replenishing-optimization]]
 * [[/reactive/reactive-avoid-badperformance]]
 
-## msa
+## MSA
 
 * [[/msa/msa-business-agility]]
 * [[/msa/msa-iac]]
@@ -154,28 +154,28 @@ regenerate: true
 * [[/msa/msa-debounce-throttle]]
 * [[/msa/msa-distributed-caching]]
 
-## refactoring
+## Refactoring
 
 * [[/refactoring/refactoring-prerequisite]]
 * [[/refactoring/refactoring-parallelchange]]
 * [[/refactoring/refactoring-local-variable]]
 * [[/refactoring/refactoring-aliasbug]]
 
-## docker
+## Docker
 
 * [[/docker/docker-container]]
 * [[/docker/docker-dockerizing]]
 
-## kubernetes
+## Kubernetes
 
 * [[/kubernetes/kubernetes-architecture]]
 
-## kafka
+## Kafka
 
 * [[/kafka/kafka-basic]]
 * [[/kafka/kafka-acknowledgement]]
 
-## infra
+## Infra
 
 * [[/infra/infra-cloud]]
 * [[/infra/infra-network-segmentation]]
@@ -203,7 +203,7 @@ regenerate: true
 * [[/infra/infra-k6]]
 * [[/infra/infra-rds-aurora]]
 
-## git
+## Git
 
 * [[/git/git-basic]]
 * [[/git/git-internal]]
@@ -211,18 +211,18 @@ regenerate: true
 * [[/git/git-trunk-based-development]]
 * [[/git/git-rebase]]
 
-## gpt
+## GPT
 
 * [[/gpt/gpt-chat-use]]
 
-## auth
+## Auth
 
 * [[/auth/auth-hmac]]
 * [[/auth/auth-jwt]]
 * [[/auth/auth-oauth]]
 * [[/auth/auth-scram]]
 
-## design pattern
+## Design pattern
 
 * [[/designpattern/designpattern-singleton]]
 * [[/designpattern/designpattern-template-method]]
@@ -232,7 +232,7 @@ regenerate: true
 * [[/designpattern/designpattern-chain-of-responsibility]]
 * [[/designpattern/designpattern-callback]]
 
-## ddd
+## DDD
 
 * [[/ddd/ddd-quotes]]
 * [[/ddd/ddd-aggregate]]
@@ -268,6 +268,7 @@ regenerate: true
 * [[/database/data-cascade]]
 * [[/database/database-query-offloading]]
 * [[/database/database-normalization]]
+* [[/database/database-replication]]
 
 ## Clean Code
 

@@ -269,6 +269,7 @@ regenerate: true
 * [[/database/database-query-offloading]]
 * [[/database/database-normalization]]
 * [[/database/database-replication]]
+* [[/database/database-partitioning]]
 
 ## Clean Code
 

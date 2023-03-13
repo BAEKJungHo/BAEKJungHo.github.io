@@ -87,7 +87,7 @@ MySQL vs PostgreSQL 선택의 기준에 대한 다양한 블로그 글들을 참
 
 복잡한 쿼리 처리?..
 
-[우아한형제들 - Aurora MySQL vs Aurora PostgreSQL](https://techblog.woowahan.com/6550/) 글을 보니 PostgreSQL 의 이점이 왜 복잡한 쿼리 처리에 더 적합한지 알 수 있었다.
+[우아한형제들 - Aurora MySQL vs Aurora PostgreSQL](https://techblog.woowahan.com/6550/) 글을 보니 PostgreSQL 이 복잡한 쿼리 처리에 더 적합하단 이유를 알 수 있었다.
 
 > MySQL 에서는 멀티쓰레드 환경 및 제한된 join 방식 제공으로 복잡한 쿼리나 대량 데이터 처리에서는 불리한 요소로 작용함. 또한 데이터 크기가 커질수록 테이블의 구조 변경이나 인덱스 생성 작업에도 상당한 시간이 소요되는데, 이러한 점들을 개선하기 위해 대량 데이터 처리에 특화돼 있다는 PostgreSQL 로의 이관을 고민하게 되었다고 함.
 > 

@@ -33,7 +33,11 @@
  },
  {
   "name": "database",
-  "size": 14
+  "size": 15
+ },
+ {
+  "name": "datastructure",
+  "size": 1
  },
  {
   "name": "datastructures",
@@ -94,6 +98,10 @@
  {
   "name": "javascript",
   "size": 2
+ },
+ {
+  "name": "jdk",
+  "size": 1
  },
  {
   "name": "jpa",

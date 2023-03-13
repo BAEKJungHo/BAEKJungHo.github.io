@@ -309,6 +309,7 @@ regenerate: true
 
 * [[/datastructures/datastructures-recursion]]
 * [[/datastructures/datastructures-stack-heap]]
+* [[/datastructures/datastructures-hash]]
 
 ## Javascript
 

@@ -10,6 +10,7 @@ regenerate: true
 ## Magazine
 
 * [[/magazine/magazine-productivity-stability]]
+* [[/magazine/magazine-objects-reduce-dependency]]
 
 ## Mobility
 

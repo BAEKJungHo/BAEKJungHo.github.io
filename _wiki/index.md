@@ -233,6 +233,7 @@ regenerate: true
 * [[/designpattern/designpattern-intercepting-filter]]
 * [[/designpattern/designpattern-chain-of-responsibility]]
 * [[/designpattern/designpattern-callback]]
+* [[/designpattern/designpattern-proxy]]
 
 ## DDD
 

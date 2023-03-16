@@ -79,7 +79,7 @@ __TargetClass:__
 ```kotlin
 class TargetClass: Target {
 
-    fun action() {
+    override fun action() {
         println("do action")
     }
 }
@@ -134,7 +134,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-정상적으로 동작하는 것을 알 수 있다.
+정상적으로 동작하는 것을 알 수 있다. 아래 처럼 람다를 사용할 수도 있다.
 
 __Using Lambda:__
 

@@ -82,6 +82,7 @@ regenerate: true
 * [[/java/java-jvm-warmup]]
 * [[/java/java-jvm-aot]]
 * [[/java/java-dynamicproxy]]
+* [[/java/java-cglib]]
 
 ## TroubleShooting
 

@@ -4,7 +4,7 @@ title   : DynamicProxy
 summary : 
 date    : 2023-03-16 11:28:32 +0900
 updated : 2023-03-16 12:15:24 +0900
-tag     : java proxy
+tag     : java proxy spring
 toc     : true
 comment : true
 public  : true

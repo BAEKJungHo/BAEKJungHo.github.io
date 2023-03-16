@@ -93,7 +93,7 @@
  },
  {
   "name": "java",
-  "size": 27
+  "size": 28
  },
  {
   "name": "javascript",
@@ -185,7 +185,7 @@
  },
  {
   "name": "proxy",
-  "size": 4
+  "size": 5
  },
  {
   "name": "reactive",
@@ -213,7 +213,7 @@
  },
  {
   "name": "spring",
-  "size": 38
+  "size": 40
  },
  {
   "name": "swagger",

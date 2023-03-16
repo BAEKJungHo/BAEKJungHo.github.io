@@ -122,6 +122,7 @@ regenerate: true
 * [[/spring/spring-openapi-impl]]
 * [[/spring/spring-filter]]
 * [[/spring/spring-parameterized-typeref]]
+* [[/spring/spring-aop]]
 
 ## Reactive
 

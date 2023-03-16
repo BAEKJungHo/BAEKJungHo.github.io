@@ -185,7 +185,7 @@
  },
  {
   "name": "proxy",
-  "size": 5
+  "size": 6
  },
  {
   "name": "reactive",
@@ -213,7 +213,7 @@
  },
  {
   "name": "spring",
-  "size": 40
+  "size": 41
  },
  {
   "name": "swagger",

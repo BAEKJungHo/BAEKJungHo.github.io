@@ -1,1 +1,1 @@
-["designpattern/designpattern-decorator","designpattern/designpattern-proxy","infra/infra-reverse-proxy","java/java-cglib","java/java-dynamicproxy"]
+["designpattern/designpattern-decorator","designpattern/designpattern-proxy","infra/infra-reverse-proxy","java/java-cglib","java/java-dynamicproxy","spring/spring-aop"]

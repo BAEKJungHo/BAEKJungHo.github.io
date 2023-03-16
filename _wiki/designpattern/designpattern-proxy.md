@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Proxy (작성중)
+title   : Proxy
 summary : 
 date    : 2023-03-15 15:28:32 +0900
 updated : 2023-03-15 18:15:24 +0900
@@ -113,6 +113,113 @@ fun main() {
     // Print the list of products
     println("Products:")
     products.forEach { println(it.name) }
+}
+```
+
+### Virtual Proxy
+
+객체 생성 작업이 무거울때 사용하는 Lazy Initialization 방식
+
+First, we define the subject interface that defines the operations for loading and displaying the image:
+
+```kotlin
+interface Image {
+    fun display()
+}
+```
+
+Next, we define the real subject class that implements the Image interface and loads the actual image:
+
+```kotlin
+class RealImage(private val filename: String) : Image {
+    init {
+        loadFromDisk()
+    }
+
+    private fun loadFromDisk() {
+        // Load the image from the disk
+        println("Loading image from disk: $filename")
+    }
+
+    override fun display() {
+        // Display the image
+        println("Displaying image: $filename")
+    }
+}
+```
+
+Now, we define the virtual proxy class that implements the Image interface and creates the real subject object only when it is needed:
+
+```kotlin
+class VirtualImage(private val filename: String) : Image {
+    private var realImage: RealImage? = null
+
+    override fun display() {
+        // Create the real image object only when it is needed
+        if (realImage == null) {
+            realImage = RealImage(filename)
+        }
+
+        // Display the image
+        realImage?.display()
+    }
+}
+```
+
+### Protection Proxy
+
+보호 프록시의 목적은 접근 권한을 제어하는 것이다.
+
+First, we define the subject interface that defines the operations for accessing the information:
+
+```kotlin
+interface InformationService {
+    fun getInformation(): String
+}
+```
+
+Next, we define the real subject class that implements the InformationService interface and provides access to the sensitive information:
+
+```kotlin
+class RealInformationService : InformationService {
+    override fun getInformation(): String {
+        return "Sensitive information"
+    }
+}
+```
+
+Now, we define the protection proxy class that implements the InformationService interface and checks the permissions before granting access to the sensitive information:
+
+```kotlin
+class ProtectionInformationService(private val informationService: InformationService, private val user: String) : InformationService {
+    override fun getInformation(): String {
+        // Check if the user has the proper permissions
+        if (user == "admin") {
+            // Grant access to the sensitive information
+            return informationService.getInformation()
+        } else {
+            // Deny access to the sensitive information
+            throw SecurityException("Access denied")
+        }
+    }
+}
+```
+
+Finally, we can use the protection proxy to restrict access to the sensitive information:
+
+```kotlin
+fun main() {
+    // Create the real subject object
+    val realService: InformationService = RealInformationService()
+
+    // Create a protection proxy for the information service
+    val informationService: InformationService = ProtectionInformationService(realService, "admin")
+
+    // Get the sensitive information
+    val information = informationService.getInformation()
+
+    // Print the sensitive information
+    println("Information: $information")
 }
 ```
 

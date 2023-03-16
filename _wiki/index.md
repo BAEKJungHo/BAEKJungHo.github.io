@@ -234,6 +234,7 @@ regenerate: true
 * [[/designpattern/designpattern-chain-of-responsibility]]
 * [[/designpattern/designpattern-callback]]
 * [[/designpattern/designpattern-proxy]]
+* [[/designpattern/designpattern-decorator]]
 
 ## DDD
 

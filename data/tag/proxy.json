@@ -1,1 +1,1 @@
-["designpattern/designpattern-proxy","infra/infra-reverse-proxy"]
+["designpattern/designpattern-decorator","designpattern/designpattern-proxy","infra/infra-reverse-proxy"]

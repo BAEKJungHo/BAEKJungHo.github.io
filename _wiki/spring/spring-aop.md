@@ -2,7 +2,7 @@
 layout  : wiki
 title   : Aspect Oriented Programming (작성중)
 summary : 
-date    : 2022-03-16 19:05:32 +0900
+date    : 2022-03-16 19:45:32 +0900
 updated : 2022-03-16 20:15:24 +0900
 tag     : spring proxy
 toc     : true
@@ -15,6 +15,12 @@ latex   : true
 {:toc}
 
 ## Aspect Oriented Programming
+
+__Pre-knowledge for learning Spring AOP:__
+- [Proxy Pattern]
+- [Decorator Pattern]
+- [Dynamic Proxy]
+- [Code Generator Library, CGLIB]
 
 AOP 는 [Aspect Oriented Programming with Spring Docs](https://docs.spring.io/spring-framework/docs/current/reference/html/core.html#aop) 읽는게 가장 최고인것 같다. 당장 Aspect 라는 개념을 알고 싶으면 ChatGPT 보다도 Docs 가 짱이다.
 

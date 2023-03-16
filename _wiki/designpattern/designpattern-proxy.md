@@ -4,7 +4,7 @@ title   : Proxy
 summary : 
 date    : 2023-03-15 15:28:32 +0900
 updated : 2023-03-15 18:15:24 +0900
-tag     : designpattern
+tag     : designpattern proxy
 toc     : true
 comment : true
 public  : true

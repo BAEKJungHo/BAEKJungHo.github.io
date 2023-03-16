@@ -4,7 +4,7 @@ title   : Reverse Proxy
 summary : 
 date    : 2022-06-20 15:54:32 +0900
 updated : 2022-06-20 20:15:24 +0900
-tag     : infra
+tag     : infra proxy
 toc     : true
 comment : true
 public  : true

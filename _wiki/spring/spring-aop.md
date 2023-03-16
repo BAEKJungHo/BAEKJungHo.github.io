@@ -31,4 +31,5 @@ __Aspect:__
 
 ## Transaction
 
-- [Steady-Coding Transaction 사용 방법](https://steady-coding.tistory.com/610) 해당 블로그가 정리 되게 잘 되어있음
+- [Steady-Coding Transaction 사용 방법](https://steady-coding.tistory.com/610)
+- [Spring 동일한 Bean(Class)에서 @Transactional 동작 방식](https://cheese10yun.github.io/spring-transacion-same-bean/)

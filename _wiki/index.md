@@ -81,6 +81,7 @@ regenerate: true
 * [[/java/java-garbage-collection]]
 * [[/java/java-jvm-warmup]]
 * [[/java/java-jvm-aot]]
+* [[/java/java-dynamicproxy]]
 
 ## TroubleShooting
 

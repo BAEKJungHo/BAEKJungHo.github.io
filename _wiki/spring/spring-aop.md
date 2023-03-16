@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Aspect Oriented Programming (작성중)
 summary : 
-date    : 2022-03-16 19:45:32 +0900
-updated : 2022-03-16 20:15:24 +0900
+date    : 2023-03-16 19:45:32 +0900
+updated : 2023-03-16 20:15:24 +0900
 tag     : spring proxy
 toc     : true
 comment : true

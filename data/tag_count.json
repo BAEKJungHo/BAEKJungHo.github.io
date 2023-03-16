@@ -93,7 +93,7 @@
  },
  {
   "name": "java",
-  "size": 26
+  "size": 27
  },
  {
   "name": "javascript",
@@ -185,7 +185,7 @@
  },
  {
   "name": "proxy",
-  "size": 3
+  "size": 4
  },
  {
   "name": "reactive",

@@ -16,7 +16,9 @@ latex   : true
 
 ## Proxy
 
-프록시 패턴은 원본 객체를 대신하여 클라이언트와 소통하는 자라고 생각한다. 원본 객체를 위임(delegate)받아 원본 객체의 동작을 수행하기 전에 보안, 캐싱, 로깅, 검증, 원격 객체 등의 작업을 사전에 수행할 수 있다. 
+프록시 패턴은 __특정 객체에 대한 접근을 제어하거나 기능을 추가__ 할 수 있는 패턴을 의미한다.
+
+> 부가 기능 추가가 목적인 Proxy 패턴을 [Decorator](https://baekjungho.github.io/wiki/designpattern/designpattern-decorator/) 패턴이라고 한다.
 
 ![](/resource/wiki/designpattern-proxy/proxy.png)
 

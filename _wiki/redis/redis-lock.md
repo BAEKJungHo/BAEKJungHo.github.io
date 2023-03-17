@@ -89,7 +89,7 @@ __Problems:__
 2. 클라이언트B 가 락을 획득하고 트랜잭션 완료 후 락을 해제
 3. 클라이언트A 의 트랜잭션 종료
 
-마지막 3번 과정에서 클라이언트B가 수정한 값이 제대로 갱신이 안될 수 있다. 즉 lost-update 가 발생할 수 있다. 이러한 문제를 해결하기 위해 Fencing Tokens 이나 Optimistic Locking 을 사용하는데, RedLock 에는 Fencing Token 을 생성하는 기능이 없다.
+마지막 3번 과정에서 클라이언트B 가 수정한 값이 제대로 갱신이 안될 수 있다. 즉 lost-update 가 발생할 수 있다. 이러한 문제를 해결하기 위해 Fencing Tokens 이나 Optimistic Locking 을 사용하는데, RedLock 에는 Fencing Token 을 생성하는 기능이 없다.
 
 또한, JPA 를 사용하면 Optimistic Locking 을 쉽게 사용할 수 있기 때문에 성능 이슈 없이 사용할 수 있다는게 장점이다.
 

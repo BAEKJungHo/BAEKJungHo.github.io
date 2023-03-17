@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : Aspect Oriented Programming (작성중)
+title   : Aspect Oriented Programming
 summary : 
-date    : 2023-03-16 19:45:32 +0900
-updated : 2023-03-16 20:15:24 +0900
+date    : 2023-03-17 11:45:32 +0900
+updated : 2023-03-17 12:15:24 +0900
 tag     : spring proxy
 toc     : true
 comment : true
@@ -125,7 +125,9 @@ AspectJ 의 @Aspect 어노테이션을 붙이고 빈으로 등록하면, 위에�
 
 위빙(weaving)은 포인트컷으로 결정한 타켓의 조인 포인트에 어드바이스를 적용하는 것을 의미한다. 위빙을 통해 핵심 기능 코드에 영향을 주지 않고 부가 기능을 추가 할 수 있다. Spring AOP 는 Runtime Weaving 을 사용한다. 이것이, 스프링에서 차용하고 있는 방식이며 프록시 방식의 AOP 이다.
 
-프록시 방식을 사용하는 스프링 AOP는 스프링 컨테이너가 관리할 수 있는 스프링 빈에만 AOP 를 적용할 수 있다.
+위에서 다룬 Spring 이 객체를 생성하고 BeanPostProcessor 로 넘겨서 Advisors 를 조회하고 프록시 객체를 생성해서 빈으로 등록하는 이러한 일련의 과정을 __Runtime Weaving__ 이라고 한다.
+
+프록시 방식을 사용하는 스프링 AOP 는 스프링 컨테이너가 관리할 수 있는 스프링 빈에만 AOP 를 적용할 수 있다.
 
 [Spring AOP](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/aop.html#aop-introduction-defn), like other pure Java AOP frameworks, performs weaving at runtime.
 
@@ -164,15 +166,26 @@ class OrderService {
 
 위 코드에서 createPayment() 에서 예외가 발생하면 createPayment 내에서 진행한 모든 결과가 롤백이 될까?
 
-정답은 전체를 롤백 시키지 않는다는 것이다. createOrder 가 프록시로 등록이 되어있더라도 createPayment() 를 호출하는 것은 메서드 내부 호출에 해당되기 때문에 프록시가 적용되지 않는다. 
+정답은 전체를 롤백 시키지 않는다는 것이다. 
 
-따라서, __대상 객체의 내부에서 메서드 호출이 발생하면 프록시를 거치지 않고 대상 객체를 직접 호출하는 문제가 발생__ 한다.
+OrderService 가 Proxy Bean 이고 Proxy Bean 에서 ExternalMethod 를 호출하는 것은 proxy -> target 과정을 거친다. 하지만 Proxy Bean 의 ExternalMethod 에서 InternalMethod 를 호출하는 것은 target 을 직접 호출하는 문제가 발생한다. 따라서, __대상 객체의 내부에서 메서드 호출이 발생하면 프록시를 거치지 않고 대상 객체를 직접 호출하는 문제가 발생__ 한다.
 
 > [SpringDocs - Transaction Declarative Annotations](https://docs.spring.io/spring-framework/docs/current/reference/html/data-access.html#transaction-declarative-annotations)
 >
 > In proxy mode (which is the default), only external method calls coming in through the proxy are intercepted. This means that self-invocation (in effect, a method within the target object calling another method of the target object) does not lead to an actual transaction at runtime even if the invoked method is marked with @Transactional. Also, the proxy must be fully initialized to provide the expected behavior, so you should not rely on this feature in your initialization code for example, in a @PostConstruct method.
 
-스프링은 프록시 방식의 AO P를 사용한다. 프록시 방식의 AOP 는 메서드 내부 호출에 프록시를 적용할 수 없다.
+스프링은 프록시 방식의 AOP 를 사용한다. 프록시 방식의 AOP 는 메서드 내부 호출에 프록시를 적용할 수 없다.
+
+## Problem of CGLIB proxy
+
+CGLIB 프록시는 대상 클래스를 상속 받고, 생성자에서 대상 클래스의 기본 생성자를 호출한다. 따라서 대상 클래스에 __기본 생성자(default constructor)__ 를 만들어야 한다. 그리고 구체 클래스를 상속 받기 때문에 자식 클래스의 생성자를 호출할때 super() 도 같이 호출해야 한다.
+
+CGLIB 은 생성자를 2번 호출하는 문제가 있다.
+
+1. target 객체를 생성하는 경우
+2. 프록시 객체를 생성할때 부모 클래스의 생성자 호출
+
+이러한 기본생성자가 꼭 필요하고, 생성자 2번 호출해야하는 문제를 [objenesis](http://objenesis.org/) 라는 라이브러리를 통해 해결하고 있다.
 
 ## References
 

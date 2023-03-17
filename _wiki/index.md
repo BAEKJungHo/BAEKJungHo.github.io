@@ -180,6 +180,10 @@ regenerate: true
 * [[/kafka/kafka-basic]]
 * [[/kafka/kafka-acknowledgement]]
 
+## Redis
+
+* [[/redis/redis-lock]]
+
 ## Infra
 
 * [[/infra/infra-cloud]]

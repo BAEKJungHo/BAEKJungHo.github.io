@@ -1,1 +1,1 @@
-["spring/spring-concurrency-resolve"]
+["redis","redis/redis-lock","spring/spring-concurrency-resolve"]

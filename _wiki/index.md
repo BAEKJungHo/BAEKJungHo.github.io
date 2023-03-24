@@ -138,6 +138,7 @@ regenerate: true
 * [[/reactive/reactive-project-reactor]]
 * [[/reactive/reactive-replenishing-optimization]]
 * [[/reactive/reactive-avoid-badperformance]]
+* [[/reactive/reactive-async-nonblocking]]
 
 ## MSA
 

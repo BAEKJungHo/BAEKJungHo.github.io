@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Declarative Transaction with Proxy
 summary : 
-date    : 2022-03-20 21:28:32 +0900
-updated : 2022-03-20 22:15:24 +0900
+date    : 2022-08-21 21:28:32 +0900
+updated : 2022-08-21 22:15:24 +0900
 tag     : spring database jpa proxy
 toc     : true
 comment : true

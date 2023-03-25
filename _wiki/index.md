@@ -124,6 +124,7 @@ regenerate: true
 * [[/spring/spring-parameterized-typeref]]
 * [[/spring/spring-aop]]
 * [[/spring/spring-nplusone]]
+* [[/spring/spring-declarative-transaction]]
 
 ## Reactive
 

@@ -123,6 +123,7 @@ regenerate: true
 * [[/spring/spring-filter]]
 * [[/spring/spring-parameterized-typeref]]
 * [[/spring/spring-aop]]
+* [[/spring/spring-nplusone]]
 
 ## Reactive
 

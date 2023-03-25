@@ -1,1 +1,1 @@
-["database/database-cascade","spring/spring-jpa-saveandflush","spring/spring-jpa-version"]
+["database/database-cascade","spring/spring-jpa-saveandflush","spring/spring-jpa-version","spring/spring-nplusone"]

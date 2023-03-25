@@ -250,7 +250,7 @@ __기본 전략을 FetchType.LAZY 로 가져가고 (EAGER 는 N+1 발생 가능�
 위 예제에서 FetchJoin 와 EntityGraph 를 사용하여 N+1 문제를 해결하였지만 변수 teams 를 디버깅 해보면 총 15개의 team 이 들어있다. 
 즉, 중복된 team 이 존재한 상태이다.
 
-![](/resource/wiki/spring-nplusone/catesian.png)
+![](/resource/wiki/spring-nplusone/cartesian-product.png)
 
 그 이유는 Cartesian product(카테시안 곱) 때문이다. 카테시안 곱은 두 개 이상의 기준 테이블에 대해 연결 가능한 행을 모두 결합하는 조인 방식이다. (team row 3개 x member 5개 = 15개)
 

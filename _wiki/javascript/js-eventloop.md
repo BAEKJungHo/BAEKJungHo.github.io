@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Event Loop
-summary : Event Loop and Call Stack
+title   : Event Loop and Call Stack in JS
+summary : 
 date    : 2022-05-20 16:54:32 +0900
 updated : 2022-05-20 19:15:24 +0900
 tag     : javascript

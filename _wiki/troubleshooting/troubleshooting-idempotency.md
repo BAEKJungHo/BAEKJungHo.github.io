@@ -28,7 +28,9 @@ Stripe 에서 다음과 같이 말하고 있다. To perform an idempotent reques
 
 - [Idempotency and retries with stripe-java](https://stripe.com/docs/videos/developer-foundations?video=idempotency-and-retries&lang=java)
 
-아래와 같이 API 요청에 멱등키 헤더를 사용하면 같은 요청이 두 번 일어나도 실제로 요청이 이루어지지 않고 첫 번째 요청 응답과 같은 응답을 보내준다. 123
+아래와 같이 API 요청에 멱등키 헤더를 사용하면 같은 요청이 두 번 일어나도 실제로 요청이 이루어지지 않고 첫 번째 요청 응답과 같은 응답을 보내준다.
+
+결제 서버에서 결제 요청이 정상 처리되고나면, 캐시에 멱등키를 key 로하고 value 로 응답형식 or 거래아이디 등을 설정할 수 있다. 네트워크 이슈로 인해서 결제가 성공했음에도 응답을 받지 못하면, 주문 서버는 멱등키를 가지고 다시 요청하고, 결제 서버는 캐시에서 key 가 존재하는지 확인하여 같은 응답을 내줄 수 있다. 실패한 경우라면, 결제를 생성해서 생성 응답을 내줄 수 있다. 이때 무한정 멱등키를 캐시에 가지고 있으면 안되므로 TTL 을 설정한다.
 
 __Stripe:__
 

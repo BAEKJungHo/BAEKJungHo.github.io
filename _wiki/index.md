@@ -34,6 +34,7 @@ regenerate: true
 * [[/architecture/architecture-lambda]]
 * [[/architecture/architecture-branchbyabstraction]]
 * [[/architecture/architecture-distributed-pk]]
+* [[/architecture/architecture-cap]]
 
 ## Kotlin
 

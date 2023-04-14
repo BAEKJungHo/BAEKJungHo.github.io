@@ -319,6 +319,8 @@ regenerate: true
 ## Algorithm
 
 * [[/algorithm/algorithm-token-bucket]]
+* [[/algorithm/algorithm-time-complexity]]
+* [[/algorithm/algorithm-binary-search]]
 
 ## DataStructures
 

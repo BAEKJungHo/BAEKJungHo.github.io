@@ -101,7 +101,7 @@
  },
  {
   "name": "jpa",
-  "size": 6
+  "size": 7
  },
  {
   "name": "jvm",
@@ -209,7 +209,7 @@
  },
  {
   "name": "spring",
-  "size": 44
+  "size": 45
  },
  {
   "name": "swagger",

@@ -128,6 +128,7 @@ regenerate: true
 * [[/spring/spring-nplusone]]
 * [[/spring/spring-declarative-transaction]]
 * [[/spring/spring-jpa-osiv]]
+* [[/spring/spring-dto-projection]]
 
 ## Reactive
 

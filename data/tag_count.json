@@ -45,7 +45,7 @@
  },
  {
   "name": "designpattern",
-  "size": 11
+  "size": 12
  },
  {
   "name": "devops",
@@ -101,7 +101,7 @@
  },
  {
   "name": "jpa",
-  "size": 5
+  "size": 6
  },
  {
   "name": "jvm",
@@ -209,7 +209,7 @@
  },
  {
   "name": "spring",
-  "size": 43
+  "size": 44
  },
  {
   "name": "swagger",

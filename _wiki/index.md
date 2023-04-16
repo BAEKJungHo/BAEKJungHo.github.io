@@ -127,6 +127,7 @@ regenerate: true
 * [[/spring/spring-aop]]
 * [[/spring/spring-nplusone]]
 * [[/spring/spring-declarative-transaction]]
+* [[/spring/spring-jpa-osiv]]
 
 ## Reactive
 

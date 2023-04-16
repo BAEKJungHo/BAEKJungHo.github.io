@@ -321,6 +321,7 @@ regenerate: true
 * [[/algorithm/algorithm-token-bucket]]
 * [[/algorithm/algorithm-time-complexity]]
 * [[/algorithm/algorithm-binary-search]]
+* [[/algorithm/algorithm-parametric-search]]
 
 ## DataStructures
 

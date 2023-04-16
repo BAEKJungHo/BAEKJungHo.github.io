@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Projection for Avoid LazyInitializationException
 summary : 
-date    : 2022-04-14 09:28:32 +0900
-updated : 2022-04-14 12:15:24 +0900
+date    : 2023-04-14 09:28:32 +0900
+updated : 2023-04-14 12:15:24 +0900
 tag     : spring jpa
 toc     : true
 comment : true

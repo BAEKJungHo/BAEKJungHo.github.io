@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Open Session In View Pattern
 summary : 
-date    : 2022-04-13 09:28:32 +0900
-updated : 2022-04-13 12:15:24 +0900
+date    : 2023-04-13 09:28:32 +0900
+updated : 2023-04-13 12:15:24 +0900
 tag     : spring jpa designpattern
 toc     : true
 comment : true

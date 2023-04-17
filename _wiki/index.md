@@ -129,6 +129,7 @@ regenerate: true
 * [[/spring/spring-declarative-transaction]]
 * [[/spring/spring-jpa-osiv]]
 * [[/spring/spring-dto-projection]]
+* [[/spring/spring-jakarta]]
 
 ## Reactive
 

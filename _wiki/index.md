@@ -327,6 +327,7 @@ regenerate: true
 * [[/algorithm/algorithm-parametric-search]]
 * [[/algorithm/algorithm-run-length-encoding]]
 * [[/algorithm/algorithm-huffman-coding]]
+* [[/algorithm/algorithm-deflate]]
 
 ## DataStructures
 

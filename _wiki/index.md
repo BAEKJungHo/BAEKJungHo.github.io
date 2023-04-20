@@ -325,6 +325,7 @@ regenerate: true
 * [[/algorithm/algorithm-time-complexity]]
 * [[/algorithm/algorithm-binary-search]]
 * [[/algorithm/algorithm-parametric-search]]
+* [[/algorithm/algorithm-huffman-coding]]
 
 ## DataStructures
 

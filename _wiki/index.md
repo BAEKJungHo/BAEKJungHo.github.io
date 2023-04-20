@@ -12,6 +12,7 @@ regenerate: true
 * [[/magazine/magazine-productivity-stability]]
 * [[/magazine/magazine-objects-reduce-dependency]]
 * [[/magazine/magazine-future-developers]]
+* [[/magazine/magazine-towards-higher]]
 
 ## Mobility
 

@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Mask Sensitive Data 
+title   : Masking
 summary : 
 date    : 2023-04-21 20:54:32 +0900
 updated : 2023-04-21 21:15:24 +0900
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Mask Sensitive Data 
+## Masking Sensitive Data
 
 - [Logstash Logback Encoder](https://github.com/logfellow/logstash-logback-encoder) is Logback JSON encoder and appenders
 - Logstash 를 사용하는 경우 [MaskingJsonGeneratorDecorator](https://github.com/logfellow/logstash-logback-encoder#masking) 를 사용해서 Masking 가능

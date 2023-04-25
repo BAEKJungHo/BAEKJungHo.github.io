@@ -4,7 +4,7 @@ title   : Distributed UniquenessKey
 summary : 
 date    : 2023-03-12 15:02:32 +0900
 updated : 2023-03-12 15:12:24 +0900
-tag     : architecture
+tag     : architecture msa
 toc     : true
 comment : true
 public  : true

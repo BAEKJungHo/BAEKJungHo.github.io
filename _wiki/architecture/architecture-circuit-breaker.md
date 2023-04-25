@@ -4,7 +4,7 @@ title   : Circuit Breaker with Fallback Improving Resiliency
 summary : 
 date    : 2023-03-01 15:02:32 +0900
 updated : 2023-03-01 15:12:24 +0900
-tag     : architecture
+tag     : architecture msa
 toc     : true
 comment : true
 public  : true

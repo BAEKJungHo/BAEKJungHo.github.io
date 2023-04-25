@@ -37,6 +37,7 @@ regenerate: true
 * [[/architecture/architecture-branchbyabstraction]]
 * [[/architecture/architecture-distributed-pk]]
 * [[/architecture/architecture-cap]]
+* [[/architecture/architecture-bulkhead]]
 
 ## Kotlin
 

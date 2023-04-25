@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 15
+  "size": 16
  },
  {
   "name": "auth",
@@ -157,7 +157,7 @@
  },
  {
   "name": "msa",
-  "size": 21
+  "size": 22
  },
  {
   "name": "netty",

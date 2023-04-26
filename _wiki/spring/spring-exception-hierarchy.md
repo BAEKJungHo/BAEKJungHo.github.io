@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Exception Hierarchy
 summary : 
-date    : 2022-04-23 15:05:32 +0900
-updated : 2022-04-23 15:15:24 +0900
+date    : 2023-04-23 15:05:32 +0900
+updated : 2023-04-23 15:15:24 +0900
 tag     : spring java architecture
 toc     : true
 comment : true

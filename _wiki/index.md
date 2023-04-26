@@ -136,6 +136,7 @@ regenerate: true
 * [[/spring/spring-jpa-osiv]]
 * [[/spring/spring-dto-projection]]
 * [[/spring/spring-jakarta]]
+* [[/spring/spring-exception-hierarchy]]
 
 ## Reactive
 

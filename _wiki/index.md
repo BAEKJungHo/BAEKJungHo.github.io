@@ -181,6 +181,10 @@ regenerate: true
 * [[/refactoring/refactoring-local-variable]]
 * [[/refactoring/refactoring-aliasbug]]
 
+## Crypto
+
+* [[/crypto/crypto-password-encryption]]
+
 ## Docker
 
 * [[/docker/docker-container]]

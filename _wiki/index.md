@@ -18,10 +18,6 @@ regenerate: true
 
 * [[/mobility/mobility-lidar-radar]]
 
-## Build tool
-
-* [[/buildtool/gradle-standard]]
-
 ## Architecture
 
 * [[/architecture/architecture-character-architectures]]
@@ -38,6 +34,10 @@ regenerate: true
 * [[/architecture/architecture-distributed-pk]]
 * [[/architecture/architecture-cap]]
 * [[/architecture/architecture-bulkhead]]
+
+## Kata
+
+* [[/kata/kata-hotdog]]
 
 ## Kotlin
 
@@ -310,6 +310,10 @@ regenerate: true
 ## Flutter
 
 * [[/flutter/widget]]
+
+## Build tool
+
+* [[/buildtool/gradle-standard]]
 
 ## Operating System
 

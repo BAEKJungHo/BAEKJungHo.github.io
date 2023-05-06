@@ -154,6 +154,7 @@ regenerate: true
 * [[/reactive/reactive-avoid-badperformance]]
 * [[/reactive/reactive-async-nonblocking]]
 * [[/reactive/reactive-executor-service]]
+* [[/reactive/reactive-hibernate]]
 
 ## MSA
 

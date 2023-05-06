@@ -1,1 +1,1 @@
-["database/database-cascade","spring/spring-declarative-transaction","spring/spring-dto-projection","spring/spring-jpa-osiv","spring/spring-jpa-saveandflush","spring/spring-jpa-version","spring/spring-nplusone"]
+["database/database-cascade","reactive/reactive-hibernate","spring/spring-declarative-transaction","spring/spring-dto-projection","spring/spring-jpa-osiv","spring/spring-jpa-saveandflush","spring/spring-jpa-version","spring/spring-nplusone"]

@@ -84,6 +84,10 @@
   "size": 1
  },
  {
+  "name": "hibernate",
+  "size": 1
+ },
+ {
   "name": "http",
   "size": 6
  },
@@ -105,7 +109,7 @@
  },
  {
   "name": "jpa",
-  "size": 7
+  "size": 8
  },
  {
   "name": "jvm",
@@ -169,7 +173,7 @@
  },
  {
   "name": "netty",
-  "size": 2
+  "size": 3
  },
  {
   "name": "network",
@@ -193,7 +197,7 @@
  },
  {
   "name": "reactive",
-  "size": 20
+  "size": 21
  },
  {
   "name": "redis",

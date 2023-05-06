@@ -1,1 +1,1 @@
-["reactive/reactive-executor-service","spring/spring-netty"]
+["reactive/reactive-executor-service","reactive/reactive-hibernate","spring/spring-netty"]

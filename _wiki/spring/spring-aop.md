@@ -52,9 +52,9 @@ fun logExecutionTime(joinPoint: ProceedingJoinPoint): Any? { // Advice
 
 ### ProxyFactory
 
-스프링 부트는 AOP 를 적용할 때 기본적으로 proxyTargetClass=true 로 설정해서 사용한다. 따라서 인터페이스가 있어도 항상 CGLIB 를 사용해서 구체 클래스를 기반으로 프록시를 생성한다.  자세한 이유는 강의 뒷 부분에서 설명한다.
+스프링 부트는 AOP 를 적용할 때 기본적으로 proxyTargetClass=true 로 설정해서 사용한다. 따라서 인터페이스가 있어도 항상 CGLIB 를 사용해서 구체 클래스를 기반으로 프록시를 생성한다.
 
-하나의 Target 에 여러 Advice 를 등록하기 위해서 Advice 만큼 프록시 클래스를 생성하는 것은 너무 비효율적일 것이다. 스프링은 ProxyFactory 를 통해서 하나의 Target 에 여러 Advice 를 등록하 수 있게 해준다. 
+하나의 Target 에 여러 Advice 를 등록하기 위해서 Advice 만큼 프록시 클래스를 생성하는 것은 너무 비효율적일 것이다. 스프링은 ProxyFactory 를 통해서 하나의 Target 에 여러 Advice 를 등록할 수 있게 해준다. 
 
 - proxyFactory.addAdvisor(advisor) 를 통해 등록 가능
 

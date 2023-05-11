@@ -28,7 +28,7 @@ org.gradle.vfs.watch=true
 // Gradle 캐시를 사용하여 이전 빌드에서 생성된 출력물을 재사용하여 빌드 시간을 단축시킨다.
 org.gradle.caching=true 
 
-//This feature can save you a couple of seconds from the Configuration phase of Gradle, as only ‘projects’ related to the current tasks are configured. This setting is relevant for multi- modules projects. When this property is set, Gradle configures modules that are only relevant to the requested tasks instead of configuring all of them, which is a default behavior.
+// This feature can save you a couple of seconds from the Configuration phase of Gradle, as only ‘projects’ related to the current tasks are configured. This setting is relevant for multi- modules projects. When this property is set, Gradle configures modules that are only relevant to the requested tasks instead of configuring all of them, which is a default behavior.
 org.gradle.configureondemand = true
 
 // 빌드 데몬을 사용하여 Gradle 프로세스를 백그라운드에서 실행한다. 이를 통해 Gradle 실행 시간을 단축시키고 메모리 사용량을 최적화할 수 있다.

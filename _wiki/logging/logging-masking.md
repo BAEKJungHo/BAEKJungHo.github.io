@@ -46,3 +46,46 @@ __Sample__
 </configuration>
 ```
 
+예를 들어 UserDto 가 아래와 같은 경우, Dto 객체를 로그에 그대로 찍는 경우 민감 정보들이 마스킹 되지 않는다.
+
+```java
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDto {
+    private Long id;
+    private String name;
+    private String email;
+    private String phone;
+}
+```
+
+```
+// 이 때, 객체의 toString() 을 호출하게 된다. toString() 이 없다면 객체의 주소가 찍히게 된다.
+log.info(" # [Login] User : {}, userDto);
+```
+
+이때, __MaskingUtils 와 toString 을 오버라이딩하여 직접 구현하는 방식__ 으로 해결할 수 있다.
+
+
+```java
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserDto {
+    private Long id;
+    private String name;
+    private String email;
+    private String phone;
+    
+    @Override 
+    public String toString() {
+        "UserDto : {" +
+                "id: " + id +
+                "name: " + MaskingUtils.mask(name) +
+                "email: " + MaskingUtils.mask(email) +
+                "phone: " + MaskingUtils.mask(phone) +
+                " }";
+    }
+}
+```

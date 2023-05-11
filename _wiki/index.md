@@ -96,6 +96,7 @@ regenerate: true
 ## Logging
 
 * [[/logging/logging-masking]]
+* [[/logging/logging-entity]]
 
 ## Spring
 

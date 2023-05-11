@@ -316,6 +316,7 @@ regenerate: true
 ## Build tool
 
 * [[/buildtool/gradle-standard]]
+* [[/buildtool/gradle-build-performance]]
 
 ## Operating System
 

@@ -125,7 +125,7 @@
  },
  {
   "name": "kotlin",
-  "size": 41
+  "size": 42
  },
  {
   "name": "ksp",
@@ -221,7 +221,7 @@
  },
  {
   "name": "spring",
-  "size": 47
+  "size": 48
  },
  {
   "name": "swagger",

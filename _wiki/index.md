@@ -69,6 +69,7 @@ regenerate: true
 * [[/kotlin/kotlin-generics]]
 * [[/kotlin/kotlin-value-object]]
 * [[/kotlin/kotlin-action-calculate]]
+* [[/kotlin/kotlin-null-safety]]
 
 ## Java
 

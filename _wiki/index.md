@@ -34,6 +34,7 @@ regenerate: true
 * [[/architecture/architecture-distributed-pk]]
 * [[/architecture/architecture-cap]]
 * [[/architecture/architecture-bulkhead]]
+* [[/architecture/architecture-cloud-native]]
 
 ## Kata
 

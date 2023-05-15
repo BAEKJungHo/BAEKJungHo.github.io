@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Synchronous Messaging Pattern
 summary : 
-date    : 2023-05-10 15:02:32 +0900
-updated : 2023-05-10 15:12:24 +0900
+date    : 2023-05-11 15:02:32 +0900
+updated : 2023-05-11 15:12:24 +0900
 tag     : architecture cloudnative designpattern
 toc     : true
 comment : true

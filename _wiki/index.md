@@ -36,6 +36,7 @@ regenerate: true
 * [[/architecture/architecture-bulkhead]]
 * [[/architecture/architecture-cloud-native]]
 * [[/architecture/architecture-sync-messaging]]
+* [[/architecture/architecture-schema-registry]]
 
 ## Kata
 

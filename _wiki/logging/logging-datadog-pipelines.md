@@ -34,7 +34,7 @@ __Appenders with LogstashEncoder:__
 </appender>
 ```
 
-LogstashEncoder is Logback JSON encoder and appenders. Datadog [Reserved Attributes](https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#reserved-attributes.
+LogstashEncoder is Logback JSON encoder and appenders. Datadog [Reserved Attributes](https://docs.datadoghq.com/logs/log_configuration/attributes_naming_convention/#reserved-attributes).
 
 __Kubernetes:__
 

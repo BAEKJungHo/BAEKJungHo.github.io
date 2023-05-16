@@ -48,7 +48,3 @@ __Datadog Agent:__
 - The [Datadog Agent](https://docs.datadoghq.com/agent/) is software that runs on your hosts. It collects events and metrics from hosts and sends them to Datadog, where you can analyze your monitoring and performance data.
 - Datadog automatically parses JSON-formatted logs with Pipelines.
   - You can then add value to all your logs (raw and JSON) by sending them through a processing pipeline. Pipelines take logs from a wide variety of formats and translate them into a common format in Datadog.
-
-## Links
-
-- [Understanding Datadog logs preprocessing](https://arapulido.github.io/blog/2022/03/11/datadog-log-preprocessing/)

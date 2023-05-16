@@ -101,6 +101,7 @@ regenerate: true
 
 * [[/logging/logging-masking]]
 * [[/logging/logging-entity]]
+* [[/logging/logging-datadog-pipelines]]
 
 ## Spring
 

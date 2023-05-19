@@ -91,6 +91,7 @@ regenerate: true
 * [[/java/java-jvm-aot]]
 * [[/java/java-dynamicproxy]]
 * [[/java/java-cglib]]
+* [[/java/java-forkjoinframework]]
 
 ## TroubleShooting
 

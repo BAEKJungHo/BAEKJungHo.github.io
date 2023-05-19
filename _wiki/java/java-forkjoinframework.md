@@ -66,4 +66,6 @@ __RecursiveAction and RecursiveTask:__
 - [RecursiveAction](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveAction.html) is a ForkJoinTask that doesn’t return a result.
 - [RecursiveTask](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/RecursiveTask.html) is a ForkJoinTask that returns a result.
 
+## References
 
+- [A Java Fork/Join Framework - Doug Lea](https://gee.cs.oswego.edu/dl/papers/fj.pdf)

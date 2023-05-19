@@ -4,7 +4,7 @@ title   : ForkJoinFramework
 summary : 
 date    : 2023-05-15 11:28:32 +0900
 updated : 2023-05-15 12:15:24 +0900
-tag     : java
+tag     : java parallel
 toc     : true
 comment : true
 public  : true

@@ -196,6 +196,10 @@
   "size": 2
  },
  {
+  "name": "parallel",
+  "size": 1
+ },
+ {
   "name": "proxy",
   "size": 7
  },

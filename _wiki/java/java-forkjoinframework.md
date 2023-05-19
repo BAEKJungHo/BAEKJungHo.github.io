@@ -40,7 +40,7 @@ __The heart of a fork/join framework lies in its lightweight
 scheduling mechanics. It's Work Stealing:__
 - Work stealing was introduced in Java with the aim of reducing contention in multi-threaded applications.
 - The key concept in the ForkJoinPool is the "work-stealing" algorithm. Each thread in the pool has its own deque (double-ended queue) to which tasks are added. When a thread finishes its tasks, it can "steal" tasks from the deque of another idle thread, allowing for efficient workload distribution and load balancing. This feature makes ForkJoinPool particularly suitable for scenarios where some subtasks may take longer than others, as it helps ensure that idle threads are always kept busy.
-- [Baeldung](https://www.baeldung.com/java-work-stealing)
+- [Baeldung - Guide to Work Stealing in Java](https://www.baeldung.com/java-work-stealing)
 - [DZone - Diving Into Java 8's newWorkStealingPools](https://dzone.com/articles/diving-into-java-8s-newworkstealingpools)
 
 ![](/resource/wiki/java-forkjoinframework/workstealing.png)

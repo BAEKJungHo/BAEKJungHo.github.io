@@ -103,6 +103,7 @@ regenerate: true
 * [[/logging/logging-masking]]
 * [[/logging/logging-entity]]
 * [[/logging/logging-datadog-pipelines]]
+* [[/logging/logging-webflux-kotlin]]
 
 ## Spring
 

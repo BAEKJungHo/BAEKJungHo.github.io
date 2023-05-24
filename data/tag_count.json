@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 20
+  "size": 22
  },
  {
   "name": "auth",
@@ -29,7 +29,7 @@
  },
  {
   "name": "cloudnative",
-  "size": 3
+  "size": 5
  },
  {
   "name": "concurrency",

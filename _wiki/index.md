@@ -147,6 +147,7 @@ regenerate: true
 * [[/spring/spring-dto-projection]]
 * [[/spring/spring-jakarta]]
 * [[/spring/spring-exception-hierarchy]]
+* [[/spring/spring-query-cache-plan]]
 
 ## Reactive
 

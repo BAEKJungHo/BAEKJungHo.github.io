@@ -419,3 +419,4 @@ Hibernate:
 - [N+1 query problem with JPA and Hibernate](https://vladmihalcea.com/n-plus-1-query-problem/)
 - [jojoldu - JPA N+1 문제 및 해결방안](https://jojoldu.tistory.com/165)
 - [jojoldu - MultipleBagFetchException 발생시 해결 방법](https://jojoldu.tistory.com/457)
+- [kwonnam - Hibernate Performance Tuning](https://kwonnam.pe.kr/wiki/java/hibernate/performance)

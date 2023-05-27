@@ -82,4 +82,5 @@ __[Adding a Context to a Reactive Sequence](https://projectreactor.io/docs/core/
 
 ## Introduce interop between CoroutineContext and Reactor Context
 
-[Introduce interop between CoroutineContext and Reactor Context](https://github.com/Kotlin/kotlinx.coroutines/issues/284)
+- [Introduce interop between CoroutineContext and Reactor Context](https://github.com/Kotlin/kotlinx.coroutines/issues/284)
+- [Kotlin Coroutines 1.5: GlobalScope Marked as Delicate, Refined Channels API, and More](https://blog.jetbrains.com/kotlin/2021/05/kotlin-coroutines-1-5-0-released/)

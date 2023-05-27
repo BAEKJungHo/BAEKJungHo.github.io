@@ -149,7 +149,7 @@
  },
  {
   "name": "logging",
-  "size": 8
+  "size": 9
  },
  {
   "name": "magazine",
@@ -177,7 +177,7 @@
  },
  {
   "name": "netty",
-  "size": 3
+  "size": 4
  },
  {
   "name": "network",
@@ -205,7 +205,7 @@
  },
  {
   "name": "reactive",
-  "size": 21
+  "size": 22
  },
  {
   "name": "redis",
@@ -253,6 +253,6 @@
  },
  {
   "name": "webflux",
-  "size": 1
+  "size": 2
  }
 ]

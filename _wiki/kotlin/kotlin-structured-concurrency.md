@@ -57,7 +57,7 @@ Here is a StructuredTaskScope with a shutdown-on-success policy that returns the
 }
 ```
 
-[Notes on structured concurrency, or: Go statement considered harmful](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/)
+[Sústrik, Martin - Structured Concurrency](https://250bpm.com/blog:71/)
 - Joe Armstrong said:
   - ![](/resource/wiki/kotlin-structured-concurrency/joe-armstrong.png)
 - As I've argued in part I of this essay, to get a simple programming model you have to spawn a thread per TCP connection. But given that threads are expensive (and processes even more so) and that sharing state between threads is insane, bordering on suicidal, what you need are __lightweight green threads__ and a __simple communication mechanism__ to send messages between them. In UNIX of old they were called processes and pipes. In Go they are called goroutines and channels. In Erlang they are known as processes and mailboxes.
@@ -66,6 +66,9 @@ Here is a StructuredTaskScope with a shutdown-on-success policy that returns the
 Think about how to do the __cancellation__:
 - The good news is that because of cooperative scheduling of green threads the code already has to be split in reasonably sized chunks.
 - The chunks never take long to execute we don't have to cancel the thread at random point of execution.
+
+More Articles:
+- [Notes on structured concurrency, or: Go statement considered harmful](https://vorpus.org/blog/notes-on-structured-concurrency-or-go-statement-considered-harmful/)
 
 In Kotlin:
 - [Coroutines basics: Structured concurrency](https://kotlinlang.org/docs/coroutines-basics.html#structured-concurrency)

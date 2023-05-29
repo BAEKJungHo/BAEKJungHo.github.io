@@ -73,6 +73,23 @@ More Articles:
 In Kotlin:
 - [Coroutines basics: Structured concurrency](https://kotlinlang.org/docs/coroutines-basics.html#structured-concurrency)
 
+__[Coroutines Job life cycle](https://kotlinlang.org/api/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines/-job/):__
+
+```
+                                      wait children
++-----+ start  +--------+ complete   +-------------+  finish  +-----------+
+| New | -----> | Active | ---------> | Completing  | -------> | Completed |
++-----+        +--------+            +-------------+          +-----------+
+                 |  cancel / fail       |
+                 |     +----------------+
+                 |     |
+                 V     V
+             +------------+                           finish  +-----------+
+             | Cancelling | --------------------------------> | Cancelled |
+             +------------+                                   +-----------+
+```
+
+
 ## Links
 
 - [Kotlin JOB LIFE CYCLE](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/JOB_LIFE_CYCLE.md)

@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 23
+  "size": 24
  },
  {
   "name": "auth",
@@ -129,7 +129,7 @@
  },
  {
   "name": "kotlin",
-  "size": 44
+  "size": 45
  },
  {
   "name": "ksp",
@@ -205,7 +205,7 @@
  },
  {
   "name": "reactive",
-  "size": 22
+  "size": 23
  },
  {
   "name": "redis",

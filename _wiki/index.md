@@ -39,6 +39,7 @@ regenerate: true
 * [[/architecture/architecture-schema-registry]]
 * [[/architecture/architecture-amqp]]
 * [[/architecture/architecture-nats]]
+* [[/architecture/architecture-eventdriven-statemachine]]
 
 ## Kata
 

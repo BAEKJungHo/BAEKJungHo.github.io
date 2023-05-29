@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 22
+  "size": 23
  },
  {
   "name": "auth",
@@ -101,7 +101,7 @@
  },
  {
   "name": "java",
-  "size": 31
+  "size": 32
  },
  {
   "name": "javascript",
@@ -129,7 +129,7 @@
  },
  {
   "name": "kotlin",
-  "size": 43
+  "size": 44
  },
  {
   "name": "ksp",

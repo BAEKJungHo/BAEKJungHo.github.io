@@ -75,6 +75,7 @@ regenerate: true
 * [[/kotlin/kotlin-value-object]]
 * [[/kotlin/kotlin-action-calculate]]
 * [[/kotlin/kotlin-null-safety]]
+* [[/kotlin/kotlin-structured-concurrency]]
 
 ## Java
 

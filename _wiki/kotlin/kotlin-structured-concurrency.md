@@ -16,7 +16,7 @@ latex   : true
 
 ## Structured Concurrency
 
-Structured Concurrency The core concept is the encapsulation of concurrent threads of execution by way of control flow constructs that have clear entry and exit points and that ensure all spawned threads have completed before exit.
+[Structured Concurrency](https://en.wikipedia.org/wiki/Structured_concurrency) The core concept is the encapsulation of concurrent threads of execution by way of control flow constructs that have clear entry and exit points and that ensure all spawned threads have completed before exit.
 Structured concurrency is analogous to structured programming, which introduced control flow constructs that encapsulated sequential statements and subroutines.
 
 [JEP 428: Structured Concurrency (Incubator)](https://openjdk.org/jeps/428) It embodies the principle that:

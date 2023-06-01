@@ -189,6 +189,7 @@ regenerate: true
 * [[/msa/msa-message-delivery]]
 * [[/msa/msa-debounce-throttle]]
 * [[/msa/msa-distributed-caching]]
+* [[/msa/msa-service-connectivity]]
 
 ## Refactoring
 

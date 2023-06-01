@@ -1,1 +1,1 @@
-["architecture/architecture-amqp","architecture/architecture-cloud-native","architecture/architecture-nats","architecture/architecture-schema-registry","architecture/architecture-sync-messaging"]
+["architecture/architecture-amqp","architecture/architecture-cloud-native","architecture/architecture-nats","architecture/architecture-schema-registry","architecture/architecture-sync-messaging","msa/msa-service-connectivity"]

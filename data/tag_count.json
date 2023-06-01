@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 24
+  "size": 25
  },
  {
   "name": "auth",
@@ -29,7 +29,7 @@
  },
  {
   "name": "cloudnative",
-  "size": 5
+  "size": 6
  },
  {
   "name": "concurrency",
@@ -173,7 +173,7 @@
  },
  {
   "name": "msa",
-  "size": 22
+  "size": 23
  },
  {
   "name": "netty",

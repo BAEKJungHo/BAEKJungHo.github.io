@@ -312,7 +312,7 @@ regenerate: true
 * [[/database/database-surrogatekey]]
 * [[/database/query-optimizing]]
 * [[/database/data-cleansing]]
-* [[/database/data-cascade]]
+* [[/database/database-cascade]]
 * [[/database/database-query-offloading]]
 * [[/database/database-normalization]]
 * [[/database/database-replication]]

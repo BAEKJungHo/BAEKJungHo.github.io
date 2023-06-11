@@ -2,8 +2,8 @@
 layout  : wiki
 title   : JVM Optimization with warm up
 summary : 
-date    : 2023-02-25 11:28:32 +0900
-updated : 2023-02-25 12:15:24 +0900
+date    : 2023-06-05 11:28:32 +0900
+updated : 2023-06-05 12:15:24 +0900
 tag     : java jvm
 toc     : true
 comment : true
@@ -110,4 +110,5 @@ Here is a brief overview of how the JIT Compiler works:
 
 - [JVM warm up / if(kakao)2022](https://www.youtube.com/watch?v=CQi3SS2YspY)
 - [JVM warm up](https://speakerdeck.com/kakao/jvm-warm-up)
+- [LINE - Spring Boot + Kubernetes 기반에서 웜업 적용하기](https://engineering.linecorp.com/ko/blog/apply-warm-up-in-spring-boot-and-kubernetes)
 

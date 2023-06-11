@@ -173,7 +173,7 @@
  },
  {
   "name": "msa",
-  "size": 23
+  "size": 24
  },
  {
   "name": "netty",
@@ -205,7 +205,7 @@
  },
  {
   "name": "reactive",
-  "size": 23
+  "size": 24
  },
  {
   "name": "redis",

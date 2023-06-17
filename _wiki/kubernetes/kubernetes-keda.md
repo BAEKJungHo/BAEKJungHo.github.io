@@ -27,3 +27,5 @@ For per-pod resource metrics (like CPU), the controller fetches the metrics from
 __[How KEDA Works](https://keda.sh/docs/2.10/concepts/#how-keda-works)__:
 
 KEDA 는 Kubernetes metrics server 로서의 역할을 한다. queue 의 길이(length), stream lag 등의 __rich event data__ 들을 Horizontal Pod Autoscaler 에 노출(expose)하여 scaling 을 유도하는 형식이다.
+
+__More Articles__ - [Kubernetes Metrics and Monitoring](http://blog.itaysk.com/2019/01/15/Kubernetes-metrics-and-monitoring)

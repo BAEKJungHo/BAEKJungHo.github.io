@@ -213,6 +213,7 @@ regenerate: true
 ## Kubernetes
 
 * [[/kubernetes/kubernetes-architecture]]
+* [[/kubernetes/kubernetes-keda]]
 
 ## Kafka
 

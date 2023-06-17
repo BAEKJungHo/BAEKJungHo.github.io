@@ -97,7 +97,7 @@
  },
  {
   "name": "infra",
-  "size": 29
+  "size": 30
  },
  {
   "name": "java",
@@ -137,7 +137,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 1
+  "size": 2
  },
  {
   "name": "latex",

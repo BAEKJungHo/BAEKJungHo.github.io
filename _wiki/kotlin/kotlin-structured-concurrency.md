@@ -89,7 +89,10 @@ __[Coroutines Job life cycle](https://kotlinlang.org/api/kotlinx.coroutines/kotl
              +------------+                                   +-----------+
 ```
 
+## Structured Concurrency with Kotlin
 
-## Links
-
-- [Structured Concurrency](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/JOB_LIFE_CYCLE.md#structured-concurrency)
+> __[tmdgusya - Structured Concurrency](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/JOB_LIFE_CYCLE.md#structured-concurrency)__:
+> 
+> Structured Concurrency 는 Async 연산이나 Concurrent 연산을 구조화 시키는 방법을 말한다. 그래서 부모 연산이 종료되더라도 Child 연산의 작업이 정상적으로 종료되는것을 보장해야 하며, Child 연산이 하나라도 취소됬다면 이후 연산은 실행되지 않도록 보장해줘야 한다. 
+>
+> 그렇다면, 왜 Structured Concurrency 와 같은 기술이 도입됬을까? 우리가 Coroutine 을 쓰면 하나의 Task 를 Sub-Task 로 나누어 진행하게 되는데 사실 호출자(Caller) 입장에서는 하나의 Task 일 뿐이다. 즉, Caller 입장에서는 Sub-Task 가 몇개로 나누어져 있든 말든 상관할 빠가 아니고 결국 하나의 Task 가 완료됬냐 안됬냐가 중요한 것이다. 따라서, __동시적(Concurrency)으로 일어나는 Sub-Task 들을 하나의 Task 로 구조화 시켜야 하는데 이를 위해 Structured Concurrency 가 도입된 것이다.__ 그래서 하나의 자식 코루틴(Sub-Task) 이 취소되더라도, Cancellation 이 전파되는 이유가 결국 하나의 Task 로 봤을때는 안의 Sub-Task 가 실패하는 순간 전부 실패한것과 다름없기 때문이다. 그리고 Child 가 끝나기까지 기다리는 이유도 모든 Sub-Routine 들이 끝나야 하나의 Task 가 되기 때문이다.

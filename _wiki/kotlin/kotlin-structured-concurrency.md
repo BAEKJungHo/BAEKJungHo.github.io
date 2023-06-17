@@ -92,4 +92,4 @@ __[Coroutines Job life cycle](https://kotlinlang.org/api/kotlinx.coroutines/kotl
 
 ## Links
 
-- [Kotlin JOB LIFE CYCLE](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/JOB_LIFE_CYCLE.md)
+- [Structured Concurrency](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/JOB_LIFE_CYCLE.md#structured-concurrency)

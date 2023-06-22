@@ -77,6 +77,7 @@ regenerate: true
 * [[/kotlin/kotlin-action-calculate]]
 * [[/kotlin/kotlin-null-safety]]
 * [[/kotlin/kotlin-structured-concurrency]]
+* [[/kotlin/kotlin-mockk-springmockk]]
 
 ## Java
 

@@ -78,6 +78,7 @@ regenerate: true
 * [[/kotlin/kotlin-null-safety]]
 * [[/kotlin/kotlin-structured-concurrency]]
 * [[/kotlin/kotlin-mockk-springmockk]]
+* [[/kotlin/kotlin-coroutines-webflux]]
 
 ## Java
 

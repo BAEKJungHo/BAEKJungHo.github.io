@@ -27,7 +27,7 @@ Java Application 에서는 OutOfMemory Error 로그가 남아있지 않았었기
 
 실제 Pod 에 들어가 아래 명령어를 통해 java heapsize 를 체크할 수 있었다.
 
-- __java -XX:+PrintFlagsFinal -version | grep -iE 'heapsize|permsize|threadstacksize'__
+- `java -XX:+PrintFlagsFinal -version | grep -iE 'heapsize|permsize|threadstacksize'`
 
 ![](/resource/wiki/linux-oom-killer/heapsize.png)
 

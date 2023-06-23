@@ -92,7 +92,7 @@ __[Pod Quality of Service Classes](https://kubernetes.io/docs/concepts/workloads
 | Burstable  (request < limit)           | min(max(2, 1000 - (1000 * memoryRequestBytes) / machineMemoryCapacityBytes), 999) |
 | BestEffort (Not exists request, limit) | 1000                                                                              |
 
-cAdvisor 는 cgroup 기반으로 모든 Container Resource 사용량을 측정하는 도구이다. The kubelet polls cAdvisor to collect memory usage stats at a regular interval.
+cAdvisor 는 [cgroup](https://baekjungho.github.io/wiki/linux/linux-cgroup/) 기반으로 모든 Container Resource 사용량을 측정하는 도구이다. The kubelet polls cAdvisor to collect memory usage stats at a regular interval.
 
 oom score 는 0 ~ 1000 까지의 값을 갖는데, 값이 1000 이상이면 넘어가면 무조건 evict 되며, Guaranteed 는 -997로 값이 고정이기 때문에 OOM Killer 로 인해서 갑자기 Pod 가 죽는 상황은 발생하지 않는다.
 BestEffort QoS 를 갖는 Pod 의 Container 는 OOM Killer 에 의해서 무조건 제거된다.

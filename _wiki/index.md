@@ -98,11 +98,17 @@ regenerate: true
 * [[/java/java-dynamicproxy]]
 * [[/java/java-cglib]]
 * [[/java/java-forkjoinframework]]
+* [[/java/java-oom-killer]]
 
 ## TroubleShooting
 
 * [[/troubleshooting/troubleshooting-thread-block]]
 * [[/troubleshooting/troubleshooting-idempotency]]
+
+## Linux
+
+* [[/linux/linux-cgroup]]
+* [[/linux/linux-oom-killer]]
 
 ## Logging
 

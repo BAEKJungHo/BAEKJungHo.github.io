@@ -110,6 +110,7 @@ regenerate: true
 * [[/linux/linux-cgroup]]
 * [[/linux/linux-oom-killer]]
 * [[/linux/linux-memory-allocation-overcommit]]
+* [[/linux/linux-increase-kernel-memory]]
 
 ## Logging
 

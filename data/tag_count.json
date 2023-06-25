@@ -137,7 +137,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 5
+  "size": 4
  },
  {
   "name": "latex",
@@ -193,7 +193,7 @@
  },
  {
   "name": "oom",
-  "size": 3
+  "size": 2
  },
  {
   "name": "oop",

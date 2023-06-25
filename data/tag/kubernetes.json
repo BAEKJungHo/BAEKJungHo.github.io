@@ -1,1 +1,1 @@
-["kubernetes/kubernetes-architecture","kubernetes/kubernetes-keda","linux/linux-increase-kernel-memory","linux/linux-memory-allocation-overcommit","linux/linux-oom-killer"]
+["kubernetes/kubernetes-architecture","kubernetes/kubernetes-keda","linux/linux-memory-allocation-overcommit","linux/linux-oom-killer"]

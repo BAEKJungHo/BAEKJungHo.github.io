@@ -101,7 +101,7 @@
  },
  {
   "name": "java",
-  "size": 33
+  "size": 34
  },
  {
   "name": "javascript",
@@ -137,7 +137,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 4
+  "size": 5
  },
  {
   "name": "latex",
@@ -145,7 +145,7 @@
  },
  {
   "name": "linux",
-  "size": 4
+  "size": 5
  },
  {
   "name": "lock",
@@ -193,7 +193,7 @@
  },
  {
   "name": "oom",
-  "size": 2
+  "size": 3
  },
  {
   "name": "oop",

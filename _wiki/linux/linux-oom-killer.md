@@ -4,7 +4,7 @@ title   : Docker, Kubernetes with Linux Kernel OOM Killer
 summary : 
 date    : 2023-06-22 11:28:32 +0900
 updated : 2023-06-22 12:15:24 +0900
-tag     : linux oom kubernetes java
+tag     : linux oom kubernetes java troubleshooting
 toc     : true
 comment : true
 public  : true

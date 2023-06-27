@@ -104,6 +104,7 @@ regenerate: true
 
 * [[/troubleshooting/troubleshooting-thread-block]]
 * [[/troubleshooting/troubleshooting-idempotency]]
+* [[/troubleshooting/troubleshooting-webclientrequestexception]]
 
 ## Linux
 

@@ -185,7 +185,7 @@
  },
  {
   "name": "network",
-  "size": 5
+  "size": 6
  },
  {
   "name": "nodejs",
@@ -257,10 +257,10 @@
  },
  {
   "name": "troubleshooting",
-  "size": 5
+  "size": 6
  },
  {
   "name": "webflux",
-  "size": 3
+  "size": 4
  }
 ]

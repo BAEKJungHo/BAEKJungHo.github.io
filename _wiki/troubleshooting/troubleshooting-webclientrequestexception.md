@@ -72,7 +72,7 @@ ConnectionProvider provider = ConnectionProvider.builder("custom-provider")
 
 ![](/resource/wiki/troubleshooting-webclientrequestexception/fifo.png)
 
-기본전략이 FIFO 임을 알 수 있다. FIFO 전략은 idle 커넥션이 있는 경우, The next acquire operation will get the __Least Recently Used____ connection (LRU, i.e. the connection that was released first among the current idle connections) 이다.
+기본전략이 FIFO 임을 알 수 있다. FIFO 전략은 idle 커넥션이 있는 경우, The next acquire operation will get the __Least Recently Used__ connection (LRU, i.e. the connection that was released first among the current idle connections) 이다.
 
 LIFO 전략은 idle 커넥션이 있는 경우, the next acquire operation will get the __Most Recently Used connection__ (MRU, i.e. the connection that was released last among the current idle connections) 이다.
 

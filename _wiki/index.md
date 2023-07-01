@@ -203,6 +203,7 @@ regenerate: true
 * [[/msa/msa-distributed-caching]]
 * [[/msa/msa-service-connectivity]]
 * [[/msa/msa-event-deconcern]]
+* [[/msa/msa-traffic-shadowing]]
 
 ## Refactoring
 

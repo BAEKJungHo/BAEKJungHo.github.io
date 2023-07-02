@@ -57,7 +57,7 @@ __[Lightweight Processes](https://docs.oracle.com/cd/E19455-01/806-5257/6je9h032
 
 ![](/resource/wiki/java-multithreading/lwp.png)
 
-The threads library uses underlying threads of control called lightweight processes that are supported by the kernel. You can think of an LWP as a __virtual CPU(Processor)__ that executes code or system calls.
+The threads library uses underlying threads of control called lightweight processes that are supported by the kernel. You can think of an LWP as a __virtual CPU__ that executes code or system calls.
 
 Automatic concurrency control for unbound threads. The threads library dynamically expands and shrinks the pool of LWPs to meet the demands of the application. All Java threads are unbound by default. Unbound user-level threads defer control of their concurrency to the threads library, which automatically expands and shrinks the pool of LWPs to meet the demands of the application's unbound threads.
 

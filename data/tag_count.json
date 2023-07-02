@@ -101,7 +101,7 @@
  },
  {
   "name": "java",
-  "size": 34
+  "size": 35
  },
  {
   "name": "javascript",
@@ -145,7 +145,7 @@
  },
  {
   "name": "linux",
-  "size": 5
+  "size": 6
  },
  {
   "name": "lock",
@@ -201,7 +201,7 @@
  },
  {
   "name": "operatingsystem",
-  "size": 2
+  "size": 3
  },
  {
   "name": "parallel",

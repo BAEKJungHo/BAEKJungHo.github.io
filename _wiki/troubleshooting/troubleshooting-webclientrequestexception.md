@@ -76,6 +76,9 @@ ConnectionProvider provider = ConnectionProvider.builder("custom-provider")
 
 LIFO 전략은 idle 커넥션이 있는 경우, the next acquire operation will get the __Most Recently Used connection__ (MRU, i.e. the connection that was released last among the current idle connections) 이다.
 
+__evictInBackground__:
+- maxIdleTimeout 만 설정하면, 해당 커넥션이 유효한지 요청 시점에 검증하게 되고, evictInBackground 옵션을 설정하면 해당 주기(설정 값) 마다, 커넥션이 유효한지 사전에 검증할 수 있다.
+
 More Articles. [How to Avoid Common Mistakes When Using Reactor Netty](https://speakerdeck.com/violetagg/how-to-avoid-common-mistakes-when-using-reactor-netty?slide=91)
 
 

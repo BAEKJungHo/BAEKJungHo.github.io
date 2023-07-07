@@ -21,7 +21,7 @@
  },
  {
   "name": "caching",
-  "size": 2
+  "size": 3
  },
  {
   "name": "cleancode",
@@ -149,7 +149,7 @@
  },
  {
   "name": "lock",
-  "size": 2
+  "size": 3
  },
  {
   "name": "logging",

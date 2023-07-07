@@ -1,1 +1,1 @@
-["redis/redis-lock","spring/spring-concurrency-resolve"]
+["msa/msa-cache-consistency","redis/redis-lock","spring/spring-concurrency-resolve"]

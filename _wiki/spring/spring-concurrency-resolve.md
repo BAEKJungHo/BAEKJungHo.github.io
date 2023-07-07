@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Concurrency resolution
+title   : Concurrency Resolution
 summary : 동시성 이슈 해결방법
 date    : 2022-08-07 00:02:32 +0900
 updated : 2022-08-07 00:15:24 +0900

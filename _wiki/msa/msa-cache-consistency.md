@@ -62,7 +62,7 @@ Client1 이 잠금을 획득했지만 GC 의 StopTheWorld 시간이 Lock 의 Lea
 
 위 문제에 대한 해결책은 __Fencing Token__ 을 사용하는 것이다.
 
-![](/resource/wiki/msa-cache-consistency/fencing.png
+![](/resource/wiki/msa-cache-consistency/fencing.png)
 
 In this context, a fencing token is simply a number that increases (e.g. incremented by the lock service) every time a client acquires the lock.
 

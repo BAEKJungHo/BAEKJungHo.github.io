@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 25
+  "size": 26
  },
  {
   "name": "auth",
@@ -58,6 +58,10 @@
  {
   "name": "devops",
   "size": 6
+ },
+ {
+  "name": "discord",
+  "size": 1
  },
  {
   "name": "docker",
@@ -233,6 +237,10 @@
  },
  {
   "name": "security",
+  "size": 1
+ },
+ {
+  "name": "snowflake",
   "size": 1
  },
  {

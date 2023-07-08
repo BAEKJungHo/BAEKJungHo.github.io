@@ -28,5 +28,6 @@ latex   : true
 
 그래서 올바른 데이터베이스를 선택하기 위한 여러 과정을 거치고 Cassandra 를 선택했다고 한다.
 
-Cassandra
+## How Discord Stores Trillions of Messages
 
+- [Discord 팀이 조 단위 메세지를 DB에 저장하는 방법](https://careerly.co.kr/comments/85802)

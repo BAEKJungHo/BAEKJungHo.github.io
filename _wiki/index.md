@@ -40,6 +40,7 @@ regenerate: true
 * [[/architecture/architecture-amqp]]
 * [[/architecture/architecture-nats]]
 * [[/architecture/architecture-eventdriven-statemachine]]
+* [[/architecture/architecture-discord-store-message]]
 
 ## Kata
 
@@ -336,6 +337,7 @@ regenerate: true
 * [[/database/database-normalization]]
 * [[/database/database-replication]]
 * [[/database/database-partitioning]]
+* [[/database/database-cassandra-kkv]]
 
 ## Clean Code
 

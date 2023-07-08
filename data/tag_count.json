@@ -24,6 +24,10 @@
   "size": 3
  },
  {
+  "name": "cassandra",
+  "size": 2
+ },
+ {
   "name": "cleancode",
   "size": 3
  },
@@ -41,7 +45,7 @@
  },
  {
   "name": "database",
-  "size": 16
+  "size": 18
  },
  {
   "name": "datastructures",
@@ -58,10 +62,6 @@
  {
   "name": "devops",
   "size": 6
- },
- {
-  "name": "discord",
-  "size": 1
  },
  {
   "name": "docker",
@@ -181,7 +181,7 @@
  },
  {
   "name": "msa",
-  "size": 26
+  "size": 28
  },
  {
   "name": "netty",
@@ -241,7 +241,7 @@
  },
  {
   "name": "snowflake",
-  "size": 1
+  "size": 2
  },
  {
   "name": "spring",

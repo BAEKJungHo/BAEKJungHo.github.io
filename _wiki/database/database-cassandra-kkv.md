@@ -39,6 +39,8 @@ __Some of Key Design Objectives__:
 수십억건의 쓰기를 효율적으로 하기 위해서 Cassandra 는 [Log Structured File System](https://pages.cs.wisc.edu/~remzi/OSTEP/file-lfs.pdf) 을 사용한다.
 즉, 로그에 순차적으로 쓰기를 수행하는 것이다.
 
+Writes are appended to a commit log and written to an in memory structure called a memtable that is eventually flushed to disk.
+
 읽기 최적화도 진행을 하는데 [Cassandra - Distributed key-value store optimized for write-heavy workloads](https://medium.com/coinmonks/cassandra-distributed-key-value-store-optimized-for-write-heavy-workloads-77f69c01388c) 글에 있는 원문을 그대로 적는다.
 
 "Then further optimizations using [bloom filter](https://meetup.nhncloud.com/posts/192) to avoid disk lookups. There is also some locality with key and the columns. But in case of column families, certain columns might be further away — this is optimized using a column index."

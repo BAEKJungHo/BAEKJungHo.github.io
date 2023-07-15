@@ -72,6 +72,10 @@
   "size": 5
  },
  {
+  "name": "fixturemonkey",
+  "size": 1
+ },
+ {
   "name": "flutter",
   "size": 2
  },
@@ -245,7 +249,7 @@
  },
  {
   "name": "spring",
-  "size": 50
+  "size": 51
  },
  {
   "name": "swagger",

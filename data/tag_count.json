@@ -104,6 +104,10 @@
   "size": 6
  },
  {
+  "name": "idempotency",
+  "size": 2
+ },
+ {
   "name": "infra",
   "size": 30
  },
@@ -193,7 +197,7 @@
  },
  {
   "name": "network",
-  "size": 6
+  "size": 7
  },
  {
   "name": "nodejs",

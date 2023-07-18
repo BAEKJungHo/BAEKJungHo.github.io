@@ -38,8 +38,8 @@ I'm confident that I will be the best in any company in terms of actively sharin
 
 ### 42dot - Hyundai Motor Group
 
-- 2022.08.29 ~ ing
-- Autonomous mobility
+- __2022.08.29 ~ ing__
+- __Autonomous mobility__
 - __Experience__
   - Network Troubleshooting Using the Idempotency Key
   - Fixes the memory leak point to resolve OOM
@@ -57,8 +57,8 @@ I'm confident that I will be the best in any company in terms of actively sharin
 
 ### TableManager
 
-- 2022.03.07 ~ 2022.08.26
-- Startup Offers Booking Solutions.
+- __2022.03.07 ~ 2022.08.26__
+- __Startup Offers Booking Solutions__
 - __Experience__
   - Development of Pickup Order Service Using Kakao Chatbot
   - Establishment of KT Call Secretary Auth-Service
@@ -71,8 +71,8 @@ I'm confident that I will be the best in any company in terms of actively sharin
 
 ### Mayeye
 
-- 2019.07.01 ~ 2021.10.08
-- Building a New Web Site
+- __2019.07.01 ~ 2021.10.08__
+- __Building a New Web Site__
 - __Experience__
   - Boryeong City Hall Emergency Disaster Support Fund Application/Management Function
   - Establishment of Small Business Tenant Confirmation Certificate Issuance System

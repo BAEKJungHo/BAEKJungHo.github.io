@@ -37,6 +37,10 @@ With trunk-based development, where developers merge small, frequent updates to 
 
 [Feature Flags](https://trunkbaseddevelopment.com/feature-flags/) & [Branch by Abstraction](https://trunkbaseddevelopment.com/branch-by-abstraction/) 은 Long-Lived Feature Branch 를 위한 기술이다.
 
+## Perceived Barriers to Trunk Based Development
+
+[Perceived Barriers to Trunk Based Development](https://www.davefarley.net/?p=269)
+
 ## Links
 
 - [Trunkbaseddevelopment](https://trunkbaseddevelopment.com/)

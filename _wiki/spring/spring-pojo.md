@@ -17,9 +17,9 @@ latex   : true
 # POJO
 
 - [Martinfowler](https://martinfowler.com/bliki/POJO.html). POJO 는 애플리케이션 핵심 코드를 작성할 때, EJB 기술을 사용하지 말고 일반 자바 객체로 작성하자라는 것이 전부이다.
-- [토비의 스프링](#) POJO 는 객체지향적 원리에 충실하고, 특정 규약과 환경에 종속되지 않게 재활용될 수 있는 방식으로 설계된 객체이다.
+- [Toby](#). POJO 는 객체지향적 원리에 충실하고, 특정 규약과 환경에 종속되지 않게 재활용될 수 있는 방식으로 설계된 객체이다.
   - 특정 기술과 규약, 환경에서 자유롭기 때문에 객체지향적인 설계를 자유롭게 적용할 수 있다. 그래서 자동화된 테스트에 유리하며, 유지보수성과 확장성이 좋아진다.
-- [Rod Johnson](#) OO design is more important than any particular implementation technology (such as J2EE, or even Java). And now important than even Spring or Hibernate. Good Programming practices and sound OO design underpin good J2EE applications. Bad Java code is bad J2EE code.
+- [Rod Johnson](#). OO design is more important than any particular implementation technology (such as J2EE, or even Java). And now important than even Spring or Hibernate. Good Programming practices and sound OO design underpin good J2EE applications. Bad Java code is bad J2EE code.
 
 > POJO 방식으로 개발을 했다면 반드시 테스트를 작성 해야 하며, 그래야 POJO 를 POJO 답게 쓰게하고 그 가치를 누릴 수 있다. - 토비의 스프링 저자. 이일민
 
@@ -55,16 +55,6 @@ public class EmployeePojo {
 ```
 
 이 클래스는 프레임워크에 연결되지 않으므로 모든 Java 프로그램에서 사용할 수 있다.
-
-### 스프링에 종속적인 어노테이션 붙어있는 클래스는 POJO 일까?
-
-- 어노테이션이 어떤 역할을 하는지 알고 있다면 쉽게 답할 것이다.
-- 어노테이션은 단지 DI, AOP 와 같은 동작 등을 프로덕션 코드에 직접적으로 노출시키지 않고 기능을 편리하게 사용하기 위함이다.
-  - 물론, 어노테이션이 동작하기 위해서 리플렉션 같은 기술을 사용해서 뒷단에서 추가적인 코드 구현은 해야 한다.
-
-__따라서, @Service 같은 어노테이션이 붙어있는 클래스가 특정 EJB 같은 특정 기술에 종속적이지 않고, 어노테이션을 제거했을때 POJO 객체라면, POJO 객체로 취급한다.__
-
-예를 들어, 스프링이 아닌 다른 프레임워크를 사용한다고 했을때, 스프링에 종속적인 어노테이션을 먼저 걷어낼 것이다. 그리고 새로운 프레임워크에서 DI, AOP 와 같은 기존에 스프링에서 제공하는 어노테이션과 동일한 기능을 하는 어노테이션이 있다면 그것을 추가하면 될 뿐이며, 만약에 제공하지 않더라도, DI, AOP 를 직접 구현하면된다.
 
 ### POJO 객체로 작성해야하는 이유
 

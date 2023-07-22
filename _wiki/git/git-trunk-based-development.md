@@ -21,6 +21,7 @@ __Smaller Teams__:
 ![](/resource/wiki/git-trunk-based-development/patch.png)
 
 - Small commits straight into the trunk(or master)
+- 이 방식은 Pair Programming 방식을 취한다. Pull Request 방식의 Code Review 불가능.
 
 __Scaled Trunk-Based Development__:
 

@@ -81,6 +81,10 @@
  },
  {
   "name": "fp",
+  "size": 2
+ },
+ {
+  "name": "functor",
   "size": 1
  },
  {
@@ -141,7 +145,7 @@
  },
  {
   "name": "kotlin",
-  "size": 47
+  "size": 48
  },
  {
   "name": "ksp",
@@ -188,6 +192,10 @@
   "size": 2
  },
  {
+  "name": "monad",
+  "size": 1
+ },
+ {
   "name": "msa",
   "size": 28
  },
@@ -225,7 +233,7 @@
  },
  {
   "name": "reactive",
-  "size": 25
+  "size": 26
  },
  {
   "name": "redis",

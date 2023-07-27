@@ -340,6 +340,7 @@ regenerate: true
 * [[/database/database-replication]]
 * [[/database/database-partitioning]]
 * [[/database/database-cassandra-kkv]]
+* [[/database/database-r2dbc]]
 
 ## Clean Code
 

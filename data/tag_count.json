@@ -45,7 +45,7 @@
  },
  {
   "name": "database",
-  "size": 18
+  "size": 19
  },
  {
   "name": "datastructures",
@@ -232,8 +232,12 @@
   "size": 7
  },
  {
+  "name": "r2dbc",
+  "size": 1
+ },
+ {
   "name": "reactive",
-  "size": 26
+  "size": 27
  },
  {
   "name": "redis",

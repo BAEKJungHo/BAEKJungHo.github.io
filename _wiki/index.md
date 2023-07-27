@@ -13,6 +13,7 @@ regenerate: true
 * [[/magazine/magazine-objects-reduce-dependency]]
 * [[/magazine/magazine-future-developers]]
 * [[/magazine/magazine-towards-higher]]
+* [[/magazine/magazine-ffsc]]
 
 ## Mobility
 

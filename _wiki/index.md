@@ -343,6 +343,7 @@ regenerate: true
 * [[/database/database-partitioning]]
 * [[/database/database-cassandra-kkv]]
 * [[/database/database-r2dbc]]
+* [[/database/database-language-translation]]
 
 ## Clean Code
 

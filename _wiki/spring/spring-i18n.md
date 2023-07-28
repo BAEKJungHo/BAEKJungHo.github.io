@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : Message and Internationalization 
-summary : 국제화
+summary : 
 date    : 2022-11-02 15:02:32 +0900
 updated : 2022-11-02 15:12:24 +0900
-tag     : spring
+tag     : spring internationalization
 toc     : true
 comment : true
 public  : true

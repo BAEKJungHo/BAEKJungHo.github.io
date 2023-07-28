@@ -116,6 +116,10 @@
   "size": 30
  },
  {
+  "name": "internationalization",
+  "size": 1
+ },
+ {
   "name": "java",
   "size": 35
  },

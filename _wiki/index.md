@@ -209,6 +209,7 @@ regenerate: true
 * [[/msa/msa-event-deconcern]]
 * [[/msa/msa-traffic-shadowing]]
 * [[/msa/msa-cache-consistency]]
+* [[/msa/msa-concurrency-distributedlock]]
 
 ## Refactoring
 

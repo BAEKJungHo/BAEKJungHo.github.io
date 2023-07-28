@@ -37,7 +37,7 @@
  },
  {
   "name": "concurrency",
-  "size": 2
+  "size": 3
  },
  {
   "name": "crypto",
@@ -165,7 +165,7 @@
  },
  {
   "name": "lock",
-  "size": 3
+  "size": 4
  },
  {
   "name": "logging",
@@ -197,7 +197,7 @@
  },
  {
   "name": "msa",
-  "size": 28
+  "size": 29
  },
  {
   "name": "netty",

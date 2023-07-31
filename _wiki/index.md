@@ -221,6 +221,7 @@ regenerate: true
 ## Crypto
 
 * [[/crypto/crypto-password-encryption]]
+* [[/crypto/crypto-kerckhoffs-principle]]
 
 ## Docker
 

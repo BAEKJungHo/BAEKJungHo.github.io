@@ -9,7 +9,7 @@
  },
  {
   "name": "auth",
-  "size": 5
+  "size": 6
  },
  {
   "name": "batch",
@@ -214,6 +214,10 @@
  {
   "name": "nodejs",
   "size": 2
+ },
+ {
+  "name": "oidc",
+  "size": 1
  },
  {
   "name": "oom",

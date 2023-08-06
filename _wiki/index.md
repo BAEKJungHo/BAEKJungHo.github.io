@@ -292,6 +292,7 @@ regenerate: true
 * [[/auth/auth-jwt]]
 * [[/auth/auth-oauth]]
 * [[/auth/auth-scram]]
+* [[/auth/auth-oidc]]
 
 ## Design pattern
 

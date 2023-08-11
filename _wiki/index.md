@@ -411,6 +411,7 @@ regenerate: true
 * [[/term/term-similar]]
 * [[/term/term-overengineering]]
 * [[/term/term-webapp]]
+* [[/term/term-dogfooding]]
 
 ## etc
 

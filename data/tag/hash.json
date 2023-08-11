@@ -1,1 +1,1 @@
-["auth/auth-hmac","datastructures/datastructures-hash"]
+["auth/auth-hmac","crypto/crypto-hash-deterministic","datastructures/datastructures-hash"]

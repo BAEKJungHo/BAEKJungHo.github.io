@@ -41,7 +41,7 @@
  },
  {
   "name": "crypto",
-  "size": 6
+  "size": 7
  },
  {
   "name": "database",
@@ -101,7 +101,7 @@
  },
  {
   "name": "hash",
-  "size": 2
+  "size": 3
  },
  {
   "name": "hibernate",

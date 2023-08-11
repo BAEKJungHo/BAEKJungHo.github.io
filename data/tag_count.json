@@ -41,7 +41,7 @@
  },
  {
   "name": "crypto",
-  "size": 4
+  "size": 6
  },
  {
   "name": "database",
@@ -97,6 +97,10 @@
  },
  {
   "name": "gradle",
+  "size": 2
+ },
+ {
+  "name": "hash",
   "size": 2
  },
  {

@@ -4,7 +4,7 @@ title   : HMAC
 summary : Hash Message Authentication Code
 date    : 2022-05-29 22:57:32 +0900
 updated : 2022-05-29 23:21:24 +0900
-tag     : auth
+tag     : auth hash crypto
 toc     : true
 comment : true
 public  : true

@@ -224,6 +224,7 @@ regenerate: true
 * [[/crypto/crypto-kerckhoffs-principle]]
 * [[/crypto/crypto-asymmetric-cryptography]]
 * [[/crypto/crypto-hash-deterministic]]
+* [[/crypto/crypto-hash-secure-property]]
 
 ## Docker
 

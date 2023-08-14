@@ -126,15 +126,15 @@ fun task() {
 fun task() {
     // create
     var member = Member("BAEKJungHo")
-    member = memberRepository.save(member) // insert 쿼리가 콘솔에 출력된다. (DB 에 반영 X)
+    member = memberRepository.saveAndFlush(member) // insert 쿼리가 콘솔에 출력된다. (DB 에 반영 X)
 
     // update
     member.update("JungHoBAEK")
-    member = memberRepository.save(member) // update 쿼리가 콘솔에 출력된다. (DB 에 반영 X)
+    member = memberRepository.saveAndFlush(member) // update 쿼리가 콘솔에 출력된다. (DB 에 반영 X)
 
     // update
     member.update("JungHo")
-    member = memberRepository.save(member) // update 쿼리가 콘솔에 출력된다. (DB 에 반영 X)
+    member = memberRepository.saveAndFlush(member) // update 쿼리가 콘솔에 출력된다. (DB 에 반영 X)
 
     // 트랜잭션이 커밋되고나서 모든 변경사항이 반영된다.
 }

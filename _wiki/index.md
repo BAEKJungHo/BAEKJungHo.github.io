@@ -164,7 +164,8 @@ regenerate: true
 * [[/spring/spring-jakarta]]
 * [[/spring/spring-exception-hierarchy]]
 * [[/spring/spring-query-cache-plan]]
-* [[/spring/spring-fixure-monkey]]
+* [[/spring/spring-fixture-monkey]]
+* [[/spring/spring-jpa-lazy-write]]
 
 ## Reactive
 

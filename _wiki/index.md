@@ -18,6 +18,7 @@ regenerate: true
 ## Mobility
 
 * [[/mobility/mobility-lidar-radar]]
+* [[/mobility/mobility-vehicle-signal-specification]]
 
 ## Architecture
 

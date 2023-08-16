@@ -193,7 +193,7 @@
  },
  {
   "name": "mobility",
-  "size": 2
+  "size": 3
  },
  {
   "name": "mockk",
@@ -274,6 +274,10 @@
  {
   "name": "snowflake",
   "size": 2
+ },
+ {
+  "name": "spec",
+  "size": 1
  },
  {
   "name": "spring",

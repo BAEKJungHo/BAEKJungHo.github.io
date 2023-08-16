@@ -137,7 +137,7 @@
  },
  {
   "name": "jpa",
-  "size": 10
+  "size": 11
  },
  {
   "name": "jvm",
@@ -177,7 +177,7 @@
  },
  {
   "name": "logging",
-  "size": 9
+  "size": 10
  },
  {
   "name": "magazine",

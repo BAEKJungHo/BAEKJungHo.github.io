@@ -123,6 +123,7 @@ regenerate: true
 * [[/logging/logging-entity]]
 * [[/logging/logging-datadog-pipelines]]
 * [[/logging/logging-webflux-kotlin]]
+* [[/logging/logging-write-ahead]]
 
 ## Spring
 

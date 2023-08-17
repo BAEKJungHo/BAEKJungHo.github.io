@@ -193,7 +193,7 @@
  },
  {
   "name": "mobility",
-  "size": 3
+  "size": 5
  },
  {
   "name": "mockk",
@@ -293,7 +293,7 @@
  },
  {
   "name": "term",
-  "size": 4
+  "size": 5
  },
  {
   "name": "test",

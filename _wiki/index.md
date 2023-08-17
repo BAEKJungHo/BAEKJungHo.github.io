@@ -19,6 +19,8 @@ regenerate: true
 
 * [[/mobility/mobility-lidar-radar]]
 * [[/mobility/mobility-vehicle-signal-specification]]
+* [[/mobility/mobility-language-dictionary]]
+* [[/mobility/mobility-ota]]
 
 ## Architecture
 

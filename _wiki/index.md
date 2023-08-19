@@ -106,6 +106,7 @@ regenerate: true
 * [[/java/java-forkjoinframework]]
 * [[/java/java-oom-killer]]
 * [[/java/java-deserialize-generic]]
+* [[/java/java-anonymous-class]]
 
 ## TroubleShooting
 

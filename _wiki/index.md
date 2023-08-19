@@ -193,6 +193,7 @@ regenerate: true
 * [[/reactive/reactive-context]]
 * [[/reactive/reactive-timeout-fallback]]
 * [[/reactive/reactive-pub-sub]]
+* [[/reactive/reactive-signal]]
 
 ## MSA
 

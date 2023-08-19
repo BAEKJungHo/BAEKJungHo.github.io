@@ -4,7 +4,7 @@ title   : Reactive Streams Specification
 summary : 
 date    : 2023-02-14 15:05:32 +0900
 updated : 2023-02-14 15:15:24 +0900
-tag     : reactive
+tag     : reactive spec
 toc     : true
 comment : true
 public  : true
@@ -64,8 +64,8 @@ JDK9 made the reactive streams interfaces available under [java.util.concurrent.
 > ![](/resource/wiki/reactive-duality/pub-sub-flow.png)
 >
 > 1. Subscriber 가 subscribe 함수를 사용해 Publisher 에게 구독을 요청.
-> 2. Publisher 는 onSubscribe 함수를 사용해 Subscriber 에게 Subscription 을 전달. (구독 했으니 그거에 대한 Ticket 같은 개념)
-> 3. Subscription 은 Subscriber 와 Publisher 간 통신의 매개체가 된다. Subscriber 는 Publisher 에게 직접 데이터 요청을 하지 않는다. Subscription 의 request 함수를 통해 Publisher 에게 전달한다.
+> 2. Publisher 는 onSubscribe 함수를 사용해 Subscriber 에게 Subscription 을 전달. (구독 했으니 그거에 대한 Ticket 같은 개념). onSubscribe 사용은 데이터를 통지할 준비가 되었음을 알리는 행위이다.
+> 3. Subscription 은 Subscriber 와 Publisher 간 통신의 매개체가 된다. Subscriber 는 Publisher 에게 직접 데이터 요청을 하지 않는다. Subscription.request 함수를 통해 Publisher 에게 전달 받을 데이터 개수를 요청한다.
 > 4. Publisher 는 Subscription 을 통해 Subscriber 의 onNext 에 데이터를 전달하고, 작업이 완료되면 onComplete, 에러가 발생하면 onError 시그널을 전달한다.
 > 5. Subscriber 와 Publisher, Subscription 이 서로 유기적으로 연결되어 통신을 주고받으면서 subscribe 부터 onComplete 까지 연결되고, 이를 통해 Backpressure 가 완성된다.
 

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Kerckhoffs Principle","summary":"암호체계의 안전성은 키의 비밀성에만 의존해야 한다","parent":"crypto","url":"/wiki/crypto/crypto-kerckhoffs-principle","updated":"2023-07-27 15:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Kerckhoffs Principle",
+ "summary": "암호체계의 안전성은 키의 비밀성에만 의존해야 한다",
+ "parent": "crypto",
+ "url": "/wiki/crypto/crypto-kerckhoffs-principle",
+ "updated": "2023-07-27 15:15:24 +0900",
+ "children": []
+}

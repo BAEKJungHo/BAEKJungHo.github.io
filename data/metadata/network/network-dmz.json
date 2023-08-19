@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Demilitarized Zone","summary":"DMZ","parent":"network","url":"/wiki/network/network-dmz","updated":"2023-03-07 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Demilitarized Zone",
+ "summary": "DMZ",
+ "parent": "network",
+ "url": "/wiki/network/network-dmz",
+ "updated": "2023-03-07 20:15:24 +0900",
+ "children": []
+}

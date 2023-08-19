@@ -1,1 +1,15 @@
-{"type":"wiki","title":"Magazine","summary":"","parent":"index","url":"/wiki/magazine","updated":"2022-08-20 20:55:09 +0900","children":["magazine/magazine-ffsc","magazine/magazine-future-developers","magazine/magazine-objects-reduce-dependency","magazine/magazine-productivity-stability","magazine/magazine-towards-higher"]}
+{
+ "type": "wiki",
+ "title": "Magazine",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/magazine",
+ "updated": "2022-08-20 20:55:09 +0900",
+ "children": [
+  "magazine/magazine-ffsc",
+  "magazine/magazine-future-developers",
+  "magazine/magazine-objects-reduce-dependency",
+  "magazine/magazine-productivity-stability",
+  "magazine/magazine-towards-higher"
+ ]
+}

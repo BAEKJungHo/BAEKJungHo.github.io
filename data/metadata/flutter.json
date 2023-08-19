@@ -1,1 +1,11 @@
-{"type":"wiki","title":"Flutter","summary":"","parent":"index","url":"/wiki/flutter","updated":"2023-01-09 20:55:09 +0900","children":["flutter/flutter-widget"]}
+{
+ "type": "wiki",
+ "title": "Flutter",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/flutter",
+ "updated": "2023-01-09 20:55:09 +0900",
+ "children": [
+  "flutter/flutter-widget"
+ ]
+}

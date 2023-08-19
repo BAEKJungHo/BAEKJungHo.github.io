@@ -1,1 +1,4 @@
-["architecture/architecture-discord-store-message","database/database-cassandra-kkv"]
+[
+ "architecture/architecture-discord-store-message",
+ "database/database-cassandra-kkv"
+]

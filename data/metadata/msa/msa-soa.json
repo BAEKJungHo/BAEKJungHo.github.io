@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Service Oriented Architecture","summary":"SOA","parent":"msa","url":"/wiki/msa/msa-soa","updated":"2023-01-31 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Service Oriented Architecture",
+ "summary": "SOA",
+ "parent": "msa",
+ "url": "/wiki/msa/msa-soa",
+ "updated": "2023-01-31 20:15:24 +0900",
+ "children": []
+}

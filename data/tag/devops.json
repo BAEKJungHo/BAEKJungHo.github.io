@@ -1,1 +1,8 @@
-["docker/docker-container","docker/docker-dockerizing","git/git-trunk-based-development","infra/infra-ci-cd","infra/infra-deployment","kubernetes/kubernetes-architecture"]
+[
+ "docker/docker-container",
+ "docker/docker-dockerizing",
+ "git/git-trunk-based-development",
+ "infra/infra-ci-cd",
+ "infra/infra-deployment",
+ "kubernetes/kubernetes-architecture"
+]

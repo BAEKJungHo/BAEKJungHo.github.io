@@ -1,1 +1,9 @@
-{"type":"wiki","title":"N+1 Query Problem with JPA","summary":"","parent":"spring","url":"/wiki/spring/spring-nplusone","updated":"2023-03-19 15:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "N+1 Query Problem with JPA",
+ "summary": "",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-nplusone",
+ "updated": "2023-03-19 15:15:24 +0900",
+ "children": []
+}

@@ -1,1 +1,14 @@
-{"type":"wiki","title":"HTTP","summary":"","parent":"index","url":"/wiki/http","updated":"2022-04-20 20:55:09 +0900","children":["http/http-api-spec","http/http-famous-api","http/http-headers","http/http-localstorage"]}
+{
+ "type": "wiki",
+ "title": "HTTP",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/http",
+ "updated": "2022-04-20 20:55:09 +0900",
+ "children": [
+  "http/http-api-spec",
+  "http/http-famous-api",
+  "http/http-headers",
+  "http/http-localstorage"
+ ]
+}

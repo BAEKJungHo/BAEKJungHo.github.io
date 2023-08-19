@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Module","summary":"모듈, 패키지","parent":"ddd","url":"/wiki/ddd/ddd-module","updated":"2023-01-02 21:21:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Module",
+ "summary": "모듈, 패키지",
+ "parent": "ddd",
+ "url": "/wiki/ddd/ddd-module",
+ "updated": "2023-01-02 21:21:24 +0900",
+ "children": []
+}

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Hexagonal Architecture","summary":"","parent":"architecture","url":"/wiki/architecture/architecture-hexagonal","updated":"2023-02-23 15:12:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Hexagonal Architecture",
+ "summary": "",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-hexagonal",
+ "updated": "2023-02-23 15:12:24 +0900",
+ "children": []
+}

@@ -1,1 +1,6 @@
-["msa/msa-cache-consistency","msa/msa-concurrency-distributedlock","redis/redis-lock","spring/spring-concurrency-resolve"]
+[
+ "msa/msa-cache-consistency",
+ "msa/msa-concurrency-distributedlock",
+ "redis/redis-lock",
+ "spring/spring-concurrency-resolve"
+]

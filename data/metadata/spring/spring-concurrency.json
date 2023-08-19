@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Concurrency","summary":"Concurrency Issue","parent":"spring","url":"/wiki/spring/spring-concurrency","updated":"2022-04-17 00:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Concurrency",
+ "summary": "Concurrency Issue",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-concurrency",
+ "updated": "2022-04-17 00:15:24 +0900",
+ "children": []
+}

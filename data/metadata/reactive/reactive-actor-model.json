@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Actor Model and Akka","summary":"Akka Streams 에서의 Actor Model","parent":"reactive","url":"/wiki/reactive/reactive-actor-model","updated":"2022-10-06 15:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Actor Model and Akka",
+ "summary": "Akka Streams 에서의 Actor Model",
+ "parent": "reactive",
+ "url": "/wiki/reactive/reactive-actor-model",
+ "updated": "2022-10-06 15:15:24 +0900",
+ "children": []
+}

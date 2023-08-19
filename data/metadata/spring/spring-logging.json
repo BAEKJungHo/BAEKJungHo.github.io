@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Slf4j, Logback","summary":"","parent":"spring","url":"/wiki/spring/spring-logging","updated":"2022-04-20 21:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Slf4j, Logback",
+ "summary": "",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-logging",
+ "updated": "2022-04-20 21:15:24 +0900",
+ "children": []
+}

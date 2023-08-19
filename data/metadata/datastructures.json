@@ -1,1 +1,12 @@
-{"type":"wiki","title":"DataStructures","summary":"자료구조","parent":"index","url":"/wiki/datastructures","updated":"2022-04-12 20:55:09 +0900","children":["datastructures/datastructures-recursion","datastructures/datastructures-stack-heap"]}
+{
+ "type": "wiki",
+ "title": "DataStructures",
+ "summary": "자료구조",
+ "parent": "index",
+ "url": "/wiki/datastructures",
+ "updated": "2022-04-12 20:55:09 +0900",
+ "children": [
+  "datastructures/datastructures-recursion",
+  "datastructures/datastructures-stack-heap"
+ ]
+}

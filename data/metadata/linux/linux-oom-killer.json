@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Docker, Kubernetes with Linux Kernel OOM Killer","summary":"","parent":"linux","url":"/wiki/linux/linux-oom-killer","updated":"2023-06-22 12:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Docker, Kubernetes with Linux Kernel OOM Killer",
+ "summary": "",
+ "parent": "linux",
+ "url": "/wiki/linux/linux-oom-killer",
+ "updated": "2023-06-22 12:15:24 +0900",
+ "children": []
+}

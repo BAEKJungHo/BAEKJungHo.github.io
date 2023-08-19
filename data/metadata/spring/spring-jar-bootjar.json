@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Configuration Jar/BootJar in Spring Multi-module","summary":"스프링 멀티모듈 구성 시 Jar, BootJar 옵션 설정하기","parent":"spring","url":"/wiki/spring/spring-jar-bootjar","updated":"2022-10-11 15:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Configuration Jar/BootJar in Spring Multi-module",
+ "summary": "스프링 멀티모듈 구성 시 Jar, BootJar 옵션 설정하기",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-jar-bootjar",
+ "updated": "2022-10-11 15:15:24 +0900",
+ "children": []
+}

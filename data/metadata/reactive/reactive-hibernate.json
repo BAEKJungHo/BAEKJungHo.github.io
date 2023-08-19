@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Dependency for Reactive, Kotlin, WebFlux 3.x with LINE","summary":"Hibernate Reactive, Vert.x and Kotlin JDSL","parent":"reactive","url":"/wiki/reactive/reactive-hibernate","updated":"2023-05-01 15:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Dependency for Reactive, Kotlin, WebFlux 3.x with LINE",
+ "summary": "Hibernate Reactive, Vert.x and Kotlin JDSL",
+ "parent": "reactive",
+ "url": "/wiki/reactive/reactive-hibernate",
+ "updated": "2023-05-01 15:15:24 +0900",
+ "children": []
+}

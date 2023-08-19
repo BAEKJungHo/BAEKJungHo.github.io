@@ -1,1 +1,16 @@
-["architecture/architecture-branchbyabstraction","architecture/architecture-schema-registry","architecture/architecture-sync-messaging","designpattern","designpattern/designpattern-callback","designpattern/designpattern-chain-of-responsibility","designpattern/designpattern-decorator","designpattern/designpattern-intercepting-filter","designpattern/designpattern-observer","designpattern/designpattern-proxy","designpattern/designpattern-singleton","designpattern/designpattern-strategy","designpattern/designpattern-template-method","spring/spring-jpa-osiv"]
+[
+ "architecture/architecture-branchbyabstraction",
+ "architecture/architecture-schema-registry",
+ "architecture/architecture-sync-messaging",
+ "designpattern",
+ "designpattern/designpattern-callback",
+ "designpattern/designpattern-chain-of-responsibility",
+ "designpattern/designpattern-decorator",
+ "designpattern/designpattern-intercepting-filter",
+ "designpattern/designpattern-observer",
+ "designpattern/designpattern-proxy",
+ "designpattern/designpattern-singleton",
+ "designpattern/designpattern-strategy",
+ "designpattern/designpattern-template-method",
+ "spring/spring-jpa-osiv"
+]

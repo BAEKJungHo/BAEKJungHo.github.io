@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Difference Between save and saveAndFlush","summary":"","parent":"spring","url":"/wiki/spring/spring-jpa-saveandflush","updated":"2022-11-06 15:12:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Difference Between save and saveAndFlush",
+ "summary": "",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-jpa-saveandflush",
+ "updated": "2022-11-06 15:12:24 +0900",
+ "children": []
+}

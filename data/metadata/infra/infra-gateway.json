@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Internet Gateway vs NAT Gateway","summary":"","parent":"infra","url":"/wiki/infra/infra-gateway","updated":"2022-06-23 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Internet Gateway vs NAT Gateway",
+ "summary": "",
+ "parent": "infra",
+ "url": "/wiki/infra/infra-gateway",
+ "updated": "2022-06-23 20:15:24 +0900",
+ "children": []
+}

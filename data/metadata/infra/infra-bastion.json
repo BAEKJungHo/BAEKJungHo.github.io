@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Bastion Server","summary":"","parent":"infra","url":"/wiki/infra/infra-bastion","updated":"2022-06-16 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Bastion Server",
+ "summary": "",
+ "parent": "infra",
+ "url": "/wiki/infra/infra-bastion",
+ "updated": "2022-06-16 20:15:24 +0900",
+ "children": []
+}

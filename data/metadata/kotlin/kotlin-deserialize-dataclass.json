@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Deserialize Data Class","summary":"코틀린 Data Class 역직렬화 하기","parent":"kotlin","url":"/wiki/kotlin/kotlin-deserialize-dataclass","updated":"2022-10-03 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Deserialize Data Class",
+ "summary": "코틀린 Data Class 역직렬화 하기",
+ "parent": "kotlin",
+ "url": "/wiki/kotlin/kotlin-deserialize-dataclass",
+ "updated": "2022-10-03 20:15:24 +0900",
+ "children": []
+}

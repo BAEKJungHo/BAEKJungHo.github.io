@@ -1,1 +1,12 @@
-{"type":"wiki","title":"Kafka","summary":"","parent":"index","url":"/wiki/kafka","updated":"2022-08-21 20:55:09 +0900","children":["kafka/kafak-acknowledgement","kafka/kafak-basic"]}
+{
+ "type": "wiki",
+ "title": "Kafka",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/kafka",
+ "updated": "2022-08-21 20:55:09 +0900",
+ "children": [
+  "kafka/kafak-acknowledgement",
+  "kafka/kafak-basic"
+ ]
+}

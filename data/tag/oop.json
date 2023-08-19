@@ -1,1 +1,6 @@
-["driven/oop-oo","driven/oop-solid","kotlin/kotlin-property","spring/spring-pojo"]
+[
+ "driven/oop-oo",
+ "driven/oop-solid",
+ "kotlin/kotlin-property",
+ "spring/spring-pojo"
+]

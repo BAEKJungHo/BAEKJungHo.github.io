@@ -1,1 +1,4 @@
-["buildtool","buildtool/gradle-standard"]
+[
+ "buildtool",
+ "buildtool/gradle-standard"
+]

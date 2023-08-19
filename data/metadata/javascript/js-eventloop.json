@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Event Loop and Call Stack in JS","summary":"","parent":"javascript","url":"/wiki/javascript/js-eventloop","updated":"2022-05-20 19:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Event Loop and Call Stack in JS",
+ "summary": "",
+ "parent": "javascript",
+ "url": "/wiki/javascript/js-eventloop",
+ "updated": "2022-05-20 19:15:24 +0900",
+ "children": []
+}

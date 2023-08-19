@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Git command Cheat Sheets","summary":"깃 명령어 모음집","parent":"git","url":"/wiki/git/git-commands","updated":"2022-07-17 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Git command Cheat Sheets",
+ "summary": "깃 명령어 모음집",
+ "parent": "git",
+ "url": "/wiki/git/git-commands",
+ "updated": "2022-07-17 20:15:24 +0900",
+ "children": []
+}

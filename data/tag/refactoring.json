@@ -1,1 +1,8 @@
-["ddd/ddd-intention-revealing-interface","refactoring","refactoring/refactoring-aliasbug","refactoring/refactoring-local-variable","refactoring/refactoring-parallelchange","refactoring/refactoring-prerequisite"]
+[
+ "ddd/ddd-intention-revealing-interface",
+ "refactoring",
+ "refactoring/refactoring-aliasbug",
+ "refactoring/refactoring-local-variable",
+ "refactoring/refactoring-parallelchange",
+ "refactoring/refactoring-prerequisite"
+]

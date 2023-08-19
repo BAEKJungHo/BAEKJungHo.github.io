@@ -1,1 +1,6 @@
-["kotlin/kotlin-coroutines-webflux","logging/logging-webflux-kotlin","reactive/reactive-context","troubleshooting/troubleshooting-webclientrequestexception"]
+[
+ "kotlin/kotlin-coroutines-webflux",
+ "logging/logging-webflux-kotlin",
+ "reactive/reactive-context",
+ "troubleshooting/troubleshooting-webclientrequestexception"
+]

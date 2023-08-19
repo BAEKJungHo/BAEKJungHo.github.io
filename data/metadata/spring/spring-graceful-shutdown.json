@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Graceful shutdown","summary":"","parent":"spring","url":"/wiki/spring/spring-graceful-shutdown","updated":"2022-08-04 21:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Graceful shutdown",
+ "summary": "",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-graceful-shutdown",
+ "updated": "2022-08-04 21:15:24 +0900",
+ "children": []
+}

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Development Design Documents","summary":"개발 디자인 문서 작성법","parent":"methodology","url":"/wiki/driven/development-design-docs","updated":"2022-07-18 23:21:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Development Design Documents",
+ "summary": "개발 디자인 문서 작성법",
+ "parent": "methodology",
+ "url": "/wiki/driven/development-design-docs",
+ "updated": "2022-07-18 23:21:24 +0900",
+ "children": []
+}

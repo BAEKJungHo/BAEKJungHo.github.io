@@ -1,1 +1,11 @@
-{"type":"wiki","title":"Kata","summary":"","parent":"index","url":"/wiki/kata","updated":"2023-03-28 20:55:09 +0900","children":["kata/kata-hotdog"]}
+{
+ "type": "wiki",
+ "title": "Kata",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/kata",
+ "updated": "2023-03-28 20:55:09 +0900",
+ "children": [
+  "kata/kata-hotdog"
+ ]
+}

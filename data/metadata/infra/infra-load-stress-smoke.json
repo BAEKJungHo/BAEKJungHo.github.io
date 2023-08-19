@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Test methods for improved availability and performance","summary":"Load Test, Stress Test, Smoke Test","parent":"infra","url":"/wiki/infra/infra-load-stress-smoke","updated":"2022-09-30 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Test methods for improved availability and performance",
+ "summary": "Load Test, Stress Test, Smoke Test",
+ "parent": "infra",
+ "url": "/wiki/infra/infra-load-stress-smoke",
+ "updated": "2022-09-30 20:15:24 +0900",
+ "children": []
+}

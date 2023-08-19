@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Express","summary":"","parent":"nodejs","url":"/wiki/nodejs/node-express","updated":"2022-05-27 19:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Express",
+ "summary": "",
+ "parent": "nodejs",
+ "url": "/wiki/nodejs/node-express",
+ "updated": "2022-05-27 19:15:24 +0900",
+ "children": []
+}

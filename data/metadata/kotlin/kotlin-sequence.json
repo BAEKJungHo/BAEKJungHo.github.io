@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Sequence vs Iterable","summary":"코틀린의 Sequence 와 Iterable 비교","parent":"kotlin","url":"/wiki/kotlin/kotlin-sequence","updated":"2022-04-16 16:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Sequence vs Iterable",
+ "summary": "코틀린의 Sequence 와 Iterable 비교",
+ "parent": "kotlin",
+ "url": "/wiki/kotlin/kotlin-sequence",
+ "updated": "2022-04-16 16:15:24 +0900",
+ "children": []
+}

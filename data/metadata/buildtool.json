@@ -1,1 +1,12 @@
-{"type":"wiki","title":"Build Tool","summary":"","parent":"index","url":"/wiki/buildtool","updated":"2022-09-05 20:55:09 +0900","children":["buildtool/gradle-build-performance","buildtool/gradle-standard"]}
+{
+ "type": "wiki",
+ "title": "Build Tool",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/buildtool",
+ "updated": "2022-09-05 20:55:09 +0900",
+ "children": [
+  "buildtool/gradle-build-performance",
+  "buildtool/gradle-standard"
+ ]
+}

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Git basic","summary":"깃 기초","parent":"git","url":"/wiki/git/git-basic","updated":"2022-07-04 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Git basic",
+ "summary": "깃 기초",
+ "parent": "git",
+ "url": "/wiki/git/git-basic",
+ "updated": "2022-07-04 20:15:24 +0900",
+ "children": []
+}

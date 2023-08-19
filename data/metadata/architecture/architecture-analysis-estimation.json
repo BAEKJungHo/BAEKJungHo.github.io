@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Storage Estimation with Quantitative Analysis","summary":"정량적 분석을 통한 스토리지 측정","parent":"architecture","url":"/wiki/architecture/architecture-analysis-estimation","updated":"2023-02-28 15:12:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Storage Estimation with Quantitative Analysis",
+ "summary": "정량적 분석을 통한 스토리지 측정",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-analysis-estimation",
+ "updated": "2023-02-28 15:12:24 +0900",
+ "children": []
+}

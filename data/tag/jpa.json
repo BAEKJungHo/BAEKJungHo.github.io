@@ -1,1 +1,13 @@
-["database/database-cascade","logging/logging-write-ahead","reactive/reactive-hibernate","spring/spring-declarative-transaction","spring/spring-dto-projection","spring/spring-jpa-lazy-write","spring/spring-jpa-osiv","spring/spring-jpa-saveandflush","spring/spring-jpa-version","spring/spring-nplusone","spring/spring-query-cache-plan"]
+[
+ "database/database-cascade",
+ "logging/logging-write-ahead",
+ "reactive/reactive-hibernate",
+ "spring/spring-declarative-transaction",
+ "spring/spring-dto-projection",
+ "spring/spring-jpa-lazy-write",
+ "spring/spring-jpa-osiv",
+ "spring/spring-jpa-saveandflush",
+ "spring/spring-jpa-version",
+ "spring/spring-nplusone",
+ "spring/spring-query-cache-plan"
+]

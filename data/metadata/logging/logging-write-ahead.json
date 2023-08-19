@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Write Ahead Logging","summary":"","parent":"logging","url":"/wiki/logging/logging-write-ahead","updated":"2023-08-11 21:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Write Ahead Logging",
+ "summary": "",
+ "parent": "logging",
+ "url": "/wiki/logging/logging-write-ahead",
+ "updated": "2023-08-11 21:15:24 +0900",
+ "children": []
+}

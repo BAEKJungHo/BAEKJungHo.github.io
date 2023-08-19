@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Thoughts of Objects to Reduce Dependencies Between Packages","summary":"패키지간 의존성을 줄이기 위한 객체에 대한 고찰 및 생산성과 안정성에 대한 트레이드오프","parent":"magazine","url":"/wiki/magazine/magazine-objects-reduce-dependency","updated":"2023-03-14 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Thoughts of Objects to Reduce Dependencies Between Packages",
+ "summary": "패키지간 의존성을 줄이기 위한 객체에 대한 고찰 및 생산성과 안정성에 대한 트레이드오프",
+ "parent": "magazine",
+ "url": "/wiki/magazine/magazine-objects-reduce-dependency",
+ "updated": "2023-03-14 20:15:24 +0900",
+ "children": []
+}

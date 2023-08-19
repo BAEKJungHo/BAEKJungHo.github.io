@@ -1,1 +1,9 @@
-{"type":"wiki","title":"First Citizen","summary":"일급 시민과 고차 함수","parent":"kotlin","url":"/wiki/kotlin/kotlin-first-citizen","updated":"2022-09-24 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "First Citizen",
+ "summary": "일급 시민과 고차 함수",
+ "parent": "kotlin",
+ "url": "/wiki/kotlin/kotlin-first-citizen",
+ "updated": "2022-09-24 20:15:24 +0900",
+ "children": []
+}

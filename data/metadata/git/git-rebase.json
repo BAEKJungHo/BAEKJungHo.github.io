@@ -1,1 +1,9 @@
-{"type":"wiki","title":"rebase","summary":"Git rebase","parent":"git","url":"/wiki/git/git-rebase","updated":"2023-01-03 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "rebase",
+ "summary": "Git rebase",
+ "parent": "git",
+ "url": "/wiki/git/git-rebase",
+ "updated": "2023-01-03 20:15:24 +0900",
+ "children": []
+}

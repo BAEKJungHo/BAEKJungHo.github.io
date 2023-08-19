@@ -1,1 +1,7 @@
-["auth/auth-scram","kafka","kafka/kafak-acknowledgement","kafka/kafak-basic","reactive/reactive-pub-sub"]
+[
+ "auth/auth-scram",
+ "kafka",
+ "kafka/kafak-acknowledgement",
+ "kafka/kafak-basic",
+ "reactive/reactive-pub-sub"
+]

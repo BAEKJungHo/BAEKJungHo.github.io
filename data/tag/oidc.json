@@ -1,1 +1,3 @@
-["auth/auth-oidc"]
+[
+ "auth/auth-oidc"
+]

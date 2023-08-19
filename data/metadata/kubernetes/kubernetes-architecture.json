@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Kubernetes Architectures","summary":"쿠버네티스 구성요소와 아키텍처","parent":"kubernetes","url":"/wiki/kubernetes/kubernetes-architecture","updated":"2022-09-22 21:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Kubernetes Architectures",
+ "summary": "쿠버네티스 구성요소와 아키텍처",
+ "parent": "kubernetes",
+ "url": "/wiki/kubernetes/kubernetes-architecture",
+ "updated": "2022-09-22 21:15:24 +0900",
+ "children": []
+}

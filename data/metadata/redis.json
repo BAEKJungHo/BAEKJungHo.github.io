@@ -1,1 +1,11 @@
-{"type":"wiki","title":"Redis","summary":"","parent":"index","url":"/wiki/redis","updated":"2022-01-18 20:55:09 +0900","children":["redis/redis-lock"]}
+{
+ "type": "wiki",
+ "title": "Redis",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/redis",
+ "updated": "2022-01-18 20:55:09 +0900",
+ "children": [
+  "redis/redis-lock"
+ ]
+}

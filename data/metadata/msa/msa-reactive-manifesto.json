@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Reactive Manifesto","summary":"리액티브 선언문","parent":"msa","url":"/wiki/msa/msa-reactive-manifesto","updated":"2022-06-03 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Reactive Manifesto",
+ "summary": "리액티브 선언문",
+ "parent": "msa",
+ "url": "/wiki/msa/msa-reactive-manifesto",
+ "updated": "2022-06-03 20:15:24 +0900",
+ "children": []
+}

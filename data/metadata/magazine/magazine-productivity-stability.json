@@ -1,1 +1,9 @@
-{"type":"wiki","title":"The Importance of Architecture","summary":"아키텍처의 중요성과 개발 설계의 생산성과 안정성","parent":"magazine","url":"/wiki/magazine/magazine-productivity-stability","updated":"2022-10-21 21:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "The Importance of Architecture",
+ "summary": "아키텍처의 중요성과 개발 설계의 생산성과 안정성",
+ "parent": "magazine",
+ "url": "/wiki/magazine/magazine-productivity-stability",
+ "updated": "2022-10-21 21:15:24 +0900",
+ "children": []
+}

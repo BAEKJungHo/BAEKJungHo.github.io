@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Fault Tolerance","summary":"내결함성","parent":"msa","url":"/wiki/msa/msa-fault-tolerance","updated":"2022-06-02 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Fault Tolerance",
+ "summary": "내결함성",
+ "parent": "msa",
+ "url": "/wiki/msa/msa-fault-tolerance",
+ "updated": "2022-06-02 20:15:24 +0900",
+ "children": []
+}

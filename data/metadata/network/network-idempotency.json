@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Idempotency","summary":"","parent":"network","url":"/wiki/network/network-idempotency","updated":"2023-07-15 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Idempotency",
+ "summary": "",
+ "parent": "network",
+ "url": "/wiki/network/network-idempotency",
+ "updated": "2023-07-15 20:15:24 +0900",
+ "children": []
+}

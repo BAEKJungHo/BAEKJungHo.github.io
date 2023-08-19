@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Bulkhead","summary":"How LINE OpenChatServer handles extreme traffic spikes","parent":"architecture","url":"/wiki/architecture/architecture-bulkhead","updated":"2023-04-22 15:12:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Bulkhead",
+ "summary": "How LINE OpenChatServer handles extreme traffic spikes",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-bulkhead",
+ "updated": "2023-04-22 15:12:24 +0900",
+ "children": []
+}

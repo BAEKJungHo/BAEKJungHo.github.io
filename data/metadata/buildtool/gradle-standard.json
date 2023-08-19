@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Standard Gradle","summary":"All about gradle","parent":"buildtool","url":"/wiki/buildtool/gradle-standard","updated":"2022-09-10 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Standard Gradle",
+ "summary": "All about gradle",
+ "parent": "buildtool",
+ "url": "/wiki/buildtool/gradle-standard",
+ "updated": "2022-09-10 20:15:24 +0900",
+ "children": []
+}

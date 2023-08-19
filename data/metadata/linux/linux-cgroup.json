@@ -1,1 +1,9 @@
-{"type":"wiki","title":"cgroup","summary":"","parent":"linux","url":"/wiki/linux/linux-cgroup","updated":"2023-06-16 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "cgroup",
+ "summary": "",
+ "parent": "linux",
+ "url": "/wiki/linux/linux-cgroup",
+ "updated": "2023-06-16 20:15:24 +0900",
+ "children": []
+}

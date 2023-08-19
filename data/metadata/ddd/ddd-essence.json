@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Essence of Domain Driven Design","summary":"Domain Driven Design is Philosophy, Approach and Art","parent":"ddd","url":"/wiki/ddd/ddd-essence","updated":"2023-01-15 23:21:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Essence of Domain Driven Design",
+ "summary": "Domain Driven Design is Philosophy, Approach and Art",
+ "parent": "ddd",
+ "url": "/wiki/ddd/ddd-essence",
+ "updated": "2023-01-15 23:21:24 +0900",
+ "children": []
+}

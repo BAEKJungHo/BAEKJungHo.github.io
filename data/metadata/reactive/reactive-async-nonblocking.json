@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Blocking NonBlocking Synchronous Asynchronous","summary":"","parent":"reactive","url":"/wiki/reactive/reactive-async-nonblocking","updated":"2023-03-18 15:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Blocking NonBlocking Synchronous Asynchronous",
+ "summary": "",
+ "parent": "reactive",
+ "url": "/wiki/reactive/reactive-async-nonblocking",
+ "updated": "2023-03-18 15:15:24 +0900",
+ "children": []
+}

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Improve Gradle Build Performance","summary":"","parent":"buildtool","url":"/wiki/buildtool/gradle-build-performance","updated":"2023-05-04 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Improve Gradle Build Performance",
+ "summary": "",
+ "parent": "buildtool",
+ "url": "/wiki/buildtool/gradle-build-performance",
+ "updated": "2023-05-04 20:15:24 +0900",
+ "children": []
+}

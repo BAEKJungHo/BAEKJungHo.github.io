@@ -1,1 +1,5 @@
-["java/java-multithreading","operatingsystem","operatingsystem/os-kernel"]
+[
+ "java/java-multithreading",
+ "operatingsystem",
+ "operatingsystem/os-kernel"
+]

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"AWS Elastic Beanstalk","summary":"","parent":"infra","url":"/wiki/infra/infra-elasticbeanstalk","updated":"2022-07-06 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "AWS Elastic Beanstalk",
+ "summary": "",
+ "parent": "infra",
+ "url": "/wiki/infra/infra-elasticbeanstalk",
+ "updated": "2022-07-06 20:15:24 +0900",
+ "children": []
+}

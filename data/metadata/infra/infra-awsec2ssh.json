@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Access to EC2","summary":"EC2 에 접속하기 with Bastion Server","parent":"infra","url":"/wiki/infra/infra-awsec2ssh","updated":"2022-07-14 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Access to EC2",
+ "summary": "EC2 에 접속하기 with Bastion Server",
+ "parent": "infra",
+ "url": "/wiki/infra/infra-awsec2ssh",
+ "updated": "2022-07-14 20:15:24 +0900",
+ "children": []
+}

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Response and Exception Handling","summary":"ControllerAdvice, ExceptionHandler and ResponseBodyAdvice","parent":"spring","url":"/wiki/spring/spring-responsebodyadvice","updated":"2022-12-08 12:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Response and Exception Handling",
+ "summary": "ControllerAdvice, ExceptionHandler and ResponseBodyAdvice",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-responsebodyadvice",
+ "updated": "2022-12-08 12:15:24 +0900",
+ "children": []
+}

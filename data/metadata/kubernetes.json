@@ -1,1 +1,11 @@
-{"type":"wiki","title":"Kubernetes","summary":"","parent":"index","url":"/wiki/kubernetes","updated":"2022-08-25 20:55:09 +0900","children":["kubernetes/kubernetes-architecture"]}
+{
+ "type": "wiki",
+ "title": "Kubernetes",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/kubernetes",
+ "updated": "2022-08-25 20:55:09 +0900",
+ "children": [
+  "kubernetes/kubernetes-architecture"
+ ]
+}

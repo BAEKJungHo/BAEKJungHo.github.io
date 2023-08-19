@@ -1,1 +1,4 @@
-["spring/spring-openapi","spring/spring-openapi-impl"]
+[
+ "spring/spring-openapi",
+ "spring/spring-openapi-impl"
+]

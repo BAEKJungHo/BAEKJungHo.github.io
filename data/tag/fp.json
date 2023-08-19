@@ -1,1 +1,4 @@
-["kotlin/kotlin-first-citizen","kotlin/kotlin-functor-monad"]
+[
+ "kotlin/kotlin-first-citizen",
+ "kotlin/kotlin-functor-monad"
+]

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"JDBC","summary":"Connection Pool, HikariCP, TCP 3-way Handshake","parent":"spring","url":"/wiki/spring/spring-jdbc","updated":"2022-07-03 15:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "JDBC",
+ "summary": "Connection Pool, HikariCP, TCP 3-way Handshake",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-jdbc",
+ "updated": "2022-07-03 15:15:24 +0900",
+ "children": []
+}

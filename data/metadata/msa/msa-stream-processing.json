@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Stream Processing","summary":"Message Broker and Event Sourcing","parent":"msa","url":"/wiki/msa/msa-stream-processing","updated":"2022-12-23 20:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Stream Processing",
+ "summary": "Message Broker and Event Sourcing",
+ "parent": "msa",
+ "url": "/wiki/msa/msa-stream-processing",
+ "updated": "2022-12-23 20:15:24 +0900",
+ "children": []
+}

@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Clean Code Guide","summary":"클린 코드 작성 가이드","parent":"cleancode","url":"/wiki/cleancode/cleancode-guide","updated":"2022-04-17 16:05:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Clean Code Guide",
+ "summary": "클린 코드 작성 가이드",
+ "parent": "cleancode",
+ "url": "/wiki/cleancode/cleancode-guide",
+ "updated": "2022-04-17 16:05:24 +0900",
+ "children": []
+}

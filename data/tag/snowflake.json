@@ -1,1 +1,4 @@
-["architecture/architecture-discord-store-message","architecture/architecture-distributed-pk"]
+[
+ "architecture/architecture-discord-store-message",
+ "architecture/architecture-distributed-pk"
+]

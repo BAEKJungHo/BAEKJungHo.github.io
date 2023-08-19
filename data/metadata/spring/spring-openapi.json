@@ -1,1 +1,9 @@
-{"type":"wiki","title":"OpenAPI Specification","summary":"","parent":"spring","url":"/wiki/spring/spring-openapi","updated":"2022-10-30 12:15:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "OpenAPI Specification",
+ "summary": "",
+ "parent": "spring",
+ "url": "/wiki/spring/spring-openapi",
+ "updated": "2022-10-30 12:15:24 +0900",
+ "children": []
+}

@@ -1,1 +1,4 @@
-["linux/linux-memory-allocation-overcommit","linux/linux-oom-killer"]
+[
+ "linux/linux-memory-allocation-overcommit",
+ "linux/linux-oom-killer"
+]

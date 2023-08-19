@@ -1,1 +1,9 @@
-{"type":"wiki","title":"Advanced Message Queuing Protocol","summary":"","parent":"architecture","url":"/wiki/architecture/architecture-amqp","updated":"2023-05-19 15:12:24 +0900","children":[]}
+{
+ "type": "wiki",
+ "title": "Advanced Message Queuing Protocol",
+ "summary": "",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-amqp",
+ "updated": "2023-05-19 15:12:24 +0900",
+ "children": []
+}

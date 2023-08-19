@@ -1,1 +1,6 @@
-["driven/test-methodology","kotlin/kotlin-action-calculate","kotlin/kotlin-mockk","kotlin/kotlin-relaxed-mockk"]
+[
+ "driven/test-methodology",
+ "kotlin/kotlin-action-calculate",
+ "kotlin/kotlin-mockk",
+ "kotlin/kotlin-relaxed-mockk"
+]

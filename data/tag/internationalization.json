@@ -1,1 +1,4 @@
-["database/database-language-translation","spring/spring-i18n"]
+[
+ "database/database-language-translation",
+ "spring/spring-i18n"
+]

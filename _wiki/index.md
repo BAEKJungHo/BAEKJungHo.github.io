@@ -105,6 +105,7 @@ regenerate: true
 * [[/java/java-cglib]]
 * [[/java/java-forkjoinframework]]
 * [[/java/java-oom-killer]]
+* [[/java/java-deserialize-generic]]
 
 ## TroubleShooting
 

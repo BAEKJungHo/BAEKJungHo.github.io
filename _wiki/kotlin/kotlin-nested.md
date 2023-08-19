@@ -20,6 +20,10 @@ latex   : true
 - In Java: `static class A`
 - In Kotlin: `class A`
 
+__Hierarchy__:
+
+![](/resource/wiki/kotlin-nested/nested-hierarchy.png)
+
 ## Inner class
 
 내부 클래스(Inner Class) 는 바깥쪽 클래스에 대한 참조를 저장한다. 
@@ -30,6 +34,46 @@ latex   : true
 
 ```
 A static inner class does not keep an implicit reference to its enclosing instance. This prevents a common cause of memeory leaks and uses less memeory per instance of the class
+```
+
+익명 클래스는 이름이 없는 내부 클래스이다. (Anonymous classes are inner classes with no name)
+
+내부 클래스도 빈으로 만들 수 있다.
+
+```kotlin
+@Component
+class Tx(
+   _txAdvice: TxAdvice,
+) {
+
+   init {
+       txAdvice = _txAdvice
+   }
+
+   companion object {
+       private lateinit var txAdvice: TxAdvice
+
+       fun <T> run(function: () -> T): T {
+           return txAdvice.run(function)
+       }
+   }
+
+   @Component
+   class TxAdvice {
+
+       @Transactional
+       fun <T> run(function: () -> T): T {
+           return function.run()
+       }
+   }
+}
+```
+
+이 경우 빈으로 등록되는 순서는 Outer Class -> Inner Class 이다.
+
+```java
+OuterClass outerClass = new OuterClass();
+OuterClass.InnerClass innerClass = outerClass.new InnerClass()
 ```
 
 ### Effective Java

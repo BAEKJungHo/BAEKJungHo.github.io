@@ -191,7 +191,8 @@ regenerate: true
 * [[/reactive/reactive-executor-service]]
 * [[/reactive/reactive-hibernate]]
 * [[/reactive/reactive-context]]
-* [[/reactive/timeout-fallback]]
+* [[/reactive/reactive-timeout-fallback]]
+* [[/reactive/reactive-pub-sub]]
 
 ## MSA
 

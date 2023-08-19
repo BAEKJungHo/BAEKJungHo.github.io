@@ -149,7 +149,7 @@
  },
  {
   "name": "kafka",
-  "size": 4
+  "size": 5
  },
  {
   "name": "kata",
@@ -253,7 +253,7 @@
  },
  {
   "name": "reactive",
-  "size": 27
+  "size": 28
  },
  {
   "name": "redis",

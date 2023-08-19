@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Anonymous Class with Super Token Types 
 summary : 
-date    : 2023-08-16 11:28:32 +0900
-updated : 2023-08-16 12:15:24 +0900
+date    : 2023-08-17 11:28:32 +0900
+updated : 2023-08-17 12:15:24 +0900
 tag     : java kotlin jackson
 toc     : true
 comment : true

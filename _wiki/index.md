@@ -194,6 +194,7 @@ regenerate: true
 * [[/reactive/reactive-timeout-fallback]]
 * [[/reactive/reactive-pub-sub]]
 * [[/reactive/reactive-signal]]
+* [[/reactive/reactive-demand-source]]
 
 ## MSA
 

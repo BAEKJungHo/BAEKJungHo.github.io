@@ -40,6 +40,12 @@ a:visited {
     line-height: 2;
 }
 
+.post-content .external-link {
+    &:after {
+        content: url("/resource/icon/external-link.svg");
+    }
+}
+
 blockquote {
     font-family: 'Noto Serif KR', serif;
     background: #FFFFFF;

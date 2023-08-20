@@ -7,7 +7,7 @@ updated : 2022-04-13 20:55:09 +0900
 tag     : spring
 toc     : true
 public  : true
-parent  : [[/root_index]]
+parent  : [[/index]]
 latex   : false
 ---
 * TOC

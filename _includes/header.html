@@ -70,29 +70,10 @@
         <a class="site-title-right" href="/about/">me</a>
     </div>
     <div>
-        <a id="random-button" class="site-title-right" href="/wiki/root_index/#random" onClick="if(typeof random === 'function')random()">random</a>
+        <a id="random-button" class="site-title-right">random</a>
     </div>
     <div>
         <a class="site-title-right" href="/wiki/root_index/">wiki</a>
     </div>
 </header>
-<script>
-;(function(){
-    var isCtrl = false;
-
-    document.onkeyup=function(e){
-        if (e.which == 17) {
-            isCtrl = false;
-        }
-    }
-
-    document.onkeydown=function(e){
-        if(e.which == 17) {
-            isCtrl = true;
-        }
-        if(e.which == 82 && isCtrl == true) {
-            document.getElementById("random-button").click();
-        }
-    }
-})();
-</script>
+<script async src="/js/shortcut.js"></script>

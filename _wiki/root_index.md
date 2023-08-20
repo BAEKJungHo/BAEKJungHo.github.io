@@ -437,7 +437,6 @@ regenerate: true
 
 ---
 
-## blog posts
 <div>
     <ul>
 {% for post in site.posts %}

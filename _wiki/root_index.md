@@ -4,6 +4,7 @@ title   : wiki
 toc     : true
 public  : true
 comment : false
+updated : 2023-08-19 15:39:22 +0900
 regenerate: true
 ---
 * TOC
@@ -435,3 +436,20 @@ regenerate: true
 * [[/etc/environment-settings]]
 * [[/etc/regular-expression]]
 * [[/etc/unit-of-measure]]
+
+---
+
+## blog posts
+<div>
+    <ul>
+{% for post in site.posts %}
+    {% if post.public == true %}
+        <li>
+            <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+                {{ post.title }}
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+    </ul>
+</div>

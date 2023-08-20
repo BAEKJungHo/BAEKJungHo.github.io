@@ -8,26 +8,36 @@
      * category 타입의 문서 내부에 하위 문서 목록을 만들어 줍니다.
      */
     const target = getTarget();
-    axios
-        .get(`/data/metadata/${target}.json`, {})
-        .then(function(resp) {
-            if (resp.data == null) {
+
+    fetch(`/data/metadata/${target}.json`)
+        .then(response => response.json())
+        .then(function(data) {
+            if (data == null) {
                 return;
             }
 
-            const data = resp.data;
             const children = data.children;
 
             var html = '';
             for (var i = 0; i < children.length; i++) {
-                html += `<li id="child-document-${i}"></li>`
+                html += `<li id="child-document-${i}" class="post-item"></li>`
             }
-            document.getElementById('document-list').innerHTML = `<ul class="post-list">${html}</ul>`
+
+            const containerTarget = document.getElementById('sub-document-list');
+
+            if (containerTarget) {
+                containerTarget.innerHTML = `<ul class="post-list">${html}</ul>`
+            } else {
+                document.getElementById('document-list').innerHTML = `<ul class="post-list">${html}</ul>`
+            }
 
             if (data.children && data.children.sort) {
                 insertChildren(data.children.sort());
             }
             return;
+        })
+        .catch(function(error) {
+            console.error(error);
         });
 
     /**
@@ -36,14 +46,14 @@
     function insertChildren(children) {
         for (let i = 0; i < children.length; i++) {
             const target = children[i];
-            axios
-                .get(`/data/metadata/${target}.json`, {})
-                .then(function(resp) {
-                    if (resp.data == null) {
+
+            fetch(`/data/metadata/${target}.json`)
+                .then(response => response.json())
+                .then(function(data) {
+                    if (data == null) {
                         return;
                     }
 
-                    const data = resp.data;
                     const updated = data.updated.replace(/^(\d{4}-\d{2}-\d{2}).*/, '$1');
                     const title = `<span>${data.title}</span>`
                     const date = `<div class="post-meta" style="float: right;">${updated}</div>`;
@@ -56,6 +66,9 @@
                     document.getElementById(`child-document-${i}`).innerHTML = html;
 
                     return;
+                })
+                .catch(function(error) {
+                    console.error(error);
                 });
 
         }

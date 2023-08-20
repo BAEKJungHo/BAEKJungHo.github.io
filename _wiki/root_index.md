@@ -7,8 +7,6 @@ comment : false
 updated : 2023-08-19 15:39:22 +0900
 regenerate: true
 ---
-* TOC
-  {:toc}
 
 ## Magazine
 

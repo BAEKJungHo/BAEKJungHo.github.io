@@ -22,6 +22,7 @@ regenerate: true
 * [[/mobility/mobility-vehicle-signal-specification]]
 * [[/mobility/mobility-language-dictionary]]
 * [[/mobility/mobility-ota]]
+* [[/mobility/mobility-autonomous-driving-level]]
 
 ## Architecture
 

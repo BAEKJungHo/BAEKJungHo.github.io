@@ -1,5 +1,6 @@
 [
  "mobility",
+ "mobility/mobility-autonomous-driving-level",
  "mobility/mobility-language-dictionary",
  "mobility/mobility-lidar-radar",
  "mobility/mobility-ota",

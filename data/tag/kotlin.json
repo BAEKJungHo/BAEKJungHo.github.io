@@ -6,6 +6,7 @@
  "java/java-anonymous-class",
  "java/java-date",
  "java/java-deserialize-generic",
+ "java/java-effective-final",
  "java/java-firstclasscollection",
  "java/java-garbage-collection",
  "java/java-mapstruct",

@@ -108,6 +108,7 @@ regenerate: true
 * [[/java/java-oom-killer]]
 * [[/java/java-deserialize-generic]]
 * [[/java/java-anonymous-class]]
+* [[/java/java-effective-final]]
 
 ## TroubleShooting
 

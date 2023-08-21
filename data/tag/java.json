@@ -7,6 +7,7 @@
  "java/java-date",
  "java/java-deserialize-generic",
  "java/java-dynamicproxy",
+ "java/java-effective-final",
  "java/java-exploring-hidden-cost",
  "java/java-firstclasscollection",
  "java/java-forkjoinframework",

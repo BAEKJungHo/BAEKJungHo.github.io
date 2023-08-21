@@ -29,6 +29,7 @@ Reactive Programming 문서에서 등장하는 Source(or Original) 이라는 용
 Flux<String> sequence = Flux.just("Hello", "Reactor");
 sequence.map(data -> data.toLowerCase())
         .subscribe(data -> System.out.println(data));
+// Subscriber is 'data -> System.out.println(data)'
 ```
 
 "Hello", "Reactor" 가 Source 에 해당된다. __데이터 소스(data source)__ 라고도 한다.

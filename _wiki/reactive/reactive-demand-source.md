@@ -30,6 +30,7 @@ Flux<String> sequence = Flux.just("Hello", "Reactor");
 sequence.map(data -> data.toLowerCase())
         .subscribe(data -> System.out.println(data));
 // Subscriber is 'data -> System.out.println(data)'
+// Operator are just(), map()
 ```
 
 "Hello", "Reactor" 가 Source 에 해당된다. __데이터 소스(data source)__ 라고도 한다.

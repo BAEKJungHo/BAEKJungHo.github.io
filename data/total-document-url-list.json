@@ -53,6 +53,7 @@
  "/wiki/database/database-cassandra-kkv",
  "/wiki/database/database-data-cleansing",
  "/wiki/database/database-language-translation",
+ "/wiki/database/database-metadata-lock",
  "/wiki/database/database-normalization",
  "/wiki/database/database-partitioning",
  "/wiki/database/database-query-offloading",

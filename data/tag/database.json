@@ -5,6 +5,7 @@
  "database/database-cassandra-kkv",
  "database/database-data-cleansing",
  "database/database-language-translation",
+ "database/database-metadata-lock",
  "database/database-normalization",
  "database/database-partitioning",
  "database/database-query-offloading",

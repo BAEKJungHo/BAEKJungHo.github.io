@@ -362,6 +362,7 @@ regenerate: true
 * [[/database/database-cassandra-kkv]]
 * [[/database/database-r2dbc]]
 * [[/database/database-language-translation]]
+* [[/database/database-metadata-lock]]
 
 ## Clean Code
 

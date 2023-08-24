@@ -1,4 +1,5 @@
 [
+ "database/database-metadata-lock",
  "msa/msa-cache-consistency",
  "msa/msa-concurrency-distributedlock",
  "redis/redis-lock",

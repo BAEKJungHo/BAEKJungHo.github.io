@@ -259,6 +259,7 @@ regenerate: true
 ## Redis
 
 * [[/redis/redis-lock]]
+* [[/redis/redis-duplicated-store-prevent]]
 
 ## Infra
 

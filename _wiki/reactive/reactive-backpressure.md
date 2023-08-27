@@ -28,37 +28,55 @@ latex   : true
   - In Reactive Streams, backpressure also defines how to regulate the transmission of stream element
     - control how many elements the recipient can consume
 
-### Controlling Backpressure
+## Downstream Consumer
 
-- __Pull Strategy__
-  - Subscriber 가 요청할 때만 이벤트를 보냄
-- __Limited push strategy__
-  - 클라이언트 측에서 수신할 이벤트 수를 제한
-- Subscriber 가 더 이상 이벤트를 처리할 수 없을 때 데이터 스트리밍을 취소
-- Backpressure handling with a mix of a buffer, and a pull-push hybrid approach
-  - Spring Webflux 내에서 [Project Reactor](https://projectreactor.io/docs/core/release/reference/#reactive.backpressure) 가 Backpressure 를 담당
-  - ![](/resource/wiki/spring-backpressure/backpressure-handling.png)
+데이터를 처리하는 것은 Subscriber 에게 국한되지 않는다. Upstream Publisher 로 부터 데이터를 전달 받아서 처리하는 Downstream Publisher 도 해당된다.
+Downstream Publisher 를 Downstream Consumer 라고도 한다.
 
-### Subscription Specification
+## Controlling Number Of Data
 
-__The [Reactive Streams](https://baekjungho.github.io/wiki/reactive/reactive-streams-specification/) Subscription interface:__
+Subscriber 가 적절히 처리할 수 있는 수준의 데이터 개수를 request 메서드를 통해 Publisher 에게 전달한다.
 
 ```java
-package org.reactivestreams;
+Flux.range(1, 5)
+        .doOnRequest(n -> System.out.println("Request " + n + " values..."))
+        .subscribe(new BaseSubscriber<Integer>() {
+            @Override
+            protected void hookOnSubscribe(Subscription subscription) {
+                System.out.println("Subscribed and make a request...");
+                request(1); // 구독 시점에 최초의 데이터 요청 개수 제어
+            }
 
-public interface Subscription {
-  public void request(long n);
-  public void cancel();
-}
+            @Override
+            protected void hookOnNext(Integer value) {
+                System.out.println("Get value [" + value + "]");
+                request(1); // Publisher 에게 데이터를 전달 받아 처리한 후에 Publisher 에게 또 다시 데이터를 요청
+            }
+        });
 ```
 
-The request method of the __Subscription interface in the Reactive Streams specification is used to implement backpressure__.
+## Backpressure Strategies
 
-Backpressure is a technique used in reactive programming to prevent overwhelming a downstream component with more data than it can handle. In a reactive system, a publisher produces data, and a subscriber consumes the data. If the publisher produces data faster than the subscriber can consume it, the subscriber can become overloaded, causing problems like increased memory usage, slower performance, or even crashes.
+- __Buffering__
+  - Downstream 으로 전달할 데이터가 버퍼에 가득 찰 경우, 버퍼 안에 있는 데이터부터 drop 시키는 전략
+- __Dropping__
+  - Downstream 으로 전달할 데이터가 버퍼에 가득 찰 경우, 버퍼 밖에서 대기하는 먼저 emit 된 데이터부터 drop 시키는 전략
+- __Latest__
+  - Downstream 으로 전달할 데이터가 버퍼에 가득 찰 경우, 버퍼 밖에서 대기하는 가장 최근에(나중에) emit 된 데이터부터 버퍼에 채우는 전략
+- __Error__
+  - 버퍼가 가득 차면 Subscriber 에게 에러를 전달
+  - Downstream 의 데이터 처리 속도가 느려서 Upstream 의 emit 속도를 따라가지 못할 경우 IllegalStateException 발생. Publisher 가 Error signal 을 Subscriber 에게 전달
+- __Ignore__
+  - Backpressure 를 사용하지 않음
+  - IllegalStateException 발생 가능성 있음
 
-To avoid this, the Reactive Streams specification provides a mechanism for the subscriber to request a certain amount of data from the publisher at a time. This is done using the request method of the Subscription interface. When the subscriber is ready to receive more data, it calls the request method with the number of elements it wants to receive. The publisher then sends that number of elements to the subscriber, which can process them at its own pace. Once the subscriber has processed the requested amount of data, it can call request again to request more data.
-
-By using the request method to control the flow of data, the subscriber can prevent itself from being overwhelmed with data, and the publisher can avoid sending more data than the subscriber can handle. This helps ensure that the system is stable, performs well, and avoids problems like memory leaks or other resource constraints.
+```java
+Flux.interval(Duration.ofMillis(1L))
+        .onBackpressureError()
+        .doOnNext(data -> log.info("emit: {}", data)) // Publisher 가 emit 한 데이터 확인
+        .publishOn(Schedulers.parallel())
+        .subscribe( ... )
+```
 
 ## Links
 
@@ -68,3 +86,7 @@ By using the request method to control the flow of data, the subscriber can prev
 - [Webflux 공부하자 1편 - nurinamu](https://www.nurinamu.com/dev/2020/04/09/why-webflux-1/)
 - [Spring’s WebFlux / Reactor Parallelism and Backpressure](https://www.e4developer.com/2018/04/28/springs-webflux-reactor-parallelism-and-backpressure/)
 - [On Backpressure and Ways to Reshape Requests](https://projectreactor.io/docs/core/release/reference/#_on_backpressure_and_ways_to_reshape_requests)
+
+## References
+
+- 스프링으로 시작하는 리액티브 프로그래밍 / 황정식 저 / 비제이퍼블릭

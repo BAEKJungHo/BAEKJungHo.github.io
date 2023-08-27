@@ -10,6 +10,4 @@ public  : true
 parent  : [[/index]]
 latex   : false
 ---
-* TOC
-  {:toc}
 

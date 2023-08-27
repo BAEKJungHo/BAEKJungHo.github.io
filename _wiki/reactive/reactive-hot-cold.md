@@ -46,7 +46,7 @@ log.info("Begin Concert");
 Flux<String> hotPublisher = Flux
         .fromArray(singers)
         .delayElements(Duration.ofSeconds(1))
-        .share();
+        .share(); // Returns a new Flux that multicasts (shares) the original Flux.
 
 // "Freddie", "Bono", "Amy"
 hotPublisher.subscribe(c -> log.info("Subscriber 1: " + c)); 
@@ -60,6 +60,8 @@ Thread.sleep(3000);
 ```
 
 두 번째 Subscriber(콘서트 관람객) 는 첫 번째 Subscriber 가 이미 받은 데이터를 받지 못한다.
+
+Multicast 의 의미는 여러 Subscriber 가 하나의 원본 Flux 를 공유한다는 의미다.
 
 ## Links
 

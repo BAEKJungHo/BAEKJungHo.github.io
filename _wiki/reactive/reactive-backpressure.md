@@ -59,6 +59,12 @@ Flux.range(1, 5)
 
 - __Buffering__
   - Downstream 으로 전달할 데이터가 버퍼에 가득 찰 경우, 버퍼 안에 있는 데이터부터 drop 시키는 전략
+  - __DROP_LATEST 전략__
+    - Downstream 으로 전달할 데이터가 버퍼에 가득 찰 경우, 가장 최근에(나중에) 버퍼 안에 채워진 데이터를 Drop 하여 폐기한 후, 확보된 공간에 emit 된 데이터를 채우는 전략
+    - 1부터 10까지 의 데이터가 Buffer 에 가득차있는 상황에서 11이 emit 되면 11이 dropped 되는 전략
+  - __DROP_OLDEST 전략__
+    - Downstream 으로 전달할 데이터가 버퍼에 가득 찰 경우, 가장 오래전에(먼저) 버퍼 안에 채워진 데이터를 Drop 하여 폐기한 후, 확보된 공간에 emit 된 데이터를 채우는 전략
+    - 1부터 10까지 의 데이터가 Buffer 에 가득차있는 상황에서 11이 emit 되면 1이 dropped 되고 11이 채워지는 전략
 - __Dropping__
   - Downstream 으로 전달할 데이터가 버퍼에 가득 찰 경우, 버퍼 밖에서 대기하는 먼저 emit 된 데이터부터 drop 시키는 전략
 - __Latest__

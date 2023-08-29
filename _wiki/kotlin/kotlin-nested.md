@@ -101,7 +101,8 @@ class Outer {
         }
     }
 }
-
+```
+```kotlin
 class Shadow {
 
     var property = 0
@@ -119,7 +120,8 @@ class Shadow {
         }
     }
 }
-
+```
+```kotlin
 fun createInstance () {
     // InnerClass Has A Reference To OuterClass.
     val inner = Shadow().Inner()

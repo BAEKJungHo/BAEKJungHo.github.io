@@ -26,6 +26,9 @@ __Hot: 이미 시작된 것을 계속함__
 
 ## Cold Sequence
 
+- 데이터가 만들어져서 고정되어 있는 경우 (e.g DB call)
+- 어떤 Subscriber 가 호출을 해도 언제나 동일한 결과값만 리턴
+
 ```java
 Flux<String> coldPublisher = Flux
         .fromIterable(Arrays.asList("blue", "green", "orange", "purple"))
@@ -37,6 +40,9 @@ coldPublisher.subscribe(c -> System.out.println("Subscriber 2: " + c)); // BLUE,
 ```
 
 ## Hot Sequence
+
+- 실시간으로 일어나는 외부 이벤트 처리
+- 구독하는 시점부터 발생하는 데이터만 가져와서 리턴
 
 ```java
 String[] singers = {"Freddie", "Bono", "Amy", "Kurt", "Jimi", "Janis", "Elvis"};

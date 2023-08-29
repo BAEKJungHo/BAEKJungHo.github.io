@@ -78,7 +78,56 @@ OuterClass.InnerClass innerClass = outerClass.new InnerClass()
 
 ### Shadowing
 
-The declaration of the members of an inner class shadow those of the enclosing class if they have the same name.
+The declaration of the members of an inner class [shadow](https://docs.oracle.com/javase/tutorial/java/javaOO/nested.html#shadowing) those of the enclosing class if they have the same name.
+
+```kotlin
+class Outer {
+
+    var property: String = "Outer Property"
+    var variablesThatCannotBeAccessedByNestedClasses = 0
+
+    companion object {
+        var property = "Outer Static Property"
+    }
+
+    class Nested {
+
+        private var property: String = "Nested Property"
+
+        fun printProperty() {
+            // variablesThatCannotBeAccessedByNestedClasses - Can't Access
+            println(this.property) // Indicate Nested Property
+            println(Outer.property) // Indicate Outer Static Property
+        }
+    }
+}
+
+class Shadow {
+
+    var property = 0
+    var variablesThatCanBeAccessedByInnerClasses = 0
+
+    inner class Inner {
+
+        private var property = 1
+
+        fun printProperty(property: Int) {
+            variablesThatCanBeAccessedByInnerClasses // Can Access
+            println("property = $property") // Parameter value
+            println("this.property = ${this@Inner.property}") // FirstLevel property
+            println("ShadowTest.this.property = ${this@Shadow.property}") // ShadowTest property
+        }
+    }
+}
+
+fun createInstance () {
+    // InnerClass Has A Reference To OuterClass.
+    val inner = Shadow().Inner()
+
+    // NestedClass Hasn't A Reference To OuterClass.
+    val nested = Outer.Nested()
+}
+```
 
 ### Serialization
 

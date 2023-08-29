@@ -2,5 +2,6 @@
  "reactive/reactive-context",
  "reactive/reactive-executor-service",
  "reactive/reactive-hibernate",
+ "reactive/reactive-netty-memory-leak",
  "spring/spring-netty"
 ]

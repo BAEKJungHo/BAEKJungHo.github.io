@@ -198,6 +198,7 @@ regenerate: true
 * [[/reactive/reactive-pub-sub]]
 * [[/reactive/reactive-signal]]
 * [[/reactive/reactive-demand-source]]
+* [[/reactive/reactive-netty-memory-leak]]
 
 ## MSA
 

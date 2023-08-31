@@ -1,0 +1,6 @@
+[
+ "kotlin/kotlin-continuation",
+ "kotlin/kotlin-coroutines",
+ "kotlin/kotlin-coroutines-webflux",
+ "kotlin/kotlin-suspend"
+]

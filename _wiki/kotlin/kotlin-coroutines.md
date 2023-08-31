@@ -4,7 +4,7 @@ title   : Coroutines
 summary : 
 date    : 2022-06-18 20:54:32 +0900
 updated : 2022-06-18 21:15:24 +0900
-tag     : kotlin
+tag     : kotlin coroutine
 toc     : true
 comment : true
 public  : true

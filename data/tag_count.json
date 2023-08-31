@@ -40,6 +40,10 @@
   "size": 3
  },
  {
+  "name": "coroutine",
+  "size": 4
+ },
+ {
   "name": "crypto",
   "size": 8
  },

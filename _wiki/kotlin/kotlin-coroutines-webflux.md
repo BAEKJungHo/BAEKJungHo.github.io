@@ -4,7 +4,7 @@ title   : Coroutines with WebFlux
 summary : 
 date    : 2023-06-14 15:54:32 +0900
 updated : 2023-06-14 20:15:24 +0900
-tag     : kotlin webflux
+tag     : kotlin webflux coroutine
 toc     : true
 comment : true
 public  : true

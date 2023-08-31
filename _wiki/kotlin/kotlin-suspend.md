@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : Suspension Mechanism
-summary : 코루틴 중단 매커니즘
+summary : 
 date    : 2022-12-15 20:54:32 +0900
 updated : 2022-12-15 21:15:24 +0900
-tag     : kotlin
+tag     : kotlin coroutine
 toc     : true
 comment : true
 public  : true

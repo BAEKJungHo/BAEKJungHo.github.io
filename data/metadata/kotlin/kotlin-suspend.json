@@ -1,9 +1,9 @@
 {
  "type": "wiki",
- "title": "Suspension Mechanism",
+ "title": "Debugging to analyze suspend mechanisms",
  "summary": "",
  "parent": "kotlin",
  "url": "/wiki/kotlin/kotlin-suspend",
- "updated": "2022-12-15 21:15:24 +0900",
+ "updated": "2023-08-27 21:15:24 +0900",
  "children": []
 }

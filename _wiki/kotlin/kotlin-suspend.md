@@ -51,7 +51,7 @@ main @coroutine#1 - START
 main @coroutine#2 - newSuspendFunction START
 main @coroutine#1 - END
 main @coroutine#2 - nonSuspendFunction END: newSuspendFunction context
-main @coroutine#2 -  Hello, World!
+main @coroutine#2 - Hello, World!
 ```
 
 - Suspend mechanism = suspend(중단) + resume(재개)

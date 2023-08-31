@@ -24,31 +24,34 @@ __Samples__:
 
 ```kotlin
 fun main(): Unit = runBlocking { // CoroutineScope
-    println("START")
+    printWithThread("START")
     launch { // CoroutineScope
         newSuspendFunction()
-        println("Hello, World!")
+        println("${Thread.currentThread().name} -  Hello, World!")
     }
     yield()
-    println("END")
+    printWithThread("END")
 }
 
 suspend fun newSuspendFunction() {
-    println("newSuspendFunction START")
+    printWithThread("newSuspendFunction START")
     val context: String = "newSuspendFunction context"
     yield()
-    println("nonSuspendFunction END: $context")
+    printWithThread("nonSuspendFunction END: $context")
 }
+
+// Edit Configurations > VM Option > -Dkotlinx.coroutines.debug
+fun printWithThread(value: String) = println("${Thread.currentThread().name} - $value")
 ```
 
 __Output__:
 
 ```
-START
-newSuspendFunction START
-END
-nonSuspendFunction END
-Hello, World!
+main @coroutine#1 - START
+main @coroutine#2 - newSuspendFunction START
+main @coroutine#1 - END
+main @coroutine#2 - nonSuspendFunction END: newSuspendFunction context
+main @coroutine#2 -  Hello, World!
 ```
 
 - Suspend mechanism = suspend(중단) + resume(재개)

@@ -4,7 +4,7 @@ title   : Structured Concurrency
 summary : 
 date    : 2023-05-25 20:54:32 +0900
 updated : 2023-05-25 21:15:24 +0900
-tag     : kotlin java architecture
+tag     : kotlin java architecture coroutine
 toc     : true
 comment : true
 public  : true
@@ -77,5 +77,47 @@ More Articles:
 > Structured Concurrency 는 Async 연산이나 Concurrent 연산을 구조화 시키는 방법을 말한다. 그래서 부모 연산이 종료되더라도 Child 연산의 작업이 정상적으로 종료되는것을 보장해야 하며, Child 연산이 하나라도 취소됬다면 이후 연산은 실행되지 않도록 보장해줘야 한다. 
 >
 > 그렇다면, 왜 Structured Concurrency 와 같은 기술이 도입됬을까? 우리가 Coroutine 을 쓰면 하나의 Task 를 Sub-Task 로 나누어 진행하게 되는데 사실 호출자(Caller) 입장에서는 하나의 Task 일 뿐이다. 즉, Caller 입장에서는 Sub-Task 가 몇개로 나누어져 있든 말든 상관할 빠가 아니고 결국 하나의 Task 가 완료됬냐 안됬냐가 중요한 것이다. 따라서, __동시적(Concurrency)으로 일어나는 Sub-Task 들을 하나의 Task 로 구조화 시켜야 하는데 이를 위해 Structured Concurrency 가 도입된 것이다.__ 그래서 하나의 자식 코루틴(Sub-Task) 이 취소되더라도, Cancellation 이 전파되는 이유가 결국 하나의 Task 로 봤을때는 안의 Sub-Task 가 실패하는 순간 전부 실패한것과 다름없기 때문이다. 그리고 Child 가 끝나기까지 기다리는 이유도 모든 Sub-Routine 들이 끝나야 하나의 Task 가 되기 때문이다.
-> 
-> [Coroutines basics: Structured concurrency](https://kotlinlang.org/docs/coroutines-basics.html#structured-concurrency)
+
+__[Coroutines basics: Structured concurrency](https://kotlinlang.org/docs/coroutines-basics.html#structured-concurrency)__:
+
+```kotlin
+/**
+ * @title Structured Concurrency Practice
+ *   - Task 가 완료(completed)가 되기 위해서는 sub-task 들이 먼저 완료가 되어야 한다.
+ *   - 하나의 sub-task 가 실패하면 Task 는 실패한다.
+ */
+suspend fun structuredConcurrency(): Unit = coroutineScope {
+    val parentJob = launch {
+        println("Parent Job is Start!!")
+
+        val childJob = launch {
+            delay(200)
+            println("Child Job 1 is Start!!")
+        }
+
+        val childJob2 = launch {
+            delay(300)
+            println("Child Job 2 is Start!!")
+        }
+
+        println("Child Job1 is Finished ? ${childJob.isCompleted}") // false
+        println("Child Job2 is Finished ? ${childJob2.isCompleted}") // false
+
+        // SubParentJob 자체의 연산은 성공했을 수 있지만, 내부에 있는 childJob1, childJob2 의 성공 여부는 아직 확인할 수 없다.
+        // 따라서, SubParentJob 을 completed 상태로 곧바로 바꿔버린다면, 내부에 있는 Job 들의 실행완료를 보장해줄 수 없게 된다.
+        // 일단은 Completed 가 아닌 Completing 상태에 머물게 된다.
+        println("Parent Job is Done!!")
+    }
+
+    delay(100)
+
+    parentJob.printChildJobState()
+    
+    // Job becomes complete only after all its children complete. (isCompleted docs)
+    println("[IMPORTANT-LOG-1] Parent Job is Finished ? ${parentJob.isCompleted}") // false
+
+    delay(300)
+    parentJob.printChildJobState()
+    println("[IMPORTANT-LOG-2] Parent Job is Finished ? ${parentJob.isCompleted}") // true
+}
+```

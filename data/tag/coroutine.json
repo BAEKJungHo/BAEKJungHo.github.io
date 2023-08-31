@@ -2,5 +2,6 @@
  "kotlin/kotlin-continuation",
  "kotlin/kotlin-coroutines",
  "kotlin/kotlin-coroutines-webflux",
+ "kotlin/kotlin-structured-concurrency",
  "kotlin/kotlin-suspend"
 ]

@@ -74,7 +74,7 @@ EventLoop.common 에서 위 그림에 나와있는 부분을 가리키고 있다
 
 ![](/resource/wiki/kotlin-suspend/eventloop.png)
 
-EventLoop 는 모든 코루틴 디스패처가 상속받아야( Base class to be extended by all coroutine dispatcher implementations.) 하는 CoroutineDispatcher 를 상속 받고 있다. 
+EventLoop 는 모든 코루틴 디스패처가 상속받아야(Base class to be extended by all coroutine dispatcher implementations) 하는 CoroutineDispatcher 를 상속 받고 있다. 
 
 __DispatchedContinuation__:
 
@@ -120,7 +120,9 @@ __Context of the previous coroutine is stored in Continuation__:
 
 ![](/resource/wiki/kotlin-suspend/continuation.png)
 
-즉, __코루틴들이 중단-재개 되면서 함수 내에 사용되는 지역변수 정보들을 컨티뉴에이션에 저장하고 가져다 사용하는 것이다.__
+코루틴들이 중단-재개 되면서 함수 내에 사용되는 지역변수 정보들을 컨티뉴에이션에 저장하고 가져다 사용하는 것이다.
+
+따라서, __Continuation 의 경우 실제 Function 에서 Thread Stack 영역에 물고 있어야 하는 정보를 저장하는 역할을 담당__ 한다.
 
 __Repetition resumeWith and invokeSuspend__:
 

@@ -124,6 +124,8 @@ __Context of the previous coroutine is stored in Continuation__:
 
 따라서, __Continuation 의 경우 실제 Function 에서 Thread Stack 영역에 물고 있어야 하는 정보를 저장하는 역할을 담당__ 한다.
 
+이러한 매커니즘을 [Continuation Passing Style](https://baekjungho.github.io/wiki/kotlin/kotlin-continuation/) 이라고 한다.
+
 __Repetition resumeWith and invokeSuspend__:
 
 ![](/resource/wiki/kotlin-suspend/resume-suspend.png)

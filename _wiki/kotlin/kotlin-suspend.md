@@ -27,7 +27,7 @@ fun main(): Unit = runBlocking { // CoroutineScope
     printWithThread("START")
     launch { // CoroutineScope
         newSuspendFunction()
-        println("${Thread.currentThread().name} -  Hello, World!")
+        printWithThread("Hello, World!")
     }
     yield()
     printWithThread("END")

@@ -54,7 +54,9 @@ main @coroutine#2 - nonSuspendFunction END: newSuspendFunction context
 main @coroutine#2 - Hello, World!
 ```
 
-- Suspend mechanism = suspend(중단) + resume(재개)
+- __Suspend mechanism = suspend(중단) + resume(재개)__:
+    - suspend: 코루틴이 일시 중단되는 것
+    - resume: 코루틴이 다시 재개되는 것
 - suspend 와 resume 을 쓰는 메커니즘에서 스레드는 Blocking 되는 것이 아니라, 다른 일을 할 수 있게 되는 것이다.
 - suspend 키워드는 이 함수가 코루틴의 실행을 일시 중지 시킬 수 있다는 것을 나타낸다.
 

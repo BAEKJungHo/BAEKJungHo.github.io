@@ -41,6 +41,7 @@
   "spring/spring-pojo",
   "spring/spring-psa",
   "spring/spring-query-cache-plan",
+  "spring/spring-reactive-security-test-off",
   "spring/spring-responsebodyadvice",
   "spring/spring-security",
   "spring/spring-sqlinjection",

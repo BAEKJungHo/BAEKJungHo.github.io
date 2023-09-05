@@ -175,6 +175,7 @@ regenerate: true
 * [[/spring/spring-query-cache-plan]]
 * [[/spring/spring-fixture-monkey]]
 * [[/spring/spring-jpa-lazy-write]]
+* [[/spring/spring-reactive-security-test-off]]
 
 ## Reactive
 

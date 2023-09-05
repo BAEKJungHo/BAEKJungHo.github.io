@@ -29,5 +29,6 @@
  "reactive/reactive-signal",
  "reactive/reactive-streams-specification",
  "reactive/reactive-timeout-fallback",
- "spring/spring-netty"
+ "spring/spring-netty",
+ "spring/spring-reactive-security-test-off"
 ]

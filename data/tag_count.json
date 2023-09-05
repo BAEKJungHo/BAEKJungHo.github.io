@@ -257,7 +257,7 @@
  },
  {
   "name": "reactive",
-  "size": 31
+  "size": 32
  },
  {
   "name": "redis",
@@ -289,7 +289,7 @@
  },
  {
   "name": "spring",
-  "size": 52
+  "size": 53
  },
  {
   "name": "swagger",

@@ -88,6 +88,7 @@ regenerate: true
 * [[/kotlin/kotlin-mockk-springmockk]]
 * [[/kotlin/kotlin-coroutines-webflux]]
 * [[/kotlin/kotlin-functor-monad]]
+* [[/kotlin/kotlin-coroutine-thread]]
 
 ## Java
 

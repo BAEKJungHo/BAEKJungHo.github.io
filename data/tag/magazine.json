@@ -1,5 +1,6 @@
 [
  "magazine",
+ "magazine/magazine-donot-overspecialize",
  "magazine/magazine-ffsc",
  "magazine/magazine-future-developers",
  "magazine/magazine-objects-reduce-dependency",

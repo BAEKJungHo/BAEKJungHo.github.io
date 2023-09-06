@@ -15,6 +15,7 @@ regenerate: true
 * [[/magazine/magazine-future-developers]]
 * [[/magazine/magazine-towards-higher]]
 * [[/magazine/magazine-ffsc]]
+* [[/magazine/magazine-donot-overspecialize]]
 
 ## Mobility
 

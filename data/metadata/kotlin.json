@@ -10,6 +10,7 @@
   "kotlin/kotlin-companion-object",
   "kotlin/kotlin-compiler-k2",
   "kotlin/kotlin-continuation",
+  "kotlin/kotlin-coroutine-deferred-async",
   "kotlin/kotlin-coroutine-thread",
   "kotlin/kotlin-coroutines",
   "kotlin/kotlin-coroutines-webflux",

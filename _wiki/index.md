@@ -89,6 +89,7 @@ regenerate: true
 * [[/kotlin/kotlin-coroutines-webflux]]
 * [[/kotlin/kotlin-functor-monad]]
 * [[/kotlin/kotlin-coroutine-thread]]
+* [[/kotlin/kotlin-coroutine-deferred-async]]
 
 ## Java
 

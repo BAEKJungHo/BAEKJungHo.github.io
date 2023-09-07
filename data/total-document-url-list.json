@@ -183,6 +183,7 @@
  "/wiki/kotlin/kotlin-companion-object",
  "/wiki/kotlin/kotlin-compiler-k2",
  "/wiki/kotlin/kotlin-continuation",
+ "/wiki/kotlin/kotlin-coroutine-deferred-async",
  "/wiki/kotlin/kotlin-coroutine-thread",
  "/wiki/kotlin/kotlin-coroutines",
  "/wiki/kotlin/kotlin-coroutines-webflux",

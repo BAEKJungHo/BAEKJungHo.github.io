@@ -1,5 +1,6 @@
 [
  "kotlin/kotlin-continuation",
+ "kotlin/kotlin-coroutine-deferred-async",
  "kotlin/kotlin-coroutine-thread",
  "kotlin/kotlin-coroutines",
  "kotlin/kotlin-coroutines-webflux",

@@ -1,4 +1,6 @@
 [
+ "architecture/architecture-aws-well",
+ "architecture/architecture-reliability",
  "docker/docker-container",
  "docker/docker-dockerizing",
  "docker/docker-overlay-network",

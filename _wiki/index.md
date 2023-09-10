@@ -48,6 +48,8 @@ regenerate: true
 * [[/architecture/architecture-nats]]
 * [[/architecture/architecture-eventdriven-statemachine]]
 * [[/architecture/architecture-discord-store-message]]
+* [[/architecture/architecture-aws-well]]
+* [[/architecture/architecture-aws-reliability]]
 
 ## Kata
 

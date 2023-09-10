@@ -16,8 +16,8 @@ latex   : true
 
 ## RELIABILITY
 
-신뢰성(reliability)은 __의도한 기능을 올바르고 일관되게 수행하는 능력__ 이다. Reliability depends on multiple factors, of which resiliency is one of the most impactful.
-탄력성(resiliency)은 인프라 또는 서비스 중단을 복구, 수요를 충족하기 위해 컴퓨팅 리소스를 동적으로 확보, 네트워크 이슈 같은 문제를 완화하는 능력이다. 쉽게 말해 __변화에 적응하고 원래 상태로 돌아갈 수 있는 능력__ 이다.
+__신뢰성(reliability)__ 은 __의도한 기능을 올바르고 일관되게 수행하는 능력__ 이다. Reliability depends on multiple factors, of which resiliency is one of the most impactful.
+__탄력성(resiliency)__ 은 인프라 또는 서비스 중단을 복구, 수요를 충족하기 위해 컴퓨팅 리소스를 동적으로 확보, 네트워크 이슈 같은 문제를 완화하는 능력이다. 쉽게 말해 __변화에 적응하고 원래 상태로 돌아갈 수 있는 능력__ 이다.
 
 __[Design principles](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/design-principles.html)__:
 - Automatically recover from failure

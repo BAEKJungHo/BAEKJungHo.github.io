@@ -1,7 +1,7 @@
 [
  {
   "name": "algorithm",
-  "size": 9
+  "size": 11
  },
  {
   "name": "architecture",
@@ -49,11 +49,11 @@
  },
  {
   "name": "database",
-  "size": 21
+  "size": 20
  },
  {
   "name": "datastructures",
-  "size": 4
+  "size": 5
  },
  {
   "name": "ddd",
@@ -138,10 +138,6 @@
  {
   "name": "javascript",
   "size": 2
- },
- {
-  "name": "jdk",
-  "size": 1
  },
  {
   "name": "jpa",

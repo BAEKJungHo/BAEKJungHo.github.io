@@ -1,10 +1,10 @@
 [
+ "altorithm/algorithm-hash",
  "auth/auth-hmac",
  "crypto",
  "crypto/crypto-asymmetric-cryptography",
  "crypto/crypto-hash-deterministic",
  "crypto/crypto-hash-secure-property",
  "crypto/crypto-kerckhoffs-principle",
- "crypto/crypto-password-encryption",
- "datastructures/datastructures-hash"
+ "crypto/crypto-password-encryption"
 ]

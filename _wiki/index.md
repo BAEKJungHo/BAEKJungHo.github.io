@@ -416,12 +416,13 @@ regenerate: true
 * [[/algorithm/algorithm-run-length-encoding]]
 * [[/algorithm/algorithm-huffman-coding]]
 * [[/algorithm/algorithm-deflate]]
+* [[/algorithm/algorithm-hash]]
+* [[/algorithm/algorithm-bloom-filter]]
 
 ## DataStructures
 
 * [[/datastructures/datastructures-recursion]]
 * [[/datastructures/datastructures-stack-heap]]
-* [[/datastructures/datastructures-hash]]
 
 ## Javascript
 

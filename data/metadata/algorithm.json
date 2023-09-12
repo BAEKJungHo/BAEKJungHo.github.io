@@ -7,7 +7,9 @@
  "updated": "2023-02-09 20:55:09 +0900",
  "children": [
   "altorithm/algorithm-binary-search",
+  "altorithm/algorithm-bloom-filter",
   "altorithm/algorithm-deflate",
+  "altorithm/algorithm-hash",
   "altorithm/algorithm-huffman-coding",
   "altorithm/algorithm-parametric-search",
   "altorithm/algorithm-run-length-encoding",

@@ -20,7 +20,6 @@
   "database/hikaricp-concepts",
   "database/mysql-index",
   "database/query-index",
-  "database/query-optimizing",
-  "datastructures/datastructures-hash"
+  "database/query-optimizing"
  ]
 }

@@ -4,11 +4,11 @@ title   : Hash
 summary : 
 date    : 2023-03-13 15:28:32 +0900
 updated : 2023-03-13 18:15:24 +0900
-tag     : hash crypto datastructures database jdk
+tag     : algorithm hash crypto datastructures
 toc     : true
 comment : true
 public  : true
-parent  : [[/database]]
+parent  : [[/algorithm]]
 latex   : true
 ---
 * TOC

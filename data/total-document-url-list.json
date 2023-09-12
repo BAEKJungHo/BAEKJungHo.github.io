@@ -1,7 +1,9 @@
 [
  "/wiki/algorithm",
  "/wiki/altorithm/algorithm-binary-search",
+ "/wiki/altorithm/algorithm-bloom-filter",
  "/wiki/altorithm/algorithm-deflate",
+ "/wiki/altorithm/algorithm-hash",
  "/wiki/altorithm/algorithm-huffman-coding",
  "/wiki/altorithm/algorithm-parametric-search",
  "/wiki/altorithm/algorithm-run-length-encoding",
@@ -67,7 +69,6 @@
  "/wiki/database/query-index",
  "/wiki/database/query-optimizing",
  "/wiki/datastructures",
- "/wiki/datastructures/datastructures-hash",
  "/wiki/datastructures/datastructures-recursion",
  "/wiki/datastructures/datastructures-stack-heap",
  "/wiki/ddd/ddd-aggregate",

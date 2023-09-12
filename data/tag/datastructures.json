@@ -1,6 +1,7 @@
 [
+ "altorithm/algorithm-bloom-filter",
+ "altorithm/algorithm-hash",
  "datastructures",
- "datastructures/datastructures-hash",
  "datastructures/datastructures-recursion",
  "datastructures/datastructures-stack-heap"
 ]

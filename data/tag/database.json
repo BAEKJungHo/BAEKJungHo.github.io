@@ -16,7 +16,6 @@
  "database/mysql-index",
  "database/query-index",
  "database/query-optimizing",
- "datastructures/datastructures-hash",
  "spring/spring-declarative-transaction",
  "spring/spring-lazyconnectiondatasourceproxy",
  "spring/spring-transactionmanager"

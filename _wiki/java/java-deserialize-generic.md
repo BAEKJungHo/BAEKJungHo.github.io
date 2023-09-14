@@ -87,6 +87,30 @@ JavaType javaType = objectMapper.getTypeFactory().constructParametricType(JsonRe
 JsonResponse<User> jsonResponse = objectMapper.readValue(json, javaType);
 ```
 
+## How to deserialize various types
+
+__Function__:
+
+```kotlin
+private inline fun <reified T> deserialize(
+    source: String,
+    target: TypeReference<T>
+): T {
+    return try {
+        objectMapper.readValue(source, target)
+    } catch (e: Exception) {
+        log.error("# [deserialize] - stacktrace: {}", e.stackTrace)
+        throw DeserializeException()
+    }
+}
+```
+
+__Usage__:
+
+```kotlin
+deserialize(source = source, target = object: TypeReference<BaseResponse<XXX>>() {})
+```
+
 ## Links
 
 - [Deserialize Generic Type with Jackson](https://www.baeldung.com/java-deserialize-generic-type-with-jackson)

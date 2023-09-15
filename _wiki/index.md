@@ -92,6 +92,7 @@ regenerate: true
 * [[/kotlin/kotlin-functor-monad]]
 * [[/kotlin/kotlin-coroutine-thread]]
 * [[/kotlin/kotlin-coroutine-deferred-async]]
+* [[/kotlin/kotlin-coroutine-cancel]]
 
 ## Java
 

@@ -1,5 +1,6 @@
 [
  "kotlin/kotlin-continuation",
+ "kotlin/kotlin-coroutine-cancel",
  "kotlin/kotlin-coroutine-deferred-async",
  "kotlin/kotlin-coroutine-thread",
  "kotlin/kotlin-coroutines",

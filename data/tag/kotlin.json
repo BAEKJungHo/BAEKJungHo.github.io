@@ -15,6 +15,7 @@
  "kotlin/kotlin-companion-object",
  "kotlin/kotlin-compiler-k2",
  "kotlin/kotlin-continuation",
+ "kotlin/kotlin-coroutine-cancel",
  "kotlin/kotlin-coroutine-deferred-async",
  "kotlin/kotlin-coroutine-thread",
  "kotlin/kotlin-coroutines",

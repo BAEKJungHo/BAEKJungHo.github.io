@@ -41,7 +41,7 @@
  },
  {
   "name": "coroutine",
-  "size": 9
+  "size": 10
  },
  {
   "name": "crypto",
@@ -157,7 +157,7 @@
  },
  {
   "name": "kotlin",
-  "size": 55
+  "size": 56
  },
  {
   "name": "ksp",

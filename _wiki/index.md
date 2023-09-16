@@ -94,6 +94,7 @@ regenerate: true
 * [[/kotlin/kotlin-coroutine-deferred-async]]
 * [[/kotlin/kotlin-coroutine-cancel]]
 * [[/kotlin/kotlin-coroutine-exception]]
+* [[/kotlin/kotlin-coroutine-dispatcher]]
 
 ## Java
 

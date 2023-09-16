@@ -17,6 +17,7 @@
  "kotlin/kotlin-continuation",
  "kotlin/kotlin-coroutine-cancel",
  "kotlin/kotlin-coroutine-deferred-async",
+ "kotlin/kotlin-coroutine-dispatcher",
  "kotlin/kotlin-coroutine-exception",
  "kotlin/kotlin-coroutine-thread",
  "kotlin/kotlin-coroutines",

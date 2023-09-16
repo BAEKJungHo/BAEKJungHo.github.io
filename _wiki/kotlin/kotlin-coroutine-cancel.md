@@ -85,3 +85,5 @@ fun main(): Unit = runBlocking { // CoroutineScope
 launch 에 Dispatchers.Default 를 넘겨줘서 별도의 스레드에서 동작하게 해야 한다. 그렇지 않으면 코루틴이 취소되지 않는다.
 
 Dispatchers.Default 를 빼고 취소 시키려면, launch 내부에서 delay, yield 와 같은 suspend function 을 사용해줘야 한다.
+
+CancellationException 은 __예외가 아니라 정상적인 취소로 간주__ 한다. 따라서, 부모 코루틴으로 전파되지 않으며, 다른 자식 코루틴들을 취소시키지 않는다.

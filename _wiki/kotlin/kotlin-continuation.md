@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Continuation Passing Style, Finite State Machine
+title   : Continuation Passing Style
 summary : 
 date    : 2022-12-16 20:54:32 +0900
 updated : 2022-12-16 21:15:24 +0900

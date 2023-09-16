@@ -286,7 +286,7 @@ public static final Object example(int v, @NotNull Continuation var1)
 
 ## Kotlin Coroutines with async libraries
 
-> [[Kotlin Coroutines 톺아보기 - 당근마켓 로컬 커머스팀](https://www.youtube.com/watch?v=eJF60hcz3EU&list=LL&index=1&t=1s)]
+> [Kotlin Coroutines 톺아보기 - 당근마켓 로컬 커머스팀](https://www.youtube.com/watch?v=eJF60hcz3EU&list=LL&index=1&t=1s)
 
 ### 비동기에 대한 고민
 

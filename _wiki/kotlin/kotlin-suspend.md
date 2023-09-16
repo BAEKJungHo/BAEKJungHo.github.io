@@ -16,7 +16,7 @@ latex   : true
 
 ## Suspension Mechanism
 
-Coroutine 은 __suspend point(중단 지점)__ 에서 __중단(suspend)__ 될 수 있고, 다시 해당 __suspend point__ 에서 __재개(resume)__ 할 수 있다.
+Coroutine 은 __suspension point(중단 지점)__ 에서 __중단(suspend)__ 될 수 있고, 다시 해당 __suspend point__ 에서 __재개(resume)__ 할 수 있다.
 
 ![](/resource/wiki/kotlin-suspend/suspend.png)
 
@@ -59,6 +59,11 @@ main @coroutine#2 - Hello, World!
     - resume: 코루틴이 다시 재개되는 것
 - suspend 와 resume 을 쓰는 메커니즘에서 스레드는 Blocking 되는 것이 아니라, 다른 일을 할 수 있게 되는 것이다.
 - suspend 키워드는 이 함수가 코루틴의 실행을 일시 중지 시킬 수 있다는 것을 나타낸다.
+- suspend function 에서는 다른 suspend function 을 호출할 수 있다.
+
+__Advantages__:
+- suspend 를 사용하면 비동기 코드를 동기 코드처럼 작성하여 Callback Hell 을 피할 수 있다.
+- suspend 를 사용하면 [다양한 비동기 라이브러리](https://baekjungho.github.io/wiki/kotlin/kotlin-coroutines/#kotlin-coroutines-with-async-libraries)를 사용할 수 있다.
 
 ### Debugging Call Stack
 
@@ -178,6 +183,47 @@ continuation.resumeWith()에 전달된 결과는 suspendCoroutine 호출의 결�
 ## Suspending Lambda
 
 코루틴에서 실행할 코드블록. 일반 람다와 같은 모양이지만 함수타입은 suspend modifier 가 된다. 보통 람다처럼, suspending 람다는 suspending 함수의 간단한 익명 구문이다. suspending 함수를 호출해 현재 실행 스레드를 차단하지 않고 코드 실행을 일시 중지 할 수 있다. 예를 들어 launch, sequence 함수 다음에 중괄호로 묶인 코드 블록은 모두 suspending 람다다.
+
+```kotlin
+public fun CoroutineScope.launch(
+  context: CoroutineContext = EmptyCoroutineContext,
+  start: CoroutineStart = CoroutineStart.DEFAULT,
+  block: suspend CoroutineScope.() -> Unit // suspending lambda
+): Job {
+  val newContext = newCoroutineContext(context)
+  val coroutine = if (start.isLazy)
+    LazyStandaloneCoroutine(newContext, block) else
+    StandaloneCoroutine(newContext, active = true)
+  coroutine.start(start, coroutine, block)
+  return coroutine
+}
+```
+
+## withContext
+
+withContext 는 CoroutineScope 처럼 주어진 함수 블록을 바로 실행하며, 모두 완료되어야 반환된다. withContext 는
+Dispatcher 를 변경해서 사용해야하는 경우 유용하다.
+
+```kotlin
+suspend fun fetchData(): String {
+    // Simulate a network request
+    delay(2000)
+    return "Data from the network"
+}
+
+fun main() = runBlocking {
+    launch(Dispatchers.Main) {
+        println("Fetching data on ${Thread.currentThread().name}")
+
+        val result = withContext(Dispatchers.IO) {
+            // Run fetchData function on IO thread
+            fetchData()
+        }
+
+        println("Received data on ${Thread.currentThread().name}: $result")
+    }
+}
+```
 
 ## Links
 

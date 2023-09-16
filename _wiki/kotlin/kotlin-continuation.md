@@ -1,10 +1,10 @@
 ---
 layout  : wiki
-title   : Continuation Passing Style
+title   : Continuation Passing Style, Finite State Machine
 summary : 
 date    : 2022-12-16 20:54:32 +0900
 updated : 2022-12-16 21:15:24 +0900
-tag     : kotlin coroutine
+tag     : kotlin coroutine fsm
 toc     : true
 comment : true
 public  : true
@@ -14,144 +14,169 @@ latex   : true
 * TOC
 {:toc}
 
-## Problems at Call Stack and Suspend Function
-
-```kotlin
-fun first() {
-    val name = "Jungho"
-    val job = "Server Engineer"
-    second()
-    return "$name:$job"
-}
-```
-
-위 코드에서 first() 함수를 실행 시키면 Thread Stack 에 Local variables 들을 저장한 뒤 second() 함수를 call stack 에 올리게 된다. first -> second -> first 로 돌아오기 위해서는 first() 의 데이터를 어딘가 저장해야하는데 그 공간이 __Thread Stack__ 이다.
-
-만약 여기서 suspend 를 이용하게 된다면, suspend 되는 순간 Thread 는 코루틴을 떠나게 된다. 즉, __Thread Local 을 Clear 시켜야 한다는 것__ 이다. first -> second -> first 로 넘어갈 때 first() 의 Local 정보와 같이 연속적으로 물고 가야만 하는 데이터들이 생기는데 이러한 문제를 해결하기 위해 Kotlin 은 [Continuation(연속성)](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-continuation/) 이라는 개념을 도입하였다. 
-
-## Continuation
-
-> Continuations represent the rest of a program. They are a form of control flow.
-
-```kotlin
-sequence {
-  for (i in 1..10) yield(i * i)
-  println("over")
-}
-```
-
-위의 예에서 yield 를 호출할 때마다 실행을 유보한다. 남은 실행을 continuation 으로 표현하므로 10개의 컨티뉴에이션을 갖게 된다.
-첫번째 루프에서 i = 2인 곳에서 유보하고 두 번째 실행에서는 i = 3일 때 유보한다. 마지막에 이르러 "over"를 출력하면 컨티뉴에이션은 완료된다.
-
-- The coroutine that is created, but is not started yet, is represented by its initial continuation of type `Continuation<Unit>` that consists of its whole execution.
-    - 코루틴이 생성되면 시작되기 전에 컨티뉴에이션을 초기화하며 이때 타입은 Continuation 이 된다. 이 컨티뉴에이션이 전체 실행을 구성하게 된다.
-
-### Compile Time
-
-Each time Kotlin finds a suspend function, that represents a suspension point that the compiler will desugarize into a callback style.
-
-```kotlin
-suspend fun doSomething() = "Done!"
-
-suspend fun main() { doSomething() }
-```
-
-- __Show Kotlin Bytecode__
-
-```java
-// FileKt.java
-public final class FileKt {
-   @Nullable
-   public static final Object doSomething(@NotNull Continuation $completion) {
-      return "Done!";
-   }
-
-   @Nullable
-   public static final Object main(@NotNull Continuation $completion) {
-      Object var10000 = doSomething($completion);
-      return var10000 == IntrinsicsKt.getCOROUTINE_SUSPENDED() ? var10000 : Unit.INSTANCE;
-   }
-   
-   // ...
-}
-```
-
-The key point here is how both __suspend functions have been converted into static functions__ that get the Continuation passed as an explicit argument. This is formally called [CPS(Continuation Passing Style)](https://en.wikipedia.org/wiki/Continuation-passing_style).
-
-You can see how the main function needs to forward the $completion continuation to the doSomething() call.
-
-### Continuation Interface
-
-Continuation is associated with a suspension point. A continuation is the implicit parameter that the Kotlin compiler passes to any suspend function when compiling it
-
-```kotlin
-// Defined in kotlin.coroutines package
-interface Continuation<in T> {
-   abstract val context: CoroutineContext
-   abstract fun resumeWith(result: Result<T>)
-}
-```
-
-## CoroutineContext
-
-> Defines a scope for new coroutines. Every coroutine builder (like launch, async, etc.) is an extension on CoroutineScope and inherits its coroutineContext to automatically propagate all its elements and cancellation.
-
-```kotlin
-interface CoroutineScope
-```
-
-프로퍼티로는 CoroutineContext 를 가지고 있다.
-
-```kotlin
-abstract val coroutineContext: CoroutineContext
-```
-
-사실 CoroutineScope 는 CoroutineContext 를 coroutine builder(Ex. launch 등) 확장 함수 내부에서 사용하기 위한 매개체 역할만을 담당한다.
-
-> CoroutineContext - Persistent context for the coroutine. It is an indexed set of Element instances. An indexed set is a mix between a set and a map. Every element in this set has a unique Key.
-
-CoroutineContext 는 Element 와 Key 라는 두 가지 타입이 있다.
-
-> Element - An element of the CoroutineContext. An element of the coroutine context is a singleton context by itself.
->
-> Key - Key for the elements of CoroutineContext. E is a type of element with this key.
-
-CoroutineContext 는 실제로 코루틴이 실행 중인 여러 작업(Job 타입)과 디스패처를 저장하는 `Persistence Context` 라고 할 수 있다. 코틀린 런타임은 CoroutineContext 를 사용해서 다음에 실행할 작업을 선정하고, 어떻게 스레드에 배정할지에 대한 방법을 결정한다.
-
-```kotlin
-launch { // 부모 컨텍스트를 사용
-    
-}
-
-launch(Dispatchers.Unconfined) { // 특정 스레드에 종속되지 않음. 메인 스레드 사용
-    
-}
-
-launch(Dispatchers.Default) { // 기본 디스패처 사용
-    
-}
-
-launch(newSingleThreadContext("Async-Thread")) { // 새 스레드를 사용
-    
-}
-```
-
-같은 launch 를 사용하더라도 전달하는 컨텍스트에 따라 서로 다른 스레드 상에서 코루틴이 실행된다.
-
 ## Continuation Passing Style
 
-In functional programming, continuation-passing style(CPS) is a style of programming in which control is passed explicitly in the form of a continuation. A function written in continuation-passing style takes an extra argument: an explicit "continuation"; i.e., a function of one argument.
+__[Debugging to analyze suspend mechanisms](https://baekjungho.github.io/wiki/kotlin/kotlin-suspend/)__ 에서 코루틴들이 중단-재개 되면서 함수 내에 사용되는 지역변수 정보들을 컨티뉴에이션에 저장하고 가져다 사용하는 것을 확인했다.
+Continuation 의 경우 실제 Function 에서 Thread Stack 영역에 물고 있어야 하는 정보를 저장하는 역할을 담당한다.
 
-- __Related Articles__
-  - [Continuation Passing Style](https://devroach.tistory.com/149)
+CPS(Continuation Passing Style) 변환은 프로그램의 실행 중 특정 시점 이후에 진행해야 하는 내용을 별도의 함수로 뽑고(이런 함수를 Continuation 이라 함), 그 함수에게 현재 시점까지 실행한 결과를 넘겨서 처리하게 만드는 소스코드 변환 기술이다.
+
+[KotlinConf 2017 - Deep Dive into Coroutines on JVM by Roman Elizarov](https://www.youtube.com/watch?v=YrrUCSi72E8&t=110s) 영상 내용이 CPS 를 이해하기에 좋다.
+
+__A toy problem__:
+
+```kotlin
+fun postItem(item: Item) {
+  val token = requestToken()
+  val post = createPost(token, item)
+  processPost(post)
+}
+```
+
+위 세 연산은 코루틴으로 만들어 처리하면 Continuation Passing Style 이 적용되어 아래와 같이 컴파일 된다.
+
+```kotlin
+fun postItem(item: Item) {
+    requestToken { token ->
+        // Continuations
+        val post = createPost(token, item)
+        processPost(post)
+    }
+}
+```
+
+callback 과 상당히 유사하다. 영상에서는 다음과 같이 표현하고 있다. 
+
+- CPS is __fancy theoretical name of callback__
+- CPS == Callback
+
+__compile suspend function__:
+
+```kotlin
+suspend fun createPost(token: Token, item: Item): Post { ... }
+```
+
+위 코드가 컴파일되면 아래와 같이 변한다.
+
+```kotlin
+// Java/JVM
+Object createPost(Token token, Item item, Continuation<Post> cont) { ... }
+```
+
+suspend 키워드가 사라지고 Continuation 이 추가된 것을 확인할 수 있다. 이것을 CPS 라고 한다.
+
+![](/resource/wiki/kotlin-continuation/continuation.png)
+
+[Continuation](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.coroutines/-continuation/) is generic callback interface
+
+### Labeling
+
+suspend function 은 __중단될 수 있는__ 함수이다. 중단이 되었다가 다시 시작하려면 __현재 실행중이 었던 위치를 기록해뒀다가 재개 될 때 다시 시작 되어야__ 한다.
+
+위에서 작성했던 함수들이 suspend 함수라면 __중단될 수 있는__ 포인트마다 내부적으로 Labeling 을 하게 된다.
+
+```kotlin
+suspend fun postItem(item: Item) { // suspend function
+    switch (label) {
+        case 0:
+            val token = requestToken() // suspend function
+        case 1:
+            val post = createPost(token, item) // suspend function
+        case 2:
+            processPost(post) // suspend function
+    }
+}
+```
+
+Labeling 이 끝나면 Continuation Passing Style 을 적용하여 아래와 같이 컴파일 된다. switch 문으로 변경된다.
+
+```kotlin
+fun postItem(item: Item, cont: Continuation) {
+    val sm = object : CoroutineImpl { … }
+    switch (sm.label) {
+        case 0:
+            val token = requestToken(sm)
+        case 1:
+            val post = createPost(token, item, sm)
+        case 2:
+            processPost(post)
+    }
+}
+```
+
+각 단계가 종료될때 postItem 을 다시 호출해서 재개(resume) 시켜야 한다. 그러기 위해서는 Continuation 을 인자로 넘겨야 한다.
+
+### State Machine is Continuation
+
+__Continuation Passing Style with Labeling__:
+
+```kotlin
+class PostItemService {
+  private abstract class PostItemContinuation(val item: Item): Continuation {
+    var label = 0
+    var token: Token? = null
+    var post: Post? = null
+  }
+
+  // Last Argument is Continuation
+  fun postItem(item: Item, continuation: Continuation?) {
+    
+    // Label 을 기준으로 상태를 관리한다.
+    // sm: State Machine
+    val sm = continuation as? PostItemContinuation ?: object : PostItemContinuation(item) {  // State Machine is Continuation
+      override suspend fun resumeWith(data: Any?) {
+        when (super.label) {
+          0 -> { // label 이 0 인 경우 requestToken 이 호출되었음을 알 수 있다.
+            label = 1
+            token = data as Token
+          }
+          1 -> { // label 이 1 인 경우 createPost 가 호출되었음을 알 수 있다.
+            label = 2
+            post = data as Post
+          }
+        }
+        
+        // Recursive Call
+        postItem(item, this) // Continuation Passing Style
+      }
+    }
+
+    when (sm.label) {
+      0 -> {
+        requestToken(sm) // Continuation Passing Style
+      }
+      1 -> {
+        createPost(sm.token!!, item, sm) // Continuation Passing Style
+      }
+    }
+      
+    // when clause 가 종료되었다는 것은 마지막 라벨 상태인 것이다.  
+    processPost(sm.post!!, sm) // Continuation Passing Style
+  }
+}
+```
+
+위 처럼 구현하게 되면, Continuation 을 통해 최초 호출인지 아닌지 구분이 가능하며, PostItemContinuation 구현체에서 label 과 data 를 관리할 수 있다. 
+즉, Continuation 의 resumeWith 에서 label 을 증가시키고 data 를 적재하는 작업을 한다.
+
+다른 suspend function 은 아래 처럼 구성이 된다.
+
+```kotlin
+suspend fun requestToken(continuation: Continuation) {
+    // do something
+    delay(100L)
+    // continuation.resumeWith 을 호출하면서 결과를 같이 넘겨준다. 
+    continuation.resumeWith("requestToken result")
+}
+```
+
+__Flow__:
+
+![](/resource/wiki/kotlin-continuation/suspend-flow.png)
 
 ## Links
 
-- [Kotlin Coroutines - KEEP](https://github.com/Kotlin/KEEP/blob/master/proposals/coroutines.md)
 - [Kotlin Coroutine series - Continuation](https://github.com/tmdgusya/kotlin-coroutine-series/blob/main/chapter/CONTINUATION.md)
-- [Kotlin CoroutineKR](https://github.com/hikaMaeng/kotlinCoroutineKR)
-- [Kotlin Continuation - jorgecastillo](https://jorgecastillo.dev/digging-into-kotlin-continuations#:~:text=A%20continuation%20is%20the%20implicit%20parameter%20that%20the,val%20context%3A%20CoroutineContext%20abstract%20fun%20resumeWith%28result%3A%20Result%3CT%3E%29%20%7D)
-- [How does continuation work in kotlin coroutine](https://stackoverflow.com/questions/73679497/how-does-continuation-work-in-kotlin-coroutine)
 
 ## References
 

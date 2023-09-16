@@ -88,6 +88,10 @@
   "size": 2
  },
  {
+  "name": "fsm",
+  "size": 1
+ },
+ {
   "name": "functor",
   "size": 1
  },

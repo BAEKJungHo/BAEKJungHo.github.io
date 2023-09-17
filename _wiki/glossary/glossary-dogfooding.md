@@ -4,11 +4,11 @@ title   : DogFooding
 summary : 
 date    : 2023-08-04 15:05:32 +0900
 updated : 2023-08-04 15:15:24 +0900
-tag     : term
+tag     : glossary
 toc     : true
 comment : true
 public  : true
-parent  : [[/term]]
+parent  : [[/glossary]]
 latex   : true
 ---
 * TOC

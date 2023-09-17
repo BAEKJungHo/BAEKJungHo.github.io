@@ -1,7 +1,3 @@
 [
- "mobility/mobility-language-dictionary",
- "term",
- "term/term-dogfooding",
- "term/term-similar",
- "term/term-webapp"
+ "mobility/mobility-language-dictionary"
 ]

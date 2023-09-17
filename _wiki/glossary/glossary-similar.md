@@ -1,14 +1,14 @@
 ---
 layout  : wiki
 title   : Similar Terminology Theorem
-summary : 유사 용어 정리
+summary : 
 date    : 2022-08-19 15:05:32 +0900
 updated : 2022-08-19 15:15:24 +0900
-tag     : term
+tag     : glossary
 toc     : true
 comment : true
 public  : true
-parent  : [[/term]]
+parent  : [[/glossary]]
 latex   : true
 ---
 * TOC

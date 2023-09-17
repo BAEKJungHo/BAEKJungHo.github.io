@@ -18,6 +18,7 @@
   "etc/mathjax-latex",
   "flutter",
   "git",
+  "glossary",
   "gpt",
   "http",
   "infra",
@@ -40,7 +41,6 @@
   "redis",
   "refactoring",
   "spring",
-  "term",
   "theory",
   "troubleshooting"
  ]

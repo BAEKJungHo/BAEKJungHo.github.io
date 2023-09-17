@@ -1,0 +1,13 @@
+{
+ "type": "wiki",
+ "title": "Glossary",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/glossary",
+ "updated": "2022-07-18 20:55:09 +0900",
+ "children": [
+  "glossary/glossary-dogfooding",
+  "glossary/glossary-similar",
+  "glossary/glossary-webapp"
+ ]
+}

@@ -435,12 +435,12 @@ regenerate: true
 
 * [[/nodejs/node-express]]
 
-## terms
+## glossary
 
-* [[/term/term-similar]]
-* [[/term/term-overengineering]]
-* [[/term/term-webapp]]
-* [[/term/term-dogfooding]]
+* [[/glossary/glossary-similar]]
+* [[/glossary/glossary-overengineering]]
+* [[/glossary/glossary-webapp]]
+* [[/glossary/glossary-dogfooding]]
 
 ## etc
 

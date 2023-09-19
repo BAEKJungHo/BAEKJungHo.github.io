@@ -140,6 +140,7 @@ regenerate: true
 * [[/logging/logging-datadog-pipelines]]
 * [[/logging/logging-webflux-kotlin]]
 * [[/logging/logging-write-ahead]]
+* [[/logging/logging-nonblocking-pipeline]]
 
 ## Spring
 

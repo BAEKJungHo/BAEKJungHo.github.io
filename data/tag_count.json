@@ -5,11 +5,15 @@
  },
  {
   "name": "architecture",
-  "size": 29
+  "size": 30
  },
  {
   "name": "auth",
   "size": 6
+ },
+ {
+  "name": "aws",
+  "size": 1
  },
  {
   "name": "batch",
@@ -189,7 +193,7 @@
  },
  {
   "name": "logging",
-  "size": 10
+  "size": 11
  },
  {
   "name": "magazine",

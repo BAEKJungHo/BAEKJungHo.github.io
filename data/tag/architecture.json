@@ -25,6 +25,7 @@
  "architecture/architecture-sync-messaging",
  "ddd/ddd-reduce-dependency",
  "kotlin/kotlin-structured-concurrency",
+ "logging/logging-nonblocking-pipeline",
  "magazine/magazine-ffsc",
  "msa/msa-service-connectivity",
  "spring/spring-exception-hierarchy"

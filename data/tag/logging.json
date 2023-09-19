@@ -3,6 +3,7 @@
  "logging/logging-datadog-pipelines",
  "logging/logging-entity",
  "logging/logging-masking",
+ "logging/logging-nonblocking-pipeline",
  "logging/logging-webflux-kotlin",
  "logging/logging-write-ahead",
  "msa/msa-distributed-tracing",

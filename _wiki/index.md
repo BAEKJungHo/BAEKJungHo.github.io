@@ -209,6 +209,7 @@ regenerate: true
 * [[/reactive/reactive-signal]]
 * [[/reactive/reactive-demand-source]]
 * [[/reactive/reactive-netty-memory-leak]]
+* [[/reactive/reactive-netty-bytebuf]]
 
 ## MSA
 

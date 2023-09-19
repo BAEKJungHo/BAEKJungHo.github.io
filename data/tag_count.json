@@ -221,7 +221,7 @@
  },
  {
   "name": "netty",
-  "size": 5
+  "size": 6
  },
  {
   "name": "network",
@@ -261,7 +261,7 @@
  },
  {
   "name": "reactive",
-  "size": 32
+  "size": 33
  },
  {
   "name": "redis",

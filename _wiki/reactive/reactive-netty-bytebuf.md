@@ -45,7 +45,7 @@ ByteBuf uses [zero-based indexing](https://en.wikipedia.org/wiki/Zero-based_numb
 
 ### Sequential Access Indexing
 
-ByteBuf 는 ___readerIndex, writerIndex__ 를 가지고 있다. read/write index 는 각각 read/write operation 이 일어날 때마다 증가한다.
+ByteBuf 는 __readerIndex, writerIndex__ 를 가지고 있다. read/write index 는 각각 read/write operation 이 일어날 때마다 증가한다.
 
 ![](/resource/wiki/reactive-netty-bytebuf/bytebuf-internal-segmentation.png)
 

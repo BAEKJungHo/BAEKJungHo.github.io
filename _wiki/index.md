@@ -212,6 +212,7 @@ regenerate: true
 * [[/reactive/reactive-netty-memory-leak]]
 * [[/reactive/reactive-netty-bytebuf]]
 * [[/reactive/reactive-sinks]]
+* [[/reactive/reactive-scheduler]]
 
 ## MSA
 

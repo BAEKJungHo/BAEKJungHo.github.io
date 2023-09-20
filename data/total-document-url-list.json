@@ -311,6 +311,7 @@
  "/wiki/reactive/reactive-pubsub-chain",
  "/wiki/reactive/reactive-reactor-pattern",
  "/wiki/reactive/reactive-replenishing-optimization",
+ "/wiki/reactive/reactive-scheduler",
  "/wiki/reactive/reactive-signal",
  "/wiki/reactive/reactive-sinks",
  "/wiki/reactive/reactive-streams-specification",

@@ -27,6 +27,7 @@
  "reactive/reactive-pubsub-chain",
  "reactive/reactive-reactor-pattern",
  "reactive/reactive-replenishing-optimization",
+ "reactive/reactive-scheduler",
  "reactive/reactive-signal",
  "reactive/reactive-sinks",
  "reactive/reactive-streams-specification",

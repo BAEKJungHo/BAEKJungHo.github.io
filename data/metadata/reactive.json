@@ -24,6 +24,7 @@
   "reactive/reactive-project-reactor",
   "reactive/reactive-pub-sub",
   "reactive/reactive-pubsub-chain",
+  "reactive/reactive-reactor-context",
   "reactive/reactive-reactor-pattern",
   "reactive/reactive-replenishing-optimization",
   "reactive/reactive-scheduler",

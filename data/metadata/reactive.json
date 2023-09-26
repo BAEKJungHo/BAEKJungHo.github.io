@@ -11,6 +11,7 @@
   "reactive/reactive-aviod-badperformance",
   "reactive/reactive-backpressure",
   "reactive/reactive-context",
+  "reactive/reactive-debugging",
   "reactive/reactive-demand-source",
   "reactive/reactive-duality",
   "reactive/reactive-executor-service",

@@ -2,6 +2,7 @@
  "linux/linux-oom-killer",
  "spring/spring-concurrency-resolve",
  "troubleshooting",
+ "troubleshooting/troubleshooting-firebase-error",
  "troubleshooting/troubleshooting-idempotency",
  "troubleshooting/troubleshooting-thread-block",
  "troubleshooting/troubleshooting-webclientrequestexception"

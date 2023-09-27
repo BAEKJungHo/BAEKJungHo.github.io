@@ -32,6 +32,7 @@
   "reactive/reactive-signal",
   "reactive/reactive-sinks",
   "reactive/reactive-streams-specification",
+  "reactive/reactive-testing",
   "reactive/reactive-timeout-fallback",
   "spring/spring-netty"
  ]

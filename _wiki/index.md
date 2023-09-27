@@ -217,6 +217,7 @@ regenerate: true
 * [[/reactive/reactive-scheduler]]
 * [[/reactive/reactive-context]]
 * [[/reactive/reactive-debugging]]
+* [[/reactive/reactive-testing]]
 
 ## MSA
 

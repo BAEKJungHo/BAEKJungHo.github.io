@@ -12,6 +12,8 @@ latex: true
 
 __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Building__ 
 
+![](/resource/about/principles.png)
+
 - Documentation skills are good.
 - Communication is important.
 - I like to make decisions based on data.
@@ -21,16 +23,15 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 
 ## How do you work ?
 
-- __I aim for code-reviews that help each other__
+- __Aim for code-reviews that help each other__
   - [Watch my codeReview - 1](https://github.com/cIonecoder/expedia/pull/25)
   - [Watch my codeReview - 2](https://github.com/cIonecoder/expedia/pull/45)
-- __I aim for DDD styles__
+- __Aim for DDD styles__
   - [Authorization Server](https://github.com/asterlsker/housepit-auth-server/tree/dev)
-- __Work with code and documentation at the same time.__
+- __Think that communication and documentation is important__
 
 ## Motto 
 
-- Modesty and Steady
 - 세상을 더 나아지게 만든 뒤 떠날 때에서야 비로소 스스로를 좋은사람이라 할 수 있다. 내가 어떤 형태로든 사람들의 삶을 바꿀 수 있다면 그게 가장 중요한 일일 것이다. - Max Holloway
 
 ## Strength
@@ -43,7 +44,8 @@ I'm confident that I will be the best in any company in terms of actively sharin
 
 - __2022.08.29 ~ ing__
 - __Autonomous mobility__
-- __Experience__
+- __Experience__ 
+  - Control-Center Development Experience
   - Network Troubleshooting Using the Idempotency Key
   - Fixes the memory leak point to resolve OOM
   - Experience leading application architecture and convention establishment within Service Engineering Group to improve productivity
@@ -86,3 +88,9 @@ I'm confident that I will be the best in any company in terms of actively sharin
   - Spring MVC, Spring Boot, Spring Security
   - JSP, Mybatis, MySQL, Oracle, GitLab, SVN
 
+# Services
+
+### Trunkr
+
+- Coming soon
+- [Growth platform through review and sharing](https://github.com/trunkr)

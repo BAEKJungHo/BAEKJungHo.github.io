@@ -30,7 +30,7 @@ StepVerifier.create(
     .verifyComplete();
 ```
 
-## Time based Test
+### Time based Test
 
 ```java
 StepVerifier
@@ -44,7 +44,7 @@ StepVerifier
 
 현재 시점에서 1시간 뒤의 회원 수를 count 하려는데, 1시간을 기다리는 것은 비효율적이다. VirtualTimeScheduler 의 advanceTimeBy 를 사용하여 1시간 앞당길 수 있다.
 
-## Backpressure Test
+### Backpressure Test
 
 thenConsumeWhile 을 통해서 Backpressure 테스트를 할 수 있다.
 
@@ -67,7 +67,7 @@ void generateNumbersTest() {
 }
 ```
 
-## Context Test
+### Context Test
 
 [Reactor ContextTests](https://github.com/reactor/reactor-core/blob/main/reactor-core/src/test/java/reactor/core/publisher/ContextTests.java)
 
@@ -83,7 +83,7 @@ StepVerifier.create(...)
         .verify();
 ```
 
-## Record Based Test
+### Record Based Test
 
 Reactor Sequence 를 테스트할 때 emit 된 데이터의 단순 기댓값만 평가하는게 아니라 더 구체적으로 테스트 해야할 수도 있다.
 이 때, __recordWith__ 을 사용하여 테스트하면 된다. recordWith 은 파라미터로 전달한 Java 의 컬렉션에 emit 된 데이터를 추가(기록)하는 세션을 시작한다.

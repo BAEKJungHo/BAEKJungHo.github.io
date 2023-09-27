@@ -12,7 +12,7 @@ latex: true
 
 __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Building__ 
 
-![](/resource/about/principles.png)
+![](/resource/about/principle.png)
 
 - Documentation skills are good.
 - Communication is important.
@@ -23,11 +23,8 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 
 ## How do you work ?
 
-- __Aim for code-reviews that help each other__
-  - [Watch my codeReview - 1](https://github.com/cIonecoder/expedia/pull/25)
-  - [Watch my codeReview - 2](https://github.com/cIonecoder/expedia/pull/45)
-- __Aim for DDD styles__
-  - [Authorization Server](https://github.com/asterlsker/housepit-auth-server/tree/dev)
+- __Aim for [code-reviews](https://github.com/cIonecoder/expedia/pull/45) that help each other__
+- __Aim for [DDD styles](https://github.com/asterlsker/housepit-auth-server/tree/dev)__
 - __Think that communication and documentation is important__
 
 ## Motto 

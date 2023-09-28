@@ -28,5 +28,6 @@
  "logging/logging-nonblocking-pipeline",
  "magazine/magazine-ffsc",
  "msa/msa-service-connectivity",
+ "msa/msa-xa",
  "spring/spring-exception-hierarchy"
 ]

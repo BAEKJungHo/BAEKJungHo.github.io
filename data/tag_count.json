@@ -45,7 +45,7 @@
  },
  {
   "name": "coroutine",
-  "size": 10
+  "size": 11
  },
  {
   "name": "crypto",
@@ -180,6 +180,10 @@
   "size": 4
  },
  {
+  "name": "lambda",
+  "size": 1
+ },
+ {
   "name": "latex",
   "size": 1
  },
@@ -265,7 +269,7 @@
  },
  {
   "name": "reactive",
-  "size": 38
+  "size": 39
  },
  {
   "name": "redis",

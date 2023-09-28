@@ -13,6 +13,7 @@
  "reactive/reactive-backpressure",
  "reactive/reactive-context",
  "reactive/reactive-debugging",
+ "reactive/reactive-defer",
  "reactive/reactive-demand-source",
  "reactive/reactive-duality",
  "reactive/reactive-executor-service",

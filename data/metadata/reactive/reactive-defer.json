@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Deferred Execution",
+ "summary": "Lambdas, Reactive, Coroutines and Functional Interfaces",
+ "parent": "reactive",
+ "url": "/wiki/reactive/reactive-defer",
+ "updated": "2023-09-26 22:15:24 +0900",
+ "children": []
+}

@@ -218,6 +218,7 @@ regenerate: true
 * [[/reactive/reactive-context]]
 * [[/reactive/reactive-debugging]]
 * [[/reactive/reactive-testing]]
+* [[/reactive/reactive-defer]]
 
 ## MSA
 

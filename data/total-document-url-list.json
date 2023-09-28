@@ -298,6 +298,7 @@
  "/wiki/reactive/reactive-backpressure",
  "/wiki/reactive/reactive-context",
  "/wiki/reactive/reactive-debugging",
+ "/wiki/reactive/reactive-defer",
  "/wiki/reactive/reactive-demand-source",
  "/wiki/reactive/reactive-duality",
  "/wiki/reactive/reactive-executor-service",

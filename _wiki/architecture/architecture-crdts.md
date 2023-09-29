@@ -37,3 +37,4 @@ CRDTs are special data types that converge data from all database replicas.
 - [When to use a CRDT-based database](https://www.infoworld.com/article/3305321/when-to-use-a-crdt-based-database.html)
 - [Diving into Conflict-Free Replicated Data Types (CRDTs)](https://redis.com/blog/diving-into-crdts/)
 - [Replicated abstract data types: Building blocks for collaborative applications](https://www.sciencedirect.com/science/article/abs/pii/S0743731510002716)
+- [CAP Twelve Years Later: How the "Rules" Have Changed](https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/)

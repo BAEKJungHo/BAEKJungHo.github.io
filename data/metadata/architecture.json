@@ -18,6 +18,7 @@
   "architecture/architecture-clean",
   "architecture/architecture-cloud-native",
   "architecture/architecture-components",
+  "architecture/architecture-crdts",
   "architecture/architecture-discord-store-message",
   "architecture/architecture-distributed-pk",
   "architecture/architecture-eventdriven-statemachine",

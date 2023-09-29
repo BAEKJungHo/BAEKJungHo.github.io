@@ -13,6 +13,7 @@
  "architecture/architecture-clean-impl",
  "architecture/architecture-cloud-native",
  "architecture/architecture-components",
+ "architecture/architecture-crdts",
  "architecture/architecture-discord-store-message",
  "architecture/architecture-distributed-pk",
  "architecture/architecture-eventdriven-statemachine",
@@ -27,6 +28,7 @@
  "kotlin/kotlin-structured-concurrency",
  "logging/logging-nonblocking-pipeline",
  "magazine/magazine-ffsc",
+ "msa/msa-eventual-consistency",
  "msa/msa-service-connectivity",
  "msa/msa-xa",
  "spring/spring-exception-hierarchy"

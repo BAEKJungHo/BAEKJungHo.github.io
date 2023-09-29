@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 31
+  "size": 33
  },
  {
   "name": "auth",
@@ -46,6 +46,10 @@
  {
   "name": "coroutine",
   "size": 11
+ },
+ {
+  "name": "crdts",
+  "size": 1
  },
  {
   "name": "crypto",

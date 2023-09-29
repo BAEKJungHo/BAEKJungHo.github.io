@@ -23,6 +23,7 @@
  "/wiki/architecture/architecture-clean-impl",
  "/wiki/architecture/architecture-cloud-native",
  "/wiki/architecture/architecture-components",
+ "/wiki/architecture/architecture-crdts",
  "/wiki/architecture/architecture-discord-store-message",
  "/wiki/architecture/architecture-distributed-pk",
  "/wiki/architecture/architecture-eventdriven-statemachine",

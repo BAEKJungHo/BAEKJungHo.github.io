@@ -1,6 +1,8 @@
 [
  "architecture/architecture-bulkhead",
+ "architecture/architecture-cap",
  "architecture/architecture-circuit-breaker",
+ "architecture/architecture-crdts",
  "architecture/architecture-discord-store-message",
  "architecture/architecture-distributed-pk",
  "database/database-cassandra-kkv",

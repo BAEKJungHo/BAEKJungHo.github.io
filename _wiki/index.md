@@ -52,6 +52,7 @@ regenerate: true
 * [[/architecture/architecture-discord-store-message]]
 * [[/architecture/architecture-aws-well]]
 * [[/architecture/architecture-aws-reliability]]
+* [[/architecture/architecture-crdts]]
 
 ## Kata
 

@@ -34,6 +34,8 @@ Geo-distributed applications 을 설계하는 경우에는 P(partition tolerance
 
 그래서 등장한 것이 [Eventual Consistency](https://baekjungho.github.io/wiki/msa/msa-eventual-consistency/) 이다. 이 모델은 데이터베이스 관리 시스템에 의존하여 데이터의 모든 로컬 복사본을 병합하여 결과적으로 일관성을 유지한다.
 
+CAP 이론은 복제본(replicas)이 시스템의 나머지 부분과 연결이 끊어진 동안(e.g 네트워크 분할 or 간헐적으로 연결되는 모바일 장치) 복제본의 데이터 변경이 불가능하다. 이것을 __Strongly consistent replication__ 이라고 한다.
+
 ### As a CAP trade-off
 
 The CAP Theorem is based on three trade-offs: __consistency, availability, and partition tolerance__. Partition tolerance, in this context, means the ability of a data processing system to continue processing data even if a [network partition](https://en.wikipedia.org/wiki/Network_partition) causes communication errors between subsystems.

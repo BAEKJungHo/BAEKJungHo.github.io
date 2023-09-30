@@ -32,8 +32,42 @@ __Conflicts__:
 
 CRDTs are special data types that converge data from all database replicas.
 
+### Optimistic replication
+
+분산 애플리케이션을 설계할 때, __replicas__ (copies of some data need to be stored on multiple computers) 를 사용한다. 예를 들면, Google Docs 같은 collaborative editing 이나, 캘린더, 메모와 같은 모바일 앱 등에서 필요하다.
+
+분산 시스템에서 데이터가 복제(replication)되면 __일관성(consistency)__ 문제가 발생한다.
+
+데이터는 다른 복제본에서 동시에 수정될 수 있다. (서로 다른 클라이언트가 가지고 있는 복제본을 각 클라이언트가 수정할 수 있다.) 이것을 다루는 방법은 2가지가 있다.
+
+__Strongly consistent replication__:
+- CAP 이론은 복제본(replicas)이 시스템의 나머지 부분과 연결이 끊어진 동안(e.g 네트워크 분할 or 간헐적으로 연결되는 모바일 장치) 복제본의 데이터 변경이 불가능하다.
+
+__Optimistic replication__:
+- 복제본이 오프라인이거나 다른 복제본과 연결이 끊어진 경우에도 다른 복제본과 독립적으로 복제본의 데이터를 수정할 수 있다.
+- 성능과 가용성이 최대화되지만 여러 클라이언트나 사용자가 동시에 동일한 데이터를 수정할 경우 충돌이 발생할 수 있다.
+
+CRDT 는 낙관적 복제 시스템에서 사용된다. CRDT는 다른 복제본에서 어떤 데이터 수정이 이루어지더라도 데이터가 항상 일관된 상태로 병합될 수 있도록 보장한다. 
+
+### State-based CRDTs
+
+상태 복제 CRDT는 [보편 집합(Join-semilattice)](https://en.wikipedia.org/wiki/Semilattice) 이라는 개념을 사용한다.
+
+![](/resource/wiki/architecture-crdts/state-crdts.png)
+
+- Commutativity and Asociativity which means that we can perform out of order merge operations and still end up with correct state.
+- Idempotency, so we don't need to care about potential duplicates send from replication layer.
+
+더 자세한 내용은 [Bartosz Sypytkowski - An introduction to state-based CRDTs](https://www.bartoszsypytkowski.com/the-state-of-a-state-based-crdts/) 참고.
+
+### Operation-based CRDTs
+
+자세한 내용은 [Bartosz Sypytkowski - Operation-based CRDTs: registers and sets](https://www.bartoszsypytkowski.com/operation-based-crdts-registers-and-sets/) 참고.
+
 ## Links
 
+- [CRDTs Tech](https://crdt.tech/)
+- [Lars Hupel - An introduction to Conflict-Free Replicated Data Types](https://lars.hupel.info/topics/crdt/01-intro/)
 - [When to use a CRDT-based database](https://www.infoworld.com/article/3305321/when-to-use-a-crdt-based-database.html)
 - [Diving into Conflict-Free Replicated Data Types (CRDTs)](https://redis.com/blog/diving-into-crdts/)
 - [Replicated abstract data types: Building blocks for collaborative applications](https://www.sciencedirect.com/science/article/abs/pii/S0743731510002716)

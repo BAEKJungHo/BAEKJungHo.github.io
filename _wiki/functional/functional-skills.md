@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Skills of Functional Programming
-summary : 
+summary : Action, Calculate, Data
 date    : 2023-09-28 15:02:32 +0900
 updated : 2023-09-28 15:12:24 +0900
 tag     : fp

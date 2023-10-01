@@ -63,6 +63,7 @@ regenerate: true
 
 * [[/functional/functional-sideeffect]]
 * [[/functional/functional-skills]]
+* [[/functional/functional-timeline-cutting]]
 
 ## Kotlin
 

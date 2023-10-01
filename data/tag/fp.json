@@ -3,6 +3,7 @@
  "functional",
  "functional/functional-sideeffect",
  "functional/functional-skills",
+ "functional/functional-timeline-cutting",
  "kotlin/kotlin-first-citizen",
  "kotlin/kotlin-functor-monad"
 ]

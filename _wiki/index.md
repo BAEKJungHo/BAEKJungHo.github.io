@@ -53,6 +53,7 @@ regenerate: true
 * [[/architecture/architecture-aws-well]]
 * [[/architecture/architecture-aws-reliability]]
 * [[/architecture/architecture-crdts]]
+* [[/architecture/architecture-stratified-design]]
 
 ## Kata
 

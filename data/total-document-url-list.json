@@ -33,6 +33,7 @@
  "/wiki/architecture/architecture-nats",
  "/wiki/architecture/architecture-reliability",
  "/wiki/architecture/architecture-schema-registry",
+ "/wiki/architecture/architecture-stratified-design",
  "/wiki/architecture/architecture-sync-messaging",
  "/wiki/auth",
  "/wiki/auth/auth-hmac",

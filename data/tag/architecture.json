@@ -23,6 +23,7 @@
  "architecture/architecture-nats",
  "architecture/architecture-reliability",
  "architecture/architecture-schema-registry",
+ "architecture/architecture-stratified-design",
  "architecture/architecture-sync-messaging",
  "ddd/ddd-reduce-dependency",
  "kotlin/kotlin-structured-concurrency",

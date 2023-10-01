@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : First Citizen
-summary : 일급 시민과 고차 함수
+summary : Higher-Order Functions
 date    : 2022-09-24 15:54:32 +0900
 updated : 2022-09-24 20:15:24 +0900
 tag     : kotlin java fp
@@ -237,3 +237,7 @@ __Functions that accept other functions as parameters and/or use functions as re
 - [First-class citizen - wikipedia](https://en.wikipedia.org/wiki/First-class_citizen)
 - [What is a first-class-citizen function?](https://stackoverflow.com/questions/5178068/what-is-a-first-class-citizen-function)
 - [ProjectReactor API Docs](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html)
+
+## References
+
+- Grokking Simplicity / Eric Normand / Manning

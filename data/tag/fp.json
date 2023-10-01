@@ -1,4 +1,5 @@
 [
+ "functional/functional-sideeffect",
  "kotlin/kotlin-first-citizen",
  "kotlin/kotlin-functor-monad"
 ]

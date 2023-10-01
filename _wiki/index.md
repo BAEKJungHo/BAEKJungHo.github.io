@@ -58,6 +58,10 @@ regenerate: true
 
 * [[/kata/kata-hotdog]]
 
+## Functional Programming
+
+* [[/functional/functional-sideeffect]]
+
 ## Kotlin
 
 * [[/kotlin/kotlin-sequence]]

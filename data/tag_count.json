@@ -53,7 +53,7 @@
  },
  {
   "name": "crypto",
-  "size": 8
+  "size": 9
  },
  {
   "name": "database",
@@ -93,7 +93,7 @@
  },
  {
   "name": "fp",
-  "size": 2
+  "size": 3
  },
  {
   "name": "fsm",

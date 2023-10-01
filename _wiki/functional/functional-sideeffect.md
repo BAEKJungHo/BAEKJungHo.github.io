@@ -8,7 +8,7 @@ tag     : fp
 toc     : true
 comment : true
 public  : true
-parent  : [[/architecture]]
+parent  : [[/functional]]
 latex   : true
 ---
 * TOC

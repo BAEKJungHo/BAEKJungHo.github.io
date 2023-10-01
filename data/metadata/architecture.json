@@ -28,7 +28,6 @@
   "architecture/architecture-nats",
   "architecture/architecture-reliability",
   "architecture/architecture-schema-registry",
-  "architecture/architecture-sync-messaging",
-  "functional/functional-sideeffect"
+  "architecture/architecture-sync-messaging"
  ]
 }

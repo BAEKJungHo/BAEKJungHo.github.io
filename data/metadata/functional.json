@@ -6,6 +6,7 @@
  "url": "/wiki/functional",
  "updated": "2023-09-21 20:55:09 +0900",
  "children": [
-  "functional/functional-sideeffect"
+  "functional/functional-sideeffect",
+  "functional/functional-skills"
  ]
 }

@@ -61,6 +61,7 @@ regenerate: true
 ## Functional Programming
 
 * [[/functional/functional-sideeffect]]
+* [[/functional/functional-skills]]
 
 ## Kotlin
 

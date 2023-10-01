@@ -1,5 +1,6 @@
 [
  "functional/functional-sideeffect",
+ "functional/functional-skills",
  "kotlin/kotlin-first-citizen",
  "kotlin/kotlin-functor-monad"
 ]

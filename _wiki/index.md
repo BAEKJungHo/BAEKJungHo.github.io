@@ -18,6 +18,7 @@ regenerate: true
 * [[/magazine/magazine-donot-overspecialize]]
 * [[/magazine/magazine-code-comments]]
 * [[/magazine/magazine-communication]]
+* [[/magazine/magazine-tangled-thread]]
 
 ## Mobility
 

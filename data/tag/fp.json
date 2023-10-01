@@ -5,5 +5,6 @@
  "functional/functional-skills",
  "functional/functional-timeline-cutting",
  "kotlin/kotlin-first-citizen",
- "kotlin/kotlin-functor-monad"
+ "kotlin/kotlin-functor-monad",
+ "magazine/magazine-tangled-thread"
 ]

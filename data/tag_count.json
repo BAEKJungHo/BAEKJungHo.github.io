@@ -93,7 +93,7 @@
  },
  {
   "name": "fp",
-  "size": 7
+  "size": 8
  },
  {
   "name": "fsm",
@@ -205,7 +205,7 @@
  },
  {
   "name": "magazine",
-  "size": 9
+  "size": 10
  },
  {
   "name": "mapstruct",

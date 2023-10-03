@@ -4,7 +4,7 @@ title   : eXtended Architecture
 summary : Distributed Transaction and Consensus Algorithm
 date    : 2022-12-21 17:54:32 +0900
 updated : 2022-12-21 20:15:24 +0900
-tag     : msa architecture
+tag     : msa architecture dod
 toc     : true
 comment : true
 public  : true

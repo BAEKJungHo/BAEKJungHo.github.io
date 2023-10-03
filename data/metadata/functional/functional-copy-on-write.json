@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Principle Of Immutability is Copy on Write",
+ "summary": "Immutable Data Structure, It's Fast Enough",
+ "parent": "functional",
+ "url": "/wiki/functional/functional-copy-on-write",
+ "updated": "2023-10-02 15:12:24 +0900",
+ "children": []
+}

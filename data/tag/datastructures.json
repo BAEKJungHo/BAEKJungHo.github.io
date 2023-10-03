@@ -3,5 +3,6 @@
  "altorithm/algorithm-hash",
  "datastructures",
  "datastructures/datastructures-recursion",
- "datastructures/datastructures-stack-heap"
+ "datastructures/datastructures-stack-heap",
+ "functional/functional-copy-on-write"
 ]

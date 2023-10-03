@@ -1,6 +1,7 @@
 [
  "architecture/architecture-stratified-design",
  "functional",
+ "functional/functional-copy-on-write",
  "functional/functional-sideeffect",
  "functional/functional-skills",
  "functional/functional-timeline-cutting",

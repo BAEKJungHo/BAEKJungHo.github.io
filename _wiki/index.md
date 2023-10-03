@@ -370,6 +370,10 @@ regenerate: true
 * [[/ddd/ddd-character-architectures]]
 * [[/ddd/ddd-reduce-dependency]]
 
+## Data Oriented Design
+
+* [[/dod/dod-data-oriented]]
+
 ## Methodology
 
 * [[/driven/test-methodology]]

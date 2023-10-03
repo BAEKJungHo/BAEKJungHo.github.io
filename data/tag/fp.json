@@ -1,5 +1,6 @@
 [
  "architecture/architecture-stratified-design",
+ "dod/dod-data-oriented",
  "functional",
  "functional/functional-copy-on-write",
  "functional/functional-defensive-copy",

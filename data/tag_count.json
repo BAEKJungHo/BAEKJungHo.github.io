@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 34
+  "size": 35
  },
  {
   "name": "auth",
@@ -84,6 +84,10 @@
   "size": 6
  },
  {
+  "name": "dod",
+  "size": 2
+ },
+ {
   "name": "etc",
   "size": 5
  },
@@ -97,7 +101,7 @@
  },
  {
   "name": "fp",
-  "size": 11
+  "size": 12
  },
  {
   "name": "fsm",

@@ -29,6 +29,7 @@
   "architecture/architecture-reliability",
   "architecture/architecture-schema-registry",
   "architecture/architecture-stratified-design",
-  "architecture/architecture-sync-messaging"
+  "architecture/architecture-sync-messaging",
+  "dod/dod-data-oriented"
  ]
 }

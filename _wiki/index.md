@@ -66,6 +66,7 @@ regenerate: true
 * [[/functional/functional-skills]]
 * [[/functional/functional-timeline-cutting]]
 * [[/functional/functional-copy-on-write]]
+* [[/functional/functional-defensive-copy]]
 
 ## Kotlin
 

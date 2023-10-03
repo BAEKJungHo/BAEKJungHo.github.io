@@ -93,7 +93,7 @@
  },
  {
   "name": "fp",
-  "size": 9
+  "size": 10
  },
  {
   "name": "fsm",
@@ -173,7 +173,7 @@
  },
  {
   "name": "kotlin",
-  "size": 56
+  "size": 57
  },
  {
   "name": "ksp",

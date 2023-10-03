@@ -57,6 +57,10 @@ function shift(array) {
 }
 ```
 
+Copy On Write 는 __[얕은 복사(shallow copy)](https://www.baeldung.com/kotlin/deep-copy-data-class)__ 를 사용한다. 얕은 복사는 [구조적 공유(structural sharing)](https://blog.klipse.tech/javascript/2021/02/26/structural-sharing-in-javascript.html) 를 사용한다.
+
+![](/resource/wiki/functional-copy-on-write/shallow-copy.png)
+
 ## Immutable Data Structure, It's Fast Enough
 
 불변 데이터 구조는 Copy On Write 를 기반으로 하기 때문에 메모리를 더 많이 쓰는 것은 사실이다.

@@ -3,6 +3,7 @@
  "buildtool/gradle-standard",
  "cleancode/cleancode-knowledge",
  "designpattern/designpattern-callback",
+ "functional/functional-defensive-copy",
  "java/java-anonymous-class",
  "java/java-date",
  "java/java-deserialize-generic",

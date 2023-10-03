@@ -19,7 +19,7 @@ latex   : true
 Legacy Code 나 신뢰할 수 없는 코드로부터 불변성을 유지시키기 위해서는 Copy on Wirte 만으로 해결할 수 없다.
 이때 사용되는 기술이 __방어적 복사(defensive copy)__ 이다. 방어적 복사는 데이터를 변경할 수도 있는 코드와 불변성 코드 사이에 데이터를 주고 받기 위한 원칙이다.
 
-defensive copy 는 깊은 복사(deep copy)를 사용하는 반면 [Copy on Write 는 얕은 복사(shallow copy)](https://baekjungho.github.io/wiki/functional/functional-copy-on-write/)를 사용한다는 차이가 있다. 
+Defensive copy 는 깊은 복사(deep copy)를 사용하는 반면 [Copy on Write 는 얕은 복사(shallow copy)](https://baekjungho.github.io/wiki/functional/functional-copy-on-write/)를 사용한다는 차이가 있다. 
 따라서 비용적인 측면에서는 defensive copy 가 더 비용이 많이 든다.
 
 불변성이 지켜지는 코드 영역을 __안전 지대(safe zone)__ 라고 한다.

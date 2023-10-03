@@ -24,7 +24,7 @@ __Copy on Write 3 Steps__:
 - 복사본 리턴하기
 
 ```kotlin
-fun addStock(stock: Stock<Int>, element: Int): Array<Int> {
+fun addStock(stock: Stock<Int>, element: Int): Stock<Int> {
     val copy = stock.copy() // 복사본 만들기 
     copy.add(element) // 복사본 바꾸기
     return copy // 복사본 리턴하기
@@ -33,6 +33,33 @@ fun addStock(stock: Stock<Int>, element: Int): Array<Int> {
 
 Copy On Write 는 쓰기를 읽기로 변경한다. 복사본을 만들어서 변경된 복사본은 리턴했기 때문에 원본은 변경되지 않는다.
 따라서 __정보를 리턴하는 읽기__ 로 변환된 것이다.
+
+Copy on Write 를 적용할 때 callback 패턴과 같이 사용하면 조금 더 유연한 함수를 만들 수 있다.
+
+```javascript
+function withArrayCopy(array) {
+    var copy = array.slice();
+    copy[idx] = value;
+    return copy
+}
+```
+
+위 코드에서 복사본을 바꾸는 코드 라인에 callback 을 적용할 수 있다.
+
+```javascript
+function withArrayCopy(array, modify) {
+    var copy = array.slice();
+    modify(copy);
+    return copy
+}
+
+// 복사본을 하나만 만들고, 하나의 복사본을 여러번 변경할 수 있다.
+var newCopy = withArrayCopy(array, function(copy) {
+    copy.shift();
+    copy.push(3);
+    copy[0] = 8;
+});
+```
 
 쓰기와 읽기를 동시에 하는 Javascript 의 경우 shift() 함수가 있다. 
 

@@ -75,6 +75,7 @@ Copy on Write 를 지원하지 않는 언어에서는 직접 구현해줘야 한
 ## Links
 
 - [Purely Functional Data Structures](https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.64.3080&rep=rep1&type=pdf)
+- [Immutable data structures for Rust](https://docs.rs/im/latest/im/)
 
 ## References
 

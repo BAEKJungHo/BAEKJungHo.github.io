@@ -25,6 +25,13 @@ __First-class be used as a parameter to another function or used as the return v
 - Function can be passed around as an argument to other functions
 - Function can be returned from the functions
 
+__First, Higher-Order__:
+- 일급(first) 은 인자로 전달 할 수 있다는 의미
+- 고차(higher-order)는 함수가 다른 함수를 인자로 받을 수 있다는 의미
+- 일급 함수가 없다면 고차 함수를 만들 수 없다.
+
+이때 유용한 리팩터링 기술은 __함수 본문을 콜백으로 바꾸기(replace body with callback)__ 이다.
+
 ## Benefits of First-class Citizen
 
 The advantages of a first-class citizen class are:

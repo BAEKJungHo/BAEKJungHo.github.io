@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : First Class Collection
-summary : 일급 컬렉션
+summary : 
 date    : 2022-10-15 11:28:32 +0900
 updated : 2022-10-15 12:15:24 +0900
-tag     : java kotlin
+tag     : java kotlin fp
 toc     : true
 comment : true
 public  : true

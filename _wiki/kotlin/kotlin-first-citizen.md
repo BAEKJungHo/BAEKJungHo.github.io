@@ -233,6 +233,7 @@ __Functions that accept other functions as parameters and/or use functions as re
 
 ## Links
 
+- [First Class Collection](https://baekjungho.github.io/wiki/java/java-firstclasscollection/)
 - [First-Class Functions - O'REILLY](https://www.oreilly.com/library/view/learning-scala/9781449368814/ch05.html#:%7E:text=A%20first%2Dclass%20function%20may,return%20value%20from%20another%20function.)
 - [First-class citizen - wikipedia](https://en.wikipedia.org/wiki/First-class_citizen)
 - [What is a first-class-citizen function?](https://stackoverflow.com/questions/5178068/what-is-a-first-class-citizen-function)

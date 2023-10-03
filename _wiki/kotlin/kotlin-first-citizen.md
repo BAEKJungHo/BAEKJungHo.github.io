@@ -29,6 +29,7 @@ __First, Higher-Order__:
 - 일급(first) 은 인자로 전달 할 수 있다는 의미
 - 고차(higher-order)는 함수가 다른 함수를 인자로 받을 수 있다는 의미
 - 일급 함수가 없다면 고차 함수를 만들 수 없다.
+- 일급 값(First-class value)은 변수에 저장할 수 있고, 인자로 전달하거나 함수의 리턴값으로 사용할 수 있다.
 
 이때 유용한 리팩터링 기술은 __함수 본문을 콜백으로 바꾸기(replace body with callback)__ 이다.
 

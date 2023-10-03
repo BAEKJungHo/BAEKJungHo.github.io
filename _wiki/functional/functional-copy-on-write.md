@@ -61,6 +61,8 @@ Copy On Write 는 __[얕은 복사(shallow copy)](https://www.baeldung.com/kotli
 
 ![](/resource/wiki/functional-copy-on-write/shallow-copy.png)
 
+불변성을 유지하는 다른 원칙이 하나 더 있다. 바로 __[방어적 복사(defensive copy)](https://baekjungho.github.io/wiki/functional/functional-defensive-copy/)__ 이다. 방어적 복사는 데이터를 변경할 수도 있는 코드와 불변성 코드 사이에 데이터를 주고 받기 위한 원칙이다.
+
 ## Immutable Data Structure, It's Fast Enough
 
 불변 데이터 구조는 Copy On Write 를 기반으로 하기 때문에 메모리를 더 많이 쓰는 것은 사실이다.

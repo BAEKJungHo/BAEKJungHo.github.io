@@ -4,7 +4,7 @@ title   : Principle Of Immutability is Copy on Write
 summary : Immutable Data Structure, It's Fast Enough
 date    : 2023-10-02 15:02:32 +0900
 updated : 2023-10-02 15:12:24 +0900
-tag     : fp datastructures
+tag     : fp datastructures shallowcopy
 toc     : true
 comment : true
 public  : true

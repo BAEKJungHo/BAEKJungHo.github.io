@@ -68,6 +68,10 @@
   "size": 16
  },
  {
+  "name": "deepcopy",
+  "size": 1
+ },
+ {
   "name": "designpattern",
   "size": 14
  },
@@ -293,6 +297,10 @@
  },
  {
   "name": "security",
+  "size": 1
+ },
+ {
+  "name": "shallowcopy",
   "size": 1
  },
  {

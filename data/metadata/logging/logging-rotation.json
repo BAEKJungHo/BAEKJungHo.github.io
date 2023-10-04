@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Docker Log Rotation",
+ "summary": "Logging Driver Mechanism",
+ "parent": "logging",
+ "url": "/wiki/logging/logging-rotation",
+ "updated": "2023-10-04 20:15:24 +0900",
+ "children": []
+}

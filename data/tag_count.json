@@ -81,7 +81,7 @@
  },
  {
   "name": "docker",
-  "size": 6
+  "size": 7
  },
  {
   "name": "dod",
@@ -209,7 +209,7 @@
  },
  {
   "name": "logging",
-  "size": 11
+  "size": 12
  },
  {
   "name": "magazine",

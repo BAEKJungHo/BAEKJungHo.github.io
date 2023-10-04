@@ -154,6 +154,7 @@ regenerate: true
 * [[/logging/logging-webflux-kotlin]]
 * [[/logging/logging-write-ahead]]
 * [[/logging/logging-nonblocking-pipeline]]
+* [[/logging/logging-rotation]]
 
 ## Spring
 

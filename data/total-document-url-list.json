@@ -248,6 +248,7 @@
  "/wiki/logging/logging-entity",
  "/wiki/logging/logging-masking",
  "/wiki/logging/logging-nonblocking-pipeline",
+ "/wiki/logging/logging-rotation",
  "/wiki/logging/logging-webflux-kotlin",
  "/wiki/logging/logging-write-ahead",
  "/wiki/magazine",

@@ -55,6 +55,8 @@ regenerate: true
 * [[/architecture/architecture-aws-reliability]]
 * [[/architecture/architecture-crdts]]
 * [[/architecture/architecture-stratified-design]]
+* [[/architecture/architecture-decision-records]]
+* [[/architecture/architecture-mqtt]]
 
 ## Kata
 

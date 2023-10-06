@@ -16,7 +16,7 @@ latex   : true
 
 ## Architecture Decision Records
 
-[단비교육 에서 AWS Control Tower 도입을 결정](https://aws.amazon.com/ko/blogs/tech/danbiedu-architecture-modernization-using-aws-control-tower/)하면서, Architecture Decision Records 도입을 하기로 했다고 한다.
+단비교육 에서 [AWS Control Tower 도입을 결정](https://aws.amazon.com/ko/blogs/tech/danbiedu-architecture-modernization-using-aws-control-tower/)하면서, Architecture Decision Records 도입을 하기로 했다고 한다.
 
 이때 아키텍처 결정 기록(ADR)은 아래와 같은 세 가지 비즈니스 성과를 목표로 했다고 한다.
 

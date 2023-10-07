@@ -72,6 +72,9 @@ regenerate: true
 
 ## Go
 
+* [[/go/go-method-function]]
+* [[/go/go-pointers]]
+
 ## Kotlin
 
 * [[/kotlin/kotlin-sequence]]

@@ -1,3 +1,5 @@
 [
- "go"
+ "go",
+ "go/go-method-function",
+ "go/go-pointers"
 ]

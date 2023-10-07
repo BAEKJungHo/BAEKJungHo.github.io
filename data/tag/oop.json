@@ -1,6 +1,7 @@
 [
  "driven/oop-oo",
  "driven/oop-solid",
+ "go/go-method-function",
  "kotlin/kotlin-property",
  "spring/spring-pojo"
 ]

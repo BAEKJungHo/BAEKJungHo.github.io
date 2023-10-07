@@ -70,6 +70,8 @@ regenerate: true
 * [[/functional/functional-copy-on-write]]
 * [[/functional/functional-defensive-copy]]
 
+## Go
+
 ## Kotlin
 
 * [[/kotlin/kotlin-sequence]]

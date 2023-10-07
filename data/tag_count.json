@@ -120,6 +120,10 @@
   "size": 4
  },
  {
+  "name": "go",
+  "size": 1
+ },
+ {
   "name": "gpt",
   "size": 2
  },

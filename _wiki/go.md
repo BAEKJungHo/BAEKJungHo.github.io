@@ -14,6 +14,7 @@ latex   : false
 ## Docs
 
 - [go.mod](https://go.dev/doc/modules/gomod-ref) including [dependencies](https://go.dev/doc/modules/managing-dependencies)
+- [go.sum](https://johngrib.github.io/wiki/commit-go-mod-go-sum/) - In addition to go.mod, the go command maintains a file named [go.sum containing the expected cryptographic hashes of the content of specific module versions](https://go.dev/blog/using-go-modules)
 - [Echo](https://echo.labstack.com/) - [High performance, minimalist Go web framework](https://github.com/labstack/echo)
 
 ## Links

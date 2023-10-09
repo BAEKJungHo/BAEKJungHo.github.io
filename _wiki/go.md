@@ -31,5 +31,6 @@ latex   : false
 
 - [Banksalad](https://blog.banksalad.com/)
 - [Go Lang Korea](https://github.com/golangkorea)
+- [Effective Go](https://go.dev/doc/effective_go)
 
 ## Wikis

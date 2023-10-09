@@ -4,7 +4,7 @@ title   : Protobuffer
 summary : 
 date    : 2023-10-08 20:54:32 +0900
 updated : 2023-10-08 21:15:24 +0900
-tag     : grpc
+tag     : grpc spec
 toc     : true
 comment : true
 public  : true

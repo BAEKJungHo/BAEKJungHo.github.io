@@ -1,4 +1,5 @@
 [
+ "grpc/grpc-protobuffer",
  "mobility/mobility-vehicle-signal-specification",
  "reactive/reactive-streams-specification"
 ]

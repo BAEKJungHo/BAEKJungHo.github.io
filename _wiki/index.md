@@ -279,6 +279,10 @@ regenerate: true
 * [[/crypto/crypto-hash-deterministic]]
 * [[/crypto/crypto-hash-secure-property]]
 
+## GRPC
+
+* [[/grpc/grpc-protobuffer]]
+
 ## Docker
 
 * [[/docker/docker-container]]

@@ -1,0 +1,11 @@
+{
+ "type": "wiki",
+ "title": "gRPC",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/grpc",
+ "updated": "2022-08-26 20:55:09 +0900",
+ "children": [
+  "grpc/grpc-protobuffer"
+ ]
+}

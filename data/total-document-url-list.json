@@ -140,6 +140,8 @@
  "/wiki/go/go-pointers",
  "/wiki/gpt",
  "/wiki/gpt/gpt-chat-use",
+ "/wiki/grpc",
+ "/wiki/grpc/grpc-protobuffer",
  "/wiki/http",
  "/wiki/http/http-api-spec",
  "/wiki/http/http-famous-api",

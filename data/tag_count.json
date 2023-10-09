@@ -132,6 +132,10 @@
   "size": 2
  },
  {
+  "name": "grpc",
+  "size": 2
+ },
+ {
   "name": "hash",
   "size": 4
  },

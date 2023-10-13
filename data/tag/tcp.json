@@ -1,5 +1,5 @@
 [
+ "network/network-half-close",
  "network/network-layeredarchitectures",
- "network/network-tcp",
  "network/network-tcp-performance"
 ]

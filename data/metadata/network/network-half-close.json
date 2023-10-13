@@ -1,9 +1,8 @@
 {
  "type": "wiki",
- "title": "Idempotency",
- "summary": "",
+ "title": "Half Close",
  "parent": "network",
  "url": "/wiki/network/network-half-close",
- "updated": "2023-07-15 20:15:24 +0900",
+ "updated": "2023-10-10 20:15:24 +0900",
  "children": []
 }

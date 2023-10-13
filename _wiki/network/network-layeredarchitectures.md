@@ -4,7 +4,7 @@ title   : Network Layered Architectures
 summary : 
 date    : 2022-04-24 15:02:32 +0900
 updated : 2022-04-24 15:12:24 +0900
-tag     : network
+tag     : network tcp
 toc     : true
 comment : true
 public  : true

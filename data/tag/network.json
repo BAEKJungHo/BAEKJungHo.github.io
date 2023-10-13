@@ -1,5 +1,6 @@
 [
  "network/network-dmz",
+ "network/network-half-close",
  "network/network-idempotency",
  "network/network-layeredarchitectures",
  "network/network-polling",

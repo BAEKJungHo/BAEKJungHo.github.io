@@ -1,9 +1,9 @@
 {
  "type": "wiki",
- "title": "TCP Health Check",
- "summary": "네트워크 상태 확인하기",
+ "title": "Half Close",
+ "summary": "",
  "parent": "network",
  "url": "/wiki/network/network-tcp",
- "updated": "2022-07-02 20:15:24 +0900",
+ "updated": "2023-10-10 20:15:24 +0900",
  "children": []
 }

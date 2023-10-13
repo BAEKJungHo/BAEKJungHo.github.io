@@ -7,6 +7,7 @@
  "updated": "2022-04-13 20:55:09 +0900",
  "children": [
   "network/network-dmz",
+  "network/network-half-close",
   "network/network-idempotency",
   "network/network-layeredarchitectures",
   "network/network-polling",

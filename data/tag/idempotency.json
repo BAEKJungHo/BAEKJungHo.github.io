@@ -1,4 +1,5 @@
 [
+ "network/network-half-close",
  "network/network-idempotency",
  "troubleshooting/troubleshooting-idempotency"
 ]

@@ -441,6 +441,7 @@ regenerate: true
 * [[/network/network-tcp-performance]]
 * [[/network/network-dmz]]
 * [[/network/network-ssrf]]
+* [[/network/network-half-close]]
 
 ## Http
 

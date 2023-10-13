@@ -26,6 +26,7 @@ latex   : false
 - [How to Structure DDD in Golang](https://programmingpercy.tech/blog/how-to-structure-ddd-in-go/)
 - [Well-structured Logic: A Golang OOP Tutorial](https://www.toptal.com/go/golang-oop-tutorial)
 - [GoLang About Stack, Heap](https://jacking75.github.io/go_stackheap/)
+- [Awesome explanation Go routines with Echo](https://github.com/labstack/echo/discussions/2205)
 
 ## References
 

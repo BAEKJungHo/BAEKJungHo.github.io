@@ -17,6 +17,7 @@ latex   : false
 - [go.sum](https://johngrib.github.io/wiki/commit-go-mod-go-sum/) - In addition to go.mod, the go command maintains a file named [go.sum containing the expected cryptographic hashes of the content of specific module versions](https://go.dev/blog/using-go-modules)
 - [Echo](https://echo.labstack.com/) - [High performance, minimalist Go web framework](https://github.com/labstack/echo)
   - [Routing](https://echo.labstack.com/docs/routing)
+- [Logrus](https://github.com/sirupsen/logrus)
 - [Pointers](https://www.golang-book.com/books/intro/8)
 - [Duck Typing](https://www.popit.kr/golang%EC%9C%BC%EB%A1%9C-%EB%A7%8C%EB%82%98%EB%B3%B4%EB%8A%94-duck-typing/)
   - Duck Typing 은 Dynamic Language 의 특징을 살려 PolyMorphism 을 구현하는 방법 (e.g 덕 타이핑 방식으로 작동하는 Go 의 인터페이스)

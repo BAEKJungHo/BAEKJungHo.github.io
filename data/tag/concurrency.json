@@ -1,4 +1,5 @@
 [
+ "go/go-concurrency",
  "msa/msa-concurrency-distributedlock",
  "spring/spring-concurrency",
  "spring/spring-concurrency-resolve"

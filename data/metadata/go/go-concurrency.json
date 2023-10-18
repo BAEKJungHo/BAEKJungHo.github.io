@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Explained Concurrency",
+ "summary": "Do not communicate by sharing memory; instead, share memory by communicating",
+ "parent": "go",
+ "url": "/wiki/go/go-concurrency",
+ "updated": "2023-10-15 13:15:24 +0900",
+ "children": []
+}

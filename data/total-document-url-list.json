@@ -136,6 +136,7 @@
  "/wiki/glossary/glossary-similar",
  "/wiki/glossary/glossary-webapp",
  "/wiki/go",
+ "/wiki/go/go-concurrency",
  "/wiki/go/go-method-function",
  "/wiki/go/go-pointers",
  "/wiki/go/go-unix-signal-handling",

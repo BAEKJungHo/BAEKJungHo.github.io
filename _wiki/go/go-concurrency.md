@@ -179,7 +179,7 @@ salutation, ok := <-stringStream
 fmt.Printf("(%v): %v", ok, salutation)
 ```
 
-## Multiplexing with select
+### Multiplexing with select
 
 select allows multiplexing so we can receive from multiple channels without blocking
 

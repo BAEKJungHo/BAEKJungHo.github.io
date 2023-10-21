@@ -16,7 +16,7 @@ latex   : true
 
 ## Mutex
 
-> Go’s mottos is “Share memory by communicating, don’t communicate by shar‐ ing memory.”
+> Go’s mottos is “Share memory by communicating, don’t communicate by sharing memory.”
 > 
 > That said, Go does provide traditional locking mechanisms in the sync package. Most locking issues can be solved using either channels or traditional locks.
 

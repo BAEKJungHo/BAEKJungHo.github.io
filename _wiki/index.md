@@ -77,6 +77,7 @@ regenerate: true
 * [[/go/go-pointers]]
 * [[/go/go-unix-signal-handling]]
 * [[/go/go-concurrency]]
+* [[/go/go-mutex]]
 
 ## Kotlin
 

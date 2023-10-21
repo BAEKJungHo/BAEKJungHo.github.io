@@ -4,7 +4,7 @@ title   : Explained Concurrency
 summary : Do not communicate by sharing memory; instead, share memory by communicating
 date    : 2023-10-15 12:54:32 +0900
 updated : 2023-10-15 13:15:24 +0900
-tag     : go concurrency lock mutex coroutine goroutine
+tag     : go concurrency lock coroutine goroutine
 toc     : true
 comment : true
 public  : true
@@ -20,97 +20,22 @@ Effective Go __[Concurrency](https://baekjungho.github.io/wiki/spring/spring-con
 
 > Do not communicate by sharing memory; instead, share memory by communicating.
 
-## Mutex
+__What is meaning of "share memory by communicating"?__:
+- goroutine 간 데이터 공유를 공유된 메모리를 통해 하지 말고 communication 을 통해 하라는 의미
+- goroutine 간 communication 은 channel 을 통해 이뤄짐
 
-임계 구역을 보호하고 [Data Races](https://go.dev/doc/articles/race_detector) 를 방지하기 위한 해결 법 중 하나로 [sync](https://pkg.go.dev/sync) 패키지를 보면 __Mutex__ 를 제공하고 있다.
-
-```go
-// A Mutex is a mutual exclusion lock.
-// The zero value for a Mutex is an unlocked mutex.
-//
-// A Mutex must not be copied after first use.
-//
-// In the terminology of the Go memory model,
-// the n'th call to Unlock “synchronizes before” the m'th call to Lock
-// for any n < m.
-// A successful call to TryLock is equivalent to a call to Lock.
-// A failed call to TryLock does not establish any “synchronizes before”
-// relation at all.
-type Mutex struct {
-	state int32
-	sema  uint32
-}
-```
-
-__Mutex Locks__
-- acquire() 함수로 락을 획득, release() 함수로 락을 반환
-- Mutex 락은 available 이라는 boolean 변수를 가지는데, 이 변수 값이 락의 가용 여부를 표시한다. 락이 가용하면 acquire() 호출은 성공하면서 락은 사용 불가 상태가 된다.
-- 사용 불가능한 락을 획득하려고 시도하는 프로세스/쓰레드는 락이 반환될 때 까지 봉쇄된다.
-
-Acquire 와 Release 를 제공하는 [race](https://pkg.go.dev/internal/race) 를 보면 Enabled 라는 변수를 제공하고 있다.
-
-```go
-// Lock locks m.
-// If the lock is already in use, the calling goroutine
-// blocks until the mutex is available.
-func (m *Mutex) Lock() {
-	// Fast path: grab unlocked mutex.
-	if atomic.CompareAndSwapInt32(&m.state, 0, mutexLocked) {
-		if race.Enabled {
-			race.Acquire(unsafe.Pointer(m))
-		}
-		return
-	}
-	// Slow path (outlined so that the fast path can be inlined)
-	m.lockSlow()
-}
-
-// TryLock tries to lock m and reports whether it succeeded.
-//
-// Note that while correct uses of TryLock do exist, they are rare,
-// and use of TryLock is often a sign of a deeper problem
-// in a particular use of mutexes.
-func (m *Mutex) TryLock() bool {
-	old := m.state
-	if old&(mutexLocked|mutexStarving) != 0 {
-		return false
-	}
-
-	// There may be a goroutine waiting for the mutex, but we are
-	// running now and can try to grab the mutex before that
-	// goroutine wakes up.
-	if !atomic.CompareAndSwapInt32(&m.state, old, old|mutexLocked) {
-		return false
-	}
-
-	if race.Enabled {
-		race.Acquire(unsafe.Pointer(m))
-	}
-	return true
-}
-```
-
-__Unlock within a defer statement__:
-
-```go
-var count int
-var lock sync.Mutex
-increment := func() {
-    lock.Lock()
-    // If you missing defer statement, So will probably cause your program to deadlock.
-    defer lock.Unlock() 
-    count++
-    fmt.Printf("Incrementing: %d\n", count)
-}
-```
+__CSP Primitives vs Memory Access Synchronization__:
+- CSP primitives and memory access synchronizations are two different ways to solve the same problem: __sharing memory between concurrent processes__.
+- goroutine 과 channel 을 이용하는 방식이 CSP Primitives 이고, mutex 등을 이용하는 방식이 Memory Access Synchronization 이다.
 
 ## Communicating Sequential Processes
 
-[Why build concurrency on the ideas of CSP?](https://go.dev/doc/faq#csp)
+멀티 스레드 프로그래밍에서 동시성이 어려운 이유는 __[complex designs](https://go.dev/doc/faq#csp)__:  such as pthreads and partly to overemphasis on low-level details such as mutexes, condition variables, and memory barriers. 따라서, 더 높은 수준의 인터페이스를 통해 복잡한 설계가 갖는 단점을 해소해야 했음. __Higher-level interfaces__ enable much simpler code, even if there are still mutexes and such under the covers.
 
-멀티 스레드 프로그래밍에서 동시성이 어려운 이유는 __complex designs__:  such as pthreads and partly to overemphasis on low-level details such as mutexes, condition variables, and memory barriers. 따라서, 더 높은 수준의 인터페이스를 통해 복잡한 설계가 갖는 단점을 해소해야 했음.
+Go 는 __communicating__ 방식으로 동시성을 해결한다. __CSP__ 는 Go 의 동시성 모델의 근간이다. goroutine 사이의 communicating 을 channel 을 통해서 하게 된다.
 
-__Higher-level interfaces__ enable much simpler code, even if there are still mutexes and such under the covers.
+__kotlin vs go__
+  - Kotlin 은 coroutine 을 (rich) 라이브러리 레벨에서 제공하고, Go 는 goroutine 을 언어 레벨에서 제공한다.
 
 ## Goroutine
 
@@ -194,11 +119,21 @@ The [sync](https://pkg.go.dev/sync) package contains the concurrency primitives 
 
 Channels are one of the synchronization primitives in Go derived from Hoare’s CSP. While they can be used to synchronize access of the memory, they are best used to communicate information between goroutines.
 
+- __send__: ch <- x // send value x to ch
+  - send only: `ch := make(chan<- int)`
+- __receive__: x = <-ch // assign value from ch to x
+  - receive only: `ch := make(<-chan int)`
+
 채널은 차단(block) 될 수 있다. 꽉 찬 채널에 쓰려는 모든 고루틴은 채널이 비워질 때까지 기다리고, 비어 있는 채널에서 읽으려는 모든 고루틴은 적어도 하나의 항목이 배치될 때까지 기다린다.
 
 __Closing a channel__:
 
 Closing a channel is also one of the ways you can signal multiple goroutines simultaneously.
+
+__Unbuffered Channel__:
+
+- The sending goroutine blocks until another goroutine receives.
+- A goroutine that attempts to receive will block until another goroutine sends.
 
 __Buffered Channel__:
 
@@ -206,6 +141,8 @@ __Buffered Channel__:
 var dataStream chan interface{}
 dataStream = make(chan interface{}, N)
 ```
+
+- If the buffer is empty, the receiver is blocked; if the buffer is full, the sender is blocked
 
 Even if no reads are performed on the channel, a goroutine can still perform N writes, where N is the capacity of the buffered channel.
 
@@ -240,6 +177,21 @@ go func() {
 }()
 salutation, ok := <-stringStream 
 fmt.Printf("(%v): %v", ok, salutation)
+```
+
+## Multiplexing with select
+
+select allows multiplexing so we can receive from multiple channels without blocking
+
+```go
+select {
+case <-ch1: // discard ch1 data
+// ...
+case x := <-ch2: // assign ch2 data
+// ...
+default:
+// ...
+}
 ```
 
 ## Links

@@ -8,6 +8,7 @@
  "children": [
   "go/go-concurrency",
   "go/go-method-function",
+  "go/go-mutex",
   "go/go-pointers",
   "go/go-unix-signal-handling"
  ]

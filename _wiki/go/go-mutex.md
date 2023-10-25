@@ -120,3 +120,38 @@ func RegisterService(name string, addr net.Addr) {
 	service[name] = addr
 }
 ```
+
+추가로 ["A method on a thread-safe type doesn't return a pointer to a protected structure?"](https://github.com/golang/go/wiki/CodeReviewConcurrency#insufficient-synchronisation-and-race-conditions) 를 확인해보는 것이 좋다.
+
+```go
+// thread-safe type
+type Counters struct {
+	mu   sync.Mutex
+	vals map[Key]*Counter
+}
+
+...
+
+func (c *Counters) GetCounter(k Key) *Counter {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	return c.vals[k] // BUG! Returns a pointer to the structure which must be protected
+}
+```
+
+위 처럼 method 에서 포인터를 반환하면, 메서드를 사용하는 곳에서 값을 수정할 수 있게 된다. 따라서 __복사본(copy)__ 을 반환하도록 type 을 변경해야 한다.
+
+```go
+type Counters struct {
+    mu   sync.Mutex
+    vals map[Key]Counter // Note that now we are storing the Counters directly, not pointers.
+}
+
+...
+
+func (c *Counters) GetCounter(k Key) Counter {
+	c.mu.Lock()
+	defer c.mu.Unlock()
+	return c.vals[k]
+}
+```

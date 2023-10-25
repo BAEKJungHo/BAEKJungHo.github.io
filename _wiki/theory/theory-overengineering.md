@@ -24,6 +24,10 @@ learning the nuances of that design before they can comfortably extend or mainta
 > With overengineering, the big problem is that it makes it difficult for people to understand your code.
 > 
 > There’s some piece built into the system that doesn’t really need to be there, and the person reading the code can’t figure out why it’s there, or even how the whole system works (since it’s now so complicated).
+>
+> [As a consequence, the model encourages early overdesign as the programmer tries to predict every possible use the software might require, adding layers of type and abstraction just in case.](https://go.dev/talks/2012/splash.article)
+
+클래스 설계만 하더라도, 조기에 모든 가능한 사용을 예측해서 추상화 Level 을 높이게 되는 경우가 있다.
 
 ## Ways overengineering
 

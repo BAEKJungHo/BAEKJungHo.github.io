@@ -194,6 +194,8 @@ default:
 }
 ```
 
+A ["select"](https://go.dev/ref/spec#Select_statements) statement chooses which of a set of possible __send__ or __receive__ operations will proceed. It looks similar to a "switch" statement but with the cases all referring to __communication operations__.
+
 ## Links
 
 - [Mechanical Sympathy](https://mechanical-sympathy.blogspot.com/2011/09/single-writer-principle.html)

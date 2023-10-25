@@ -103,3 +103,20 @@ increment := func() {
     fmt.Printf("Incrementing: %d\n", count)
 }
 ```
+
+__[Typical Data Race: Primitive unprotected variable](https://go.dev/doc/articles/race_detector#Primitive_unprotected_variable)__:
+
+원시 변수가 보호되지 않는 케이스도 있다.  해결방법은 type 에 Mutex 변수를 추가하는 것이다.
+
+```go
+var (
+	service   map[string]net.Addr
+	serviceMu sync.Mutex
+)
+
+func RegisterService(name string, addr net.Addr) {
+	serviceMu.Lock()
+	defer serviceMu.Unlock()
+	service[name] = addr
+}
+```

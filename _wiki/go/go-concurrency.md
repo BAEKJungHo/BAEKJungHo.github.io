@@ -196,10 +196,16 @@ default:
 
 ## Links
 
+- [Mechanical Sympathy](https://mechanical-sympathy.blogspot.com/2011/09/single-writer-principle.html)
 - [The Go Memory Model](https://go.dev/ref/mem)
 - [Frequently Asked Questions](https://go.dev/doc/faq)
 - [Introducing the Go Race Detector](https://go.dev/blog/race-detector)
 - [Coroutines for Go](https://research.swtch.com/coro)
+- [Understanding Real-World Concurrency Bugs in Go](https://songlh.github.io/paper/go-study.pdf)
+- [Go Concurrency Patterns: Context](https://go.dev/blog/context)
+- [Go Concurrency Patterns: Timing out, moving on](https://go.dev/blog/concurrency-timeouts)
+- [Go Concurrency Patterns: Pipelines and cancellation](https://go.dev/blog/pipelines)
+- [Code Review: Go Concurrency](https://github.com/golang/go/wiki/CodeReviewConcurrency#code-review-go-concurrency)
 
 ## References
 

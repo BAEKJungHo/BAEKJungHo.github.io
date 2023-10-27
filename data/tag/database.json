@@ -1,5 +1,6 @@
 [
  "architecture/architecture-discord-store-message",
+ "architecture/architecture-uuid",
  "database",
  "database/database-cascade",
  "database/database-cassandra-kkv",

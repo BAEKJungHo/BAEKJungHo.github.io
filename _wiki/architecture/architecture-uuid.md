@@ -4,7 +4,7 @@ title   : UUID
 summary : Universally Unique Identifier
 date    : 2023-10-24 15:02:32 +0900
 updated : 2023-10-24 15:12:24 +0900
-tag     : architecture cloudnative
+tag     : architecture cloudnative database
 toc     : true
 comment : true
 public  : true

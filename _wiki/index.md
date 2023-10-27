@@ -78,6 +78,11 @@ regenerate: true
 * [[/go/go-unix-signal-handling]]
 * [[/go/go-concurrency]]
 * [[/go/go-mutex]]
+* [[/go/go-empty-interface-generics]]
+* [[/go/go-fuzz]]
+* [[/go/go-panic]]
+* [[/go/go-profiling]]
+* [[/go/go-vendoring]]
 
 ## Kotlin
 

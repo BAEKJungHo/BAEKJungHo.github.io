@@ -1,8 +1,13 @@
 [
  "go",
  "go/go-concurrency",
+ "go/go-empty-interface-generics",
+ "go/go-fuzz",
  "go/go-method-function",
  "go/go-mutex",
+ "go/go-panic",
  "go/go-pointers",
- "go/go-unix-signal-handling"
+ "go/go-profiling",
+ "go/go-unix-signal-handling",
+ "go/go-vendoring"
 ]

@@ -37,6 +37,7 @@
  "/wiki/architecture/architecture-schema-registry",
  "/wiki/architecture/architecture-stratified-design",
  "/wiki/architecture/architecture-sync-messaging",
+ "/wiki/architecture/architecture-uuid",
  "/wiki/auth",
  "/wiki/auth/auth-hmac",
  "/wiki/auth/auth-jwt",

@@ -32,6 +32,7 @@
   "architecture/architecture-schema-registry",
   "architecture/architecture-stratified-design",
   "architecture/architecture-sync-messaging",
+  "architecture/architecture-uuid",
   "dod/dod-data-oriented"
  ]
 }

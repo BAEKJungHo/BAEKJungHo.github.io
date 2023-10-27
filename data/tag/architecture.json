@@ -27,6 +27,7 @@
  "architecture/architecture-schema-registry",
  "architecture/architecture-stratified-design",
  "architecture/architecture-sync-messaging",
+ "architecture/architecture-uuid",
  "ddd/ddd-reduce-dependency",
  "dod/dod-data-oriented",
  "kotlin/kotlin-structured-concurrency",

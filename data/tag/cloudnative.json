@@ -6,5 +6,6 @@
  "architecture/architecture-reliability",
  "architecture/architecture-schema-registry",
  "architecture/architecture-sync-messaging",
+ "architecture/architecture-uuid",
  "msa/msa-service-connectivity"
 ]

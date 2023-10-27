@@ -58,6 +58,7 @@ regenerate: true
 * [[/architecture/architecture-stratified-design]]
 * [[/architecture/architecture-decision-records]]
 * [[/architecture/architecture-mqtt]]
+* [[/architecture/architecture-uuid]]
 
 ## Kata
 

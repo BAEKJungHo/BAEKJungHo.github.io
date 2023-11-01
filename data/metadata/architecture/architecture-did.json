@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Decentralized Identifiers",
+ "summary": "Core architecture, data model, and representations",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-did",
+ "updated": "2023-10-28 15:12:24 +0900",
+ "children": []
+}

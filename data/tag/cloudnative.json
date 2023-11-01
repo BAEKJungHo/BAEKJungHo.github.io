@@ -2,6 +2,7 @@
  "architecture/architecture-amqp",
  "architecture/architecture-aws-well",
  "architecture/architecture-cloud-native",
+ "architecture/architecture-did",
  "architecture/architecture-nats",
  "architecture/architecture-reliability",
  "architecture/architecture-schema-registry",

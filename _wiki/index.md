@@ -59,6 +59,7 @@ regenerate: true
 * [[/architecture/architecture-decision-records]]
 * [[/architecture/architecture-mqtt]]
 * [[/architecture/architecture-uuid]]
+* [[/architecture/architecture-did]]
 
 ## Kata
 

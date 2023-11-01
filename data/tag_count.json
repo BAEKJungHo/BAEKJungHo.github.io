@@ -101,7 +101,7 @@
  },
  {
   "name": "fp",
-  "size": 12
+  "size": 13
  },
  {
   "name": "fsm",
@@ -169,7 +169,7 @@
  },
  {
   "name": "java",
-  "size": 38
+  "size": 39
  },
  {
   "name": "javascript",
@@ -193,7 +193,7 @@
  },
  {
   "name": "kotlin",
-  "size": 57
+  "size": 58
  },
  {
   "name": "ksp",

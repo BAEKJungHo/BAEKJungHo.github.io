@@ -125,6 +125,7 @@ regenerate: true
 * [[/kotlin/kotlin-coroutine-cancel]]
 * [[/kotlin/kotlin-coroutine-exception]]
 * [[/kotlin/kotlin-coroutine-dispatcher]]
+* [[/kotlin/kotlin-jdbc-batch]]
 
 ## Java
 

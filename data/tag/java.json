@@ -23,6 +23,7 @@
  "kotlin/kotlin-equality",
  "kotlin/kotlin-first-citizen",
  "kotlin/kotlin-generics",
+ "kotlin/kotlin-jdbc-batch",
  "kotlin/kotlin-nested",
  "kotlin/kotlin-preconditions",
  "kotlin/kotlin-property",

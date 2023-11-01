@@ -4,7 +4,7 @@ title   : Actions to Calculations
 summary : 동작에서 계산으로
 date    : 2023-01-16 20:54:32 +0900
 updated : 2023-01-16 21:15:24 +0900
-tag     : kotlin test
+tag     : kotlin fp test
 toc     : true
 comment : true
 public  : true

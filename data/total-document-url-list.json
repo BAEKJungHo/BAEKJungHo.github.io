@@ -230,6 +230,7 @@
  "/wiki/kotlin/kotlin-functor-monad",
  "/wiki/kotlin/kotlin-generics",
  "/wiki/kotlin/kotlin-inline",
+ "/wiki/kotlin/kotlin-jdbc-batch",
  "/wiki/kotlin/kotlin-ksp",
  "/wiki/kotlin/kotlin-lambda",
  "/wiki/kotlin/kotlin-mockk",

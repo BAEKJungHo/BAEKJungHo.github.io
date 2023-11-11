@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-event-driven-system",
  "dod",
  "dod/dod-data-oriented",
  "msa/msa-xa"

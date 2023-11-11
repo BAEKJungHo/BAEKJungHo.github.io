@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 39
+  "size": 40
  },
  {
   "name": "auth",
@@ -85,11 +85,15 @@
  },
  {
   "name": "dod",
-  "size": 3
+  "size": 4
  },
  {
   "name": "etc",
   "size": 5
+ },
+ {
+  "name": "eventdriven",
+  "size": 1
  },
  {
   "name": "fixturemonkey",

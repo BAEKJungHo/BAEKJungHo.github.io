@@ -60,6 +60,7 @@ regenerate: true
 * [[/architecture/architecture-mqtt]]
 * [[/architecture/architecture-uuid]]
 * [[/architecture/architecture-did]]
+* [[/architecture/architecture-event-driven-system]]
 
 ## Kata
 

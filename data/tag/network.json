@@ -2,6 +2,7 @@
  "network/network-dmz",
  "network/network-half-close",
  "network/network-idempotency",
+ "network/network-latency",
  "network/network-layeredarchitectures",
  "network/network-polling",
  "network/network-ssrf",

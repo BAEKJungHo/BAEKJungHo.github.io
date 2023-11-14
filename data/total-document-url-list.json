@@ -315,6 +315,7 @@
  "/wiki/network/network-dmz",
  "/wiki/network/network-half-close",
  "/wiki/network/network-idempotency",
+ "/wiki/network/network-latency",
  "/wiki/network/network-layeredarchitectures",
  "/wiki/network/network-polling",
  "/wiki/network/network-ssrf",

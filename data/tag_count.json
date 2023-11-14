@@ -252,6 +252,10 @@
   "size": 1
  },
  {
+  "name": "monitoring",
+  "size": 1
+ },
+ {
   "name": "mqtt",
   "size": 1
  },
@@ -269,7 +273,7 @@
  },
  {
   "name": "network",
-  "size": 9
+  "size": 10
  },
  {
   "name": "nodejs",

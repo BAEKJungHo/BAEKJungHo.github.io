@@ -116,6 +116,10 @@
   "size": 1
  },
  {
+  "name": "gc",
+  "size": 1
+ },
+ {
   "name": "git",
   "size": 7
  },

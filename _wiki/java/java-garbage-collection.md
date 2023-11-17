@@ -1,10 +1,10 @@
 ---
 layout  : wiki
-title   : GarbageCollection
-summary : 
+title   : GC
+summary : Garbage Collection
 date    : 2023-02-10 11:28:32 +0900
 updated : 2023-02-10 12:15:24 +0900
-tag     : java kotlin
+tag     : gc java kotlin
 toc     : true
 comment : true
 public  : true
@@ -17,21 +17,26 @@ latex   : true
 ## What is GarbageCollection
 
 Automatic garbage collection is the __process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects__.
-The main purpose of garbage collection is to free up memory space and __prevent [memory leaks](https://baekjungho.github.io/wiki/java/java-memoryleak/)__, which can cause an application to slow down or crash.
+The main purpose of garbage collection is to __free up memory space__ and __prevent [memory leaks](https://baekjungho.github.io/wiki/java/java-memoryleak/)__, which can cause an application to slow down or crash.
 
-In Java, process of deallocating memory is handled automatically by the garbage collector.
+In Java, process of deallocating memory is handled __automatically__ by the garbage collector.
 
-## JVM Architecture
+## Stop the World
 
-![](/resource/wiki/java-garbage-collection/hotspot-jvm.png)
+__stop the world__ GC 를 수행하기 위해 Appliation 이 일시적으로 정지하는 현상을 의미한다.
+따라서, GC 가 빈번하게 일어난다고 해서 좋은 건 아니며, stop-the-world 시간을 줄이는 것이 중요하다.
 
-__The key components of the JVM that relate to performance are:__
+즉, GC 튜닝이란 이 stop-the-world 시간을 줄이는 것이다.
 
-- Heap Memory
-- Garbage Collector
-- JIT Compiler
+## Weak Generational Hypothesis
 
-There are three components of the JVM that are focused on when tuning performance. The heap is where your object data is stored. This area is then managed by the garbage collector selected at startup. Most tuning options relate to sizing the heap and choosing the most appropriate garbage collector for your situation. The JIT compiler also has a big impact on performance but rarely requires tuning with the newer versions of the JVM.
+Garbage collector 는 두 가지 전제조건을 기반으로 한다.
+
+__Weak Generational Hypothesis__:
+- 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 된다. 
+- 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.
+
+이러한 전제조건을 기반으로 물리적 공간을 두 개로 나눴는데, Young Generation 과 Old Generation 이다.
 
 ## Describing Garbage Collector Process
 
@@ -125,6 +130,20 @@ __In Summary:__
 
 ![](/resource/wiki/java-garbage-collection/summary.png)
 
+## JDK9 G1 GC
+
+__JDK9 ~ 13 Heap Memory__:
+
+![](/resource/wiki/java-garbage-collection/jdk9-memory.png)
+
+JDK9 부터는 __[Garbage First Garbage Collector(G1GC)](https://www.oracle.com/java/technologies/javase/hotspot-garbage-collection.html)__ 가 기본 방식으로 채택되었다. JDK7 에서 처음 등장하였다.
+
+The G1 collector is a server-style garbage collector, targeted for multi-processor machines with large memories.
+
+__G1 Heap Allocation__:
+
+![](/resource/wiki/java-garbage-collection/g1-heap-allocation.png)
+
 ## Links
 
 - [Garbage Collection Document](https://www.oracle.com/webfolder/technetwork/tutorials/obe/java/gc01/index.html)
@@ -133,3 +152,6 @@ __In Summary:__
 - [DZone Java Memory Management](https://dzone.com/articles/java-memory-management)
 - [DZone The JVM Architecture Explained](https://dzone.com/articles/jvm-architecture-explained)
 - [DZone A Detailed Breakdown of the JVM](https://dzone.com/articles/a-detailed-breakdown-of-the-jvm)
+- [JVM Garbage Collection](https://renuevo.github.io/java/garbage-collection/)
+- [JVM 튜닝](https://imp51.tistory.com/entry/G1-GC-Garbage-First-Garbage-Collector-Tuning)
+- [Java Garbage Collection - D2](https://d2.naver.com/helloworld/1329)

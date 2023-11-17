@@ -1,7 +1,7 @@
 {
  "type": "wiki",
- "title": "GarbageCollection",
- "summary": "",
+ "title": "GC",
+ "summary": "Garbage Collection",
  "parent": "java",
  "url": "/wiki/java/java-garbage-collection",
  "updated": "2023-02-10 12:15:24 +0900",

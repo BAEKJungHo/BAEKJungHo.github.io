@@ -17,13 +17,12 @@ latex   : true
 ## What is GarbageCollection
 
 Automatic garbage collection is the __process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects__.
-The main purpose of garbage collection is to __free up memory space__ and __prevent [memory leaks](https://baekjungho.github.io/wiki/java/java-memoryleak/)__, which can cause an application to slow down or crash.
-
+The main purpose of garbage collection is to __free up memory space__ and __prevent [memory leaks](https://baekjungho.github.io/wiki/java/java-memoryleak/)__, which can cause an application to slow down or crash. 
 In Java, process of deallocating memory is handled __automatically__ by the garbage collector.
 
 ## Stop the World
 
-__stop the world__ GC 를 수행하기 위해 Appliation 이 일시적으로 정지하는 현상을 의미한다.
+__stop the world__ 는 GC 를 수행하기 위해 Application 이 일시적으로 정지하는 현상을 의미한다.
 따라서, GC 가 빈번하게 일어난다고 해서 좋은 건 아니며, stop-the-world 시간을 줄이는 것이 중요하다.
 
 즉, GC 튜닝이란 이 stop-the-world 시간을 줄이는 것이다.

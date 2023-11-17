@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 40
+  "size": 41
  },
  {
   "name": "auth",
@@ -57,7 +57,7 @@
  },
  {
   "name": "database",
-  "size": 21
+  "size": 22
  },
  {
   "name": "datastructures",
@@ -105,7 +105,7 @@
  },
  {
   "name": "fp",
-  "size": 13
+  "size": 14
  },
  {
   "name": "fsm",
@@ -249,6 +249,10 @@
  },
  {
   "name": "monad",
+  "size": 1
+ },
+ {
+  "name": "mongodb",
   "size": 1
  },
  {

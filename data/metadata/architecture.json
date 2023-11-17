@@ -28,6 +28,7 @@
   "architecture/architecture-hexagonal",
   "architecture/architecture-lambda",
   "architecture/architecture-layered",
+  "architecture/architecture-map-reduce",
   "architecture/architecture-mqtt",
   "architecture/architecture-nats",
   "architecture/architecture-reliability",

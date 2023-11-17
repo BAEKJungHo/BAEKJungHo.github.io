@@ -1,5 +1,6 @@
 [
  "architecture/architecture-discord-store-message",
+ "architecture/architecture-map-reduce",
  "architecture/architecture-uuid",
  "database",
  "database/database-cascade",

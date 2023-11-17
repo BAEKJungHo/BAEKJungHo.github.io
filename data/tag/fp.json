@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-map-reduce",
  "architecture/architecture-stratified-design",
  "dod/dod-data-oriented",
  "functional",

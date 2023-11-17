@@ -33,6 +33,7 @@
  "/wiki/architecture/architecture-hexagonal",
  "/wiki/architecture/architecture-lambda",
  "/wiki/architecture/architecture-layered",
+ "/wiki/architecture/architecture-map-reduce",
  "/wiki/architecture/architecture-mqtt",
  "/wiki/architecture/architecture-nats",
  "/wiki/architecture/architecture-reliability",

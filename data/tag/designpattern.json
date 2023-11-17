@@ -1,5 +1,6 @@
 [
  "architecture/architecture-branchbyabstraction",
+ "architecture/architecture-map-reduce",
  "architecture/architecture-schema-registry",
  "architecture/architecture-sync-messaging",
  "designpattern",

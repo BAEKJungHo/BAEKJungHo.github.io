@@ -4,7 +4,7 @@ title   : MapReduce
 summary : 
 date    : 2023-11-08 15:02:32 +0900
 updated : 2023-11-08 15:12:24 +0900
-tag     : architecture fp database mongodb
+tag     : architecture fp database mongodb designpattern
 toc     : true
 comment : true
 public  : true
@@ -20,6 +20,10 @@ latex   : true
 
 맵-리듀스는 큰 규모의 데이터 집합을 여러 노드에 분산하여 처리하고, 그 결과를 모으는 방식으로 동작한다. 이러한 처리는 두 단계로 나눠진다.
 
+### Workflow
+
+![](/resource/wiki/architecture-map-reduce/map-reduce-workflow.png)
+
 1. __map(collect) 단계__
 
 - 입력 데이터를 여러 개의 작은 조각으로 나눈다.
@@ -30,6 +34,8 @@ latex   : true
 
 - 맵 단계에서 생성된 중간 결과를 특정 기준에 따라 그룹화(키를 기준으로 그룹화)한다.
 - 그룹화된 결과를 리듀스 함수에 적용하여 최종 결과를 생성한다.
+
+### Example
 
 __PostgreSQL__:
 
@@ -62,6 +68,52 @@ db.observations.mapReduce(
 __MongoDB map-reduce 함수 사용 시 제약사항__:
 - 순수 함수(pure function) 여야 한다. 즉, 입력으로 전달된 데이터만 사용해야하고 추가적인 데이터베이스 질의를 수행하면 안된다.
 - 즉, 부수 효과(side effect) 가 없어야 한다.
+
+__Kotlin__:
+
+```kotlin
+// 데이터 소스로 사용할 문장 목록
+val sentences = listOf(
+    "MapReduce is a programming model",
+    "for processing and generating big data sets",
+    "with a parallel, distributed algorithm on a cluster",
+    "MapReduce can handle large amounts of data in parallel"
+)
+
+// Map 함수: 문장을 단어로 분리하여 (단어, 1) 형태의 Pair로 반환
+fun mapFunction(sentence: String): List<Pair<String, Int>> {
+    val words = sentence.split(" ")
+    return words.map { word -> Pair(word, 1) }
+}
+
+// Reduce 함수: 동일한 키(단어)를 가진 Pair들을 합산하여 (단어, 누적된 카운트) 형태의 Pair로 반환
+fun reduceFunction(pairs: List<Pair<String, Int>>): Map<String, Int> {
+    val resultMap = mutableMapOf<String, Int>()
+
+    for ((word, count) in pairs) {
+        resultMap[word] = resultMap.getOrDefault(word, 0) + count
+    }
+
+    return resultMap
+}
+
+fun main() {
+    // Map 단계
+    val mappedResults = sentences.flatMap { mapFunction(it) }
+
+    // Reduce 단계
+    val reducedResults = mappedResults.groupBy({ it.first }, { it.second })
+        .map { (word, counts) -> Pair(word, counts.sum()) }
+
+    // 결과 출력
+    reducedResults.forEach { println("${it.first}: ${it.second}") }
+}
+```
+
+## Links
+
+- [A Very Brief Introduction to MapReduce](https://hci.stanford.edu/courses/cs448g/a2/files/map_reduce_tutorial.pdf)
+- [Map Reduce Algorithm](https://www.baeldung.com/cs/mapreduce-algorithm)
 
 ## References
 

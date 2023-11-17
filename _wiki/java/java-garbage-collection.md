@@ -22,10 +22,50 @@ In Java, process of deallocating memory is handled __automatically__ by the garb
 
 ## Stop the World
 
-__stop the world__ 는 GC 를 수행하기 위해 Application 이 일시적으로 정지하는 현상을 의미한다.
+__stop the world__ 는 GC 를 수행하기 위해 모든 Application 의 Thread 들이 일시적으로 정지하는 현상을 의미한다.
 따라서, GC 가 빈번하게 일어난다고 해서 좋은 건 아니며, stop-the-world 시간을 줄이는 것이 중요하다.
 
 즉, GC 튜닝이란 이 stop-the-world 시간을 줄이는 것이다.
+
+## Principals
+
+모든 Garbage collector 는 두 가지 원칙을 준수해야 한다.
+
+1. 알고리즘은 반드시 모든 가비지를 수집해야 한다.
+2. 살아 있는 객체는 절대로 수집해서는 안된다.
+
+두 번째 원칙이 더 중요한데, 살아 있는 객체를 수집하면 __segmentation fault__ 가 발생할 수 있다.
+
+> segmentation fault 는 프로그램이 허용되지 않는 메모리 영역에 접근을 시도하거나 허용되지 않는 방법으로 메모리 영역에 접근을 시도하려는 경우를 의미한다.
+
+## Ordinary Object Pointers
+
+> [Java Memory Layout](https://www.baeldung.com/java-memory-layout)
+
+HotSpot JVM 은 [OOPS(Ordinary Object Pointers)](https://github.com/openjdk/jdk15/tree/master/src/hotspot/share/oops)라는 데이터 구조를 사용하여 객체에 대한 포인터를 나타낸다.
+
+JVM 의 모든 pointer(객체와 배열)는 [oopDesc](https://github.com/openjdk/jdk15/blob/e208d9aa1f185c11734a07db399bab0be77ef15f/src/hotspot/share/oops/oop.hpp#L52) 라는 데이터 구조에 기반한다.
+
+해당 메모리 레이아웃은 모든 객체에 대해 기계어 워드 2개로 구성된 헤더로 시작된다.
+
+- One __mark word__: 인스턴스 관련 메타데이터를 가리키는 포인터 
+  - The HotSpot JVM uses this word to store identity hashcode, biased locking pattern, locking information, and GC metadata.
+- One, possibly compressed, __klass word__: 클래스 메타데이터를 가리키는 포인터 
+  - 클래스 이름, 해당 수정자, 슈퍼클래스 정보 등과 같은 언어 수준 클래스 정보를 캡슐화한다.
+
+Java7 까지는 instanceOop 의 Klass word 가 자바 힙의 일부인 permgen 영역을 가리켰지만, Java8 부터는 자바 힙 밖을 가리키므로 객체 헤더가 필요 없게 되었다.
+
+__oop inheritance structures__:
+
+```
+oop (추상 베이스)
+  instanceOop (인스턴스 객체)
+  methodOop (메서드 표현형)
+  arrayOop (배열 추상 베이스)
+  symbolOop (내부 심볼 / 스트링 클래스)
+  klassOop (Klass 헤더) (자바 7 이전만 해당)
+  markOop
+```
 
 ## Weak Generational Hypothesis
 
@@ -154,3 +194,8 @@ __G1 Heap Allocation__:
 - [JVM Garbage Collection](https://renuevo.github.io/java/garbage-collection/)
 - [JVM 튜닝](https://imp51.tistory.com/entry/G1-GC-Garbage-First-Garbage-Collector-Tuning)
 - [Java Garbage Collection - D2](https://d2.naver.com/helloworld/1329)
+
+## References
+
+- Optimizing Java / Benjamin Evans, James Gough, Chris Newland / O'REILLY
+- Java Performance: The Definitive Guide / Scott Oaks / O'REILLY

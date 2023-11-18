@@ -41,7 +41,9 @@ __stop the world__ 는 GC 를 수행하기 위해 모든 Application 의 Thread 
 
 > segmentation fault 는 프로그램이 허용되지 않는 메모리 영역에 접근을 시도하거나 허용되지 않는 방법으로 메모리 영역에 접근을 시도하려는 경우를 의미한다.
 
-### Weak Generational Hypothesis
+### Unreachable & Weak Generational Hypothesis
+
+참조가 있는 상태를 reachable, 참조가 없는 상태를 unreachable 이라고 한다. unreachable 객체를 대상으로 gc 를 수행한다.
 
 Garbage collector 는 두 가지 전제조건을 기반으로 한다.
 
@@ -65,12 +67,12 @@ __Types__:
 
 GC roots are starting points for __[tracing collectors](https://www.baeldung.com/java-gc-cyclic-references#tracing-gcs)__.
 
-## Java References
+### Java References
 
-### Strong Reference
+GC 는 기본적으로 unreacheable 인 객체를 대상으로 gc 를 수행하지만 java.lang.ref 패키지를 활용하면 gc 대상을 제어할 수 있다. 즉, 객체의 reachability를 조절하기 위해서 java.lang.ref 패키지의 SoftReference, WeakReference, PhantomReference, ReferenceQueue 등을 사용할 수 있다.
+자세한 내용은 [Java Reference 와 GC - Naver D2](https://d2.naver.com/helloworld/329631) 참고.
 
-일반적으로 생성한 객체는 강력한 참조(strong reference)다. 참조가 있다는 것은 GC 의 대상이 아니고, strong reference variable 을 null 로 설정하면
-gc 의 대상이 된다. System.gc 는 사용하면 안된다. Stop-The-World 이벤트를 발생시키기 때문이다. 이 방식을 사용하지 못하게 하려면 `-Xdisableexplicitgc` 옵션을 설정하면 된다.
+### System.gc
 
 __Do not use System.gc()__:
 - There is no guarantee that the actual GC will be triggered.
@@ -78,11 +80,9 @@ __Do not use System.gc()__:
 
 System.gc() 가 그나마 [유용한 경우](https://www.baeldung.com/java-system-gc#other-usages)도 있다고 하는데, 대부분의 GC 는 우리보다 똑똑하다. 정말 잘 알고 쓰는 것이 아니라면, 사용하지 않는 것을 추천한다.
 
-## Java Memory Layout
+### Java Memory Layout - Ordinary Object Pointers
 
-- [Java Memory Layout](https://www.baeldung.com/java-memory-layout)
-
-### Ordinary Object Pointers
+> [Java Memory Layout](https://www.baeldung.com/java-memory-layout)
 
 HotSpot JVM 은 [OOPS(Ordinary Object Pointers)](https://github.com/openjdk/jdk15/tree/master/src/hotspot/share/oops)라는 데이터 구조를 사용하여 객체에 대한 포인터를 나타낸다.
 

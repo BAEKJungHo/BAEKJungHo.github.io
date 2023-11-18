@@ -4,7 +4,7 @@ title   : Netty Memory Leak
 summary : 
 date    : 2023-08-25 15:05:32 +0900
 updated : 2023-08-25 15:15:24 +0900
-tag     : reactive netty
+tag     : reactive netty memoryleak
 toc     : true
 comment : true
 public  : true

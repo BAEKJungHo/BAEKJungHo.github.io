@@ -14,33 +14,75 @@ latex   : true
 * TOC
 {:toc}
 
-## What is GarbageCollection
+## Background
+
+### What is GarbageCollection
 
 Automatic garbage collection is the __process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects__.
 The main purpose of garbage collection is to __free up memory space__ and __prevent [memory leaks](https://baekjungho.github.io/wiki/java/java-memoryleak/)__, which can cause an application to slow down or crash. 
 In Java, process of deallocating memory is handled __automatically__ by the garbage collector.
 
-## Stop the World
+### Stop the World
 
 __stop the world__ 는 GC 를 수행하기 위해 모든 Application 의 Thread 들이 일시적으로 정지하는 현상을 의미한다.
 따라서, GC 가 빈번하게 일어난다고 해서 좋은 건 아니며, stop-the-world 시간을 줄이는 것이 중요하다.
 
 즉, GC 튜닝이란 이 stop-the-world 시간을 줄이는 것이다.
 
-## Principals
+### Principals
 
 모든 Garbage collector 는 두 가지 원칙을 준수해야 한다.
 
 1. 알고리즘은 반드시 모든 가비지를 수집해야 한다.
 2. 살아 있는 객체는 절대로 수집해서는 안된다.
+  - The garbage collector can reclaim only objects that have no references pointing to them either directly or indirectly from the root set.
 
 두 번째 원칙이 더 중요한데, 살아 있는 객체를 수집하면 __segmentation fault__ 가 발생할 수 있다.
 
 > segmentation fault 는 프로그램이 허용되지 않는 메모리 영역에 접근을 시도하거나 허용되지 않는 방법으로 메모리 영역에 접근을 시도하려는 경우를 의미한다.
 
-## Ordinary Object Pointers
+### Weak Generational Hypothesis
 
-> [Java Memory Layout](https://www.baeldung.com/java-memory-layout)
+Garbage collector 는 두 가지 전제조건을 기반으로 한다.
+
+__Weak Generational Hypothesis__:
+- 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 된다.
+- 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.
+
+이러한 전제조건을 기반으로 물리적 공간을 두 개로 나눴는데, Young Generation 과 Old Generation 이다.
+
+### GC Root
+
+GC Root 는 GC 프로세스의 __시작점(메모리의 고정점, anchor point)__ 이다. 메모리 풀 외부에서 내부를 가리키는 포인터이다.
+
+__Types__:
+- Stack Frame: 로컬 스택에 저장된 메소드에 대한 로컬 변수 및 매개변수
+- JNI(Java Native Interface): JNI 호출을 위해 생성된 네이티브 코드 Java 개체입니다. 로컬 변수, JNI 메소드에 대한 매개변수 및 글로벌 JNI 참조를 포함
+- Register(끌어올려진(hoisted) 변수)
+- Classes loaded by the system classloader
+- Live threads
+- Static variables
+
+GC roots are starting points for __[tracing collectors](https://www.baeldung.com/java-gc-cyclic-references#tracing-gcs)__.
+
+## Java References
+
+### Strong Reference
+
+일반적으로 생성한 객체는 강력한 참조(strong reference)다. 참조가 있다는 것은 GC 의 대상이 아니고, strong reference variable 을 null 로 설정하면
+gc 의 대상이 된다. System.gc 는 사용하면 안된다. Stop-The-World 이벤트를 발생시키기 때문이다. 이 방식을 사용하지 못하게 하려면 `-Xdisableexplicitgc` 옵션을 설정하면 된다.
+
+__Do not use System.gc()__:
+- There is no guarantee that the actual GC will be triggered.
+- System.gc() triggers a major GC. Hence, there is a risk of spending some time on the stop-the-world phase, depending on your garbage collector implementation. As a result, we have an unreliable tool with a potentially significant performance penalty.
+
+System.gc() 가 그나마 [유용한 경우](https://www.baeldung.com/java-system-gc#other-usages)도 있다고 하는데, 대부분의 GC 는 우리보다 똑똑하다. 정말 잘 알고 쓰는 것이 아니라면, 사용하지 않는 것을 추천한다.
+
+## Java Memory Layout
+
+- [Java Memory Layout](https://www.baeldung.com/java-memory-layout)
+
+### Ordinary Object Pointers
 
 HotSpot JVM 은 [OOPS(Ordinary Object Pointers)](https://github.com/openjdk/jdk15/tree/master/src/hotspot/share/oops)라는 데이터 구조를 사용하여 객체에 대한 포인터를 나타낸다.
 
@@ -67,17 +109,7 @@ oop (추상 베이스)
   markOop
 ```
 
-## Weak Generational Hypothesis
-
-Garbage collector 는 두 가지 전제조건을 기반으로 한다.
-
-__Weak Generational Hypothesis__:
-- 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 된다. 
-- 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.
-
-이러한 전제조건을 기반으로 물리적 공간을 두 개로 나눴는데, Young Generation 과 Old Generation 이다.
-
-## Describing Garbage Collector Process
+## GCs 
 
 ### Mark and Compact
 
@@ -199,3 +231,4 @@ __G1 Heap Allocation__:
 
 - Optimizing Java / Benjamin Evans, James Gough, Chris Newland / O'REILLY
 - Java Performance: The Definitive Guide / Scott Oaks / O'REILLY
+- The Garbage Collection Handbook / Richard Jones, Antony Hosking, Eliot Moss / Chapman and Hall/CRC

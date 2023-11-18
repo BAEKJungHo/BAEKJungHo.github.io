@@ -8,6 +8,7 @@
  "children": [
   "troubleshooting/troubleshooting-firebase-error",
   "troubleshooting/troubleshooting-idempotency",
+  "troubleshooting/troubleshooting-java-memory-analyzer",
   "troubleshooting/troubleshooting-thread-block",
   "troubleshooting/troubleshooting-webclientrequestexception"
  ]

@@ -1,3 +1,4 @@
 [
- "java/java-garbage-collection"
+ "java/java-garbage-collection",
+ "troubleshooting/troubleshooting-java-memory-analyzer"
 ]

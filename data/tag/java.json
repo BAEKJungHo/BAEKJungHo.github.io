@@ -37,5 +37,6 @@
  "spring/spring-jackson",
  "spring/spring-logging",
  "spring/spring-mdc",
- "spring/spring-pojo"
+ "spring/spring-pojo",
+ "troubleshooting/troubleshooting-java-memory-analyzer"
 ]

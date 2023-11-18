@@ -4,7 +4,7 @@ title   : Memory Leak
 summary : 
 date    : 2022-07-09 11:28:32 +0900
 updated : 2022-07-09 12:15:24 +0900
-tag     : java
+tag     : java memoryleak
 toc     : true
 comment : true
 public  : true

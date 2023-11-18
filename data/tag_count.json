@@ -117,7 +117,7 @@
  },
  {
   "name": "gc",
-  "size": 1
+  "size": 2
  },
  {
   "name": "git",
@@ -177,7 +177,7 @@
  },
  {
   "name": "java",
-  "size": 39
+  "size": 40
  },
  {
   "name": "javascript",
@@ -238,6 +238,10 @@
  {
   "name": "mapstruct",
   "size": 1
+ },
+ {
+  "name": "memoryleak",
+  "size": 3
  },
  {
   "name": "methodology",
@@ -381,7 +385,7 @@
  },
  {
   "name": "troubleshooting",
-  "size": 7
+  "size": 8
  },
  {
   "name": "webflux",

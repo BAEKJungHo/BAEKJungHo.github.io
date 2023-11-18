@@ -24,14 +24,12 @@ latex   : true
 
 ![](/resource/wiki/architecture-map-reduce/map-reduce-workflow.png)
 
-1. __map(collect) 단계__
-
+__1. map(collect) 단계:__
 - 입력 데이터를 여러 개의 작은 조각으로 나눈다.
 - 각각의 조각에 대해 사용자가 정의한 맵 함수를 적용하여 중간 결과를 생성한다.
 - 중간 결과는 (키, 값) 쌍으로 표현된다.
 
-2. __reduce(fold, inject) 단계__
-
+__2. reduce(fold, inject) 단계__
 - 맵 단계에서 생성된 중간 결과를 특정 기준에 따라 그룹화(키를 기준으로 그룹화)한다.
 - 그룹화된 결과를 리듀스 함수에 적용하여 최종 결과를 생성한다.
 

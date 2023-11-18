@@ -69,6 +69,10 @@ __Preventions__:
 __Knowhow__:
 - [하나의 메모리 누수를 잡기 까지 - Naver D2](https://d2.naver.com/helloworld/1326256)
 - [도움이 될수도 있는 JVM memory leak 이야기 - Woowabros](https://techblog.woowahan.com/2628/)
+- Native Memory Leak 발생 시 해결 방법
+  - Java Native Inteface 를 사용하는데 자원을 해제하지 않은 경우가 있는지 살펴봄 
+  - GC 에 의해서 관리되는 Heap 메모리가 아니기 때문에, Process Dump 를 떠서 확인 
+  - 혹은 linux 에서 malloc 대신 jemalloc 을 사용하여 어떤 곳에서 메모리를 많이 사용하는지 확인
 
 ## Links
 

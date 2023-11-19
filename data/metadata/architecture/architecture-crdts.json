@@ -1,7 +1,7 @@
 {
  "type": "wiki",
- "title": "Conflict-Free Replicated Data Types",
- "summary": "CRDTs",
+ "title": "CRDTs",
+ "summary": "Conflict-Free Replicated Data Types",
  "parent": "architecture",
  "url": "/wiki/architecture/architecture-crdts",
  "updated": "2023-05-21 15:12:24 +0900",

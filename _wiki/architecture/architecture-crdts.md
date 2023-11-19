@@ -41,7 +41,7 @@ __[CRDT satisfies A + P + Eventual Consistency](https://www.loro.dev/docs/concep
 
 CRDTs are special data types that converge data from all database replicas.
 
-__Partition-tolerance_:
+__Partition-tolerance__:
 - Partiton-tolerance 란 서로 다른 구성 요소 간의 통신이 끊어지거나 지연되어 파티션이나 네트워크 오류가 발생하는 경우에도 분산 시스템이 계속 제대로 작동할 수 있는 능력을 의미한다.
 - 사용자는 오프라인 상태에서도 CRDT 를 사용할 수 있다. 네트워크가 복원되면 다른 사람들과 다시 동기화할 수 있다. 또한 P2P를 통해 다른 사용자와의 공동 편집도 지원한다. 이를 분할 내결함성 이라고 한다. 이를 통해 CRDT 는 분산형 애플리케이션을 매우 잘 지원할 수 있다. 중앙 집중식 서버 없이도 동기화를 수행할 수 있다.
 

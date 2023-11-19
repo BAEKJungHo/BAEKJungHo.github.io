@@ -30,8 +30,25 @@ __Characteristics__:
 
 __[EMQX](https://github.com/emqx/emqx)__(MQTT Platform for IOT) 를 사용하여 Cloud Application 환경에서 MQTT 를 구축할 수 있다. __[AWS IoT Core](https://aws.amazon.com/ko/iot-core/)__ 를 사용할 수 도 있다.
 
+### Architecture
+
+> __Typical Architecture__:
+>
+> ![](/resource/wiki/architecture-mqtt/mqtt-base-architecture.png)
+>
+> 위와 같은 방식은 __브로커 운영 관리와 메시지 유실 방지를 위한 중복된 스토리지 운영 관리__ 가 필요하다.
+> 
+> `저장 후 전달 (store and forward)` 전략이 MQTT 뿐만 아니라 모든 메시지 브로커들의 일반적인 설계 전략이라고 할 수 있다. 브로커가 전달한 메시지를 수신한 수집 애플리케이션은 서비스에 이용하기 편리한 구조로 변환하여 (RDBMS 나 NoSQL 과 같은 데이터베이스에) 저장한다. 시스템을 구축한 후에는 서비스를 안정적으로 운영하기 위해서 두 가지의 스토리지 (MQTT 의 저장소, 애플리케이션의 저장소)를 관리해야만 하며 장애에 대처해야 한다.
+>
+> 이러한 문제를 해결하기 위해, 센서가 텔레 메트릭 데이터를 MQTT 를 통해 직접 데이터베이스로 전송하는 방식인 [machbase-neo](https://machbase.com/neo/) 가 있다.
+> 
+> __Machbase Architecture__:
+>
+> ![](/resource/wiki/architecture-mqtt/mqtt-machbase.png)
+
 ## Links
 
 - [Amazon What is MQTT](https://aws.amazon.com/ko/what-is/mqtt/)
 - [MQTT Essential Guide](https://www.emqx.com/en/mqtt-guide)
 - [MQTT Publish-Subscribe Pattern](https://www.emqx.com/en/blog/mqtt-5-introduction-to-publish-subscribe-model)
+- [IoT 센서 데이터 플랫폼 구축과 MQTT](https://machbase.com/kr/home/blog/blog10/)

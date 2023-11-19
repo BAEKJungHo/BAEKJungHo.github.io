@@ -41,17 +41,9 @@ __stop the world__ 는 GC 를 수행하기 위해 모든 Application 의 Thread 
 
 > segmentation fault 는 프로그램이 허용되지 않는 메모리 영역에 접근을 시도하거나 허용되지 않는 방법으로 메모리 영역에 접근을 시도하려는 경우를 의미한다.
 
-### Unreachable & Weak Generational Hypothesis
+### Unreachable
 
 참조가 있는 상태를 reachable, 참조가 없는 상태를 unreachable 이라고 한다. unreachable 객체를 대상으로 gc 를 수행한다.
-
-Garbage collector 는 두 가지 전제조건을 기반으로 한다.
-
-__Weak Generational Hypothesis__:
-- 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 된다.
-- 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.
-
-이러한 전제조건을 기반으로 물리적 공간을 두 개로 나눴는데, Young Generation 과 Old Generation 이다.
 
 ### GC Root
 
@@ -108,6 +100,35 @@ oop (추상 베이스)
   klassOop (Klass 헤더) (자바 7 이전만 해당)
   markOop
 ```
+
+### Arena
+
+Hotspot GC 는 __아레나(arena, 무대)__ 라는 메모리 영역에서 작동한다. 그리고 HotSopt 은 자바 Heap 을 관리할 때 system call 을 하지 않는다.
+유저 공간 코드에서 힙 크기를 관리한다.
+
+### Weak Generational Hypothesis
+
+Garbage collector 는 두 가지 전제조건을 기반으로 한다.
+
+__약한 세대별 가설(Weak Generational Hypothesis)__:
+- 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 된다.
+- 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.
+
+결론은 장수 객체와 단명 객체를 완전히 떼어놓는게 가장 좋다는 것이다. 이러한 전제조건을 기반으로 물리적 공간을 두 개로 나눴는데, Young Generation 과 Old Generation 이다.
+
+늙은 객체가 젋은 객체를 참조하고 있을 수도 있는데, 이를 __카드 테이블(card-table)__ 이라는 자료 구조에 저장해둔다.
+이 카드 테이블에서 각 원소는 Old Generation 공간의 512 byte 영역을 가리킨다.
+
+핵심 로직은 다음과 같다. 늙은 객체 `o` 에 있는 참조형 필드 값이 바뀌면 `o` 에 해당하는 instanceOop 가 들어 있는 카드를 찾아 해당 엔트리를 __Drity Marking__ 한다.
+HotSpot 은 레퍼런스 필드를 업데이트할 때마다 단순 __쓰기 배리어(write barrier)__ 를 이용한다.
+
+```
+// 0 으로 설정하는 것이 Dirty 하다고 표시하는 것이다.
+// 카드 테이블이 512 바이트라서 9비트 우측으로 시프트한다.
+cards[*instanceOop >> 9] = 0;
+```
+
+> 쓰기 배리어(write barrier)란 늙은 객치와 젋은 객체의 관계가 맺어지면 카드 테이블 엔트리를 더티 값으로 세팅하고, 반대로 관계가 해제되면 더티 값을 지우는, 실행 엔진에 포함된 작은 코드 조각을 의미한다.
 
 ## GCs 
 

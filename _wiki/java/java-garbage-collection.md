@@ -16,7 +16,6 @@ latex   : true
 
 ## Background
 
-### What is GarbageCollection
 
 Automatic garbage collection is the __process of looking at heap memory, identifying which objects are in use and which are not, and deleting the unused objects__.
 The main purpose of garbage collection is to __free up memory space__ and __prevent [memory leaks](https://baekjungho.github.io/wiki/java/java-memoryleak/)__, which can cause an application to slow down or crash. 
@@ -128,7 +127,7 @@ HotSpot 은 레퍼런스 필드를 업데이트할 때마다 단순 __쓰기 배
 cards[*instanceOop >> 9] = 0;
 ```
 
-> 쓰기 배리어(write barrier)란 늙은 객치와 젋은 객체의 관계가 맺어지면 카드 테이블 엔트리를 더티 값으로 세팅하고, 반대로 관계가 해제되면 더티 값을 지우는, 실행 엔진에 포함된 작은 코드 조각을 의미한다.
+> 쓰기 배리어(write barrier)란 늙은 객체와 젋은 객체의 관계가 맺어지면 카드 테이블 엔트리를 더티 값으로 세팅하고, 반대로 관계가 해제되면 더티 값을 지우는, 실행 엔진에 포함된 작은 코드 조각을 의미한다.
 
 ## GCs 
 

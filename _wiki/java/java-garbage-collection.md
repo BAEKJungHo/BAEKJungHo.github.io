@@ -133,7 +133,7 @@ cards[*instanceOop >> 9] = 0;
 
 ### Mark and Compact
 
-As stated earlier, having to __mark and compact all the objects in a JVM is inefficient__.
+As stated earlier, having to __[mark and compact](https://en.wikipedia.org/wiki/Mark%E2%80%93compact_algorithm) all the objects in a JVM is inefficient__.
 As more and more objects are allocated, the list of objects grows and grows leading to longer and longer garbage collection time. However, empirical analysis of applications has shown that most objects are short lived.
 
 점점 더 많은 개체가 할당됨에 따라 개체 목록이 증가하고 증가하여 가비지 수집 시간이 점점 길어지게 되어 비효율적이다.

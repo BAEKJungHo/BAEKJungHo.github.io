@@ -13,6 +13,7 @@
   "go/go-mutex",
   "go/go-panic",
   "go/go-pointers",
+  "go/go-polymorphism-function",
   "go/go-profiling",
   "go/go-unix-signal-handling",
   "go/go-vendoring"

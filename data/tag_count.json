@@ -129,7 +129,7 @@
  },
  {
   "name": "go",
-  "size": 11
+  "size": 12
  },
  {
   "name": "goroutine",
@@ -285,7 +285,7 @@
  },
  {
   "name": "network",
-  "size": 10
+  "size": 11
  },
  {
   "name": "nodejs",

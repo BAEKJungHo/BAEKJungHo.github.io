@@ -8,5 +8,6 @@
  "network/network-ssrf",
  "network/network-tcp",
  "network/network-tcp-performance",
+ "network/network-telnet",
  "troubleshooting/troubleshooting-webclientrequestexception"
 ]

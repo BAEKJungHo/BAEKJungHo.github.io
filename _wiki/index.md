@@ -87,6 +87,7 @@ regenerate: true
 * [[/go/go-panic]]
 * [[/go/go-profiling]]
 * [[/go/go-vendoring]]
+* [[/go/go-polymorphism-function]]
 
 ## Kotlin
 
@@ -456,6 +457,7 @@ regenerate: true
 * [[/network/network-ssrf]]
 * [[/network/network-half-close]]
 * [[/network/network-latency]]
+* [[/network/network-telnet]]
 
 ## Http
 

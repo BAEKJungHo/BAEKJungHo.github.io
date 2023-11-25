@@ -4,7 +4,7 @@ title   : Telnet
 summary : 
 date    : 2023-11-14 15:54:32 +0900
 updated : 2023-11-14 20:15:24 +0900
-tag     : network
+tag     : network linux
 toc     : true
 comment : true
 public  : true

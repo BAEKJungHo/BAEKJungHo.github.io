@@ -21,9 +21,12 @@ message-oriented middleware(mom) 란 분산 시스템(distirbuted system) 간의
 
 __[pubsub pattern](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern)__ 은 전통적인(traditional) client-server (request-response) model 과 다르게 직접적(directly)으로 통신할 필요가 없다.
 
+![](/resource/wiki/architecture-pub-sub/pub-sub-communication.png)
+
 직접적으로 통신하지 않아도 된다는 의미는 아래와 같은 특징을 갖는다.
 
-- 1:1 통신이 아니다. (하나의 publisher 가 발행한 topic 을 여러 subscriber 가 구독할 수 있다. 따라서, 구독자의 존재를 알 필요가 없다.)
+- 1:1 통신이 아니다.
+- 하나의 publisher 가 발행한 topic 을 여러 subscriber 가 구독할 수 있다. 따라서, 구독자의 존재를 알 필요가 없다.
 
 이러한 특징을 __decoupling__ 이라고 한다. 서로 상호 작용하는 컴포넌트간의 느슨한 결합을 해야하는 이유 중 하나는 __[scalability](https://en.wikipedia.org/wiki/Scalability)__ 이다.
 
@@ -69,3 +72,5 @@ __QoS 2, exactly once__
 
 - [Observer Pattern](https://baekjungho.github.io/wiki/designpattern/designpattern-observer/)
 - [MQTT Publish/Subscribe Architecture (Pub/Sub) – MQTT Essentials: Part 2](https://www.hivemq.com/blog/mqtt-essentials-part2-publish-subscribe/)
+- [Observer vs Pub-Sub pattern - HackerNoon](https://hackernoon.com/observer-vs-pub-sub-pattern-50d3b27f838c)
+- [Publisher Subscriber Pattern - Microsoft](https://learn.microsoft.com/ko-kr/azure/architecture/patterns/publisher-subscriber)

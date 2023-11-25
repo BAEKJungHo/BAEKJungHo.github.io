@@ -1,3 +1,4 @@
 [
- "architecture/architecture-event-driven-system"
+ "architecture/architecture-event-driven-system",
+ "architecture/architecture-pub-sub"
 ]

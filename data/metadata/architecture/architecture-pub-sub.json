@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Publish/Subscribe Architecture",
- "summary": "",
+ "summary": "Message-Oriented Middleware System and Message Broker",
  "parent": "architecture",
  "url": "/wiki/architecture/architecture-pub-sub",
  "updated": "2023-11-18 15:12:24 +0900",

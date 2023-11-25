@@ -17,9 +17,9 @@ latex   : true
 ## Message Queuing Telemetry Transport
 
 [MQTT(Message Queuing Telemetry Transport)](https://en.wikipedia.org/wiki/MQTT) 란 머신 대 머신 통신에 사용되는 표준 기반 메시징 프로토콜이다. 사물 인터넷(IoT) 디바이스는 일반적으로
-리소스 제약이 있는 네트워크를 통해 제한된 대역폭으로 데이터를 전송하고 수신해야 한다. MQTT는 디바이스에서 클라우드로, 클라우드에서 디바이스로의 메시징을 지원한다.
+리소스 제약이 있는 네트워크를 통해 제한된 대역폭으로 데이터를 전송하고 수신해야 한다. MQTT 는 디바이스에서 클라우드로, 클라우드에서 디바이스로의 메시징을 지원한다.
 
-MQTT 는 __IoT 데이터 전송 표준__ 이 되었다.
+MQTT 는 __IoT 데이터 전송 표준__ 이 되었다. MQTT 는 OASIS 조직에서 지원하는 ISO 표준(ISO/IEC PRF 20922)이다. 이는 __작은 코드 공간이 필요하거나 네트워크 대역폭이 중요한 M2M/IoT 컨텍스트의 통신__ 에 적합한 TCP/IP 위에 신뢰할 수 있는 경량 게시/구독 메시징 전송 프로토콜을 제공한다.
 
 ### Architecture
 

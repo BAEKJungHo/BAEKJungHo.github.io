@@ -201,6 +201,7 @@
  "/wiki/java/java-firstclasscollection",
  "/wiki/java/java-forkjoinframework",
  "/wiki/java/java-garbage-collection",
+ "/wiki/java/java-gc-collector",
  "/wiki/java/java-gc-generation-design",
  "/wiki/java/java-iterable",
  "/wiki/java/java-javaagent",

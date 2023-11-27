@@ -16,7 +16,7 @@ latex   : true
 
 ## Generation Based Design
 
-세대 기반 디자인(generation based design)이 도입된 이유는 다음과 같다.
+__[세대 기반 디자인(generation based design)](https://baekjungho.github.io/wiki/java/java-garbage-collection/#birth-of-generation)__ 이 도입된 이유는 다음과 같다.
 
 ```java
 sum = new BigDecimal(0);

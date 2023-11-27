@@ -155,6 +155,7 @@ regenerate: true
 * [[/java/java-anonymous-class]]
 * [[/java/java-effective-final]]
 * [[/java/java-gc-generation-design]]
+* [[/java/java-gc-collector]]
 
 ## TroubleShooting
 

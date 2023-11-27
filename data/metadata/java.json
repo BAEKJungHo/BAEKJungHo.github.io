@@ -18,6 +18,7 @@
   "java/java-firstclasscollection",
   "java/java-forkjoinframework",
   "java/java-garbage-collection",
+  "java/java-gc-collector",
   "java/java-gc-generation-design",
   "java/java-iterable",
   "java/java-javaagent",

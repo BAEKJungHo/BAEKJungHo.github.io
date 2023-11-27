@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Garbage Collector Algorithms",
- "summary": "G1GC, ZGC",
+ "summary": "Serial, Throughput, CMS, G1GC, ZGC",
  "parent": "java",
  "url": "/wiki/java/java-gc-collector",
  "updated": "2023-11-23 12:15:24 +0900",

@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Garbage Collector Algorithms
-summary : G1GC, ZGC
+summary : Serial, Throughput, CMS, G1GC, ZGC
 date    : 2023-11-23 11:28:32 +0900
 updated : 2023-11-23 12:15:24 +0900
 tag     : gc java kotlin

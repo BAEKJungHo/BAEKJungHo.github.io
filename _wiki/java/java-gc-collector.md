@@ -20,7 +20,13 @@ __[“compacting the heap”](https://dinfuehr.github.io/blog/a-first-look-into-
 
 ### Serial Garbage Collector
 
-시리얼 가비지 컬렉터는 네 개 중에서 가장 단순하다.
+시리얼 가비지 컬렉터는 네 개 중에서 가장 단순하다. 
+
+Old 영역의 GC는 [mark-sweep-compact](https://baekjungho.github.io/wiki/java/java-garbage-collection/#mark-and-compact) 라는 알고리즘을 사용한다.
+
+- Mark - Old 영역에 살아있는 객체를 식별한다.
+- Sweep - 힙(heap)의 앞 부분부터 확인하여 살아 있는것만 남긴다.
+- Compaction - 각 객체들이 연속되게 쌓이도록 힙의 가장 앞 부분부터 채워서 객체가 존재하는 부분과 없는 부분으로 나눈다.
 
 시리얼 컬렉터는 힙을 처리하기 위해 단일 스레드를 사용한다. Minor GC 또는 Full GC 가 발생하면 힙이 처리되면서 모든 애플리케이션 스레드가 멈출 것이다.
 
@@ -63,14 +69,21 @@ G1 은 `-XX:+UseG1GC` 플래그를 명시하면 사용할 수 있다.
 
 ### ZGC
 
+The Z Garbage Collector, also known as ZGC, is a scalable low-latency garbage collector
+
+- [ZGC Wiki - OpenJDK](https://wiki.openjdk.org/display/zgc/Main)
 - [Deep Dive into ZGC: A Modern Garbage Collector in OpenJDK](https://dl.acm.org/doi/10.1145/3538532#d1e1202)
+- [JEP 376: ZGC: Concurrent Thread-Stack Processing](https://openjdk.org/jeps/376)
 - [A FIRST LOOK INTO ZGC](https://dinfuehr.github.io/blog/a-first-look-into-zgc/)
 - [Java's new Z Garbage Collector (ZGC) is very exciting](https://www.opsian.com/blog/javas-new-zgc-is-very-exciting)
 - [ZGC: A Scalable Low-Latency Garbage Collector](https://www.youtube.com/watch?v=kF_r3GE3zOo)
 - [OpenJDK16 ZGC source code analysis Load Barrier](https://www.fatalerrors.org/a/openjdk16-zgc-source-code-analysis-load-barrier.html)
 - [Simone Bordet — Concurrent Garbage collectors: ZGC & Shenandoah](https://www.youtube.com/watch?v=e2lXj_t7ZBc)
+- [ZGC - perliden](https://malloc.se/)
 - [ZGC 에 대하여 - Dreamus](https://www.blog-dreamus.com/post/zgc%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C)
 - [ZGC 기본 개념 이해하기 - Naver D2](https://d2.naver.com/helloworld/0128759)
+- [ZGC (The Z Garbage Collector) - Catsbi's DLog](https://catsbi.oopy.io/56acd9f4-4331-4887-8bc3-e3e50b2f3ea5)
+- [ZGC, The Z Garbage Collector - Johngrib](https://johngrib.github.io/wiki/java/gc/zgc/)
 
 ## References
 

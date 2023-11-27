@@ -154,6 +154,7 @@ regenerate: true
 * [[/java/java-deserialize-generic]]
 * [[/java/java-anonymous-class]]
 * [[/java/java-effective-final]]
+* [[/java/java-gc-generation-design]]
 
 ## TroubleShooting
 

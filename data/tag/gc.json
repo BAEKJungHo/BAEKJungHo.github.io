@@ -1,4 +1,5 @@
 [
  "java/java-garbage-collection",
+ "java/java-gc-generation-design",
  "troubleshooting/troubleshooting-java-memory-analyzer"
 ]

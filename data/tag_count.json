@@ -117,7 +117,7 @@
  },
  {
   "name": "gc",
-  "size": 2
+  "size": 3
  },
  {
   "name": "git",
@@ -177,7 +177,7 @@
  },
  {
   "name": "java",
-  "size": 40
+  "size": 41
  },
  {
   "name": "javascript",
@@ -201,7 +201,7 @@
  },
  {
   "name": "kotlin",
-  "size": 58
+  "size": 59
  },
  {
   "name": "ksp",

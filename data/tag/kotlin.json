@@ -10,6 +10,7 @@
  "java/java-effective-final",
  "java/java-firstclasscollection",
  "java/java-garbage-collection",
+ "java/java-gc-generation-design",
  "java/java-mapstruct",
  "kotlin",
  "kotlin/kotlin-action-calculate",

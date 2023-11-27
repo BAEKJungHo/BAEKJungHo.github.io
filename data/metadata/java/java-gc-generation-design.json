@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Generation Based Design of Garbage Collection",
+ "summary": "Weak Generational Hypothesis",
+ "parent": "java",
+ "url": "/wiki/java/java-gc-generation-design",
+ "updated": "2023-11-21 12:15:24 +0900",
+ "children": []
+}

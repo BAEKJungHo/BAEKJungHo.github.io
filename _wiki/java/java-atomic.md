@@ -18,7 +18,7 @@ latex   : true
 
 __Shared Multiprocessor Architecture__:
 
-![](/resource/wiki/ddd-claim/process.png)
+![](/resource/wiki/java-atomic/cache-memory.png)
 
 프로세서는 프로그램 명령 실행을 담당한다. CPU 는 초당 많은 명령을 전송하기 때문에 RAM 에서 가져오기에는 적합하지 않다.
 따라서 위 처럼 Caching 같은 트릭을 사용한다. 이렇게 하면 CPU 는 RAM 에서 데이터를 가져오지 않고, 캐시에서 데이터를 가져온다.

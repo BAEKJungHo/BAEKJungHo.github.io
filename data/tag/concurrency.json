@@ -1,5 +1,6 @@
 [
  "go/go-concurrency",
+ "java/java-atomic",
  "msa/msa-concurrency-distributedlock",
  "spring/spring-concurrency",
  "spring/spring-concurrency-resolve"

@@ -8,6 +8,7 @@
  "children": [
   "java/execution-java",
   "java/java-anonymous-class",
+  "java/java-atomic",
   "java/java-bigdecimal",
   "java/java-cglib",
   "java/java-date",

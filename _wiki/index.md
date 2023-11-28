@@ -156,6 +156,7 @@ regenerate: true
 * [[/java/java-effective-final]]
 * [[/java/java-gc-generation-design]]
 * [[/java/java-gc-collector]]
+* [[/java/java-atomic]]
 
 ## TroubleShooting
 

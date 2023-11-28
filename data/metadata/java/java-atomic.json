@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Volatile Solves Memory Visibility and Atomic Solves Concurrency",
+ "summary": "",
+ "parent": "java",
+ "url": "/wiki/java/java-atomic",
+ "updated": "2022-11-24 12:15:24 +0900",
+ "children": []
+}

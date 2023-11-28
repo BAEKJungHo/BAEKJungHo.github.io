@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Volatile Solves Memory Visibility and Atomic Solves Concurrency
 summary : 
-date    : 2022-11-24 11:28:32 +0900
-updated : 2022-11-24 12:15:24 +0900
+date    : 2023-11-24 11:28:32 +0900
+updated : 2023-11-24 12:15:24 +0900
 tag     : java concurrency
 toc     : true
 comment : true

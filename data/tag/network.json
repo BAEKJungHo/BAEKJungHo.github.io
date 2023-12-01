@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-retry-mechanism",
  "network/network-dmz",
  "network/network-half-close",
  "network/network-idempotency",

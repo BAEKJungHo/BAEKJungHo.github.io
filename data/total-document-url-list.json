@@ -74,6 +74,7 @@
  "/wiki/database/database-query-offloading",
  "/wiki/database/database-r2dbc",
  "/wiki/database/database-replication",
+ "/wiki/database/database-serializable-tx",
  "/wiki/database/database-surrogatekey",
  "/wiki/database/hikaricp-concepts",
  "/wiki/database/mysql-index",

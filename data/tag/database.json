@@ -14,6 +14,7 @@
  "database/database-query-offloading",
  "database/database-r2dbc",
  "database/database-replication",
+ "database/database-serializable-tx",
  "database/database-surrogatekey",
  "database/hikaricp-concepts",
  "database/mysql-index",

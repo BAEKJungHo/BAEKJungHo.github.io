@@ -433,6 +433,7 @@ regenerate: true
 * [[/database/database-language-translation]]
 * [[/database/database-metadata-lock]]
 * [[/database/database-datamart]]
+* [[/database/database-serializable-tx]]
 
 ## Clean Code
 

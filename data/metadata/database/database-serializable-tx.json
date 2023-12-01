@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Serializability",
+ "summary": "Serializable Transaction",
+ "parent": "database",
+ "url": "/wiki/database/database-serializable-tx",
+ "updated": "2023-11-30 18:15:24 +0900",
+ "children": []
+}

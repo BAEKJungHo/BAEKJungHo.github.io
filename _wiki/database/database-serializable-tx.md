@@ -34,6 +34,7 @@ Oracle 의 경우에는 기본 트랜잭션 격리 수준을 Read Committed 로 
 
 Database Vendor 들이 가장 높은 격리 수준은 __[Serializable Read](https://github.com/NKLCWDT/cs/blob/main/Database/Transaction.md#%EB%A0%88%EB%B2%A8-3--serializable-read)__ 를 설정하지 않는 이유는
 실제로 finances 와 같이 absolute correctness is not needed 한 경우가 많기 때문이다. 즉, 스펙에 따라 상품 목록을 조회할 때, 스펙에 부합하더라도 데이터가 업데이트된 지 얼마 되지 않은 상품이 목록에 나타나지 않아도 별 문제가 되지 않는 경우가 대부분이다.
+또한 Serializable Read 는 동시성을 해결할 수는 있지만 성능적인 문제가 발생할 수 있다.
 
 이런 특징을 [Relaxing serializability](https://en.wikipedia.org/wiki/Serializability) 라고 한다.
 

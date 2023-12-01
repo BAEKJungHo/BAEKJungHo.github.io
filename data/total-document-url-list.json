@@ -65,6 +65,7 @@
  "/wiki/database/database-cascade",
  "/wiki/database/database-cassandra-kkv",
  "/wiki/database/database-data-cleansing",
+ "/wiki/database/database-datamart",
  "/wiki/database/database-language-translation",
  "/wiki/database/database-metadata-lock",
  "/wiki/database/database-normalization",

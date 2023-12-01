@@ -6,6 +6,7 @@
  "database/database-cascade",
  "database/database-cassandra-kkv",
  "database/database-data-cleansing",
+ "database/database-datamart",
  "database/database-language-translation",
  "database/database-metadata-lock",
  "database/database-normalization",

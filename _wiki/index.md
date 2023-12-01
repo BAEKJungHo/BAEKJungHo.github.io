@@ -431,6 +431,7 @@ regenerate: true
 * [[/database/database-r2dbc]]
 * [[/database/database-language-translation]]
 * [[/database/database-metadata-lock]]
+* [[/database/database-datamart]]
 
 ## Clean Code
 

@@ -63,6 +63,7 @@ regenerate: true
 * [[/architecture/architecture-event-driven-system]]
 * [[/architecture/architecture-map-reduce]]
 * [[/architecture/architecture-pub-sub]]
+* [[/architecture/architecture-retry-mechanism]]
 
 ## Kata
 

@@ -4,7 +4,7 @@ title   : Cache Consistency
 summary : 
 date    : 2023-07-04 15:54:32 +0900
 updated : 2023-07-04 20:15:24 +0900
-tag     : msa caching lock
+tag     : msa caching lock distributed
 toc     : true
 comment : true
 public  : true

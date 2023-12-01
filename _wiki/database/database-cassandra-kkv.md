@@ -4,7 +4,7 @@ title   : Distributed Key-Value Store in Cassandra
 summary : 
 date    : 2023-07-05 15:28:32 +0900
 updated : 2023-07-05 18:15:24 +0900
-tag     : database cassandra msa
+tag     : database cassandra msa distributed
 toc     : true
 comment : true
 public  : true

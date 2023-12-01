@@ -4,7 +4,7 @@ title   : Distributed Lock with Redis
 summary : 
 date    : 2023-03-17 13:15:32 +0900
 updated : 2023-03-17 13:55:24 +0900
-tag     : redis lock
+tag     : redis lock distributed
 toc     : true
 comment : true
 public  : true

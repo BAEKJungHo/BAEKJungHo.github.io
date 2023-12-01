@@ -1,0 +1,10 @@
+[
+ "architecture/architecture-cap",
+ "database/database-cassandra-kkv",
+ "msa/msa-cache-consistency",
+ "msa/msa-distributed-caching",
+ "msa/msa-distributed-tracing",
+ "msa/msa-eventual-consistency",
+ "msa/msa-xa",
+ "redis/redis-lock"
+]

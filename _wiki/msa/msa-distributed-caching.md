@@ -4,7 +4,7 @@ title   : Distributed Caching in Microservices
 summary : 
 date    : 2023-02-24 15:54:32 +0900
 updated : 2023-02-24 20:15:24 +0900
-tag     : msa caching
+tag     : msa caching distributed
 toc     : true
 comment : true
 public  : true

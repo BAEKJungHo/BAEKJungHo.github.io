@@ -4,7 +4,7 @@ title   : Eventual Consistency
 summary :
 date    : 2022-05-29 13:54:32 +0900
 updated : 2022-05-29 15:15:24 +0900
-tag     : msa architecture
+tag     : msa architecture distributed
 toc     : true
 comment : true
 public  : true

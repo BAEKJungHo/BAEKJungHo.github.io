@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 44
+  "size": 45
  },
  {
   "name": "auth",
@@ -237,7 +237,7 @@
  },
  {
   "name": "logging",
-  "size": 12
+  "size": 13
  },
  {
   "name": "magazine",

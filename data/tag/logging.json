@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-domain-oriented-observability",
  "logging",
  "logging/logging-datadog-pipelines",
  "logging/logging-entity",

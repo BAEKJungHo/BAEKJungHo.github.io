@@ -65,6 +65,7 @@ regenerate: true
 * [[/architecture/architecture-pub-sub]]
 * [[/architecture/architecture-retry-mechanism]]
 * [[/architecture/architecture-payment]]
+* [[/architecture/architecture-domain-oriented-observability]]
 
 ## Kata
 

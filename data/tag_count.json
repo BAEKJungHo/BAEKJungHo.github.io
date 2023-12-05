@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 43
+  "size": 44
  },
  {
   "name": "auth",
@@ -317,6 +317,10 @@
  },
  {
   "name": "parallel",
+  "size": 1
+ },
+ {
+  "name": "payment",
   "size": 1
  },
  {

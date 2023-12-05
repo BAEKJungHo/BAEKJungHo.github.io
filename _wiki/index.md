@@ -64,6 +64,7 @@ regenerate: true
 * [[/architecture/architecture-map-reduce]]
 * [[/architecture/architecture-pub-sub]]
 * [[/architecture/architecture-retry-mechanism]]
+* [[/architecture/architecture-payment]]
 
 ## Kata
 

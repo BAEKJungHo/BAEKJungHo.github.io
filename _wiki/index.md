@@ -442,6 +442,8 @@ regenerate: true
 * [[/cleancode/cleancode-guide]]
 * [[/cleancode/cleancode-good-implementation]]
 * [[/cleancode/knowledge]]
+* [[/cleancode/knowledge]]
+* [[/cleancode/cleancode-cognitive-load]]
 
 ## Flutter
 

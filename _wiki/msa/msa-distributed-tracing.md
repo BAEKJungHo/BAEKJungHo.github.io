@@ -291,6 +291,7 @@ In summary, span context is used for distributed tracing and log context is used
 
 ## Links
 
+- [Micrometer Tracing Facade](https://github.com/micrometer-metrics/tracing)
 - [Distributed Tracing - Microservice](https://microservices.io/patterns/observability/distributed-tracing.html)
 - [Log Aggregation - Microservice](https://microservices.io/patterns/observability/application-logging.html)
 - [OpenTracing, 분산추적(Distributed Tracing) 과 Span context](https://ksr930.tistory.com/112)

@@ -4,7 +4,7 @@ title   : Serializability
 summary : Serializable Transaction
 date    : 2023-11-30 15:28:32 +0900
 updated : 2023-11-30 18:15:24 +0900
-tag     : database distributed
+tag     : database distributed concurrency
 toc     : true
 comment : true
 public  : true

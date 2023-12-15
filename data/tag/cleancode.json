@@ -1,5 +1,6 @@
 [
  "cleancode/cleancode-cognitive-load",
+ "cleancode/cleancode-deadcode",
  "cleancode/cleancode-good-implementation",
  "cleancode/cleancode-guide",
  "cleancode/cleancode-knowledge",

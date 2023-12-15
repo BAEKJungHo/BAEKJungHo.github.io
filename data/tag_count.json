@@ -33,7 +33,7 @@
  },
  {
   "name": "cleancode",
-  "size": 5
+  "size": 6
  },
  {
   "name": "cloudnative",
@@ -137,7 +137,7 @@
  },
  {
   "name": "go",
-  "size": 12
+  "size": 13
  },
  {
   "name": "goroutine",

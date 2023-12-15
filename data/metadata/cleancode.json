@@ -7,6 +7,7 @@
  "updated": "2022-04-12 20:56:09 +0900",
  "children": [
   "cleancode/cleancode-cognitive-load",
+  "cleancode/cleancode-deadcode",
   "cleancode/cleancode-good-implementation",
   "cleancode/cleancode-guide",
   "cleancode/cleancode-knowledge"

@@ -443,7 +443,7 @@ regenerate: true
 * [[/cleancode/cleancode-guide]]
 * [[/cleancode/cleancode-good-implementation]]
 * [[/cleancode/knowledge]]
-* [[/cleancode/knowledge]]
+* [[/cleancode/deadcode]]
 * [[/cleancode/cleancode-cognitive-load]]
 
 ## Flutter

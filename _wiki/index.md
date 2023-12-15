@@ -363,6 +363,7 @@ regenerate: true
 * [[/git/git-trunk-based-development]]
 * [[/git/git-rebase]]
 * [[/git/git-cherrypick]]
+* [[/git/git-delta-snapshot]]
 
 ## GPT
 

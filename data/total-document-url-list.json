@@ -139,6 +139,7 @@
  "/wiki/git/git-basic",
  "/wiki/git/git-cherrypick",
  "/wiki/git/git-commands",
+ "/wiki/git/git-delta-snapshot",
  "/wiki/git/git-internal",
  "/wiki/git/git-rebase",
  "/wiki/git/git-trunk-based-development",

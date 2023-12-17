@@ -28,6 +28,7 @@ regenerate: true
 * [[/mobility/mobility-language-dictionary]]
 * [[/mobility/mobility-ota]]
 * [[/mobility/mobility-autonomous-driving-level]]
+* [[/mobility/mobility-v2x]]
 
 ## Architecture
 

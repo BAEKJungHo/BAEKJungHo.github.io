@@ -234,6 +234,8 @@ latex   : true
 |git merge --squash bugfix| Performs a squash merge  |
 |git merge --abort| Aborts the merge |
 
+- [Fast-forward merge and other options](https://blog.naver.com/PostView.nhn?blogId=parkjy76&logNo=220308638231&categoryNo=73&parentCategoryNo=0&viewDate=&currentPage=1&postListTopCurrentPage=1&from=postView)
+
 ### Viewing the merged branches
 
 | Command | Description  |

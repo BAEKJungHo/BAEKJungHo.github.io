@@ -48,7 +48,8 @@ __가변 컬렉션과 읽기 전용 컬렉션 구분하기__:
 - 읽기 전용 컬렉션도 내부의 값을 변경할 수 없는건 아니다. 하지만 읽기 전용 인터페이스가 이를 지원하지 않기 때문에 변경하지 못하는 것 뿐이다.
 - 컬렉션을 진짜 불변(immutable)하게 만들지 않고, 읽기 전용으로 설계했다.
 - 리스트를 읽기 전용으로 리턴하면, 읽기 전용으로만 사용해야 한다.
-- 읽기 전용에서 mutable 로 변경해야 한다면, 복제(copy)를 통해서 새로운 mutable 컬렉션을 만들어 사용해야 한다. (e.g list.toMutableList)
+- 읽기 전용에서 mutable 로 변경해야 한다면, 복제(copy)를 통해서 새로운 mutable 컬렉션을 만들어 사용해야 한다. 
+  - list.toMutableList (O)
   - list is MutableList (X)
 
 __data class 의 copy__:

@@ -29,6 +29,7 @@
   "kotlin/kotlin-lambda",
   "kotlin/kotlin-mockk",
   "kotlin/kotlin-mockk-springmockk",
+  "kotlin/kotlin-mutability-restriction",
   "kotlin/kotlin-nested",
   "kotlin/kotlin-null-safety",
   "kotlin/kotlin-philosophy",

@@ -166,6 +166,7 @@ regenerate: true
 ## TDD
 
 * [[/tdd/tdd-red-green-refactor]]
+* [[/tdd/tdd-naming]]
 
 ## TroubleShooting
 

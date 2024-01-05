@@ -39,7 +39,6 @@ TDD Cycle 과 관련된 몇가지 팁이 있다.
 
 ```kotlin
 class CalculatorTest {
-    
     @Test
     fun plus() {
         val result: Int = Calculator.plus(1, 2)

@@ -20,6 +20,7 @@
   "kotlin/kotlin-delegate",
   "kotlin/kotlin-deserialize-dataclass",
   "kotlin/kotlin-equality",
+  "kotlin/kotlin-exceptions-restriction",
   "kotlin/kotlin-first-citizen",
   "kotlin/kotlin-functor-monad",
   "kotlin/kotlin-generics",

@@ -136,6 +136,7 @@ regenerate: true
 * [[/kotlin/kotlin-coroutine-dispatcher]]
 * [[/kotlin/kotlin-jdbc-batch]]
 * [[/kotlin/kotlin-mutability-restriction]]
+* [[/kotlin/kotlin-exceptions-restriction]]
 
 ## Java
 

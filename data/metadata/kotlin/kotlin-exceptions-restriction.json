@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Use exceptions to restriction your code",
+ "summary": "require, check, assert",
+ "parent": "kotlin",
+ "url": "/wiki/kotlin/kotlin-exceptions-restriction",
+ "updated": "2024-01-05 21:15:24 +0900",
+ "children": []
+}

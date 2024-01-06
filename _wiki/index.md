@@ -167,6 +167,7 @@ regenerate: true
 
 * [[/tdd/tdd-red-green-refactor]]
 * [[/tdd/tdd-naming]]
+* [[/tdd/tdd-interface-design-decisions]]
 
 ## TroubleShooting
 

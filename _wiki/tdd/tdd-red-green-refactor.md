@@ -59,7 +59,7 @@ class CalculatorTest {
 
 이러한 의사 결정을 내리도록 도움을 주는게 TDD 이다. 즉, __인터페이스 디자인 결정(interface design decisions)__ 을 내리도록 도움을 준다.
 
-__[Kent Back said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design).__
+__[Kent Beck said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design).__
 
 인터페이스 결정을 테스트로 만들고 기록한 후, 구현 설계 결정이 첫 번째, 가장 낮은 기준을 통과하는지 여부에 대한 즉각적인 피드백을 받게 된다.
 

@@ -44,12 +44,33 @@ __[Authorization Code Flow with Proof Key for Code Exchange (PKCE)](https://data
 
 ![](/resource/wiki/auth-oidc/oidc-authz-pkce.png)
 
+### PKCE support for LINE Login
+
+[PKCE support for LINE Login](https://developers.line.biz/en/docs/line-login/integrate-pkce/) 여기에 PKCE 를 구현했을 때와, 안했을 때의 차이점을 잘 나타내는 그림이 있다.
+
+__Without PKCE implemented__:
+
+![](/resource/wiki/auth-oidc/pkce-x.png)
+
+__With PKCE implemented__:
+
+![](/resource/wiki/auth-oidc/pkce-o.png)
+
+### Kakao Login
+
+Kakao Login 구현 시, OpenIdConnect 를 활용중이라면 [nonce](https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-code-request-query) 값을 활용할 수 있다.
+
+```
+https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&nonce=${NONCE}
+```
+
 ## Links 
 
 - [OpenID Connect Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)
 - [How OpenID Connect Works](https://openid.net/developers/how-connect-works/)
 - [Google Login Docs](https://developers.google.com/identity/sign-in/web/backend-auth?hl=ko)
 - [Authorization Code Grant with PKCE](https://backstage.forgerock.com/docs/am/7.1/oidc1-guide/openid-connect-authorization-code-flow-pkce.html)
+- [Kakao - OpenID Connect ID Token Issue](https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-code-id-token)
 
 ## References
 

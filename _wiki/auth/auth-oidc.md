@@ -31,8 +31,7 @@ kid 를 사용하여 JWT 를 검증할 때, 해당 토큰의 헤더에 있는 ki
 - [Implicit ID Token Validation](https://openid.net/specs/openid-connect-core-1_0.html#ImplicitIDTValidation)
 - [ID Token Validation](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)
 
-공식 문서에 나와있는 방식대로 검증을 해야한다. 보통 OpenIdProvider 에서 IdToken 정보를 넘겨주면 Payload 를 응답하는 조회 API 를 제공해주곤 하는데, 해당 API 를 사용해서
-검증을 대체해서는 안된다.
+공식 문서에 나와있는 방식대로 검증을 해야한다. 보통 OpenIdProvider 에서 IdToken 정보를 넘겨주면 Payload 를 응답하는 조회 API 를 제공해주곤 하는데, 해당 API 를 사용해서 검증을 대체해서는 안된다.
 
 ## Authorization Code Flow with Proof Key for Code Exchange (PKCE)
 
@@ -66,6 +65,7 @@ https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${REST_API_
 
 ## Links 
 
+- [Trunkr Login Flow](https://github.com/trunkr/service-backend/issues/129)
 - [OpenID Connect Standard Claims](https://openid.net/specs/openid-connect-core-1_0.html#StandardClaims)
 - [How OpenID Connect Works](https://openid.net/developers/how-connect-works/)
 - [Google Login Docs](https://developers.google.com/identity/sign-in/web/backend-auth?hl=ko)

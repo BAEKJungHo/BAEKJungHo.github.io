@@ -67,6 +67,7 @@ regenerate: true
 * [[/architecture/architecture-retry-mechanism]]
 * [[/architecture/architecture-payment]]
 * [[/architecture/architecture-domain-oriented-observability]]
+* [[/architecture/architecture-idempotency-design]]
 
 ## Kata
 

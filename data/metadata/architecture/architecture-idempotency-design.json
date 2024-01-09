@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Designing robust APIs with Idempotency",
+ "summary": "Exponential backoff",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-idempotency-design",
+ "updated": "2024-01-08 15:12:24 +0900",
+ "children": []
+}

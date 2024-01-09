@@ -27,6 +27,7 @@
   "architecture/architecture-event-driven-system",
   "architecture/architecture-eventdriven-statemachine",
   "architecture/architecture-hexagonal",
+  "architecture/architecture-idempotency-design",
   "architecture/architecture-lambda",
   "architecture/architecture-layered",
   "architecture/architecture-map-reduce",

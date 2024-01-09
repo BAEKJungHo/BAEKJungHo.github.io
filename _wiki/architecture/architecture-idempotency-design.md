@@ -38,7 +38,7 @@ To perform an idempotent request, provide an additional `Idempotency-Key: <key>`
 3. 서버에서 요청을 처리하다가 예외가 발생한 경우
 
 1번의 경우에는 클라이언트로부터 요청을 다시 받아서 처리하면 된다. 2번의 경우에는 저장소(storage)에 처리된 결과를 저장(caching)한다.
-3번의 경우에는 tx rollback 을 진행한다. 이때 따로 예외에 대한 내용을 캐싱할 필요 없다.
+3번의 경우에는 tx rollback 을 진행한다. 따로 예외에 대한 내용을 캐싱할 필요 없다.
 
 ### Exponential backoff
 
@@ -89,7 +89,7 @@ class ControllerAdvice {
 
 ### Idempotency with Distributed Lock Flow
 
-__Idempotency with [Distributed Lock](https://baekjungho.github.io/wiki/spring/spring-concurrency-resolve/#distributed-lock) Flow__
+__Idempotency with [Distributed Lock](https://baekjungho.github.io/wiki/spring/spring-concurrency-resolve/#distributed-lock) Flow__:
 
 ![](/resource/wiki/architecture-idempotency-design/idempotency-lock-flow.png)
 

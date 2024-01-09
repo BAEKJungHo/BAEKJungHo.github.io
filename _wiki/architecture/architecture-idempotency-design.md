@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Designing robust APIs with Idempotency
-summary : Exponential backoff
+summary : 
 date    : 2024-01-08 15:02:32 +0900
 updated : 2024-01-08 15:12:24 +0900
 tag     : architecture idempotency

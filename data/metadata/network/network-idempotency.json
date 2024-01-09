@@ -1,6 +1,6 @@
 {
  "type": "wiki",
- "title": "Idempotency",
+ "title": "Idempotency with Redis",
  "summary": "",
  "parent": "network",
  "url": "/wiki/network/network-idempotency",

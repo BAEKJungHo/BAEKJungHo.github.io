@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Idempotency
+title   : Idempotency with Redis
 summary : 
 date    : 2023-07-15 15:54:32 +0900
 updated : 2023-07-15 20:15:24 +0900
@@ -14,12 +14,12 @@ latex   : true
 * TOC
 {:toc}
 
-## Idempotency
+## Idempotency with Redis
 
 [Idempotency Key that resolve consistency issues with retries](https://baekjungho.github.io/wiki/troubleshooting/troubleshooting-idempotency/#idempotent)
 에 멱등성이 무엇인지, Stripe 와 Toss 는 어떻게 사용하고 있는지 정리하였다.
 
-__Flow__:
+__Idempotency with Redis Flow__:
 
 ![](/resource/wiki/network-idempotency/idempotency.png)
 

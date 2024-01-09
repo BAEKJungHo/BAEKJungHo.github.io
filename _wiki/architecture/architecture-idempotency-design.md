@@ -18,7 +18,7 @@ latex   : true
 
 Networks are [unreliable](https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing).
 
-불안정한 네트워크 환경에서(e.g SDV, Mobile, etc) 요청에 대한 응답을 클라이언트가 정상적으로 수신하지 못하면, [재시도(retry) 를 하게 되고 재시도로 인해 정합성(consistency) 문제](Idempotency Key that resolve consistency issues with retries)가 발생할 수 있다. 
+불안정한 네트워크 환경에서(e.g SDV, Mobile, etc) 요청에 대한 응답을 클라이언트가 정상적으로 수신하지 못하면, [재시도(retry) 를 하게 되고 재시도로 인해 정합성(consistency) 문제](https://baekjungho.github.io/wiki/troubleshooting/troubleshooting-idempotency/)가 발생할 수 있다. 
 
 이러한 문제를 __[idempotency](https://baekjungho.github.io/wiki/network/network-idempotency/)__ 을 활용하여 해결할 수 있다. 멱등성(idempotency)은 여러번 요청하더라도 결과가 같다는 의미이다.
 

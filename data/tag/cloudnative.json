@@ -8,5 +8,6 @@
  "architecture/architecture-schema-registry",
  "architecture/architecture-sync-messaging",
  "architecture/architecture-uuid",
+ "designpattern/designpattern-cloud",
  "msa/msa-service-connectivity"
 ]

@@ -398,6 +398,7 @@ regenerate: true
 * [[/designpattern/designpattern-callback]]
 * [[/designpattern/designpattern-proxy]]
 * [[/designpattern/designpattern-decorator]]
+* [[/designpattern/designpattern-cloud]]
 
 ## DDD
 

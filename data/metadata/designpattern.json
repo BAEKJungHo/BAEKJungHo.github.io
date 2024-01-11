@@ -8,6 +8,7 @@
  "children": [
   "designpattern/designpattern-callback",
   "designpattern/designpattern-chain-of-responsibility",
+  "designpattern/designpattern-cloud",
   "designpattern/designpattern-decorator",
   "designpattern/designpattern-intercepting-filter",
   "designpattern/designpattern-observer",

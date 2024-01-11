@@ -505,6 +505,11 @@ regenerate: true
 * [[/datastructures/datastructures-recursion]]
 * [[/datastructures/datastructures-stack-heap]]
 
+## Theory
+
+* [[/theory/theory-overengineering]]
+* [[/theory/theory-deidentification]]
+
 ## Javascript
 
 * [[/javascript/js-eventloop]]

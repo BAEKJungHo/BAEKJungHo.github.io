@@ -6,6 +6,7 @@
  "url": "/wiki/theory",
  "updated": "2022-09-21 20:55:09 +0900",
  "children": [
+  "theory/theory-deidentification",
   "theory/theory-overengineering"
  ]
 }

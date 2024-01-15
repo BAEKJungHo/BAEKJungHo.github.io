@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Lack of value
+## Lack of Value
 
 null 은 __값이 부족하다(lack of value)__ 는 것을 나타낸다.
 

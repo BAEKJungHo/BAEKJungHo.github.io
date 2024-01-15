@@ -138,6 +138,7 @@ regenerate: true
 * [[/kotlin/kotlin-jdbc-batch]]
 * [[/kotlin/kotlin-mutability-restriction]]
 * [[/kotlin/kotlin-exceptions-restriction]]
+* [[/kotlin/kotlin-null-handling-safely]]
 
 ## Java
 
@@ -454,9 +455,10 @@ regenerate: true
 
 * [[/cleancode/cleancode-guide]]
 * [[/cleancode/cleancode-good-implementation]]
-* [[/cleancode/knowledge]]
-* [[/cleancode/deadcode]]
+* [[/cleancode/cleancode-knowledge]]
+* [[/cleancode/cleancode-deadcode]]
 * [[/cleancode/cleancode-cognitive-load]]
+* [[/cleancode/cleancode-defensive-offensive]]
 
 ## Flutter
 

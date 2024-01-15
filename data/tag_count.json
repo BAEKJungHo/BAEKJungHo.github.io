@@ -33,7 +33,7 @@
  },
  {
   "name": "cleancode",
-  "size": 6
+  "size": 7
  },
  {
   "name": "cloudnative",
@@ -209,7 +209,7 @@
  },
  {
   "name": "kotlin",
-  "size": 62
+  "size": 63
  },
  {
   "name": "ksp",

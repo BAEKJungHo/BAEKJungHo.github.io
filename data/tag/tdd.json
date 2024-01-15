@@ -2,5 +2,6 @@
  "tdd",
  "tdd/tdd-interface-design-decisions",
  "tdd/tdd-naming",
- "tdd/tdd-red-green-refactor"
+ "tdd/tdd-red-green-refactor",
+ "tdd/tdd-why-use-mock-any"
 ]

@@ -2,6 +2,7 @@
  "architecture/architecture-eventdriven-statemachine",
  "buildtool/gradle-standard",
  "cleancode/cleancode-knowledge",
+ "cleancode/cleancode-readability",
  "designpattern/designpattern-callback",
  "functional/functional-defensive-copy",
  "java/java-anonymous-class",

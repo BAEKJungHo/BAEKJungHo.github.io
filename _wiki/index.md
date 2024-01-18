@@ -139,6 +139,7 @@ regenerate: true
 * [[/kotlin/kotlin-mutability-restriction]]
 * [[/kotlin/kotlin-exceptions-restriction]]
 * [[/kotlin/kotlin-null-handling-safely]]
+* [[/kotlin/kotlin-assign-type]]
 
 ## Java
 

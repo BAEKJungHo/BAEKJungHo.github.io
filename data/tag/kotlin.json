@@ -16,6 +16,7 @@
  "java/java-mapstruct",
  "kotlin",
  "kotlin/kotlin-action-calculate",
+ "kotlin/kotlin-assign-type",
  "kotlin/kotlin-companion-object",
  "kotlin/kotlin-compiler-k2",
  "kotlin/kotlin-continuation",

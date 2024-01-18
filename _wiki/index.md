@@ -334,6 +334,7 @@ regenerate: true
 
 * [[/kafka/kafka-basic]]
 * [[/kafka/kafka-acknowledgement]]
+* [[/kafka/kafka-headers]]
 
 ## Redis
 

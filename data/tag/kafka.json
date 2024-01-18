@@ -3,5 +3,6 @@
  "kafka",
  "kafka/kafak-acknowledgement",
  "kafka/kafak-basic",
+ "kafka/kafak-headers",
  "reactive/reactive-pub-sub"
 ]

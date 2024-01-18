@@ -11,3 +11,6 @@ parent  : [[/index]]
 latex   : false
 ---
 
+## References
+
+- [Spring for Apache Kafka](https://docs.spring.io/spring-kafka/reference/kafka.html)

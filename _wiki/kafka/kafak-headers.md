@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Kafka Headers
 summary : KIP-82 - Add Record Headers
-date    : 2023-01-16 20:54:32 +0900
-updated : 2023-01-16 21:15:24 +0900
+date    : 2024-01-16 20:54:32 +0900
+updated : 2024-01-16 21:15:24 +0900
 tag     : kafka
 toc     : true
 comment : true

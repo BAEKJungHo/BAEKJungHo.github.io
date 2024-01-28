@@ -288,6 +288,10 @@
   "size": 1
  },
  {
+  "name": "netflix",
+  "size": 1
+ },
+ {
   "name": "netty",
   "size": 6
  },
@@ -373,7 +377,7 @@
  },
  {
   "name": "spring",
-  "size": 53
+  "size": 54
  },
  {
   "name": "swagger",

@@ -13,6 +13,7 @@
  "spring/spring-aop",
  "spring/spring-async",
  "spring/spring-batch",
+ "spring/spring-cloud-openfeign",
  "spring/spring-componentscan",
  "spring/spring-concurrency",
  "spring/spring-concurrency-resolve",

@@ -242,6 +242,7 @@ regenerate: true
 * [[/spring/spring-fixture-monkey]]
 * [[/spring/spring-jpa-lazy-write]]
 * [[/spring/spring-reactive-security-test-off]]
+* [[/spring/spring-cloud-openfeign]]
 
 ## Reactive
 

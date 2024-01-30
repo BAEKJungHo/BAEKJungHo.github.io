@@ -379,6 +379,7 @@ regenerate: true
 * [[/git/git-rebase]]
 * [[/git/git-cherrypick]]
 * [[/git/git-delta-snapshot]]
+* [[/git/git-merge-semi-linear-history]]
 
 ## GPT
 

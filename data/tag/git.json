@@ -5,6 +5,7 @@
  "git/git-commands",
  "git/git-delta-snapshot",
  "git/git-internal",
+ "git/git-merge-semi-linear-history",
  "git/git-rebase",
  "git/git-trunk-based-development"
 ]

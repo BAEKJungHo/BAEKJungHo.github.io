@@ -13,4 +13,5 @@ latex   : false
 
 ## References
 
-- [Managing Asynchronous Workflows with a REST API - AWS](https://aws.amazon.com/ko/blogs/architecture/managing-asynchronous-workflows-with-a-rest-api/)
+- [Managing Asynchronous Workflows with a REST API (Polling, Webhooks) - AWS](https://aws.amazon.com/ko/blogs/architecture/managing-asynchronous-workflows-with-a-rest-api/)
+- [The benefits of event-driven architectures is Replacing polling and webhooks with events - AWS](https://docs.aws.amazon.com/lambda/latest/operatorguide/event-driven-benefits.html)

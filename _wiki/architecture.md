@@ -11,3 +11,6 @@ parent  : [[/index]]
 latex   : false
 ---
 
+## References
+
+- [Managing Asynchronous Workflows with a REST API - AWS](https://aws.amazon.com/ko/blogs/architecture/managing-asynchronous-workflows-with-a-rest-api/)

@@ -42,7 +42,10 @@ I'm confident that I will be the best in any company in terms of actively sharin
 - __2022.08.29 ~ ing__
 - __Autonomous mobility__
 - __Experience__ 
-  - Control-Center Development Experience
+  - Service Development & Improvement
+    - __TAP!: Mobility as a Service__
+    - __Control Center__
+    - __Vehicle Control Server__
   - Network Troubleshooting Using the Idempotency Key
   - Fixes the memory leak point to resolve OOM
   - Experience leading application architecture and convention establishment within Service Engineering Group to improve productivity
@@ -54,7 +57,7 @@ I'm confident that I will be the best in any company in terms of actively sharin
 - __Tech__
   - Kotlin, Java
   - Spring Batch, Spring WebFlux, Spring Cloud Gateway
-  - Redis, Kubernetes, Docker, PostgreSQL
+  - Redis, Kubernetes, Docker, PostgreSQL, Kafka
   - Firebase, Datadog, ArgoCD, Lens, CI/CD, GitLab Actions
 
 ### TableManager

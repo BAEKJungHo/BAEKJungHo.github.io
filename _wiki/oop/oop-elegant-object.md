@@ -16,8 +16,6 @@ latex   : true
 
 # Elegant Object
 
-> "Step one in the transformation of a successful procedural developer into a successful object developer is a lobotomy" - David West
-
 이 책의 목표는 코드의 __유지보수성(maintainability)__ 을 향상시키는 데 중점을 둔다. 유지보수성은 코드를 이해하는데 걸리는 시간으로 측정할 수 있다.
 객체지향에서는 객체의 역할을 이해할 수 있어야 한다. 코드의 품질이 향상된 다는 것은 대부분의 프로젝트에서 비용 절감을 의미한다. 이것이 핵심이다.
 

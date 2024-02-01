@@ -148,7 +148,6 @@ regenerate: true
 * [[/java/java-javaagent]]
 * [[/java/java-iterable]]
 * [[/java/java-exploring-hidden-cost]]
-* [[/java/java-firstclasscollection]]
 * [[/java/java-jdk-vendors]]
 * [[/java/java-jdk-bigdecimal]]
 * [[/java/java-date]]
@@ -313,6 +312,8 @@ regenerate: true
 * [[/oop/oop-solid]]
 * [[/oop/oop-real-oop]]
 * [[/oop/oop-elegant-object]]
+* [[/oop/oop-object-calisthenics]]
+* [[/oop/oop-firstclasscollection]]
 
 ## Crypto
 

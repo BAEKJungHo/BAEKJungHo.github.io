@@ -4,11 +4,11 @@ title   : First Class Collection
 summary : 
 date    : 2022-10-15 11:28:32 +0900
 updated : 2022-10-15 12:15:24 +0900
-tag     : java kotlin fp
+tag     : java kotlin fp oop
 toc     : true
 comment : true
 public  : true
-parent  : [[/java]]
+parent  : [[/oop]]
 latex   : true
 ---
 * TOC

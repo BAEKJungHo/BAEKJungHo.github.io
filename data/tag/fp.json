@@ -8,9 +8,9 @@
  "functional/functional-sideeffect",
  "functional/functional-skills",
  "functional/functional-timeline-cutting",
- "java/java-firstclasscollection",
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-first-citizen",
  "kotlin/kotlin-functor-monad",
- "magazine/magazine-tangled-thread"
+ "magazine/magazine-tangled-thread",
+ "oop/oop-firstclasscollection"
 ]

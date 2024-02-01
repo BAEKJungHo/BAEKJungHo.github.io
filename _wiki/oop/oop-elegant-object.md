@@ -18,8 +18,6 @@ latex   : true
 
 > "Step one in the transformation of a successful procedural developer into a successful object developer is a lobotomy" - David West
 
-- [Seven Virtues of a Good Object](https://www.yegor256.com/2014/11/20/seven-virtues-of-good-object.html)
-
 이 책의 목표는 코드의 __유지보수성(maintainability)__ 을 향상시키는 데 중점을 둔다. 유지보수성은 코드를 이해하는데 걸리는 시간으로 측정할 수 있다.
 객체지향에서는 객체의 역할을 이해할 수 있어야 한다. 코드의 품질이 향상된 다는 것은 대부분의 프로젝트에서 비용 절감을 의미한다. 이것이 핵심이다.
 
@@ -36,12 +34,20 @@ latex   : true
 - 무엇을 하는지(what he does)가 아니라 __무엇인지(what he is)__ 에 기반해서 지어야 한다.
 
 ```kotlin
+// Bad Case
 class CashFormatter(
     val dollars: Int
 ) {
     fun format() {
         return String.format("$ %d", this.dollars)
     }
+}
+
+// Good Case
+class Cash(
+    val dollars: Int
+) {
+    fun usd(): String = String.format("$ %d", this.dollars)
 }
 ```
 
@@ -109,6 +115,68 @@ class CachedNumber implements Number {
 }
 ```
 
+## Education
+
+### Encapsulate Less
+
+복잡성이 높으면 유지보수성이 저하된다. 4개 또는 그 이하의 객체를 캡슐화 할 것을 권장한다.
+클래스 내부에 캡슐화된 모든 객체, 필드들이 객체의 식별자를 구성하는 요소이다. 객체의 식별자는 기본적으로 세계 안에서 객체가 위치하는 좌표이다.
+책에서 4개로 제한한 이유는 4개 이상의 좌표는 __직관에 위배__ 되기 때문이라고 말한다.
+
+### How Much Your Objects Encapsulate?
+
+[How Much Your Objects Encapsulate?](https://www.yegor256.com/2014/12/15/how-much-your-objects-encapsulate.html):
+
+최소한 뭔가는 캡슐화하라는 원칙이다.
+
+```java
+class Year {
+    int read() {
+        return System.currentTImeMillis() / (1000 * 60 * 60 * 24 * 30 * 12) - 1970;
+    }
+}
+```
+
+Year 클래스의 인스턴스는 어떤 것도 캡슐화 하지 않았기 때문에 이 클래스의 모든 객체들은 동일하다는 사실을 알 수 없다.
+
+```java
+class Year {
+    private Number num;
+    Year(final Millis msec) {
+        this.num = msec.div(1000.mul(60).mul(60).mul(24).mul(30).mul(12)).min(1970);
+    }
+    int read() {
+        return this.num.intValue();
+    }
+}
+```
+
+### Always Use The Interface
+
+[Seven Virtues of a Good Object](https://www.yegor256.com/2014/11/20/seven-virtues-of-good-object.html):
+
+항상 인터페이스를 사용하라는 원칙이다.
+
+객체들은 서로를 필요로 하기 때문에 __결합(coupled)__ 된다. 객체들의 수가 수십 개를 넘어가면서부터 객체 사이의 강한 결합도(tight coupling)가 심각한 문제로 떠오른다.
+결합도는 유지보수성에 영향을 미친다. __유지보수성(maintainability)__ 이 가장 중요하다.
+
+기술적인 관점에서 객체 분리란 상호작용하는 다른 객체를 수정하지 않고도 해당 객체를 수정할 수 있도록 만든다는 것을 의미한다. 이를 가능하게 하는 가장 훌륭한 도구는
+__인터페이스(interface)__ 이다.
+
+```kotlin
+interface Cash {
+    fun multiply(factor: Float): Cash
+}
+```
+
+인터페이스는 __계약(contract)__ 이다. 객체가 계약을 준수하도록 해야 한다.
+
+철학적인 관점에서 클래스가 존재하는 이유는 다른 누군가가 클래스의 서비스를 필요로 하기 때문이다. 서비스는 계약이자 인터페이스이기 때문에 클래스가 제공하는 서비스는 어딘가에 문서화되어야 한다.
+게다가 서비스 제공자들은 서로 경쟁한다. 다시 말해서 동일한 인터페이스를 구현하는 여러 클래스들이 존재한다는 뜻이다.
+그리고 각각의 경재자는 서로 다른 경쟁자를 쉽게 대체할 수 있어야 한다. 이것이 __느슨한 결합도(loose coupling)__ 의 의미이다.
+
+물론 인터페이스를 통해 결합이 된다고 생각할 수 있지만, 이러한 결합은 항상 존재하며 제거할 수 있는 방법이 없다. 결합 자체가 나쁜건 아니다.
+시스템의 다른 부분이 변경 사항을 알지 못한 채 한 부분을 실수로 변경하더라도 시스템이 무너지지 않게 유지할 수 있다.
 
 ## References
 

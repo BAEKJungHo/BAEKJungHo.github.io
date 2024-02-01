@@ -6,7 +6,9 @@
  "url": "/wiki/oop",
  "updated": "2022-04-12 20:56:09 +0900",
  "children": [
+  "oop/oop-elegant-object",
   "oop/oop-oo",
+  "oop/oop-real-oop",
   "oop/oop-solid"
  ]
 }

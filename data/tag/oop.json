@@ -2,7 +2,9 @@
  "go/go-method-function",
  "kotlin/kotlin-property",
  "oop",
+ "oop/oop-elegant-object",
  "oop/oop-oo",
+ "oop/oop-real-oop",
  "oop/oop-solid",
  "spring/spring-pojo"
 ]

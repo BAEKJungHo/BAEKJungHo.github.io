@@ -307,6 +307,11 @@ regenerate: true
 * [[/refactoring/refactoring-local-variable]]
 * [[/refactoring/refactoring-aliasbug]]
 
+## OOP
+
+* [[/oop/oop-oo]]
+* [[/oop/oop-solid]]
+
 ## Crypto
 
 * [[/crypto/crypto-password-encryption]]

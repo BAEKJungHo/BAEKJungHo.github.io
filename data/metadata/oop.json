@@ -1,0 +1,12 @@
+{
+ "type": "wiki",
+ "title": "Object Oriented Programming",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/oop",
+ "updated": "2022-04-12 20:56:09 +0900",
+ "children": [
+  "oop/oop-oo",
+  "oop/oop-solid"
+ ]
+}

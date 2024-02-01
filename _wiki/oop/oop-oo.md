@@ -1,14 +1,14 @@
 ---
 layout  : wiki
-title   : Object-Oriented Programming
+title   : Fundamental Object-Oriented Programming
 summary : 
 date    : 2022-04-29 15:02:32 +0900
 updated : 2022-04-29 15:12:24 +0900
-tag     : methodology oop
+tag     : oop
 toc     : true
 comment : true
 public  : true
-parent  : [[/methodology]]
+parent  : [[/oop]]
 latex   : true
 ---
 * TOC

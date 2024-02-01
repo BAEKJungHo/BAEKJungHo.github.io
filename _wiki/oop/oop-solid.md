@@ -4,11 +4,11 @@ title   : SOLID
 summary : 
 date    : 2022-10-02 15:02:32 +0900
 updated : 2022-10-02 15:12:24 +0900
-tag     : methodology oop
+tag     : oop
 toc     : true
 comment : true
 public  : true
-parent  : [[/methodology]]
+parent  : [[/oop]]
 latex   : true
 ---
 * TOC

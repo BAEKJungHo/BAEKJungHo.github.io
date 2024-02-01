@@ -312,6 +312,7 @@ regenerate: true
 * [[/oop/oop-oo]]
 * [[/oop/oop-solid]]
 * [[/oop/oop-real-oop]]
+* [[/oop/oop-elegant-object]]
 
 ## Crypto
 

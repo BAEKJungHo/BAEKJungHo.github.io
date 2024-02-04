@@ -243,6 +243,67 @@ String body1 = new HttpRequest()
 String body2 = new PostRequest(new HttpRequest()).fetch();
 ```
 
+### Objects Should Be Immutable
+
+[Objects Should Be Immutable](https://www.yegor256.com/2014/06/09/objects-should-be-immutable.html):
+
+All classes should be immutable in a perfect object-oriented world.
+
+This is an incomplete list of arguments in favor of immutability:
+- immutable objects are simpler to construct, test, and use
+- truly immutable objects are always thread-safe
+- they help to avoid [temporal coupling](https://www.yegor256.com/2015/12/08/temporal-coupling-between-method-calls.html)
+- their usage is side-effect free (no defensive copies)
+- identity mutability problem is avoided
+- they always have [failure atomicity](https://stackoverflow.com/questions/29842845/what-is-failure-atomicity-used-by-j-bloch-and-how-its-beneficial-in-terms-of-i)
+- they are much easier to cache
+- they prevent NULL references, [which are bad](https://www.yegor256.com/2014/05/13/why-null-is-bad.html)
+
+### Smart
+
+__Smart class__:
+
+```java
+interface Exchange {
+    float rate(String source, String target);
+    final class Smart {
+        private final Exchange origin;
+        public float toUsd(String source) {
+            return this.origin.rate(source, "USD");
+        }
+    }
+}
+```
+
+이 스마트 클래스는 아주 명확하고 공통적인 작업을 수행하는 많은 메서드들을 포함할 수 있다. 스마트 클래스를 인터페이스와 함께 제공해야 하는 또 다른 이유는
+인터페이스를 구현하는 서로 다른 클래스 안에 동일한 기능을 반복해서 구현하고 싶지 않기 때문이다.
+
+__Decorator__:
+
+```java
+interface Exchange { 
+    float rate(String source, String target);
+    final class Fast implements Exchange {
+        private final Exchange origin;
+        @Override 
+        public float rate(String source, String target) {
+            final float rate;
+            if (source.equals(target)) {
+                rate = 1.0.f;
+            } else {
+                rate = this.origin.rate(source, target);
+            }
+            return rate;
+        }
+        public float toUsd(String source) {
+            return this.origin.rate(source, "USD");
+        }
+    }
+}
+```
+
+Exchange.Fast 는 데코레이터인 동시에 스마크 클래스이다. 데코레이터가 스마트 클래스와 다른점은 스마트 클래스가 객체에 새로운 메서드를 추가하는데 비해 데코레이터는 이미 존재하는 메서드를 좀 더 강력하게 만든다.
+
 ## References
 
 - Elegant Object / Yegor Bugayenko 

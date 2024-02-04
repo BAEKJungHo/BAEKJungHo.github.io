@@ -381,6 +381,7 @@ regenerate: true
 * [[/infra/infra-load-stress-smoke]]
 * [[/infra/infra-k6]]
 * [[/infra/infra-rds-aurora]]
+* [[/infra/infra-envoy-proxy]]
 
 ## Git
 

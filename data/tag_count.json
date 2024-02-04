@@ -177,7 +177,7 @@
  },
  {
   "name": "infra",
-  "size": 32
+  "size": 33
  },
  {
   "name": "internationalization",
@@ -221,7 +221,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 4
+  "size": 5
  },
  {
   "name": "lambda",

@@ -17,6 +17,7 @@
   "infra/infra-deployment",
   "infra/infra-docker",
   "infra/infra-elasticbeanstalk",
+  "infra/infra-envoy-proxy",
   "infra/infra-gateway",
   "infra/infra-incident",
   "infra/infra-ip",

@@ -187,6 +187,7 @@
  "/wiki/infra/infra-deployment",
  "/wiki/infra/infra-docker",
  "/wiki/infra/infra-elasticbeanstalk",
+ "/wiki/infra/infra-envoy-proxy",
  "/wiki/infra/infra-gateway",
  "/wiki/infra/infra-incident",
  "/wiki/infra/infra-ip",

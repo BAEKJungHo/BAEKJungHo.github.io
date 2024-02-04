@@ -20,6 +20,7 @@
  "database/mysql-index",
  "database/query-index",
  "database/query-optimizing",
+ "experience/experience-external-interlock-error",
  "spring/spring-declarative-transaction",
  "spring/spring-lazyconnectiondatasourceproxy",
  "spring/spring-transactionmanager"

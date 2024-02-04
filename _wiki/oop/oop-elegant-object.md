@@ -176,6 +176,73 @@ interface Cash {
 물론 인터페이스를 통해 결합이 된다고 생각할 수 있지만, 이러한 결합은 항상 존재하며 제거할 수 있는 방법이 없다. 결합 자체가 나쁜건 아니다.
 시스템의 다른 부분이 변경 사항을 알지 못한 채 한 부분을 실수로 변경하더라도 시스템이 무너지지 않게 유지할 수 있다.
 
+### Method Naming
+
+- builder 이름은 명사로 조정자(manipulator)의 이름은 동사로 짓는다.
+- 객체로 추상화한 실세계 엔티티를 수정하는 메서드를 조정자(manipulator) 라고 부른다.
+  - void save(String content)
+  - void remove(String item)
+- 객체는 자신의 의무를 수행하는 방법을 알고 있고 존중 받기를 원하는 살아있는 유기체이다.
+- boolean 값을 결과로 반환하는 경우에 접두사 'is' 는 중복이기 때문에 메서드의 이름에는 포함시키지 않지만 메서드를 읽을 때는 일시적으로 앞에 붙여 자연스럽게 들리도록 해야 한다.
+  - boolean empty() // is empty
+  - boolean readable() // is readable
+
+### Contractual Coupling
+
+계약을 통한 결합(contractual coupling)은 언제라도 분리가 가능하기 때문에 유지보수성을 저하시키지 않는다.
+
+```java
+public class Constants {
+    public static final String EOL = "\r\n";
+}
+```
+
+위 상수를 사용하는 두 클래스가 있는 경우 해당 클래스들은 같은 객체에 의존하게 되고, 이 의존성은 __하드 코딩__ 되어있다.
+따라서 결합도는 증가하고 응집도는 낮아지게 된다. 즉, 퍼블릭 상수를 사용하면 객체의 응집도가 낮아진다.
+
+응집도를 높이기 위해서는 데이터가 아닌 __기능을 공유__ 하는 새로운 클래스를 만들어야 한다.
+
+```java
+class EOLString {
+    private final String origin;
+    EOLString(Strings src) {
+        this.origin = src;
+    }
+    @Override
+    String toString() {
+        return String.format("%s\r\n", origin);
+    }
+}
+```
+
+그리고 아래와 같이 사용할 수 있다.
+
+```java
+class Records {
+    void write(Writer out) {
+        for (Record rec: this.all) {
+            out.write(new EOLString(rec.toString()));
+        }
+    }
+}
+```
+
+위 처럼 __계약을 통한 결합(contractual coupling)__ 은 언제든 분리가 가능하기 때문에 유지보수성을 저하시키지 않는다.
+
+그러면 퍼블릭 상수마다 계약의 의미를 캡슐화하는 새로운 클래스를 만들어야 한다는 것인가?
+- 맞다.
+- 중복 코드를 가진 마이크로 클래스들에 의해 코드가 더 장황해지고 오염되지 않을까? -> 아니다.
+- __애플리케이션을 구성하는 클래스의 수가 많을 수록 설계가 더 좋아지고 유지보수하기도 쉬워진다.__
+
+```java
+// OOP 정신에 어긋나는 코드
+String body1 = new HttpRequest()
+        .method(HttpMethod.POST)
+        .fetch();
+// TO-DO
+String body2 = new PostRequest(new HttpRequest()).fetch();
+```
+
 ## References
 
 - Elegant Object / Yegor Bugayenko 

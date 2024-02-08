@@ -383,6 +383,10 @@ regenerate: true
 * [[/infra/infra-rds-aurora]]
 * [[/infra/infra-envoy-proxy]]
 
+## Mobile
+
+* [[/mobile/mobile-background-foreground]]
+
 ## Git
 
 * [[/git/git-basic]]

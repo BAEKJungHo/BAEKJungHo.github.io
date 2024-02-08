@@ -304,6 +304,40 @@ interface Exchange {
 
 Exchange.Fast 는 데코레이터인 동시에 스마크 클래스이다. 데코레이터가 스마트 클래스와 다른점은 스마트 클래스가 객체에 새로운 메서드를 추가하는데 비해 데코레이터는 이미 존재하는 메서드를 좀 더 강력하게 만든다.
 
+## Employment
+
+__5개 이하의 public 메서드만 노출하라__:
+- 5개라는 숫자가 특별한 의미를 갖는 것은 아니다. 단순히 저자의 생각이다.
+- 여기서 말하고자하는 것은 클래스를 작게 만들어서 우아함, 유지보수성, 응집도, 테스트 용이성을 높이라는 것이다.
+
+__정적 메서드를 사용하지 말자__:
+- [OOP Alternative to Utility Classes](https://www.yegor256.com/2014/05/05/oop-alternative-to-utility-classes.html)
+
+```java
+// AS-IS
+class WebPage {
+    public static String read(String uri) {
+        // HTTP 요청을 만들고
+        // UTF-8 문자열로 변환한다
+    }
+}
+```
+```java
+// TO-BE
+class WebPage {
+    private final String uri;
+    public String content() {
+      // HTTP 요청을 만들고
+      // UTF-8 문자열로 변환한다  
+    }
+}
+
+String html = new WebPage("...").content();
+```
+
+- 정적 메서드는 객체 패러다임의 남용이다.
+- 어떤 상황에서도 정적 메서드에 대해서는 변명의 여지가 없으며, 성능 역시 중요한 요소가 아니다.
+
 ## References
 
 - Elegant Object / Yegor Bugayenko 

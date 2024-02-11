@@ -44,16 +44,16 @@ __Netflix__:
 * Time series data at Netflix: [https://netflixtechblog.com/scaling-time-series-data-storage-part-i-ec2b6d44ba39](https://netflixtechblog.com/scaling-time-series-data-storage-part-i-ec2b6d44ba39)
 
 __Case study: Netflix's ElasticSearch -> Cassandra (SSD->EBS)__:
-* https://netflixtechblog.com/building-netflixs-distributed-tracing-infrastructure-bb856c319304
-* https://netflixtechblog.com/lessons-from-building-observability-tools-at-netflix-7cfafed6ab17
+* [Building Netflix’s Distributed Tracing Infrastructure](https://netflixtechblog.com/building-netflixs-distributed-tracing-infrastructure-bb856c319304)
+* [Lessons from Building Observability Tools at Netflix](https://netflixtechblog.com/lessons-from-building-observability-tools-at-netflix-7cfafed6ab17)
 
 __Coinbase__:
-- https://www.coinbase.com/blog/logs-metrics-and-the-evolution-of-observability-at-coinbase
+* [Logs, metrics, and the evolution of observability at Coinbase](https://www.coinbase.com/blog/logs-metrics-and-the-evolution-of-observability-at-coinbase)
 
 ## AppDynamics vs Dynatrace
 
-* AppDynamics, Dynatrace, OpenTelemetry: https://donggeitnote.com/2021/10/30/observability/
-* https://www.overops.com/blog/appdynamics-vs-dynatrace-battle-of-the-enterprise-monitoring-giants/
+* [AppDynamics, Dynatrace, OpenTelemetry](https://donggeitnote.com/2021/10/30/observability/)
+* [Is Standard Java Logging Dead? Log4j vs. Log4j2 vs. Logback vs. java.util.logging](https://www.overops.com/blog/appdynamics-vs-dynatrace-battle-of-the-enterprise-monitoring-giants/)
 
 ## Application Performance Monitoring
 
@@ -70,7 +70,7 @@ __Coinbase__:
 
 ## Uber M3
 
-* https://eng.uber.com/m3/
+* [Uber M3](https://eng.uber.com/m3/)
 
 ## Datadog
 
@@ -83,6 +83,6 @@ __Coinbase__:
 
 ## ZIPKIN
 
-* https://zipkin.io/pages/architecture.html
+* [ZIPKIN Architecture](https://zipkin.io/pages/architecture.html)
 
 ## Articles

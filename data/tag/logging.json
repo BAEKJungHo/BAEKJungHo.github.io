@@ -1,5 +1,4 @@
 [
- "architecture/architecture-domain-oriented-observability",
  "logging",
  "logging/logging-datadog-pipelines",
  "logging/logging-entity",
@@ -8,7 +7,8 @@
  "logging/logging-rotation",
  "logging/logging-webflux-kotlin",
  "logging/logging-write-ahead",
- "msa/msa-distributed-tracing",
+ "observability/architecture-domain-oriented-observability",
+ "observability/msa-distributed-tracing",
  "reactive/reactive-context",
  "spring/spring-logging",
  "spring/spring-mdc"

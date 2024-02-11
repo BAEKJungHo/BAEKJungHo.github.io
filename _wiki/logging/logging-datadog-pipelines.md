@@ -4,7 +4,7 @@ title   : Datadog Log Collection with Kubernetes
 summary : 
 date    : 2023-05-13 20:54:32 +0900
 updated : 2023-05-13 21:15:24 +0900
-tag     : logging
+tag     : logging observability
 toc     : true
 comment : true
 public  : true

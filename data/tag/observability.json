@@ -1,0 +1,6 @@
+[
+ "logging/logging-datadog-pipelines",
+ "observability",
+ "observability/architecture-domain-oriented-observability",
+ "observability/msa-distributed-tracing"
+]

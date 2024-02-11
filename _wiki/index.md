@@ -67,7 +67,6 @@ regenerate: true
 * [[/architecture/architecture-pub-sub]]
 * [[/architecture/architecture-retry-mechanism]]
 * [[/architecture/architecture-payment]]
-* [[/architecture/architecture-domain-oriented-observability]]
 * [[/architecture/architecture-idempotency-design]]
 
 ## Kata
@@ -81,6 +80,11 @@ regenerate: true
 * [[/functional/functional-timeline-cutting]]
 * [[/functional/functional-copy-on-write]]
 * [[/functional/functional-defensive-copy]]
+
+## Observability
+
+* [[/architecture/architecture-domain-oriented-observability]]
+* [[/msa/msa-distributed-tracing]]
 
 ## Go
 
@@ -285,7 +289,6 @@ regenerate: true
 * [[/msa/msa-reactive-manifesto]]
 * [[/msa/msa-xa]]
 * [[/msa/msa-stream-processing]]
-* [[/msa/msa-distributed-tracing]]
 * [[/msa/msa-saga]]
 * [[/msa/msa-api-gateway]]
 * [[/msa/msa-soa]]

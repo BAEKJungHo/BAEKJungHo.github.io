@@ -4,11 +4,11 @@ title   : Domain-Oriented Observability
 summary : 
 date    : 2023-12-02 15:02:32 +0900
 updated : 2023-12-02 15:12:24 +0900
-tag     : architecture logging
+tag     : architecture logging observability
 toc     : true
 comment : true
 public  : true
-parent  : [[/architecture]]
+parent  : [[/observability]]
 latex   : true
 ---
 * TOC

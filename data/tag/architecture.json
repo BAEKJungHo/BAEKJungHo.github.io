@@ -18,7 +18,6 @@
  "architecture/architecture-did",
  "architecture/architecture-discord-store-message",
  "architecture/architecture-distributed-pk",
- "architecture/architecture-domain-oriented-observability",
  "architecture/architecture-event-driven-system",
  "architecture/architecture-eventdriven-statemachine",
  "architecture/architecture-hexagonal",
@@ -44,5 +43,6 @@
  "msa/msa-eventual-consistency",
  "msa/msa-service-connectivity",
  "msa/msa-xa",
+ "observability/architecture-domain-oriented-observability",
  "spring/spring-exception-hierarchy"
 ]

@@ -13,7 +13,6 @@
   "msa/msa-concurrency-distributedlock",
   "msa/msa-debounce-throttle",
   "msa/msa-distributed-caching",
-  "msa/msa-distributed-tracing",
   "msa/msa-event-deconcern",
   "msa/msa-eventual-consistency",
   "msa/msa-fault-tolerance",

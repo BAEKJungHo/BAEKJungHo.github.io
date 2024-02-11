@@ -316,6 +316,10 @@
   "size": 2
  },
  {
+  "name": "observability",
+  "size": 4
+ },
+ {
   "name": "oidc",
   "size": 1
  },

@@ -1,0 +1,12 @@
+{
+ "type": "wiki",
+ "title": "Observability",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/observability",
+ "updated": "2024-01-01 20:55:09 +0900",
+ "children": [
+  "observability/architecture-domain-oriented-observability",
+  "observability/msa-distributed-tracing"
+ ]
+}

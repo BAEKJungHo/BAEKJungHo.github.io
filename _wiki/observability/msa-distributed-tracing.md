@@ -4,11 +4,11 @@ title   : Distributed Tracing
 summary : 
 date    : 2023-01-18 15:54:32 +0900
 updated : 2023-01-18 20:15:24 +0900
-tag     : msa logging distributed
+tag     : msa logging distributed observability
 toc     : true
 comment : true
 public  : true
-parent  : [[/msa]]
+parent  : [[/observability]]
 latex   : true
 ---
 * TOC

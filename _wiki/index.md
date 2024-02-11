@@ -29,6 +29,7 @@ regenerate: true
 * [[/mobility/mobility-ota]]
 * [[/mobility/mobility-autonomous-driving-level]]
 * [[/mobility/mobility-v2x]]
+* [[/mobility/mobility-can]]
 
 ## Architecture
 

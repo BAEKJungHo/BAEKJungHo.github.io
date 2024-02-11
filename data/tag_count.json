@@ -28,6 +28,10 @@
   "size": 3
  },
  {
+  "name": "can",
+  "size": 1
+ },
+ {
   "name": "cassandra",
   "size": 2
  },
@@ -265,7 +269,7 @@
  },
  {
   "name": "mobility",
-  "size": 7
+  "size": 8
  },
  {
   "name": "mockk",

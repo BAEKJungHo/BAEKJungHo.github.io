@@ -168,6 +168,10 @@
   "size": 4
  },
  {
+  "name": "heapdump",
+  "size": 1
+ },
+ {
   "name": "hibernate",
   "size": 1
  },
@@ -422,6 +426,10 @@
  {
   "name": "theory",
   "size": 3
+ },
+ {
+  "name": "threaddump",
+  "size": 1
  },
  {
   "name": "troubleshooting",

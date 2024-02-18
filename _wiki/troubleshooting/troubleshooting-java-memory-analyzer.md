@@ -4,7 +4,7 @@ title   : Memory Analyzer
 summary : GC Monitoring, Thread/Heap Dump and Resolution Memory Leak
 date    : 2023-11-10 15:05:32 +0900
 updated : 2023-11-10 15:15:24 +0900
-tag     : troubleshooting gc java memoryleak
+tag     : troubleshooting gc java memoryleak threaddump heapdump
 toc     : true
 comment : true
 public  : true
@@ -44,9 +44,22 @@ __GC Monitoring__:
   - 10줄마다 헤더 출력, 타임스탬프 출력, 10000밀리초마다 출력
 
 __Thread Dump__:
-- `jstack PID > THREAD_DUMP_OUTPUT_FILENAME`
-- [Java Thread Dump Analyzer - FastThread](https://fastthread.io/)
-- [Java Thread Dump Analyzer - Samurai](https://samuraism.jp/samurai/ja/)
+- [jcmd](https://dzone.com/articles/jvm-tuning-using-jcmd)
+- [Thread Analyzers](https://fasterj.com/tools/threadanalysers.shtml)
+  - [FastThread](https://fastthread.io/)
+  - [Samurai](https://samuraism.jp/samurai/ja/)
+- [jstack](https://docs.oracle.com/javase/1.5.0/docs/tooldocs/share/jstack.html)
+  - `jstack PID > THREAD_DUMP_OUTPUT_FILENAME`
+- How to Analyze
+  - [Thread Dump 분석하기 - Naver D2](https://d2.naver.com/helloworld/10963)
+  - [How to Analyze Java Thread Dumps - DZone](https://dzone.com/articles/how-analyze-java-thread-dumps)
+  - [How to Analyze Java Thread Dumps - Baeldung](https://www.baeldung.com/java-analyze-thread-dumps)
+- [Making Thread Dumps Intelligent](https://www.javacodegeeks.com/2015/08/making-thread-dumps-intelligent.html)
+- [Create Thread Dumps (Nine Options)](https://dzone.com/articles/how-to-take-thread-dumps-7-options)
+- [Capturing a Java Thread Dump - Baeldung](https://www.baeldung.com/java-thread-dump)
+- tid vs nid
+ - tid : Java 가 스스로 붙이는 쓰레드 단위 ID 
+ - nid : Native ID. OS 차원의 쓰레드 ID, Linux 에서는 top -H 로 볼 때 PID 라고 보임.
 
 ### Eclipse Memory Analyzer (MAT) Guides
 
@@ -78,3 +91,4 @@ __Knowhow__:
 
 - [Java Memory Monitoring](https://homoefficio.github.io/2020/04/09/Java-Memory-Monitoring/)
 - [Garbage Collection 모니터링 방법 - Naver D2](https://d2.naver.com/helloworld/6043)
+- [ThreadDump - kwonnam](https://kwonnam.pe.kr/wiki/java/performance/threaddump)

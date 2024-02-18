@@ -58,8 +58,8 @@ __Thread Dump__:
 - [Create Thread Dumps (Nine Options)](https://dzone.com/articles/how-to-take-thread-dumps-7-options)
 - [Capturing a Java Thread Dump - Baeldung](https://www.baeldung.com/java-thread-dump)
 - tid vs nid
- - tid : Java 가 스스로 붙이는 쓰레드 단위 ID 
- - nid : Native ID. OS 차원의 쓰레드 ID, Linux 에서는 top -H 로 볼 때 PID 라고 보임.
+  - tid : Java 가 스스로 붙이는 쓰레드 단위 ID 
+  - nid : Native ID. OS 차원의 쓰레드 ID, Linux 에서는 top -H 로 볼 때 PID 라고 보임.
 
 ### Eclipse Memory Analyzer (MAT) Guides
 

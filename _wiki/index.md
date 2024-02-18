@@ -68,6 +68,7 @@ regenerate: true
 * [[/architecture/architecture-retry-mechanism]]
 * [[/architecture/architecture-payment]]
 * [[/architecture/architecture-idempotency-design]]
+* [[/architecture/architecture-zero-payload]]
 
 ## Kata
 

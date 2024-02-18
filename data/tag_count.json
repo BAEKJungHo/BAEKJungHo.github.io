@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 46
+  "size": 47
  },
  {
   "name": "auth",
@@ -105,7 +105,7 @@
  },
  {
   "name": "eventdriven",
-  "size": 2
+  "size": 3
  },
  {
   "name": "experience",

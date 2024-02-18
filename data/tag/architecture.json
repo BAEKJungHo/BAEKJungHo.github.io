@@ -35,6 +35,7 @@
  "architecture/architecture-stratified-design",
  "architecture/architecture-sync-messaging",
  "architecture/architecture-uuid",
+ "architecture/architecture-zero-payload",
  "ddd/ddd-reduce-dependency",
  "dod/dod-data-oriented",
  "kotlin/kotlin-structured-concurrency",

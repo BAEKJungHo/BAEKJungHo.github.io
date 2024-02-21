@@ -24,4 +24,4 @@ VIN 값을 globally unique 로 사용할 수 있는지는 요구사항에 따라
 
 ## Links
 
-- https://auto.danawa.com/news/?Tab=A&Work=detail&no=5166750
+- [자동차 출생의 비밀을 간직한 'RPO & VO' 세부 옵션 정보까지 담겼다](https://auto.danawa.com/news/?Tab=A&Work=detail&no=5166750)

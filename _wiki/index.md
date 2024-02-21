@@ -30,6 +30,7 @@ regenerate: true
 * [[/mobility/mobility-autonomous-driving-level]]
 * [[/mobility/mobility-v2x]]
 * [[/mobility/mobility-can]]
+* [[/mobility/mobility-vin]]
 
 ## Architecture
 

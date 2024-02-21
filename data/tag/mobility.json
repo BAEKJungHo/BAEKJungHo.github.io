@@ -6,5 +6,6 @@
  "mobility/mobility-lidar-radar",
  "mobility/mobility-ota",
  "mobility/mobility-v2x",
- "mobility/mobility-vehicle-signal-specification"
+ "mobility/mobility-vehicle-signal-specification",
+ "mobility/mobility-vin"
 ]

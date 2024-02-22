@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Istio Traffic management",
+ "summary": "",
+ "parent": "kubernetes",
+ "url": "/wiki/kubernetes/kubernetes-istio",
+ "updated": "2024-02-18 20:15:24 +0900",
+ "children": []
+}

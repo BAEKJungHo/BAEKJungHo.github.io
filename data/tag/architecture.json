@@ -39,6 +39,7 @@
  "ddd/ddd-reduce-dependency",
  "dod/dod-data-oriented",
  "kotlin/kotlin-structured-concurrency",
+ "kubernetes/kubernetes-service-mesh",
  "logging/logging-nonblocking-pipeline",
  "magazine/magazine-ffsc",
  "msa/msa-eventual-consistency",

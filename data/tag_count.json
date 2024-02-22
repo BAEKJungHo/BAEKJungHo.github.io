@@ -5,7 +5,7 @@
  },
  {
   "name": "architecture",
-  "size": 47
+  "size": 48
  },
  {
   "name": "auth",
@@ -93,7 +93,7 @@
  },
  {
   "name": "docker",
-  "size": 7
+  "size": 6
  },
  {
   "name": "dod",
@@ -229,7 +229,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 5
+  "size": 8
  },
  {
   "name": "lambda",

@@ -1,7 +1,10 @@
 [
  "infra/infra-envoy-proxy",
+ "kubernetes",
  "kubernetes/kubernetes-architecture",
+ "kubernetes/kubernetes-istio",
  "kubernetes/kubernetes-keda",
+ "kubernetes/kubernetes-service-mesh",
  "linux/linux-memory-allocation-overcommit",
  "linux/linux-oom-killer"
 ]

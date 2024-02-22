@@ -31,7 +31,6 @@
   "infra/infra-serverless",
   "infra/infra-vpc-subnet",
   "infra/infra-web-performance-budget",
-  "infra/infra-webpagetest",
-  "kubernetes/kubernetes-keda"
+  "infra/infra-webpagetest"
  ]
 }

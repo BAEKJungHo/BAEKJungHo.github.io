@@ -4,6 +4,5 @@
  "docker/docker-dockerizing",
  "docker/docker-dockerizing-whole-linux-server",
  "docker/docker-overlay-network",
- "kubernetes",
  "logging/logging-rotation"
 ]

@@ -8,7 +8,7 @@ tag     : kubernetes infra
 toc     : true
 comment : true
 public  : true
-parent  : [[/infra]]
+parent  : [[/kubernetes]]
 latex   : true
 ---
 * TOC

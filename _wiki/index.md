@@ -348,6 +348,8 @@ regenerate: true
 
 * [[/kubernetes/kubernetes-architecture]]
 * [[/kubernetes/kubernetes-keda]]
+* [[/kubernetes/kubernetes-service-mesh]]
+* [[/kubernetes/kubernetes-istio]]
 
 ## Kafka
 

@@ -2,7 +2,7 @@
  "type": "wiki",
  "title": "KEDA",
  "summary": "Kubernetes Event-driven Autoscaling",
- "parent": "infra",
+ "parent": "kubernetes",
  "url": "/wiki/kubernetes/kubernetes-keda",
  "updated": "2023-06-10 20:15:24 +0900",
  "children": []

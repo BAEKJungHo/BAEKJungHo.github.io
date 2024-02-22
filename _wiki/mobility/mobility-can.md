@@ -22,7 +22,7 @@ latex   : true
 
 실제로는 위 와같은 제어기 하나하나에 [MCU(Micro Controller Unit, 제어기를 조작, 제어하기 위해 부착되는 CPU)](https://semiconductor.samsung.com/kr/support/tools-resources/dictionary/semiconductor-glossary-mcu/)
 
-> MCU((Micro Controller Unit)
+> MCU(Micro Controller Unit)
 >
 > - 기기 등의 조작이나 특정 시스템을 제어하는 역할을 수행하는 집적회로(IC).
 > - 특정 기계장치나 전자장치의 제어를 위해 하나의 칩에 CPU 와 관련 모듈을 집적시킨 시스템 반도체로, 작은 컴퓨터 역할을 하고 있어 원 칩(One Chip) 컴퓨터 또는 마이컴이라 불리기도 한다.

@@ -4,7 +4,7 @@ title   : Difference Stack and Heap
 summary : 
 date    : 2023-02-22 10:54:32 +0900
 updated : 2023-02-22 11:15:24 +0900
-tag     : datastructures
+tag     : datastructures stack
 toc     : true
 comment : true
 public  : true

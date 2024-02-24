@@ -88,6 +88,10 @@
   "size": 6
  },
  {
+  "name": "digitalkey",
+  "size": 1
+ },
+ {
   "name": "distributed",
   "size": 9
  },
@@ -273,7 +277,7 @@
  },
  {
   "name": "mobility",
-  "size": 9
+  "size": 10
  },
  {
   "name": "mockk",

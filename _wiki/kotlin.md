@@ -10,3 +10,8 @@ public  : true
 parent  : [[/index]]
 latex   : false
 ---
+
+## References
+
+- [Kotlin Awesome !!](https://kotlin.link/)
+- [Kotlin cheatsheet](https://devhints.io/kotlin)

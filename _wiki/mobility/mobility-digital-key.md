@@ -37,7 +37,7 @@ __Wireless digital key system__:
 
 - [Car Connectivity Consortium unveils NFC digital key specification](https://www.nfcw.com/2020/05/07/366483/car-connectivity-consortium-unveils-nfc-digital-key-specification/)
 - [Alps Alpine and Giesecke+Devrient Jointly Develop Wireless Digital Key System Based on CCC Specification](https://www.alpsalpine.com/e/news_release/2022/0426_01.html)
-- [국제 표준 기반 Digital Key 국내 솔루션 아키텍처 - AutoCrypt]([차량과 디바이스간의 상호운용이 가능한 AutoCrypt Digital Key](https://autocrypt.co.kr/autocrypt-digitalkey/))
+- [국제 표준 기반 Digital Key 국내 솔루션 아키텍처 - AutoCrypt](https://autocrypt.co.kr/autocrypt-digitalkey/)
 
 ## Links
 

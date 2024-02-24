@@ -43,9 +43,9 @@ I'm confident that I will be the best in any company in terms of actively sharin
 - __Autonomous mobility__
 - __Experience__ 
   - Service Development & Improvement
-    - __TAP!: Mobility as a Service__
+    - __TAP! Mobility as a Service__
     - __Control Center__
-    - __Vehicle Control Server__
+    - __Vehicle Control__
   - Network Troubleshooting Using the Idempotency Key
   - Fixes the memory leak point to resolve OOM
   - Experience leading application architecture and convention establishment within Service Engineering Group to improve productivity

@@ -33,6 +33,7 @@
   "architecture/architecture-mqtt",
   "architecture/architecture-nats",
   "architecture/architecture-payment",
+  "architecture/architecture-prometheus",
   "architecture/architecture-pub-sub",
   "architecture/architecture-reliability",
   "architecture/architecture-retry-mechanism",

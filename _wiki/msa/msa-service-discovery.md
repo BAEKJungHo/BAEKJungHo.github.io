@@ -4,7 +4,7 @@ title   : Service Discovery
 summary : 
 date    : 2023-02-03 15:54:32 +0900
 updated : 2023-02-03 20:15:24 +0900
-tag     : msa
+tag     : msa architecture
 toc     : true
 comment : true
 public  : true
@@ -25,8 +25,11 @@ Benefits of service discovery include:
 
 [Netflix Eureka](https://github.com/Netflix/eureka) + Spring Cloud Gateway 조합이 좋음. 서비스 디스커버리는 꼭 필요한 경우에 사용. Microservice 수가 적다면 굳이 사용하지 않아도 됨. 운영/유지 비용도 고려해야 함.
 
+### Prometheus Architecture
+
 ## Links
 
+- [Service Discovery in Microservices](https://www.baeldung.com/cs/service-discovery-microservices)
 - [DZone Service Discovery in a Microservices Architecture](https://dzone.com/articles/service-discovery-in-a-microservices-architecture)
 - [Service Discovery - NGINX](https://www.nginx.com/blog/service-discovery-in-a-microservices-architecture/)
 - [Service Discovery in Microservices - Baeldung](https://www.baeldung.com/cs/service-discovery-microservices)

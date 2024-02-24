@@ -70,6 +70,7 @@ regenerate: true
 * [[/architecture/architecture-payment]]
 * [[/architecture/architecture-idempotency-design]]
 * [[/architecture/architecture-zero-payload]]
+* [[/architecture/architecture-prometheus]]
 
 ## Kata
 

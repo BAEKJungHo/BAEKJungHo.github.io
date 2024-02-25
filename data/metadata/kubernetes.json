@@ -9,6 +9,7 @@
   "kubernetes/kubernetes-architecture",
   "kubernetes/kubernetes-istio",
   "kubernetes/kubernetes-keda",
+  "kubernetes/kubernetes-namespace",
   "kubernetes/kubernetes-service-mesh"
  ]
 }

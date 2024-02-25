@@ -283,6 +283,7 @@
  "/wiki/kubernetes/kubernetes-architecture",
  "/wiki/kubernetes/kubernetes-istio",
  "/wiki/kubernetes/kubernetes-keda",
+ "/wiki/kubernetes/kubernetes-namespace",
  "/wiki/kubernetes/kubernetes-service-mesh",
  "/wiki/linux",
  "/wiki/linux/linux-cgroup",

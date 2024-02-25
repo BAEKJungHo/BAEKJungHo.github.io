@@ -34,6 +34,9 @@ latex   : true
 
 [Docker Hub](https://www.docker.com/products/docker-hub/) 에 등록된 기존 컨테이너 이미지가 아니라면, 애플리케이션을 컨테이너 이미지로 만들기 위해서 Dockerfile 을 작성해야 한다.
 
+Docker 의 Container Image 를 packing 하기 위해서, Docker 는 Base Image 와 Dockerfile 이라는 두가지 컨셉을 이용한다.
+Base Image 는 기본적인 인스톨 이미지, Dockerfile 은 기본적인 인스톨 이미지와 그 위에 추가로 설치되는 스크립트를 정의한다.
+
 ```dockerfile
 ## Base 이미지를 지정 한다.
 FROM gradle:jdk11
@@ -217,3 +220,4 @@ Commands:
 - [Dockerizing](https://developerexperience.io/practices/dockerizing)
 - [Deploy multiple containers using Docker Composer](https://learn.microsoft.com/ko-kr/azure/cognitive-services/containers/docker-compose-recipe)
 - [Overview of docker compose CLI](https://docs.docker.com/compose/reference/)
+- [Docker 소개 - 조대협](https://bcho.tistory.com/805)

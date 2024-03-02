@@ -89,6 +89,10 @@ regenerate: true
 * [[/architecture/architecture-domain-oriented-observability]]
 * [[/msa/msa-distributed-tracing]]
 
+## Real World
+
+* [[/realworld/realworld-smarthome-control-command]]
+
 ## Go
 
 * [[/go/go-method-function]]

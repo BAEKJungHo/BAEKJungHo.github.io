@@ -73,3 +73,4 @@ Cloud 를 사용한다는 것은, `관심사를 분리`하여 우리가 __집중
 
 - [Business Agility](https://baekjungho.github.io/wiki/msa/msa-business-agility/)
 - [NextStep 인프라 공방](https://edu.nextstep.camp/)
+- [What is Cloud - Samsung](https://www.samsungsds.com/kr/cloud-glossary/what-is-cloud.html)

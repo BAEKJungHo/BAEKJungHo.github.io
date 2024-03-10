@@ -25,4 +25,8 @@ Major.Minor.Patch−identifier
 - [Semantic Versioning](https://semver.org/)
 - [Semantic Versioning - Ko](https://semver.org/lang/ko/)
 
+## Links
+
+- [Module version numbering - Go](https://go.dev/doc/modules/version-numbers)
+
 

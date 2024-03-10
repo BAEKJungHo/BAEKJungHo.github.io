@@ -402,6 +402,7 @@
  "/wiki/reactive/reactive-timeout-fallback",
  "/wiki/realworld",
  "/wiki/realworld/realworld-smarthome-control-command",
+ "/wiki/realworld/realworld-vehicle-controls",
  "/wiki/redis",
  "/wiki/redis/redis-duplicated-store-prevent",
  "/wiki/redis/redis-lock",

@@ -61,6 +61,7 @@
  "logging/logging-webflux-kotlin",
  "oop/oop-firstclasscollection",
  "realworld/realworld-smarthome-control-command",
+ "realworld/realworld-vehicle-controls",
  "refactoring/refactoring-aliasbug",
  "refactoring/refactoring-parallelchange",
  "spring/spring-jackson",

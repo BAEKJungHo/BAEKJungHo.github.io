@@ -92,6 +92,7 @@ regenerate: true
 ## Real World
 
 * [[/realworld/realworld-smarthome-control-command]]
+* [[/realworld/realworld-vehicle-controls]]
 
 ## Go
 

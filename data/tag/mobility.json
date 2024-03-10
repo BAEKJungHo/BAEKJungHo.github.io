@@ -8,5 +8,6 @@
  "mobility/mobility-ota",
  "mobility/mobility-v2x",
  "mobility/mobility-vehicle-signal-specification",
- "mobility/mobility-vin"
+ "mobility/mobility-vin",
+ "realworld/realworld-vehicle-controls"
 ]

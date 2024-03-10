@@ -229,7 +229,7 @@
  },
  {
   "name": "kotlin",
-  "size": 66
+  "size": 67
  },
  {
   "name": "ksp",
@@ -281,7 +281,7 @@
  },
  {
   "name": "mobility",
-  "size": 10
+  "size": 11
  },
  {
   "name": "mockk",
@@ -373,7 +373,7 @@
  },
  {
   "name": "realworld",
-  "size": 2
+  "size": 3
  },
  {
   "name": "redis",
@@ -437,6 +437,10 @@
  },
  {
   "name": "term",
+  "size": 1
+ },
+ {
+  "name": "tesla",
   "size": 1
  },
  {

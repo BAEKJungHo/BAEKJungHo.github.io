@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Vehicle Controls
 summary : 
-date    : 2024-02-28 20:54:32 +0900
-updated : 2024-02-28 21:15:24 +0900
+date    : 2024-03-05 20:54:32 +0900
+updated : 2024-03-05 21:15:24 +0900
 tag     : realworld mobility tesla kotlin
 toc     : true
 comment : true

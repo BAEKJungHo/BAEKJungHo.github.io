@@ -13,6 +13,7 @@
   "git/git-internal",
   "git/git-merge-semi-linear-history",
   "git/git-rebase",
+  "git/git-semver",
   "git/git-trunk-based-development"
  ]
 }

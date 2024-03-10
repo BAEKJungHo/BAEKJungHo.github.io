@@ -411,6 +411,7 @@ regenerate: true
 * [[/git/git-cherrypick]]
 * [[/git/git-delta-snapshot]]
 * [[/git/git-merge-semi-linear-history]]
+* [[/git/git-semver]]
 
 ## GPT
 

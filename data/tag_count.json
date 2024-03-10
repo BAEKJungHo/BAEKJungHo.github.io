@@ -80,6 +80,10 @@
   "size": 1
  },
  {
+  "name": "delta",
+  "size": 1
+ },
+ {
   "name": "designpattern",
   "size": 17
  },
@@ -393,6 +397,10 @@
  },
  {
   "name": "shallowcopy",
+  "size": 1
+ },
+ {
+  "name": "snapshot",
   "size": 1
  },
  {

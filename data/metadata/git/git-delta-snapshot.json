@@ -1,7 +1,7 @@
 {
  "type": "wiki",
- "title": "Delta and Snapshot",
- "summary": "",
+ "title": "Delta, Snapshot",
+ "summary": "Using JSON Patch in Spring REST APIs",
  "parent": "git",
  "url": "/wiki/git/git-delta-snapshot",
  "updated": "2023-12-05 20:15:24 +0900",

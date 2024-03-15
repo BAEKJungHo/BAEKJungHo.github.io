@@ -14,6 +14,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 
 ![](/resource/about/principle.png)
 
+- I prefer combining the tools I have to solve problems in the most optimal way possible.
 - Documentation skills are good.
 - Communication is important.
 - I like to make decisions based on data.
@@ -21,11 +22,12 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 - I aim for shared growth.
 - I try to make good reputation and relationships.
 
-## How do you work ?
+## Responsibility History
 
-- __Aim for [code-reviews](https://github.com/cIonecoder/expedia/pull/45) that help each other__
-- __Aim for [DDD styles](https://github.com/asterlsker/housepit-auth-server/tree/dev)__
-- __Think that communication and documentation is important__
+- __[Mobility]__ Connected Service Backend Engineer 
+  - Autonomous Hailing, Vehicle Control, etc
+- __[Reservation]__ Restaurant reservation service Backend Engineer
+- __[BuildAWebsite]__ Public Institution / University Project Production
 
 ## Motto 
 
@@ -35,62 +37,82 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 
 I'm confident that I will be the best in any company in terms of actively sharing insights, ideas, etc. from development to drive shared growth, transparent information sharing, and continuous efforts to grow technically.
 
-# Work Experiences
+# Careers
 
-### 42dot - Hyundai Motor Group
+### 42dot (2022.08.29 ~ ing)
 
-- __2022.08.29 ~ ing__
-- __Autonomous mobility__
-- __Experience__ 
-  - Service Development & Improvement
-    - __TAP! Mobility as a Service__
-    - __Control Center__
-    - __Vehicle Control__
-  - Network Troubleshooting Using the Idempotency Key
-  - Fixes the memory leak point to resolve OOM
-  - Experience leading application architecture and convention establishment within Service Engineering Group to improve productivity
-  - Clean Architecture Application Experience
-  - Saga Orchestrator Design Experience
-  - Use Distributed Lock to provide a better dispatch experience for users
-  - Establish the documentation structure of the TAP! engineering team
-  - Experience using Spring Batch
-- __Tech__
-  - Kotlin, Java
-  - Spring Batch, Spring WebFlux, Spring Cloud Gateway
-  - Redis, Kubernetes, Docker, PostgreSQL, Kafka
-  - Firebase, Datadog, ArgoCD, Lens, CI/CD, GitLab Actions
+- Service Development & Improvement
+  - __Autonomous Hailing__
+  - __Vehicle Control__
+- Network Troubleshooting Using the Idempotency Key
+- Fixes the memory leak point to resolve OOM
+- Experience leading application architecture and convention establishment within Service Engineering Group to improve productivity
+- Clean Architecture Application Experience
+- Saga Orchestrator Design Experience
+- Use Distributed Lock to provide a better dispatch experience for users
+- Establish the documentation structure of the TAP! engineering team
 
-### TableManager
+### TableManager (2022.03.07 ~ 2022.08.26)
 
-- __2022.03.07 ~ 2022.08.26__
-- __Startup Offers Booking Solutions__
-- __Experience__
-  - Development of Pickup Order Service Using Kakao Chatbot
-  - Establishment of KT Call Secretary Auth-Service
-  - Payment Service Maintenance Experience
-- __Tech__
-  - Kotlin
-  - Spring MVC, Spring Data JPA, Spring Data JDBC, Spring Security
-  - AWS Gateway, AWS Lambda, AWS Cloud Watch, NodeJS, Typescript, Javascript
-  - JIRA, Confluence, MongoDB, Whatap, GitHub Actions
+- Development of Pickup Order Service Using Kakao Chatbot
+- Establishment of KT Call Secretary Auth-Service
+- Payment Service Maintenance Experience
 
-### Mayeye
+### Mayeye (2019.07.01 ~ 2021.10.08)
 
-- __2019.07.01 ~ 2021.10.08__
-- __Building a New Web Site__
-- __Experience__
-  - Boryeong City Hall Emergency Disaster Support Fund Application/Management Function
-  - Establishment of Small Business Tenant Confirmation Certificate Issuance System
-  - Establishment of Small Business Education Sharing Center System
-  - Experience in building various other homepages
-- __Tech__
-  - Java
-  - Spring MVC, Spring Boot, Spring Security
-  - JSP, Mybatis, MySQL, Oracle, GitLab, SVN
+- Boryeong City Hall Emergency Disaster Support Fund Application/Management Function
+- Establishment of Small Business Tenant Confirmation Certificate Issuance System
+- Establishment of Small Business Education Sharing Center System
+- Experience in building various other homepages
+
+# My tools to solve problems
+
+__Languages__:
+- Kotlin, Java
+- Go
+- Typescript, Javascript
+
+__Framework__:
+- Spring Framework, Spring MVC, Spring WebFlux, Spring Security, Spring Data JPA, Spring Data JDBC
+- Ktor (little bit)
+- NodeJS
+
+__Object Relation Mapping__:
+- JPA
+- Mybatis
+
+__Databases__:
+- MySQL
+- PostgreSQL
+- Oracle
+- GitLab, GitHub, SVN
+
+__Observability__:
+- AWS Cloud Watch
+- Datadog
+- Whatap
+
+__Issue Management & Documents__:
+- JIRA, Confluence
+
+__Designs & Paradigm__:
+- DDD
+- TDD
+- ATDD
+- OOP
+- Event Driven
+
+__Others__:
+- Reids
+- Kafka
+- UML
+- Docker & K8S
+- Firebase Cloud Messaging
+- Firestore
+- ArgoCD, Lens, CI/CD, GitLab Actions, GitHub Actions
 
 # Services
 
 ### Trunkr
 
-- Coming soon
 - [Growth platform through review and sharing](https://github.com/trunkr)

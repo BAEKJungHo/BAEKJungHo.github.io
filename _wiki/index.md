@@ -511,6 +511,7 @@ regenerate: true
 ## Operating System
 
 * [[/operatingsystem/os-kernel]]
+* [[/operatingsystem/os-fetch-execute-cycle]]
 
 ## Network
 

@@ -330,6 +330,7 @@ regenerate: true
 * [[/oop/oop-elegant-object]]
 * [[/oop/oop-object-calisthenics]]
 * [[/oop/oop-firstclasscollection]]
+* [[/oop/oop-encapsulation]]
 
 ## Crypto
 

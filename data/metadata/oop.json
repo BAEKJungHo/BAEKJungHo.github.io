@@ -7,6 +7,7 @@
  "updated": "2022-04-12 20:56:09 +0900",
  "children": [
   "oop/oop-elegant-object",
+  "oop/oop-encapsulation",
   "oop/oop-firstclasscollection",
   "oop/oop-object-calisthenics",
   "oop/oop-oo",

@@ -361,9 +361,10 @@ regenerate: true
 
 ## Kafka
 
-* [[/kafka/kafka-basic]]
-* [[/kafka/kafka-acknowledgement]]
-* [[/kafka/kafka-headers]]
+* [[/kafka/kafak-basic]]
+* [[/kafka/kafak-acknowledgement]]
+* [[/kafka/kafak-headers]]
+* [[/kafka/kafka-consumer-options-strategy]]
 
 ## Redis
 

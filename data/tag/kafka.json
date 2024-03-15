@@ -4,5 +4,6 @@
  "kafka/kafak-acknowledgement",
  "kafka/kafak-basic",
  "kafka/kafak-headers",
+ "kafka/kafka-consumer-options-strategy",
  "reactive/reactive-pub-sub"
 ]

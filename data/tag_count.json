@@ -117,7 +117,7 @@
  },
  {
   "name": "eventdriven",
-  "size": 3
+  "size": 4
  },
  {
   "name": "experience",
@@ -225,7 +225,7 @@
  },
  {
   "name": "kafka",
-  "size": 6
+  "size": 7
  },
  {
   "name": "kata",

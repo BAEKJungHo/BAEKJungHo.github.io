@@ -32,8 +32,18 @@ __[카프카 컨슈머 그룹 리밸런싱 (Kafka Consumer Group Rebalancing](ht
 리밸런싱이란 컨슈머에 문제가 생겨서 메시지를 처리할 수 없을때, 컨슈머 그룹내 다른 컨슈머에게 파티션 소유권을 이전하는 것을 의미한다.
 
 1. 컨슈머가 생성/삭제되는 경우(e.g 애플리케이션 배포의 경우에 기존 컨슈머가 삭제되고, 새로운 컨슈머가 추가되므로 리밸런싱이 최소 2번 일어난다.)
-2. max.poll.records 설정의 개수만큼 메세지를 처리한 뒤 Poll 요청을 보내게 된다. 만약, 메세지들의 처리 시간이 늦어져서 max.poll.interval.ms 설정 시간을 넘기게 된다면 컨슈머에 문제가 있다고 판단하여 리밸런싱이 일어난다.
+2. max.poll.records 설정의 개수만큼 메세지를 처리한 뒤 Poll 요청을 보내게 된다. 만약, 메세지들의 처리 시간이 늦어져서 max.poll.interval.ms 설정 시간을 넘기게 된다면 컨슈머에 문제가 있다고 판단하여 리밸런싱이 일어난다. (max.poll.records 값이 작을수록 poll 요청을 빠르게 보내게 되어 리밸런싱이 발생할 가능성이 줄어든다.)
 3. 컨슈머가 일정 시간 동안 하트비트를 보내지 못하면, 세션이 종료되고 컨슈머 그룹에서 제외되면서 리밸런싱이 일어난다.
+
+리밸런싱이 일어나면 Consumer 는 Committed Offset 을 기준으로 다시 메시지를 읽어들인다. 따라서 __메시지를 중복으로 처리할 가능성__ 이 생긴다.
+
+Kafka provides at-least-once messaging guarantees. Duplicates can arise due to either producer retries or consumer restarts after failure. One way to provide exactly-once messaging semantics is to implement an idempotent producer. This has been covered at length in the proposal for an Idempotent Producer. An alternative and more general approach is to support transactional messaging. This can enable use-cases such as replicated logging for transactional data services in addition to the classic idempotent producer use-cases.
+
+__How to handle duplicate Messages__:
+- [Idempotent Producer](https://cwiki.apache.org/confluence/display/KAFKA/Idempotent+Producer)
+- [Handling duplicate messages using the Idempotent consumer pattern](https://microservices.io/post/microservices/patterns/2020/10/16/idempotent-consumer.html)
+- [Transactional Messaging](https://cwiki.apache.org/confluence/display/KAFKA/Transactional+Messaging+in+Kafka)
+  - 비지니스 로직과 이벤트 발행(event publish)을 원자적으로(atomically) 함께 실행하는 것을 Transactional Messaging 이라고 한다.
 
 ## Consumer Options Optimization Strategy
 

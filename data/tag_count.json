@@ -404,6 +404,10 @@
   "size": 1
  },
  {
+  "name": "shedlock",
+  "size": 1
+ },
+ {
   "name": "snapshot",
   "size": 1
  },
@@ -417,7 +421,7 @@
  },
  {
   "name": "spring",
-  "size": 54
+  "size": 55
  },
  {
   "name": "stack",

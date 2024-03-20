@@ -255,6 +255,7 @@ regenerate: true
 * [[/spring/spring-jpa-lazy-write]]
 * [[/spring/spring-reactive-security-test-off]]
 * [[/spring/spring-cloud-openfeign]]
+* [[/spring/spring-shedlock]]
 
 ## Reactive
 

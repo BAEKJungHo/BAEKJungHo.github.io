@@ -50,6 +50,7 @@
  "spring/spring-reactive-security-test-off",
  "spring/spring-responsebodyadvice",
  "spring/spring-security",
+ "spring/spring-shedlock",
  "spring/spring-sqlinjection",
  "spring/spring-transactionmanager",
  "spring/spring-validation"

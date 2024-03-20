@@ -22,6 +22,6 @@ In software systems, encapsulation refers to the bundling of data with the mecha
 
 Encapsulation is often described as just concealing data or restricting access to it, but:
 
-[The most important notion __[of encapsulation]__ is that an object should guarantee that it'll never be in an invalid state... The __[encapsulated]__ object knows best what “valid” means, and how to make that guarantee](https://github.com/bespoyasov/refactor-like-a-superhero/blob/main/manuscript-en/08-abstraction.md#encapsulation)
+[The most important notion [of encapsulation] is that an object should guarantee that it'll never be in an invalid state... The [encapsulated] object knows best what __“valid”__ means, and how to make that guarantee](https://github.com/bespoyasov/refactor-like-a-superhero/blob/main/manuscript-en/08-abstraction.md#encapsulation)
 
 In some languages, we can disallow changing data after creating using [immutable structures](https://baekjungho.github.io/wiki/functional/functional-copy-on-write/). They make it impossible to bring the data to an invalid state from the outside.

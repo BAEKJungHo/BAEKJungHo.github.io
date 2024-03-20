@@ -187,6 +187,10 @@ CGLIB 은 생성자를 2번 호출하는 문제가 있다.
 
 이러한 기본생성자가 꼭 필요하고, 생성자 2번 호출해야하는 문제를 [objenesis](http://objenesis.org/) 라는 라이브러리를 통해 해결하고 있다.
 
+## Links
+
+- [Several ways to define pointcut in Spring AOP](https://www.springcloud.io/post/2023-08/spring-aop-pointcut/#gsc.tab=0)
+
 ## References
 
 - 스프링 핵심원리 고급 / 김영한 저 / Inflearn

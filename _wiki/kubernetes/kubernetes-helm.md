@@ -49,7 +49,7 @@ chartName/
   values.schema.json  # 옵션: values.yaml 파일의 구조를 제약하는 JSON 파일
   charts/             # 이 차트에 종속된 차트들을 포함하는 디렉터리
   crds/               # 커스텀 자원에 대한 정의
-  templates/          # values와 결합될 때, 유효한 쿠버네티스 manifest 파일들이 생성될 템플릿들의 디렉터리
+  templates/          # values 와 결합될 때, 유효한 쿠버네티스 manifest 파일들이 생성될 템플릿들의 디렉터리
   templates/NOTES.txt # 옵션: 간단한 사용법을 포함하는 텍스트 파일
 ```
 

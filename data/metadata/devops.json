@@ -1,0 +1,11 @@
+{
+ "type": "wiki",
+ "title": "Devops",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/devops",
+ "updated": "2023-08-11 20:55:09 +0900",
+ "children": [
+  "devops/devops-sre"
+ ]
+}

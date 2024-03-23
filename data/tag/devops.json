@@ -1,4 +1,6 @@
 [
+ "devops",
+ "devops/devops-sre",
  "docker/docker-container",
  "docker/docker-dockerizing",
  "git/git-trunk-based-development",

@@ -93,7 +93,7 @@
  },
  {
   "name": "devops",
-  "size": 6
+  "size": 8
  },
  {
   "name": "digitalkey",
@@ -333,7 +333,7 @@
  },
  {
   "name": "observability",
-  "size": 4
+  "size": 5
  },
  {
   "name": "oidc",
@@ -408,6 +408,14 @@
   "size": 1
  },
  {
+  "name": "sli",
+  "size": 1
+ },
+ {
+  "name": "slo",
+  "size": 1
+ },
+ {
   "name": "snapshot",
   "size": 1
  },
@@ -422,6 +430,10 @@
  {
   "name": "spring",
   "size": 55
+ },
+ {
+  "name": "sre",
+  "size": 1
  },
  {
   "name": "stack",

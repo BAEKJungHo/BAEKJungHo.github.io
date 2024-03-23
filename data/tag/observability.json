@@ -1,4 +1,5 @@
 [
+ "devops/devops-sre",
  "logging/logging-datadog-pipelines",
  "observability",
  "observability/architecture-domain-oriented-observability",

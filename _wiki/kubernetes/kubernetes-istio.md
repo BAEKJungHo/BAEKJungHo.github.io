@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Istio Traffic management
-summary : 
+summary : Gateway, VirtualService, DestinationRule
 date    : 2024-02-18 15:54:32 +0900
 updated : 2024-02-18 20:15:24 +0900
 tag     : kubernetes

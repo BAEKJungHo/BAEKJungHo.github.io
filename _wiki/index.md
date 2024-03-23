@@ -363,6 +363,7 @@ regenerate: true
 * [[/kubernetes/kubernetes-service-mesh]]
 * [[/kubernetes/kubernetes-istio]]
 * [[/kubernetes/kubernetes-namespace]]
+* [[/kubernetes/kubernetes-helm]]
 
 ## Kafka
 

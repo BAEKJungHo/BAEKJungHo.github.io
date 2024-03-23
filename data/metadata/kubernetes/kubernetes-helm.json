@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Helm",
+ "summary": "Helm is a tool for managing Kubernetes packages called charts",
+ "parent": "kubernetes",
+ "url": "/wiki/kubernetes/kubernetes-helm",
+ "updated": "2024-03-18 20:15:24 +0900",
+ "children": []
+}

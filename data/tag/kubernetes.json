@@ -2,6 +2,7 @@
  "infra/infra-envoy-proxy",
  "kubernetes",
  "kubernetes/kubernetes-architecture",
+ "kubernetes/kubernetes-helm",
  "kubernetes/kubernetes-istio",
  "kubernetes/kubernetes-keda",
  "kubernetes/kubernetes-namespace",

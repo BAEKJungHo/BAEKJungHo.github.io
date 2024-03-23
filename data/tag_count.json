@@ -184,6 +184,10 @@
   "size": 1
  },
  {
+  "name": "helm",
+  "size": 1
+ },
+ {
   "name": "hibernate",
   "size": 1
  },
@@ -241,7 +245,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 9
+  "size": 10
  },
  {
   "name": "lambda",

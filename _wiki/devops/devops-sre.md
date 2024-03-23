@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Site Reliability Engineering
 summary : SLO, SLO
-date    : 2023-01-18 15:54:32 +0900
-updated : 2023-01-18 20:15:24 +0900
+date    : 2024-03-20 15:54:32 +0900
+updated : 2024-03-20 20:15:24 +0900
 tag     : devops observability sre sli slo
 toc     : true
 comment : true

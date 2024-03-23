@@ -28,6 +28,7 @@
  "spring/spring-fixture-monkey",
  "spring/spring-graceful-shutdown",
  "spring/spring-i18n",
+ "spring/spring-ioc",
  "spring/spring-jackson",
  "spring/spring-jakarta",
  "spring/spring-jar-bootjar",

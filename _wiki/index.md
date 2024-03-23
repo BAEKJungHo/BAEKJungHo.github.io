@@ -256,6 +256,7 @@ regenerate: true
 * [[/spring/spring-reactive-security-test-off]]
 * [[/spring/spring-cloud-openfeign]]
 * [[/spring/spring-shedlock]]
+* [[/spring/spring-ioc]]
 
 ## Reactive
 

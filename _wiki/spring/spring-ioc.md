@@ -30,7 +30,7 @@ ReadMore - [Martinfowler - Inversion of Control Containers and the Dependency In
 
 __Analyzing Spring IOC Source Code__:
 - [SpringCloud - Analyzing Spring IOC Source Code](https://www.springcloud.io/post/2023-07/spring-ioc/#gsc.tab=0)
-- https://mp.weixin.qq.com/s/UuFdWGjBmJlDg4BelGL8GQ
+- [Spring IoC source code analysis and in-depth understanding of IoC])(https://mp.weixin.qq.com/s/UuFdWGjBmJlDg4BelGL8GQ)
 
 Spring IoC Container 에서 Bean 가져오기, 삭제 등의 기본 작업이 정의되어있는 핵심 인터페이스는 [BeanFactory Interface](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/BeanFactory.html) 이다. The root interface for accessing a Spring bean container.
 

@@ -1,6 +1,7 @@
 [
  "architecture/architecture-character-architectures",
  "architecture/architecture-clean-impl",
+ "ddd",
  "ddd/ddd-aggregate",
  "ddd/ddd-anticorruption-layer",
  "ddd/ddd-bounded-context",

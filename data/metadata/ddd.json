@@ -1,0 +1,23 @@
+{
+ "type": "wiki",
+ "title": "DDD",
+ "summary": "",
+ "parent": "index",
+ "url": "/wiki/ddd",
+ "updated": "2023-08-20 20:55:09 +0900",
+ "children": [
+  "architecture/architecture-clean-impl",
+  "ddd/ddd-aggregate",
+  "ddd/ddd-anticorruption-layer",
+  "ddd/ddd-bounded-context",
+  "ddd/ddd-claim",
+  "ddd/ddd-essence",
+  "ddd/ddd-event",
+  "ddd/ddd-factory",
+  "ddd/ddd-intention-revealing-interface",
+  "ddd/ddd-module",
+  "ddd/ddd-quotes",
+  "ddd/ddd-reduce-dependency",
+  "ddd/ddd-service"
+ ]
+}

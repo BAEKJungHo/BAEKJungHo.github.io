@@ -497,6 +497,7 @@ regenerate: true
 * [[/database/database-metadata-lock]]
 * [[/database/database-datamart]]
 * [[/database/database-serializable-tx]]
+* [[/database/database-data-anonymization]
 
 ## Clean Code
 

@@ -3,6 +3,7 @@
  "buildtool/gradle-standard",
  "cleancode/cleancode-knowledge",
  "cleancode/cleancode-readability",
+ "database/database-data-anonymization",
  "designpattern/designpattern-callback",
  "functional/functional-defensive-copy",
  "java/java-anonymous-class",

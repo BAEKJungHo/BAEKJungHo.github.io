@@ -5,6 +5,7 @@
  "database",
  "database/database-cascade",
  "database/database-cassandra-kkv",
+ "database/database-data-anonymization",
  "database/database-data-cleansing",
  "database/database-datamart",
  "database/database-language-translation",

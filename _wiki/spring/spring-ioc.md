@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Analyzing Inversion Of Control
+title   : Analyzing Inversion of Control
 summary : Dependency Injection
 date    : 2024-03-21 15:05:32 +0900
 updated : 2024-03-21 15:15:24 +0900

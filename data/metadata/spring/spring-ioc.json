@@ -1,6 +1,6 @@
 {
  "type": "wiki",
- "title": "Analyzing Inversion Of Control",
+ "title": "Analyzing Inversion of Control",
  "summary": "Dependency Injection",
  "parent": "spring",
  "url": "/wiki/spring/spring-ioc",

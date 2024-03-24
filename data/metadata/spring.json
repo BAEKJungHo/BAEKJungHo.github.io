@@ -9,6 +9,7 @@
   "spring/spring-aop",
   "spring/spring-async",
   "spring/spring-batch",
+  "spring/spring-cache",
   "spring/spring-cloud-openfeign",
   "spring/spring-componentscan",
   "spring/spring-concurrency",

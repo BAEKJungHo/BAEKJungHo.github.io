@@ -257,6 +257,7 @@ regenerate: true
 * [[/spring/spring-cloud-openfeign]]
 * [[/spring/spring-shedlock]]
 * [[/spring/spring-ioc]]
+* [[/spring/spring-cache]]
 
 ## Reactive
 

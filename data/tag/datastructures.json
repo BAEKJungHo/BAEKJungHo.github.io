@@ -4,5 +4,6 @@
  "datastructures",
  "datastructures/datastructures-recursion",
  "datastructures/datastructures-stack-heap",
+ "datastructures/datastructures-visualizations",
  "functional/functional-copy-on-write"
 ]

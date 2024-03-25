@@ -1,7 +1,7 @@
 ---
 layout  : category
 title   : DataStructures
-summary : 자료구조
+summary : 
 date    : 2022-04-12 18:28:40 +0900
 updated : 2022-04-12 20:55:09 +0900
 tag     : datastructures

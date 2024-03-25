@@ -8,6 +8,7 @@
  "children": [
   "architecture/architecture-amqp",
   "architecture/architecture-analysis-estimation",
+  "architecture/architecture-api-design",
   "architecture/architecture-aws-well",
   "architecture/architecture-branchbyabstraction",
   "architecture/architecture-bulkhead",

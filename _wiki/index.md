@@ -71,6 +71,7 @@ regenerate: true
 * [[/architecture/architecture-idempotency-design]]
 * [[/architecture/architecture-zero-payload]]
 * [[/architecture/architecture-prometheus]]
+* [[/architecture/architecture-api-design]]
 
 ## Kata
 

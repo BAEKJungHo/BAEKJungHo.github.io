@@ -2,8 +2,8 @@
 layout  : wiki
 title   : API Designs
 summary : 
-date    : 2023-05-19 15:02:32 +0900
-updated : 2023-05-19 15:12:24 +0900
+date    : 2024-03-24 15:02:32 +0900
+updated : 2024-03-24 15:12:24 +0900
 tag     : architecture api
 toc     : true
 comment : true

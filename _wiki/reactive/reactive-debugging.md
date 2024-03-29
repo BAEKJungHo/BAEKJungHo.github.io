@@ -76,7 +76,7 @@ __Errors__:
 21:21:48.731 [main] INFO source A -- | onComplete()
 ```
 
-log() operator 를 추가하면 추가한 지점의 Reactor Signal dmf cnffurgksek.
+log() operator 를 추가하면 추가한 지점의 Reactor Signal 을 출력한다.
 
 ### Activate Debug Mode
 

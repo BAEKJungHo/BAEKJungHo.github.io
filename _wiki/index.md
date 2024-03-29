@@ -318,6 +318,7 @@ regenerate: true
 ## Experience
 
 * [[/experience/experience-external-interlock-error]]
+* [[/experience/experience-premature-optimization]]
 
 ## Devops
 

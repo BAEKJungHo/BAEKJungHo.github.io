@@ -125,7 +125,7 @@
  },
  {
   "name": "experience",
-  "size": 2
+  "size": 3
  },
  {
   "name": "fixturemonkey",
@@ -369,7 +369,7 @@
  },
  {
   "name": "performance",
-  "size": 1
+  "size": 2
  },
  {
   "name": "proxy",

@@ -368,6 +368,10 @@
   "size": 1
  },
  {
+  "name": "performance",
+  "size": 1
+ },
+ {
   "name": "proxy",
   "size": 7
  },

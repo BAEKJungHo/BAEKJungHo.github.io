@@ -4,7 +4,7 @@ title   : Test methods for improved availability and performance
 summary : Load Test, Stress Test, Smoke Test
 date    : 2022-09-30 15:54:32 +0900
 updated : 2022-09-30 20:15:24 +0900
-tag     : infra
+tag     : infra performance
 toc     : true
 comment : true
 public  : true

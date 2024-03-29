@@ -340,6 +340,7 @@ regenerate: true
 * [[/oop/oop-object-calisthenics]]
 * [[/oop/oop-firstclasscollection]]
 * [[/oop/oop-encapsulation]]
+* [[/oop/oop-polymorphism]]
 
 ## Crypto
 

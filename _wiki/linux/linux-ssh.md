@@ -81,7 +81,7 @@ __Packets__:
 The [ssh-keygen](https://en.wikipedia.org/wiki/Ssh-keygen) utility produces the public and private keys, always in pairs.
 
 처음 접속을 시도하는 클라이언트는 서버의 [공개키](https://baekjungho.github.io/wiki/crypto/crypto-asymmetric-cryptography/) 를 받아서, __~/.ssh/known_hosts (클라이언트가 관리하는 호스트 키 DB)__ 에 저장한다.
-즉, __known_hosts__ 는 클라이언트가 서버로 접속하기 위한, 대상 서버의 public key 들이 저장된다.
+즉, __known_hosts__ 는 클라이언트가 서버로 접속하기 위한 대상 서버의 public key 들이 저장된다.
 그리고 __~/.ssh__ 하위에 __authorized_keys__ 도 있는데, 다른 컴퓨터가 client 로서 나의 서버로 접속하 위해서 접속 요청 대상 client 의 public key 들이 저장된다.
 
 __클라이언트 자신의 공개키 생성 및 등록 절차__:

@@ -22,7 +22,7 @@ latex   : true
 ![](/resource/wiki/network-port-forwarding/port-forwarding.png)
 
 [NAT(Network address translation)](https://en.wikipedia.org/wiki/Network_address_translation)는 패킷이 트래픽 라우팅 장치를 통해 전송되는 동안 패킷의 IP 헤더 에 있는 네트워크 주소 정보를 수정하여 IP 주소 공간을 다른 IP 주소 공간으로 매핑하는 방법이다.
-NAT 을 사용하면 서비스 포트 번호 별로 내부의 사설 IP로 지정된 호스트로 전달할 수 있다.
+NAT 을 사용하면 서비스 포트 번호 별로 내부의 사설 IP 로 지정된 호스트로 전달할 수 있다.
 
 __Port Forwarding via NAT Routers__:
 ![](/resource/wiki/network-port-forwarding/nat-router.png)

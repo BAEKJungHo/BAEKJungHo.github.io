@@ -117,9 +117,10 @@ __Benefits__:
 - Sequential consistency because we are reading the databases commit log into the cache service(s).
 - Possible to connect to any MySQL replica in the replication chain since they are all sequentially consistent.
 
-## More Read Articles
+## Links
 
 - [Caching Strategy and Eviction Policies](https://baekjungho.github.io/wiki/architecture/architecture-cache-strategy/)
 - [Distributed Lock with Redis](https://baekjungho.github.io/wiki/redis/redis-lock/)
 - [Improve statement caching efficiency with Hiberneate](https://baekjungho.github.io/wiki/spring/spring-query-cache-plan/)
 - [Distributed Caching in Microservices](https://baekjungho.github.io/wiki/msa/msa-distributed-caching/)
+- [캐시 문제 해결 가이드 - DB 과부하 방지 실전 팁 - TossTech](https://toss.tech/article/cache-traffic-tip)

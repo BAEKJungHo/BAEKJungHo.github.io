@@ -201,6 +201,7 @@ regenerate: true
 * [[/linux/linux-oom-killer]]
 * [[/linux/linux-memory-allocation-overcommit]]
 * [[/linux/linux-increase-kernel-memory]]
+* [[/linux/linux-ssh]]
 
 ## Logging
 
@@ -539,6 +540,7 @@ regenerate: true
 * [[/network/network-half-close]]
 * [[/network/network-latency]]
 * [[/network/network-telnet]]
+* [[/network/network-port-forwarding]]
 
 ## Http
 

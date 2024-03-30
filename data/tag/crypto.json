@@ -6,5 +6,6 @@
  "crypto/crypto-hash-deterministic",
  "crypto/crypto-hash-secure-property",
  "crypto/crypto-kerckhoffs-principle",
- "crypto/crypto-password-encryption"
+ "crypto/crypto-password-encryption",
+ "linux/linux-ssh"
 ]

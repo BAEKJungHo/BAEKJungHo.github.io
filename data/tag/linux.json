@@ -5,5 +5,7 @@
  "linux/linux-increase-kernel-memory",
  "linux/linux-memory-allocation-overcommit",
  "linux/linux-oom-killer",
+ "linux/linux-ssh",
+ "network/network-port-forwarding",
  "network/network-telnet"
 ]

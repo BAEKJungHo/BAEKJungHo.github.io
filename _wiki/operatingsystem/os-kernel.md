@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Kernels - at the heart of the operating system
-summary : 운영체제의 핵심인 커널
+title   : Kernels
+summary : At the heart of the operating system
 date    : 2022-10-10 15:02:32 +0900
 updated : 2022-10-10 15:12:24 +0900
 tag     : operatingsystem

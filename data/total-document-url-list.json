@@ -386,6 +386,7 @@
  "/wiki/operatingsystem",
  "/wiki/operatingsystem/os-fetch-execute-cycle",
  "/wiki/operatingsystem/os-kernel",
+ "/wiki/operatingsystem/os-system-call",
  "/wiki/reactive",
  "/wiki/reactive/reactive-actor-model",
  "/wiki/reactive/reactive-async-nonblocking",

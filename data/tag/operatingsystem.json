@@ -2,5 +2,6 @@
  "java/java-multithreading",
  "operatingsystem",
  "operatingsystem/os-fetch-execute-cycle",
- "operatingsystem/os-kernel"
+ "operatingsystem/os-kernel",
+ "operatingsystem/os-system-call"
 ]

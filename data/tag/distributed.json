@@ -1,9 +1,9 @@
 [
  "architecture/architecture-cap",
+ "caching/msa-cache-consistency",
+ "caching/msa-distributed-caching",
  "database/database-cassandra-kkv",
  "database/database-serializable-tx",
- "msa/msa-cache-consistency",
- "msa/msa-distributed-caching",
  "msa/msa-eventual-consistency",
  "msa/msa-xa",
  "observability/msa-distributed-tracing",

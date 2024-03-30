@@ -1,7 +1,7 @@
 [
+ "caching/msa-cache-consistency",
  "database/database-metadata-lock",
  "go/go-concurrency",
- "msa/msa-cache-consistency",
  "msa/msa-concurrency-distributedlock",
  "redis/redis-lock",
  "spring/spring-concurrency-resolve"

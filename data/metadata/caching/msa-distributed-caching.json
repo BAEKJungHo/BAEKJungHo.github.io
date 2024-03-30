@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Distributed Caching in Microservices",
+ "summary": "",
+ "parent": "caching",
+ "url": "/wiki/caching/msa-distributed-caching",
+ "updated": "2023-02-24 20:15:24 +0900",
+ "children": []
+}

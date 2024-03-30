@@ -1,5 +1,6 @@
 [
- "architecture/architecture-cache-strategy",
- "msa/msa-cache-consistency",
- "msa/msa-distributed-caching"
+ "caching",
+ "caching/architecture-cache-strategy",
+ "caching/msa-cache-consistency",
+ "caching/msa-distributed-caching"
 ]

@@ -40,7 +40,6 @@ regenerate: true
 * [[/architecture/architecture-clean-impl]]
 * [[/architecture/architecture-analysis-estimation]]
 * [[/architecture/architecture-circuit-breaker]]
-* [[/architecture/architecture-cache-strategy]]
 * [[/architecture/architecture-layered]]
 * [[/architecture/architecture-components]]
 * [[/architecture/architecture-lambda]]
@@ -311,12 +310,16 @@ regenerate: true
 * [[/msa/msa-service-discovery]]
 * [[/msa/msa-message-delivery]]
 * [[/msa/msa-debounce-throttle]]
-* [[/msa/msa-distributed-caching]]
 * [[/msa/msa-service-connectivity]]
 * [[/msa/msa-event-deconcern]]
 * [[/msa/msa-traffic-shadowing]]
-* [[/msa/msa-cache-consistency]]
 * [[/msa/msa-concurrency-distributedlock]]
+
+## Caching
+
+* [[/msa/msa-cache-consistency]]
+* [[/architecture/architecture-cache-strategy]]
+* [[/msa/msa-distributed-caching]]
 
 ## Experience
 

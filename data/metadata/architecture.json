@@ -12,7 +12,6 @@
   "architecture/architecture-aws-well",
   "architecture/architecture-branchbyabstraction",
   "architecture/architecture-bulkhead",
-  "architecture/architecture-cache-strategy",
   "architecture/architecture-cap",
   "architecture/architecture-character-architectures",
   "architecture/architecture-circuit-breaker",

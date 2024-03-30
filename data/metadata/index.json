@@ -8,6 +8,7 @@
   "architecture",
   "auth",
   "buildtool",
+  "caching",
   "cleancode",
   "crypto",
   "database",

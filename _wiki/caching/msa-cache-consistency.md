@@ -8,7 +8,7 @@ tag     : msa caching lock distributed
 toc     : true
 comment : true
 public  : true
-parent  : [[/msa]]
+parent  : [[/caching]]
 latex   : true
 ---
 * TOC

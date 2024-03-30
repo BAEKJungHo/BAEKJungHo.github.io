@@ -8,7 +8,7 @@ tag     : architecture caching
 toc     : true
 comment : true
 public  : true
-parent  : [[/architecture]]
+parent  : [[/caching]]
 latex   : true
 ---
 * TOC
@@ -56,7 +56,7 @@ class MyService {
     }
 }
 
-// CacheConfig to set TTL for cache
+// CacheConfig to set TTL for caching
 @Configuration
 @EnableCaching
 class CacheConfig {

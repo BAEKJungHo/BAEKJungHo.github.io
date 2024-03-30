@@ -67,6 +67,12 @@ The transition from user mode to kernel mode occurs when the application request
 
 The mode bit is set to 0 in the kernel mode. It is changed from 0 to 1 when switching from kernel mode to user mode.
 
+## XNU
+
+__XNU is OS kernel used for Mac OS__:
+
+![](/resource/wiki/os-kernel/xnu.png)
+
 ## Links
 
 - [What is a kernel - Digital Guide](https://www.ionos.com/digitalguide/server/know-how/what-is-a-kernel/)

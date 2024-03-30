@@ -73,6 +73,12 @@ __XNU is OS kernel used for Mac OS__:
 
 ![](/resource/wiki/os-kernel/xnu.png)
 
+## Architecture of AIOS: LLM Agent Operating System
+
+__[Architecture of AIOS: LLM Agent Operating System](https://github.com/agiresearch/AIOS)__:
+
+![](/resource/wiki/os-kernel/aios-architecture.png)
+
 ## Links
 
 - [What is a kernel - Digital Guide](https://www.ionos.com/digitalguide/server/know-how/what-is-a-kernel/)

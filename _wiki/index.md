@@ -186,6 +186,7 @@ regenerate: true
 * [[/tdd/tdd-naming]]
 * [[/tdd/tdd-interface-design-decisions]]
 * [[/tdd/tdd-why-use-mock-any]]
+* [[/tdd/tdd-sut-doc]]
 
 ## TroubleShooting
 

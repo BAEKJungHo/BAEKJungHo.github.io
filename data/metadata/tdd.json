@@ -9,6 +9,7 @@
   "tdd/tdd-interface-design-decisions",
   "tdd/tdd-naming",
   "tdd/tdd-red-green-refactor",
+  "tdd/tdd-sut-doc",
   "tdd/tdd-why-use-mock-any"
  ]
 }

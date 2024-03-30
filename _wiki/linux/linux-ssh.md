@@ -29,7 +29,7 @@ __터널링 기법__:
 
 ## Secure Shell
 
-SSH 는 TCP 상에 보안 채널([터널링](http://www.ktword.co.kr/test/view/view.php?m_temp1=1708&id=530))을 형성하여
+SSH 는 TCP 상에 보안 채널([터널링](http://www.ktword.co.kr/test/view/view.php?m_temp1=1708&id=530))을 형성하여 원격 호스트에 접속할 수 있다.
 
 ### Characteristics
 
@@ -86,6 +86,7 @@ The [ssh-keygen](https://en.wikipedia.org/wiki/Ssh-keygen) utility produces the 
 
 __클라이언트 자신의 공개키 생성 및 등록 절차__:
 - ssh-keygen 명령어를 이용하여, 자신의 __공개키(~/.ssh/id_ras.pub)__ 및 __개인키(~/.ssh/id_rsa)__ 를 생성
+- 개인 키(pem 파일)를 잃어버리거나 손상시키게 되면 기본적으로 복구가 불가능하다. 따라서 개인 키는 반드시 안전한 곳에 백업하거나 보관해야 함
 - 접속할 서버의 authorized_keys 파일에, 생성한 자신의 공개키를 등록해야 함
 
 __Scenarios__:

@@ -16,7 +16,9 @@ latex   : true
 
 ## System Call
 
-__[Kernel](https://baekjungho.github.io/wiki/operatingsystem/os-kernel/)__ 에서는 UserMode 와 KernelMode 가 존재한다.
+__[Kernel](https://baekjungho.github.io/wiki/operatingsystem/os-kernel/)__ 
+
+CPU 에는 UserMode 와 KernelMode 가 존재한다.
 
 The purpose of the system calls is to allow user-level applications access of the services provided by the kernel. The user apps do not have the privelege to perform operations, so they make system calls which further requests a kernel to provide a specific service.
 

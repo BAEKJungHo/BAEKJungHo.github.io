@@ -438,6 +438,7 @@
  "/wiki/spring/spring-di",
  "/wiki/spring/spring-dto-projection",
  "/wiki/spring/spring-enabletransactionmanagement",
+ "/wiki/spring/spring-errordecoder",
  "/wiki/spring/spring-exception-hierarchy",
  "/wiki/spring/spring-filter",
  "/wiki/spring/spring-fixture-monkey",

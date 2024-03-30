@@ -260,6 +260,7 @@ regenerate: true
 * [[/spring/spring-shedlock]]
 * [[/spring/spring-ioc]]
 * [[/spring/spring-cache]]
+* [[/spring/spring-errordecoder]]
 
 ## Reactive
 

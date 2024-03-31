@@ -178,6 +178,7 @@ regenerate: true
 * [[/java/java-gc-generation-design]]
 * [[/java/java-gc-collector]]
 * [[/java/java-atomic]]
+* [[/java/java-abstraction-by-wrapping]]
 
 ## TDD
 

@@ -1,5 +1,6 @@
 [
  "go/go-method-function",
+ "java/java-abstraction-by-wrapping",
  "kotlin/kotlin-property",
  "oop",
  "oop/oop-elegant-object",

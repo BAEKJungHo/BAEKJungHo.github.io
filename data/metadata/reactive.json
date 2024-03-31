@@ -15,6 +15,7 @@
   "reactive/reactive-defer",
   "reactive/reactive-demand-source",
   "reactive/reactive-duality",
+  "reactive/reactive-eventloop",
   "reactive/reactive-executor-service",
   "reactive/reactive-hibernate",
   "reactive/reactive-hot-cold",

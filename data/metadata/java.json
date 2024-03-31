@@ -7,6 +7,7 @@
  "updated": "2022-04-18 20:55:09 +0900",
  "children": [
   "java/execution-java",
+  "java/java-abstraction-by-wrapping",
   "java/java-anonymous-class",
   "java/java-atomic",
   "java/java-bigdecimal",

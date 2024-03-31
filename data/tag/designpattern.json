@@ -15,5 +15,6 @@
  "designpattern/designpattern-singleton",
  "designpattern/designpattern-strategy",
  "designpattern/designpattern-template-method",
+ "reactive/reactive-eventloop",
  "spring/spring-jpa-osiv"
 ]

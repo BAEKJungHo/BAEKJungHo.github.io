@@ -1,6 +1,7 @@
 [
  "java",
  "java/execution-java",
+ "java/java-abstraction-by-wrapping",
  "java/java-anonymous-class",
  "java/java-atomic",
  "java/java-bigdecimal",

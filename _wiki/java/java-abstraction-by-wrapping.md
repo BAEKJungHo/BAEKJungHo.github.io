@@ -42,7 +42,7 @@ static native void halt0(int status);
 
 Java's execution environment supports mutual exclusion via an entrance queue & synchronized method.
 
-Mutual exclusion - allows concurrent access & updates to shared resources without race conditions.
+[Mutual exclusion](https://en.wikipedia.org/wiki/Mutual_exclusion) - allows concurrent access & updates to shared resources without race conditions.
 
 [Monitors are a higher-level synchronization construct that simplifies process synchronization](https://www.geeksforgeeks.org/monitors-in-process-synchronization/) by providing a high-level abstraction for data access and synchronization. Monitors are implemented as programming language constructs, typically in object-oriented languages, and provide mutual exclusion, condition variables, and data [encapsulation](https://baekjungho.github.io/wiki/oop/oop-encapsulation/) in a single construct.
 

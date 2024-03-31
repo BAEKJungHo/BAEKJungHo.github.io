@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : Blocking NonBlocking Synchronous Asynchronous
-summary : 
+summary : I/O Models
 date    : 2023-03-18 15:05:32 +0900
 updated : 2023-03-18 15:15:24 +0900
-tag     : reactive
+tag     : reactive 
 toc     : true
 comment : true
 public  : true
@@ -84,3 +84,4 @@ Asynchronous NonBlocking 에서 __Blocking 코드가 있으면__ 발생하는 �
 
 - [Boost application performance using asynchronous I/O](https://developer.ibm.com/articles/l-async/)
 - [Blocking-NonBlocking-Synchronous-Asynchronous](http://homoefficio.github.io/2017/02/19/Blocking-NonBlocking-Synchronous-Asynchronous/)
+- [I/O Models](https://notes.shichao.io/unp/ch6/)

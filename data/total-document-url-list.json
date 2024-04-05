@@ -137,6 +137,7 @@
  "/wiki/etc",
  "/wiki/etc/character-encoding",
  "/wiki/etc/environment-settings",
+ "/wiki/etc/jira-api",
  "/wiki/etc/mathjax-latex",
  "/wiki/etc/regular-expression",
  "/wiki/etc/unit-of-measure",

@@ -600,6 +600,7 @@ regenerate: true
 * [[/etc/environment-settings]]
 * [[/etc/regular-expression]]
 * [[/etc/unit-of-measure]]
+* [[/etc/jira-api]]
 
 ---
 

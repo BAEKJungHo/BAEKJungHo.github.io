@@ -40,5 +40,5 @@ fields.add(new IssueField(
 위 코드 부분에서 typesMap.get("key") 이 부분이 문제인것 같지만, no longer supports 상태라.. Jira Rest Java Client Core 는 사용하지 않는것이 좋아보인다.
 대신 아래 두 API 를 사용하는 것이 좋다.
 
-- v3: https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-issueidorkey-get
-- v2: https://developer.atlassian.com/server/jira/platform/jira-rest-api-example-add-comment-8946422/
+- [v3](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-issueidorkey-get) 
+- [v2](https://developer.atlassian.com/server/jira/platform/jira-rest-api-example-add-comment-8946422/)

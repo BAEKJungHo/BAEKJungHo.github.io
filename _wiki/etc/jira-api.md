@@ -4,7 +4,7 @@ title   : Atlassian JIRA APIs
 summary : 
 date    : 2024-04-01 15:54:32 +0900
 updated : 2024-04-01 20:15:24 +0900
-tag     : etc
+tag     : etc atlassian jira
 toc     : true
 comment : true
 public  : true

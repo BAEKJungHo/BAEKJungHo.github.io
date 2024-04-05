@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : EventLoop described at abstraction and computer science level
+title   : EventLoop
 summary : 
 date    : 2024-02-12 15:05:32 +0900
 updated : 2024-02-12 15:15:24 +0900

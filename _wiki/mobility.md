@@ -11,7 +11,21 @@ parent  : [[/index]]
 latex   : false
 ---
 
-## References
+## Knowledge
+
+### Navigation
+
+- [Automotive navigation system](https://ko.wikipedia.org/wiki/%EC%B0%A8%EB%9F%89_%EC%9E%90%EB%8F%99_%ED%95%AD%EB%B2%95_%EC%9E%A5%EC%B9%98) = Car navigation system
+- 내비게이션 시스템에 필요한 기반 기술 
+  - [맵 매칭(Map Matching, 지도 매칭)](https://en.wikipedia.org/wiki/Map_matching) - 20km/h~140km/h로 이동하는 차량의 GPS 정보로부터 수신된 위치 정보는 그 정확도가 높지 않다.
+  - 지도 화면 표출(Display Map Screen)
+  - 경로 탐색(Routing)
+  - 경로 안내(Route Guiding)
+  - 검색(Search)
+  - 교통 정보(Traffic Information)
+  - DB 경량화(DB Minimimal)
+
+## Original Equipment Manufacturer
 
 - [OEMs, Tier 1, 2 & 3 - The Automotive Industry Supply Chain Explained](https://www.amatechinc.com/resources/blog/returnable-packaging/tier-1-2-3-automotive-industry-supply-chain-explained)
   - 자동차 산업에서의 OEM 은 다른 여러 제품을 조합하여 자체 브랜드 이름으로 판매하는 제품의 생산자를 의미한다.

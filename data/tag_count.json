@@ -221,7 +221,7 @@
  },
  {
   "name": "java",
-  "size": 44
+  "size": 45
  },
  {
   "name": "javascript",
@@ -413,7 +413,7 @@
  },
  {
   "name": "redis",
-  "size": 5
+  "size": 4
  },
  {
   "name": "refactoring",

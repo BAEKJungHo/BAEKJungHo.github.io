@@ -27,7 +27,11 @@ JDK 에서는 JVM 내에서 실행되는 byte code 와 native code 사이의 bri
 __System call by JNI__:
 
 ```
+// Blocking 방식
 JVM -> JNI -> 시스템 콜 -> 커널 -> 디스크 컨트롤러 -> 커널 버퍼 복사 -> JVM 버퍼 복사
+
+// NonBlocking 방식
+JVM -> 시스템 콜 -> JNI -> 디스크 컨트롤러 -> DMA -> 복사
 ```
 
 Java 에서 System.exit 코드를 쭉 들어가면 아래와 같이 native code 를 사용하는 것을 알 수 있다. native code 를 사용하는 순간 thread 는 [_thread_in_native](https://hg.openjdk.org/jdk8u/jdk8u/hotspot/file/312e113bc3ed/src/share/vm/utilities/globalDefinitions.hpp#l852) 상태가 된다.

@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : EventLoop
-summary : 
+summary : Direct Memory Access, NIO, Streams, Buffers
 date    : 2024-02-12 15:05:32 +0900
 updated : 2024-02-12 15:15:24 +0900
-tag     : reactive redis operatingsystem designpattern multiplexing 
+tag     : reactive linux operatingsystem designpattern multiplexing java
 toc     : true
 comment : true
 public  : true
@@ -13,6 +13,89 @@ latex   : true
 ---
 * TOC
 {:toc}
+
+## Essence of Network I/O
+
+[Everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file) 이라는 아이디어는 드라이브, 키보드, 프린터, 프로세스 간 및 네트워크 통신과 같은 리소스 와의 입출력을 간단한 스트림 으로 처리한다는 아이디어이다.
+
+Linux 에서는 소켓도 하나의 파일(file), 더 정확히는 파일 디스크립터(file descriptor)로 생성해 관리한다.
+
+[File descriptor](https://en.wikipedia.org/wiki/File_descriptor) 는 다음과 같은 특징이 있다.
+
+- 운영체제가 만든 파일을 구분하기 위한 일종의 숫자이다.
+- 저수준 파일 입출력 함수는 입출력을 목적으로 파일 디스크립터를 요구한다.
+- 저수준 파일 입출력 함수에 소켓의 파일 디스크립터를 전달하면, 소켓을 대상으로 입출력을 진행한다.
+
+따라서, __Network I/O 의 본질은 File descriptors 에 대한 작업__ 이다.
+
+## Multiplexing
+
+[비동기 서버에서 이벤트 루프를 블록하면 안 되는 이유 1부 - 멀티플렉싱 기반의 다중 접속 서버로 가기까지 - LINE](https://engineering.linecorp.com/ko/blog/do-not-block-the-event-loop-part1)
+
+__MultiProcessing__ 방식은 프로세스는 독립적 메모리 공간을 갖는다. 대신 단점으로는 서로 다른 독립적인 메모리 공간을 갖기 때문에 프로세스간 정보 교환이 어렵다.
+__MultiThreading__ 방식은 서로 공유하는 메모리가 있기 때문에 스레드간 정보 교환이 쉽다. 단점으로는 일정 크기의 스레드를 생성해 풀로 관리하며 운영할 수 있지만 요청마다 스레드를 무한정 생성할 수 없기 때문에 많은 수의 요청을 동시에 처리할 수 없다. ([C10k problem](https://en.wikipedia.org/wiki/C10k_problem) 을 해결하지 못한다).
+
+[I/O Multiplexing: The select and poll Functions](https://notes.shichao.io/unp/ch6/)
+
+![](/resource/wiki/reactive-eventloop/iomultiplexing.png)
+
+Multiplexing 모델에서는 [select](https://en.wikipedia.org/wiki/Select_(Unix)) 함수를 호출해서 여러 개의 소켓 중 read 함수 호출이 가능한 소켓이 생길 때까지 대기한다. select 의 결과로 read 함수를 호출할 수 있는 소켓의 목록이 반환되면, 해당 소켓들에 대해 read 함수를 호출한다.
+
+Blocking I/O 모델은 하나의 스레드에서 하나의 소켓에 대해 read 함수를 호출해 데이터가 커널 공간에 도착했는지 확인하고 현재 읽을 수 있는 데이터가 없는 경우 블록돼 대기했다면, Multiplexing I/O 모델은 여러 소켓을 동시에 확인하며 그중 하나 이상의 사용 가능한 소켓이 준비될 때까지 대기한다.
+
+## Direct Memory Access
+
+Java NIO 에 대해서 살펴보기 전에, [How Java IO Works Internally](https://howtodoinjava.com/java/io/how-java-io-works-internally/) 에 대해서 살펴보자.
+
+The very term “input/output” means nothing more than moving data in and out of __buffers__. buffer 가 I/O 를 이해하는데 아주 중요한 역할을 한다.
+
+Diagram of how block data moves from an external source, such as a hard disk, to a memory area inside a running process (e.g. RAM)
+
+![](/resource/wiki/reactive-eventloop/harddisk-to-memory.png)
+
+__[Abstraction by Wrapping](https://baekjungho.github.io/wiki/java/java-abstraction-by-wrapping/)__ 여기서 JNI 를 통한 Blocking 방식의 system call 은 아래와 같은 과정으로 이뤄지는 것을 다뤘다.
+
+```
+// Blocking
+JVM -> JNI -> 시스템 콜 -> 커널 -> 디스크 컨트롤러 -> 커널 버퍼 복사 -> JVM 버퍼 복사
+```
+
+Java 에서 Blocking I/O 방식은 운영체제 메모리에 있는 파일 내용을 JVM 내 메모리로 다시 복사해야하기 때문에, 직접 메모리를 관리하고 OS Level 의 system call 을 사용하는 C/C++ 보다 I/O 성능이 좋지 않다.
+I/O 성능을 개선하기 위해 나온것이 [Java NIO](https://docs.oracle.com/javase/8/docs/api/java/nio/package-summary.html) 이다.
+
+__Direct Memory Access__:
+
+![](/resource/wiki/reactive-eventloop/dma.png)
+
+Java NIO 에서 ByteBuffer 를 allocateDirect() 메서드로 생성할 경우 __Direct Memory Access__ 를 사용하는 플로우로 진행된다.
+
+```
+JVM -> 시스템 콜 -> JNI -> 디스크 컨트롤러 -> DMA -> 복사
+```
+
+장점은 다음과 같다.
+
+- 디스크에 있는 파일을 운영체제 메모리로 읽어들일 때 CPU 를 건드리지 않는다.
+- 운영체제 메모리에 있는 파일 내용을 JVM 내 메모리로 다시 복사할 필요가 없다.
+- JVM 내 힙 메모리를 쓰지 않으므로 GC를 유발하지 않는다.(물론 일정 크기를 가진 버퍼가 운영체제 메모리에 생성되는 것이고, 이 버퍼에 대한 참조 자체는 JVM 메모리 내에 생성된다)
+
+단점은 다음과 같다.
+
+- 시스템 메모리를 사용하기 때문에 할당/해제 비용이 다소 비싸다.
+
+## Java NIO
+
+[비동기 서버에서 이벤트 루프를 블록하면 안 되는 이유 2부 - Java NIO 와 멀티플렉싱 기반의 다중 접속 서버 - LINE](https://engineering.linecorp.com/ko/blog/do-not-block-the-event-loop-part2)
+
+Java NIO 의 핵심은 다음과 같다.
+
+- Channel and Buffer
+  - 서버에서 클라이언트와 데이터를 주고받을 때 채널을 통해서 버퍼(ByteBuffer)를 이용해 읽고 쓴다.
+- NonBlocking I/O
+- Selector
+  - Java NIO 에는 여러 개의 채널에서 이벤트(예: 연결 생성, 데이터 도착 등)를 모니터링할 수 있는 셀렉터가 포함돼 있기 때문에 하나의 스레드로 여러 채널을 모니터링할 수 있다.
+  - 내부적으로 [SelectorProvider](https://docs.oracle.com/javase/7/docs/api/java/nio/channels/spi/SelectorProvider.html) 에서 운영체제와 버전에 따라 사용 가능한 멀티플렉싱 기술을 선택해 사용합니다.
+
 
 ## EventLoop
 
@@ -34,8 +117,9 @@ end function
 
 ## Links
 
-- [비동기 서버에서 이벤트 루프를 블록하면 안 되는 이유 1부 - 멀티플렉싱 기반의 다중 접속 서버로 가기까지 - LINE](https://engineering.linecorp.com/ko/blog/do-not-block-the-event-loop-part1)
-- [비동기 서버에서 이벤트 루프를 블록하면 안 되는 이유 2부 - Java NIO 와 멀티플렉싱 기반의 다중 접속 서버 - LINE](https://engineering.linecorp.com/ko/blog/do-not-block-the-event-loop-part2)
+- [Building Highly Scalable Servers with Java NIO](https://zoo.cs.yale.edu/classes/cs434/cs434-2021-fall/programming/examples-java-socket/examples/Async2/ONJava.pdf)
+- [I/O Models](https://rickhw.github.io/2019/02/27/ComputerScience/IO-Models/)
 - [비동기 서버에서 이벤트 루프를 블록하면 안 되는 이유 3부 - Reactor 패턴과 이벤트 루프 - LINE](https://engineering.linecorp.com/ko/blog/do-not-block-the-event-loop-part3)
 - [자바 NIO 의 동작원리 및 IO 모델 - 개발한입](https://brewagebear.github.io/fundamental-nio-and-io-models/)
 - [Back to the Essence - Java 컴파일에서 실행까지](https://homoefficio.github.io/2019/01/31/Back-to-the-Essence-Java-%EC%BB%B4%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%EA%B9%8C%EC%A7%80-1/)
+- [Java NIO Direct Buffer 를 이용해서 대용량 파일 행 기준으로 쪼개기](https://homoefficio.github.io/2019/02/27/Java-NIO-Direct-Buffer%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%8C%8C%EC%9D%BC-%ED%96%89-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%EC%AA%BC%EA%B0%9C%EA%B8%B0/)

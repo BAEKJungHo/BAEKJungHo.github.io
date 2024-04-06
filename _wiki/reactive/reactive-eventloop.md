@@ -47,7 +47,7 @@ Blocking I/O 모델은 하나의 스레드에서 하나의 소켓에 대해 read
 
 Java NIO 에 대해서 살펴보기 전에, [How Java IO Works Internally](https://howtodoinjava.com/java/io/how-java-io-works-internally/) 에 대해서 살펴보자.
 
-The very term “input/output” means nothing more than moving data in and out of __buffers__. buffer 가 I/O 를 이해하는데 아주 중요한 역할을 한다.
+The very term “input/output” means nothing more than moving data in and out of __buffers__. Buffer 가 I/O 를 이해하는데 아주 중요한 역할을 한다.
 
 In Java I/O, the data flows from a source known as a __data source__ to a destination known as a __data sink__.
 

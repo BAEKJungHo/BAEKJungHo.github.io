@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "EventLoop",
- "summary": "",
+ "summary": "Linux FileDescriptor",
  "parent": "reactive",
  "url": "/wiki/reactive/reactive-eventloop",
  "updated": "2024-02-12 15:15:24 +0900",

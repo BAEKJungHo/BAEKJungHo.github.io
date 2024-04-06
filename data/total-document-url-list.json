@@ -306,6 +306,7 @@
  "/wiki/linux/linux-memory-allocation-overcommit",
  "/wiki/linux/linux-oom-killer",
  "/wiki/linux/linux-ssh",
+ "/wiki/linux/linux-unix-philosophy",
  "/wiki/logging",
  "/wiki/logging/logging-datadog-pipelines",
  "/wiki/logging/logging-entity",

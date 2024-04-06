@@ -203,6 +203,7 @@ regenerate: true
 * [[/linux/linux-memory-allocation-overcommit]]
 * [[/linux/linux-increase-kernel-memory]]
 * [[/linux/linux-ssh]]
+* [[/linux/linux-unix-philosophy]]
 
 ## Logging
 

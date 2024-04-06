@@ -6,6 +6,8 @@
  "linux/linux-memory-allocation-overcommit",
  "linux/linux-oom-killer",
  "linux/linux-ssh",
+ "linux/linux-unix-philosophy",
  "network/network-port-forwarding",
- "network/network-telnet"
+ "network/network-telnet",
+ "reactive/reactive-eventloop"
 ]

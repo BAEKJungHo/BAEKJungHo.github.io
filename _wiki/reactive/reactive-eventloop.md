@@ -16,7 +16,7 @@ latex   : true
 
 ## Essence of Network I/O
 
-[Everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file) 이라는 아이디어는 드라이브, 키보드, 프린터, 프로세스 간 및 네트워크 통신과 같은 리소스 와의 입출력을 간단한 스트림 으로 처리한다는 아이디어이다.
+[Everything is a file](https://en.wikipedia.org/wiki/Everything_is_a_file) 이라는 아이디어는 드라이브, 키보드, 프린터, 프로세스 간 및 네트워크 통신과 같은 리소스 와의 입출력을 간단한 __스트림(stream)__ 으로 처리한다는 아이디어이다.
 
 Linux 에서는 소켓도 하나의 파일(file), 더 정확히는 파일 디스크립터(file descriptor)로 생성해 관리한다.
 
@@ -48,6 +48,10 @@ Blocking I/O 모델은 하나의 스레드에서 하나의 소켓에 대해 read
 Java NIO 에 대해서 살펴보기 전에, [How Java IO Works Internally](https://howtodoinjava.com/java/io/how-java-io-works-internally/) 에 대해서 살펴보자.
 
 The very term “input/output” means nothing more than moving data in and out of __buffers__. buffer 가 I/O 를 이해하는데 아주 중요한 역할을 한다.
+
+In Java I/O, the data flows from a source known as a __data source__ to a destination known as a __data sink__.
+
+![](/resource/wiki/reactive-eventloop/flow-stream.png)
 
 Diagram of how block data moves from an external source, such as a hard disk, to a memory area inside a running process (e.g. RAM)
 
@@ -96,6 +100,14 @@ Java NIO 의 핵심은 다음과 같다.
   - Java NIO 에는 여러 개의 채널에서 이벤트(예: 연결 생성, 데이터 도착 등)를 모니터링할 수 있는 셀렉터가 포함돼 있기 때문에 하나의 스레드로 여러 채널을 모니터링할 수 있다.
   - 내부적으로 [SelectorProvider](https://docs.oracle.com/javase/7/docs/api/java/nio/channels/spi/SelectorProvider.html) 에서 운영체제와 버전에 따라 사용 가능한 멀티플렉싱 기술을 선택해 사용합니다.
 
+### Channels and Buffers
+
+A channel is like a stream. It represents a connection between a data source/sink and a Java program for data transfer. In stream-based I/O, the basic unit of data transfer is a __byte__. In channel-based NIO, the basic unit of data transfer is a __buffer__.
+
+![](/resource/wiki/reactive-eventloop/channel-buffer.png)
+
+- A stream can be used for __one-way__ data transfer. That is, an input stream can only transfer data from a data source to a Java program; an output stream can only transfer data from a Java program to a data sink.
+- However, a channel provides a __two-way__ data transfer facility.
 
 ## EventLoop
 
@@ -123,3 +135,4 @@ end function
 - [자바 NIO 의 동작원리 및 IO 모델 - 개발한입](https://brewagebear.github.io/fundamental-nio-and-io-models/)
 - [Back to the Essence - Java 컴파일에서 실행까지](https://homoefficio.github.io/2019/01/31/Back-to-the-Essence-Java-%EC%BB%B4%ED%8C%8C%EC%9D%BC%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%EA%B9%8C%EC%A7%80-1/)
 - [Java NIO Direct Buffer 를 이용해서 대용량 파일 행 기준으로 쪼개기](https://homoefficio.github.io/2019/02/27/Java-NIO-Direct-Buffer%EB%A5%BC-%EC%9D%B4%EC%9A%A9%ED%95%B4%EC%84%9C-%EB%8C%80%EC%9A%A9%EB%9F%89-%ED%8C%8C%EC%9D%BC-%ED%96%89-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%EC%AA%BC%EA%B0%9C%EA%B8%B0/)
+- [NIO (New Input/Output) vs IO (Input/Output) and NIO.2 in Java](https://java-latte.blogspot.com/2014/10/nio-tutorial-in-java-with-example-and-nio2-feature.html)

@@ -28,6 +28,10 @@
   "size": 1
  },
  {
+  "name": "buffer",
+  "size": 1
+ },
+ {
   "name": "buildtool",
   "size": 2
  },

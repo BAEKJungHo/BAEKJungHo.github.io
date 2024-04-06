@@ -177,7 +177,6 @@ while(i.hasNext()) {
     processWritable(key);     // ready for writing
   }
 }
-
 ```
 
 ## EventLoop

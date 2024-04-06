@@ -53,10 +53,6 @@ In Java I/O, the data flows from a source known as a __data source__ to a destin
 
 ![](/resource/wiki/reactive-eventloop/flow-stream.png)
 
-Diagram of how block data moves from an external source, such as a hard disk, to a memory area inside a running process (e.g. RAM)
-
-![](/resource/wiki/reactive-eventloop/harddisk-to-memory.png)
-
 __[Abstraction by Wrapping](https://baekjungho.github.io/wiki/java/java-abstraction-by-wrapping/)__ 여기서 JNI 를 통한 Blocking 방식의 system call 은 아래와 같은 과정으로 이뤄지는 것을 다뤘다.
 
 ```
@@ -108,6 +104,12 @@ A channel is like a stream. It represents a connection between a data source/sin
 
 - A stream can be used for __one-way__ data transfer. That is, an input stream can only transfer data from a data source to a Java program; an output stream can only transfer data from a Java program to a data sink.
 - However, a channel provides a __two-way__ data transfer facility.
+
+__Channel Types__:
+- FileChannel
+- DatagramChannel
+- SocketChannel
+- ServerSocketChannel: 클라이언트의 TCP 연결 요청을 수신(listening)할 수 있으며, SocketChannel 은 각 연결마다 생성된다.
 
 ## EventLoop
 

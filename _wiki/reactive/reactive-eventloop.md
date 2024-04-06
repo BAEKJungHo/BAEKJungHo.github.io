@@ -96,7 +96,7 @@ Java NIO 의 핵심은 다음과 같다.
 - NonBlocking I/O
 - Selector
   - Java NIO 에는 여러 개의 채널에서 이벤트(예: 연결 생성, 데이터 도착 등)를 모니터링할 수 있는 셀렉터가 포함돼 있기 때문에 하나의 스레드로 여러 채널을 모니터링할 수 있다.
-  - 내부적으로 [SelectorProvider](https://docs.oracle.com/javase/7/docs/api/java/nio/channels/spi/SelectorProvider.html) 에서 운영체제와 버전에 따라 사용 가능한 멀티플렉싱 기술을 선택해 사용합니다.
+  - 내부적으로 [SelectorProvider](https://docs.oracle.com/javase/7/docs/api/java/nio/channels/spi/SelectorProvider.html) 에서 운영체제와 버전에 따라 사용 가능한 멀티플렉싱 기술을 선택해 사용한다.
 
 ### Channels and Buffers
 

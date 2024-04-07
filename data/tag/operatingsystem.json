@@ -2,6 +2,7 @@
  "java/java-abstraction-by-wrapping",
  "java/java-multithreading",
  "operatingsystem",
+ "operatingsystem/os-deadlock",
  "operatingsystem/os-fetch-execute-cycle",
  "operatingsystem/os-kernel",
  "operatingsystem/os-system-call",

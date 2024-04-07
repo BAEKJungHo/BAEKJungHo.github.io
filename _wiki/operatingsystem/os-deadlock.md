@@ -31,9 +31,12 @@ __[교착 상태(膠着狀態, deadlock)](https://en.wikipedia.org/wiki/Deadlock
 
 ### Three commonly used strategies to handle deadlocks are as follows
 
+The best defense against [deadlocks](https://www.postgresql.org/docs/current/explicit-locking.html#LOCKING-DEADLOCKS) is generally to avoid them by being certain that all applications using a database acquire locks on multiple objects in a consistent order.
+
 - Avoidance: Resources are carefully allocated to avoid deadlocks.
 - Prevention: 4가지 조건 중 하나를 회피함으로써 교착상태가 발생하는 것을 방지한다.
 - Detection and recovery: Deadlocks are allowed to occur and a detection algorithm is used to detect them. After a deadlock is detected, it is resolved by certain means.
+
 
 ### Distributed Deadlock
 
@@ -56,3 +59,4 @@ __Communication Deadlock__:
 ## Links
 
 - [Deadlock: What It Is, How to Detect, Handle and Prevent?](https://www.baeldung.com/cs/os-deadlock)
+- [PostgreSQL - Explicit Locking](https://www.postgresql.org/docs/current/explicit-locking.html#EXPLICIT-LOCKING)

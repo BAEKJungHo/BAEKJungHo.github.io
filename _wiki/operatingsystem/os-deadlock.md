@@ -22,7 +22,7 @@ __[교착 상태(膠着狀態, deadlock)](https://en.wikipedia.org/wiki/Deadlock
 
 ### Individually necessary and jointly sufficient conditions for deadlock
 
-데드락이 발생하기 위해서는 아래 4가지 조건을 모두 만족해야 한다.
+[Deadlock](https://wiki.c2.com/?DeadLock) 이 발생하기 위해서는 아래 4가지 조건을 모두 만족해야 한다.
 
 - 상호배제(Mutual exclusion): 최소한 하나의 리소스가 공유 불가능 모드로 유지되어야 한다. 즉, 즉, 한 번에 하나의 프로세스만 리소스를 사용할 수 있다.
 - 점유대기(Hold and wait): 프로세스가 할당된 자원을 가진 상태에서 다른 자원을 기다린다. 프로세스가 현재 하나 이상의 리소스를 보유하고 있으며 다른 프로세스가 보유하고 있는 추가 리소스를 요청한다.

@@ -5,6 +5,7 @@
  "architecture/architecture-did",
  "architecture/architecture-nats",
  "architecture/architecture-reliability",
+ "architecture/architecture-scalable",
  "architecture/architecture-schema-registry",
  "architecture/architecture-sync-messaging",
  "architecture/architecture-uuid",

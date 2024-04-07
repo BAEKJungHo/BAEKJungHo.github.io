@@ -37,6 +37,7 @@
   "architecture/architecture-pub-sub",
   "architecture/architecture-reliability",
   "architecture/architecture-retry-mechanism",
+  "architecture/architecture-scalable",
   "architecture/architecture-schema-registry",
   "architecture/architecture-stratified-design",
   "architecture/architecture-sync-messaging",

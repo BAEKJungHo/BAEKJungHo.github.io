@@ -42,6 +42,7 @@
  "/wiki/architecture/architecture-pub-sub",
  "/wiki/architecture/architecture-reliability",
  "/wiki/architecture/architecture-retry-mechanism",
+ "/wiki/architecture/architecture-scalable",
  "/wiki/architecture/architecture-schema-registry",
  "/wiki/architecture/architecture-stratified-design",
  "/wiki/architecture/architecture-sync-messaging",

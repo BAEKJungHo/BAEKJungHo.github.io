@@ -380,6 +380,7 @@ regenerate: true
 * [[/kubernetes/kubernetes-namespace]]
 * [[/kubernetes/kubernetes-helm]]
 * [[/kubernetes/kubernetes-container-hierarchy]]
+* [[/kubernetes/kubernetes-open-container-initiative]]
 
 ## Kafka
 

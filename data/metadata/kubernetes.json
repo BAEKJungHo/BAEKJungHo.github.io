@@ -12,6 +12,7 @@
   "kubernetes/kubernetes-istio",
   "kubernetes/kubernetes-keda",
   "kubernetes/kubernetes-namespace",
+  "kubernetes/kubernetes-open-container-initiative",
   "kubernetes/kubernetes-service-mesh"
  ]
 }

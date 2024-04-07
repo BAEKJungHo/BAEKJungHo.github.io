@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Open Container Initiative",
+ "summary": "Container Runtime Interface",
+ "parent": "kubernetes",
+ "url": "/wiki/kubernetes/kubernetes-open-container-initiative",
+ "updated": "2024-04-07 12:15:24 +0900",
+ "children": []
+}

@@ -136,6 +136,8 @@ public class DeferredConsumerExample {
 
 - [Deferred Execution with Java's Supplier](http://marxsoftware.blogspot.com/2018/05/deferred-execution-java-supplier.html)
 - [Deferred Execution with Java’s Consumer](https://www.javacodegeeks.com/2018/06/deferred-execution-java-consumer.html)
+- [Functional interface and Lambda in Java 8](https://java-latte.blogspot.com/2014/02/functional-interface-and-lambda-in-java.html)
+- [Syntax for Lambda expression in Java](https://java-latte.blogspot.com/2015/07/lambda-expression-examples-and-functional-interface-in-java.html)
 
 ## References
 

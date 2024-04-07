@@ -295,6 +295,7 @@
  "/wiki/kotlin/kotlin-value-object",
  "/wiki/kubernetes",
  "/wiki/kubernetes/kubernetes-architecture",
+ "/wiki/kubernetes/kubernetes-container-hierarchy",
  "/wiki/kubernetes/kubernetes-helm",
  "/wiki/kubernetes/kubernetes-istio",
  "/wiki/kubernetes/kubernetes-keda",

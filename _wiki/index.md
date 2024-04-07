@@ -378,6 +378,7 @@ regenerate: true
 * [[/kubernetes/kubernetes-istio]]
 * [[/kubernetes/kubernetes-namespace]]
 * [[/kubernetes/kubernetes-helm]]
+* [[/kubernetes/kubernetes-container-hierarchy]]
 
 ## Kafka
 

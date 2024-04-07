@@ -117,7 +117,7 @@
  },
  {
   "name": "docker",
-  "size": 6
+  "size": 7
  },
  {
   "name": "dod",
@@ -265,7 +265,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 10
+  "size": 11
  },
  {
   "name": "lambda",

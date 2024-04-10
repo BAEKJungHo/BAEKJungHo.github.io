@@ -277,7 +277,7 @@
  },
  {
   "name": "linux",
-  "size": 12
+  "size": 13
  },
  {
   "name": "lock",
@@ -353,7 +353,7 @@
  },
  {
   "name": "network",
-  "size": 15
+  "size": 16
  },
  {
   "name": "nodejs",
@@ -458,6 +458,10 @@
  {
   "name": "snowflake",
   "size": 2
+ },
+ {
+  "name": "socket",
+  "size": 1
  },
  {
   "name": "spec",

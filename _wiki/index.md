@@ -205,6 +205,7 @@ regenerate: true
 * [[/linux/linux-increase-kernel-memory]]
 * [[/linux/linux-ssh]]
 * [[/linux/linux-unix-philosophy]]
+* [[/linux/linux-message-traffic-path]]
 
 ## Logging
 

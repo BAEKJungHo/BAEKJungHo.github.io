@@ -42,11 +42,18 @@ latex   : true
 | x-ncp-iam-access-key | 네이버 클라우드 플랫폼 포털 또는 Sub Account에서 발급받은 Access Key ID      |
 | x-ncp-apigw-signature-v2 | 위 예제의 Body를 Access Key ID와 맵핑되는 Secret Key로 암호화한 서명, HMAC 암호화 알고리즘은 HmacSHA256 사용  |
 
+## Guarantee of Integrity
+
+- __[TIP 1]__ 어떤 요청이 중간에 해커에게 가로채어져서 변조되었다면, 이 요청은 '무결성'이 보장되지 않았다고 한다. 요청의 전체 메세지에 대한 무결성을 보장하고 싶다면 요청 내용의 전문을 가지고 hash 를 생성하는 것이 좋다.
+- __[TIP 2]__ 실제 클라에서 정상적으로 생성된 hash 를 해커가 그대로 재사용하는 것을 막기 위해 hash 를 생성할 때 timestamp 를 포함하는 것이 좋다.
+
 ## Links
 
 - [RFC2104](https://www.rfc-editor.org/rfc/rfc2104.txt)
 - [FIPS PUB 198-1, The Keyed-Hash Message Authentication Code (HMAC)](https://csrc.nist.gov/csrc/media/publications/fips/198/1/final/documents/fips-198-1_final.pdf)
 - [Naver Cloud Platform](https://api.ncloud-docs.com/docs/busines-application-workplace-emp-v2)
+- [What is HMAC Authentication and why is it useful?](https://www.wolfe.id.au/2012/10/20/what-is-hmac-authentication-and-why-is-it-useful/)
 - [Coupang HMAC Signature 생성 + API 요청 예제](https://developers.coupangcorp.com/hc/ko/articles/360033461914-HMAC-Signature-%EC%83%9D%EC%84%B1)
 - [Online HMAC Generator / Tester Tool](https://codebeautify.org/hmac-generator)
 - [Hash-based message authentication codes (HMAC)](https://cryptography.io/en/latest/hazmat/primitives/mac/hmac/)
+- [HMAC 인증이란 ? - REST API 의 보안](https://haneepark.github.io/2018/04/22/hmac-authentication/)

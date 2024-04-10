@@ -43,7 +43,7 @@ __[What are the classes of IPv4 Addresses..](https://www.adroitacademy.com/blog/
 
 IP 주소가 구성되는 방식을 통해 인터넷 라우터는 데이터를 라우팅할 올바른 네트워크를 비교적 간단하게 찾을 수 있다. 그러나 클래스 A 네트워크(예를 들어)에는 수백만 개의 연결된 장치가 있을 수 있으며 데이터가 올바른 장치를 찾는 데 시간이 걸릴 수 있다. 이것이 서브넷이 유용한 이유이다. 서브넷은 IP 주소를 장치 범위 내에서 사용하도록 좁혀준다.
 
-따라서, Classification based IP Addressing System 는 라우팅하여 네트워크를 빨리 찾기에 부적절하므로, 요즘 현대에는 __Classless based IP Addressing System__ 을 사용한다. 즉, __효율적으로 라우팅 하기 위해서 Subnetmask 를 통해 라우팅의 범위를 좁혀준다__ 라고 생각하면 된다.
+따라서, Classification based IP Addressing System 는 라우팅하여 네트워크를 빨리 찾기에 부적절하므로, 요즘 현대에는 __Classless based IP Addressing System__ 을 사용한다. 즉, __효율적으로 라우팅 하기 위해서 [SubnetMask](https://baekjungho.github.io/wiki/infra/infra-vpc-subnet/) 를 통해 Host 범위를 제한하여, 라우팅의 범위를 좁혀준다__ 라고 생각하면 된다.
 
 ![](/resource/wiki/vpc-subnet/subnet.png)
 

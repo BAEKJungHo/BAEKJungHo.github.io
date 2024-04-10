@@ -11,6 +11,7 @@
  "network/network-port-forwarding",
  "network/network-security-attacks",
  "network/network-ssrf",
+ "network/network-subnet",
  "network/network-tcp",
  "network/network-tcp-performance",
  "network/network-telnet",

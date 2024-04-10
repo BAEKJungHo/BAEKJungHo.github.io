@@ -353,7 +353,7 @@
  },
  {
   "name": "network",
-  "size": 16
+  "size": 17
  },
  {
   "name": "nodejs",
@@ -482,6 +482,10 @@
  {
   "name": "stack",
   "size": 2
+ },
+ {
+  "name": "subnet",
+  "size": 1
  },
  {
   "name": "swagger",

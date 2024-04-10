@@ -206,6 +206,7 @@ regenerate: true
 * [[/linux/linux-ssh]]
 * [[/linux/linux-unix-philosophy]]
 * [[/linux/linux-message-traffic-path]]
+* [[/linux/linux-subnet]]
 
 ## Logging
 
@@ -554,6 +555,7 @@ regenerate: true
 * [[/network/network-telnet]]
 * [[/network/network-port-forwarding]]
 * [[/network/network-security-attacks]]
+* [[/network/network-subnet]]
 
 ## Http
 

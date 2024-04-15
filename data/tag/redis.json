@@ -2,5 +2,6 @@
  "redis",
  "redis/redis-duplicated-store-prevent",
  "redis/redis-lock",
+ "redis/redis-queue",
  "spring/spring-concurrency-resolve"
 ]

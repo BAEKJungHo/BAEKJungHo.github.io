@@ -395,6 +395,7 @@ regenerate: true
 
 * [[/redis/redis-lock]]
 * [[/redis/redis-duplicated-store-prevent]]
+* [[/redis/redis-queue]]
 
 ## Infra
 

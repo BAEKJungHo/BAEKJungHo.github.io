@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Redis Queue
 summary : 
-date    : 2023-04-10 13:15:32 +0900
-updated : 2023-04-10 13:55:24 +0900
+date    : 2024-04-10 13:15:32 +0900
+updated : 2024-04-10 13:55:24 +0900
 tag     : redis 
 toc     : true
 comment : true

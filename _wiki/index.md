@@ -72,6 +72,7 @@ regenerate: true
 * [[/architecture/architecture-prometheus]]
 * [[/architecture/architecture-api-design]]
 * [[/architecture/architecture-scalable]]
+* [[/architecture/architecture-qr]]
 
 ## Kata
 

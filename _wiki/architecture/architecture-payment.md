@@ -41,3 +41,4 @@ latex   : true
 - [Data Consistency in Microservice Using Sagas](https://www.youtube.com/watch?v=txlSrGVCK18&t=2471s)
 - [Transaction log tailing](https://microservices.io/patterns/data/transaction-log-tailing.html)
 - [Polling Publisher](https://microservices.io/patterns/data/polling-publisher.html)
+- [PayPay](https://www.paypay.ne.jp/opa/doc/v1.0/dynamicqrcode)

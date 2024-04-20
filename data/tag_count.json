@@ -9,7 +9,7 @@
  },
  {
   "name": "architecture",
-  "size": 52
+  "size": 53
  },
  {
   "name": "atlassian",
@@ -93,6 +93,10 @@
  },
  {
   "name": "deepcopy",
+  "size": 1
+ },
+ {
+  "name": "deeplink",
   "size": 1
  },
  {
@@ -401,6 +405,10 @@
  },
  {
   "name": "qos",
+  "size": 1
+ },
+ {
+  "name": "qrcode",
   "size": 1
  },
  {

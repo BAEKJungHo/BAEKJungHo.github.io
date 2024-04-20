@@ -30,6 +30,7 @@
  "architecture/architecture-payment",
  "architecture/architecture-prometheus",
  "architecture/architecture-pub-sub",
+ "architecture/architecture-qr",
  "architecture/architecture-reliability",
  "architecture/architecture-retry-mechanism",
  "architecture/architecture-scalable",

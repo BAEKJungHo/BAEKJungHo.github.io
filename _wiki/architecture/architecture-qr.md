@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : QR Code
-summary : vCard, URL Scheme
+summary : How to implement QR Code Login Authentication Across Devices
 date    : 2024-04-18 15:02:32 +0900
 updated : 2024-04-18 15:12:24 +0900
 tag     : architecture qrcode deeplink
@@ -41,6 +41,16 @@ latex   : true
 [PayPay - Dynamic QR Code Integration Flow](https://www.paypay.ne.jp/opa/doc/v1.0/dynamicqrcode#section/TLS-implementation):
 
 ![](/resource/wiki/architecture-qr/architecture-qr.png)
+
+## How to implement QR Code Login Authentication Across Devices
+
+[How to implement QR Code Login Authentication Across Devices](https://medium.com/@adeesha-savinda/how-to-implement-qr-code-authentication-login-21a78a3e7418):
+
+![](/resource/wiki/architecture-qr/device-authorization-grant-flow.png)
+
+이 과정에서 Server Application(e.g Identity Server) 의 핵심은 자격 증명을 입력할 수 있는 웹 페이지로 리디렉션되는 링크를 보내고, 이 링크는 QR 코드로 변환되어 TV 화면에 표시된다.
+
+확인 URI 와 사용자 코드가 변환되어 QR 코드에 표시되는 동안 장치(스마트 TV)의 애플리케이션은 ID 공급자(IDP)의 토큰에 대한 폴링을 시작한다. 사용자가 유효한 자격 증명을 입력하고 휴대폰에서 인증을 받으면 유효한 액세스 토큰이 장치(스마트 TV)에 발급된다.
 
 ## Links
 

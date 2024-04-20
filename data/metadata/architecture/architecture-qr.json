@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "QR Code",
- "summary": "vCard, URL Scheme",
+ "summary": "How to implement QR Code Login Authentication Across Devices",
  "parent": "architecture",
  "url": "/wiki/architecture/architecture-qr",
  "updated": "2024-04-18 15:12:24 +0900",

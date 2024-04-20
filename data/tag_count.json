@@ -48,6 +48,10 @@
   "size": 2
  },
  {
+  "name": "cicd",
+  "size": 1
+ },
+ {
   "name": "cleancode",
   "size": 8
  },

@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "CI/CD",
- "summary": "Continuous Integration/Delivery/Deployment",
+ "summary": "Continuous Integration, Delivery, Deployment",
  "parent": "infra",
  "url": "/wiki/infra/infra-ci-cd",
  "updated": "2022-09-05 20:15:24 +0900",

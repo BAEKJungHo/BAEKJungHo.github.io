@@ -15,6 +15,7 @@
   "ddd/ddd-event",
   "ddd/ddd-factory",
   "ddd/ddd-intention-revealing-interface",
+  "ddd/ddd-modeling",
   "ddd/ddd-module",
   "ddd/ddd-quotes",
   "ddd/ddd-reduce-dependency",

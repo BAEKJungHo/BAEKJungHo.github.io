@@ -21,12 +21,13 @@ latex   : true
 Domain experts 와 Developers 간의 iterative process 는 (at the core of "agile" development process) 는 __translation cost__ 가 크다.
 이러한 agile 한 프로세스에서 translator 의 역할은 Developers 가 담당한다.
 
-__The goal of Domain-Driven Design__:
+#### The goal of Domain-Driven Design
 
 이러한 문제를 해결하기 위해 Domain experts, Developers, Other stakeholders, Code 등은 same model 인 __Shared Model__ 을 통해 communication 한다.
 코드 또한 shared mental model 을 직접적으로 반영한다.
 
-__How to create a shared model - guidelines__:
+#### How to create a shared model - guidelines
+
 - Focus on business events and workflows rather than data structures.
 - Partition the problem domain into smaller subdomains.
 - Create a model of each subdomain in the solution.
@@ -39,7 +40,8 @@ For example, "new order form received" is a Domain Event.
 
 Domain Events 를 발굴하는 것은 shared model 을 구축하는데 아주 중요하다. 발굴하기 위한 방법으로는 __Event Storming__ 이 있다.
 
-__Using Event Storming to Discover the Domain__
+#### Using Event Storming to Discover the Domain
+
 - Domain experts, Developers, Other stakeholders 를 포함하여 facilitated workshop 을 통해 Event Storming 을 시작할 수 있다. (It's called EventStorming Workshop)
 - 같은 Room 에 있어야 하며 벽면에 whiteboard 가 많으면 좋다.
 - 누구든 질문할 수 있고 답변할 수 있다.

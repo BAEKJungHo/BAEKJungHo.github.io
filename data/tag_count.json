@@ -317,7 +317,7 @@
  },
  {
   "name": "mobility",
-  "size": 11
+  "size": 12
  },
  {
   "name": "mockk",
@@ -438,6 +438,10 @@
  {
   "name": "restdocs",
   "size": 2
+ },
+ {
+  "name": "robotaxi",
+  "size": 1
  },
  {
   "name": "sam",

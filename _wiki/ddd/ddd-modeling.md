@@ -53,6 +53,10 @@ Domain Events 를 발굴하는 것은 shared model 을 구축하는데 아주 �
   - [How we used Event Storming Meetings for enabling Software Domain-Driven Design](https://medium.com/building-inventa/how-we-used-event-storming-meetings-for-enabling-software-domain-driven-design-401e5d708eb)
   - [Domain-driven Design: A Practitioner's Guide](https://ddd-practitioners.com/2023/03/20/remote-eventstorming-workshop/)
 
+## Links
+
+- [Domain Driven Design and Development In Practice](https://www.infoq.com/articles/ddd-in-practice/)
+
 ## References
 
 - Domain Modeling Made Functional / Scott Wlaschin / The Pragmatic Programmers

@@ -42,6 +42,10 @@ For example, "new order form received" is a Domain Event.
 
 Domain Events 를 발굴하는 것은 shared model 을 구축하는데 아주 중요하다. 발굴하기 위한 방법으로는 __Event Storming__ 이 있다.
 
+__Tactical Design with Domain Events__:
+
+![](/resource/wiki/ddd-modeling/tactical-design-domain-events.png)
+
 #### Using Event Storming to Discover the Domain
 
 __[The most-likely outcome of an Event Storming workshop](https://threedots.tech/)__:
@@ -77,3 +81,4 @@ This way of thinking about business processes - a pipeline with an input and som
 ## References
 
 - Domain Modeling Made Functional / Scott Wlaschin / The Pragmatic Programmers
+- Domain-Driven Design Distilled, 1/e by Vaughn Vernon

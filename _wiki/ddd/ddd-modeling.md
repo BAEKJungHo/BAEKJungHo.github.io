@@ -53,6 +53,16 @@ Domain Events 를 발굴하는 것은 shared model 을 구축하는데 아주 �
   - [How we used Event Storming Meetings for enabling Software Domain-Driven Design](https://medium.com/building-inventa/how-we-used-event-storming-meetings-for-enabling-software-domain-driven-design-401e5d708eb)
   - [Domain-driven Design: A Practitioner's Guide](https://ddd-practitioners.com/2023/03/20/remote-eventstorming-workshop/)
 
+### Documenting Commands
+
+"What made these Domain Events happen ?" Domain Events 가 발생한 이유를 __commands__ 라고 한다.
+
+- e.g Command: "Place an order"; Domain Event: "Order placed"
+
+![](/resource/wiki/ddd-modeling/input-output-way.png)
+
+This way of thinking about business processes - a pipeline with an input and some outputs - is an excellent fit with the way that __functional programming works__.
+
 ## Links
 
 - [Domain Driven Design and Development In Practice](https://www.infoq.com/articles/ddd-in-practice/)

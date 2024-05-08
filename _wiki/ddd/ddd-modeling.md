@@ -21,9 +21,9 @@ latex   : true
 Domain experts 와 Developers 간의 iterative process 는 (at the core of "agile" development process) 는 __translation cost__ 가 크다.
 이러한 agile 한 프로세스에서 translator 의 역할은 Developers 가 담당한다.
 
-![](/resource/wiki/ddd-modeling/shared-model.png)
-
 #### The goal of Domain-Driven Design
+
+![](/resource/wiki/ddd-modeling/shared-model.png)
 
 이러한 문제를 해결하기 위해 Domain experts, Developers, Other stakeholders, Code 등은 same model 인 __Shared Model__ 을 통해 communication 한다.
 코드 또한 shared mental model 을 직접적으로 반영한다.

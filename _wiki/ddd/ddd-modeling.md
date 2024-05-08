@@ -21,6 +21,8 @@ latex   : true
 Domain experts 와 Developers 간의 iterative process 는 (at the core of "agile" development process) 는 __translation cost__ 가 크다.
 이러한 agile 한 프로세스에서 translator 의 역할은 Developers 가 담당한다.
 
+![](/resource/wiki/ddd-modeling/shared-model.png)
+
 #### The goal of Domain-Driven Design
 
 이러한 문제를 해결하기 위해 Domain experts, Developers, Other stakeholders, Code 등은 same model 인 __Shared Model__ 을 통해 communication 한다.
@@ -70,6 +72,7 @@ This way of thinking about business processes - a pipeline with an input and som
 ## Links
 
 - [Domain Driven Design and Development In Practice](https://www.infoq.com/articles/ddd-in-practice/)
+- [Domain Modeling with FP (DDD Europe 2020)](https://www.slideshare.net/ScottWlaschin/domain-modeling-with-fp-ddd-europe-2020)
 
 ## References
 

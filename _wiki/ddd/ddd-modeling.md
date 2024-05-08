@@ -42,6 +42,10 @@ Domain Events 를 발굴하는 것은 shared model 을 구축하는데 아주 �
 
 #### Using Event Storming to Discover the Domain
 
+__[The most-likely outcome of an Event Storming workshop](https://threedots.tech/)__:
+
+![](/resource/wiki/ddd-modeling/event_storming.png)
+
 - Domain experts, Developers, Other stakeholders 를 포함하여 facilitated workshop 을 통해 Event Storming 을 시작할 수 있다. (It's called EventStorming Workshop)
 - 같은 Room 에 있어야 하며 벽면에 whiteboard 가 많으면 좋다.
 - 누구든 질문할 수 있고 답변할 수 있다.

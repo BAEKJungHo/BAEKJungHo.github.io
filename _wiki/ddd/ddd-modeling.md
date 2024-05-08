@@ -47,7 +47,7 @@ __Tactical Design with Domain Events__:
 ![](/resource/wiki/ddd-modeling/tactical-design-domain-events.png)
 
 __Patterns ref__.
-- [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html), [MessageTranslator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html), [CommandMessage](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) [EventMessage](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)
+- [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html) [MessageTranslator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html) [CommandMessage](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) [EventMessage](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)
 
 __More Reads__.
 - [How to share domain event scheme between microservices?](https://stackoverflow.com/questions/60018336/how-to-share-domain-event-scheme-between-microservices)

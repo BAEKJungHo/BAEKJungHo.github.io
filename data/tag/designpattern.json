@@ -4,6 +4,7 @@
  "architecture/architecture-pub-sub",
  "architecture/architecture-schema-registry",
  "architecture/architecture-sync-messaging",
+ "ddd/ddd-modeling",
  "designpattern",
  "designpattern/designpattern-callback",
  "designpattern/designpattern-chain-of-responsibility",

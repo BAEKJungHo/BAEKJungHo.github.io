@@ -4,7 +4,7 @@ title   : Domain Modeling
 summary : 
 date    : 2024-05-02 22:57:32 +0900
 updated : 2024-05-02 23:21:24 +0900
-tag     : ddd
+tag     : ddd designpattern
 toc     : true
 comment : true
 public  : true
@@ -45,6 +45,9 @@ Domain Events 를 발굴하는 것은 shared model 을 구축하는데 아주 �
 __Tactical Design with Domain Events__:
 
 ![](/resource/wiki/ddd-modeling/tactical-design-domain-events.png)
+
+__Patterns ref__.
+- [Canonical Data Model](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CanonicalDataModel.html), [MessageTranslator](https://www.enterpriseintegrationpatterns.com/patterns/messaging/MessageTranslator.html), [CommandMessage](https://www.enterpriseintegrationpatterns.com/patterns/messaging/CommandMessage.html) [EventMessage](https://www.enterpriseintegrationpatterns.com/patterns/messaging/EventMessage.html)
 
 #### Using Event Storming to Discover the Domain
 

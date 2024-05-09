@@ -79,10 +79,38 @@ __[The most-likely outcome of an Event Storming workshop](https://threedots.tech
 
 This way of thinking about business processes - a pipeline with an input and some outputs - is an excellent fit with the way that __functional programming works__.
 
+### Partitioning the Domains into Subdomains
+
+Partition the problem domain into smaller subdomains. "When faced with a large problem, it's natural to break it into smaller components."
+
+![](/resource/wiki/ddd-modeling/subdomains.png)
+
+When converting the real world into a model, details can get lost, that's normal
+
+![](/resource/wiki/ddd-modeling/solution-space.png)
+
+In the model, we display domains and subdomains as [bounded contexts](https://martinfowler.com/bliki/BoundedContext.html)—parts of the overall model, each of which simulates one subdomain.
+
+Domains and contexts are not always 1 to 1. Sometimes a domain is split into several contexts, or several domains are modeled through one context. It depends on the task. But the important thing is that each context has only one clear responsibility.
+
+실제로 업무를 함에 있어서도 해결하고자 하는 문제의 범위가 큰 경우(다양한 부서간 협업이 필요하고 의사 결정이 늦어지는 경우)에 당장 우리 부서가 할 수 있는 일부터 진행하는 것이 좋은 경우가 있다. 
+
+### Context Maps
+
+Bounded Context 를 정의하고 나서 __Context Maps__ Diagram 을 그려보는 것이 좋다.
+
+![](/resource/wiki/ddd-modeling/context-maps.png)
+
+Some domains are more important to the business and, in fact, make money—these are the __core domains__. Those that help the core domains work are called __supportive domains__. Those that are not unique to the business and can be outsourced are generic.
+
+For example, for the company in the example, order-taking may be the core domain, because the company is famous for its customer support. Billing could be a supportive domain, and shipping, which can be outsourced, could be a generic domain.
+
 ## Links
 
 - [Domain Driven Design and Development In Practice](https://www.infoq.com/articles/ddd-in-practice/)
+- [Start Your Architecture Modernization with Domain-Driven Discovery](https://www.infoq.com/articles/architecture-modernization-domain-driven-discovery/)
 - [Domain Modeling with FP (DDD Europe 2020)](https://www.slideshare.net/ScottWlaschin/domain-modeling-with-fp-ddd-europe-2020)
+- [Domain Modeling Made Functional by Scott Wlaschin](https://bespoyasov.me/blog/domain-modelling-made-functional/)
 
 ## References
 

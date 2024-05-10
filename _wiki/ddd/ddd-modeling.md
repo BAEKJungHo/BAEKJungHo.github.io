@@ -14,7 +14,17 @@ latex   : true
 * TOC
 {:toc}
 
-## Domain Modeling
+# Domain Modeling
+
+## DDD Big Pictures 
+
+### Domain
+
+A __domain__ is an area of knowledge associated with the problem we are trying to solve, or simply, that which a "domain expert" is expert in.
+
+The main goal of a __domain model__ is to help us deal with the complexity and chaos of the real world. The model is such a scoped __“snapshot of reality”__ that we can put in our heads and express in code.
+
+Because the __model__ is always simpler than reality, it includes not all the details of the domain, but only those that we consider important. And the first step in designing is to understand what details we want to include in the model.
 
 ### The Importance of a Shared Model
 
@@ -104,6 +114,28 @@ Bounded Context 를 정의하고 나서 __Context Maps__ Diagram 을 그려보�
 Some domains are more important to the business and, in fact, make money—these are the __core domains__. Those that help the core domains work are called __supportive domains__. Those that are not unique to the business and can be outsourced are generic.
 
 For example, for the company in the example, order-taking may be the core domain, because the company is famous for its customer support. Billing could be a supportive domain, and shipping, which can be outsourced, could be a generic domain.
+
+### Ubiquitous Language
+
+The __Ubiquitous Language__ is a set of concepts and vocabulary that is associated with the domain and is shared by both the team members and the source code.
+
+### Persistence Ignorance
+
+The concept of a "database" is certainly not part of the ubiquitous language. The users do not care about how data is persisted.
+In DDD terminology this is called __persistence ignorance__. It is an important principle because it forces you to focus on __modeling the domain__ accurately, without worrying about the representation of the data in a database.
+
+## Modeling 
+
+Scott Wlaschin 은 "Domain Modeling Made Functional" 이라는 책에서 모델링의 첫 번째 단계로 도메인에 대한 철저한 조사를 제안한다. 이 책에서는 코드에 관여하지 않지만 우리가 설명하려는 도메인을 이해하는 사람들을 인터뷰할 것을 제안한다. 예를 들어 이러한 사람들은 제품 소유자, UX 디자이너 또는 비즈니스 고객이 될 수 있다.
+
+### Details and Limitations
+
+[Domain modeling](https://bespoyasov.me/blog/explicit-design-1/) 을 할때 불필요하거나 중요하지 않은 세부사항을 모델에 반영하지 않도록 주의해야 한다. 세부사항을 안다는 것은 설계에는 도움이 될 수 있어도, 코드의 복잡성이 증가할 수 있다.
+필요한 만큼의 정보만 반영하여 simply, compactly 한 model 을 만드는 것이 중요하다.
+
+### Nuances of Modeling
+
+비지니스로직이 단순한 CRUD 성격을 띤 애플리케이션의 기능은 서버 요청과 수신된 데이터를 화면에 표시하는 것으로 제한되며 별도의 모델을 구별할 필요가 없을 수도 있다. 즉, 모든 애플리케이션이 rich domain model 을 가질 필요는 없다.
 
 ## Links
 

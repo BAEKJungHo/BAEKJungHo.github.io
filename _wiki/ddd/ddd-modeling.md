@@ -341,10 +341,10 @@ __Contracts forms__:
 - __Consumer Driven__ - 소비자가 원하는 메시지 형식을 결정하고 보낸 사람이 해당 형식에 맞게 조정하는 경우
 - __Conformist__ - 발신자가 형식을 선택하고 소비자가 따르는 경우
 
-#### Anti-corruption Layers
+#### Anti-Corruption Layers
 
 외부 시스템과 통신할때, 외부 시스템의 인터페이스가 우리의 domain model 과 일치하지 않는 경우가 있다.
-이때 사용할 수 있는 것이 [ACL(Anti-corruption Layer)](https://baekjungho.github.io/wiki/ddd/ddd-anticorruption-layer/) 이다.
+이때 사용할 수 있는 것이 [ACL(Anti-Corruption Layer)](https://baekjungho.github.io/wiki/ddd/ddd-anticorruption-layer/) 이다.
 
 ![](/resource/wiki/ddd-modeling/acl.png)
 

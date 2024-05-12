@@ -337,7 +337,7 @@ __Everything that comes from outside must be validated, the data inside we consi
 컨텍스트가 아무리 분리되어 있어도 컨텍스트 간의 통신은 여전히 결합을 생성한다. 문제 없이 진행하려면 컨텍스트에서 통신할 때 사용할 메시지 형식을 선택해야 한다. 즉, 계약을 작성해야 한다.
 
 __Contracts forms__:
-- __[Shared Kernel]__(http://ddd.fed.wiki.org/view/shared-kernel) - 두 컨텍스트가 공통 메시지 형식을 사용하기로 결정한 경우
+- __[Shared Kernel](http://ddd.fed.wiki.org/view/shared-kernel)__ - 두 컨텍스트가 공통 메시지 형식을 사용하기로 결정한 경우
 - __Consumer Driven__ - 소비자가 원하는 메시지 형식을 결정하고 보낸 사람이 해당 형식에 맞게 조정하는 경우
 - __Conformist__ - 발신자가 형식을 선택하고 소비자가 따르는 경우
 

@@ -299,6 +299,82 @@ substep "ValidateOrder" =
     return ValidationError
 ```
 
+## Functional Architecture
+
+We'll take a brief look at typical software architecture for a functionally oriented domain model.
+
+### Simon Brown's C4 approach
+
+__[The C4 model for visualising software architecture - Context, Containers, Components, and Code](https://c4model.com/)__
+
+- 시스템 컨텍스트는 우리가 모델링하는 전체 시스템이다.
+- 이는 개별적으로 배포할 수 있는 개별 유닛인 여러 컨테이너로 구성된다 .
+- 각 컨테이너는 코드의 구성 요소인 구성 요소로 구성된다.
+- 각 구성 요소는 낮은 수준의 기능과 작업을 갖춘 모듈로 구성된다.
+
+### Bounded Contexts as Autonomous Software Components
+
+Each context is ideally a self-contained subsystem with clear boundaries. At the beginning of the design, however, we don’t care whether we are going to deploy the project as a microservice or as a monolith. The main thing is to make sure that we keep the contexts decoupled.
+
+### Communicating Between Bounded Contexts
+
+__Completely decoupled design__:
+
+![](/resource/wiki/ddd-modeling/completely-decoupled-design.png)
+
+### Trust Boundaries and Validation
+
+Bounded Context 안은 valid 하기 때문에 trusted 상태이다. 반면 Bonded Context 의 밖은 invalid 한 상태이기 때문에 검증이 필요하다.
+
+각 컨텍스트의 경계는 게이트 역할을 한다. 외부에서 컨텍스트로 들어오는 모든 것은 DTO 이므로 확인하고 검증해야 한다. 검증 후에는 안전한 데이터로 작업할 수 있는 도메인 개체를 얻게 된다. 유효성 검사는 입력 게이트에서 처리된다.
+
+__Everything that comes from outside must be validated, the data inside we consider safe__:
+
+![](/resource/wiki/ddd-modeling/trust-boundaries.png)
+
+### Contracts Between Bounded Contexts
+
+컨텍스트가 아무리 분리되어 있어도 컨텍스트 간의 통신은 여전히 결합을 생성한다. 문제 없이 진행하려면 컨텍스트에서 통신할 때 사용할 메시지 형식을 선택해야 한다. 즉, 계약을 작성해야 한다.
+
+__Contracts forms__:
+- __[Shared Kernel]__(http://ddd.fed.wiki.org/view/shared-kernel) - 두 컨텍스트가 공통 메시지 형식을 사용하기로 결정한 경우
+- __Consumer Driven__ - 소비자가 원하는 메시지 형식을 결정하고 보낸 사람이 해당 형식에 맞게 조정하는 경우
+- __Conformist__ - 발신자가 형식을 선택하고 소비자가 따르는 경우
+
+#### Anti-corruption Layers
+
+외부 시스템과 통신할때, 외부 시스템의 인터페이스가 우리의 domain model 과 일치하지 않는 경우가 있다.
+이때 사용할 수 있는 것이 [ACL(Anti-corruption Layer)](https://baekjungho.github.io/wiki/ddd/ddd-anticorruption-layer/) 이다.
+
+![](/resource/wiki/ddd-modeling/acl.png)
+
+### Workflows Within a Bounded Context
+
+The input to a workflow is always the data associated with a command, and the output is always a set of events to communicate to other contexts.
+
+![](/resource/wiki/ddd-modeling/workflow-input-output.png)
+
+In a functional architecture, each of the workflows is a function whose input is a command and whose output is one or more events. Such workflows are always within the same context and never implement End-to-End processes.
+
+In the output, we have to give only what we really need to the next context, no more. For example, after order acceptance we don’t need to give all information about the order to BillingContext, just the order ID, delivery address and total order amount:
+
+```
+data BillableOrderPlaced =
+  OrderId
+  AND BillingAddress
+  AND AmountToBill
+```
+
+Also make sure that all domain events are result work and do not call other handlers within the process.
+
+### Code Structure Within a Bounded Context
+
+__[Onion architecture](https://baekjungho.github.io/wiki/architecture/architecture-clean/)__:
+
+![](/resource/wiki/ddd-modeling/onion-architecture.png)
+
+The domain is in the center and the I/O is on the edges.
+
 ## Modeling 
 
 Scott Wlaschin 은 "Domain Modeling Made Functional" 이라는 책에서 모델링의 첫 번째 단계로 도메인에 대한 철저한 조사를 제안한다. 이 책에서는 코드에 관여하지 않지만 우리가 설명하려는 도메인을 이해하는 사람들을 인터뷰할 것을 제안한다. 예를 들어 이러한 사람들은 제품 소유자, UX 디자이너 또는 비즈니스 고객이 될 수 있다.

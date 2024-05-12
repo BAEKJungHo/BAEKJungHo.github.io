@@ -16,7 +16,7 @@ latex   : true
 
 # Domain Modeling
 
-## DDD Big Pictures 
+## About DDD, Understanding the Domain 
 
 ### Domain
 
@@ -123,6 +123,181 @@ The __Ubiquitous Language__ is a set of concepts and vocabulary that is associat
 
 The concept of a "database" is certainly not part of the ubiquitous language. The users do not care about how data is persisted.
 In DDD terminology this is called __persistence ignorance__. It is an important principle because it forces you to focus on __modeling the domain__ accurately, without worrying about the representation of the data in a database.
+
+### Documenting the Domain
+
+__The process of accepting an order__:
+
+```
+Process “Accept Order”
+	Caused by the “Received Order Form” event
+	Main input data: Order Form
+	Implicit input data: Product Catalog
+	Output data: “Order Received” event
+	Side effects: Notification of acceptance sent.
+```
+
+#### Workflow
+
+__Place Order Workflow__:
+
+```
+Bounded Context: Order-Taking
+
+Workflow: "Place Order"
+  triggered by:
+    "Order form received" event (when Quote is not checked)
+  primary input:
+    An order form
+  other input:
+    Product catalog
+  output events:
+    "Order Placed" event
+  side-effects:
+    An acknowledgment is sent to the customer, along with the placed order
+```
+
+And we can document the __data structures__ associated with the workflow:
+
+```
+bounded context: Order-Taking
+
+data Order = 
+  CustomerInfo
+  AND ShippingAddress
+  AND BillingAddress
+  AND list of OrderLines
+  AND AmountToBill
+  
+data OrderLine = 
+  Product
+  AND Quantity
+  AND Price
+  
+data CustomerInfo = ??? // don't know yet
+data BillingAddress = ??? // don't know yet
+```
+
+The advantage of this kind of __text-based design__ is that it's not scary to non-programmers.
+
+#### Representing Complexity in Our Domain Model
+
+모델이 복잡해지는 경우, 코딩 단계보다 설계 단계에서 복잡성을 처리하는 것이 더 좋다.
+OrderQuantity 와 같은 Ubiquitous Language 가 의미하는 제약 조건을 표현하는 것이다. 
+
+__Representing Constraints__:
+
+```
+data OrderQuantity = UnitQuantity OR KilogramQuantity
+
+data UnitQuantity = integer between 1 and 1000
+data KilogramQuantity = decimal between 0.05 and 100.00
+```
+
+#### Representing the Life Cycle of and Order
+
+제약 조건을 명시하고나서, 주문의 Life Cycle 또한 반영해야 한다. Life Cycle 을 나타내기 위해서 주문을 여러개의 데이터 구조로 분리하는 단계를 거쳐야 한다.
+
+__아직 검증되지 않은 주문의 경우__:
+
+```
+data UnvalidatedOrder =
+  UnvalidatedCustomerInfo
+  AND UnvalidatedShippingAddress
+  AND UnvalidatedBillingAddress
+  AND list of UnvalidatedOrderLine
+
+data UnvalidatedOrderLine =
+  UnvalidatedProductCode
+  AND UnvalidatedOrderQuantity”
+```
+
+__검증된 주문의 경우__:
+
+```
+data ValidatedOrder =
+  ValidatedCustomerInfo
+  AND ValidatedShippingAddress
+  AND ValidatedBillingAddress
+  AND list of ValidatedOrderLine
+
+data ValidatedOrderLine =
+  ValidatedProductCode
+  AND ValidatedOrderQuantity”
+```
+
+__가격이 책정된 주문의 경우__:
+
+```
+data PricedOrder =
+  ValidatedCustomerInfo
+  AND ValidatedShippingAddress
+  AND ValidatedBillingAddress
+  AND list of PricedOrderLine  // different from ValidatedOrderLine
+  AND AmountToBill             // new
+
+data PricedOrderLine =
+  ValidatedOrderLine
+  AND LinePrice
+```
+
+__The final stage is to create the order acknowledgment__:
+
+```
+data PlacedOrderAcknowledgment =
+  PricedOrder
+  AND AcknowledgmentLetter
+```
+
+You can see now that we've captured quite a lot of the business logic in this design already — rules such as these:
+- An unvalidated order does not have a price
+- All the lines in a validated order must be validated, not just some of them.
+
+The model is a lot more complicated.  
+
+__The whole workflow in pseudocode__:
+
+```
+workflow "Place Order" =
+  input: OrderForm
+  output:
+    OrderPlaced event
+    OR InvalidOrder
+
+  // step 1
+  do ValidateOrder
+  If order is invalid then:
+  stop
+
+  // step 2
+  do PriceOrder
+
+  // step 3
+  do SendAcknowledgmentToCustomer
+
+  // step 4
+  return OrderPlaced event (if no errors)
+```
+
+__Substep__:
+
+```
+substep "ValidateOrder" =
+  input: UnvalidatedOrder
+  output: ValidatedOrder OR ValidationError
+  dependencies: CheckProductCodeExists, CheckAddressExists
+
+  validate the customer name
+  check that the shipping and billing address exist
+  for each line:
+    check product code syntax
+    check that product code exists in ProductCatalog
+
+  if everything is OK, then:
+    return ValidatedOrder
+  else:
+    return ValidationError
+```
 
 ## Modeling 
 

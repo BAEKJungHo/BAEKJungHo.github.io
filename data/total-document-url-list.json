@@ -50,6 +50,7 @@
  "/wiki/architecture/architecture-uuid",
  "/wiki/architecture/architecture-zero-payload",
  "/wiki/auth",
+ "/wiki/auth/auth-device-authz-grant",
  "/wiki/auth/auth-hmac",
  "/wiki/auth/auth-jwt",
  "/wiki/auth/auth-oauth",

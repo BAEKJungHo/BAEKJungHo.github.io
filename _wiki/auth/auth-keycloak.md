@@ -20,7 +20,7 @@ __[Keycloak](https://www.keycloak.org/)__ 은 Open Source 기반의 IAM(Identity
 
 Keycloak 은 __SSO(여러 시스템을 하나의 인증 체계로 묶기)__ 를 지원한다. 따라서 사용자는 개별 애플리케이션이 아닌 Keycloak 으로 인증하며, Keycloak 에 로그인하면 사용자는 다른 애플리케이션에 액세스하기 위해 다시 로그인할 필요가 없다. (로그아웃도 동일)
 
-Social Login 도 가능하다. 또한 신원 중개(Identity Brokering) 도 가능하다. 즉, OpenID Connect or SAML 2.0 Identity Providers 를 사용하여 로그인할 수 있다. (Google, Github, Facebook, etc)
+Social Login 도 가능하다. 또한 신원 중개(Identity Brokering) 도 가능하다. 즉, OpenID Connect or SAML 2.0 Identity Providers 를 사용하여 로그인할 수 있다.
 
 - 구축 사례
   - [AWS 에서 Keycloak 기반 서비스 인증 체계 구축 하기 (1편) - 키클록(Keycloak) 이란?](https://www.sktenterprise.com/bizInsight/blogDetail/dev/5710)

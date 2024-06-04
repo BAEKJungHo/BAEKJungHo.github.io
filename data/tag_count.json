@@ -17,7 +17,7 @@
  },
  {
   "name": "auth",
-  "size": 7
+  "size": 8
  },
  {
   "name": "aws",
@@ -262,6 +262,10 @@
  {
   "name": "kata",
   "size": 2
+ },
+ {
+  "name": "keycloak",
+  "size": 1
  },
  {
   "name": "kotlin",

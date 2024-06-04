@@ -53,6 +53,7 @@
  "/wiki/auth/auth-device-authz-grant",
  "/wiki/auth/auth-hmac",
  "/wiki/auth/auth-jwt",
+ "/wiki/auth/auth-keycloak",
  "/wiki/auth/auth-oauth",
  "/wiki/auth/auth-oidc",
  "/wiki/auth/auth-scram",

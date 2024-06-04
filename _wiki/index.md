@@ -456,6 +456,7 @@ regenerate: true
 * [[/auth/auth-scram]]
 * [[/auth/auth-oidc]]
 * [[/auth/auth-device-authz-grant]]
+* [[/auth/auth-key-cloak]]
 
 ## Design pattern
 

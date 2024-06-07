@@ -156,6 +156,7 @@ regenerate: true
 * [[/kotlin/kotlin-exceptions-restriction]]
 * [[/kotlin/kotlin-null-handling-safely]]
 * [[/kotlin/kotlin-assign-type]]
+* [[/kotlin/kotlin-minimizing-mental-complexity]]
 
 ## Java
 

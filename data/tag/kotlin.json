@@ -38,6 +38,7 @@
  "kotlin/kotlin-jdbc-batch",
  "kotlin/kotlin-ksp",
  "kotlin/kotlin-lambda",
+ "kotlin/kotlin-minimizing-mental-complexity",
  "kotlin/kotlin-mockk",
  "kotlin/kotlin-mockk-springmockk",
  "kotlin/kotlin-mutability-restriction",

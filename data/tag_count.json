@@ -64,6 +64,10 @@
   "size": 6
  },
  {
+  "name": "consensus",
+  "size": 1
+ },
+ {
   "name": "coroutine",
   "size": 12
  },
@@ -121,7 +125,7 @@
  },
  {
   "name": "distributed",
-  "size": 9
+  "size": 10
  },
  {
   "name": "docker",
@@ -297,7 +301,7 @@
  },
  {
   "name": "logging",
-  "size": 13
+  "size": 14
  },
  {
   "name": "magazine",

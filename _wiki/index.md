@@ -220,6 +220,7 @@ regenerate: true
 * [[/logging/logging-write-ahead]]
 * [[/logging/logging-nonblocking-pipeline]]
 * [[/logging/logging-rotation]]
+* [[/logging/logging-the-log]]
 
 ## Spring
 

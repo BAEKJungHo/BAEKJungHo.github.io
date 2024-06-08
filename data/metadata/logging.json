@@ -11,6 +11,7 @@
   "logging/logging-masking",
   "logging/logging-nonblocking-pipeline",
   "logging/logging-rotation",
+  "logging/logging-the-log",
   "logging/logging-webflux-kotlin",
   "logging/logging-write-ahead"
  ]

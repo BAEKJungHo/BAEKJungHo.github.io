@@ -4,6 +4,7 @@
  "caching/msa-distributed-caching",
  "database/database-cassandra-kkv",
  "database/database-serializable-tx",
+ "logging/logging-the-log",
  "msa/msa-eventual-consistency",
  "msa/msa-xa",
  "observability/msa-distributed-tracing",

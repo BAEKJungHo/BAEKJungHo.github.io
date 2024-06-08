@@ -32,7 +32,7 @@ latex   : true
 [WAL(write-ahead-logs, 로그 선행 기입)](https://en.wikipedia.org/wiki/Write-ahead_logging) 라는 개념을 사용한다. WAL 은 ACID 중 [atomicity and durability](https://github.com/NKLCWDT/cs/blob/main/Database/Transaction.md) 를 지원한다.
 
 - Atomicity
-  - 완벽히 수행되거나, 오류가 발생하면 이전상태로 되돌려야 한다.
+  - 완벽히 수행되거나, 오류가 발생하면 이전상태로 되돌려야 함
 - Durability
   - 성공적으로 완료된 트랜잭션의 결과는 시스템이 고장나더라도 영구적으로 반영되어야 함
 

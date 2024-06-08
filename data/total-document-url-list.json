@@ -86,6 +86,7 @@
  "/wiki/database/database-datamart",
  "/wiki/database/database-language-translation",
  "/wiki/database/database-metadata-lock",
+ "/wiki/database/database-natural-keys",
  "/wiki/database/database-normalization",
  "/wiki/database/database-partitioning",
  "/wiki/database/database-query-offloading",

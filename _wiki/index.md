@@ -523,6 +523,7 @@ regenerate: true
 * [[/database/database-datamart]]
 * [[/database/database-serializable-tx]]
 * [[/database/database-data-anonymization]
+* [[/database/database-natural-keys]]
 
 ## Clean Code
 

@@ -47,3 +47,4 @@ Distributed software must be designed to be partition-tolerant. A network partit
 - [CAP Twelve Years Later: How the "Rules" Have Changed](https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/)
 - [Please stop calling databases CP or AP](https://martin.kleppmann.com/2015/05/11/please-stop-calling-databases-cp-or-ap.html)
 - [DZone - Quick Notes: What is CAP Theorem?](https://dzone.com/articles/quick-notes-what-cap-theorem)
+- [CAP 이론을 통한 네트워크 동기화 기법](https://www.youtube.com/watch?v=j3eQNm-Wk04)

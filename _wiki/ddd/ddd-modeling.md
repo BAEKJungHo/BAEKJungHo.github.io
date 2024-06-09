@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : Domain Modeling
-summary : 
+summary : Tackle Software Complexity with Domain-Driven Design and F#
 date    : 2024-05-02 22:57:32 +0900
 updated : 2024-05-02 23:21:24 +0900
-tag     : ddd designpattern
+tag     : ddd designpattern fp
 toc     : true
 comment : true
 public  : true
@@ -387,6 +387,76 @@ Scott Wlaschin 은 "Domain Modeling Made Functional" 이라는 책에서 모델�
 ### Nuances of Modeling
 
 비지니스로직이 단순한 CRUD 성격을 띤 애플리케이션의 기능은 서버 요청과 수신된 데이터를 화면에 표시하는 것으로 제한되며 별도의 모델을 구별할 필요가 없을 수도 있다. 즉, 모든 애플리케이션이 rich domain model 을 가질 필요는 없다.
+
+### Types and Functions
+
+In a programming language like F#, __types play a key role__, so let's look at what a functional programmer means by _type_.
+
+A _[type](https://bespoyasov.me/blog/domain-modelling-made-functional-2/)_ in functional programming is not the same as a _class_ in oop. In fact, a type is just the name given to the set of possible values that can be used as inputs or outputs of a function.
+
+```
+Set of valid inputs -> Function (input -> output) -> Set of valid outputs
+```
+
+### Composition of Types
+
+Composition of Types 은 타입의 조합이라는 의미를 갖는다. AND, OR 를 사용하여 composition 할 수 있다. 코드를 통해 살펴보자.
+
+```
+// A FruitSnack is either an AppleVariety (tagged with Apple) or a BananaVariety (tagged with Banana) or a CherryVariety (tagged with Cherries).
+type FruitSnack = 
+  | Apple of AppleVariety
+  | Banana of BananaVariety
+  | Cherries of CherryVariety
+
+
+// An AppleVariety is either a GoldenDelicious or a GrannySmith or a Fuji.
+type AppleVariety = 
+  | GoldenDelicious
+  | GrannySmith
+  | Fuji
+```
+
+__Product Types and Sum Types__:
+- The types are built using _AND_ are called _product types_.
+- The types that are built using _OR_ are called _sum types_ or _tagged unions_ or, in F# terminology, _discriminated unions_. or _choice types_.
+
+### Domain Modeling with types
+
+Functional Programming 에서 type 을 사용하여 도메인 모델링을 하기 위한 관문은 다음과 같다.
+
+첫 번째로는 __Modeling Simple Values__ 이다.
+
+```
+type CustomerId = 
+  | CustomerId of int
+  
+type UnitQuantity = UnitQuantity of int
+type KilogramQuantity = KilogramQuantity of decimal
+```
+
+Simple Values 를 모델링 하였으면 Values 를 _제한(Constrained)_ 해야 한다. Almost always, the simple types are constrained in some way, such as having to be in a certain range or match a certain pattern.
+
+그리고 _performance issue_ 를 피해야 한다. Wrapping primitive types into simple types is a great way to ensure type-safety and prevent many errors at compile time. However, it does com at a cost im memory usage and efficiency.
+
+두 번째로는 __Modeling Complex Data__ 이다. _product types_ 와 _sum types_ 를 사용하여 정의할 수 있다.
+
+```
+data Order = 
+  CustomerInfo
+  AND ShippingAddress
+  AND BillingAddress
+  AND list of OrderLines
+  AND AmountToBill
+```
+
+세 번째로는 __Modeling Workflows with Functions__ 이다.
+
+```
+type ValidateOrder - UnvalidatedOrder -> ValidatedOrder
+```
+
+It's clear from this code that the ValidateOrder process transforms an unvalidated order into a validated one.
 
 ## Links
 

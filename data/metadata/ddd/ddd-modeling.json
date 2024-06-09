@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Domain Modeling",
- "summary": "",
+ "summary": "Tackle Software Complexity with Domain-Driven Design and F#",
  "parent": "ddd",
  "url": "/wiki/ddd/ddd-modeling",
  "updated": "2024-05-02 23:21:24 +0900",

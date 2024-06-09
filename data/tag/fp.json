@@ -1,6 +1,7 @@
 [
  "architecture/architecture-map-reduce",
  "architecture/architecture-stratified-design",
+ "ddd/ddd-modeling",
  "dod/dod-data-oriented",
  "functional",
  "functional/functional-copy-on-write",

@@ -469,6 +469,7 @@
  "/wiki/spring/spring-filter",
  "/wiki/spring/spring-fixture-monkey",
  "/wiki/spring/spring-graceful-shutdown",
+ "/wiki/spring/spring-health-check",
  "/wiki/spring/spring-i18n",
  "/wiki/spring/spring-ioc",
  "/wiki/spring/spring-jackson",

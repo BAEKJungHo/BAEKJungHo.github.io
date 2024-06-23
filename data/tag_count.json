@@ -208,6 +208,10 @@
   "size": 4
  },
  {
+  "name": "healthcheck",
+  "size": 1
+ },
+ {
   "name": "heapdump",
   "size": 1
  },
@@ -285,7 +289,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 12
+  "size": 13
  },
  {
   "name": "lambda",
@@ -501,7 +505,7 @@
  },
  {
   "name": "spring",
-  "size": 58
+  "size": 59
  },
  {
   "name": "sre",

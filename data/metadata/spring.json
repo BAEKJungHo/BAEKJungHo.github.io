@@ -25,6 +25,7 @@
   "spring/spring-filter",
   "spring/spring-fixture-monkey",
   "spring/spring-graceful-shutdown",
+  "spring/spring-health-check",
   "spring/spring-i18n",
   "spring/spring-ioc",
   "spring/spring-jackson",

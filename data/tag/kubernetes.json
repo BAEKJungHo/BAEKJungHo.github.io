@@ -10,5 +10,6 @@
  "kubernetes/kubernetes-open-container-initiative",
  "kubernetes/kubernetes-service-mesh",
  "linux/linux-memory-allocation-overcommit",
- "linux/linux-oom-killer"
+ "linux/linux-oom-killer",
+ "spring/spring-health-check"
 ]

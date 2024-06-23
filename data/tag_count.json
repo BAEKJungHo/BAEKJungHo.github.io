@@ -325,7 +325,7 @@
  },
  {
   "name": "mobility",
-  "size": 12
+  "size": 13
  },
  {
   "name": "mockk",
@@ -410,6 +410,10 @@
  {
   "name": "performance",
   "size": 2
+ },
+ {
+  "name": "poi",
+  "size": 1
  },
  {
   "name": "proxy",

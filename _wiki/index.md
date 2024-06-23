@@ -32,6 +32,7 @@ regenerate: true
 * [[/mobility/mobility-can]]
 * [[/mobility/mobility-vin]]
 * [[/mobility/mobility-robotaxi]]
+* [[/mobility/mobility-poi]]
 
 ## Architecture
 

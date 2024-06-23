@@ -8,6 +8,7 @@
  "children": [
   "mobility/mobility-autonomous-driving-level",
   "mobility/mobility-can",
+  "mobility/mobility-ccs",
   "mobility/mobility-digital-key",
   "mobility/mobility-language-dictionary",
   "mobility/mobility-lidar-radar",

@@ -392,11 +392,13 @@ Scott Wlaschin 은 "Domain Modeling Made Functional" 이라는 책에서 모델�
 
 In a programming language like F#, __types play a key role__, so let's look at what a functional programmer means by _type_.
 
-A _[type](https://bespoyasov.me/blog/domain-modelling-made-functional-2/)_ in functional programming is not the same as a _class_ in oop. In fact, a type is just the name given to the set of possible values that can be used as inputs or outputs of a function.
+A _[type](https://bespoyasov.me/blog/domain-modelling-made-functional-2/)_ in functional programming is not the same as a _class_ in oop. In fact, __A type is just the name given to the set of possible values that can be used as inputs or outputs of a function__.
 
 ```
 Set of valid inputs -> Function (input -> output) -> Set of valid outputs
 ```
+
+![](/resource/wiki/ddd-modeling/set-of-valid-input-output.png)
 
 ### Composition of Types
 

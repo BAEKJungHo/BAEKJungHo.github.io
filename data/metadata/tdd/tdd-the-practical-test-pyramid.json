@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "The Practical Test Pyramid",
+ "summary": "The \"Test Pyramid\" is a metaphor that tells us to group software tests into buckets of different granularity",
+ "parent": "tdd",
+ "url": "/wiki/tdd/tdd-the-practical-test-pyramid",
+ "updated": "2024-06-23 20:15:24 +0900",
+ "children": []
+}

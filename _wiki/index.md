@@ -194,6 +194,7 @@ regenerate: true
 * [[/tdd/tdd-why-use-mock-any]]
 * [[/tdd/tdd-sut-doc]]
 * [[/tdd/tdd-benefits-of-test]]
+* [[/tdd/tdd-the-practical-test-pyramid]]
 
 ## TroubleShooting
 

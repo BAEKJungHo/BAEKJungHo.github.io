@@ -2,5 +2,12 @@
  "driven/test-methodology",
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-mockk",
- "kotlin/kotlin-relaxed-mockk"
+ "kotlin/kotlin-relaxed-mockk",
+ "tdd/tdd-benefits-of-test",
+ "tdd/tdd-interface-design-decisions",
+ "tdd/tdd-naming",
+ "tdd/tdd-red-green-refactor",
+ "tdd/tdd-sut-doc",
+ "tdd/tdd-the-practical-test-pyramid",
+ "tdd/tdd-why-use-mock-any"
 ]

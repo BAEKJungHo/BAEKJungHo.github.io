@@ -5,5 +5,6 @@
  "tdd/tdd-naming",
  "tdd/tdd-red-green-refactor",
  "tdd/tdd-sut-doc",
+ "tdd/tdd-the-practical-test-pyramid",
  "tdd/tdd-why-use-mock-any"
 ]

@@ -4,7 +4,7 @@ title   : Immediate feedback for interface design decisions
 summary : 
 date    : 2024-01-04 15:54:32 +0900
 updated : 2024-01-04 20:15:24 +0900
-tag     : tdd
+tag     : tdd test
 toc     : true
 comment : true
 public  : true

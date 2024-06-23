@@ -4,7 +4,7 @@ title   : SUT, DOC
 summary : System Under Test and Depended On Component
 date    : 2024-03-29 15:54:32 +0900
 updated : 2024-03-29 20:15:24 +0900
-tag     : tdd
+tag     : tdd test
 toc     : true
 comment : true
 public  : true

@@ -460,6 +460,59 @@ type ValidateOrder - UnvalidatedOrder -> ValidatedOrder
 
 It's clear from this code that the ValidateOrder process transforms an unvalidated order into a validated one.
 
+### Integrity and Consistency in the Domain
+
+[Trust Boundaries and Validation](https://baekjungho.github.io/wiki/ddd/ddd-modeling/#trust-boundaries-and-validation) 에서, Bounded Context 내의 Domain 은 trusted 하다고 배웠다.
+
+Trusted mean is __Integrity(or validity)__ and __Consistency__. 즉, Bounded Context 내의 Domain 은 무결성과 일관성을 지닌다.
+
+__Integrity__
+- 값의 범위에 대한 검증 (e.g UnitQuantity is between 1 and 1000)
+- An order must always have at least one order line.
+- An order must have a validated shipping address before being sent to the shipping department.
+
+도메인 무결성을 위해 팩토리와 같은 사전 검증이 들어간 매커니즘을 사용하여 객체를 생성할 수 있다.
+
+```typescript
+type UnitQuantity = number;
+
+function createQuantity(raw: number): UnitQuantity {
+	if (raw < 1) throw new Error('UnitQuantity can not be negative');
+	if (raw > 1000) throw new Error('UnitQuantity can not be more than 1000');
+	return raw as UnitQuantity;
+}
+```
+
+__Consistency__
+- The total amount to bill for an order should be the sum of the individual lines. If the total differs. the data is inconsistent.
+- When an order is placed, a corresponding invoice must be created. If the order exists but the invoice dosen't, the data is inconsistent.
+
+### Capturing Business Rules in the Type System
+
+Domain Modeling 을 할 때, 중요한 규칙이 있다.
+
+__Make illegal [data] states unrepresentable__. 
+
+That is, try to build the type model in such a way that it is impossible to represent invalid data in these types.
+
+__Bad case__:
+
+```
+type CustomerEmail = {
+  EmailAddress: EmailAddress
+  IsVerified: bool
+}
+```
+
+__Good case__:
+
+```
+type VerifiedEmailAddress = private VerifiedEmailAddress of EmailAddress
+type CustomerEmail =
+  | Unverified of EmailAddress
+  | Verified of VerifiedEmailAddress
+```
+
 ## Links
 
 - [Domain Driven Design and Development In Practice](https://www.infoq.com/articles/ddd-in-practice/)

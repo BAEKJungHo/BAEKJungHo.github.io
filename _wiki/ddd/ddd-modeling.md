@@ -513,6 +513,28 @@ type CustomerEmail =
   | Verified of VerifiedEmailAddress
 ```
 
+### Sharing Common Structures Using Generics
+
+__Sharing Common Structures Using Generics__:
+
+```
+type Command<T> = {
+  Data: T
+  Timestamp: DateTime
+  UserId: string
+}
+
+type placeOrder = Command<UnvalidatedOrder>
+```
+
+### State Machines
+
+__UML state chart example (a toaster oven)__:
+
+![](/resource/wiki/ddd-modeling/toast-state.png)
+
+- [Finite State Machine](https://en.wikipedia.org/wiki/Finite-state_machine)
+
 ## Links
 
 - [Domain Driven Design and Development In Practice](https://www.infoq.com/articles/ddd-in-practice/)

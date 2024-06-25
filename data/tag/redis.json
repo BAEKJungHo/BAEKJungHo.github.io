@@ -1,5 +1,6 @@
 [
  "redis",
+ "redis/redis-distributed-lock-drawbacks",
  "redis/redis-duplicated-store-prevent",
  "redis/redis-lock",
  "redis/redis-queue",

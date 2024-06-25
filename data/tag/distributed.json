@@ -8,5 +8,6 @@
  "msa/msa-eventual-consistency",
  "msa/msa-xa",
  "observability/msa-distributed-tracing",
+ "redis/redis-distributed-lock-drawbacks",
  "redis/redis-lock"
 ]

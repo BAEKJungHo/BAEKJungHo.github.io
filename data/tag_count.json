@@ -129,7 +129,7 @@
  },
  {
   "name": "distributed",
-  "size": 10
+  "size": 11
  },
  {
   "name": "docker",
@@ -305,7 +305,7 @@
  },
  {
   "name": "lock",
-  "size": 6
+  "size": 7
  },
  {
   "name": "logging",
@@ -449,7 +449,7 @@
  },
  {
   "name": "redis",
-  "size": 5
+  "size": 6
  },
  {
   "name": "refactoring",

@@ -441,6 +441,7 @@
  "/wiki/realworld/realworld-smarthome-control-command",
  "/wiki/realworld/realworld-vehicle-controls",
  "/wiki/redis",
+ "/wiki/redis/redis-distributed-lock-drawbacks",
  "/wiki/redis/redis-duplicated-store-prevent",
  "/wiki/redis/redis-lock",
  "/wiki/redis/redis-queue",

@@ -3,6 +3,7 @@
  "database/database-metadata-lock",
  "go/go-concurrency",
  "msa/msa-concurrency-distributedlock",
+ "redis/redis-distributed-lock-drawbacks",
  "redis/redis-lock",
  "spring/spring-concurrency-resolve"
 ]

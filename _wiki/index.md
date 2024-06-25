@@ -404,6 +404,7 @@ regenerate: true
 * [[/redis/redis-lock]]
 * [[/redis/redis-duplicated-store-prevent]]
 * [[/redis/redis-queue]]
+* [[/redis/redis-distributed-lock-drawbacks]]
 
 ## Infra
 

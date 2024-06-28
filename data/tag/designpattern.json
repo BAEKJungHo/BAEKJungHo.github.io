@@ -12,6 +12,7 @@
  "designpattern/designpattern-decorator",
  "designpattern/designpattern-intercepting-filter",
  "designpattern/designpattern-observer",
+ "designpattern/designpattern-persistence",
  "designpattern/designpattern-proxy",
  "designpattern/designpattern-singleton",
  "designpattern/designpattern-strategy",

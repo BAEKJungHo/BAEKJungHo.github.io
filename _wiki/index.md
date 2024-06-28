@@ -477,6 +477,7 @@ regenerate: true
 * [[/designpattern/designpattern-proxy]]
 * [[/designpattern/designpattern-decorator]]
 * [[/designpattern/designpattern-cloud]]
+* [[/designpattern/designpattern-persistence]]
 
 ## DDD
 

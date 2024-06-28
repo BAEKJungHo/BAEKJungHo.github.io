@@ -117,7 +117,7 @@
  },
  {
   "name": "designpattern",
-  "size": 20
+  "size": 21
  },
  {
   "name": "devops",
@@ -245,7 +245,7 @@
  },
  {
   "name": "java",
-  "size": 45
+  "size": 46
  },
  {
   "name": "javascript",
@@ -261,7 +261,7 @@
  },
  {
   "name": "jpa",
-  "size": 11
+  "size": 12
  },
  {
   "name": "jvm",

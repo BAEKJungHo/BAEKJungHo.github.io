@@ -1,4 +1,5 @@
 [
+ "designpattern/designpattern-persistence",
  "java",
  "java/execution-java",
  "java/java-abstraction-by-wrapping",

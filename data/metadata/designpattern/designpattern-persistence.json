@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Persistence",
+ "summary": "Data Persistence is a means for an application to persist and retrieve information from a non-volatile storage system",
+ "parent": "designpattern",
+ "url": "/wiki/designpattern/designpattern-persistence",
+ "updated": "2024-06-08 18:15:24 +0900",
+ "children": []
+}

@@ -14,7 +14,6 @@
  "msa/msa-api-gateway",
  "msa/msa-business-agility",
  "msa/msa-concurrency-distributedlock",
- "msa/msa-debounce-throttle",
  "msa/msa-event-deconcern",
  "msa/msa-eventual-consistency",
  "msa/msa-fault-tolerance",

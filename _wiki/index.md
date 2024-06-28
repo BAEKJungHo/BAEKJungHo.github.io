@@ -36,6 +36,10 @@ regenerate: true
 * [[/mobility/mobility-ccs]]
 * [[/mobility/mobility-digital-twin]]
 
+## API
+
+* [[/api/api-too-many-requests]]
+
 ## Architecture
 
 * [[/architecture/architecture-character-architectures]]

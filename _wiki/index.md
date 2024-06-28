@@ -34,6 +34,7 @@ regenerate: true
 * [[/mobility/mobility-robotaxi]]
 * [[/mobility/mobility-poi]]
 * [[/mobility/mobility-ccs]]
+* [[/mobility/mobility-digital-twin]]
 
 ## Architecture
 

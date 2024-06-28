@@ -10,6 +10,7 @@
   "mobility/mobility-can",
   "mobility/mobility-ccs",
   "mobility/mobility-digital-key",
+  "mobility/mobility-digital-twin",
   "mobility/mobility-language-dictionary",
   "mobility/mobility-lidar-radar",
   "mobility/mobility-ota",

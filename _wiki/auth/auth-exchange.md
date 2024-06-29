@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Exchange with Client Credentials Flow
+## Exchange
 
 Exchange 란 말 그대로 교환을 의미한다. _[Token Exchange](https://datatracker.ietf.org/doc/html/rfc8693)_ 란 X 토큰 정보를 Y 로 교환하는 것을 의미한다.
 

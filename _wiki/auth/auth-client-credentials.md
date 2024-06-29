@@ -18,6 +18,6 @@ latex   : true
 
 Client Credentials Grant 란 클라이언트의 자격증명만으로 Token 을 획득하는 방식을 의미한다.
 
-__Client Credentials Flow__
+__Client Credentials Flow__:
 
 ![](/resource/wiki/auth-client-credentials/client_credentials_flow.png)

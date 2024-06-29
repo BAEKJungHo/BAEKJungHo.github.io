@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Exchange",
+ "summary": "Delegation Semantics",
+ "parent": "auth",
+ "url": "/wiki/auth/auth-exchange",
+ "updated": "2024-06-29 10:15:24 +0900",
+ "children": []
+}

@@ -24,9 +24,13 @@ latex   : true
 - [Add the OAuth 2.0 Device Flow to any OAuth Server](https://developer.okta.com/blog/2019/02/19/add-oauth-device-flow-to-any-server)
 - [OAuth 2.0 Device Flow Grant](https://alexbilbie.github.io/2016/04/oauth-2-device-flow-grant/)
 
-__Device Authorization Grant Flow__
+__[Device Authorization Grant Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/device-authorization-flow)__
 
 ![](/resource/wiki/auth-device-authz-grant/device-authz-flow.png)
+
+__Sequence Diagram__
+
+![](/resource/wiki/auth-device-authz-grant/device-authz-sequence-diagram.png)
 
 ### Grant
 

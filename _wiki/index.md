@@ -469,6 +469,8 @@ regenerate: true
 * [[/auth/auth-oidc]]
 * [[/auth/auth-device-authz-grant]]
 * [[/auth/auth-key-cloak]]
+* [[/auth/auth-client-credentials]]
+* [[/auth/auth-exchange]]
 
 ## Design pattern
 

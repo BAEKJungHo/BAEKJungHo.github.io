@@ -6,6 +6,7 @@
  "database/database-data-anonymization",
  "designpattern/designpattern-callback",
  "functional/functional-defensive-copy",
+ "functional/functional-potential-errors",
  "java/java-anonymous-class",
  "java/java-date",
  "java/java-deserialize-generic",

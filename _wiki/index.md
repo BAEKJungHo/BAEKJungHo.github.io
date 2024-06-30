@@ -93,6 +93,8 @@ regenerate: true
 * [[/functional/functional-timeline-cutting]]
 * [[/functional/functional-copy-on-write]]
 * [[/functional/functional-defensive-copy]]
+* [[/functional/functional-potential-errors]]
+* [[/functional/functional-functions]]
 
 ## Observability
 
@@ -502,7 +504,6 @@ regenerate: true
 * [[/ddd/ddd-character-architectures]]
 * [[/ddd/ddd-reduce-dependency]]
 * [[/ddd/ddd-modeling]]
-* [[/ddd/ddd-functions]]
 
 ## Data Oriented Design
 

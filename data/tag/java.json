@@ -1,5 +1,6 @@
 [
  "designpattern/designpattern-persistence",
+ "functional/functional-potential-errors",
  "java",
  "java/execution-java",
  "java/java-abstraction-by-wrapping",

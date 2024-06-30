@@ -2,5 +2,6 @@
  "api",
  "api/api-too-many-requests",
  "api/msa-debounce-throttle",
- "architecture/architecture-api-design"
+ "architecture/architecture-api-design",
+ "functional/functional-potential-errors"
 ]

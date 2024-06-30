@@ -9,13 +9,13 @@
  "ddd/ddd-essence",
  "ddd/ddd-event",
  "ddd/ddd-factory",
- "ddd/ddd-functions",
  "ddd/ddd-intention-revealing-interface",
  "ddd/ddd-modeling",
  "ddd/ddd-module",
  "ddd/ddd-quotes",
  "ddd/ddd-reduce-dependency",
  "ddd/ddd-service",
+ "functional/functional-functions",
  "kotlin/kotlin-value-object",
  "msa/msa-stream-processing"
 ]

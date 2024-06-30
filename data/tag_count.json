@@ -5,7 +5,7 @@
  },
  {
   "name": "api",
-  "size": 4
+  "size": 5
  },
  {
   "name": "architecture",
@@ -165,7 +165,7 @@
  },
  {
   "name": "fp",
-  "size": 16
+  "size": 17
  },
  {
   "name": "fsm",
@@ -249,7 +249,7 @@
  },
  {
   "name": "java",
-  "size": 46
+  "size": 47
  },
  {
   "name": "javascript",
@@ -285,7 +285,7 @@
  },
  {
   "name": "kotlin",
-  "size": 69
+  "size": 70
  },
  {
   "name": "ksp",

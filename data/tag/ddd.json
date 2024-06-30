@@ -9,6 +9,7 @@
  "ddd/ddd-essence",
  "ddd/ddd-event",
  "ddd/ddd-factory",
+ "ddd/ddd-functions",
  "ddd/ddd-intention-revealing-interface",
  "ddd/ddd-modeling",
  "ddd/ddd-module",

@@ -120,12 +120,39 @@ sayGoodbye: "Alex
 
 This approach of "__baking in__" parameters is called __partial application__ and is a very important functional pattern.
 
+### Composition
+
+_Function composition_ 이란 __information hiding__ 의 기능을 가지고 있다.
+
+아래 예제에서, 사과를 통해 체리를 만들기 위해서는 2개의 Pipeline 이 연결되어야 하고, 이때 중간값인 바나나에 대해서 알고 있어야 한다.
+하지만, 함수를 사용하는 입장에서 중간값은 관심사(aspect) 가 아니다. 따라서 함수 합성을 통해서 관심사가 아닌 부분을 숨길 수 있다.
+
+__Composition of functions as piping__:
+
+![](/resource/wiki/functional-functions/composition-1.png)
+
+__The result of the composition is a new function__:
+
+![](/resource/wiki/functional-functions/composition-2.png)
+
+__Code__:
+
+```
+let isEven x = // int -> bool function
+  (x % 2) = 0
+let printBool x = // bool -> string function
+  sprintf "value is %b" x 
+let isEventThenPrint x = 
+  x |> isEven |> printBool
+```
+
 ### Asking Questions
 
 함수형 프로그래밍을 사용하는 경우 "How do I implement the Strategy Pattern ?" 보다 __"How can I parameterize behavior ?"__ 와 같은 질문을 던지는 것이 좋다.
 
 ## Links
 
+- [Domain Modeling](https://baekjungho.github.io/wiki/ddd/ddd-modeling/)
 - [Domain Modelling Made Functional. Part 3](https://bespoyasov.me/blog/domain-modelling-made-functional-3/)
 
 ## References

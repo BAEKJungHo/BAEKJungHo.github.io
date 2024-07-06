@@ -10,5 +10,6 @@
  "test/tdd-benefits-of-test",
  "test/tdd-naming",
  "test/tdd-sut-doc",
- "test/tdd-why-use-mock-any"
+ "test/tdd-why-use-mock-any",
+ "test/test-property-based-test"
 ]

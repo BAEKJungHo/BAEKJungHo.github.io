@@ -201,13 +201,13 @@ regenerate: true
 * [[/test/tdd-why-use-mock-any]]
 * [[/test/test-property-based-test]]
 * [[/test/test-no-silver-bullet]]
+* [[/test/test-the-practical-test-pyramid]]
 
 ## TDD
 
 * [[/tdd/tdd-red-green-refactor]]
 * [[/tdd/tdd-interface-design-decisions]]
 * [[/tdd/tdd-why-use-mock-any]]
-* [[/tdd/tdd-the-practical-test-pyramid]]
 
 ## TroubleShooting
 

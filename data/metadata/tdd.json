@@ -7,7 +7,6 @@
  "updated": "2023-12-31 20:55:09 +0900",
  "children": [
   "tdd/tdd-interface-design-decisions",
-  "tdd/tdd-red-green-refactor",
-  "tdd/tdd-the-practical-test-pyramid"
+  "tdd/tdd-red-green-refactor"
  ]
 }

@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Test Pyramid",
+ "summary": "The \"Test Pyramid\" is a metaphor that tells us to group software tests into buckets of different granularity",
+ "parent": "test",
+ "url": "/wiki/test/test-the-practical-test-pyramid",
+ "updated": "2024-06-23 20:15:24 +0900",
+ "children": []
+}

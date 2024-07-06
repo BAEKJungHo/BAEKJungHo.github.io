@@ -2,5 +2,5 @@
  "tdd",
  "tdd/tdd-interface-design-decisions",
  "tdd/tdd-red-green-refactor",
- "tdd/tdd-the-practical-test-pyramid"
+ "test/test-the-practical-test-pyramid"
 ]

@@ -193,14 +193,18 @@ regenerate: true
 * [[/java/java-atomic]]
 * [[/java/java-abstraction-by-wrapping]]
 
+## Test
+
+* [[/test/tdd-benefits-of-test]]
+* [[/test/tdd-naming]]
+* [[/test/tdd-sut-doc]]
+* [[/test/tdd-why-use-mock-any]]
+
 ## TDD
 
 * [[/tdd/tdd-red-green-refactor]]
-* [[/tdd/tdd-naming]]
 * [[/tdd/tdd-interface-design-decisions]]
 * [[/tdd/tdd-why-use-mock-any]]
-* [[/tdd/tdd-sut-doc]]
-* [[/tdd/tdd-benefits-of-test]]
 * [[/tdd/tdd-the-practical-test-pyramid]]
 
 ## TroubleShooting

@@ -4,11 +4,11 @@ title   : Benefits of test code
 summary : 
 date    : 2024-04-02 15:54:32 +0900
 updated : 2024-04-02 20:15:24 +0900
-tag     : tdd test
+tag     : test
 toc     : true
 comment : true
 public  : true
-parent  : [[/tdd]]
+parent  : [[/test]]
 latex   : true
 ---
 * TOC

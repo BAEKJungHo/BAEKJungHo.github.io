@@ -3,11 +3,12 @@
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-mockk",
  "kotlin/kotlin-relaxed-mockk",
- "tdd/tdd-benefits-of-test",
  "tdd/tdd-interface-design-decisions",
- "tdd/tdd-naming",
  "tdd/tdd-red-green-refactor",
- "tdd/tdd-sut-doc",
  "tdd/tdd-the-practical-test-pyramid",
- "tdd/tdd-why-use-mock-any"
+ "test",
+ "test/tdd-benefits-of-test",
+ "test/tdd-naming",
+ "test/tdd-sut-doc",
+ "test/tdd-why-use-mock-any"
 ]

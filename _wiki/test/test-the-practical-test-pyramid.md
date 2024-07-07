@@ -52,6 +52,8 @@ __A unit test typically replaces external collaborators with test doubles__:
 
 시스템 테스트의 장점은 __테스트가 현실적__ 이라는 것이며, 단점은 __느리고, 작성하기 힘들고, 불안정한 경향__ 이 있다는 것이다.
 
+통합 테스트와 시스템 테스트는 작성 비용이 크다. 따라서 모든 기능에 대해서 적용할 필요는 없고, 통합 도중 문제 발생 소지가 있을 것 같은 코드의 특정 부분만 통합 테스트 또는 시스템 테스트를 사용하여 테스트할 수 있다.
+
 ## Links
 
 - [실용적인 테스트 피라미드 (번역)](https://www.integer.blog/practical-test-pyramid/)

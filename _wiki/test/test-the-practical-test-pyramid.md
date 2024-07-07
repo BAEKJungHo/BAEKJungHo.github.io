@@ -39,6 +39,8 @@ __A unit test typically replaces external collaborators with test doubles__:
 대부분의 경우에 단위 테스트는 데이터베이스나 웹 서비스 등과 같은 __외부 시스템에 의존하지 않는 작은 클래스 세트 등__ 을 테스트하는 것을 뜻한다.
 만약 외부 서비스에 의존(_[Dependency](https://en.wikipedia.org/wiki/Dependency)_)하고 있다면 가능한한 __격리__ 하여 테스트 해야 한다.
 
+단위 테스트는 최소한 __public interface of the class__ 를 테스트 해야 한다.
+
 ### Integration Test
 
 통합 테스트는 우리의 코드와 외부 요소 간(e.g DB, 외부 API 등)의 통합을 테스트해야할 때 사용하는 방법이다.

@@ -202,7 +202,8 @@ regenerate: true
 * [[/test/test-property-based-test]]
 * [[/test/test-no-silver-bullet]]
 * [[/test/test-the-practical-test-pyramid]]
-* [[/test/testdoubles]]
+* [[/test/test-testdoubles]]
+* [[/test/test-specification-based-test]]
 
 ## TDD
 

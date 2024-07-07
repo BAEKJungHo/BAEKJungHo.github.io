@@ -32,8 +32,23 @@ Roy Osherove 는 다음과 같이 말했다.
 
 단위 테스트에서 가장 어려운 점은 __한 단위를 구성하는 요소를 정의하는 것__ 이다.
 
+__A unit test typically replaces external collaborators with test doubles__:
+
+![](/resource/wiki/test-the-practical-test-pyramid/test-double.png)
+
 대부분의 경우에 단위 테스트는 데이터베이스나 웹 서비스 등과 같은 __외부 시스템에 의존하지 않는 작은 클래스 세트 등__ 을 테스트하는 것을 뜻한다.
 만약 외부 서비스에 의존(_[Dependency](https://en.wikipedia.org/wiki/Dependency)_)하고 있다면 가능한한 __격리__ 하여 테스트 해야 한다.
+
+### Integration Test
+
+통합 테스트는 우리의 코드와 외부 요소 간(e.g DB, 외부 API 등)의 통합을 테스트해야할 때 사용하는 방법이다.
+예를 들어 데이터베이스와의 통합을 테스트하는 경우, 테스트가 끝나면 모든 것을 깨끗한 상태로 되돌릴 수 있는, 테스트 목적만으로 격리된 데이터베이스 인스턴스가 필요하다.
+
+### System Test
+
+시스템 테스트는 시스템이 가진 모든 데이터베이스, 프론트 엔드, 앱 및 기타 구성 요소를 포함한 전체 소프트웨어 시스템을 테스트하는 것을 의미한다.
+
+시스템 테스트의 장점은 __테스트가 현실적__ 이라는 것이며, 단점은 __느리고, 작성하기 힘들고, 불안정한 경향__ 이 있다는 것이다.
 
 ## Links
 

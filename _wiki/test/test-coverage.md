@@ -126,7 +126,7 @@ __Jacoco metrics__:
 
 ### Flow
 
-구조적 테스트는 _[SpecificationBasedTest](https://baekjungho.github.io/wiki/test/test-specification-based-test/_ 와 같이 사용하는 것이 효과적이다.
+구조적 테스트는 _[SpecificationBasedTest](https://baekjungho.github.io/wiki/test/test-specification-based-test/)_ 와 같이 사용하는 것이 효과적이다.
 
 __StructureBasedTest Flow__:
 

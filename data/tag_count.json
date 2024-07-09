@@ -76,6 +76,10 @@
   "size": 12
  },
  {
+  "name": "coverage",
+  "size": 1
+ },
+ {
   "name": "cpu",
   "size": 1
  },
@@ -246,6 +250,10 @@
  {
   "name": "jackson",
   "size": 2
+ },
+ {
+  "name": "jacoco",
+  "size": 1
  },
  {
   "name": "java",
@@ -553,7 +561,7 @@
  },
  {
   "name": "test",
-  "size": 16
+  "size": 17
  },
  {
   "name": "theory",

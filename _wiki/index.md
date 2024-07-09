@@ -204,6 +204,7 @@ regenerate: true
 * [[/test/test-the-practical-test-pyramid]]
 * [[/test/test-testdoubles]]
 * [[/test/test-specification-based-test]]
+* [[/test/test-coverage]]
 
 ## TDD
 

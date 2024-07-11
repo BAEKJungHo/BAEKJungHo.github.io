@@ -10,7 +10,7 @@ latex: true
 
 # About Me
 
-__[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Building__ 
+__[BAEKJungHo](https://github.com/BAEKJungHo)__. __Self-Motivated__ & __Core Resource of Team Building__ 
 
 ![](/resource/about/principle.png)
 
@@ -21,6 +21,8 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 - Consider trade-off.
 - I aim for shared growth.
 - I try to make good reputation and relationships.
+
+![](/resource/about/eee.png)
 
 ## Motto 
 

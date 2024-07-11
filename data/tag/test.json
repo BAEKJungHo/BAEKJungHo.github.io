@@ -11,6 +11,7 @@
  "test/tdd-sut-doc",
  "test/tdd-why-use-mock-any",
  "test/test-coverage",
+ "test/test-design-by-contract",
  "test/test-no-silver-bullet",
  "test/test-property-based-test",
  "test/test-specification-based-test",

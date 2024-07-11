@@ -68,5 +68,6 @@
  "refactoring/refactoring-aliasbug",
  "refactoring/refactoring-parallelchange",
  "spring/spring-jackson",
- "spring/spring-pojo"
+ "spring/spring-pojo",
+ "test/test-design-by-contract"
 ]

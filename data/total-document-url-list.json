@@ -516,6 +516,7 @@
  "/wiki/test/tdd-sut-doc",
  "/wiki/test/tdd-why-use-mock-any",
  "/wiki/test/test-coverage",
+ "/wiki/test/test-design-by-contract",
  "/wiki/test/test-no-silver-bullet",
  "/wiki/test/test-property-based-test",
  "/wiki/test/test-specification-based-test",

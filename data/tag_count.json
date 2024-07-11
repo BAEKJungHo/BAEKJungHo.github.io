@@ -72,6 +72,10 @@
   "size": 1
  },
  {
+  "name": "contract",
+  "size": 1
+ },
+ {
   "name": "coroutine",
   "size": 12
  },
@@ -293,7 +297,7 @@
  },
  {
   "name": "kotlin",
-  "size": 70
+  "size": 71
  },
  {
   "name": "ksp",
@@ -561,7 +565,7 @@
  },
  {
   "name": "test",
-  "size": 17
+  "size": 18
  },
  {
   "name": "theory",

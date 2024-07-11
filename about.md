@@ -22,13 +22,6 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__. __Core Resource of Team Buildin
 - I aim for shared growth.
 - I try to make good reputation and relationships.
 
-## Responsibility History
-
-- __[Mobility]__ Connected Service Backend Engineer 
-  - Autonomous Hailing, Vehicle Control, etc
-- __[Reservation]__ Restaurant reservation service Backend Engineer
-- __[BuildAWebsite]__ Public Institution / University Project Production
-
 ## Motto 
 
 - 세상을 더 나아지게 만든 뒤 떠날 때에서야 비로소 스스로를 좋은사람이라 할 수 있다. 내가 어떤 형태로든 사람들의 삶을 바꿀 수 있다면 그게 가장 중요한 일일 것이다. - Max Holloway

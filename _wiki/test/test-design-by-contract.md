@@ -4,7 +4,7 @@ title   : Design by Contract
 summary : 
 date    : 2024-07-11 10:25:32 +0900
 updated : 2024-07-11 10:29:24 +0900
-tag     : test contract kotlin
+tag     : test contract kotlin spring
 toc     : true
 comment : true
 public  : true
@@ -23,8 +23,7 @@ A _[contract](https://kt.academy/article/ak-contracts#the-meaning-of-a-contract)
 이렇게 __Constraints Modeling__ 을 하기 위한 방법으로 일반적으로 3가지 선택지가 있다.
 
 - 클라이언트 클래스가 유효하지 않은 입력으로, 서버 클래스를 절대로 호출하지 못하도록 한다.
-- 유효하지 않은 입력이 발생하면 예외를 발생 시켜, 시스템을 중단하고 사용자에게 에러 메시지를 전달한다.
-    - 이 방법은 복잡성이 증가하지만 시스템을 탄력적(resilience)으로 만든다.
+- 유효하지 않은 입력이 발생하면 예외를 발생 시켜, 시스템을 중단하고 사용자에게 에러 메시지를 전달한다. 이 방법은 복잡성이 증가하지만 시스템을 탄력적(resilience)으로 만든다.
 - 개발 중인 각 클래스에 대해 명확한 계약을 정의한다. 계약은 각 클래스가 사전 조건(pre-conditions)으로 무엇을 요구하는지, 사후 조건(post-conditions)으로 무엇을 제공하는지, 불변식(invariants)은 클래스에 대해 항상 무엇을 유지하도록 하는지를 명확하게 설계한다. 이 방법은 __계약에 의한 설계(_[Design by Contract](https://en.wikipedia.org/wiki/Design_by_contract)_)__ 에 따른 모델링 활동이다.
 
 ### Pre/Post Conditions

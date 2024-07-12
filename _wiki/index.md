@@ -206,6 +206,7 @@ regenerate: true
 * [[/test/test-specification-based-test]]
 * [[/test/test-coverage]]
 * [[/test/test-design-by-contract]]
+* [[/test/test-design-for-testability]]
 
 ## TDD
 

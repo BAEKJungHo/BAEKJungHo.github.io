@@ -207,9 +207,9 @@ class OrderStateTester...
 
 아래와 같은 경우에는 Mock 또는 Stub 을 꺼리게 된다.
 
-- Entity
-- Native Library 와 Utility Methods
-- 단순한 의존성
+- __Entity__
+- __Native Library 와 Utility Methods__
+- __단순한 의존성__
 
 ## Wrapping DateTime
 

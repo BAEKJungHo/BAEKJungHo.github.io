@@ -263,6 +263,7 @@ class ChristmasDiscountTest {
 ```
 
 - [Overriding System Time for Testing in Java](https://www.baeldung.com/java-override-system-time)
+- [테스트 코드에선 LocalDate.now()를 쓰지말자](https://jojoldu.tistory.com/416)
 
 ## References
 

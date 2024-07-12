@@ -152,3 +152,7 @@ forAll { (n: Int, d: Int) =>
   }
 }
 ```
+
+## References
+
+- Effective Software Testing: A developer's guide / Mauricio Aniche

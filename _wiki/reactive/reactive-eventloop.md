@@ -140,7 +140,7 @@ __Registering Channels with Selector__:
 ServerSocketChannel channel = ServerSocketChannel.open();
 channel.bind(new InetSocketAddress("localhost", 8080));
 channel.configureBlocking(false); // 논블로킹 모드로 변경
-SelectionKey key = channel.register(selector, SelectionKey.OP_READ); // 채널을 셀렉터에 등록
+SelectionKey key = channel.register(selector, SelectionKey.OP_READ); // 셀렉터에 채널을 등록
 ```
 
 셀렉터에 채널을 등록하기 위해서는 반드시 해당 채널을 논블로킹 모드로 변환해야 한다. register() 메서드의 두 번째 매개 변수는 채널에서 발생하는 이벤트 중 Selector 를 통해 확인하고자(알림 받고자) 하는 이벤트의 종류를 전달할 때 사용한다. 이벤트에는 네 가지 종류가 있으며 SelectionKey 상수로 표시한다.

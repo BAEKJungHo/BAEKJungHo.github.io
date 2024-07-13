@@ -16,7 +16,7 @@ latex   : true
 
 ## Don’t Blame Test-Driven Development
 
-Test-Driven Development (TDD)는 개발자가 실제 코드를 작성하기 전에 테스트 케이스를 먼저 작성하고, 이 테스트를 통과할 정도로 충분한 코드를 작성하는 개발 방법론이다.
+Test-Driven Development(TDD) 는 개발자가 실제 코드를 작성하기 전에 테스트 케이스를 먼저 작성하고, 이 테스트를 통과할 정도로 충분한 코드를 작성하는 개발 방법론이다.
 
 _[Giving Up on TDD - Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2016/03/19/GivingUpOnTDD.html)_, _[Is TDD Dead - Martinfowler](https://martinfowler.com/articles/is-tdd-dead/)_, _[RIP TDD - Kent Beck](https://www.facebook.com/notes/kent-beck/rip-tdd/750840194948847/?_rdr)_ 등
 다양한 경로를 통해서 TDD 에 대한 다양한 Views 가 있다는 것을 알 수 있다. 또한 TDD 를 통해 클래스 설계를 개선할 수 있는 상황에 대한 다양한 연구가 있다.
@@ -36,7 +36,7 @@ _[Giving Up on TDD - Robert C. Martin](https://blog.cleancoder.com/uncle-bob/201
 
 최근의 논문들 중에는 아래와 같은 의견도 있다.
 
-- TDD 의 효과는 '테스트 우선 작성'에 미치는 것이 아니라, 최종 목표를 향ㅇ해 걸음마를 뗀 것이라는 생각도 있다. 
+- TDD 의 효과는 '테스트 우선 작성'에 미치는 것이 아니라, 최종 목표를 향해 걸음마를 뗀 것이라는 생각도 있다. 
 - TDD 의 이점은 TDD 가 주는 _[Cycle](https://baekjungho.github.io/wiki/tdd/tdd-red-green-refactor/)_ 이 집중력과 흐름을 개선해주는 세분화되고 안정화된 단계를 가질 수 있도록 하기 때문일 수 있다고 주장한다.
 
 나는 TDD 를 현재 공부 중이고, 가끔 현업에서도 적용해보려는 시도를 하고 있다. 현재까지 느낀 TDD 의 장점 중 하나는 ___[Faster Feedback](https://baekjungho.github.io/wiki/tdd/tdd-interface-design-decisions/)___ 이라고 생각한다.

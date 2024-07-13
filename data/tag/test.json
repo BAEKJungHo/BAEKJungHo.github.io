@@ -3,6 +3,7 @@
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-mockk",
  "kotlin/kotlin-relaxed-mockk",
+ "tdd/tdd-dontblame",
  "tdd/tdd-interface-design-decisions",
  "tdd/tdd-red-green-refactor",
  "test",

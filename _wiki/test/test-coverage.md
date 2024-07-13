@@ -16,6 +16,8 @@ latex   : true
 
 ## CodeCoverage
 
+___[Test Coverage](https://martinfowler.com/bliki/TestCoverage.html)___ 는 테스트 코드가 프로덕션 코드를 얼마나 커버하는지를 의미하는 지표이다.
+
 소스 코드의 구조를 사용하여 테스트를 도출하는 것을 __구조적 테스트(StructureBasedTest)__ 라고 한다.
 구조적 테스트를 사용하기 위해서는 __코드 커버리지 기준__ 을 이해해야 한다. 대표적인 코드 커버리지 도구로는 _[Jacoco](https://www.baeldung.com/jacoco)_ 가 있다.
 

@@ -16,6 +16,7 @@
  "/wiki/architecture/architecture-amqp",
  "/wiki/architecture/architecture-analysis-estimation",
  "/wiki/architecture/architecture-api-design",
+ "/wiki/architecture/architecture-async-nonblocking",
  "/wiki/architecture/architecture-aws-well",
  "/wiki/architecture/architecture-branchbyabstraction",
  "/wiki/architecture/architecture-bulkhead",

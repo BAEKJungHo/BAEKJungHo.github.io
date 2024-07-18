@@ -37,7 +37,7 @@ CPU 코어당 1~2개의 스레드로 모든 요청을 처리하기 때문에 스
 
 일반적으로 Callback 기반으로 요청 응답이 이뤄지는 시스템은 Async 하다. 또한 최종 응답을 수신하기 위한 Callback Endpoint 를 미리 등록 요청 해야 한다. (Callback 대신 Kafka 와 같은 Distributed Event Streaming Platform 을 사용할 수도 있다.)
 
-__Callback based Flow__:
+__Callback Based Flow__:
 
 ![](/resource/wiki/architecture-async-nonblocking/callback-architecture.png)
 

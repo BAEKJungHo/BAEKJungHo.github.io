@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Callback Based Async Architecture
-summary : Vehicle Control
+summary : 
 date    : 2024-07-18 15:02:32 +0900
 updated : 2024-07-18 15:12:24 +0900
 tag     : architecture mobility

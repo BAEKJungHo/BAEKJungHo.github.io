@@ -66,7 +66,7 @@ __Request Storms Block with Caching__:
   - Success 인 경우 삭제
   - Timeout, Fail 등 인 경우 삭제
 
-이러한 __"하나의 명령을 처리하기 까지 다른 명령은 수행할 수 없다"__ 라는 Transaction 을 처리하기 위해서 Cache Set/Delete 를 한 번더 ___[Abstraction](https://en.wikipedia.org/wiki/Abstraction)___ 시켜, _[Readability](https://baekjungho.github.io/wiki/cleancode/cleancode-readability/)_ 를 높일 수 있다.
+이러한 __"하나의 명령을 처리하기 까지 다른 명령은 수행할 수 없다"__ 라는 ___[Transaction](https://baekjungho.github.io/wiki/spring/spring-declarative-transaction/)___ 을 처리하기 위해서 Cache Set/Delete 를 한 번더 ___[Abstraction](https://en.wikipedia.org/wiki/Abstraction)___ 시켜, _[Readability](https://baekjungho.github.io/wiki/cleancode/cleancode-readability/)_ 를 높일 수 있다.
 
 __Abstracted By Cache Set/Delete Mechanism__:
 

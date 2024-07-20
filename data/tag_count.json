@@ -140,6 +140,10 @@
   "size": 11
  },
  {
+  "name": "dns",
+  "size": 1
+ },
+ {
   "name": "docker",
   "size": 8
  },
@@ -393,7 +397,7 @@
  },
  {
   "name": "network",
-  "size": 17
+  "size": 18
  },
  {
   "name": "nodejs",

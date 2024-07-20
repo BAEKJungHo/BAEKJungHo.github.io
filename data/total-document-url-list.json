@@ -384,6 +384,7 @@
  "/wiki/msa/msa-xa",
  "/wiki/network",
  "/wiki/network/network-dmz",
+ "/wiki/network/network-dns",
  "/wiki/network/network-half-close",
  "/wiki/network/network-idempotency",
  "/wiki/network/network-latency",

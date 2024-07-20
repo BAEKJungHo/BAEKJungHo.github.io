@@ -594,6 +594,7 @@ regenerate: true
 * [[/network/network-port-forwarding]]
 * [[/network/network-security-attacks]]
 * [[/network/network-subnet]]
+* [[/network/network-dns]]
 
 ## Http
 

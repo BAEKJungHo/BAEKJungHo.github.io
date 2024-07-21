@@ -289,7 +289,6 @@ regenerate: true
 * [[/spring/spring-jakarta]]
 * [[/spring/spring-exception-hierarchy]]
 * [[/spring/spring-query-cache-plan]]
-* [[/spring/spring-fixture-monkey]]
 * [[/spring/spring-jpa-lazy-write]]
 * [[/spring/spring-reactive-security-test-off]]
 * [[/spring/spring-cloud-openfeign]]

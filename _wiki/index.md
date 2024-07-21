@@ -120,6 +120,7 @@ regenerate: true
 * [[/go/go-profiling]]
 * [[/go/go-vendoring]]
 * [[/go/go-polymorphism-function]]
+* [[/go/go-error-std]]
 
 ## Kotlin
 

@@ -8,6 +8,7 @@
  "children": [
   "go/go-concurrency",
   "go/go-empty-interface-generics",
+  "go/go-error-std",
   "go/go-fuzz",
   "go/go-method-function",
   "go/go-mutex",

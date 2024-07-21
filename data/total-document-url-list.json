@@ -184,6 +184,7 @@
  "/wiki/go",
  "/wiki/go/go-concurrency",
  "/wiki/go/go-empty-interface-generics",
+ "/wiki/go/go-error-std",
  "/wiki/go/go-fuzz",
  "/wiki/go/go-method-function",
  "/wiki/go/go-mutex",

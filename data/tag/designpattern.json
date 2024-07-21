@@ -19,5 +19,6 @@
  "designpattern/designpattern-template-method",
  "kotlin/kotlin-delegate",
  "reactive/reactive-eventloop",
- "spring/spring-jpa-osiv"
+ "spring/spring-jpa-osiv",
+ "test/test-object-mother"
 ]

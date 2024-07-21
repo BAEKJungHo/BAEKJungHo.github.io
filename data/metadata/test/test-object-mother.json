@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Test Patterns for Standard Fixtures Reuse",
+ "summary": "Object Mother, Test Data Builder, Fixture Monkey, EasyRandom",
+ "parent": "test",
+ "url": "/wiki/test/test-object-mother",
+ "updated": "2024-07-19 21:15:24 +0900",
+ "children": []
+}

@@ -15,6 +15,7 @@
   "test/test-design-for-testability",
   "test/test-detroit-mockist",
   "test/test-no-silver-bullet",
+  "test/test-object-mother",
   "test/test-property-based-test",
   "test/test-specification-based-test",
   "test/test-testdoubles",

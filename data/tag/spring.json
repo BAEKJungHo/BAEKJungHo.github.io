@@ -27,7 +27,6 @@
  "spring/spring-errordecoder",
  "spring/spring-exception-hierarchy",
  "spring/spring-filter",
- "spring/spring-fixture-monkey",
  "spring/spring-graceful-shutdown",
  "spring/spring-health-check",
  "spring/spring-i18n",
@@ -58,5 +57,6 @@
  "spring/spring-sqlinjection",
  "spring/spring-transactionmanager",
  "spring/spring-validation",
- "test/test-design-by-contract"
+ "test/test-design-by-contract",
+ "test/test-object-mother"
 ]

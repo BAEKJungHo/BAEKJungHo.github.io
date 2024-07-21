@@ -27,3 +27,8 @@ _[go mod init {module_name}](https://github.com/golang/go/issues/27951)_ 을 통
 
 해결 방법은 src 폴더를 하나 생성해서, 생성된 go.mod 파일을 src 하위로 이동하였다. 
 
+예를 들어 프로젝트의 ROOT 디렉터리 아래에 go.mod 파일을 두고 싶으면 아래와 같이 PATH 를 설정하면된다.
+
+- GOPATH : {ProjectRootDir}/app
+  - app 하위에는 main.go 가 존재
+

@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Test Patterns for Standard Fixtures Reuse
+title   : Test Patterns For Standard Fixtures Reuse
 summary : Object Mother, Test Data Builder, Fixture Monkey, EasyRandom
 date    : 2024-07-19 20:28:32 +0900
 updated : 2024-07-19 21:15:24 +0900

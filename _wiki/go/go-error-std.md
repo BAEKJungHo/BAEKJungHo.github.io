@@ -4,7 +4,7 @@ title   : Error .. is not in std golang
 summary : $GOPATH/go.mod exists but should not
 date    : 2024-07-21 12:54:32 +0900
 updated : 2024-07-21 13:15:24 +0900
-tag     : go
+tag     : go error
 toc     : true
 comment : true
 public  : true

@@ -26,10 +26,23 @@ __Commands__:
 ```sh
 git checkout -b feature/xxx # Create feature branch
 git commit -m "Message" # Commit
-git rebase origin/develop # Rebase 
+git rebase origin/develop # Rebase (from remote) 
 git checkout develop 
 git merge --no-ff feature/xxx # Merge - Generated merge commit
 # git merge --no-ff -m "Merge branch 'branch-name' into 'master'"
+```
+
+feature 브랜치에서 작업도중, 원격 브랜치(e.g develop)에 다른 누군가가 커밋한 경우 feature 브랜치를 Push 하기 전 아래와 같이 작업할 수도 있다.
+
+```sh
+git commit -m "Message" # commit in feature branch
+git checkout develop
+git pull develop
+git checkout feature/xxx # Move to feature branch
+git rebase origin/develop # Rebase 
+# conflict resolve (충돌 해결한 파일을 git add)
+git rebase --continue # 충돌 해결 후 rebase 진행
+# push feature branch
 ```
 
 ## Links

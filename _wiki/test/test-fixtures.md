@@ -47,7 +47,7 @@ public class SampleTestFixture {
 ### Readability
 
 SUT 에 전달해야하는 매개변수가 너무 많은 경우 혹은, 특정 클래스에 대한 테스트 코드를 작성하는데 해당 클래스의 의존성이 수십개인 경우 _[Mockist](https://baekjungho.github.io/wiki/test/test-detroit-mockist/)_ 방식으로 의존성을 테스트 클래스의 상위에 정의하는 경우
-테스트 메서드를 보기 위해서 스크롤을 해야할 것이다. 이 경우 가독성을 너무 저하시키기 때문에, TestFixtures 를 모아둔 클래스를 제공할 수 있다.
+테스트 메서드를 보기 위해서 스크롤을 해야할 것이다.
 
 __Bad Case__:
 
@@ -68,7 +68,7 @@ class LegacyServiceTest: FunSpec({
 })
 ```
 
-어떤 Fixtures 가 있는지 보다, 어떤 테스트를 다루고 있는지가 더 관심사 일 것이다. 이 경우 아래와 같은 패턴을 사용할 수도 있다.
+어떤 Fixtures 가 있는지 보다, 어떤 테스트를 다루고 있는지가 더 관심사 일 것이다. 이 경우 가독성을 너무 저하시키기 때문에, TestFixtures 를 모아둔 클래스를 제공할 수 있다.
 
 ```kotlin
 class LegacyServiceTest: FunSpec({

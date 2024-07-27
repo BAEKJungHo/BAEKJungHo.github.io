@@ -212,6 +212,7 @@ regenerate: true
 * [[/test/test-detroit-mockist]]
 * [[/test/test-object-mother]]
 * [[/test/test-fixtures]]
+* [[/test/test-intuitive-naming]]
 
 ## TDD
 

@@ -211,6 +211,7 @@ regenerate: true
 * [[/test/test-design-for-testability]]
 * [[/test/test-detroit-mockist]]
 * [[/test/test-object-mother]]
+* [[/test/test-fixtures]]
 
 ## TDD
 

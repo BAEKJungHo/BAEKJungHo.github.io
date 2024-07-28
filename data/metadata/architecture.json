@@ -30,6 +30,7 @@
   "architecture/architecture-idempotency-design",
   "architecture/architecture-lambda",
   "architecture/architecture-layered",
+  "architecture/architecture-managed-service",
   "architecture/architecture-map-reduce",
   "architecture/architecture-mqtt",
   "architecture/architecture-nats",

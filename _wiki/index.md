@@ -82,6 +82,7 @@ regenerate: true
 * [[/architecture/architecture-scalable]]
 * [[/architecture/architecture-qr]]
 * [[/architecture/architecture-async-nonblocking]]
+* [[/architecture/architecture-managed-service]]
 
 ## Kata
 

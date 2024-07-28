@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Distributed Lock with Redis
+title   : Distributed Lock
 summary : 
 date    : 2023-03-17 13:15:32 +0900
 updated : 2023-03-17 13:55:24 +0900
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Distributed Lock with Redis
+## Distributed Lock
 
 [Distributed Lock with Redis](https://redis.io/docs/manual/patterns/distributed-locks/#is-the-algorithm-asynchronous)
 
@@ -82,7 +82,7 @@ Consensus(합의)는 Redis Instance 가 N대 인 경우, __N/2+1 인스턴스__ 
 
 분산 애플리케이션 환경에서 RedLock 을 사용하더라도 무조건 안전한것은 아니다. 
 
-공식문서와 [How to do distributed locking](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html) 글에서는 일관성, 정확성이 우려되는 경우 __펜싱 토큰(fencing tokens)__ 을 고려해야한다고 말한다. 예를 들어 ZooKeeper 를 잠금 서비스로 사용하는 경우 zxid or znode 버전 번호를 펜싱 토큰으로 사용할 수 있다.
+공식문서와 _[How to do distributed locking](https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)_ 글에서는 일관성, 정확성이 우려되는 경우 ___[펜싱 토큰(fencing tokens)](https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-synchronizers#810-fenced-lock)___ 을 고려해야한다고 말한다. 예를 들어 ZooKeeper 를 잠금 서비스로 사용하는 경우 zxid or znode 버전 번호를 펜싱 토큰으로 사용할 수 있다.
 
 __Problems:__
 1. 락을 획득한 클라이언트A 가 트랜잭션이 끝나지 않았는데 leaseTime(expireTime) 에 의해 락을 해제

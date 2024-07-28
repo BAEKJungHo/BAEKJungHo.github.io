@@ -1,6 +1,6 @@
 {
  "type": "wiki",
- "title": "Distributed Lock with Redis",
+ "title": "Distributed Lock",
  "summary": "",
  "parent": "redis",
  "url": "/wiki/redis/redis-lock",

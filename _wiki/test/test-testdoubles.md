@@ -240,7 +240,7 @@ public void Creating_a_report() {
 Mock 과 Stub 은 명령과 조회와 연관되어있다. 즉, _[Command Query Responsibility Segregation](https://en.wikipedia.org/wiki/Command_Query_Responsibility_Segregation)_ 원칙과 관련이 있다.
 
 명령에 속하며, 메서드가 void 타입이고 사이드 이펙트를 일으키는 경우에는 Mock, 조회에 속하며 사이드 이펙트가 없고 값을 반환하는 경우에는 Stub 이다.
-즉, <mark>__명령을 대체하는 테스트 대역은 Mock 이며, 조회를 대체하는 테스트 대역은 Stub__</mark> 이다.
+즉, <mark><em><strong>명령을 대체하는 테스트 대역은 Mock 이며, 조회를 대체하는 테스트 대역은 Stub</strong></em></mark> 이다.
 
 항상 이 원칙을 따르지는 않는데 메서드가 값을 반환하면서 사이드 이펙트를 일으키는 경우도 있다. (e.g stack.pop())
 

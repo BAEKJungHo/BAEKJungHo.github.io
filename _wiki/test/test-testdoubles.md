@@ -101,7 +101,7 @@ class SpyExample : StringSpec({
 ```
 
 __Stub__:
-- Stub 객체는 특정 메서드 호출에 대해 미리 준비된(하드코딩 된) 응답을 제공한다. 스텁은 실제로 동작하는 구현체가 없다.
+- Stub 객체는 특정 메서드 호출에 대해 __미리 준비된(하드코딩 된) 응답을 제공__ 한다. 스텁은 실제로 동작하는 구현체가 없다.
 - 테스트 과정에서 종속성의 비용이 크다면 Stub 이 유용할 수 있다.
 
 ```kotlin
@@ -185,6 +185,88 @@ class OrderStateTester...
     order.fill(warehouse);
     assertEquals(1, mailer.numberSent());
   }
+```
+
+_[Effective Software Testing: A developer's guide](https://www.amazon.com/Effective-Software-Testing-developers-guide/dp/1633439933)_ 책에서는 Mock 과 Stub 의 차이점으로 아래와 같이 설명하고 있다.
+
+이메일 발송과 같이 서버에 사이드 이펙트를 초라하는 상호 작용의 경우에 사용되는 테스트 대역은 Mock 이며, 데이베이스에서 데이터 검색과 같이 서버 내부로 들어오는 상호작용에 사용되는 테스트 대역은 Stub 이다.
+
+```java
+// Mock
+public void Sending_a_greetings_email() {
+    var mock = new Mock<IEmailGateway>();
+    var sut = new Controller(mock.Object);
+    // ...
+}
+// Stub
+public void Creating_a_report() {
+    var stub = new Mock<IDatabase>();
+    val sut = new Controller(stub.Object);
+    // ...
+}
+```
+
+위 처럼 외부 시스템을 사용하는 경우에는 Mock 을 사용하며 __상호 작용__ 을 모방하고 검증하는 반면, Stub 의 경우에는 상호 작용만 모방하고 검사하진 않는다.
+
+#### Over Specification
+
+최종 결과가 아닌 사항을 검증하는 관행을 __과잉 명세(overspecification)__ 라고 한다. 과잉 명세는 상호 작용을 검사할 때 가장 흔하게 발생한다.
+
+__Anti-Patterns__:
+
+```java
+public void Creating_a_report() {
+    var stub = new Mock<IDatabase>();
+    stub.Setup(x => x.GetNumberOfUsers()).Returns(10);
+    
+    val sut = new Controller(stub.Object);
+    
+    Report report = sut.CreateReport();
+    
+    Assert.Equal(10, report.NumberOfUsers);
+    
+    // Over Specification
+    stub.Verify(
+            x => x.GetNumberOfUsers(),
+            Times.Once
+    );
+}
+```
+
+이러한 과잉 명세는 스텁을 사용하면서 상호 작용을 검사하려고 할 때 발생한다.
+
+#### Command Query Responsibility Segregation
+
+Mock 과 Stub 은 명령과 조회와 연관되어있다. 즉, _[Command Query Responsibility Segregation](https://en.wikipedia.org/wiki/Command_Query_Responsibility_Segregation)_ 원칙과 관련이 있다.
+
+명령에 속하며, 메서드가 void 타입이고 사이드 이펙트를 일으키는 경우에는 Mock, 조회에 속하며 사이드 이펙트가 없고 값을 반환하는 경우에는 Stub 이다.
+즉, __명령을 대체하는 테스트 대역은 Mock__ 이며, __조회를 대체하는 테스트 대역은 Stub__ 이다.
+
+항상 이 원칙을 따르지는 않는데 메서드가 값을 반환하면서 사이드 이펙트를 일으키는 경우도 있다. (e.g stack.pop())
+
+### Mock with Stub
+
+Mock 과 Stub 을 함께 사용할 수 도 있다. 
+
+```java
+public void Purchase_fails_when_not_enough_inventory() {
+    var storeMock = new Mock<IStore>();
+
+    // Stub = 미리 준비된 응답을 제공
+    storeMock.Setup(x = > x.HasEnoughInventory(Product.Shampoo, 5)).Returns(false);
+
+    var sut = new Customer();
+
+    bool success = sut.Purchase(storeMock.Object, Product.Shampoo, 5);
+
+    Assert.False(success);
+
+    // Mock = SUT 에서 수행한 호출을 검사
+    storeMock.Verify(
+            x = > x.RemoveInventory(Product.Shampoo, 5),
+            Times.Never()
+    );
+}
 ```
 
 ### Drawbacks of Mock

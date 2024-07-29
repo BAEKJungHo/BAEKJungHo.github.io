@@ -62,7 +62,8 @@ __Request Storms Block with Caching__:
 2. Service Backend 에서 Identifier 를 Key 로 하고 Value 로는 적당한 값을 넣어 캐싱한다.
 3. Service Backend 에서 Platform Backend 로 요청을 보내고, 응답을 받는다.
   - 이때 에러 응답을 받으면 Cache 를 삭제한다.
-4. 미리 등록된 Callback API 로 최종 응답을 받게 되면, 응답에 담겨져 있는 상태를 확인하여 Cache 를 삭제한다.
+4. 미리 등록된 Callback API 로 최종 응답을 받게 되면, 응답에 담겨져 있는 상태를 확인하여 Redis Channel 로 Publish 한다.
+5. 1번 요청을 처리하는 도메인 메서드에서 Subscribe 하여 Cache 를 삭제한다.
   - Success 인 경우 삭제
   - Timeout, Fail 등 인 경우 삭제
 

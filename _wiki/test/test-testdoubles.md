@@ -27,7 +27,7 @@ __TestDoubles__:
 - __Spy__ are stubs that also record some information based on how they were called. One form of this might be an email service that records how many messages it was sent.
 - __Mock__ are pre-programmed with expectations which form a specification of the calls they are expected to receive. They can throw an exception if they receive a call they don't expect and are checked during verification to ensure they got all the calls they were expecting
 
-테스트 더블을 사용하는 것은 단위 테스트에만 국한되지 않는다. 더 정교한 테스트 더블을 사용하면 제어된 방식으로 시스템의 전체 부분을 시뮬레이션할 수 있다.
+크게는 Mock(Mock & Spy) 과 Stub(Stub, Dummy, Fake) 로 나뉜다. 테스트 더블을 사용하는 것은 단위 테스트에만 국한되지 않는다. 더 정교한 테스트 더블을 사용하면 제어된 방식으로 시스템의 전체 부분을 시뮬레이션할 수 있다.
 
 __Dummy__:
 - Dummy 객체는 보통 테스트 시 사용되지 않지만, 메서드 호출 시 필요한 매개변수로 사용된다.

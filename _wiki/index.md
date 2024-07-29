@@ -214,6 +214,7 @@ regenerate: true
 * [[/test/test-object-mother]]
 * [[/test/test-fixtures]]
 * [[/test/test-intuitive-naming]]
+* [[/test/test-effective-unittest]]
 
 ## TDD
 

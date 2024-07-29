@@ -14,6 +14,7 @@
   "test/test-design-by-contract",
   "test/test-design-for-testability",
   "test/test-detroit-mockist",
+  "test/test-effective-unittest",
   "test/test-fixtures",
   "test/test-intuitive-naming",
   "test/test-no-silver-bullet",

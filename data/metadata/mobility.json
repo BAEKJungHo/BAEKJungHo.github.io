@@ -7,6 +7,7 @@
  "updated": "2022-09-21 20:55:09 +0900",
  "children": [
   "mobility/mobility-autonomous-driving-level",
+  "mobility/mobility-ble",
   "mobility/mobility-can",
   "mobility/mobility-ccs",
   "mobility/mobility-digital-key",

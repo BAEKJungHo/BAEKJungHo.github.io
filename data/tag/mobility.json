@@ -2,6 +2,7 @@
  "architecture/architecture-async-nonblocking",
  "mobility",
  "mobility/mobility-autonomous-driving-level",
+ "mobility/mobility-ble",
  "mobility/mobility-can",
  "mobility/mobility-ccs",
  "mobility/mobility-digital-key",

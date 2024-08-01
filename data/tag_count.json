@@ -28,6 +28,10 @@
   "size": 1
  },
  {
+  "name": "ble",
+  "size": 1
+ },
+ {
   "name": "buffer",
   "size": 1
  },
@@ -357,7 +361,7 @@
  },
  {
   "name": "mobility",
-  "size": 16
+  "size": 17
  },
  {
   "name": "mockk",

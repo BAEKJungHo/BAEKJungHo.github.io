@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : Perfectly Keyless, Wireless digital key system
-summary : Car Connectivity Consortium NFC digital key specification
-date    : 2024-02-21 15:54:32 +0900
-updated : 2024-02-21 20:15:24 +0900
+title   : DigitalKey
+summary : 
+date    : 2024-08-02 10:54:32 +0900
+updated : 2024-08-02 11:15:24 +0900
 tag     : mobility digitalkey
 toc     : true
 comment : true
@@ -14,35 +14,39 @@ latex   : true
 * TOC
 {:toc}
 
-## Perfectly Keyless by Digital Key
+## The Future of Vehicle Access is Digital Key
 
-Perfectly keyless is a keyless vehicle access system. Both passive __vehicle access and start are controlled by a digital key on a mobile phone__. Also, perfectly keyless offers the driver greater __convenience and flexibility__. An app allows the vehicle owner to grant other users access to their vehicle. For this, an additional key is sent by cloud.
+Digital Key 란 스마트폰이 차량의 키가 된다는 것이다. Digital Key 를 사용하면 차량의 문을 열고 시동을 거는 등의 제어를 수행할 수 있다.
 
-Perfectly keyless 를 사용하면 스마트폰을 주머니에 넣는 것만으로도 충분하다. 차량 접근 시스템은 운전자와 스마트폰이 가까워지면 자동으로 차량의 잠금을 해제한다.
+![](/resource/wiki/mobility-digital-key/digitalkey-ccc.png)
 
-이러한 완벽한 keyless 방식은 __UWB(Ultra-Wide band)__ 을 기반으로 한다. UWB 는 단거리 무선 통신 프로토콜이다.
-UWB 를 사용하면 근거리 무선기기간 통신과 무선 기기간의 거리 측정이 가능하다는 장점이 있다. 이러한 UWB 측위 기술이 자동차 업계에서도 Perfectly Keyless 방식을 구현하는데 중요한 역할을 한다.
+Digital Key 는 _[Digital Wallet](https://en.wikipedia.org/wiki/Digital_wallet)_ 에 저장된다.
+- [Add your car key to Apple Wallet on your iPhone or Apple Watch](https://support.apple.com/en-us/118271)
 
-자동차 키 응용에서도 자동차의 여러 위치에 놓여진 UWB Anchor 가 운전자의 스마트키(UWB Tag)를 인식하여 스마트키를 가지고 있는 운전자가 차로 다가오는 위치를 정확히 파악하는데 사용된다.
-자동차 키 응용에서 사용되는 UWB 측위 기술을 __Network-centric__ 방식이라고 한다. 절대 위치 기반이다.
+그리고 Wallet 을 통해서 서로 공유가 가능하다. _[Kia Digital Key 2](https://sweb.owners.kia.us/content/owners/en/digital-key.html)_ 의 경우에는 공유 인원 수를 최대 3명으로 제한하고 있다.
 
-Digital Key 는 근거리무선통신(NFC, Near Field Communication) 기술을 하고 있으며, 근거리무선통신은 스마트폰 결제시스템이나 스마트폰 교통카드 등에서 이미 사용되고 있는 기술이다.
-Bluetooth 저에너지(BLE) 및 초 광대역 무선 연결(UWB)을 활용하여 패시브 위치 인식 Keyless 액세스를 지원하여 모바일 기기를 가방이나 주머니에서 꺼내지 않아도 차량 접속 가능하다.
+### Generation
 
-### Wireless digital key system compliant with the CCC’s global standard specification
+Digital Key 1 의 경우에는 _[NFC](https://namu.wiki/w/NFC)_ 만을 사용하기 때문에 스마트폰을 차 손잡이에 갖다 대어야 차량이 열리고, 스마트폰을 NFC Reader 같은 기기에 올려둬야 시동을 걸 수 있었다.
+즉, NFC 기반의 Digital Key 는 스마트폰을 호텔 카드 키 처럼 사용하는 것이다.
 
-__Wireless digital key system__:
+Digital Key 2 의 경우에는 기존 버전의 호환성을 위해 NFC 와 더불어 _[UWB](https://en.wikipedia.org/wiki/Ultra-wideband)_ 기술까지 지원한다. _[Genesis GV60](https://namu.wiki/w/%EC%A0%9C%EB%84%A4%EC%8B%9C%EC%8A%A4%20GV60?from=GV60)_ 차량에 해당 기술이 적용되었다.
+Android 는 물론 Apple 의 _[CarKey API](https://developer.apple.com/documentation/CarKey)_ 도 지원한다. UWB 기술을 사용하게 되면, 측위(UWB)를 통해 스마트폰의 위치를 파악하여 더 먼 거리에서도 차 문이 열리도록 할 수 있다.
 
-![](/resource/wiki/mobility-digital-key/wireless-digital-key-system.png)
+Digital Key 3 의 경우에는 NFC, UWB 와 더불어 _[BLE](https://baekjungho.github.io/wiki/mobility/mobility-ble/)_ 까지 지원한다.
 
-- [Car Connectivity Consortium unveils NFC digital key specification](https://www.nfcw.com/2020/05/07/366483/car-connectivity-consortium-unveils-nfc-digital-key-specification/)
-- [Alps Alpine and Giesecke+Devrient Jointly Develop Wireless Digital Key System Based on CCC Specification](https://www.alpsalpine.com/e/news_release/2022/0426_01.html)
-- [국제 표준 기반 Digital Key 국내 솔루션 아키텍처 - AutoCrypt](https://autocrypt.co.kr/autocrypt-digitalkey/)
+### Car Connectivity Consortium Based Architectures
 
-## Links
+_[CCC(Car Connectivity Consortium)](https://carconnectivity.org/)_ 는 스마트폰과 자동차 간 커넥티비티 솔루션 선도하는 국제 기술 표준화 단체이다.
 
-- [CCC Digital Key Certification](https://carconnectivity.org/digital-key/ccc-digital-key-certification/)
-- [The future of digital car keys: Q&A with Car Connectivity Consortium vice president Daniel Knobloch](https://members.nfcw.com/99365/the-future-of-digital-car-keys-car-connectivity-consortium-daniel-knobloch/)
-- [BOSCH Digital Vehicle Key - Digital Key Transfer](https://www.bosch-mobility.com/en/solutions/software-and-services/perfectly-keyless/?gad_source=1&gclid=Cj0KCQiAxOauBhCaARIsAEbUSQSN7bFWCxd8_Xu31jVBvKTSYdHRnqHIKG4P33O_lhxdSZ496_wAFTYaAvxWEALw_wcB)
-- [Bosch wants to replace your car keys with a smartphone and an app](https://www.digitaltrends.com/cars/bosch-perfectly-keyless-technology-provides-convenience-safety/)
-- [Custom digital key development solution in compliance with CCC - AutoCrypt](https://autocrypt.io/products/digital-key/)
+_[AutoCrypt](https://autocrypt.co.kr/autocrypt-digitalkey/)_ 에서는 _[CCC 표준](https://carconnectivity.org/wp-content/uploads/2022/11/CCC_Digital_Key_Whitepaper_Approved.pdf)_ 을 만족하는 Digital Key 솔루션을 만든다.
+
+### Digital Key Provisioning
+
+Digital Key Provisioning 은 Digital Key 를 사용하기 위한 준비 과정(등록 과정)을 의미한다. 사용자와 직접적인 연관이 있는 Provisioning 의 경우에는 Seamless 하게 제공되는 사용자 경험 측면에서 중요하다.
+CCC 표준을 따르지 않는 Digital Key 와 CCC 표준을 따르는 Digital Key 는 서로 다른 Provisioning 단계를 거칠 것이다.
+
+- [Hyundai 디지털 키 등록하기](https://www.hyundai.com/kr/ko/digital-customer-support/app/digital-key-2/digital-key-registration)
+- [Use your BMW Digital Key with the MyBMW App and unlock endless joy - Youtube](https://www.youtube.com/watch?v=tHk9iUn-bnA)
+
+Provisioning 단계가 끝나면 스마트폰만으로 차량에 접근하여 문을 열고, 차량의 시동을 걸 수 있다. 

@@ -627,6 +627,10 @@ regenerate: true
 * [[/datastructures/datastructures-stack-heap]]
 * [[/datastructures/datastructures-visualizations]]
 
+## Languages
+
+* [[/language/language-jp]]
+
 ## Theory
 
 * [[/theory/theory-overengineering]]

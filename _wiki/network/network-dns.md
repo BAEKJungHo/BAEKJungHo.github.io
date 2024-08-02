@@ -17,7 +17,7 @@ latex   : true
 ## DNS
 
 ___[DNS(Domain Name System)](https://wiki.kldp.org/KoreanDoc//html/PoweredByDNS-KLDP/PoweredByDNS.html)___ 은 전화번호부와 같은 역할을 한다. '도미노 피자'와 같은 이름이 전화번호부를 통해 전화번호로 변환되는 것처럼 'www.google.com' 과 같은 웹 주소는 DNS 를 통해 '74.125.19.147'과 같이 실제 IP 주소로 변환된다.
-이러한 Domain To IP 에 대한 변환 작업을 ___[Resolving](https://wiki.kldp.org/KoreanDoc//html/PoweredByDNS-KLDP/PoweredByDNS.html#FIG-RESOLVING)___ 이라고 한다.
+이러한 Domain 에서 IP 로의 변환 작업을 ___[Resolving](https://wiki.kldp.org/KoreanDoc//html/PoweredByDNS-KLDP/PoweredByDNS.html#FIG-RESOLVING)___ 이라고 한다.
 
 __[How Dose DNS Work](https://www.slideshare.net/slideshow/dns-security-presentation-issa/40894222#4)__:
 

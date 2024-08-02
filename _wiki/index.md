@@ -37,6 +37,10 @@ regenerate: true
 * [[/mobility/mobility-digital-twin]]
 * [[/mobility/mobility-ble]]
 
+## System Design
+
+* [[/systemdesign/systemdesign-chatting-application]]
+
 ## API
 
 * [[/api/api-too-many-requests]]

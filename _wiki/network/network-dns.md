@@ -19,7 +19,22 @@ latex   : true
 ___[DNS(Domain Name System)](https://wiki.kldp.org/KoreanDoc//html/PoweredByDNS-KLDP/PoweredByDNS.html)___ 은 전화번호부와 같은 역할을 한다. '도미노 피자'와 같은 이름이 전화번호부를 통해 전화번호로 변환되는 것처럼 'www.google.com' 과 같은 웹 주소는 DNS 를 통해 '74.125.19.147'과 같이 실제 IP 주소로 변환된다.
 이러한 Domain To IP 에 대한 변환 작업을 ___[Resolving](https://wiki.kldp.org/KoreanDoc//html/PoweredByDNS-KLDP/PoweredByDNS.html#FIG-RESOLVING)___ 이라고 한다.
 
+__[How Dose DNS Work](https://www.slideshare.net/slideshow/dns-security-presentation-issa/40894222#4)__:
+
+![](/resource/wiki/network-dns/dns-work.png)
+
+### Records
+
 DNS 에서는 다양한 _[Records](https://support.google.com/a/answer/48090?hl=ko)_ 들이 존재한다. 그 중에서 'A' 레코드는 Host Record 라고 부르며, 도메인 서비스를 호스팅하는 컴퓨터의 실제 IP 주소에 도메인을 연결한다.
+
+- __NS record(name server)__ - Specifies the DNS servers for your domain/subdomain.
+- __MX record(mail exchange)__ - Specifies the mail servers for accepting messages.
+- __A record (address)__ - Points a name to an IP address.
+- __CNAME(canonical)__ - Points a name to another name or CNAME (example.com to www.example.com) or to an A record.
+
+Services such as CloudFlare and Route 53 provide managed DNS services.
+
+### Time to Live
 
 DNS _[TTL(Time To Live)](https://www.cloudflare.com/ko-kr/learning/cdn/glossary/time-to-live-ttl/)_ 은 레코드의 변경사항이 적용될 때까지 걸리는 시간(초)를 의미한다. 예를 들어 TTL 값이 86400초인 레코드는 변경사항은 적용될 때까지 24시간이 소요된다.
 

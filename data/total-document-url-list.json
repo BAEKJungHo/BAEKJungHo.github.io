@@ -32,6 +32,7 @@
  "/wiki/architecture/architecture-did",
  "/wiki/architecture/architecture-discord-store-message",
  "/wiki/architecture/architecture-distributed-pk",
+ "/wiki/architecture/architecture-domain-model",
  "/wiki/architecture/architecture-event-driven-system",
  "/wiki/architecture/architecture-eventdriven-statemachine",
  "/wiki/architecture/architecture-hexagonal",

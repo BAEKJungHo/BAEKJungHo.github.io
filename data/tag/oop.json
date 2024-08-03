@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-domain-model",
  "go/go-method-function",
  "java/java-abstraction-by-wrapping",
  "kotlin/kotlin-property",

@@ -1,5 +1,6 @@
 [
  "architecture/architecture-branchbyabstraction",
+ "architecture/architecture-domain-model",
  "architecture/architecture-map-reduce",
  "architecture/architecture-pub-sub",
  "architecture/architecture-schema-registry",

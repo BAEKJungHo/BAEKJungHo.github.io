@@ -9,7 +9,7 @@
  },
  {
   "name": "architecture",
-  "size": 55
+  "size": 56
  },
  {
   "name": "atlassian",
@@ -113,7 +113,7 @@
  },
  {
   "name": "ddd",
-  "size": 19
+  "size": 20
  },
  {
   "name": "deepcopy",
@@ -129,7 +129,7 @@
  },
  {
   "name": "designpattern",
-  "size": 22
+  "size": 23
  },
  {
   "name": "devops",
@@ -429,7 +429,7 @@
  },
  {
   "name": "oop",
-  "size": 13
+  "size": 14
  },
  {
   "name": "operatingsystem",

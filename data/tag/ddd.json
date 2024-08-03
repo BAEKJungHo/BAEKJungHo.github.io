@@ -1,6 +1,7 @@
 [
  "architecture/architecture-character-architectures",
  "architecture/architecture-clean-impl",
+ "architecture/architecture-domain-model",
  "ddd",
  "ddd/ddd-aggregate",
  "ddd/ddd-anticorruption-layer",

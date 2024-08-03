@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Service Mesh Architecture
-summary : 
+summary : SideCar Pattern
 date    : 2024-02-17 15:54:32 +0900
 updated : 2024-02-17 20:15:24 +0900
 tag     : kubernetes architecture
@@ -21,7 +21,7 @@ latex   : true
 
 ![](/resource/wiki/kubernetes-service-mesh/service-mesh.png)
 
-서비스 메시(Service Mesh) 에서의 호출은 위 그림처럼 사이드카 형태로 달린 proxy 끼리 이뤄진다. 장점으로는 서비스 트래픽을 네트워크단에서 통제할 수 있다.
+서비스 메시(Service Mesh) 에서의 호출은 위 그림처럼 ___[SideCar](https://johngrib.github.io/wiki/pattern/sidecar/)___ 형태로 달린 proxy 끼리 이뤄진다. 장점으로는 서비스 트래픽을 네트워크단에서 통제할 수 있다.
 그런데 서비스의 수가 많아질 수록 proxy 수도 많아져서 중앙집중화된 컨트롤가 필요한데,
 Data Plane 과 Control Plane 으로 구성된다. 
 

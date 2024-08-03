@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Service Mesh Architecture",
- "summary": "",
+ "summary": "SideCar Pattern",
  "parent": "kubernetes",
  "url": "/wiki/kubernetes/kubernetes-service-mesh",
  "updated": "2024-02-17 20:15:24 +0900",

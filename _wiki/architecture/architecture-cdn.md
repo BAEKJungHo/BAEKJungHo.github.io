@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Content delivery network
+## Content Delivery Network
 
 A ___[Content Delivery Network(CDN)](https://github.com/donnemartin/system-design-primer?tab=readme-ov-file#content-delivery-network)___ is a globally distributed network of proxy servers, serving content from locations closer to the user. Generally, static files such as HTML/CSS/JS, photos, and videos are served from CDN, although some CDNs such as Amazon's CloudFront support dynamic content. The site's DNS resolution will tell clients which server to contact.
 

@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : BLE ADVERTISING PRIMER
+title   : BLE Advertising Primer
 summary : 
 date    : 2024-08-01 12:54:32 +0900
 updated : 2024-08-01 17:15:24 +0900
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## BLE ADVERTISING PRIMER
+## BLE Advertising Primer
 
 BLE ___[광고(Advertising)](https://www.argenox.com/library/bluetooth-low-energy/ble-advertising-primer/)___ 는 Bluetooth Low Energy(Bluetooth Smart) 에 중요한 역할을 한다.
 Bluetooth 를 활성화하면 배터리가 더 빨리 소모되기 때문에, BLE 는 주변 기기의 전력 소모를 극도로 낮추기 위해 설계되었다.

@@ -224,6 +224,7 @@
  "/wiki/infra/infra-incident",
  "/wiki/infra/infra-ip",
  "/wiki/infra/infra-k6",
+ "/wiki/infra/infra-load-balancer",
  "/wiki/infra/infra-load-stress-smoke",
  "/wiki/infra/infra-load-test",
  "/wiki/infra/infra-network-segmentation",

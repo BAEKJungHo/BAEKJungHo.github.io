@@ -467,6 +467,7 @@ regenerate: true
 * [[/infra/infra-k6]]
 * [[/infra/infra-rds-aurora]]
 * [[/infra/infra-envoy-proxy]]
+* [[/infra/infra-load-balancer]]
 
 ## Mobile
 

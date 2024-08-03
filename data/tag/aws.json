@@ -1,3 +1,4 @@
 [
+ "architecture/architecture-cdn",
  "logging/logging-nonblocking-pipeline"
 ]

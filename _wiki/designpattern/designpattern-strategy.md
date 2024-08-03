@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Strategy
-summary : 전략 패턴과 템플릿 콜백 패턴
+summary : Strategy Pattern, Template Callback Pattern
 date    : 2022-08-03 15:28:32 +0900
 updated : 2022-08-03 18:15:24 +0900
 tag     : designpattern
@@ -13,9 +13,6 @@ latex   : true
 ---
 * TOC
 {:toc}
-
-- __Prerequisite__
-  - [Template Method](https://baekjungho.github.io/wiki/designpattern/designpattern-template-method/)
 
 ## Strategy
 
@@ -37,11 +34,8 @@ latex   : true
   - 전략 패턴의 핵심은 Context 는 Strategy 인터페이스에만 의존한다는 점이다. 덕분에 Strategy 의 구현체를 변경하거나 새로 만들어도 Context 코드에는 영향을 주지 않는다.
   - 스프링의 Dependency Injection 에 사용되는 디자인 패턴이 전략 패턴이다.
 
-### 종류
 
 전략 패턴의 종류에는 두 가지가 있다. 하나는 전략을 필드에 보관하는 방식(setter 메서드 사용)이고, 하나는 템플릿 콜백 패턴이라고 하는 contextMethod 의 인자로 전략을 전달하는 방식이다. 우리는 조금더 유연한 템플릿 콜백 패턴(Template Callback)을 사용하여 AI Seller 의 발주 자동화 기능을 구현할 것이다.
-
-### 구성
 
 전략 패턴은 세 부분으로 구성된다.
 
@@ -51,9 +45,11 @@ latex   : true
   - ConcreteStrategyA, ConcreteStrategyB 같은 구체적인 구현 클래스
 - __전략 객체를 사용하는 한 개 이상의 클라이언트__
 
-### AI Seller - 발주 자동화 구현
+### AI Seller
 
-- __Strategy Interface__
+발주 자동화 구현 예제이다.
+
+__Strategy Interface__:
 
 ```java
 public interface OrderAutomationStrategy {
@@ -74,7 +70,7 @@ public interface OrderAutomationStrategy {
 
 JAVA 8 에서 Interface 에 default 메서드를 작성할 수 있게 추가되었는데, default 메서드는 서브 클래스에서 default 메서드의 기능이 존재하는지 모를 수 있다. 따라서 Javadoc 에서 제공하는 @implSpec 을 통하여 문서화를 해야 한다.
 
-- __전략 구현체__
+__Implementations__:
 
 ```java
 public class CUOrderAutomation implements OrderAutomationStrategy {
@@ -100,7 +96,7 @@ public class SevenElevenOrderAutomation implements OrderAutomationStrategy {
 }
 ```
 
-- __Context__
+__Context__:
 
 ```java
 public class OrderAutomationContext {
@@ -133,7 +129,7 @@ public class OrderAutomationContext {
 }
 ```
 
-- __사용__
+__Use__:
 
 ```java
 @Test
@@ -158,3 +154,7 @@ OrderAutomationContext 는 Context에 해당하며 변하지 않는 템플릿 �
   - 매개변수로 전략 객체나, 기능을 갖고 있는 객체를 넘긴 후, 뒤에서 그 객체를 이용하여 기능을 실행하는 것을 말한다.
 
 즉, 위와 같은 전략 패턴을 적용한 AI Seller 의 발주 자동화 코드를 템플릿 콜백(Template Callback) 패턴이라고 한다. 전략 패턴에서 Context 가 템플릿 역할을 하고, Strategy 부분이 콜백으로 넘어온다고 생각하면 된다.
+
+## Links
+
+- [Template Method](https://baekjungho.github.io/wiki/designpattern/designpattern-template-method/)

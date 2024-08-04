@@ -215,6 +215,88 @@ Type 은 함수와 데이터가 준수해야 하는 엄격한 계약(contract) �
 _[제어 명령을 수행하는 Application](https://baekjungho.github.io/wiki/realworld/realworld-smarthome-control-command/)_ 에서는 실제로 어떤 제어 명령(Control Commands)을 수행할 수 있는지에 대한 Type 정의가 필요하다.
 따라서 타입을 먼저 정의하고 이를 통해 코드를 작성하는 방법론인 ___[Type-Driven Development](https://kciter.so/posts/type-driven-development/)___ 를 적용해볼법 하다.
 
+## CanExecute/Execute
+
+DomainModel ___[Encapsulation](https://baekjungho.github.io/wiki/oop/oop-encapsulation/)___ 을 잘하는 것이 중요하다. 즉, 비지니스 로직과 오케스트레이션(e.g Facade, Application Service) 간의 분리가 잘 되어야 한다.
+이에 도움되는 패턴이 CanExecute/Execute 이다.
+
+예를 들어 이메일을 사용자가 확인할 때 까지만 변경가능하다는 Flag 옵션(isEmailConfirmed)이 있다고 해보자.
+
+```kotlin
+class Facade {
+    fun changeEmail(userId: String, newEmail: String) {
+        // ... 데이터 준비 ... 
+        val user = UserFactory.create(...)
+        val company = CompanyFactory.create(...)
+
+        try {
+            user.changeEmail(newEmail, company) // Decisions
+        } catch(e: Exception) {
+            // ...
+        }
+
+        // 결정에 따른 실행
+        repository.saveCompany(company)
+        repository.saveUser(user)
+
+        // ..
+    }
+}
+```
+
+여기서 오케스트레이션을 담당하는 Facade 는 의사 결정을 하지는 않지만 이메일을 변경할 수 없는 경우에도 Company 를 조회하기 때문에 성능 저하가 발생한다.
+사용자 이메일을 변경할지 여부를 Facade 에서 결정하기 위해서는 아래와 같이 변경하면 된다.
+
+```kotlin
+class Facade {
+    fun changeEmail(userId: String, newEmail: String) {
+        // ... 데이터 준비 ... 
+        val user = UserFactory.create(...)
+        
+        // 의사 결정을 Facade 에서 담당
+        if (user.isEmailConfirmed) {
+            throw new ...
+        }
+
+        val company = CompanyFactory.create(...)
+        
+        user.changeEmail(...)
+
+        // 결정에 따른 실행
+        repository.saveCompany(company)
+        repository.saveUser(user)
+
+        // ..
+    }
+}
+```
+
+하지만 이 경우에는 DomainModel 에 대한 캡슐화가 떨어지고, 의사 결정 프로세스가 두 부분으로 분리되어 비지니스 로직과 오케스트레이션간의 분리가 방해된다는 단점이 있다.
+
+__CanExecute/Execute__:
+
+```kotlin
+class User {
+    fun changeEmail(newEmail: String, company: Company) {
+        check(canChangeEmail()) { "Can't change a confirmed email" }
+        // ...
+    }
+    
+    fun canChangeEmail() {
+        return !isEmailConfirmed
+    }
+}
+```
+
+Facade 에서는 경우에 따라서 DomainModel 의 변경사항을 알기 원할 수 있다. 이때 프로세스 외부 의존성을 도메인 모델로 넘기지 않고 해결할 방법은 __[DomainEvent](https://enterprisecraftsmanship.com/posts/merging-domain-events-dispatching/)__ 를 사용하는 것이다.
+
+Spring 에서는 _[@DomainEvents](https://www.baeldung.com/spring-data-ddd)_ 를 사용하여 Event 를 발행할 수 있다.
+
+CanExecute/Execute 패턴만으로는 모든 비지니스 로직을 Domain 에 담지 못하는 상황도 분명 있을 것이다. 
+즉, 오케이스트레이션 영역에서 비지니스 로직이 있는 것을 피할 수 없는 상황도 있을텐데 잠재적인 파편화가 일어나더라도 <mark><em><strong>DomainModel 이 프로세스 외부 의존성을 참조하지 않게 설계하는 것이 중요</strong></em></mark> 하다.
+
+DomainModel 의 변경은 데이터 저장소의 향후 수정에 대한 ___[Abstraction](https://en.wikipedia.org/wiki/Abstraction_(computer_science))___ 에 해당한다.
+
 ## References
 
 - Unit Testing Principles, Practices, and Patterns: Effective testing styles, patterns, and reliable automation for unit testing, mocking, and integration testing with examples in C# / Vladimir Khorikov

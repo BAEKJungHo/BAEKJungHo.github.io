@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Load Balancer
 summary : 
-date    : 2024-08-03 13:08:32 +0900
-updated : 2024-08-03 13:15:24 +0900
+date    : 2024-07-28 13:08:32 +0900
+updated : 2024-07-28 13:15:24 +0900
 tag     : infra
 toc     : true
 comment : true

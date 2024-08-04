@@ -31,7 +31,7 @@ Functional Core 에는 도메인, 데이터 처리, 계산 또는 모든 비즈�
 __Pure Functions__:
 
 - 동일한 입력에 대해 항상 동일한 출력을 반환
-- 함수 외부의 상태를 변경하지 않습니다 (부수 효과가 없음)
+- 함수 외부의 상태를 변경하지 않음 (부수 효과가 없음)
 - 외부 상태에 의존하지 않음
 
 따라서 ___[SideEffects](https://baekjungho.github.io/wiki/functional/functional-sideeffect/)___ 가 없고 외부 상태를 변경하거나 의존하지 않는다. 이러한 ___[불변성(Immutability)](https://baekjungho.github.io/wiki/functional/functional-copy-on-write/)___ 을 지키기 위해서 ___[Defensive Copy](https://baekjungho.github.io/wiki/functional/functional-defensive-copy/)___ 기법을 사용해야 한다.

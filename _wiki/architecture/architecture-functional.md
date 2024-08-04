@@ -44,9 +44,10 @@ fun updateOrderStatus(order: Order, newStatus: OrderStatus): Order {
 ```
 
 __Imperative Shell__ (가변 셸, IS) 은 Functional Core 에 Input Data 를 제공하고 데이터베이스와 같은 외부 의존성에 SideEffect 를 적용해 그 결정(decisions)을 해석한다.
-즉, IS 는 모든 입력을 수집하고 Decisions 를 SideEffect 로 변환한다. _[Impureim sandwich](https://blog.ploeh.dk/2020/03/02/impureim-sandwich/)_ 글도 읽어보면 좋다. 
+즉, IS 는 모든 입력을 수집하고 Decisions 를 SideEffect 로 변환한다. 
 
 좋은 Functional Design 을 적용했을때 함수들은 잘 __격리(Isolation)__ 되어있을 것이고 ___[Intrinsically Testable](https://blog.ploeh.dk/2015/05/07/functional-design-is-intrinsically-testable/)___ 하다는 것을 의미한다.
+_[Impureim sandwich](https://blog.ploeh.dk/2020/03/02/impureim-sandwich/)_ 글도 읽어보면 좋다.
 
 Hexagonal Architecture 와 Functional Architecture 의 차이점은 SideEffect 에 대한 처리 방법이다. Hexagonal Architecture 의 경우에는 모든 수정 사항은 도메인 계층 내에 있어야 하며, 상태도 변경할 수 있다. 즉, 도메인 계층으로 인한 SideEffect 도 문제가 없다.
 하지만 Functional Architecture 의 경우에는 모든 SideEffect 를 비지니스 연산 가장자리인 Imperative Shell 로 밀어낸다.

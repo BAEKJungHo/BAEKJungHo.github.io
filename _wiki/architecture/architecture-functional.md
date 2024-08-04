@@ -18,6 +18,7 @@ latex   : true
 
 ___[Layered Architecture](https://baekjungho.github.io/wiki/architecture/architecture-layered/)___ 는 예산과 일정이 빠듯한 경우나 어떤 아키텍처 스타일이 최선인지 불명확한 경우에 사용할 수 있다.
 단점으로는 ___[Dependency Inversion Principle](https://baekjungho.github.io/wiki/oop/oop-solid/#dependency-inversion-principle)___ - _["Abstractions should not depend upon details. Details should depend upon abstractions"](https://baekjungho.github.io/wiki/spring/spring-psa/)_ 을 위반한다.
+또한 도메인 복잡도가 높은 서비스의 경우에 (e.g E-Commerce) Layered Architecture 를 사용하면 특정 클래스에 ___[Dynamic Dependency](https://baekjungho.github.io/wiki/spring/spring-di/)___ 가 많이 생기면서 __복잡도(Complexity)__ 가 많이 증가한다.
 
 이러한 단점을 해결하는 아키텍처로 ___[Hexagonal Architecture](https://baekjungho.github.io/wiki/architecture/architecture-hexagonal/)___ 와 ___[Clean Architecture](https://baekjungho.github.io/wiki/architecture/architecture-clean/)___ 가 있다.
 두 아키텍처의 본질은 <mark><em><strong>핵심 로직(Domain)을 주변 Infrastructure 영역으로 부터 분리해서 외부의 변경사항으로 부터 Domain 이 변경되지 않게 하기 위함이며, Domain 을 보호하기 위해서는 의존성이 단방향으로 흐를 수 밖에 없다.</strong></em></mark> 

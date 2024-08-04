@@ -184,7 +184,7 @@ public class ApplicationService {
 ```
 
 Functional Core 와 Imperative Shell 을 붙이면서 Application Service 가 외부 클라이언트를 위한 시스템의 진입접을 제공한다.
-Hexagonal Architecture 체계에서 AuditManager 는 <mark><em><strong>[DomainModel](https://baekjungho.github.io/wiki/architecture/architecture-domain-model/)</strong></em></mark> 에 속한다.
+Hexagonal Architecture 체계에서 AuditManager 는 ___[DomainModel](https://baekjungho.github.io/wiki/architecture/architecture-domain-model/)___ 에 속한다.
 
 __Test Code without Mock__:
 
@@ -204,7 +204,7 @@ public void A_new_file_is_created_when_the_current_file_overflows() {
 
 ## Type
 
-Functional Programming 에서는 <mark><em><strong>[Types](https://baekjungho.github.io/wiki/ddd/ddd-modeling/#types-and-functions)</strong></em></mark> 이 Key Role 이다.
+Functional Programming 에서는 ___[Types](https://baekjungho.github.io/wiki/ddd/ddd-modeling/#types-and-functions)___ 이 Key Role 이다.
 _[Types + Properties = Software](https://blog.ploeh.dk/2016/02/10/types-properties-software/)_ 에서는 Type 을 잘 사용하면 더 적은 테스트를 작성할 수 있다고 한다.
 
 Type 은 함수와 데이터가 준수해야 하는 엄격한 계약(contract) 이며, 이러한 계약을 통해서 책임과 역할을 명확하게 한다는 점에서 ___[Design By Contracts](https://baekjungho.github.io/wiki/test/test-design-by-contract/)___ 와 유사하다.

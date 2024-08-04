@@ -90,6 +90,7 @@ regenerate: true
 * [[/architecture/architecture-managed-service]]
 * [[/architecture/architecture-cdn]]
 * [[/architecture/architecture-domain-model]]
+* [[/architecture/architecture-functional]]
 
 ## Kata
 

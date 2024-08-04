@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-functional",
  "architecture/architecture-map-reduce",
  "architecture/architecture-stratified-design",
  "ddd/ddd-modeling",

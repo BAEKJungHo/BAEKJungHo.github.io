@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-functional",
  "driven/test-methodology",
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-mockk",

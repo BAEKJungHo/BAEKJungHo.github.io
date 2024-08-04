@@ -28,6 +28,7 @@
   "architecture/architecture-domain-model",
   "architecture/architecture-event-driven-system",
   "architecture/architecture-eventdriven-statemachine",
+  "architecture/architecture-functional",
   "architecture/architecture-hexagonal",
   "architecture/architecture-idempotency-design",
   "architecture/architecture-lambda",

@@ -9,7 +9,7 @@
  },
  {
   "name": "architecture",
-  "size": 57
+  "size": 58
  },
  {
   "name": "atlassian",
@@ -189,7 +189,7 @@
  },
  {
   "name": "fp",
-  "size": 17
+  "size": 18
  },
  {
   "name": "fsm",
@@ -589,7 +589,7 @@
  },
  {
   "name": "test",
-  "size": 25
+  "size": 26
  },
  {
   "name": "theory",

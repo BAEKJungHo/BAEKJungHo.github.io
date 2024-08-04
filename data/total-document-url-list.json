@@ -36,6 +36,7 @@
  "/wiki/architecture/architecture-domain-model",
  "/wiki/architecture/architecture-event-driven-system",
  "/wiki/architecture/architecture-eventdriven-statemachine",
+ "/wiki/architecture/architecture-functional",
  "/wiki/architecture/architecture-hexagonal",
  "/wiki/architecture/architecture-idempotency-design",
  "/wiki/architecture/architecture-lambda",

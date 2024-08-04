@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Design by Contract
+title   : Design by Contracts
 summary : 
 date    : 2024-07-11 10:25:32 +0900
 updated : 2024-07-11 10:29:24 +0900
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Design by Contract
+## Design by Contracts
 
 A _[contract](https://kt.academy/article/ak-contracts#the-meaning-of-a-contract)_ is a set of expectations on an element, library, or service. By “contract”, we mean what is "promised" by the creators of this solution in documentation, comments, or by explicit code structures.
 

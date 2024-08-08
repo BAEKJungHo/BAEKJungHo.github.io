@@ -45,6 +45,7 @@
   "architecture/architecture-retry-mechanism",
   "architecture/architecture-scalable",
   "architecture/architecture-schema-registry",
+  "architecture/architecture-software",
   "architecture/architecture-stratified-design",
   "architecture/architecture-sync-messaging",
   "architecture/architecture-uuid",

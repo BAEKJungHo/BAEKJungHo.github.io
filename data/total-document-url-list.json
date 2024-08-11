@@ -30,6 +30,7 @@
  "/wiki/architecture/architecture-components",
  "/wiki/architecture/architecture-crdts",
  "/wiki/architecture/architecture-decision-records",
+ "/wiki/architecture/architecture-dependency",
  "/wiki/architecture/architecture-did",
  "/wiki/architecture/architecture-discord-store-message",
  "/wiki/architecture/architecture-distributed-pk",

@@ -17,6 +17,7 @@
  "architecture/architecture-components",
  "architecture/architecture-crdts",
  "architecture/architecture-decision-records",
+ "architecture/architecture-dependency",
  "architecture/architecture-did",
  "architecture/architecture-discord-store-message",
  "architecture/architecture-distributed-pk",

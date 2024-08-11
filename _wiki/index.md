@@ -92,6 +92,7 @@ regenerate: true
 * [[/architecture/architecture-domain-model]]
 * [[/architecture/architecture-functional]]
 * [[/architecture/architecture-software]]
+* [[/architecture/architecture-dependency]]
 
 ## Kata
 

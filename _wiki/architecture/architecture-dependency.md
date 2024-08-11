@@ -29,6 +29,8 @@ A 가 B 에 의존하고 있는 경우 A 는 B 와 ___[Coupling](https://en.wiki
 그래서 보통 MSA 나 다양한 팀으로 구성되어있는 회사에서, 각 서비스간 의존성을 줄이기 위해 사용되는 패턴이 ___[Publish/Subscribe Architecture](https://baekjungho.github.io/wiki/architecture/architecture-pub-sub/)___ 이다. Message Broker 를 도입해 데이터를 Consume 하더라도, Payload 에 다양한 형식의 데이터가 존재한다면 아예 의존성이 없다고 말할 순 없다.
 즉, 타 서비스에서 발행된 데이터에 의존하게 되는 셈이다. 이 경우 ___[ZERO PAYLOAD](https://baekjungho.github.io/wiki/architecture/architecture-zero-payload/)___ 도입을 고려해볼 수 있다.
 
+추가로 의존성은 테스트 코드 작성을 어렵게 만드는 경우가 있다. Domain Layer 에서 Infra Layer 에 대한 의존성이 있는 경우 ___[Testability](https://baekjungho.github.io/wiki/test/test-design-for-testability/)___ 가 떨어진다. 즉, Domain Layer 에 대한 테스트 코드 작성이 더 어려워 진다.
+
 ## Management Techniques
 
 Dependency 를 관리하기 위한 기술로는 ___[Inversion Of Control](https://baekjungho.github.io/wiki/spring/spring-ioc/)___, ___[Dependency Injection](https://baekjungho.github.io/wiki/spring/spring-di/)___ 등이 있다.

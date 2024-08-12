@@ -548,6 +548,7 @@ regenerate: true
 * [[/driven/driven-use]]
 * [[/driven/development-design-docs]]
 * [[/driven/oop-solid]]
+* [[/driven/driven-data]]
 
 ## Database
 

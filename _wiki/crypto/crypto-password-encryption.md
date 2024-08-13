@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : How to avoid Rainbow table attacks in Password encryption
-summary : 
-date    : 2023-04-25 15:05:32 +0900
-updated : 2023-04-25 15:15:24 +0900
+title   : Password Encryption
+summary : How to avoid Rainbow table attacks in Password encryption
+date    : 2024-08-13 15:05:32 +0900
+updated : 2024-08-13 18:15:24 +0900
 tag     : crypto
 toc     : true
 comment : true
@@ -23,7 +23,16 @@ __솔트(Salt, Private key)는 일반적으로 해시 값(e.g 암호화된 패�
 
 Member Table 에 __encoded password__ 와 __saltKey__ 를 관리한다.
 
-## Password Encryption with PBEKeySpec
+## Algorithms
+
+패스워드 저장에 적합한 해시 알고리즘들은 다음과 같다.
+
+- ___[Bcrypt](https://en.wikipedia.org/wiki/Bcrypt)___: 현재 가장 널리 사용되는 알고리즘 중 하나로, 솔트(salt)가 내장되어 있어 레인보우 테이블 공격에 강하다.
+- ___[Argon2](https://en.wikipedia.org/wiki/Argon2)___: 비교적 최근에 개발된 알고리즘으로, 메모리 하드 함수를 사용하여 높은 보안성을 제공한다.
+- ___[PBKDF2(Password-Based Key Derivation Function 2)](https://en.wikipedia.org/wiki/PBKDF2)___: 반복 횟수를 조절할 수 있어 시간이 지나도 보안 강도를 유지할 수 있다.
+- ___[Scrypt](https://en.wikipedia.org/wiki/Scrypt)___: 메모리 사용량과 CPU 시간을 동시에 요구하여 병렬 공격에 강하다.
+
+### Password-Based Key Derivation Function
 
 [PBEKeySpec](https://docs.oracle.com/javase/8/docs/api/javax/crypto/spec/PBEKeySpec.html) is a class in Java used for generating a key from a password using a __Password-Based Key Derivation Function__(PBKDF).
 
@@ -42,7 +51,7 @@ import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 
 /**
- * @param password User/Member Passwords
+ * @param password Member Passwords
  * @param saltKey Managed at Database (e.g Member Table)
  */
 fun encryptPassword(password: String, saltKey: String): String {
@@ -64,3 +73,7 @@ fun encryptPassword(password: String, saltKey: String): String {
 예를 들어, 암호화된 비밀번호를 데이터베이스에 저장할 때, 일반적으로는 해시 함수를 사용하여 암호화된 비밀번호를 생성하고, 이를 이진 형식으로 저장한다. 하지만 이진 형식의 암호화된 비밀번호는 데이터베이스에서 검색하기 어렵고, 다루기도 어렵기 때문에, __검색과 다루기에 용이한 Base64 문자열로 인코딩하여 저장할 수 있다__.
 
 또한, 인코딩된 Base64 문자열은 텍스트 형태로 출력되기 때문에, 디버깅이나 로깅과 같이 민감한 정보를 다룰 때에도 이진 데이터보다 안전하게 사용될 수 있다.
+
+## Links
+
+- [Spring Security Password Storage](https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html#authentication-password-storage-bcrypt)

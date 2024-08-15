@@ -493,7 +493,7 @@
  },
  {
   "name": "refactoring",
-  "size": 6
+  "size": 7
  },
  {
   "name": "restdocs",
@@ -601,7 +601,7 @@
  },
  {
   "name": "test",
-  "size": 27
+  "size": 28
  },
  {
   "name": "theory",

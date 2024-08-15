@@ -4,5 +4,6 @@
  "refactoring/refactoring-aliasbug",
  "refactoring/refactoring-local-variable",
  "refactoring/refactoring-parallelchange",
- "refactoring/refactoring-prerequisite"
+ "refactoring/refactoring-prerequisite",
+ "test/test-characterization"
 ]

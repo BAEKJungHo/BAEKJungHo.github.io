@@ -10,6 +10,7 @@
   "test/tdd-naming",
   "test/tdd-sut-doc",
   "test/tdd-why-use-mock-any",
+  "test/test-characterization",
   "test/test-coverage",
   "test/test-design-by-contract",
   "test/test-design-for-testability",

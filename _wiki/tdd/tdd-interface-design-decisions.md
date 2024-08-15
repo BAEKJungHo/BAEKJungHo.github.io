@@ -16,7 +16,7 @@ latex   : true
 
 ## Immediate Feedback for Interface Design Decisions
 
-TDD 는 설계 방법론이 아니다. TDD 가 설계(Design)의 필요성을 대체하지 않는다. ___[How TDD Affects My Designs](https://blog.thecodewhisperer.com/permalink/how-tdd-affects-my-designs)___ 에서도 TDD doesn’t create design. You do. 라고 말하고 있다.
+TDD 는 설계 방법론이 아니다. TDD 가 설계(Design)의 필요성을 대체하지 않는다. ___[How TDD Affects My Designs](https://blog.thecodewhisperer.com/permalink/how-tdd-affects-my-designs)___ 에서도 <mark><em><strong>TDD doesn’t create design. You do.</strong></em></mark> 라고 말하고 있다.
 
 ___[Kent Beck said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design)___
 

@@ -279,7 +279,7 @@ public void Purchase_fails_when_not_enough_inventory() {
 
 모의 객체는 테스트를 단순하게 해주지만 테스트와 제품 코드간의 결합도(coupling) 를 증가 시킨다.
 
-### When to use and When not to use - Mock & Stub
+### When to fake; when to mock
 
 의존성이 다음과 같은 종류일 때 Mock 또는 Stub 을 사용하는 것이 좋다.
 

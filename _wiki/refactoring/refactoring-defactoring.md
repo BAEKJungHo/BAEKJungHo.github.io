@@ -16,7 +16,7 @@ latex   : true
 
 ## Defactoring
 
-___[Defactoring](https://understandlegacycode.com/blog/refactoring-and-defactoring/)___ 은 <mark><em><strong>Reducing Cognitive Load by Removing Unnecessary Abstraction</strong></em></mark> 이다.
+___[Defactoring](https://understandlegacycode.com/blog/refactoring-and-defactoring/)___ is <mark><em><strong>Reducing Cognitive Load by Removing Unnecessary Abstraction</strong></em></mark>.Good Abstractions are a matter of balance.
 Defactoring technically is still refactoring, but it involves reversing a refactoring.
 
 __Reversals of our previous refactorings__:

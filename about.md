@@ -14,6 +14,7 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__ - __Self-Motivated__ & __Core Re
 
 ![](/resource/about/principle.png)
 
+- I excel at and enjoy studying academic subjects and effectively applying them to practical situations.
 - I prefer combining the tools I have to solve problems in the most optimal way possible.
 - Documentation skills are good.
 - Communication is important.

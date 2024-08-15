@@ -18,6 +18,8 @@ latex   : true
 
 A _[contract](https://kt.academy/article/ak-contracts#the-meaning-of-a-contract)_ is a set of expectations on an element, library, or service. By “contract”, we mean what is "promised" by the creators of this solution in documentation, comments, or by explicit code structures.
 
+___[A Contract Is Just An Understanding](https://blog.thecodewhisperer.com/permalink/a-contract-is-just-an-understanding)___ - A software contract merely documents an understanding of what each part of the system can expect from the others. An understanding.
+
 클래스를 설계할 때 대부분 __제약 사항(constraints)__ 이 따른다. 예를 들면, "TaxCalculator 클래스가 수행하는 계산은 양수일 때만 가능하다" 와 같은 제약 사항이 있을 수 있다.
 
 이렇게 __Constraints Modeling__ 을 하기 위한 방법으로 일반적으로 3가지 선택지가 있다.

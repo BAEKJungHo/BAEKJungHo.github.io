@@ -196,3 +196,8 @@ class ExpiryDateCalculatorTest {
 ```
 
 이 처럼, RedGreenRefactor 단계로 TDD 를 하다 보면 TDD 가 __인터페이스 디자인 결정에 대한 즉각적인 피드백(Immediate feedback for interface design decisions)__ 을 준다는 느낌을 받는다.
+
+## TDD: For Those Who Don't Know How to Design Software
+
+TDD 를 언제 사용하면 좋을까? ___[TDD: For Those Who Don't Know How to Design Software](https://blog.thecodewhisperer.com/permalink/tdd-for-those-who-dont-know-how-to-design-software)___ 에서는 "TDD can help people who don’t (yet) know (everything they need to know about) how to design software." 라고 말하고 있으며, 나는 이 말에 완전 동의한다.
+위에서 다른 예제를 통해서 인터페이스 디자인이 점점 좋아짐을 느낄 수가 있다. 내가 어떤 클래스, 인터페이스를 설계하면서 어떤 식으로 설계해야하는지 감이 안올때 사용하면 좋다고 생각한다.

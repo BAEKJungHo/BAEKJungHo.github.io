@@ -58,6 +58,7 @@
  "spring/spring-sqlinjection",
  "spring/spring-transactionmanager",
  "spring/spring-validation",
+ "test/test-characterization",
  "test/test-design-by-contract",
  "test/test-object-mother"
 ]

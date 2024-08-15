@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : RedGreenRefactor
-summary : 
+title   : Test-Driven Development Cycle
+summary : How Test-Driven Development Works (RedGreenRefactor)
 date    : 2024-01-02 15:54:32 +0900
 updated : 2024-01-02 20:15:24 +0900
 tag     : tdd test
@@ -14,9 +14,21 @@ latex   : true
 * TOC
 {:toc}
 
-## Red Green Refactor
+## Winston Royce, 1970, revisited - Figure 4 Model
 
-__[Test-driven development cycle](https://en.wikipedia.org/wiki/Test-driven_development)__ 은 총 3단계로 이뤄진다.
+___[MANAGING THE DEVELOPMENT OF LARGE SOFTWARE SYSTEMS - Winston Royce](https://blog.jbrains.ca/assets/articles/royce1970.pdf)___ 의 Figure-4 Model 은 일반적인 개발 방식이며 익숙하다.
+
+![](/resource/wiki/tdd-red-green-refactor/royce-figure4.png)
+
+이러한 전통적인 방식에서의 개발은 Test 과정에서 버그가 발생한 경우 다시 Production Code 를 수정하고, Software Requirements 를 다시 판단하게 될 수도 있다.
+
+이러한 모델을 ___[PhasenModel](http://cartoon.iguw.tuwien.ac.at/fit/fit01/wasserfall/entstehung.html)___ 이라고도 한다.
+
+![](/resource/wiki/tdd-red-green-refactor/phasenmodel.png)
+
+## Test-Driven Development Cycle
+
+___[Test-Driven Development Cycle](https://en.wikipedia.org/wiki/Test-driven_development)___ 은 총 3단계로 이뤄진다.
 
 1. 실패하는 테스트 코드 작성하기
 2. 테스트 통과 시키기 

@@ -35,8 +35,9 @@ __[BAEKJungHo](https://github.com/BAEKJungHo)__ - __Self-Motivated__ & __Core Re
 > 2022.08.29 ~ ing
 
 __Experiences__:
+- Verify Driver BLE Pairing in OOBE(Out-of-box experience)
+- Designing a Vehicle Control API & Cloud Sync for a Connect App
 - Designing an API for drivers in an Autonomous Ride-Hailing Service
-- Designing a Vehicle Control API for a Connected App
 
 __Learned and Used__:
 - Kotlin, Spring Boot, Spring Data JPA, Orda, Datadog, Redis, Kafka, Kubernetes, ArgoCD, Firebase Cloud Messaging, Firestore
@@ -69,4 +70,3 @@ __Learned and Used__:
 # Services
 
 __[Trunkr - Growth platform through review and sharing](https://github.com/trunkr)__:
-- Kotlin, Spring WebFlux, ChatGPT, MySQL

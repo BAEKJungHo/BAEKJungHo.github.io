@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Immediate feedback for interface design decisions
-summary : 
+title   : Immediate Feedback for Interface Design Decisions
+summary : TDD doesn’t create Design. You do.
 date    : 2024-01-04 15:54:32 +0900
 updated : 2024-01-04 20:15:24 +0900
 tag     : tdd test
@@ -14,9 +14,9 @@ latex   : true
 * TOC
 {:toc}
 
-## Immediate feedback for interface design decisions
+## Immediate Feedback for Interface Design Decisions
 
-TDD 는 설계 방법론이 아니다. TDD 가 설계(design)의 필요성을 대체하지 않는다.
+TDD 는 설계 방법론이 아니다. TDD 가 설계(Design)의 필요성을 대체하지 않는다. ___[How TDD Affects My Designs](https://blog.thecodewhisperer.com/permalink/how-tdd-affects-my-designs)___ 에서도 TDD doesn’t create design. You do. 라고 말하고 있다.
 
 ___[Kent Beck said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design)___
 
@@ -28,7 +28,7 @@ ___[Kent Beck said "Immediate feedback for interface design decisions"](https://
 
 ### Examples
 
-아래 예제는 [테스트 주도 개발 시작하기 - 최범균](#) 책에있는 '서비스 만료일 계산' 예제를 따왔다.
+아래 예제는 _[테스트 주도 개발 시작하기 - 최범균](#)_ 책에있는 '서비스 만료일 계산' 예제를 따왔다.
 
 __서비스 규칙__:
 - 서비스를 사용하려면 매달 1만원을 선불로 납부한다. 납부일 기준으로 한달 뒤가 서비스 만료일이 된다.
@@ -54,7 +54,7 @@ fun `만원을 납부하면 한달 뒤가 만료일이 됨`() {
 }
 ```
 
-[RedGreenRefactor](https://baekjungho.github.io/wiki/tdd/tdd-red-green-refactor/) 규칙에 따라 실패하는 테스트 코드를 작성하고, 실행한다.
+___[RedGreenRefactor](https://baekjungho.github.io/wiki/tdd/tdd-red-green-refactor/)___ 규칙에 따라 실패하는 테스트 코드를 작성하고, 실행한다.
 
 다음으로 테스트를 통과 시키기 위해서 ExpiryDateCalculator 클래스를 작성해야 한다. 이 시점부터, TDD 가 __인터페이스 디자인 결정에 대한 즉각적인 피드백__ 을 준다는 느낌을 받을 수 있다.
 

@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Test-Driven Development Cycle
-summary : How Test-Driven Development Works (RedGreenRefactor)
+summary : How Test-Driven Development Works
 date    : 2024-01-02 15:54:32 +0900
 updated : 2024-01-02 20:15:24 +0900
 tag     : tdd test
@@ -93,7 +93,7 @@ class Calculator {
 
 테스트를 통과하기 위해서, 위 코드를 수정해야 한다. 이 단계에서 중요한 점은 아래와 같다.
 
-__[Inelegant or hard code is acceptable](https://en.wikipedia.org/wiki/Test-driven_development)__, as long as it passes the test. The code will be honed anyway in Step 5. No code should be added beyond the tested functionality.
+___[Inelegant or hard code is acceptable](https://en.wikipedia.org/wiki/Test-driven_development)___, as long as it passes the test. The code will be honed anyway in Step 5. No code should be added beyond the tested functionality.
 
 ```kotlin
 class Calculator {

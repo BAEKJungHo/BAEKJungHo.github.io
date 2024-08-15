@@ -28,17 +28,19 @@ ___[MANAGING THE DEVELOPMENT OF LARGE SOFTWARE SYSTEMS - Winston Royce](https://
 
 ## Test-Driven Development Cycle
 
-___[Test-Driven Development Cycle](https://en.wikipedia.org/wiki/Test-driven_development)___ 은 총 3단계로 이뤄진다.
+___[Test-Driven Development Cycle](https://agilepainrelief.com/blog/test-driven-development-is-not-a-quality-assurance-technique.html)___ 은 총 3단계로 이뤄진다.
+
+![](/resource/wiki/tdd-red-green-refactor/redgreenrefactor.png)
 
 1. 실패하는 테스트 코드 작성하기
 2. 테스트 통과 시키기 
 3. 이전 두 단계에서 추가되거나 변경된 코드 개선하기
 
-__Red-green-refactor__ is an alternative mnemonic for __TDD cycle__ of writing a test, making it pass, and making it pretty.
+___Red-Green-Refactor___ is an alternative mnemonic for ___TDD Cycle___ of writing a test, making it pass, and making it pretty.
 
 TDD Cycle 과 관련된 몇가지 팁이 있다.
 
-- 첫 번째 테스트를 선택할 때는 __가장 쉽거__ 나 __가장 예외적인 상황__ 을 선택해야 한다.
+- 첫 번째 테스트를 선택할 때는 가장 쉽거나 가장 예외적인 상황을 선택해야 한다.
   - 쉬운 경우에서 어려운 경우로 진행
   - 예외적인 경우에서 정상적인 경우로 진행
 - 실패하는 테스트 코드를 작성하는 시점에서는, 만들려는 프로덕션 코드가 존재하지 않으므로 빨간색일 것이다. 그리고 테스트를 통과하기 위해 프로덕션 코드를 구현하고 테스트를 통과 시킨다.
@@ -69,9 +71,9 @@ class CalculatorTest {
 - 파라미터 설계는 어떻게 할 지
 - 정적 메서드로 구현하는게 좋은 지, 인스턴스 메서드로 구현하는게 좋은 지
 
-이러한 의사 결정을 내리도록 도움을 주는게 TDD 이다. 즉, __인터페이스 디자인 결정(interface design decisions)__ 을 내리도록 도움을 준다.
+이러한 의사 결정을 내리도록 도움을 주는게 TDD 이다. 즉, <mark><em><strong>인터페이스 디자인 결정(interface design decisions)</strong></em></mark> 을 내리도록 도움을 준다.
 
-__[Kent Beck said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design).__
+___[Kent Beck said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design)___
 
 인터페이스 결정을 테스트로 만들고 기록한 후, 구현 설계 결정이 첫 번째, 가장 낮은 기준을 통과하는지 여부에 대한 즉각적인 피드백을 받게 된다.
 

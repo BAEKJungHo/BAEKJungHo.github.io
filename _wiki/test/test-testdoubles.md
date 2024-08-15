@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : TestDoubles
-summary : Dummy, Fake, Spy, Stub, Mock
+summary : When to fake; when to mock
 date    : 2024-07-07 10:25:32 +0900
 updated : 2024-07-07 10:29:24 +0900
 tag     : test
@@ -292,6 +292,10 @@ public void Purchase_fails_when_not_enough_inventory() {
 - __Entity__
 - __Native Library 와 Utility Methods__
 - __단순한 의존성__
+
+___[When to fake; when to mock](https://thecodewhisperer-blog.tumblr.com/post/1121571119/when-to-fake-when-to-mock)___ 에서는 다음과 같이 말하고 있다.
+
+![](/resource/wiki/test-testdoubles/mock-fake.png)
 
 ## Wrapping DateTime
 

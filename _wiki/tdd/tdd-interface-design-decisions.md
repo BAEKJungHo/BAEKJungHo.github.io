@@ -18,13 +18,13 @@ latex   : true
 
 TDD 는 설계 방법론이 아니다. TDD 가 설계(design)의 필요성을 대체하지 않는다.
 
-__[Kent Beck said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design).__
+___[Kent Beck said "Immediate feedback for interface design decisions"](https://tidyfirst.substack.com/p/tdd-isnt-design)___
 
 ![](/resource/wiki/tdd-interface-design-decisions/tdd-offers.png)
 
 위 내용이 TDD 가 제공하는 이점이자 핵심인 것 같다.
 
-말로만 들어서는 이해하기 어렵다. 직접 코딩을 하면서 느껴야 Kent Beck 님이 말한 내용 중 "Immediate feedback for interface design decisions" 이 부분에 대해서 공감을 할 수 있다.
+말로만 들어서는 이해하기 어렵다. 직접 코딩을 하면서 느껴야 Kent Beck 님이 말한 내용 중 <mark><em><strong>Immediate feedback for interface design decisions</strong></em></mark> 이 부분에 대해서 공감을 할 수 있다.
 
 ### Examples
 

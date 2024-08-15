@@ -7,6 +7,7 @@
  "updated": "2022-09-21 20:55:09 +0900",
  "children": [
   "refactoring/refactoring-aliasbug",
+  "refactoring/refactoring-defactoring",
   "refactoring/refactoring-local-variable",
   "refactoring/refactoring-parallelchange",
   "refactoring/refactoring-prerequisite"

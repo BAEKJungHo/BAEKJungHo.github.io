@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Defactoring",
+ "summary": "Reducing Cognitive Load by Removing Unnecessary Abstraction",
+ "parent": "refactoring",
+ "url": "/wiki/refactoring/refactoring-defactoring",
+ "updated": "2024-08-14 20:15:24 +0900",
+ "children": []
+}

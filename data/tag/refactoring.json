@@ -2,6 +2,7 @@
  "ddd/ddd-intention-revealing-interface",
  "refactoring",
  "refactoring/refactoring-aliasbug",
+ "refactoring/refactoring-defactoring",
  "refactoring/refactoring-local-variable",
  "refactoring/refactoring-parallelchange",
  "refactoring/refactoring-prerequisite",

@@ -388,6 +388,7 @@ regenerate: true
 * [[/refactoring/refactoring-parallelchange]]
 * [[/refactoring/refactoring-local-variable]]
 * [[/refactoring/refactoring-aliasbug]]
+* [[/refactoring/refactoring-defactoring]]
 
 ## OOP
 

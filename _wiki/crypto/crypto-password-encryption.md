@@ -27,9 +27,7 @@ Member Table 에 __encoded password__ 와 __saltKey__ 를 관리한다.
 
 ![](/resource/wiki/crypto-password-encryption/kakaopay-1.png)
 
-Kakaopay 의 위와 같은 이슈로 인해 다시 한번 보안에 대해 신경쓰게된 계기가 되었다.
-
-- https://x.com/simnalamburt/status/1824014092455104833?s=46&t=uYvEBsZQWNLb4Yt6QM2TcQ
+Kakaopay 의 위와 같은 이슈로 인해 다시 한번 보안에 대해 신경쓰게된 계기가 되었다. ___[X](https://x.com/simnalamburt/status/1824014092455104833?s=46&t=uYvEBsZQWNLb4Yt6QM2TcQ)___ 도 읽어보면 좋다.
 
 ## Algorithms
 

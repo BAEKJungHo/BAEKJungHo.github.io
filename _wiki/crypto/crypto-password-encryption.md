@@ -41,9 +41,11 @@ Kakaopay 의 위와 같은 이슈로 인해 다시 한번 보안에 대해 신�
 OWASP 에서 제공하는 ___[Password Storage Cheatsheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)___ 에서도 Argon2Id 를 사용하도록 권고하고 있다. SHA-512 에 비해 ___[Memory-hardness](https://en.wikipedia.org/wiki/Memory-hard_function)___, Varients 를 가지고 있어 적합하다.
 OWASP 권고사항이므로 보안감사에서도 큰 문제가 없을 것으로 예상된다.
 
+![](/resource/wiki/crypto-password-encryption/recommend.png)
+
 ### Password-Based Key Derivation Function
 
-[PBEKeySpec](https://docs.oracle.com/javase/8/docs/api/javax/crypto/spec/PBEKeySpec.html) is a class in Java used for generating a key from a password using a __Password-Based Key Derivation Function__(PBKDF).
+___[PBEKeySpec](https://docs.oracle.com/javase/8/docs/api/javax/crypto/spec/PBEKeySpec.html)___ is a class in Java used for generating a key from a password using a __Password-Based Key Derivation Function__(PBKDF).
 
 __Constructor:__
 
@@ -72,13 +74,11 @@ fun encryptPassword(password: String, saltKey: String): String {
 }
 ```
 
-[PKCS #5: Password-Based Cryptography Specification Version 2.0](https://www.rfc-editor.org/rfc/rfc2898)
+___[PKCS #5: Password-Based Cryptography Specification Version 2.0](https://www.rfc-editor.org/rfc/rfc2898)___
 
 ### Argon2
 
 ___[Hashing With Argon2 in Java](https://www.baeldung.com/java-argon2-hashing)___ 에 예제가 잘 나와있다. 여기 나와있는 예제는 Argon2 를 사용할때의 최소 설정사항을 충족시킨 예제이다.
-
-- Use Argon2id with a minimum configuration of 19 MiB of memory, an iteration count of 2, and 1 degree of parallelism.
 
 __Dependency__:
 

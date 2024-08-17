@@ -1,6 +1,6 @@
 {
  "type": "wiki",
- "title": "Test-Driven Development Cycle",
+ "title": "Test Driven Development Cycle",
  "summary": "How Test-Driven Development Works",
  "parent": "tdd",
  "url": "/wiki/tdd/tdd-red-green-refactor",

@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Test-Driven Development Cycle
+title   : Test Driven Development Cycle
 summary : How Test-Driven Development Works
 date    : 2024-01-02 15:54:32 +0900
 updated : 2024-01-02 20:15:24 +0900
@@ -26,7 +26,7 @@ ___[MANAGING THE DEVELOPMENT OF LARGE SOFTWARE SYSTEMS - Winston Royce](https://
 
 ![](/resource/wiki/tdd-red-green-refactor/phasenmodel.png)
 
-## Test-Driven Development Cycle
+## Test Driven Development Cycle
 
 ___[Test-Driven Development Cycle](https://agilepainrelief.com/blog/test-driven-development-is-not-a-quality-assurance-technique.html)___ 은 총 3단계로 이뤄진다.
 
@@ -49,7 +49,7 @@ TDD Cycle 과 관련된 몇가지 팁이 있다.
 - TDD 는 거의 모든 코드에 안전한 리팩토링을 가능하게 한다.
 - TDD 의 리듬은 빠르다. 처음에는 10분정도로 제한하고 시도해본다. 더 오래 걸린다면 더 작게 쪼개서 테스트를 해야 한다.
 
-TDD 는 ___[Refactor Mercilessly](https://wiki.c2.com/?RefactorMercilessly)___ 특징을 지니고 있다.
+___[Test Driven Development](https://wiki.c2.com/?TestDrivenDevelopment)___ 는 ___[Refactor Mercilessly](https://wiki.c2.com/?RefactorMercilessly)___ 특징을 지니고 있다.
 
 ### How to write test code that fails
 

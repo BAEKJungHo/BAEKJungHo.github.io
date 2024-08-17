@@ -49,6 +49,8 @@ TDD Cycle 과 관련된 몇가지 팁이 있다.
 - TDD 는 거의 모든 코드에 안전한 리팩토링을 가능하게 한다.
 - TDD 의 리듬은 빠르다. 처음에는 10분정도로 제한하고 시도해본다. 더 오래 걸린다면 더 작게 쪼개서 테스트를 해야 한다.
 
+TDD 는 ___[Refactor Mercilessly](https://wiki.c2.com/?RefactorMercilessly)___ 특징을 지니고 있다.
+
 ### How to write test code that fails
 
 처음은 구현 코드가 없는 상태에서 코드를 작성하게 된다. __기능__ 에 포커스를 맞춰 테스트 코드를 작성하면 된다.

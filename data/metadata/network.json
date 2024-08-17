@@ -6,6 +6,7 @@
  "url": "/wiki/network",
  "updated": "2022-04-13 20:55:09 +0900",
  "children": [
+  "network/network-blip",
   "network/network-dmz",
   "network/network-dns",
   "network/network-half-close",

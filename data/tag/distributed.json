@@ -7,6 +7,7 @@
  "logging/logging-the-log",
  "msa/msa-eventual-consistency",
  "msa/msa-xa",
+ "network/network-blip",
  "observability/msa-distributed-tracing",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-lock"

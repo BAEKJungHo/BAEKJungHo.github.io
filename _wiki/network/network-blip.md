@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Strategies for Handling Network Blips; Ensuring Resilience in Distributed Systems
-summary : Retry Mechanism, Circuit Breaker, Timeout, Fallback, Graceful Degradation
+summary : Fault Tolerance; Retry Mechanism, Circuit Breaker, Timeout, Fallback, Graceful Degradation
 date    : 2024-08-17 11:54:32 +0900
 updated : 2024-08-17 12:15:24 +0900
 tag     : network distributed
@@ -21,6 +21,11 @@ latex   : true
 ![](/resource/wiki/network-blip/blip-meaning.png)
 
 Client -> ServerA -> ServerB  흐름으로 요청이 이뤄진다고 했을때, ServerB 에서 MongoDB Version Upgrade 로 인해 네트워크 순단이 일어난다고 했을때, Client 와 ServerA 는 어떤식으로 대응을 할 수 있을까?
+
+이러한 Network Blip 에 대한 대응은 ___외부 API 연동이 많은 서비스___ 에서는 특히 주의가 필요하다. 즉, ___[Fault Tolerance](https://baekjungho.github.io/wiki/msa/msa-fault-tolerance/)___ 에 대한 고민이 필요하다.
+
+- [오픈마켓 여행 플랫폼의 실전 API 연동 노하우 - GMarket](https://ebay-korea.tistory.com/115)
+- [우리는 어떻게 해외주식 서비스 안정화를 이뤘는가](https://toss.tech/article/overseas-securities-server)
 
 ## Strategies for Handling Network Blips
 

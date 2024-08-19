@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Strategies for Handling Network Blips; Ensuring Resilience in Distributed Systems",
- "summary": "Retry Mechanism, Circuit Breaker, Timeout, Fallback, Graceful Degradation",
+ "summary": "Fault Tolerance; Retry Mechanism, Circuit Breaker, Timeout, Fallback, Graceful Degradation",
  "parent": "network",
  "url": "/wiki/network/network-blip",
  "updated": "2024-08-17 12:15:24 +0900",

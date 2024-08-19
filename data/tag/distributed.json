@@ -6,6 +6,7 @@
  "database/database-serializable-tx",
  "logging/logging-the-log",
  "msa/msa-eventual-consistency",
+ "msa/msa-fault-tolerance",
  "msa/msa-xa",
  "network/network-blip",
  "observability/msa-distributed-tracing",

@@ -12,6 +12,10 @@
   "size": 60
  },
  {
+  "name": "argon",
+  "size": 1
+ },
+ {
   "name": "atlassian",
   "size": 1
  },

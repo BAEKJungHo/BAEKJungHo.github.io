@@ -87,7 +87,7 @@ __Dependency__:
 api("org.bouncycastle:bcpkix-jdk18on:1.78.1")
 ```
 
-### BouncyCastle
+#### BouncyCastle
 
 ```kotlin
 object Crypto {
@@ -139,7 +139,7 @@ salt 값은 Entity 에 저장할때 Base64 로 Encode 하여 String 으로 저�
 
 또한, 인코딩된 Base64 문자열은 텍스트 형태로 출력되기 때문에, 디버깅이나 로깅과 같이 민감한 정보를 다룰 때에도 이진 데이터보다 안전하게 사용될 수 있다.
 
-### SpringSecurityCrypto
+#### SpringSecurityCrypto
 
 ___[Spring Security Crypto Module](https://docs.spring.io/spring-security/reference/features/integrations/cryptography.html)___ 을 사용하면 saltKey 를 관리하기 위해 별도 컬럼을 두지 않아도 된다.
 

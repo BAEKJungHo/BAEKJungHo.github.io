@@ -58,7 +58,7 @@ Tracer 를 구현하기 위한 CNCF(Cloud Native Computing Foundation) 에서 �
 
 __Log Levels__:
 
-![](/resource/wiki/auth-jwt/level.png)
+![](/resource/wiki/logging-mastering/level.png)
 
 debug 는 주로 디버깅하다가 상세 정보를 로깅해야할 필요가 있을때 사용한다. info 는 주요 이벤트와 같은 필수 정보 전달을 위해서 로깅한다.
 warn 은 타 서버 API 와 연동시 타 서버에서 에러가 발생하여, 비지니스 로직이 실패하는 경우에 주로 사용한다. error 는 심각한 오류가 발생했을때 사용한다.

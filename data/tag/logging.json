@@ -3,6 +3,7 @@
  "logging/logging-datadog-pipelines",
  "logging/logging-entity",
  "logging/logging-masking",
+ "logging/logging-mastering",
  "logging/logging-nonblocking-pipeline",
  "logging/logging-rotation",
  "logging/logging-the-log",

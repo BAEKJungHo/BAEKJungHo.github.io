@@ -149,7 +149,7 @@
  },
  {
   "name": "distributed",
-  "size": 13
+  "size": 14
  },
  {
   "name": "dns",
@@ -353,7 +353,7 @@
  },
  {
   "name": "logging",
-  "size": 14
+  "size": 15
  },
  {
   "name": "magazine",
@@ -401,7 +401,7 @@
  },
  {
   "name": "msa",
-  "size": 30
+  "size": 31
  },
  {
   "name": "multiplexing",

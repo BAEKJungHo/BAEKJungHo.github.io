@@ -263,6 +263,7 @@ regenerate: true
 * [[/logging/logging-nonblocking-pipeline]]
 * [[/logging/logging-rotation]]
 * [[/logging/logging-the-log]]
+* [[/logging/logging-mastering]]
 
 ## Spring
 

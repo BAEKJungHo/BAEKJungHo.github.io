@@ -9,6 +9,7 @@
  "caching/msa-distributed-caching",
  "database/database-cassandra-kkv",
  "ddd/ddd-event",
+ "logging/logging-mastering",
  "msa",
  "msa/msa-antifragile",
  "msa/msa-api-gateway",

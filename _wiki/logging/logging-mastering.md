@@ -111,7 +111,95 @@ LoggingEventCompositeJsonEncoder 를 사용하면 `<providers>` 구문을 지원
 
 - [Hibernate 를 사용하는 경우 Log 남기기](https://kwonnam.pe.kr/wiki/java/hibernate/log#log4j)
 
-## Mask Sensitive Data
+## Masking Sensitive Data
+
+가장 먼저 해야할 것은 <mark><em><strong>Defining Problems</strong></em></mark> 이다. 
+
+- 요청/응답 시 민감정보가 마스킹 되어야 한다.
+- Interceptor 같은 기능이 필요하다. 로그를 찍을때, 실제로 로그를 출력하기 전에 Intercept 하여 마스킹 처리를 하면 좋을 것이다.
+- 중첩 구조에서도 마스킹 처리가 가능해야 한다.
+- 다양한 필드와 다양한 로그 포맷에 대해 마스킹 처리를 해야하므로 별도의 유틸 클래스가 필요하다.
+
+기본적으로 아래와 같은 로그 포맷에 대해서 처리가 가능해야 한다.
+
+```kotlin
+/**
+ * "pin":"12345"
+ * "pin" : "12345"
+ * "pinNumber":"12345"
+ * "pinNumber" : "12345"
+ * pin=12345
+ * pin = 12345
+ * pinNumber=12345
+ * pinNumber = 12345
+ */
+```
+
+여기서 기능 구현에 가장 도움이 되는 핵심적인 아이디어는 ___Intercept___ 이다.
+Logback 의 ___[ValueMasker](https://github.com/logfellow/logstash-logback-encoder/blob/main/src/main/java/net/logstash/logback/mask/ValueMasker.java)___ 를 구현한 구현체를 만들고 logback.xml 파일에 구현체를 설정하면 로그를 출력하기 전에 가로채서 마스킹 처리가 가능하다.
+
+__logback.xml__:
+
+```xml
+...
+<appender name="JSON_APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+        <jsonGeneratorDecorator class="net.logstash.logback.mask.MaskingJsonGeneratorDecorator">
+            <valueMasker class="org.hoxy.common.config.logging.SensitiveValueMasker">
+                <path>$.message</path>
+            </valueMasker>
+        </jsonGeneratorDecorator>
+        <providers>
+            ...
+        </providers>
+    </encoder>
+</appender>
+
+<root level="INFO">
+<springProfile name="local">
+    <appender-ref ref="CONSOLE"/>
+</springProfile>
+<springProfile name="develop, real">
+    <appender-ref ref="JSON_APPENDER"/>
+</springProfile>
+</root>
+...
+```
+
+__Implementation ValueMasker__:
+
+```kotlin
+class SensitiveValueMasker : ValueMasker {
+    override fun mask(context: JsonStreamContext, value: Any?): Any? {
+        return if (value is String) { Masker.masking(value) } else { value }
+    }
+}
+```
+
+__Masker__:
+
+```kotlin
+object Makser {
+    
+    private const val MASKING_FORMAT = "*****"
+    private val regEx = Regex("""(?:(?<!\w)|(?<="))(pin|vin|password|phone)\w*"?\s*[:=]\s*"?([\w-]+)"?""")
+
+    fun masking(raw: String): String {
+        return if (raw.contains(regEx)) {
+            raw.replace(regEx) { matchResult -> matchResult.value.replace(matchResult.groupValues[2], MASKING_FORMAT) }
+        } else { raw }
+    }
+}
+```
+
+__Outputs__:
+
+```
+"message":"MaskingResult = Sensitive(data=SensitiveData(vinNumber=*****, pin=*****, pinNumber=*****))"
+"message": ... Sensitive: {\"sensitiveData\":{\"vinNumber\":\"*****\",\"pin\":\"*****\", \"pinNumber\":\"*****\"}}"
+```
+
+__Links__:
 
 - [Microservices Consistent Logging in Kubernetes Cluster with Logstash](https://www.linkedin.com/pulse/microservices-consistent-logging-kubernetes-cluster-logstash-jain/)
 - [Mask json values using logback - stackoverflow](https://stackoverflow.com/questions/69623161/mask-json-values-using-logback)

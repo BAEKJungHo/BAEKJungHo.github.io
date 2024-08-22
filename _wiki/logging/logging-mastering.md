@@ -111,7 +111,7 @@ LoggingEventCompositeJsonEncoder 를 사용하면 `<providers>` 구문을 지원
 
 - [Hibernate 를 사용하는 경우 Log 남기기](https://kwonnam.pe.kr/wiki/java/hibernate/log#log4j)
 
-## Masking Sensitive Data
+## [Masking Sensitive Data](https://baekjungho.github.io/wiki/logging/logging-masking/)
 
 가장 먼저 해야할 것은 <mark><em><strong>Defining Problems</strong></em></mark> 이다. 
 

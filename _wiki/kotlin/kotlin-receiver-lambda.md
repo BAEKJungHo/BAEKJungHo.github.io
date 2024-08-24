@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : Lambda with Receiver
-summary : 코틀린 수신 객체 지정 람다
-date    : 2022-06-19 20:54:32 +0900
-updated : 2022-06-19 21:15:24 +0900
-tag     : kotlin
+summary : Higher-order functions and Lambdas
+date    : 2024-08-22 20:54:32 +0900
+updated : 2024-08-22 21:15:24 +0900
+tag     : kotlin lambda fp
 toc     : true
 comment : true
 public  : true
@@ -16,9 +16,8 @@ latex   : true
 
 ## Lambda with Receiver
 
-> __Lambdas with receivers are basically exactly the same as extension functions__ , they're just able to be stored in properties, and passed around to functions. This question is essentially the same as "What's the purpose of lambdas when we have functions?". The answer is much the same as well - it allows you to quickly create anonymous extension functions anywhere in your code.
->
-> There are many good use cases for this (see [DSLs](https://kotlinlang.org/docs/type-safe-builders.html) in particular), but I'll give one simple example here.
+___Lambdas with receivers are basically exactly the same as extension functions___ , they're just able to be stored in properties, and passed around to functions. This question is essentially the same as "What's the purpose of lambdas when we have functions?". The answer is much the same as well - it allows you to quickly create anonymous extension functions anywhere in your code.
+There are many good use cases for this (see [DSLs](https://kotlinlang.org/docs/type-safe-builders.html) in particular), but I'll give one simple example here.
 
 For instance, let's say you have a function like this:
 
@@ -44,7 +43,7 @@ val str = buildString {
 
 다음은, 수신 객체 타입이 String 이며 파라미터로 두 Int 를 받고 Unit 을 반환하는 확장 함수를 정의하는 Syntax 이다.
 
-확장 함수나 수신 객체 지정 람다에서는 모두 함수(람다)를 호출할 때 수신 객체를 지정해야만 하고, 함수 본문 안에서는 모두 그 수신 객체를 특별한 수식자(Ex. this) 없이 사용할 수있다.
+확장 함수나 ___수신 객체 지정 람다___ 에서는 모두 함수(람다)를 호출할 때 수신 객체를 지정해야만 하고, 함수 본문 안에서는 모두 그 수신 객체를 특별한 수식자(Ex. this) 없이 사용할 수있다.
 
 ```kotlin
 buildString { this.append("!") } // this: implied receiver
@@ -66,7 +65,7 @@ apply 함수는 인자로 받은 람다나 함수를 호출하면서 자신의 �
 
 __수신 객체 지정 람다를 사용하는 가장 큰 이유 중 하나는, 간결한 문법을 통해서 가독성을 향상시키는 것이라고 생각한다.__
 
-## apply
+### apply
 
 ```kotlin
 inline fun <T> T.apply(block: T.() -> Unit): T {
@@ -103,7 +102,7 @@ fun createButton() = Button().apply {
 }
 ```
 
-## with
+### with
 
 ```kotlin
 inline fun <T, R> with(receiver:T, block:T.() -> R): R = 
@@ -123,7 +122,7 @@ with (sb) {
 }
 ```
 
-## also
+### also
 
 ```kotlin
 inline fun <T> T.also(block: (T) -> Unit): T {
@@ -156,7 +155,7 @@ class Reservation(person: Person) {
 }
 ```
 
-## let
+### let
 
 ```kotlin
 inline fun <T, R> T.let(block: (T) -> R): R {
@@ -186,7 +185,7 @@ getPersonDao().let { dao ->
 }
 ```
 
-## run
+### run
 
 ```kotlin
 inline fun <T, R> T.run(block: T.() -> R): R {
@@ -216,15 +215,118 @@ fun printAge(person: Person) = person.run {
 }
 ```
 
-## 주의 사항
+__주의 사항__:
 
 - 수신 객체 지정 람다에 수신 객체가 묵시적으로 전달되는 apply, run, with 은 중첩해서 사용하면 안됨
   - 수신 객체를 this or 생략 하여 사용하기 때문에, 중첩 시 혼동하기 쉬워짐
 - also 와 let 을 중첩 해야하는 경우에는 it 을 사용하면 안됨
   - 혼동하기 쉬워짐
 
+## Complex Examples
+
+```kotlin
+class WebApp(val name: String) {
+    val routes = mutableListOf<Route>()
+    val middleware = mutableListOf<Middleware>()
+    var database: Database? = null
+
+    class Route(val path: String, val method: String, val handler: () -> Unit)
+    class Middleware(val name: String, val handler: () -> Unit)
+    class Database(val url: String, val username: String, val password: String)
+
+    fun route(setup: RouteBuilder.() -> Unit) {
+        val builder = RouteBuilder()
+        builder.setup()
+        routes.add(builder.build())
+    }
+
+    fun middleware(setup: MiddlewareBuilder.() -> Unit) {
+        val builder = MiddlewareBuilder()
+        builder.setup()
+        middleware.add(builder.build())
+    }
+
+    fun database(setup: DatabaseBuilder.() -> Unit) {
+        val builder = DatabaseBuilder()
+        builder.setup()
+        database = builder.build()
+    }
+
+    class RouteBuilder {
+        var path: String = ""
+        var method: String = "GET"
+        var handler: () -> Unit = {}
+
+        fun build() = Route(path, method, handler)
+    }
+
+    class MiddlewareBuilder {
+        var name: String = ""
+        var handler: () -> Unit = {}
+
+        fun build() = Middleware(name, handler)
+    }
+
+    class DatabaseBuilder {
+        var url: String = ""
+        var username: String = ""
+        var password: String = ""
+
+        fun build() = Database(url, username, password)
+    }
+}
+
+fun webApp(name: String, setup: WebApp.() -> Unit): WebApp {
+    val app = WebApp(name)
+    app.setup()
+    return app
+}
+
+// 사용 예시
+val myApp = webApp("MyApplication") {
+    route {
+        path = "/users"
+        method = "POST"
+        handler = {
+            println("Handling POST request to /users")
+        }
+    }
+
+    route {
+        path = "/products"
+        method = "GET"
+        handler = {
+            println("Handling GET request to /products")
+        }
+    }
+
+    middleware {
+        name = "Logger"
+        handler = {
+            println("Logging request")
+        }
+    }
+
+    database {
+        url = "jdbc:mysql://localhost:3306/mydb"
+        username = "user"
+        password = "password"
+    }
+}
+
+fun main() {
+    println("Application: ${myApp.name}")
+    println("Routes:")
+    myApp.routes.forEach { println("  ${it.method} ${it.path}") }
+    println("Middleware:")
+    myApp.middleware.forEach { println("  ${it.name}") }
+    println("Database: ${myApp.database?.url}")
+}
+```
+
 ## Links
 
+- [Higher-order functions and Lambdas](https://kotlinlang.org/docs/lambdas.html)
 - [What is a purpose of Lambda's with Receiver?](https://stackoverflow.com/questions/47329716/what-is-a-purpose-of-lambdas-with-receiver)
 - [코틀린의 apply-with-let-also-run 은 언제 사용하는가](https://medium.com/@limgyumin/%EC%BD%94%ED%8B%80%EB%A6%B0-%EC%9D%98-apply-with-let-also-run-%EC%9D%80-%EC%96%B8%EC%A0%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94%EA%B0%80-4a517292df29)
 

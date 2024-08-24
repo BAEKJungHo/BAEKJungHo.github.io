@@ -15,6 +15,7 @@
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-first-citizen",
  "kotlin/kotlin-functor-monad",
+ "kotlin/kotlin-receiver-lambda",
  "magazine/magazine-tangled-thread",
  "oop/oop-firstclasscollection"
 ]

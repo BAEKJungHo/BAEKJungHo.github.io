@@ -197,7 +197,7 @@
  },
  {
   "name": "fp",
-  "size": 18
+  "size": 19
  },
  {
   "name": "fsm",
@@ -333,7 +333,7 @@
  },
  {
   "name": "lambda",
-  "size": 1
+  "size": 2
  },
  {
   "name": "language",

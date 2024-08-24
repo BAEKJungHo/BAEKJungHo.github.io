@@ -1,3 +1,4 @@
 [
+ "kotlin/kotlin-receiver-lambda",
  "reactive/reactive-defer"
 ]

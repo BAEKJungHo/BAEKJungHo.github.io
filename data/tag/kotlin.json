@@ -53,6 +53,7 @@
  "kotlin/kotlin-range-progression",
  "kotlin/kotlin-receiver-lambda",
  "kotlin/kotlin-relaxed-mockk",
+ "kotlin/kotlin-restdocs-api-enum-design",
  "kotlin/kotlin-sealed",
  "kotlin/kotlin-sequence",
  "kotlin/kotlin-simplesyntax",

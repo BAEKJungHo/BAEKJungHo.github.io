@@ -179,6 +179,7 @@ regenerate: true
 * [[/kotlin/kotlin-null-handling-safely]]
 * [[/kotlin/kotlin-assign-type]]
 * [[/kotlin/kotlin-minimizing-mental-complexity]]
+* [[/kotlin/kotlin-restdocs-api-enum-design]]
 
 ## Java
 

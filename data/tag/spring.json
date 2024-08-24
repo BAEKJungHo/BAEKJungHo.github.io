@@ -8,6 +8,7 @@
  "kotlin/kotlin-mockk-springmockk",
  "kotlin/kotlin-null-safety",
  "kotlin/kotlin-property",
+ "kotlin/kotlin-restdocs-api-enum-design",
  "methodology",
  "network",
  "spring",

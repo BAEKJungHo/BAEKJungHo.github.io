@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Test Driven Development Cycle
-summary : How Test-Driven Development Works
+title   : The Fundamental Test-Driven Development Cycle
+summary : 
 date    : 2024-01-02 15:54:32 +0900
 updated : 2024-01-02 20:15:24 +0900
 tag     : tdd test
@@ -30,12 +30,15 @@ ___[MANAGING THE DEVELOPMENT OF LARGE SOFTWARE SYSTEMS - Winston Royce](https://
 
 ___[Test-Driven Development Cycle](https://agilepainrelief.com/blog/test-driven-development-is-not-a-quality-assurance-technique.html)___ 은 총 3단계로 이뤄진다.
 
-![](/resource/wiki/tdd-red-green-refactor/redgreenrefactor.png)
+__The fundamental TDD cycle__:
+
+![](/resource/wiki/tdd-red-green-refactor/fundamental-tdd-cycles.png)
 
 1. 실패하는 테스트 코드 작성하기
 2. 테스트 통과 시키기 
 3. 이전 두 단계에서 추가되거나 변경된 코드 개선하기
 
+The Golden Rule of Test-Driven Development is <mark><em><strong>Never write new functionality without a failing test</strong></em></mark>.
 ___Red-Green-Refactor___ is an alternative mnemonic for ___TDD Cycle___ of writing a test, making it pass, and making it pretty.
 
 TDD Cycle 과 관련된 몇가지 팁이 있다.
@@ -50,6 +53,10 @@ TDD Cycle 과 관련된 몇가지 팁이 있다.
 - TDD 의 리듬은 빠르다. 처음에는 10분정도로 제한하고 시도해본다. 더 오래 걸린다면 더 작게 쪼개서 테스트를 해야 한다.
 
 ___[Test Driven Development](https://wiki.c2.com/?TestDrivenDevelopment)___ 는 ___[Refactor Mercilessly](https://wiki.c2.com/?RefactorMercilessly)___ 특징을 지니고 있다.
+
+__TDD with Acceptance Test__:
+
+![](/resource/wiki/tdd-red-green-refactor/inner-and-outer-feedback.png)
 
 ### How to write test code that fails
 
@@ -133,3 +140,4 @@ class Calculator {
 
 - TEST DRIVEN / LASSE KOSKELA / MANNING
 - 테스트 주도 개발 시작하기 / 최범균 저 / 가메출판사
+- Growing Object-Oriented Software, Guided by Tests / Steve Freeman, Nat Pryce

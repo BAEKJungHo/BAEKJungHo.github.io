@@ -1,7 +1,7 @@
 {
  "type": "wiki",
- "title": "Test Driven Development Cycle",
- "summary": "How Test-Driven Development Works",
+ "title": "The Fundamental Test-Driven Development Cycle",
+ "summary": "",
  "parent": "tdd",
  "url": "/wiki/tdd/tdd-red-green-refactor",
  "updated": "2024-01-02 20:15:24 +0900",

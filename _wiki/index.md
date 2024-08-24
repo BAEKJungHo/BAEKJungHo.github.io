@@ -235,6 +235,7 @@ regenerate: true
 * [[/tdd/tdd-interface-design-decisions]]
 * [[/tdd/tdd-why-use-mock-any]]
 * [[/tdd/tdd-dontblame]]
+* [[/tdd/tdd-acceptance-test]]
 
 ## TroubleShooting
 

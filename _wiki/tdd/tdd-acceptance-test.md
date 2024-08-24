@@ -16,7 +16,9 @@ latex   : true
 
 ## Acceptance Testing - Functional testing of a user story
 
-___[The Fundamental Test-Driven Development Cycle](https://baekjungho.github.io/wiki/tdd/tdd-red-green-refactor/)___ 를 보면 ___[Acceptance Test](https://en.wikipedia.org/wiki/Acceptance_testing)___ 는 TDD Cycle 과 통합될 수 있다는 걸 볼 수 있다.
+___[The Fundamental Test-Driven Development Cycle](https://baekjungho.github.io/wiki/tdd/tdd-red-green-refactor/)___ 에서 ___[Acceptance Test](https://en.wikipedia.org/wiki/Acceptance_testing)___ 는 TDD Cycle 과 통합될 수 있다.
+
+![](/resource/wiki/tdd-acceptance-test/inner-and-outer-feedback.png)
 
 ___[Factory Acceptance Test](https://archive.md/20130204215825/http://www.tuv.com/en/corporate/business_customers/materials_testing_and_inspection/supply_chain_services/factory_acceptance_test/factory_acceptance_test.jsp#selection-887.0-887.266)___ is Prior to delivery or final installation, ___clients want to make sure that equipment operates as intended without disturbances occurring on site___. In achieving this, clients are therefore able to verify that all specifications and contractual requirements have been met.
 

@@ -509,6 +509,7 @@ regenerate: true
 * [[/auth/auth-key-cloak]]
 * [[/auth/auth-client-credentials]]
 * [[/auth/auth-exchange]]
+* [[/auth/auth-certificate-authority]]
 
 ## Design pattern
 

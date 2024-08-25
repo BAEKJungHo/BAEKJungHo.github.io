@@ -1,5 +1,6 @@
 [
  "altorithm/algorithm-hash",
+ "auth/auth-certificate-authority",
  "auth/auth-hmac",
  "crypto",
  "crypto/crypto-asymmetric-cryptography",

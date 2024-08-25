@@ -21,7 +21,7 @@
  },
  {
   "name": "auth",
-  "size": 10
+  "size": 11
  },
  {
   "name": "aws",
@@ -42,6 +42,10 @@
  {
   "name": "buildtool",
   "size": 2
+ },
+ {
+  "name": "ca",
+  "size": 1
  },
  {
   "name": "caching",
@@ -105,7 +109,7 @@
  },
  {
   "name": "crypto",
-  "size": 9
+  "size": 10
  },
  {
   "name": "database",
@@ -377,7 +381,7 @@
  },
  {
   "name": "mobility",
-  "size": 17
+  "size": 18
  },
  {
   "name": "mockk",
@@ -462,6 +466,10 @@
  {
   "name": "performance",
   "size": 2
+ },
+ {
+  "name": "pki",
+  "size": 1
  },
  {
   "name": "poi",

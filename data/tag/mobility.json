@@ -1,5 +1,6 @@
 [
  "architecture/architecture-async-nonblocking",
+ "auth/auth-certificate-authority",
  "mobility",
  "mobility/mobility-autonomous-driving-level",
  "mobility/mobility-ble",

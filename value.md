@@ -84,6 +84,7 @@ ___[Concurrency](https://baekjungho.github.io/wiki/spring/spring-concurrency-res
 
 ## Contacts
 
+- [LinkedIn](https://www.linkedin.com/in/jungho-baek-25541a1b2/)
 - [GitHub](https://github.com/BAEKJungHo)
 
 

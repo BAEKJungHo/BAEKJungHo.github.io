@@ -52,7 +52,7 @@ FLEXIBLE(유연한) 이라는 단어를 나는 다음과 같이 정의하고 있
 - ___[Software Architecture](https://baekjungho.github.io/wiki/architecture/architecture-software/)___
 - ___[Computer Sciences](https://baekjungho.github.io/wiki/spring/spring-concurrency/)___
 
-이때에도 나의 Wiki 는 꾸준히 쓰고 있었다. 그리고 이 시점에 LinkedIn 을 가입하게 된다. 그리고 LinkedIn 을 통해서 42dot 채용 담당자 분께 면접 제의를 받았고, 그렇게 3번의 면접을 통해 42dot 으로 입사하게 되었다.
+이때에도 나의 Wiki 는 꾸준히 쓰고 있었다. 그리고 이 시점에 LinkedIn 을 가입하게 된다. LinkedIn 을 통해서 42dot 채용 담당자 분께 면접 제의를 받았고, 그렇게 3번의 면접을 통해 42dot 으로 입사하게 되었다.
 LinkedIn 에는 짧은 소개와 나의 Wiki 링크 뿐이었지만, Wiki 가 나의 무기이자 강점을 드러내는데 좋은 도구라고 생각했다.
 
 42dot 에 입사하고 ___[Distributed Systems](https://baekjungho.github.io/tag/#distributed)___ 에 대한 공부를 본격적으로 하게 되었다. 

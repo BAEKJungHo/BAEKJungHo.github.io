@@ -74,7 +74,7 @@ ___[Concurrency](https://baekjungho.github.io/wiki/spring/spring-concurrency-res
 - ___[TEST](https://baekjungho.github.io/wiki/test/)___
 - ___[Distributed Systems](https://baekjungho.github.io/tag/#distributed)___
 
-> 42dot 을 다니면서 정말 좋은 부분은 뛰어난 (그룹장님 팀장님을 포함한) 동료분들과 같이 일할 수 있다는 것이다. 즉, 동료들의 강점을 나의 것으로 만들 수 있는 환경이 갖춰졌다는게 나에겐 큰 매력으로 다가온다.
+> 42dot 을 다니면서 정말 좋은 부분은 뛰어난 (그룹장님 팀장님을 포함한, 타 팀을 포함한) 동료분들과 같이 일할 수 있다는 것이다. 즉, 동료들의 강점을 나의 것으로 만들 수 있는 환경이 갖춰졌다는게 나에겐 큰 매력으로 다가온다.
 
 지금까지 다양한 형태의 기업을 다니면서 FLEXIBLE(유연함)을 점점 갖추고 있는 것 같아서 뿌듯하다. 위에서 유연함은 나에겐 등대 같다고 표현을 했는데
 그 이유는 ___유연하기 위해서는 내가 잘하는 것보다 부족한 부분 또는 경험해보지 못한 것을 채워나가야 한다고 생각한다.___ 

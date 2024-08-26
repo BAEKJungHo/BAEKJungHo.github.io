@@ -6,6 +6,7 @@
  "url": "/wiki/kotlin",
  "updated": "2022-04-12 20:55:09 +0900",
  "children": [
+  "experience/experience-developer",
   "experience/experience-external-interlock-error",
   "experience/experience-premature-optimization",
   "kotlin/kotlin-action-calculate",

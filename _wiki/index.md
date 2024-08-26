@@ -380,6 +380,7 @@ regenerate: true
 
 * [[/experience/experience-external-interlock-error]]
 * [[/experience/experience-premature-optimization]]
+* [[/experience/experience-developer]]
 
 ## Devops
 

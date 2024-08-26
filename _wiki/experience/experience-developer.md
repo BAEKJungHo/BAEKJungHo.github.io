@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Developer Experience
 summary : 
-date    : 2024-02-01 20:54:32 +0900
-updated : 2024-02-01 21:15:24 +0900
+date    : 2024-08-26 18:54:32 +0900
+updated : 2024-08-26 20:15:24 +0900
 tag     : experience dx
 toc     : true
 comment : true

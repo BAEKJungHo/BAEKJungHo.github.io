@@ -11,6 +11,7 @@
   "architecture/architecture-api-design",
   "architecture/architecture-async-nonblocking",
   "architecture/architecture-aws-well",
+  "architecture/architecture-backend-for-frontend",
   "architecture/architecture-branchbyabstraction",
   "architecture/architecture-bulkhead",
   "architecture/architecture-cap",

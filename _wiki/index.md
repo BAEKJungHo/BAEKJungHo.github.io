@@ -93,6 +93,7 @@ regenerate: true
 * [[/architecture/architecture-functional]]
 * [[/architecture/architecture-software]]
 * [[/architecture/architecture-dependency]]
+* [[/architecture/architecture-backend-for-frontend]]
 
 ## Kata
 

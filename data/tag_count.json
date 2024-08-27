@@ -9,7 +9,7 @@
  },
  {
   "name": "architecture",
-  "size": 60
+  "size": 61
  },
  {
   "name": "argon",
@@ -141,7 +141,7 @@
  },
  {
   "name": "designpattern",
-  "size": 23
+  "size": 24
  },
  {
   "name": "devops",

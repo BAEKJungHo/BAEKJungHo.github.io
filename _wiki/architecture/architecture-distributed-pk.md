@@ -29,7 +29,7 @@ latex   : true
 방안으로는 다음과 같다.
 
 - 다중 마스터 복제(multi-master replication)
-- UUID(Universally Unique Identifier)
+- ___[UUID(Universally Unique Identifier)](https://ntietz.com/blog/til-uses-for-the-different-uuid-versions/)___
 - 티켓 서버(ticket server)
 - 트위터 스노우플레이크(twitter snowflake) 접근법
 

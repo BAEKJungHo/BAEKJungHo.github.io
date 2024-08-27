@@ -1,10 +1,10 @@
 ---
 layout  : wiki
-title   : UUID
-summary : Universally Unique Identifier
+title   : Universally Unique Identifier
+summary : 
 date    : 2023-10-24 15:02:32 +0900
 updated : 2023-10-24 15:12:24 +0900
-tag     : architecture cloudnative database
+tag     : architecture cloudnative database uuid
 toc     : true
 comment : true
 public  : true
@@ -16,7 +16,7 @@ latex   : true
 
 ## Universally Unique Identifier
 
-A UUID, or Universally Unique Identifier, is a __128-bit identifier__ that is guaranteed to be unique across both time and space. It is often represented as a 36-character hexadecimal string, typically separated by hyphens into groups of __8-4-4-12__ characters, such as "550e8400-e29b-41d4-a716-446655440000."
+A ___[UUID; Universally Unique Identifier](https://ntietz.com/blog/til-uses-for-the-different-uuid-versions/)___, is a __128-bit identifier__ that is guaranteed to be unique across both time and space. It is often represented as a 36-character hexadecimal string, typically separated by hyphens into groups of __8-4-4-12__ characters, such as "550e8400-e29b-41d4-a716-446655440000."
 
 - v1 - Version 1 UUIDs using a timestamp and monotonic counter.
 - v3 - Version 3 UUIDs based on the MD5 hash of some data.
@@ -28,7 +28,7 @@ A UUID, or Universally Unique Identifier, is a __128-bit identifier__ that is gu
 
 ### Which version to use?
 
-> [Rust UUID Docs](https://docs.rs/uuid/latest/uuid/)
+> ___[Rust UUID Docs](https://docs.rs/uuid/latest/uuid/)___
 > 
 > If you just want to generate unique identifiers then consider version 4 (v4) UUIDs. If you want to use UUIDs as `database keys` or need to `sort` them then consider version 7 (v7) UUIDs. Other versions should generally be avoided unless there’s an existing need for them.
 >

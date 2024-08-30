@@ -5,7 +5,7 @@
  },
  {
   "name": "api",
-  "size": 5
+  "size": 6
  },
  {
   "name": "architecture",
@@ -94,6 +94,10 @@
  {
   "name": "coroutine",
   "size": 12
+ },
+ {
+  "name": "cors",
+  "size": 1
  },
  {
   "name": "coverage",

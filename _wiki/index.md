@@ -44,6 +44,7 @@ regenerate: true
 ## API
 
 * [[/api/api-too-many-requests]]
+* [[/api/api-cors]]
 
 ## Architecture
 

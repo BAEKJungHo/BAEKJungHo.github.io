@@ -18,11 +18,13 @@
  "database/database-replication",
  "database/database-serializable-tx",
  "database/database-surrogatekey",
+ "database/database-tx",
  "database/hikaricp-concepts",
  "database/mysql-index",
  "database/query-index",
  "database/query-optimizing",
  "experience/experience-external-interlock-error",
+ "msa/msa-xa",
  "spring/spring-declarative-transaction",
  "spring/spring-lazyconnectiondatasourceproxy",
  "spring/spring-transactionmanager"

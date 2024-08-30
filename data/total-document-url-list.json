@@ -109,6 +109,7 @@
  "/wiki/database/database-replication",
  "/wiki/database/database-serializable-tx",
  "/wiki/database/database-surrogatekey",
+ "/wiki/database/database-tx",
  "/wiki/database/hikaricp-concepts",
  "/wiki/database/mysql-index",
  "/wiki/database/query-index",

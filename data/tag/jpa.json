@@ -1,5 +1,6 @@
 [
  "database/database-cascade",
+ "database/database-tx",
  "designpattern/designpattern-persistence",
  "logging/logging-write-ahead",
  "reactive/reactive-hibernate",

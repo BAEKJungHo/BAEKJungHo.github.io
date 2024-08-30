@@ -4,7 +4,7 @@ title   : eXtended Architecture
 summary : Distributed Transaction and Consensus Algorithm
 date    : 2022-12-21 17:54:32 +0900
 updated : 2022-12-21 20:15:24 +0900
-tag     : msa architecture dod distributed
+tag     : msa architecture dod distributed database
 toc     : true
 comment : true
 public  : true
@@ -181,6 +181,7 @@ Zookeeper 와 유사 프로젝트들은 오랜 __멤버십 서비스(Membership 
 
 ## Links
 
+- [Actor-Oriented Database System](https://www.vldb.org/pvldb/vol17/p3720-eldeeb.pdf)
 - [Eventual Consistency](https://baekjungho.github.io/wiki/msa/msa-eventual-consistency/)
 - [Raft Consensus Algorithm and Quorum](https://seongjin.me/raft-consensus-algorithm/)
 - [In Search of an Understandable Consensus Algorithm](https://raft.github.io/raft.pdf)

@@ -21,6 +21,7 @@
   "database/database-replication",
   "database/database-serializable-tx",
   "database/database-surrogatekey",
+  "database/database-tx",
   "database/hikaricp-concepts",
   "database/mysql-index",
   "database/query-index",

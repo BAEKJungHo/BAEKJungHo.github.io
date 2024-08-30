@@ -580,6 +580,7 @@ regenerate: true
 * [[/database/database-serializable-tx]]
 * [[/database/database-data-anonymization]
 * [[/database/database-natural-keys]]
+* [[/database/database-tx]]
 
 ## Clean Code
 

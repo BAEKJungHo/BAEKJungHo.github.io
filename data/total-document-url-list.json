@@ -50,6 +50,7 @@
  "/wiki/architecture/architecture-nats",
  "/wiki/architecture/architecture-payment",
  "/wiki/architecture/architecture-prometheus",
+ "/wiki/architecture/architecture-provisioning",
  "/wiki/architecture/architecture-pub-sub",
  "/wiki/architecture/architecture-qr",
  "/wiki/architecture/architecture-reliability",

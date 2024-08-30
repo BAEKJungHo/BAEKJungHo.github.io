@@ -106,7 +106,7 @@ class RepeatableReadTest {
 ```
 
 Snapshot 은 양호한 수준의 읽기 일관성을 보장하지만, 데이터를 일시적으로 임의의 공간에 보관해야 하므로 성능적으로 약간의 희생이 발생한다.
-JPA 에서는 비지니스로직을 처리하면서 데이터를 읽고, 변경까지 하는 경우에는 Snapshot 을 통해 Repeatable Read 수준의 읽기 일관성을 보장해야 할 것이다. 하지만, 비지니스 로직을 처리하는데 오직 읽기만 한다면 Snapshot 저장 공간이 필요 없지 않을까?
+JPA 에서는 비지니스로직을 처리하면서 데이터를 읽고, 변경까지 하는 경우에는 Snapshot 을 통해 Repeatable Read 수준의 읽기 일관성을 보장해야 할 것이다. 하지만, 비지니스 로직을 처리하는데 오직 읽기만 한다면 Snapshot 저장공간이 필요 없지 않을까?
 
 이러한 아이디어를 통해 성능을 올리고자 ___[Declarative Transaction](https://baekjungho.github.io/wiki/spring/spring-declarative-transaction/)___ 을 사용할때, 트랜잭션을 ___read-only___ 로 설정하면, 별도의 Snapshot 저장공간이 필요 없어지게 되어 성능 향상에 도움이 된다. 즉, `START TRANSACTION READ ONLY` 구문을 사용하여 읽기 전용 트랜잭션을 명시적으로 정의하는 것이다.
 

@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-uuid",
  "database/database-cascade",
  "database/database-tx",
  "designpattern/designpattern-persistence",

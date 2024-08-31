@@ -68,8 +68,18 @@ JWT 에 담길 내용이다. 페이로드(Payload)에 있는 속성들을 클레
 
 ```json
 {
-  "name": "Jung Ho",
-  "age": 29
+  "sub": "identifier-uuid-format",
+  "aud": "xxx-service-code",
+  "nbf": 1724811404,
+  "scope": [
+    "openid",
+    "email",
+    "profile"
+  ],
+  "iss": "https://account.domain.com",
+  "exp": 1724897804,
+  "iat": 1724811404,
+  "jti": "X8v8924aq8d28c1x9v1o367g892d69528"
 }
 ```
 

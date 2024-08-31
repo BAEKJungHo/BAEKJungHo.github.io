@@ -40,8 +40,8 @@ __[Transaction Isolation Levels](https://dev.mysql.com/doc/refman/8.4/en/innodb-
 
 | Character        | Description                                                                                                                                                                      |
 |------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Read Uncommitted | 트랜잭션에서 처리 중인, 아직 커밋 되지 않은 데이터를 다른 트랜잭션에서 읽는 것을 허용 <br> Dirty Read, Non-Repeatable Read, Phantom Read 현상 발생                                                                       |                                                                   |
-| Read Committed   | Dirty Read 방지 - 트랜잭션이 커밋이 확정된 데이터만 읽는다. <br> Non-Repeatable Read, Phantom Read 현상은 여전히 발생                                                                                        |
+| Read Uncommitted | 트랜잭션에서 처리 중인, 아직 커밋 되지 않은 데이터를 다른 트랜잭션에서 읽는 것을 허용 <br> Dirty Read, Non-Repeatable Read, Phantom Read 현상 발생     |                    
+| Read Committed   | Dirty Read 방지 - 트랜잭션이 커밋이 확정된 데이터만 읽는다. <br> Non-Repeatable Read, Phantom Read 현상은 여전히 발생                                                     |
 | Repeatable Read      | 선행 트랜잭션이 읽은 데이터는 트랜잭션이 종료될 때가지 후행 트랜잭션이 갱신하거나 삭제하는 것은 불허함으로써 (Insert 는 가능) 같은 데이터를 두 번 쿼리했을 때 일관성 있는 결과를 리턴 <br> MySQL InnoDB 에서 기본으로 채택하고 있는 격리 수준 <br> Phantom Read 현상은 여전히 발생 |
 | Serializable Read       | 선행 트랜잭션이 읽은 데이터를 후행 트랜잭션이 갱신하거나 삭제하지 못할 뿐만 아니라 중간에 새로운 레코드를 삽입하는 것도 막아줌. 완벽하게 읽기 일관성 모드를 제공 <br> 동시성 이슈 해결 가능                                                                    | 
 

@@ -373,7 +373,7 @@
  },
  {
   "name": "magazine",
-  "size": 11
+  "size": 12
  },
  {
   "name": "mapstruct",
@@ -569,7 +569,7 @@
  },
  {
   "name": "software",
-  "size": 1
+  "size": 2
  },
  {
   "name": "spec",

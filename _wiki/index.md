@@ -184,6 +184,7 @@ regenerate: true
 * [[/kotlin/kotlin-assign-type]]
 * [[/kotlin/kotlin-minimizing-mental-complexity]]
 * [[/kotlin/kotlin-restdocs-api-enum-design]]
+* [[/kotlin/kotlin-high-order-functions]]
 
 ## Java
 

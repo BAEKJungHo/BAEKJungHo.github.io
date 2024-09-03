@@ -28,6 +28,7 @@
   "kotlin/kotlin-first-citizen",
   "kotlin/kotlin-functor-monad",
   "kotlin/kotlin-generics",
+  "kotlin/kotlin-high-order-functions",
   "kotlin/kotlin-inline",
   "kotlin/kotlin-jdbc-batch",
   "kotlin/kotlin-ksp",

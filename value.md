@@ -10,6 +10,8 @@ latex: true
 
 ## FLEXIBLE ENGINEER
 
+<p align="center"><img src="/resource/value/profile.jpeg" width="50" height="50"/></p>
+
 나의 Wiki 메인페이지 제목은 <mark><em><strong>FLEXIBLE ENGINEER</strong></em></mark> 이다.
 FLEXIBLE(유연한) 이라는 단어를 나는 다음과 같이 정의하고 있다. <mark><em><strong>환경에 구애 받지 않고 자신의 가치를 증명할 수 있는 것</strong></em></mark>이라 생각한다.
 이것이 나의 ___가치관(value)___ 이며 ___등대(lighthouse)___ 역할을 하고 있다.

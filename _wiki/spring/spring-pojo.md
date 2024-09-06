@@ -23,8 +23,8 @@ latex   : true
 
 > POJO 방식으로 개발을 했다면 반드시 테스트를 작성 해야 하며, 그래야 POJO 를 POJO 답게 쓰게하고 그 가치를 누릴 수 있다.
 >
-> {:style="text-align:right;"}
 > --- Toby ---
+{:  .last_line_author}
 
 ## Object Oriented 
 

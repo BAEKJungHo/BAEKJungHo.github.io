@@ -57,7 +57,12 @@ blockquote {
         color: $second-font-color;
     }
 }
-blockquote.last_line_author > p:last-child
+blockquote.last_line_author > p:last-child {
+    font-style: italic;
+    text-align: right;
+    margin-top: 1rem;
+    margin-right: 10%;
+}
 code,pre {
     font-family:  $coding-font;
 }

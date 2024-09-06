@@ -21,7 +21,10 @@ latex   : true
   - 특정 기술과 규약, 환경에서 자유롭기 때문에 객체지향적인 설계를 자유롭게 적용할 수 있다. 그래서 자동화된 테스트에 유리하며, 유지보수성과 확장성이 좋아진다.
 - [Rod Johnson](#). OO design is more important than any particular implementation technology (such as J2EE, or even Java). And now important than even Spring or Hibernate. Good Programming practices and sound OO design underpin good J2EE applications. Bad Java code is bad J2EE code.
 
-> POJO 방식으로 개발을 했다면 반드시 테스트를 작성 해야 하며, 그래야 POJO 를 POJO 답게 쓰게하고 그 가치를 누릴 수 있다. - 토비의 스프링 저자. 이일민
+> POJO 방식으로 개발을 했다면 반드시 테스트를 작성 해야 하며, 그래야 POJO 를 POJO 답게 쓰게하고 그 가치를 누릴 수 있다.
+>
+> --- Toby ---
+{:  .last_line_author}
 
 ## Object Oriented 
 

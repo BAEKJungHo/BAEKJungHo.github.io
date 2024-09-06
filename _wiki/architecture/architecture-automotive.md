@@ -16,7 +16,7 @@ latex   : true
 
 ## Automotive Architectures
 
-![](/resource/wiki/architecture-automotive/title.png)
+![](/resource/wiki/architecture-automotive/title.png}{:height="36px" style="background-color:red"}
 
 지난 10년간 대부분의 차량들은 ECUs 가 내장된 ___[Flat Architecture](https://www.redeweb.com/en/Articles/processor-technologies-that-make-software-defined-vehicles-possible/)___ 를 사용했다.
 

@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Domain Service",
- "summary": "도메인 서비스간의 의존관계에 대하여",
+ "summary": "",
  "parent": "ddd",
  "url": "/wiki/ddd/ddd-service",
  "updated": "2022-07-20 23:21:24 +0900",

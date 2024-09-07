@@ -41,7 +41,7 @@ FLEXIBLE(유연한) 이라는 단어를 나는 다음과 같이 정의하고 있
 
 - ___[Clean Code](https://baekjungho.github.io/wiki/cleancode/cleancode-guide/)___
 - ___[Design Pattern & Refactoring](https://baekjungho.github.io/wiki/designpattern/designpattern-strategy/)___
-- ___Documentation___
+- ___[Documentation](https://web.archive.org/web/20161005175528/http://cyborginstitute.org/projects/administration/documentation/)___
 - ___[Object Oriented Programming](https://baekjungho.github.io/wiki/oop/oop-oo/)___
 - ___[PSA](https://baekjungho.github.io/wiki/spring/spring-psa/)___, ___[DEPENDENCY](https://baekjungho.github.io/wiki/architecture/architecture-dependency/)___, ___[PROXY](https://baekjungho.github.io/tag/#proxy)___
 

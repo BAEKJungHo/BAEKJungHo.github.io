@@ -24,12 +24,14 @@ A ___[connected service](https://en.wikipedia.org/wiki/Connected_car)___ is a sy
 Connected Service 의 주요 기능으로는 아래와 같다.
 
 - 차량 구매(Purchase Vehicle)
-- 원격 제어(Remote Control): 스마트폰 앱을 통한 차량 잠금/해제(access vehicle), 공조(climate), 에어컨 제어 등
+- 원격 제어(Remote Control): 스마트폰 앱을 통한 차량 잠금/해제(access vehicle), 공조(climate) 제어 등
 - 실시간 차량 상태 모니터링: 배터리 잔량, 위치 등 확인
 - 내비게이션 및 실시간 교통 정보
 - 소프트웨어 무선 업데이트(OTA)
 - 엔터테인먼트 시스템 연동(IVI)
 - 긴급 상황 자동 알림
+
+__Connected Service Features__:
 
 ![](/resource/wiki/mobility-connected-service/mindmap.png)
 
@@ -45,15 +47,17 @@ Connected Service 를 구현하기 위해서 필요한 ___[Connectivity Type](ht
 이제 Connected App 을 어떻게 구성할 지 및 핵심 기능 중 하나인 ___Vehicle Control___ 기능을 구현할 때 주의해야하는 기술적인 부분에 대해서 다뤄보자.
 
 Connected App 은 다양한 기능(차량 구매, 제어, OTA 등)을 포함한다. 모든 기능을 하나의 애플리케이션으로 구성하면 ___SPOF(單一障礙點, Single Point Of Failure)___ 이 된다. 하나의 기능이 고장 나면 App 자체를 쓸 수 없게 된다.
-따라서 기능 별로 별도의 Application 을 구성하는 형태가 될 것이다.
+따라서 기능 별로 Application 을 구성하는 형태가 될 것이다.
 
 Vehicle Control 를 담당하는 Application 을 구성한다고 가정해보자. Kakao, LINE 등 다양한 슈퍼앱을 살펴보면 '공통 영역(common area)' 이 존재한다. 
 이 공통 영역(회원, 인증, 공지사항, FAQ, 약관, 알림 등)을 별도의 Application 으로 분리해야 한다. Connected Service 에서 Vehicle Control 은 중요한 기능이지만 일시적으로 사용 불가능한 상태가 되더라도 Critical 하진 않다. 왜냐하면 직접 조작하면 되기 때문이다.
 이때 Vehicle Control 기능이 먹통이라고 해서 공통 영역과 그 외 기능들 까지 먹통이 되면 안된다.
 
-Vehicle 은 기본적으로 Network 가 불안정(`Network Timeout`) 하다는 것을 가정해야 한다. 이 말은 즉, 차량으로 제어 명령을 내려도 Network 가 끊겨서 Timeout 이 빈번하게 발생할 수 있다는 점이다.
+Vehicle 은 기본적으로 Network 가 불안정 하다는 것을 가정해야 한다. 이 말은 즉, 차량으로 제어 명령을 내려도 Network 가 끊겨서 Timeout 이 빈번하게 발생할 수 있다는 점이다.
 
 Multi-Thread Application 에서 Timeout 이 자주 발생할 수 있다는 것은, ___Timeout 으로 인해 Thread-Hang 이 발생___ 할 수 있다는 것을 암시한다.
+
+__Network Timeout by Vehicle__:
 
 ![](/resource/wiki/mobility-connected-service/vehicle-control-architecture.png)
 *<small>Vehicle Control Architecture</small>*

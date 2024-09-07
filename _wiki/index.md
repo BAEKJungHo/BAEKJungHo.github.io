@@ -37,6 +37,7 @@ regenerate: true
 * [[/mobility/mobility-ccs]]
 * [[/mobility/mobility-digital-twin]]
 * [[/mobility/mobility-ble]]
+* [[/mobility/mobility-connected-service]]
 
 ## System Design
 

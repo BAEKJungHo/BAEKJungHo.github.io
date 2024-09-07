@@ -10,6 +10,7 @@
   "mobility/mobility-ble",
   "mobility/mobility-can",
   "mobility/mobility-ccs",
+  "mobility/mobility-connected-service",
   "mobility/mobility-digital-key",
   "mobility/mobility-digital-twin",
   "mobility/mobility-language-dictionary",

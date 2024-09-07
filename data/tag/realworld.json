@@ -1,4 +1,5 @@
 [
+ "mobility/mobility-connected-service",
  "realworld",
  "realworld/realworld-smarthome-control-command",
  "realworld/realworld-vehicle-controls"

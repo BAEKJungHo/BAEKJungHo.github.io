@@ -4,7 +4,7 @@ title   : Circuit Breaker with Fallback Improving Resiliency
 summary : 
 date    : 2023-03-01 15:02:32 +0900
 updated : 2023-03-01 15:12:24 +0900
-tag     : architecture msa
+tag     : architecture msa designpattern
 toc     : true
 comment : true
 public  : true
@@ -16,10 +16,10 @@ latex   : true
 
 ## Circuit Breaker with Fallback Improving Resiliency
 
-__Circuit Breaker__ 패턴은 호출 당하는 서비스에서 응답이 늦거나 (미흡한 예외 처리로 인한) 예외가 발생하여 생기는 문제를 다른 마이크로서비스에게 전파되지 않도록 하기 위함이다. 즉, MSA 에서 시스템의 안정성과 복원력을 향상시키기 위한 패턴이다.
-서비스 응답이 늦는 경우, 지속적인 호출이 쌓이다보면 thread-hang 이 발생할 수 도 있다.
+___[Circuit Breaker](https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern)___ 패턴은 호출 당하는 서비스에서 응답이 늦거나 (미흡한 예외 처리로 인한) 예외가 발생하여 생기는 문제를 다른 마이크로서비스에게 전파되지 않도록 하기 위함이다. 즉, MSA 에서 시스템의 안정성과 복원력을 향상시키기 위한 패턴이다.
+서비스 응답이 늦는 경우(Timeout), 지속적인 호출이 쌓이다보면 thread-hang 이 발생할 수 도 있다.
 
-__Fallback__ 은 호출 당하는 서비스에서 위와 같은 문제가 발생했을때, 호출한 서비스에게 예외를 주는 것이 아닌 대체 로직을 실행해서 결과를 내주도록 하기 위한 매커니즘을 의미한다.
+___Fallback___ 은 호출 당하는 서비스에서 위와 같은 문제가 발생했을때, 호출한 서비스에게 예외를 주는 것이 아닌 대체 로직을 실행해서 결과를 내주도록 하기 위한 매커니즘을 의미한다.
 
 __Hystrix fallback prevents cascading failures:__
 
@@ -154,6 +154,7 @@ tryAcquire() 가 공정하지 않다는 점이 Redisson tryLock() 과 유사하�
 - [DZone - Circuit Breaker Pattern](https://dzone.com/articles/the-circuit-breaker-pattern-1)
 - [Martinflowler - CircuitBreaker](https://martinfowler.com/bliki/CircuitBreaker.html)
 - [Circuit breaker 패턴을 이용한 장애에 강한 MSA 서비스 구현하기](https://bcho.tistory.com/1250)
+- [Resilience4j Circuit Breaker 를 이용한 장애 대비하기 - NHN](https://meetup.nhncloud.com/posts/385)
 - [Spring Cloud Circuit Breaker: Hystrix Clients](https://cloud.spring.io/spring-cloud-netflix/multi/multi__circuit_breaker_hystrix_clients.html)
 - [NetFlix - Hystrix](https://github.com/Netflix/Hystrix/)
 - [How to use Java Semaphore](https://www.davidvlijmincx.com/posts/how-to-use-java-semaphore/)

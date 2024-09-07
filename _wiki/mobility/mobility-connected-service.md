@@ -18,8 +18,7 @@ latex   : true
 
 A ___[connected service](https://en.wikipedia.org/wiki/Connected_car)___ is a system that connects a vehicle to app to provide various functions and services.
 
-![](/resource/wiki/mobility-connected-service/tesla-app.png)
-*<small><a href="https://screenrant.com/tesla-account-best-security-practices-explained/">Best Security Practices For Your Tesla Account, Explained</a></small>*
+![](/resource/wiki/mobility-connected-service/tesla.png)
 
 Connected Service 의 주요 기능으로는 아래와 같다.
 

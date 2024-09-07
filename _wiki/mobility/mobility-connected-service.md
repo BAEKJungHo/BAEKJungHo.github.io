@@ -16,7 +16,7 @@ latex   : true
 
 ## CONNECTED SERVICE
 
-A ___[connected service](https://en.wikipedia.org/wiki/Connected_car)___ is a system that connects a vehicle to app to provide various functions and services.
+A ___[connected service](https://en.wikipedia.org/wiki/Connected_car)___ is a system that connects a ___[vehicle to app](https://play.google.com/store/apps/details?id=com.teslamotors.tesla&hl=en_US)___ to provide various functions and services.
 
 ![](/resource/wiki/mobility-connected-service/tesla.png)
 

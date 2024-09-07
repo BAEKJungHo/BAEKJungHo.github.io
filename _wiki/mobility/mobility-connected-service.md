@@ -2,8 +2,8 @@
 layout  : wiki
 title   : CONNECTED SERVICE
 summary : 
-date    : 2024-09-07 12:54:32 +0900
-updated : 2024-09-07 17:15:24 +0900
+date    : 2024-09-05 12:54:32 +0900
+updated : 2024-09-05 17:15:24 +0900
 tag     : mobility architecture realworld
 toc     : true
 comment : true

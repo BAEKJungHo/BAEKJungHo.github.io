@@ -59,7 +59,7 @@ Multi-Thread Application 에서 Timeout 이 자주 발생할 수 있다는 것�
 
 __Network Timeout by Vehicle__:
 
-![](/resource/wiki/mobility-connected-service/vehicle-control-architecture.png)
+![](/resource/wiki/mobility-connected-service/vehicle-control-architectures.png)
 *<small>Vehicle Control Architecture</small>*
 
 대략 위와 같은 아키텍처에서, Vehicle 에서 부터 Network Timeout 이 발생한 경우 Vehicle Control Server 는

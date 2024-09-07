@@ -24,6 +24,9 @@ Serving content from CDNs can significantly improve performance in two ways:
 - Users receive content from data centers close to them
 - Your servers do not have to serve requests that the CDN fulfills
 
+![](/resource/wiki/architecture-cdn/cdn-flow.png)
+*<small><a href="https://lethain.com/introduction-to-architecting-systems-for-scale/">Contents Distributed Network</a></small>*
+
 CDN 을 사용하면 정적 콘텐츠, 동적 콘텐츠를 클라이언트가 받기 위해서 원본 서버 대신 가까운 CDN 엣지 서버로 요청을 보낸다.
 이때 CDN 은 자주 요청되는 콘텐츠를 캐시하여 제공하기 때문에 원본 서버로의 부하가 줄어들게 된다. 캐시된 콘텐츠의 유효기간이 만료되면 CDN 은 원본 서버에 새로운 버전을 요청한다.
 애플리케이션은 CDN 이 힘든 작업을 처리하기 때문에 연결을 열고 콘텐츠를 직접 전달할 책임이 없다. 즉, <mark><em><strong>CDN 을 사용하면 애플리케이션이 정적 콘텐츠에 대한 수요를 충족하기 위해 애플리케이션을 확장할 필요가 없다는 것</strong></em></mark> 이다.

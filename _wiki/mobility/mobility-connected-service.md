@@ -68,3 +68,5 @@ __Network Timeout by Vehicle__:
 
 Vehicle Network 가 불안정하여 Remote Control 기능을 사용할 수 없더라도, 나머지 모든 기능은 사용 가능해야 한다. 
 따라서, Network Timeout 이슈가 해결되기 까지 앱에서는 Notification or Cloud Database 를 통해 해당 기능을 사용할 수 있는 상태인지 알 수 있어야 한다.
+
+Vehicle 과 관련된 서비스를 만드는 경우에 Network Handling 이 중요하다. ___[Strategies for Handling Network Blips; Ensuring Resilience in Distributed Systems](https://baekjungho.github.io/wiki/network/network-blip/)___ 에서 다양한 Network Blip 상황에서의 대처 방법을 알 수 있다.

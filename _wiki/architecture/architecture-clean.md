@@ -20,13 +20,13 @@ latex   : true
 
 Entities 는 기업의 업무규칙(고수준 정책) 들을 정의하는 Layer 이며, Use Cases 는 애플리케이션 기능(사용 사례) 을 정의하는 Layer 이다.
 
-[Layered Architecture](https://baekjungho.github.io/wiki/architecture/architecture-layered/) 의 목적인 __"계층을 분리하여 계층간 책임을 명확히 하고 다른 영역에서의 변경으로부터 보호한다."__ 와 [Hexagonal Architecture](https://baekjungho.github.io/wiki/architecture/architecture-hexagonal/) 의 목적인 __"핵심 로직을 주변 Infrastructure 영역으로 부터 분리한다"__ 의 개념이 결합 된 아키텍처라고 생각하면 된다.
+___[Layered Architecture](https://baekjungho.github.io/wiki/architecture/architecture-layered/)___ 의 목적인 __"계층을 분리하여 계층간 책임을 명확히 하고 다른 영역에서의 변경으로부터 보호한다."__ 와 ___[Hexagonal Architecture](https://baekjungho.github.io/wiki/architecture/architecture-hexagonal/)___ 의 목적인 __"핵심 로직을 주변 Infrastructure 영역으로 부터 분리한다"__ 의 개념이 결합 된 아키텍처라고 생각하면 된다.
 
 __Layered Architecture Flow:__
 - Presentation > Application > Persistence > Database
 - 오직 한 방향으로만 흐르고 있다.
 
-Clean Architecture 를 설계하기 위해서 가장 중요한 것은 __Dependency Rule__ 을 잘 정하는 것이다. 정확히는 Dependency Flow 가 고수준 정책을 향하게끔 설계하는 것이다.
+___[Clean Architecture](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)___ 를 설계하기 위해서 가장 중요한 것은 __Dependency Rule__ 을 잘 정하는 것이다. 정확히는 Dependency Flow 가 고수준 정책을 향하게끔 설계하는 것이다.
 
 Clean Architecture 는 Layered Architecture 처럼 수평적인 계층으로 분리한다. 대신 여기에 Hexagonal Architecture 의 철학이 결합되면 아래와 같은 Flow 가 탄생한다. 
 - Interfaces > Application > __Domain__ < Infrastructure

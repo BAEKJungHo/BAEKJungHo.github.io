@@ -99,6 +99,7 @@ regenerate: true
 * [[/architecture/architecture-backend-for-frontend]]
 * [[/architecture/architecture-provisioning]]
 * [[/architecture/architecture-automotive]]
+* [[/architecture/architecture-abstraction]]
 
 ## Kata
 

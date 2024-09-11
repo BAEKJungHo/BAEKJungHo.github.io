@@ -105,5 +105,9 @@ data class CommandRequest(
 
 "/v1/commands/heat" (난방 제어) API 로 위 RequestBody 를 담아서 보내면 된다. 위 RequestBody 가 의미하는 바는 OnOffCommand 를 처리하면서, 온도 제어를 28도로 설정한다라는 명령이다.
 
+## Links
+
+- [Using an Interface as a Type](https://docs.oracle.com/javase/tutorial/java/IandI/interfaceAsType.html)
+
 
 

@@ -14,6 +14,7 @@
  "/wiki/api/api-too-many-requests",
  "/wiki/api/msa-debounce-throttle",
  "/wiki/architecture",
+ "/wiki/architecture/architecture-abstraction",
  "/wiki/architecture/architecture-amqp",
  "/wiki/architecture/architecture-analysis-estimation",
  "/wiki/architecture/architecture-api-design",

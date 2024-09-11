@@ -22,7 +22,6 @@ The fact that the operating system is ___free of cost___ and also ___freely-modi
 
 ## Philosophy
 
-__[Philosophy](https://web.archive.org/web/20161005114243/http://cyborginstitute.org/projects/administration/unix-fundamentals/#unix-philosophy)__:
 - __Do one thing well__
 - __Simplicity__ - Simplicity makes systems and code easier to use, extend, modify, and maintain.
 
@@ -37,6 +36,8 @@ When a program wants to use a hardware resource, it must issue a request to the 
 
 This mechanism ___enforced___.
 
+![](/resource/wiki/linux-os/os-architecture.png)
+
 The hardware introduces at least two different _execution modes_ for the CPU: a non-privileged mode for user programs and a privileged mode for the kernel.
 Unix calls these ___USER MODE___ and ___KERNEL MODE___, respectively.
 
@@ -45,6 +46,7 @@ ___[KERNEL](https://baekjungho.github.io/wiki/operatingsystem/os-kernel/)___ is 
 ## Links
 
 - [Fundamental Systems Administration Tools and Skills](https://web.archive.org/web/20161005175531/http://cyborginstitute.org/projects/administration/fundamentals/)
+- [Unix Fundamentals](https://web.archive.org/web/20161005114243/http://cyborginstitute.org/projects/administration/unix-fundamentals)
 
 ## References
 

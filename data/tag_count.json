@@ -9,7 +9,7 @@
  },
  {
   "name": "architecture",
-  "size": 64
+  "size": 65
  },
  {
   "name": "argon",
@@ -114,6 +114,10 @@
  {
   "name": "crypto",
   "size": 10
+ },
+ {
+  "name": "cs",
+  "size": 1
  },
  {
   "name": "database",

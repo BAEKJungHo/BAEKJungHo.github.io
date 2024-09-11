@@ -1,5 +1,6 @@
 [
  "architecture",
+ "architecture/architecture-abstraction",
  "architecture/architecture-amqp",
  "architecture/architecture-analysis-estimation",
  "architecture/architecture-api-design",

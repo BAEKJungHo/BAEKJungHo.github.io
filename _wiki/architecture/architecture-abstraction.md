@@ -22,8 +22,6 @@ The authors of the wonderful book Concepts, Techniques, and Models of Computer P
 
 > ___[Abstractions](https://branislavjenco.github.io/desired-state-systems/)___ are central to what we do. I find that the most rewarding work is not writing programs but rather designing abstractions. Programming a computer is primarily designing and using abstractions to achieve new goals. It’s exciting when you can build something which hides away some of the underlying complexity and present a simpler interface for whoever or whatever is using your system.
 
-__Meaning__:
-
 ![](/resource/wiki/architecture-abstraction/abstraction.png)
 
 ## Links

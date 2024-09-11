@@ -1,10 +1,10 @@
 ---
 layout  : wiki
-title   : Smart Home Control Command APIs Designs with Sealed Interface
+title   : Architecting Flexible Control Systems
 summary : Designing kotlinx serializable hierarchy
 date    : 2024-02-28 20:54:32 +0900
 updated : 2024-02-28 21:15:24 +0900
-tag     : realworld kotlin
+tag     : realworld kotlin architecture
 toc     : true
 comment : true
 public  : true
@@ -19,6 +19,7 @@ latex   : true
 스마트 홈(Smart home)은 네트워크로 통제하는 집 단위의 통신 환경이다. 주택 소유자가 가정 내에서 다양한 시스템과 가전 제품을 제어하고 자동화할 수 있다.
 
 이 처럼, 앱으로 이러한 다양한 기기, 가전제품 등을 __명령(command)__ 으로 __제어(control)__ 할 수 있어야 한다. 
+제어 명령을 수행하는 애플리케이션에서는 Type 이 핵심 Domain 이며 이것을 Hierarchy Structures 로 표현하는 것이 중요하다.
 
 처음에는 앱의 요구사항들을 분석해서 API Request/Response Spec 을 정해야 할 것이다.
 
@@ -35,7 +36,7 @@ latex   : true
 - 난방 온도 조절(0 ~ 100)
 - 티비 켜기/끄기
 
-위 명령의 유형(command type)을 [sealed interface](https://baekjungho.github.io/wiki/kotlin/kotlin-sealed/) 를 사용하여 구현할 것이다.
+위 명령의 유형(command type)을 ___[sealed interface](https://baekjungho.github.io/wiki/kotlin/kotlin-sealed/)___ 를 사용하여 구현할 것이다.
 
 ```kotlin
 @Serializable

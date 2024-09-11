@@ -1,6 +1,6 @@
 {
  "type": "wiki",
- "title": "Smart Home Control Command APIs Designs with Sealed Interface",
+ "title": "Architecting Flexible Control Systems",
  "summary": "Designing kotlinx serializable hierarchy",
  "parent": "realworld",
  "url": "/wiki/realworld/realworld-smarthome-control-command",

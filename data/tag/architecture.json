@@ -63,5 +63,6 @@
  "msa/msa-service-discovery",
  "msa/msa-xa",
  "observability/architecture-domain-oriented-observability",
+ "realworld/realworld-smarthome-control-command",
  "spring/spring-exception-hierarchy"
 ]

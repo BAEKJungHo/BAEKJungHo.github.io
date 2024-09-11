@@ -2,6 +2,7 @@
  "architecture/architecture-async-nonblocking",
  "architecture/architecture-automotive",
  "auth/auth-certificate-authority",
+ "designpattern/designpattern-desired-actual",
  "mobility",
  "mobility/mobility-autonomous-driving-level",
  "mobility/mobility-ble",

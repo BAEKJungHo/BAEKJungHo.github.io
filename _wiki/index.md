@@ -534,6 +534,7 @@ regenerate: true
 * [[/designpattern/designpattern-decorator]]
 * [[/designpattern/designpattern-cloud]]
 * [[/designpattern/designpattern-persistence]]
+* [[/designpattern/designpattern-desired-actual]]
 
 ## DDD
 

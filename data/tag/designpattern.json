@@ -13,6 +13,7 @@
  "designpattern/designpattern-chain-of-responsibility",
  "designpattern/designpattern-cloud",
  "designpattern/designpattern-decorator",
+ "designpattern/designpattern-desired-actual",
  "designpattern/designpattern-intercepting-filter",
  "designpattern/designpattern-observer",
  "designpattern/designpattern-persistence",

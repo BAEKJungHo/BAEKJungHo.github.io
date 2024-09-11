@@ -149,7 +149,7 @@
  },
  {
   "name": "designpattern",
-  "size": 25
+  "size": 26
  },
  {
   "name": "devops",
@@ -349,7 +349,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 13
+  "size": 14
  },
  {
   "name": "lambda",
@@ -397,7 +397,7 @@
  },
  {
   "name": "mobility",
-  "size": 20
+  "size": 21
  },
  {
   "name": "mockk",

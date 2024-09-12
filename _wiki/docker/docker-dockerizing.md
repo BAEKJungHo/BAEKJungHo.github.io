@@ -14,11 +14,11 @@ latex   : true
 * TOC
 {:toc}
 
-## What Is a Dockerizing
+## Dockerizing
 
 도커라이징이란 도커 컨테이너를 사용하여 애플리케이션을 패키징, 배포 및 실행하는 프로세스이다.
 
-## Dokcerizing in Spring
+### With Spring
 
 프로젝트가 Gradle Multi-module 형식으로 되어있을때 아래와 같은 순서로 사용할 수 있다.
 
@@ -32,10 +32,12 @@ latex   : true
 
 ### Dockerfile 
 
-[Docker Hub](https://www.docker.com/products/docker-hub/) 에 등록된 기존 컨테이너 이미지가 아니라면, 애플리케이션을 컨테이너 이미지로 만들기 위해서 Dockerfile 을 작성해야 한다.
+___[Docker Hub](https://www.docker.com/products/docker-hub/)___ 에 등록된 기존 컨테이너 이미지가 아니라면, 애플리케이션을 컨테이너 이미지로 만들기 위해서 Dockerfile 을 작성해야 한다.
 
 Docker 의 Container Image 를 packing 하기 위해서, Docker 는 Base Image 와 Dockerfile 이라는 두가지 컨셉을 이용한다.
 Base Image 는 기본적인 인스톨 이미지, Dockerfile 은 기본적인 인스톨 이미지와 그 위에 추가로 설치되는 스크립트를 정의한다.
+
+__Dockerfile__:
 
 ```dockerfile
 ## Base 이미지를 지정 한다.
@@ -60,9 +62,28 @@ ENTRYPOINT ["java", "-jar", "/app/app.jar"]
 docker run -it -p 8081:8081 auth-server
 ```
 
+__Dockerfile for Spring Boot Application Dockerizing__:
+
+```dockerfile
+FROM openjdk:20-jdk-slim
+ARG JAR_FILE=api/build/libs/api-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+```
+
+Spring Boot Application Root 폴터 하위에 위와 같은 dockerfile 을 만들고 아래와 빌드 후 같이 실행 시키면 된다.
+
+```
+## build
+docker build -t 계정명/프로젝트명
+
+## execute
+docker run -p 8080:8080 계정명/프로젝트명
+```
+
 ### Docker Compose
 
-[Docker Compose](https://docs.docker.com/compose/) 는 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 도구이다. Compose 에서 YAML 파일을 사용하여 애플리케이션의 서비스를 구성한다.
+___[Docker Compose](https://docs.docker.com/compose/)___ 는 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 도구이다. Compose 에서 YAML 파일을 사용하여 애플리케이션의 서비스를 구성한다.
 
 YAML 파일은 배포할 모든 서비스를 정의한다. 이러한 서비스는 `Dockerfile` 또는 기존 컨테이너 이미지를 기반으로 한다.
 

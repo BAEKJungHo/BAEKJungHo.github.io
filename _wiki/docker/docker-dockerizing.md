@@ -81,6 +81,22 @@ docker build -t 계정명/프로젝트명
 docker run -p 8080:8080 계정명/프로젝트명
 ```
 
+만약 Docker Hub 에서 private repository 를 생성한 경우 아래 명령어를 사용해 push 할 수 있다.
+
+```
+## login
+docker login
+
+## 이미지 확인
+docker images
+
+## new tag = 기존 이미지에 새 태그 지정
+docker tag 계정명/gathering-server:latest baekjungho/haru:latest
+
+## push
+docker push 도커허브닉네임/haru:latest
+```
+
 ### Docker Compose
 
 ___[Docker Compose](https://docs.docker.com/compose/)___ 는 다중 컨테이너 Docker 애플리케이션을 정의하고 실행하기 위한 도구이다. Compose 에서 YAML 파일을 사용하여 애플리케이션의 서비스를 구성한다.

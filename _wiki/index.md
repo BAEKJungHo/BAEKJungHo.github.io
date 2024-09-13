@@ -566,6 +566,7 @@ regenerate: true
 * [[/driven/development-design-docs]]
 * [[/driven/oop-solid]]
 * [[/driven/driven-data]]
+* [[/driven/driven-data-analysis-three-rule]]
 
 ## Database
 

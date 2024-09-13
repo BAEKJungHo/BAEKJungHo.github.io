@@ -8,6 +8,7 @@
  "children": [
   "driven/development-design-docs",
   "driven/driven-data",
+  "driven/driven-data-analysis-three-rule",
   "driven/driven-use",
   "driven/extreme-programming",
   "driven/test-methodology"

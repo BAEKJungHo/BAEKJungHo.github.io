@@ -120,6 +120,10 @@
   "size": 1
  },
  {
+  "name": "data",
+  "size": 2
+ },
+ {
   "name": "database",
   "size": 29
  },
@@ -177,7 +181,7 @@
  },
  {
   "name": "driven",
-  "size": 1
+  "size": 2
  },
  {
   "name": "dx",
@@ -389,7 +393,7 @@
  },
  {
   "name": "methodology",
-  "size": 5
+  "size": 6
  },
  {
   "name": "mobile",

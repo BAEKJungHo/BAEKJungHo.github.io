@@ -4,7 +4,7 @@ title   : DataDriven
 summary : 
 date    : 2024-08-12 15:54:32 +0900
 updated : 2024-08-12 18:15:24 +0900
-tag     : driven methodology
+tag     : driven methodology data
 toc     : true
 comment : true
 public  : true

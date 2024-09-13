@@ -4,7 +4,7 @@ title   : RateLimit - 429 Too Many Requests
 summary : 
 date    : 2024-06-28 15:02:32 +0900
 updated : 2024-06-28 15:12:24 +0900
-tag     : api
+tag     : api ratelimit
 toc     : true
 comment : true
 public  : true

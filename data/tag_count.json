@@ -140,6 +140,10 @@
   "size": 20
  },
  {
+  "name": "debouncing",
+  "size": 1
+ },
+ {
   "name": "deepcopy",
   "size": 1
  },
@@ -512,6 +516,10 @@
   "size": 1
  },
  {
+  "name": "ratelimit",
+  "size": 2
+ },
+ {
   "name": "reactive",
   "size": 41
  },
@@ -645,6 +653,10 @@
  },
  {
   "name": "threaddump",
+  "size": 1
+ },
+ {
+  "name": "throttling",
   "size": 1
  },
  {

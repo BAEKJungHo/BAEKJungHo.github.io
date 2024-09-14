@@ -75,6 +75,8 @@
  "/wiki/auth/auth-oauth",
  "/wiki/auth/auth-oidc",
  "/wiki/auth/auth-scram",
+ "/wiki/aws",
+ "/wiki/aws/aws-ssm",
  "/wiki/buildtool",
  "/wiki/buildtool/gradle-build-performance",
  "/wiki/buildtool/gradle-standard",

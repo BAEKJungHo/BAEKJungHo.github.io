@@ -568,6 +568,10 @@ regenerate: true
 * [[/driven/driven-data]]
 * [[/driven/driven-data-analysis-three-rule]]
 
+## AWS
+
+* [[/aws/aws-ssm]]
+
 ## Database
 
 * [[/database/mysql-index]]

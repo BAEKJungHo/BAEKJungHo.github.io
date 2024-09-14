@@ -1,4 +1,6 @@
 [
  "architecture/architecture-cdn",
+ "aws",
+ "aws/aws-ssm",
  "logging/logging-nonblocking-pipeline"
 ]

@@ -337,7 +337,7 @@
  },
  {
   "name": "kafka",
-  "size": 7
+  "size": 8
  },
  {
   "name": "kata",
@@ -373,7 +373,7 @@
  },
  {
   "name": "linux",
-  "size": 14
+  "size": 15
  },
  {
   "name": "lock",

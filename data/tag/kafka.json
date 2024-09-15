@@ -3,6 +3,7 @@
  "kafka",
  "kafka/kafak-acknowledgement",
  "kafka/kafak-basic",
+ "kafka/kafak-filesystem",
  "kafka/kafak-headers",
  "kafka/kafka-consumer-options-strategy",
  "reactive/reactive-pub-sub"

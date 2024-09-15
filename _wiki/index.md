@@ -451,6 +451,7 @@ regenerate: true
 * [[/kafka/kafak-acknowledgement]]
 * [[/kafka/kafak-headers]]
 * [[/kafka/kafka-consumer-options-strategy]]
+* [[/kafka/kafak-filesystem]]
 
 ## Redis
 

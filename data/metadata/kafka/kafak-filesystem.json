@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "PageCache Centric Designs",
+ "summary": "Don't fear the Filesystem!",
+ "parent": "kafka",
+ "url": "/wiki/kafka/kafak-filesystem",
+ "updated": "2024-09-12 21:15:24 +0900",
+ "children": []
+}

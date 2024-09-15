@@ -230,6 +230,8 @@ JVM 백엔드에는 특수 @JvmInline 어노테이션도 필요하다.
 value class Password(val s: String)
 ```
 
+- [코틀린, 저는 이렇게 쓰고 있습니다 - Kakaopay](https://tech.kakaopay.com/post/katfun-joy-kotlin/)
+
 ## Value class to be immutable ?
 
 Value objects are generally considered to be immutable, meaning that their state cannot be changed after they are created. This is because the primary role of a value object is to represent a specific value or set of values, and changing that value would fundamentally change the meaning of the object.

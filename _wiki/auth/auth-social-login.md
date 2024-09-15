@@ -53,7 +53,7 @@ ___[OpenIDConnect(OIDC)](https://en.wikipedia.org/wiki/OpenID)___ 는 사용자�
 
 표준 프로토콜이기 때문에 한 번만 구현 해두면, Apple, Google, Kakao 등 다양한 Provider 들에 대해서 서버에서 유연하게 처리할 수 있다.
 
-OpenIDConnect 에서는 scope 를 ___openid, profile, email, address___ 로 표준화했다.
+OpenIDConnect 에서는 scope 를 ___openid, profile, email, address___ 로 표준화했다. ___[THE LAWS OF IDENTITY - Minimal Disclosure for a Constrained Use](https://baekjungho.github.io/wiki/auth/auth-the-laws-of-identity/)___ 원칙을 적용한 것이라고 보여진다.
 
 IdToken 을 검증하기 위해서 OpenIdProvider 가 제공하는 공개키 목록을 조회한 후, 서버에서는 일정 기간 캐싱해두어서 사용한다. 공개키 목록이 필요한 이유는 IdToken(JWT Format) 을 검증해야하기 때문이다.
 

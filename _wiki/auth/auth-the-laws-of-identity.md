@@ -26,7 +26,7 @@ _Technical identity systems must only reveal information identifying a user with
 
 _The solution that discloses the least amount of identifying information and best limits its use is the most stable long-term solution._
 
-- “need to know” 에 대해서만 정보를 수집하고 “need to retain” 에 대해서만 정보를 보관해야 한다.
+- Best to acquire information only on a “need to know” basis, and to retain it only on a “need to retain” basis.
 
 ### Justifiable Parties
 

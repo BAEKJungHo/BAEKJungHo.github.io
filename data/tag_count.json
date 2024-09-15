@@ -21,7 +21,7 @@
  },
  {
   "name": "auth",
-  "size": 12
+  "size": 13
  },
  {
   "name": "aws",
@@ -465,7 +465,7 @@
  },
  {
   "name": "oidc",
-  "size": 1
+  "size": 2
  },
  {
   "name": "oom",

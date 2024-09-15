@@ -523,6 +523,7 @@ regenerate: true
 * [[/auth/auth-exchange]]
 * [[/auth/auth-certificate-authority]]
 * [[/auth/auth-the-laws-of-identity]]
+* [[/auth/auth-social-login]]
 
 ## Design pattern
 

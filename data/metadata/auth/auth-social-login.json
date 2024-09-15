@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Mastering Developer's Guide to Seamless Social Logins",
+ "summary": "Integrating Google, Apple, and Kakao with OpenIDConnect and OAuth",
+ "parent": "auth",
+ "url": "/wiki/auth/auth-social-login",
+ "updated": "2024-09-15 00:08:24 +0900",
+ "children": []
+}

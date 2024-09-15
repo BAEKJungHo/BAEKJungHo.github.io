@@ -21,7 +21,7 @@
  },
  {
   "name": "auth",
-  "size": 11
+  "size": 12
  },
  {
   "name": "aws",
@@ -290,6 +290,10 @@
  {
   "name": "idempotency",
   "size": 3
+ },
+ {
+  "name": "identity",
+  "size": 1
  },
  {
   "name": "infra",

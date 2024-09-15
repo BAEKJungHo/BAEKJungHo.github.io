@@ -522,6 +522,7 @@ regenerate: true
 * [[/auth/auth-client-credentials]]
 * [[/auth/auth-exchange]]
 * [[/auth/auth-certificate-authority]]
+* [[/auth/auth-the-laws-of-identity]]
 
 ## Design pattern
 

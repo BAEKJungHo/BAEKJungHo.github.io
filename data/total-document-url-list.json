@@ -75,6 +75,7 @@
  "/wiki/auth/auth-oauth",
  "/wiki/auth/auth-oidc",
  "/wiki/auth/auth-scram",
+ "/wiki/auth/auth-the-laws-of-identity",
  "/wiki/aws",
  "/wiki/aws/aws-ssm",
  "/wiki/buildtool",

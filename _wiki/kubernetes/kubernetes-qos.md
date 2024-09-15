@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Quality of Service
 summary : 
-date    : 2024-09-15 11:54:32 +0900
-updated : 2024-09-15 12:15:24 +0900
+date    : 2024-09-03 11:54:32 +0900
+updated : 2024-09-03 12:15:24 +0900
 tag     : kubernetes qos
 toc     : true
 comment : true

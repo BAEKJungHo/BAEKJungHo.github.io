@@ -357,7 +357,7 @@
  },
  {
   "name": "kubernetes",
-  "size": 14
+  "size": 15
  },
  {
   "name": "lambda",
@@ -505,7 +505,7 @@
  },
  {
   "name": "qos",
-  "size": 1
+  "size": 2
  },
  {
   "name": "qrcode",

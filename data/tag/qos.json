@@ -1,3 +1,4 @@
 [
- "architecture/architecture-pub-sub"
+ "architecture/architecture-pub-sub",
+ "kubernetes/kubernetes-qos"
 ]

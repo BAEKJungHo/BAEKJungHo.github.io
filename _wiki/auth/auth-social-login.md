@@ -38,7 +38,7 @@ OAuth 2.0 방식으로 Social Login 을 구현하는 경우 ___[Authorization Co
 ___Tag___ is known as an ___authorization code___ and it can be exchanged for an access token. The tag is a one-time-use tag, and so is said
 to be ___consumable___.  OAuth 2.0에서는 인가 코드 만료시간을 10분으로 제한하도록 권장한다.
 
-인가 요청 시 ___state(optional)___ 값을 담아서 보낼 수 있다. 클라이언트의 요청과 그에 따른 콜백 간의 상태를 유지하기 위해 사용되며, 클라이언트가 서비스 제공자에게 전달하면 서비스 제공자는 이 값을 다시 응답에 포함해서 전달한다. ___[Cross-site request forgery](https://en.wikipedia.org/wiki/Cross-site_request_forgery)___ 공격을 차단하가 위한 수단이 될 수 있다.
+인가 요청 시 ___state(optional)___ 값을 담아서 보낼 수 있다. 클라이언트의 요청과 그에 따른 콜백 간의 상태를 유지하기 위해 사용되며, 클라이언트가 서비스 제공자에게 전달하면 서비스 제공자는 이 값을 다시 응답에 포함해서 전달한다. ___[Cross-site request forgery](https://en.wikipedia.org/wiki/Cross-site_request_forgery)___ 공격을 차단하기 위한 수단이 될 수 있다.
 
 _Authorization Code Grant Flow_ 를 사용하는 경우 아래와 같은 프로퍼티들이 필요하다.
 

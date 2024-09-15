@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Mastering Developer's Guide to Seamless Social Logins
 summary : Integrating Google, Apple, and Kakao with OpenIDConnect and OAuth
-date    : 2024-09-15 00:05:32 +0900
-updated : 2024-09-15 00:08:24 +0900
+date    : 2024-09-16 00:05:32 +0900
+updated : 2024-09-16 00:08:24 +0900
 tag     : auth oidc
 toc     : true
 comment : true

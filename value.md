@@ -98,8 +98,7 @@ LinkedIn 에는 짧은 소개와 나의 Wiki 링크 뿐이었지만, Wiki 가 �
 ___[Concurrency](https://baekjungho.github.io/wiki/spring/spring-concurrency-resolve/)___ 에 대한 지식은 기본으로 필요했으며, 내가 그동안 공부했던 내용을 실무에 적용할 수 있는 아주 좋은 기회들이 많았다.
 현재는 ___[Connected Service](https://baekjungho.github.io/wiki/mobility/mobility-connected-service/)___ 와 관련된 업무를 하고 있다. ___Vehicle Control API___ 를 ___[Type](https://baekjungho.github.io/wiki/architecture/architecture-functional/#type)___ 기반으로 잘 설계 하였다.
 
-당당하게 말할 수 있는데, 42dot 에 근무하는 2년간 꾸준히 높은 퍼포먼스를 냈다. 그리고 동료들에게도 좋은 영향을 줬다. (뛰어난 동료들은 나의 강점을 본인의 것으로 잘 만드는 것 같다.)
-동료들에게 신뢰를 얻고 좋은 영향을 주기 위해 가장 중요한 덕목은 <mark><em><strong>Transparent</strong></em></mark> 라고 생각한다. 나의 강점과 노하우를 아낌 없이 공유하고, 겸손해야 하며, 동료의 도움과 지식 공유에 감사할 줄 알아야 하는 것 같다.
+팀의 성과를 잘 내기 위해서는 팀원 간의 신뢰가 중요하다고 생각한다. 동료들에게 신뢰를 얻고 좋은 영향을 주기 위해 가장 중요한 덕목은 <mark><em><strong>Transparent</strong></em></mark> 라고 생각한다. 나의 강점과 노하우를 아낌 없이 공유하고, 겸손해야 하며, 동료의 도움과 지식 공유에 감사할 줄 알아야 하는 것 같다.
 
 나는 삶을 살아가는데 있어서 아래 4가지 원칙을 가장 중요시 한다. 이는 회사 생활에서도 동일하게 적용된다.
 

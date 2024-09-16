@@ -74,6 +74,7 @@
  "/wiki/auth/auth-keycloak",
  "/wiki/auth/auth-oauth",
  "/wiki/auth/auth-oidc",
+ "/wiki/auth/auth-replay-attack",
  "/wiki/auth/auth-scram",
  "/wiki/auth/auth-social-login",
  "/wiki/auth/auth-the-laws-of-identity",

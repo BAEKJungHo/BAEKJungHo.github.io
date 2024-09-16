@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : SSM - AWS Systems Manager
+title   : AWS Systems Manager
 summary : 
 date    : 2024-09-14 15:54:32 +0900
 updated : 2024-09-14 20:15:24 +0900

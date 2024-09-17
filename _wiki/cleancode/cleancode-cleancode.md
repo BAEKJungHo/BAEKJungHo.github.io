@@ -20,8 +20,8 @@ Maintaining a high level of code quality is an action close to the essence.
 
 ![](/resource/wiki/cleancode-cleancode/cleancode.jpeg)
 
-___Clean code is simple and direct. Clean code read like well-written prose. Clean code can be read. It has unit and [acceptance tests](https://baekjungho.github.io/wiki/tdd/tdd-acceptance-test/). It has meaningful names. It has minimal [Dependency](https://baekjungho.github.io/wiki/architecture/architecture-dependency/).
-Reduce duplication, high expressiveness, and early building of simple [Abstractions](https://baekjungho.github.io/wiki/architecture/architecture-abstraction/). That's what makes clean code for me.___
+___Clean code is simple and direct. Clean code read like well-written prose. Clean code can be read. It has [unit](https://baekjungho.github.io/wiki/test/test-effective-unittest/) and [acceptance tests](https://baekjungho.github.io/wiki/tdd/tdd-acceptance-test/). It has meaningful names. It has minimal [Dependency](https://baekjungho.github.io/wiki/architecture/architecture-dependency/).
+Reduce duplication, high expressiveness, and early building of simple [Abstractions](https://baekjungho.github.io/wiki/architecture/architecture-abstraction/).___
 
 ___Test Drive the System Architecture - An optimal [system architectures](https://baekjungho.github.io/wiki/architecture/architecture-software/) consists of modularized domains of concern, each of which is implemented with [Plain Old Java Objects](https://baekjungho.github.io/wiki/spring/spring-pojo/), The different domains are integrated together with minimally invasive [Aspects](https://baekjungho.github.io/wiki/spring/spring-aop/) of Aspect-like tools. 
 This architecture can be [test-driven](https://baekjungho.github.io/tag/#test), just like the code.___

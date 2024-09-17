@@ -60,7 +60,15 @@ IdToken 을 검증하기 위해서 OpenIdProvider 가 제공하는 공개키 목
 IdToken 은 그 자체로 로그인을 수행하게 만들 수 있기 때문에, 노출되어서는 안된다. 따라서 IdToken 을 Server Side 에서 얻도록 해야 한다.
 또한 검증은 ___[IdTokenValidation](https://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)___ 을 따라야 한다.
 
-다음으로는 ___OpenIdConnect Flow___ 를 살펴보자.
+### OpenIdConnect Flow
+
+__OpenIdConnect Flow__:
+
+![](/resource/wiki/auth-social-login/openidconnect-flow.png)
+
+- ___[OpenID Authentication 2.0 - Final](https://openid.net/specs/openid-authentication-2_0.html)___
+
+### Google
 
 ___[Google](https://developers.google.com/identity/openid-connect/openid-connect?hl=ko#java)___ 의 OpenIdConnect 구현 방법을 살펴보면 아래와 같은 순서로 가이드가 되어있다.
 
@@ -70,18 +78,36 @@ ___[Google](https://developers.google.com/identity/openid-connect/openid-connect
 2. Google 에 인증 요청 보내기
 3. 위조 방지 상태 토큰 확인
 4. code을(를) 액세스 토큰 및 ID 토큰으로 교환
-5. ID 토큰에서 사용자 정보 가져오기
-6. 사용자 인증하기
+5. ID 토큰 검증
+6. ID 토큰에서 사용자 정보 가져오기
+7. 사용자 인증하기
 ```
 
 여기서 code 는 ___Authorization Code___ 를 의미한다. 따라서 Client Side 에서 해야할 단계와 Server Side 에서 해야할 단계를 명확하게 구분 지을 수 있다.
-1~3번까지는 Client Side 에서 진행할 수 있다. 4~6번은 Server Side 에서 진행한다. 
+1~3번까지는 Client Side 에서 진행할 수 있다. 4~7번은 Server Side 에서 진행한다. 
 
-__OpenIdConnect Flow__:
+___[Token Verifying](https://developers.google.com/identity/openid-connect/openid-connect?hl=ko#validatinganidtoken)___ 과정은 OIDC 스펙을 구현하는 모든 소셜 로그인의 경우 동일하다. (e.g Apple, Kakao)
+### Apple
 
-![](/resource/wiki/auth-social-login/openidconnect-flow.png)
+Apple 도 Google, Kakao 처럼 Configuration 을 먼저 진행해야 한다.
 
-- ___[OpenID Authentication 2.0 - Final](https://openid.net/specs/openid-authentication-2_0.html)___ 
+- ___[Web Config](https://developer.apple.com/help/account/configure-app-capabilities/configure-sign-in-with-apple-for-the-web)___
+- ___[App Config](https://developer.apple.com/help/account/configure-app-capabilities/group-apps-for-sign-in-with-apple)___
+
+Apple 의 경우에는 Client 에서 ___[Authorization Flow](https://developer.apple.com/documentation/sign_in_with_apple/request_an_authorization_to_the_sign_in_with_apple_server#4066167)___ 를 구현하고 응답으로 Authorization Code 와 IdToken 을 응답으로 받는다.
+따라서 Client 에서는 Server 로 IdToken 과 nonce 값을 전달하고, Server 에서는 아래 절차대로 IdToken 을 검증한다.
+
+__[Verifying a user](https://developer.apple.com/documentation/sign_in_with_apple/sign_in_with_apple_rest_api/verifying_a_user)__:
+- Verify the JWS E256 signature using the server’s public key
+  - ___[Fetch Apple’s public key for verifying token signature](https://developer.apple.com/documentation/sign_in_with_apple/fetch_apple_s_public_key_for_verifying_token_signature)___
+- Verify the nonce for the authentication
+- Verify that the iss field contains https://appleid.apple.com
+- Verify that the aud field is the developer’s client_id
+- Verify that the time is earlier than the exp value of the token
+
+### Kakao
+
+___[Kakao](https://developers.kakao.com/docs/latest/ko/kakaologin/common)___ 의 경우에는 Google 과 구현 방식이 거의 동일하다.
 
 ## References
 

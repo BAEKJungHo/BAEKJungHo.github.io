@@ -51,6 +51,7 @@
  "architecture/architecture-uuid",
  "architecture/architecture-zero-payload",
  "caching/architecture-cache-strategy",
+ "cleancode/cleancode-cleancode",
  "ddd/ddd-reduce-dependency",
  "dod/dod-data-oriented",
  "kotlin/kotlin-structured-concurrency",

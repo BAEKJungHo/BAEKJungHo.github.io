@@ -1,5 +1,6 @@
 [
  "architecture/architecture-functional",
+ "cleancode/cleancode-cleancode",
  "driven/test-methodology",
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-mockk",

@@ -9,7 +9,7 @@
  },
  {
   "name": "architecture",
-  "size": 66
+  "size": 67
  },
  {
   "name": "argon",
@@ -42,10 +42,6 @@
  {
   "name": "buildtool",
   "size": 2
- },
- {
-  "name": "business",
-  "size": 1
  },
  {
   "name": "ca",
@@ -657,7 +653,7 @@
  },
  {
   "name": "test",
-  "size": 29
+  "size": 30
  },
  {
   "name": "theory",

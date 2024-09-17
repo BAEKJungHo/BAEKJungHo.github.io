@@ -609,6 +609,7 @@ regenerate: true
 * [[/cleancode/cleancode-cognitive-load]]
 * [[/cleancode/cleancode-defensive-offensive]]
 * [[/cleancode/cleancode-readability]]
+* [[/cleancode/cleancode-cleancode]]
 
 ## Flutter
 

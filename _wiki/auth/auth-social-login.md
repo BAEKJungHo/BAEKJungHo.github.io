@@ -67,6 +67,7 @@ __OpenIdConnect Flow__:
 ![](/resource/wiki/auth-social-login/oidc-flow.png)
 
 ```
+< OpenIdConnect Flow >
 1. Client Side 에서 Authorization Code Flow 진행 (nonce 값을 넣어서 code 생성)
   - 이때 Provider 별로 Authorization Code 와 함께 IdToken 을 같이 주는 경우가 있음 (e.g Apple)
   - IdToken 을 응답으로 주는 경우에는 서버로 IdToken 과 nonce 를 전달하면 된다.
@@ -85,8 +86,6 @@ __OpenIdConnect Flow__:
 
 ___[Google](https://developers.google.com/identity/openid-connect/openid-connect?hl=ko#java)___ 의 OpenIdConnect 구현 방법을 살펴보면 아래와 같은 순서로 가이드가 되어있다.
 
-```
-< OpenIdConnect Flow >
 1. 위조 방지 상태 토큰 만들기
 2. Google 에 인증 요청 보내기
 3. 위조 방지 상태 토큰 확인
@@ -94,7 +93,6 @@ ___[Google](https://developers.google.com/identity/openid-connect/openid-connect
 5. ID 토큰 검증
 6. ID 토큰에서 사용자 정보 가져오기
 7. 사용자 인증하기
-```
 
 여기서 code 는 ___Authorization Code___ 를 의미한다. 따라서 Client Side 에서 해야할 단계와 Server Side 에서 해야할 단계를 명확하게 구분 지을 수 있다.
 1~3번까지는 Client Side 에서 진행할 수 있다. 4~7번은 Server Side 에서 진행한다. 

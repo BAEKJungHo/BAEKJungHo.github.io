@@ -1,6 +1,5 @@
 [
  "architecture/architecture-dependency",
- "cleancode",
  "java/java-cglib",
  "java/java-date",
  "java/java-dynamicproxy",

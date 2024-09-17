@@ -64,7 +64,20 @@ IdToken 은 그 자체로 로그인을 수행하게 만들 수 있기 때문에,
 
 __OpenIdConnect Flow__:
 
-![](/resource/wiki/auth-social-login/openidconnect-flow.png)
+![](/resource/wiki/auth-social-login/oidc-flow.png)
+
+```
+1. Client Side 에서 Authorization Code Flow 진행 (nonce 값을 넣어서 code 생성)
+  - 이때 Provider 별로 Authorization Code 와 함께 IdToken 을 같이 주는 경우가 있음 (e.g Apple)
+  - IdToken 을 응답으로 주는 경우에는 서버로 IdToken 과 nonce 를 전달하면 된다.
+2. Client 에서 Server 로 Authorization Code 와 nonce 값을 전달.
+3. Server 에서 Authorization Code 로 IdToken 획득
+4. Verfiying IdToken 
+  - public key 목록 조회
+  - 각 Provider 에서 제공하는 IdToken 검증 방법 문서를 보면서 해당 절차대로 토큰을 검증
+  - nonce 값 검증
+5. IdToken 을 통해서 유저 정보 가져오기 (e.g email, profile ...)
+```
 
 - ___[OpenID Authentication 2.0 - Final](https://openid.net/specs/openid-authentication-2_0.html)___
 
@@ -86,7 +99,8 @@ ___[Google](https://developers.google.com/identity/openid-connect/openid-connect
 여기서 code 는 ___Authorization Code___ 를 의미한다. 따라서 Client Side 에서 해야할 단계와 Server Side 에서 해야할 단계를 명확하게 구분 지을 수 있다.
 1~3번까지는 Client Side 에서 진행할 수 있다. 4~7번은 Server Side 에서 진행한다. 
 
-___[Token Verifying](https://developers.google.com/identity/openid-connect/openid-connect?hl=ko#validatinganidtoken)___ 과정은 OIDC 스펙을 구현하는 모든 소셜 로그인의 경우 동일하다. (e.g Apple, Kakao)
+___[Verifying Token](https://developers.google.com/identity/openid-connect/openid-connect?hl=ko#validatinganidtoken)___ 과정은 OIDC 스펙을 구현하는 모든 소셜 로그인의 경우 거의 동일하다. (e.g Apple, Kakao)
+
 ### Apple
 
 Apple 도 Google, Kakao 처럼 Configuration 을 먼저 진행해야 한다.

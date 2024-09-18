@@ -28,7 +28,7 @@ This architecture can be [test-driven](https://baekjungho.github.io/tag/#test), 
 
 ___[Code Red: The Business Impact of Code Quality](https://arxiv.org/abs/2203.04374) - With 15 times fewer defects, twice the development speed, and substantially more predictable issue resolution times, the business advantage of high quality code should be unmistakably clear.___
 
-___[Code Health: Respectful Reviews == Useful Reviews](https://testing.googleblog.com/2017/04/code-health-googles-internal-code.html)___:
+___[Code Health: Respectful Reviews == Useful Reviews](https://testing.googleblog.com/2017/04/code-health-googles-internal-code.html)___
 
 ## References
 

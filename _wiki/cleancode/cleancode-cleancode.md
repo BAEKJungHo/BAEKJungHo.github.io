@@ -30,10 +30,6 @@ ___[Code Red: The Business Impact of Code Quality](https://arxiv.org/abs/2203.04
 
 ___[Code Health: Respectful Reviews == Useful Reviews](https://testing.googleblog.com/2017/04/code-health-googles-internal-code.html)___:
 
-![](/resource/wiki/cleancode-cleancode/code-health.png)
-
-![](/resource/wiki/cleancode-cleancode/reviewer-author.png)
-
 ## References
 
 - Clean Code: A Handbook of Agile Software Craftsmanship / Robert C. Martin

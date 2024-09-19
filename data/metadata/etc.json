@@ -8,6 +8,7 @@
  "children": [
   "etc/character-encoding",
   "etc/environment-settings",
+  "etc/it-contracting",
   "etc/jira-api",
   "etc/regular-expression",
   "etc/unit-of-measure"

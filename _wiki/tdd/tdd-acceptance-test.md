@@ -52,7 +52,7 @@ ___[Golden Master Testing](https://baekjungho.github.io/wiki/test/test-character
 
 - [API Acceptance testing](https://solidstudio.io/blog/api-testing)
 
-또한 Scenario Test 를 위해서 ___[Selenium](https://www.selenium.dev/)___ 을 사용할 수도 있다.
+또한 ___Scenario Test(use case flow tests)___ 를 위해서 ___[Selenium](https://www.selenium.dev/)___ 을 사용할 수도 있다.
 
 ## Links
 

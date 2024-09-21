@@ -10,6 +10,7 @@
  "tdd/tdd-interface-design-decisions",
  "tdd/tdd-red-green-refactor",
  "test",
+ "test/tdd-attributes",
  "test/tdd-benefits-of-test",
  "test/tdd-naming",
  "test/tdd-sut-doc",

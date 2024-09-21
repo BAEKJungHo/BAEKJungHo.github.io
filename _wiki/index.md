@@ -236,6 +236,7 @@ regenerate: true
 * [[/test/test-effective-unittest]]
 * [[/test/test-integration]]
 * [[/test/test-characterization]]
+* [[/test/test-attributes]]
 
 ## TDD
 

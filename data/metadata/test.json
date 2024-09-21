@@ -6,6 +6,7 @@
  "url": "/wiki/test",
  "updated": "2024-02-08 20:55:09 +0900",
  "children": [
+  "test/tdd-attributes",
   "test/tdd-benefits-of-test",
   "test/tdd-naming",
   "test/tdd-sut-doc",

@@ -209,3 +209,4 @@ public int m(int n) {
 - Effective Software Testing: A developer's guide / Mauricio Aniche
 - Bertrand Meyer, "[Applying Design by Contract](https://se.inf.ethz.ch/~meyer/publications/computer/contract.pdf)", IEEE Computer, 1992
 - Johsua Bloch. Effective Java, 2nd ed., Item 38. Check parameters for validity
+- [Contract Driven Development](https://se.inf.ethz.ch/people/leitner/publications/cdd_leitner_esec_fse_2007.pdf)

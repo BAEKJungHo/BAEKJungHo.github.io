@@ -33,7 +33,7 @@ Carrying Capacity 는 ___제품이 가진 본질적인 (마케팅, 광고가 제
 Carrying Capacity 에 영향을 주는 요소는 ___Inflow(= New User + Resurrection)___ 와 ___Churn(= Lost Customer)___ 뿐이다.
 C.C 의 계산식은 다음과 같다. (Carrying Capacity 를 잘 활용하기 위해서는 Churn 에 대한 정의가 되게 중요하다.)
 
-- Carrying Capacity = # Of New Daily Customers / Customers You Lost Each Day(%)
+> ___Carrying Capacity = # Of New Daily Customers / Customers You Lost Each Day(%)___
 
 예를 들어, Inflow 가 7500 이고 Churn 이 1% 라면 Carrying Capacity 는 750K 이다. 이 상황에서 MAU 가 100만 인 경우에 광고를 하게 되면 MAU 가 조금 더 증가할 지라도 결국 Carrying Capacity 인 75만으로 다시 돌아오게 된다.
 MAU 가 50~60만일 때 광고를 하는게 좋을까? 정답은 아니다. 결국 MAU 는 C.C 에 도달할 것이기 때문에 이때는 광고를 하기 보다 C.C 를 늘리기 위한 노력을 해야 한다.

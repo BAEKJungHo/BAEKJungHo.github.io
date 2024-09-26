@@ -83,6 +83,8 @@
  "/wiki/buildtool",
  "/wiki/buildtool/gradle-build-performance",
  "/wiki/buildtool/gradle-standard",
+ "/wiki/business",
+ "/wiki/business/business-carrying-capacity",
  "/wiki/caching",
  "/wiki/caching/architecture-cache-strategy",
  "/wiki/caching/msa-cache-consistency",

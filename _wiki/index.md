@@ -105,6 +105,10 @@ regenerate: true
 
 * [[/kata/kata-hotdog]]
 
+## Business
+
+* [[/business/business-carrying-capacity]]
+
 ## Functional Programming
 
 * [[/functional/functional-sideeffect]]

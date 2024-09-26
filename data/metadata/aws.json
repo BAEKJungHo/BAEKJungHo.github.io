@@ -6,6 +6,7 @@
  "url": "/wiki/aws",
  "updated": "2024-07-24 20:55:09 +0900",
  "children": [
-  "aws/aws-ssm"
+  "aws/aws-ssm",
+  "business/business-carrying-capacity"
  ]
 }

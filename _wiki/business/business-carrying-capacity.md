@@ -24,7 +24,7 @@ ___Growth Dynamics___ 의 핵심 개념인 ___[Carrying Capacity](https://en.wik
 Carrying Capacity 는 ___제품이 가진 본질적인 (마케팅, 광고가 제외된) 체력을 의미___ 한다. 유저를 잘 모으고 가둬두는 체력을 의미한다.
 마케팅 활동을 통해 일시적으로 Inflow Boosting 은 가능하지만 결국 광고를 끄면 그대로 다시 주저 앉게 된다. C.C 가 변하지 않았기 때문이다. 결국 근본적인 C.C 의 향상은 제품 개선을 통한 Inflow 와 Retention(특정 기간 동안 활성화된 유저 혹은 고객의 수) 향상, Churn 감소 외에는 방법이 없고, 이것은 마켓팅 활동으로는 바뀔 수 없다.
 
-![](/resource/wiki/ddd-modeling/shared-model.png)
+![](/resource/wiki/business-carrying-capacity/basic-system.png)
 
 - ___Inflow___: Of New Daily Customers
 - ___Stock___: MAU

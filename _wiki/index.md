@@ -241,6 +241,7 @@ regenerate: true
 * [[/test/test-integration]]
 * [[/test/test-characterization]]
 * [[/test/test-attributes]]
+* [[/test/tdd-enable-refactoring]]
 
 ## TDD
 

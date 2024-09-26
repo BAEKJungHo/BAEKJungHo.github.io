@@ -8,7 +8,7 @@ tag     : business
 toc     : true
 comment : true
 public  : true
-parent  : [[/aws]]
+parent  : [[/business]]
 latex   : true
 ---
 * TOC

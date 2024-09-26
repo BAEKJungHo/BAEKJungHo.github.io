@@ -5,5 +5,7 @@
  "parent": "index",
  "url": "/wiki/business",
  "updated": "2023-12-25 20:55:09 +0900",
- "children": []
+ "children": [
+  "business/business-carrying-capacity"
+ ]
 }

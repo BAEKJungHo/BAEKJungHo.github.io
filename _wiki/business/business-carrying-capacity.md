@@ -45,6 +45,7 @@ Developer 가 생각해보면 좋은 두 가지 질문이 있다.
 2. You start having email deliverability problems (or Facebook turns off notifications) so you can’t notify users of new activity on the site. The # of unique visitors decreases slightly but you’re not too worried, should you be?
 
 첫 번째 질문에 대한 답은, 장애가 발생하여 트래픽이 줄었더라도 ___Inflow___ 와 ___Churn___ 만 보면된다. 만약 Carrying Capacity 가 내려 앉으면 유저가 우리 서비스에 대한 신뢰를 잃어버려서 다른 서비스로 이전했다고 봐도된다. 하지만 대부분의 경우 Downtime 이 C.C 에 영향을 주는 경우는 드물다.
+
 두 번째 질문에 대한 답은, push 알림이 꺼졌으면 들어오는 유저수는 줄겠지만, 이 기능이 꺼져서 churn 유저도 같이 줄어들었을 수 있다. 즉, C.C 가 변하는지가 핵심이다. 쓸 때 없는 push 때문에 나가는 유저수도 같이 줄어들면 크게 문제가 안된다.
 
 ## Links

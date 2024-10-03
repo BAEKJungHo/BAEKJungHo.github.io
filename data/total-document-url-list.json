@@ -565,6 +565,7 @@
  "/wiki/test/tdd-why-use-mock-any",
  "/wiki/test/test-characterization",
  "/wiki/test/test-coverage",
+ "/wiki/test/test-data-driven",
  "/wiki/test/test-design-by-contract",
  "/wiki/test/test-design-for-testability",
  "/wiki/test/test-detroit-mockist",

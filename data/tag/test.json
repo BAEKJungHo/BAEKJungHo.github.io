@@ -17,6 +17,7 @@
  "test/tdd-why-use-mock-any",
  "test/test-characterization",
  "test/test-coverage",
+ "test/test-data-driven",
  "test/test-design-by-contract",
  "test/test-design-for-testability",
  "test/test-detroit-mockist",

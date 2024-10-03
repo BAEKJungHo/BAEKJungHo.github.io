@@ -18,6 +18,7 @@
  "mobility/mobility-robotaxi",
  "mobility/mobility-v2x",
  "mobility/mobility-vehicle-signal-specification",
+ "mobility/mobility-vent-heat",
  "mobility/mobility-vin",
  "realworld/realworld-vehicle-controls"
 ]

@@ -3,6 +3,7 @@
  "go/go-concurrency",
  "java/java-atomic",
  "msa/msa-concurrency-distributedlock",
+ "redis/redis-fenced-lock",
  "spring/spring-concurrency",
  "spring/spring-concurrency-resolve"
 ]

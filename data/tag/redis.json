@@ -2,6 +2,7 @@
  "redis",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-duplicated-store-prevent",
+ "redis/redis-fenced-lock",
  "redis/redis-lock",
  "redis/redis-queue",
  "spring/spring-concurrency-resolve"

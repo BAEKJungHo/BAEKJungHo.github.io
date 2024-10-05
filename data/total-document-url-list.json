@@ -494,6 +494,7 @@
  "/wiki/redis",
  "/wiki/redis/redis-distributed-lock-drawbacks",
  "/wiki/redis/redis-duplicated-store-prevent",
+ "/wiki/redis/redis-fenced-lock",
  "/wiki/redis/redis-lock",
  "/wiki/redis/redis-queue",
  "/wiki/refactoring",

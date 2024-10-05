@@ -85,7 +85,7 @@
  },
  {
   "name": "concurrency",
-  "size": 6
+  "size": 7
  },
  {
   "name": "consensus",
@@ -173,7 +173,7 @@
  },
  {
   "name": "distributed",
-  "size": 14
+  "size": 15
  },
  {
   "name": "dns",
@@ -385,7 +385,7 @@
  },
  {
   "name": "lock",
-  "size": 7
+  "size": 8
  },
  {
   "name": "logging",
@@ -537,7 +537,7 @@
  },
  {
   "name": "redis",
-  "size": 6
+  "size": 7
  },
  {
   "name": "refactoring",

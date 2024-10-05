@@ -17,6 +17,7 @@
   "designpattern/designpattern-proxy",
   "designpattern/designpattern-singleton",
   "designpattern/designpattern-strategy",
-  "designpattern/designpattern-template-method"
+  "designpattern/designpattern-template-method",
+  "designpattern/designpattern-watch-dog"
  ]
 }

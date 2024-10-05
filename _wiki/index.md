@@ -549,6 +549,7 @@ regenerate: true
 * [[/designpattern/designpattern-cloud]]
 * [[/designpattern/designpattern-persistence]]
 * [[/designpattern/designpattern-desired-actual]]
+* [[/designpattern/designpattern-watch-dog]]
 
 ## DDD
 

@@ -21,6 +21,7 @@
  "designpattern/designpattern-singleton",
  "designpattern/designpattern-strategy",
  "designpattern/designpattern-template-method",
+ "designpattern/designpattern-watch-dog",
  "kotlin/kotlin-delegate",
  "reactive/reactive-eventloop",
  "spring/spring-jpa-osiv",

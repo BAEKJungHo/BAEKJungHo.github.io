@@ -1,6 +1,6 @@
 {
  "type": "wiki",
- "title": "Functional testing of a user story",
+ "title": "Functional testing of a user story, scenario",
  "summary": "Acceptance testing is user's perspective test",
  "parent": "tdd",
  "url": "/wiki/tdd/tdd-acceptance-test",

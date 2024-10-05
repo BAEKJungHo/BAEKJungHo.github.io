@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Functional testing of a user story
+title   : Functional testing of a user story, scenario
 summary : Acceptance testing is user's perspective test
 date    : 2024-08-24 15:54:32 +0900
 updated : 2024-08-24 20:15:24 +0900
@@ -45,6 +45,24 @@ __[The Importance of End-to-End Testing: A Horror Story](https://www.amazon.com/
 > // TODO implement this
 > 
 > Additional feedback loops, such as regular show-and-tell sessions, should have been in place and would have caught this problem.
+
+### How to write Acceptance Test
+
+__Format__:
+
+```
+Feature: 로그인 실패 시 계정 잠금 기능
+
+Scenario: 연속된 로그인 실패로 계정이 잠긴다
+  Given 등록된 사용자 계정이 있다
+  When 잘못된 비밀번호로 5회 연속 로그인을 시도한다
+  Then 계정이 잠금 상태가 된다
+  And 올바른 비밀번호로도 로그인이 불가능하다
+  And 계정 잠금 해제 이메일이 발송된다
+```
+
+- 비즈니스 용어 사용 
+- 명확하고 구체적인 시나리오 작성
 
 ### Tools
 

@@ -98,3 +98,13 @@ return redis.call('pttl', KEYS[1]);                      -- 키의 남은 만료
 조건이 거짓일 경우:
 
 - pttl: 키의 남은 만료 시간을 밀리초 단위로 반환
+
+### Watch Dog Mechanism
+
+__tryLockAndGetTokenAsync__:
+
+![](/resource/wiki/redis-fenced-lock/lost-update.png)
+
+위 코드에서 `if (!subscribeFuture.isDone()) { }` 조건문을 보면 ___[WatchDog](https://baekjungho.github.io/wiki/designpattern/designpattern-watch-dog/)___ 과 유사한 패턴이 적용되어있다.
+
+![](/resource/wiki/redis-fenced-lock/code-explain.png)

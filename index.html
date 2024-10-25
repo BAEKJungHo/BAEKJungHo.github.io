@@ -69,6 +69,15 @@ regenerate: true
             </div>
         </div>
 
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <div class="qr-container">
+                <div class="qr-item">
+                    <img src="./resource/value/value-qr.png" alt="Value QR">
+                </div>
+            </div>
+        </div>
+
         <!-- Recently Changed Documents -->
         <div class="recently-changed">
             <h3>Recently Changed Documents</h3>
@@ -195,6 +204,45 @@ regenerate: true
 
     .career-info {
         margin-bottom: 0.2rem;
+    }
+
+    .qr-section {
+        margin: 2rem 0;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .qr-container {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+    }
+
+    .qr-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .qr-item img {
+        width: 150px;
+        height: 150px;
+        object-fit: contain;
+        border: 1px solid #e1e4e8;
+        border-radius: 8px;
+        padding: 10px;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .qr-item p {
+        margin-top: 0.5rem;
+        font-weight: bold;
+        color: #555;
     }
 
     @media (max-width: 768px) {

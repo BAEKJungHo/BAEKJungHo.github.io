@@ -5,7 +5,7 @@
  },
  {
   "name": "api",
-  "size": 6
+  "size": 7
  },
  {
   "name": "architecture",
@@ -145,7 +145,7 @@
  },
  {
   "name": "debouncing",
-  "size": 1
+  "size": 2
  },
  {
   "name": "deepcopy",

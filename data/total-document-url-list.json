@@ -11,6 +11,7 @@
  "/wiki/altorithm/algorithm-token-bucket",
  "/wiki/api",
  "/wiki/api/api-cors",
+ "/wiki/api/api-debounce-flag",
  "/wiki/api/api-too-many-requests",
  "/wiki/api/msa-debounce-throttle",
  "/wiki/architecture",

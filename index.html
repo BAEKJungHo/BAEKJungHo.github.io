@@ -4,59 +4,165 @@ adsense: false
 regenerate: true
 ---
 
-<div class="blog-face">
-    <div>
-        <H3>
-            FLEXIBLE ENGINEER
-        </H3>
-    </div>
-        Self-Motivated
-    <div>
-    </div>
-    <div>
-        <a href="/tag/">Tag</a>
-    </div>
-    <div class="contact">
-{% if site.github_username %}
-        <a href="https://github.com/{{ site.github_username }}">GitHub</a>
-{% endif %}
-{% if site.twitter_username %}
-        <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
-{% endif %}
-{% if site.email %}
-        <a href="mailto:{{ site.email }}">Email</a>
-{% endif %}
-        <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
-    </div>
-</div>
-<div>
-    <H3 class="indent">Recently Changed Documents</H3>
-    <ul class="post-list">
-{% assign documents = site.wiki | sort: 'updated' | reverse %}
-{% for doc in documents limit: 30 %}
-    {% if doc.public == true and doc.title != 'wiki'%}
-        <li>
-            <div>
-                <a class="post-link" href="{{ doc.url | prepend: site.baseurl }}">
+<div class="main-container">
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="profile-image">
+            <img src="./resource/value/profile.jpeg" alt="Profile">
+        </div>
+        <div class="profile-info">
+            <div class="profile-header">
+                <h3>FLEXIBLE ENGINEER</h3>
+                <p>Self-Motivated</p>
+            </div>
+            <div class="profile-links">
+                <a href="/tag/">Tag</a>
+                <div class="contact">
+                    {% if site.github_username %}
+                    <a href="https://github.com/{{ site.github_username }}">GitHub</a>
+                    {% endif %}
+                    {% if site.twitter_username %}
+                    <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
+                    {% endif %}
+                    {% if site.email %}
+                    <a href="mailto:{{ site.email }}">Email</a>
+                    {% endif %}
+                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content-section">
+        <!-- Latest Post -->
+        <div class="recent-post">
+            <h3>Latest Post</h3>
+            {% assign latest_doc = site.wiki | sort: 'updated' | reverse | where: "public", true | first %}
+            {% if latest_doc and latest_doc.title != 'wiki' %}
+            <div class="latest-post-details">
+                <a class="post-link" href="{{ latest_doc.url | prepend: site.baseurl }}">
                     <div class="post-meta">
-                        {{ doc.updated | date: "%Y.%m.%d" }}
-                        -
-                        {{ doc.title }}
+                        {{ latest_doc.updated | date: "%Y.%m.%d" }} - {{ latest_doc.title }}
                     </div>
-                    <div class="post-excerpt">{{ doc.summary }}</div>
+                    <div class="post-excerpt">
+                        {{ latest_doc.summary }}
+                    </div>
+                    {% if latest_doc.tag %}
                     <ul class="tag-list">
                         <li class="post-tag">
-                            {{ doc. tag }}
+                            {{ latest_doc.tag }}
                         </li>
                     </ul>
+                    {% endif %}
                 </a>
             </div>
-        </li>
-    {% endif %}
-{% endfor %}
-    </ul>
-    <h4>
-        <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>
-    </h4>
+            {% endif %}
+        </div>
+
+        <!-- Recently Changed Documents -->
+        <div class="recently-changed">
+            <h3>Recently Changed Documents</h3>
+            <ul class="post-list">
+                {% assign documents = site.wiki | sort: 'updated' | reverse %}
+                {% for doc in documents limit: 10 %}
+                {% if doc.public == true and doc.title != 'wiki' %}
+                <li>
+                    <div>
+                        <a class="post-link" href="{{ doc.url | prepend: site.baseurl }}">
+                            <div class="post-meta">
+                                {{ doc.updated | date: "%Y.%m.%d" }} - {{ doc.title }}
+                            </div>
+                            <div class="post-excerpt">{{ doc.summary }}</div>
+                            {% if doc.tag %}
+                            <ul class="tag-list">
+                                <li class="post-tag">
+                                    {{ doc.tag }}
+                                </li>
+                            </ul>
+                            {% endif %}
+                        </a>
+                    </div>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            <h4>
+                <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>
+            </h4>
+        </div>
+    </section>
 </div>
+
 {% include createLink.html %}
+
+<style>
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 20px;
+    }
+
+    .profile-section {
+        display: flex;
+        gap: 2rem;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .profile-image img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .profile-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .profile-header h3 {
+        margin: 0;
+    }
+
+    .profile-links {
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+    }
+
+    .contact {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .content-section {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .recent-post, .recently-changed {
+        flex: 1;
+    }
+
+    .post-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .post-list li {
+        margin-bottom: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .profile-section, .content-section {
+            flex-direction: column;
+        }
+    }
+</style>

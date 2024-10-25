@@ -17,18 +17,7 @@ regenerate: true
             </div>
             <div class="profile-links">
                 <a href="/tag/">Tag</a>
-                <div class="contact">
-                    {% if site.github_username %}
-                    <a href="https://github.com/{{ site.github_username }}">GitHub</a>
-                    {% endif %}
-                    {% if site.twitter_username %}
-                    <a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>
-                    {% endif %}
-                    {% if site.email %}
-                    <a href="mailto:{{ site.email }}">Email</a>
-                    {% endif %}
-                    <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a>
-                </div>
+                <a href="./feed.xml">Feed</a>
             </div>
         </div>
     </section>
@@ -180,7 +169,7 @@ regenerate: true
     }
 
     .post-list li {
-        margin-bottom: 1rem;
+        margin-bottom: 0.2rem;
     }
 
     @media (max-width: 768px) {

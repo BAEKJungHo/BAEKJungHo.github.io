@@ -1,13 +1,13 @@
 # Site settings
-title: H
+title: Klarciel
 url: "https://BAEKJungHo.github.io"
-baseurl: ""
+baseurl: "https://klarciel.net"
 description: >
-    H Blog
+  Klarciel Blog
 
 # My information
 email: qjxjfld13@gmail.com
-author: H
+author: Klarciel
 profile: ISFJ
 twitter_username:
 github_username: BAEKJungHo

@@ -24,11 +24,10 @@ regenerate: true
     <!-- Content Section -->
     <section class="content-section">
         <!-- Careers -->
-        <div class="recent-post">
+        <div class="careers">
             <h3>Careers</h3>
-            {% assign latest_doc = site.wiki | sort: 'updated' | reverse | where: "public", true | first %}
-            {% if latest_doc and latest_doc.title != 'wiki' %}
             <div class="latest-post-details">
+                <div class="career-info">
                     <div class="post-meta">
                         <strong><em>現 Connected Service Engineer at 42dot</em></strong>
                     </div>
@@ -40,34 +39,34 @@ regenerate: true
                             Kotlin Java Spring Test Redis Kafka PostgreSQL Kubernetes Datadog OpenSearch
                         </li>
                     </ul>
+                </div>
+                <div class="career-info">
                     <div class="post-meta">
                         <strong><em>前 Backend Engineer at TableManager</em></strong>
                     </div>
                     <div class="post-excerpt">
                         Maintenance of reservation solution and payment. Development of pickup order service using kakao chatbot.
                     </div>
-                    {% if latest_doc.tag %}
                     <ul class="tag-list">
                         <li class="post-tag">
                             Kotlin Java Typescript NodeJS AWS DDD MySQL
                         </li>
                     </ul>
-                    {% endif %}
+                </div>
+                <div class="career-info">
                     <div class="post-meta">
                         <strong><em>前 Backend Engineer at Mayeye</em></strong>
                     </div>
                     <div class="post-excerpt">
                         Establish of small business tenant confirmation certificate issuance system. Development various Websites.
                     </div>
-                    {% if latest_doc.tag %}
                     <ul class="tag-list">
                         <li class="post-tag">
                             Java Tomcat Spring Mybatis Jsp MySQL Oracle
                         </li>
                     </ul>
-                    {% endif %}
+                </div>
             </div>
-            {% endif %}
         </div>
 
         <!-- Recently Changed Documents -->
@@ -179,7 +178,7 @@ regenerate: true
         gap: 2rem;
     }
 
-    .recent-post, .recently-changed {
+    .careers, .recently-changed {
         flex: 1;
     }
 
@@ -190,6 +189,10 @@ regenerate: true
     }
 
     .post-list li {
+        margin-bottom: 0.2rem;
+    }
+
+    .career-info {
         margin-bottom: 0.2rem;
     }
 

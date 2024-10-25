@@ -30,7 +30,7 @@ regenerate: true
             {% assign latest_doc = site.wiki | sort: 'updated' | reverse | where: "public", true | first %}
             {% if latest_doc and latest_doc.title != 'wiki' %}
             <div class="latest-post-details">
-                <a class="post-link" href="{{ latest_doc.url | prepend: site.baseurl }}">
+                <a class="post-link" href="#">
                     <div class="post-meta">
                         現 Connected Service Engineer at 42dot
                     </div>
@@ -40,7 +40,37 @@ regenerate: true
                     {% if latest_doc.tag %}
                     <ul class="tag-list">
                         <li class="post-tag">
-                            #Kotlin #Java #SpringFramework #Redis #Kafka #Kubernetes
+                            #Kotlin #Java #Spring #Test #Redis #Kafka #PostgreSQL #Kubernetes #Datadog #OpenSearch
+                        </li>
+                    </ul>
+                    {% endif %}
+                </a>
+                <a class="post-link" href="#">
+                    <div class="post-meta">
+                        前 Backend Engineer at TableManager
+                    </div>
+                    <div class="post-excerpt">
+                        Maintenance of reservation solution and payment. Development of pickup order service using kakao chatbot.
+                    </div>
+                    {% if latest_doc.tag %}
+                    <ul class="tag-list">
+                        <li class="post-tag">
+                            #Kotlin #Java #Typescript #NodeJS #AWS #DDD #MySQL
+                        </li>
+                    </ul>
+                    {% endif %}
+                </a>
+                <a class="post-link" href="#">
+                    <div class="post-meta">
+                        前 Backend Engineer at Mayeye
+                    </div>
+                    <div class="post-excerpt">
+                        Establish of small business tenant confirmation certificate issuance system. Development various Websites.
+                    </div>
+                    {% if latest_doc.tag %}
+                    <ul class="tag-list">
+                        <li class="post-tag">
+                            #Java #Tomcat #Spring #Mybatis #Jsp #MySQL #Oracle
                         </li>
                     </ul>
                     {% endif %}

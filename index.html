@@ -12,7 +12,7 @@ regenerate: true
         </div>
         <div class="profile-info">
             <div class="profile-header">
-                <h3><a href="./value.md">FLEXIBLE ENGINEER</a></h3>
+                <h3><a href="/value">FLEXIBLE ENGINEER</a></h3>
                 <p>Self-Motivated</p>
             </div>
             <div class="profile-links">
@@ -24,23 +24,23 @@ regenerate: true
 
     <!-- Content Section -->
     <section class="content-section">
-        <!-- Latest Post -->
+        <!-- Careers -->
         <div class="recent-post">
-            <h3>Latest Post</h3>
+            <h3>Careers</h3>
             {% assign latest_doc = site.wiki | sort: 'updated' | reverse | where: "public", true | first %}
             {% if latest_doc and latest_doc.title != 'wiki' %}
             <div class="latest-post-details">
                 <a class="post-link" href="{{ latest_doc.url | prepend: site.baseurl }}">
                     <div class="post-meta">
-                        {{ latest_doc.updated | date: "%Y.%m.%d" }} - {{ latest_doc.title }}
+                        現 Connected Service Engineer at 42dot
                     </div>
                     <div class="post-excerpt">
-                        {{ latest_doc.summary }}
+                        Experience in advancing the autonomous ride-hailing service, TAP!, and developing vehicle control products for connected services.
                     </div>
                     {% if latest_doc.tag %}
                     <ul class="tag-list">
                         <li class="post-tag">
-                            {{ latest_doc.tag }}
+                            #Kotlin #Java #SpringFramework #Redis #Kafka #Kubernetes
                         </li>
                     </ul>
                     {% endif %}

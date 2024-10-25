@@ -439,6 +439,7 @@
  "/wiki/network/network-tcp",
  "/wiki/network/network-tcp-performance",
  "/wiki/network/network-telnet",
+ "/wiki/network/network-throughput-latency",
  "/wiki/nodejs",
  "/wiki/nodejs/node-express",
  "/wiki/observability",

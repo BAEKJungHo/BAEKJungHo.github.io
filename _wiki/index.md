@@ -653,6 +653,7 @@ regenerate: true
 * [[/network/network-subnet]]
 * [[/network/network-dns]]
 * [[/network/network-blip]]
+* [[/network/network-throughput-latency]]
 
 ## Http
 

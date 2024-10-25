@@ -20,6 +20,7 @@
   "network/network-subnet",
   "network/network-tcp",
   "network/network-tcp-performance",
-  "network/network-telnet"
+  "network/network-telnet",
+  "network/network-throughput-latency"
  ]
 }

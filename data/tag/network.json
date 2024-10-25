@@ -17,5 +17,6 @@
  "network/network-tcp",
  "network/network-tcp-performance",
  "network/network-telnet",
+ "network/network-throughput-latency",
  "troubleshooting/troubleshooting-webclientrequestexception"
 ]

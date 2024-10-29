@@ -1,6 +1,7 @@
 [
  "database/database-serializable-tx",
  "go/go-concurrency",
+ "go/go-rwlock",
  "java/java-atomic",
  "msa/msa-concurrency-distributedlock",
  "redis/redis-fenced-lock",

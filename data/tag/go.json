@@ -11,6 +11,7 @@
  "go/go-pointers",
  "go/go-polymorphism-function",
  "go/go-profiling",
+ "go/go-rwlock",
  "go/go-unix-signal-handling",
  "go/go-vendoring"
 ]

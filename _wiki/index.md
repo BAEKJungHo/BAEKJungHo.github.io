@@ -145,6 +145,7 @@ regenerate: true
 * [[/go/go-vendoring]]
 * [[/go/go-polymorphism-function]]
 * [[/go/go-error-std]]
+* [[/go/go-rwlock]]
 
 ## Kotlin
 

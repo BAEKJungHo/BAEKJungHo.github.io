@@ -2,6 +2,7 @@
  "caching/msa-cache-consistency",
  "database/database-metadata-lock",
  "go/go-concurrency",
+ "go/go-rwlock",
  "msa/msa-concurrency-distributedlock",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-fenced-lock",

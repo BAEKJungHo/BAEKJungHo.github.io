@@ -85,7 +85,7 @@
  },
  {
   "name": "concurrency",
-  "size": 7
+  "size": 8
  },
  {
   "name": "consensus",
@@ -142,6 +142,10 @@
  {
   "name": "ddd",
   "size": 20
+ },
+ {
+  "name": "deadlock",
+  "size": 1
  },
  {
   "name": "debouncing",
@@ -249,7 +253,7 @@
  },
  {
   "name": "go",
-  "size": 14
+  "size": 15
  },
  {
   "name": "goroutine",
@@ -385,7 +389,7 @@
  },
  {
   "name": "lock",
-  "size": 8
+  "size": 9
  },
  {
   "name": "logging",
@@ -445,7 +449,7 @@
  },
  {
   "name": "mutex",
-  "size": 1
+  "size": 2
  },
  {
   "name": "netflix",
@@ -553,6 +557,10 @@
  },
  {
   "name": "robotaxi",
+  "size": 1
+ },
+ {
+  "name": "rust",
   "size": 1
  },
  {

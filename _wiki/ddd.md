@@ -11,6 +11,10 @@ parent  : [[/index]]
 latex   : false
 ---
 
+## Meaning
+
+> DDD is about discussion , listening, understanding, discovery and business value, all in an effort to centralize knowledge.
+
 ## References
 
 - [Domain Driven Design and Development In Practice](https://www.infoq.com/articles/ddd-in-practice/)

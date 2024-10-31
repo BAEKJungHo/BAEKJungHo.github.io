@@ -97,7 +97,7 @@
  },
  {
   "name": "coroutine",
-  "size": 12
+  "size": 13
  },
  {
   "name": "cors",
@@ -321,7 +321,7 @@
  },
  {
   "name": "java",
-  "size": 47
+  "size": 48
  },
  {
   "name": "javascript",
@@ -361,7 +361,7 @@
  },
  {
   "name": "kotlin",
-  "size": 73
+  "size": 74
  },
  {
   "name": "ksp",
@@ -609,7 +609,7 @@
  },
  {
   "name": "spring",
-  "size": 62
+  "size": 63
  },
  {
   "name": "sre",

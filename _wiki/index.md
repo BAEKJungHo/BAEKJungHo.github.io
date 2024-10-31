@@ -221,6 +221,7 @@ regenerate: true
 * [[/java/java-gc-collector]]
 * [[/java/java-atomic]]
 * [[/java/java-abstraction-by-wrapping]]
+* [[/java/java-virtual-thread]]
 
 ## Test
 

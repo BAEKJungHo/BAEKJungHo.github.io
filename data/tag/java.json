@@ -25,6 +25,7 @@
  "java/java-mapstruct",
  "java/java-memoryleak",
  "java/java-multithreading",
+ "java/java-virtual-thread",
  "kotlin/kotlin-equality",
  "kotlin/kotlin-first-citizen",
  "kotlin/kotlin-generics",

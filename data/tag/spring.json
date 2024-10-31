@@ -4,6 +4,7 @@
  "java/java-date",
  "java/java-dynamicproxy",
  "java/java-jvm-aot",
+ "java/java-virtual-thread",
  "kotlin/kotlin-mockk-springmockk",
  "kotlin/kotlin-null-safety",
  "kotlin/kotlin-property",

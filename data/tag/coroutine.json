@@ -1,5 +1,6 @@
 [
  "go/go-concurrency",
+ "java/java-virtual-thread",
  "kotlin/kotlin-continuation",
  "kotlin/kotlin-coroutine-cancel",
  "kotlin/kotlin-coroutine-deferred-async",

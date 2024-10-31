@@ -15,6 +15,7 @@
  "java/java-gc-collector",
  "java/java-gc-generation-design",
  "java/java-mapstruct",
+ "java/java-virtual-thread",
  "kotlin",
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-assign-type",

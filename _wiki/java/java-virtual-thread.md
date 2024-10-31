@@ -63,7 +63,7 @@ The platform thread to which the scheduler assigns a virtual thread is called th
 
 ### Carrier; Mount/UnMount VirtualThread
 
-PlatformThread(Carrier)는 가상 스레드를 ___Mount/UnMount___ 하여 사용한다. 반적으로 가상 스레드는 JDK 에서 I/O or Block 될때 UnMount 된다.
+PlatformThread(Carrier)는 가상 스레드를 ___Mount/UnMount___ 하여 사용한다. 일반적으로 가상 스레드는 JDK 에서 I/O or Block 될때 UnMount 된다.
 이 시점에서 플랫폼 스레드는 자유로워지므로 스케줄러는 다른 가상 스레드를 마운트하여 플랫폼 스레드가 다시 캐리어가 될 수 있다.
 가상 스레드의 마운트 및 언마운트는 빈번하고 투명하게 수행되며 OS 스레드를 차단하지 않는다.
 

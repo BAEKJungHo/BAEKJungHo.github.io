@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Designing Context Structures for Suspend/Resume in Multitasking",
+ "summary": "Concurrency in Modern Programming - From Processes to Coroutines",
+ "parent": "operatingsystem",
+ "url": "/wiki/operatingsystem/os-multitasking",
+ "updated": "2024-11-01 18:12:24 +0900",
+ "children": []
+}

@@ -5,6 +5,7 @@
  "operatingsystem/os-deadlock",
  "operatingsystem/os-fetch-execute-cycle",
  "operatingsystem/os-kernel",
+ "operatingsystem/os-multitasking",
  "operatingsystem/os-system-call",
  "reactive/reactive-eventloop"
 ]

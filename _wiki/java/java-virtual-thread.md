@@ -4,7 +4,7 @@ title   : VirtualThread; Provide High-throughput not Low-Latency
 summary : 
 date    : 2024-10-31 12:28:32 +0900
 updated : 2024-10-31 19:15:24 +0900
-tag     : java kotlin coroutine spring
+tag     : java kotlin coroutine spring virtualthread
 toc     : true
 comment : true
 public  : true

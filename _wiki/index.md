@@ -639,6 +639,7 @@ regenerate: true
 * [[/operatingsystem/os-fetch-execute-cycle]]
 * [[/operatingsystem/os-system-call]]
 * [[/operatingsystem/os-deadlock]]
+* [[/operatingsystem/os-multitasking]]
 
 ## Network
 

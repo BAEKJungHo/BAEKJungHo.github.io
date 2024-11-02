@@ -97,7 +97,7 @@
  },
  {
   "name": "coroutine",
-  "size": 13
+  "size": 14
  },
  {
   "name": "cors",
@@ -109,7 +109,7 @@
  },
  {
   "name": "cpu",
-  "size": 1
+  "size": 2
  },
  {
   "name": "crdts",
@@ -485,7 +485,7 @@
  },
  {
   "name": "operatingsystem",
-  "size": 8
+  "size": 9
  },
  {
   "name": "owasp",
@@ -698,6 +698,10 @@
  {
   "name": "uuid",
   "size": 1
+ },
+ {
+  "name": "virtualthread",
+  "size": 2
  },
  {
   "name": "webflux",

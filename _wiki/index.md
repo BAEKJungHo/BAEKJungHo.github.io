@@ -39,6 +39,7 @@ regenerate: true
 * [[/mobility/mobility-ble]]
 * [[/mobility/mobility-connected-service]]
 * [[/mobility/mobility-vent-heat]]
+* [[/magazine/magazine-broaden-horizons]]
 
 ## System Design
 

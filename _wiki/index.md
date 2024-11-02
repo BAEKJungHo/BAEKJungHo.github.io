@@ -102,6 +102,7 @@ regenerate: true
 * [[/architecture/architecture-provisioning]]
 * [[/architecture/architecture-automotive]]
 * [[/architecture/architecture-abstraction]]
+* [[/architecture/architecture-canary]]
 
 ## Kata
 

@@ -16,6 +16,7 @@
   "architecture/architecture-backend-for-frontend",
   "architecture/architecture-branchbyabstraction",
   "architecture/architecture-bulkhead",
+  "architecture/architecture-canary",
   "architecture/architecture-cap",
   "architecture/architecture-cdn",
   "architecture/architecture-character-architectures",

@@ -104,6 +104,7 @@ regenerate: true
 * [[/architecture/architecture-automotive]]
 * [[/architecture/architecture-abstraction]]
 * [[/architecture/architecture-canary]]
+* [[/architecture/architecture-callback]]
 
 ## Kata
 

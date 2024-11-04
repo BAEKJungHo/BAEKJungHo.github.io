@@ -10,6 +10,7 @@
  "architecture/architecture-backend-for-frontend",
  "architecture/architecture-branchbyabstraction",
  "architecture/architecture-bulkhead",
+ "architecture/architecture-callback",
  "architecture/architecture-canary",
  "architecture/architecture-cap",
  "architecture/architecture-cdn",

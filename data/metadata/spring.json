@@ -43,6 +43,7 @@
   "spring/spring-openapi-impl",
   "spring/spring-parameterized-typeref",
   "spring/spring-pojo",
+  "spring/spring-principal",
   "spring/spring-psa",
   "spring/spring-query-cache-plan",
   "spring/spring-reactive-security-test-off",

@@ -339,6 +339,7 @@ regenerate: true
 * [[/spring/spring-cache]]
 * [[/spring/spring-errordecoder]]
 * [[/spring/spring-health-check]]
+* [[/spring/spring-principal]]
 
 ## Reactive
 

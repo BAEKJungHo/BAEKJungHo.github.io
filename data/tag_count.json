@@ -45,7 +45,7 @@
  },
  {
   "name": "business",
-  "size": 2
+  "size": 3
  },
  {
   "name": "ca",
@@ -125,7 +125,7 @@
  },
  {
   "name": "data",
-  "size": 2
+  "size": 3
  },
  {
   "name": "database",
@@ -254,6 +254,10 @@
  {
   "name": "go",
   "size": 15
+ },
+ {
+  "name": "google",
+  "size": 1
  },
  {
   "name": "goroutine",

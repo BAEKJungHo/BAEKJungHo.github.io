@@ -113,6 +113,7 @@ regenerate: true
 ## Business
 
 * [[/business/business-carrying-capacity]]
+* [[/business/business-data-beat-opinions]]
 
 ## Functional Programming
 

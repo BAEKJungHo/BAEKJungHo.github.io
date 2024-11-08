@@ -42,6 +42,7 @@
  "/wiki/architecture/architecture-discord-store-message",
  "/wiki/architecture/architecture-distributed-pk",
  "/wiki/architecture/architecture-domain-model",
+ "/wiki/architecture/architecture-duplexing",
  "/wiki/architecture/architecture-event-driven-system",
  "/wiki/architecture/architecture-eventdriven-statemachine",
  "/wiki/architecture/architecture-functional",

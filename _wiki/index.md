@@ -105,6 +105,7 @@ regenerate: true
 * [[/architecture/architecture-abstraction]]
 * [[/architecture/architecture-canary]]
 * [[/architecture/architecture-callback]]
+* [[/architecture/architecture-duplexing]]
 
 ## Kata
 

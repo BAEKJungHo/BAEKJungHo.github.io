@@ -1,4 +1,5 @@
 [
+ "operatingsystem/os-cache-layer-cpu-memory",
  "operatingsystem/os-fetch-execute-cycle",
  "operatingsystem/os-multitasking"
 ]

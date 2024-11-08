@@ -52,6 +52,10 @@
   "size": 1
  },
  {
+  "name": "cache",
+  "size": 1
+ },
+ {
   "name": "caching",
   "size": 4
  },
@@ -109,7 +113,7 @@
  },
  {
   "name": "cpu",
-  "size": 2
+  "size": 3
  },
  {
   "name": "crdts",
@@ -412,6 +416,10 @@
   "size": 1
  },
  {
+  "name": "memory",
+  "size": 1
+ },
+ {
   "name": "memoryleak",
   "size": 3
  },
@@ -493,7 +501,7 @@
  },
  {
   "name": "operatingsystem",
-  "size": 9
+  "size": 10
  },
  {
   "name": "owasp",

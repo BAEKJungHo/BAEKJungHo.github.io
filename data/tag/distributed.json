@@ -13,5 +13,6 @@
  "observability/msa-distributed-tracing",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-fenced-lock",
+ "redis/redis-functional-distributedlock",
  "redis/redis-lock"
 ]

@@ -177,7 +177,7 @@
  },
  {
   "name": "distributed",
-  "size": 15
+  "size": 16
  },
  {
   "name": "dns",
@@ -397,7 +397,7 @@
  },
  {
   "name": "lock",
-  "size": 9
+  "size": 10
  },
  {
   "name": "logging",
@@ -553,7 +553,7 @@
  },
  {
   "name": "redis",
-  "size": 7
+  "size": 8
  },
  {
   "name": "refactoring",

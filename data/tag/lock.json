@@ -6,6 +6,7 @@
  "msa/msa-concurrency-distributedlock",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-fenced-lock",
+ "redis/redis-functional-distributedlock",
  "redis/redis-lock",
  "spring/spring-concurrency-resolve"
 ]

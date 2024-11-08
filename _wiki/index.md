@@ -476,6 +476,7 @@ regenerate: true
 * [[/redis/redis-queue]]
 * [[/redis/redis-distributed-lock-drawbacks]]
 * [[/redis/redis-fenced-lock]]
+* [[/redis/redis-functional-distributedlock]]
 
 ## Infra
 

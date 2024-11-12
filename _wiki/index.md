@@ -525,6 +525,7 @@ regenerate: true
 * [[/git/git-delta-snapshot]]
 * [[/git/git-merge-semi-linear-history]]
 * [[/git/git-semver]]
+* [[/git/git-force-push]]
 
 ## GPT
 

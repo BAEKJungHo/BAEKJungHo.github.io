@@ -10,6 +10,7 @@
   "git/git-cherrypick",
   "git/git-commands",
   "git/git-delta-snapshot",
+  "git/git-force-push",
   "git/git-internal",
   "git/git-merge-semi-linear-history",
   "git/git-rebase",

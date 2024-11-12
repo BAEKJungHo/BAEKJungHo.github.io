@@ -205,6 +205,7 @@
  "/wiki/git/git-cherrypick",
  "/wiki/git/git-commands",
  "/wiki/git/git-delta-snapshot",
+ "/wiki/git/git-force-push",
  "/wiki/git/git-internal",
  "/wiki/git/git-merge-semi-linear-history",
  "/wiki/git/git-rebase",

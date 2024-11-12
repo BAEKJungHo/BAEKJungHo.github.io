@@ -115,6 +115,7 @@ regenerate: true
 
 * [[/business/business-carrying-capacity]]
 * [[/business/business-data-beat-opinions]]
+* [[/business/business-xyz]]
 
 ## Functional Programming
 

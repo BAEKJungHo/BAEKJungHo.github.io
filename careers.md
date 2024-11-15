@@ -17,7 +17,7 @@ ___42dot___: 2022.08 ~ ing
 
 ___TableManager___: 6months
 - KT 통화비서 서비스에서 KT 와 TableManager 간 통신을 위한 HMAC 인증 체계 도입
-- 카카오페이 원클릭 결제 플로우 및, 아워홈 RF 결제 플로우 유지보수
+- 카카오페이 원클릭 결제 플로우 및 아워홈 RF 결제 플로우 유지보수
 - 픽업 주문 서비스 개발(O4O Service) 및 주문/결제/정산 관련 로직 개발
 
 ___Mayeye___: 2years 2months

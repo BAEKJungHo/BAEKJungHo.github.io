@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Views on Test-Driven Development
+title   : Determining When to Apply Test-Driven Development
 summary : 
 date    : 2024-07-13 10:08:32 +0900
 updated : 2024-07-13 10:15:24 +0900
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Views on Test-Driven Development
+## Determining When to Apply Test-Driven Development
 
 Test-Driven Development(TDD) 는 개발자가 실제 코드를 작성하기 전에 테스트 케이스를 먼저 작성하고, 이 테스트를 통과할 정도로 충분한 코드를 작성하는 개발 방법론이다.
 

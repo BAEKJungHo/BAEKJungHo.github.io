@@ -23,6 +23,8 @@ FLEXIBLE(유연한) 이라는 단어를 나는 다음과 같이 정의하고 있
 
 내가 겪은 환경은 다음과 같다.
 
+___[Careers](https://klarciel.net/careers/)___:
+
 - Mayeye - SI / Agency 경력 2년 2개월
 - TableManager - Series B Startup 경력 6개월
 - 42dot - Hyundai Motor Group 경력 2년

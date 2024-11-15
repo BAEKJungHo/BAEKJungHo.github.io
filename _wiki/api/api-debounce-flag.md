@@ -111,3 +111,7 @@ class ExampleUsage {
     }
 }
 ```
+
+## Links
+
+- [Debouncing and Throttling Explained Through Examples](https://css-tricks.com/debouncing-throttling-explained-examples/)

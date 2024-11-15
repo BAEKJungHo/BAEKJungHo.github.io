@@ -1,4 +1,5 @@
 [
  "mobile",
- "mobile/mobile-background-foreground"
+ "mobile/mobile-background-foreground",
+ "mobile/mobile-deeplink"
 ]

@@ -161,7 +161,7 @@
  },
  {
   "name": "deeplink",
-  "size": 1
+  "size": 2
  },
  {
   "name": "delta",
@@ -429,7 +429,7 @@
  },
  {
   "name": "mobile",
-  "size": 2
+  "size": 3
  },
  {
   "name": "mobility",

@@ -6,6 +6,7 @@
  "url": "/wiki/mobile",
  "updated": "2023-08-27 20:55:09 +0900",
  "children": [
-  "mobile/mobile-background-foreground"
+  "mobile/mobile-background-foreground",
+  "mobile/mobile-deeplink"
  ]
 }

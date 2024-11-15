@@ -513,6 +513,7 @@ regenerate: true
 ## Mobile
 
 * [[/mobile/mobile-background-foreground]]
+* [[/mobile/mobile-deeplink]]
 
 ## Git
 

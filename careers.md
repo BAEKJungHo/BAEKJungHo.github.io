@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Careers
-permalink: /value/
+permalink: /careers/
 comment: false
 latex: true
 ---

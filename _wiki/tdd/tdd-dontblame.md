@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Determining When to Apply Test-Driven Development
-summary : 
+summary : Benefits, Drawbacks of TDD
 date    : 2024-07-13 10:08:32 +0900
 updated : 2024-07-13 10:15:24 +0900
 tag     : tdd test
@@ -46,10 +46,16 @@ TDD 를 팀 단위의 문화로 녹이고 싶다면, TDD 가 팀에 효과적인
 
 아직 많이 배워가야 하는 입장으로써 여러 논문들의 Views 대해서 100% 공감이 어려운 부분도 있지만, ___[TDD Cycle](https://baekjungho.github.io/wiki/tdd/tdd-red-green-refactor/)___ 이 주는 장점을 충분히 느끼려고 한다. 
 
-마지막으로 _[Effective Software Testing](https://www.amazon.com/Effective-Software-Testing-developers-guide/dp/1633439933)_ 의 저자 'Mauricio Aniche' 의 TDD 사용 기준에 대해 공유한다.
+__[Effective Software Testing](https://www.amazon.com/Effective-Software-Testing-developers-guide/dp/1633439933) 의 저자 'Mauricio Aniche' 의 TDD 사용 기준__:
 
 - TDD 를 수행할 때 정상 경로와 비지니스 규칙에 먼저 집중하고, TDD 를 통해서 Production Code 작성이 끝나면 Test Mode 로 진입하여 코너 케이스와 경계에 대한 테스트를 진행할 수 있다.
 - TDD 를 항상 사용하진 않는다. 설계나 아키텍처, 특정 요구사항에 대한 구현 방법이 명확하지 않을 때 TDD 를 사용한다고 한다. 이러한 경우에는 조금 천천히 진행하면서 여러 가능성을 실험하는 것이 좋다. 복잡한 문제를 다루거나 그 문제에 관한 전문성이 부족할 때 사용하는 것도 좋다. TDD 는 작은 테스트부터 작성 가능하게 해준다.
 - 개발과정에서 배울만한 게 없으면 TDD 를 사용하지 않는다. 이미 어떤 문제와 그 해결책을 알고 있으면 편안하게 해결 방안을 바로 코딩한다. (테스트 코드 작성은 필수)
 - TDD 는 설계 관점에서 뿐만 아니라, 구현 관점(코드가 필요한 일을 하고 있는가)에서 작성 중인 코드를 배울 수 있도록 해준다.
-- 일부 복잡한 기능에 대해서는 어떤 테스트를 먼저 작성할지 결정하기 어려운데 이때는 TDD 를 사용하지 않는다고 한다
+- 일부 복잡한 기능에 대해서는 어떤 테스트를 먼저 작성할지 결정하기 어려운데 이때는 TDD 를 사용하지 않는다고 한다.
+
+## Drawbacks
+
+___[TDD has a severe drawback of overthinking and idea fatigue](https://www.reddit.com/r/Python/comments/yhkur8/best_resource_to_learn_test_driven_development/?rdt=59629)___. What happen is when writing code, a developer thinks of various approaches and modifies the code design accordingly to write the most optimal but simplistic code. But TDD forces the developer to overthink about which approach is he going to finalize for his tests before actually trying them out practically. Because they have to write pseudo test first, they quickly get tired of thinking more practical approaches and feel reluctant to change tests again and proceed with the sub-optimal approach that works but may not be the best one.
+
+Like you said, TDD is good only when you have proficiency in that task and you already know which is the most optimal implementation for that task.

@@ -254,6 +254,7 @@ regenerate: true
 * [[/test/tdd-enable-refactoring]]
 * [[/test/test-data-driven]]
 * [[/test/test-harness]]
+* [[/test/tdd-design-driven-testing]]
 
 ## TDD
 

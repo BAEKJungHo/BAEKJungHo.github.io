@@ -20,6 +20,7 @@
   "test/test-effective-unittest",
   "test/test-enable-refactoring",
   "test/test-fixtures",
+  "test/test-harness",
   "test/test-integration",
   "test/test-intuitive-naming",
   "test/test-no-silver-bullet",

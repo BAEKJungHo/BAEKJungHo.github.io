@@ -590,6 +590,7 @@
  "/wiki/test/test-effective-unittest",
  "/wiki/test/test-enable-refactoring",
  "/wiki/test/test-fixtures",
+ "/wiki/test/test-harness",
  "/wiki/test/test-integration",
  "/wiki/test/test-intuitive-naming",
  "/wiki/test/test-no-silver-bullet",

@@ -57,6 +57,7 @@
   "architecture/architecture-stratified-design",
   "architecture/architecture-sync-messaging",
   "architecture/architecture-uuid",
+  "architecture/architecture-vcard",
   "architecture/architecture-zero-payload",
   "dod/dod-data-oriented"
  ]

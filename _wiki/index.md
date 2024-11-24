@@ -106,6 +106,7 @@ regenerate: true
 * [[/architecture/architecture-canary]]
 * [[/architecture/architecture-callback]]
 * [[/architecture/architecture-duplexing]]
+* [[/architecture/architecture-vcard]]
 
 ## Kata
 

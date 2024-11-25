@@ -6,6 +6,7 @@
  "kotlin/kotlin-mockk",
  "kotlin/kotlin-relaxed-mockk",
  "tdd/tdd-acceptance-test",
+ "tdd/tdd-ai",
  "tdd/tdd-dontblame",
  "tdd/tdd-interface-design-decisions",
  "tdd/tdd-red-green-refactor",

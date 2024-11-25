@@ -265,6 +265,7 @@ regenerate: true
 * [[/tdd/tdd-why-use-mock-any]]
 * [[/tdd/tdd-dontblame]]
 * [[/tdd/tdd-acceptance-test]]
+* [[/tdd/tdd-ai]]
 
 ## TroubleShooting
 

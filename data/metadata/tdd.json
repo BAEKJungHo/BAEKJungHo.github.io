@@ -7,6 +7,7 @@
  "updated": "2023-12-31 20:55:09 +0900",
  "children": [
   "tdd/tdd-acceptance-test",
+  "tdd/tdd-ai",
   "tdd/tdd-dontblame",
   "tdd/tdd-interface-design-decisions",
   "tdd/tdd-red-green-refactor"

@@ -38,6 +38,7 @@
  "kotlin/kotlin-generics",
  "kotlin/kotlin-high-order-functions",
  "kotlin/kotlin-inline",
+ "kotlin/kotlin-interface-protocol",
  "kotlin/kotlin-jdbc-batch",
  "kotlin/kotlin-ksp",
  "kotlin/kotlin-lambda",

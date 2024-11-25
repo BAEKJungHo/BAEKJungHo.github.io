@@ -202,6 +202,7 @@ regenerate: true
 * [[/kotlin/kotlin-minimizing-mental-complexity]]
 * [[/kotlin/kotlin-restdocs-api-enum-design]]
 * [[/kotlin/kotlin-high-order-functions]]
+* [[/kotlin/kotlin-interface-protocol]]
 
 ## Java
 

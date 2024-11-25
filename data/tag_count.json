@@ -373,7 +373,7 @@
  },
  {
   "name": "kotlin",
-  "size": 74
+  "size": 75
  },
  {
   "name": "ksp",
@@ -661,7 +661,7 @@
  },
  {
   "name": "swift",
-  "size": 1
+  "size": 2
  },
  {
   "name": "systemdesign",

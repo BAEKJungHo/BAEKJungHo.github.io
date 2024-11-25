@@ -49,4 +49,5 @@ __AI-Driven Cycle__:
 
 ## Links
 
+- [Experience report: Test-driven development intensive, by Jason Gorman](https://alvarogarcia7.github.io/blog/2015/04/12/jason-gorman-tdd-intensive-workshop/)
 - [Test Driven Development](https://github.com/testdouble/contributing-tests/wiki/Test-Driven-Development)

@@ -11,6 +11,7 @@
   "operatingsystem/os-fetch-execute-cycle",
   "operatingsystem/os-kernel",
   "operatingsystem/os-multitasking",
+  "operatingsystem/os-pointer",
   "operatingsystem/os-system-call"
  ]
 }

@@ -13,5 +13,6 @@
  "go/go-profiling",
  "go/go-rwlock",
  "go/go-unix-signal-handling",
- "go/go-vendoring"
+ "go/go-vendoring",
+ "operatingsystem/os-pointer"
 ]

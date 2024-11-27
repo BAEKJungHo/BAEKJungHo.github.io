@@ -657,6 +657,7 @@ regenerate: true
 * [[/operatingsystem/os-deadlock]]
 * [[/operatingsystem/os-multitasking]]
 * [[/operatingsystem/os-cache-layer-cpu-memory]]
+* [[/operatingsystem/os-pointer]]
 
 ## Network
 

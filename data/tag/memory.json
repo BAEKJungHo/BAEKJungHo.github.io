@@ -1,3 +1,4 @@
 [
- "operatingsystem/os-cache-layer-cpu-memory"
+ "operatingsystem/os-cache-layer-cpu-memory",
+ "operatingsystem/os-pointer"
 ]

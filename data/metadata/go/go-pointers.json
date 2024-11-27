@@ -1,7 +1,7 @@
 {
  "type": "wiki",
- "title": "Pointers",
- "summary": "Dereferencing",
+ "title": "Pointers and Dereferencing",
+ "summary": "",
  "parent": "go",
  "url": "/wiki/go/go-pointers",
  "updated": "2023-10-07 13:15:24 +0900",

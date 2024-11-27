@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Pointers
-summary : Dereferencing
+title   : Pointers and Dereferencing
+summary : 
 date    : 2023-10-07 12:54:32 +0900
 updated : 2023-10-07 13:15:24 +0900
 tag     : go

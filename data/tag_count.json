@@ -513,11 +513,7 @@
  },
  {
   "name": "operatingsystem",
-  "size": 11
- },
- {
-  "name": "os",
-  "size": 1
+  "size": 12
  },
  {
   "name": "owasp",

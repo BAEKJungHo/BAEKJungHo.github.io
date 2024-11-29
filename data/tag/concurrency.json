@@ -1,4 +1,5 @@
 [
+ "altorithm/algorithm-compare-and-swap",
  "database/database-serializable-tx",
  "go/go-concurrency",
  "go/go-rwlock",

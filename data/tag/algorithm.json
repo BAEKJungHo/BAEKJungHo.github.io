@@ -2,6 +2,7 @@
  "algorithm",
  "altorithm/algorithm-binary-search",
  "altorithm/algorithm-bloom-filter",
+ "altorithm/algorithm-compare-and-swap",
  "altorithm/algorithm-deflate",
  "altorithm/algorithm-hash",
  "altorithm/algorithm-huffman-coding",

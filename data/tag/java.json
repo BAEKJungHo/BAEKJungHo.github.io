@@ -1,4 +1,5 @@
 [
+ "altorithm/algorithm-compare-and-swap",
  "designpattern/designpattern-persistence",
  "functional/functional-potential-errors",
  "java",

@@ -10,6 +10,7 @@
   "kafka/kafak-basic",
   "kafka/kafak-filesystem",
   "kafka/kafak-headers",
-  "kafka/kafka-consumer-options-strategy"
+  "kafka/kafka-consumer-options-strategy",
+  "kafka/kafka-message-inversion"
  ]
 }

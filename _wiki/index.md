@@ -476,6 +476,7 @@ regenerate: true
 * [[/kafka/kafak-headers]]
 * [[/kafka/kafka-consumer-options-strategy]]
 * [[/kafka/kafak-filesystem]]
+* [[/kafka/kafka-message-inversion]]
 
 ## Redis
 

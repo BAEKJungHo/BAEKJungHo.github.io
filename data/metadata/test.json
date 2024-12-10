@@ -11,6 +11,7 @@
   "test/tdd-naming",
   "test/tdd-sut-doc",
   "test/tdd-why-use-mock-any",
+  "test/test-aaa",
   "test/test-characterization",
   "test/test-coverage",
   "test/test-data-driven",

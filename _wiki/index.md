@@ -258,6 +258,7 @@ regenerate: true
 * [[/test/test-data-driven]]
 * [[/test/test-harness]]
 * [[/test/tdd-design-driven-testing]]
+* [[/test/tdd-aaa]]
 
 ## TDD
 

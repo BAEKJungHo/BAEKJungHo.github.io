@@ -6,6 +6,7 @@
  "url": "/wiki/systemdesign",
  "updated": "2024-05-27 20:55:09 +0900",
  "children": [
+  "systemdesign/systemdesign-back-of-the-envelope-estimation",
   "systemdesign/systemdesign-chatting-application"
  ]
 }

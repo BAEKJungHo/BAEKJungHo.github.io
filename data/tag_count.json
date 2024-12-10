@@ -552,6 +552,10 @@
   "size": 2
  },
  {
+  "name": "qps",
+  "size": 1
+ },
+ {
   "name": "qrcode",
   "size": 1
  },
@@ -589,6 +593,10 @@
  },
  {
   "name": "robotaxi",
+  "size": 1
+ },
+ {
+  "name": "rps",
   "size": 1
  },
  {
@@ -673,7 +681,7 @@
  },
  {
   "name": "systemdesign",
-  "size": 2
+  "size": 3
  },
  {
   "name": "tbd",
@@ -709,6 +717,10 @@
  },
  {
   "name": "throttling",
+  "size": 1
+ },
+ {
+  "name": "throughput",
   "size": 1
  },
  {

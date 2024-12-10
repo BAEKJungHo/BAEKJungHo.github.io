@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Back-of-the-Envelope Estimation in System Design",
+ "summary": "Understanding QPS, RPS, and Throughput for Effective System Design Interviews",
+ "parent": "systemdesign",
+ "url": "/wiki/systemdesign/systemdesign-back-of-the-envelope-estimation",
+ "updated": "2024-12-10 18:12:24 +0900",
+ "children": []
+}

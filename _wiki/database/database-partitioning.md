@@ -40,9 +40,26 @@ __정규화는 데이터 중복을 피하기 위해서 컬럼간의 종속성을
 
 ### Horizontal Partitioning - Sharding
 
+1대의 데이터베이스에 트래픽이 몰리면, write-read 성능 문제가 있다.
+
+이를 해결하기 위한 방법은 ___분산 처리(distribution processing)___ 를 통해 ___부하 분산___ 함으로써 해결할 수 있다.
+
+한대의 DB 에 테이블과 Index 가 있다고 가정. 이때 대용량 트래픽을 받음으로써, Index 가 자연스레 커질 것이고, DML 에 대한 성능 저하가 발생하며
+그리고 Index 에 대한 Lock 발생으로 인한 병목이 발생할 수 있다.
+
 데이터베이스 샤딩은 대규모 데이터베이스를 여러 머신에 저장하는 프로세스이다. 데이터베이스 샤딩은 데이터를 샤드라고 하는 더 작은 청크로 분할하고 여러 데이터베이스 서버에 저장함으로써 이러한 한계를 극복한다. 
 
 __즉, 하나의 데이터베이스를 여러 부분으로 분할하여 서로 다른 컴퓨터(머신)에 저장하는 프로세스이다.__
+
+이렇게 분할하는 가장 큰 이유는, 병렬 처리를 위한 것이다. 만약 물리적인 데이터베이스 1대에 파티셔닝을 하는 경우에는 아래와 같은 문제가 발생할 수 있다.
+
+- SPOF
+- Scale-up 만 가능한 구조
+- 쓰기 작업 시 병렬 작업이 어렵다는 단점이 있다.
+
+__Sharding__:
+
+![](/resource/wiki/database-partitioning/sharding.png)
 
 샤드키(shard key)라는 것을 기준으로 데이터(row)를 서로 다른 서버에 저장한다. 해외향 애플리케이션을 만들때 대륙별로 사용자들을 나눠서 저장할 때 사용하기 유용할 듯. (e.g 유럽, 미국, 아시아)
 
@@ -51,6 +68,10 @@ __즉, 하나의 데이터베이스를 여러 부분으로 분할하여 서로 �
 샤딩을 하면 Locality 가 증가해서 Caching 효과가 높아지고, 부하가 감소하지만, 운용이 복잡하고 고장 확률이 증가한다.
 
 어디까지나 마지막 카드로 써야 한다.
+
+__Key Based + Directory Based__:
+
+![](/resource/wiki/database-partitioning/sharding-key-directory.png)
 
 ## Redundancy Master Slave 
 
@@ -65,6 +86,7 @@ Slave 1개가 서비스 불능 상태일때, 다른 Slave 가 대신 읽기 처�
 ## Links
 
 - [Database Sharding](https://aws.amazon.com/ko/what-is/database-sharding/)
+- [우아한 데이터 허브. 일 200억 건 데이터 안전하게 처리하는 대용량 시스템 구축하기](https://www.youtube.com/watch?v=AtmI56DGhi4&list=LL&index=1)
 
 ## References
 

@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : DataDriven
+title   : Data-driven, Data-informed or Data-inspired
 summary : 
 date    : 2024-08-12 15:54:32 +0900
 updated : 2024-08-12 18:15:24 +0900
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## DataDriven
+## Data-driven, Data-informed or Data-inspired
 
 비지니스에서 __Data__ 는 강력한 무기가 될 수 있다. Data 를 활용하는 접근법으로는 크게 3가지가 있다.
 

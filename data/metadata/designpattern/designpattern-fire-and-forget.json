@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Fire and Forget",
+ "summary": "Redis Pub/Sub",
+ "parent": "designpattern",
+ "url": "/wiki/designpattern/designpattern-fire-and-forget",
+ "updated": "2024-12-11 18:15:24 +0900",
+ "children": []
+}

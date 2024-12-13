@@ -1,4 +1,5 @@
 [
+ "designpattern/designpattern-fire-and-forget",
  "redis",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-duplicated-store-prevent",

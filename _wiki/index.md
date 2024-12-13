@@ -573,6 +573,7 @@ regenerate: true
 * [[/designpattern/designpattern-persistence]]
 * [[/designpattern/designpattern-desired-actual]]
 * [[/designpattern/designpattern-watch-dog]]
+* [[/designpattern/designpattern-fire-and-forget]]
 
 ## DDD
 

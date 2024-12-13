@@ -181,7 +181,7 @@
  },
  {
   "name": "designpattern",
-  "size": 27
+  "size": 28
  },
  {
   "name": "devops",
@@ -581,7 +581,7 @@
  },
  {
   "name": "redis",
-  "size": 8
+  "size": 9
  },
  {
   "name": "refactoring",

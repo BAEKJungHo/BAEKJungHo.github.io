@@ -109,6 +109,7 @@ regenerate: true
 * [[/architecture/architecture-callback]]
 * [[/architecture/architecture-duplexing]]
 * [[/architecture/architecture-vcard]]
+* [[/architecture/architecture-data-driven-workflows]]
 
 ## Kata
 

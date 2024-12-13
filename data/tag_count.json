@@ -133,11 +133,11 @@
  },
  {
   "name": "cs",
-  "size": 2
+  "size": 1
  },
  {
   "name": "data",
-  "size": 3
+  "size": 4
  },
  {
   "name": "database",
@@ -209,7 +209,7 @@
  },
  {
   "name": "driven",
-  "size": 2
+  "size": 3
  },
  {
   "name": "dx",
@@ -369,7 +369,7 @@
  },
  {
   "name": "kafka",
-  "size": 9
+  "size": 10
  },
  {
   "name": "kata",
@@ -425,6 +425,10 @@
  },
  {
   "name": "mapstruct",
+  "size": 1
+ },
+ {
+  "name": "massivetraffics",
   "size": 1
  },
  {

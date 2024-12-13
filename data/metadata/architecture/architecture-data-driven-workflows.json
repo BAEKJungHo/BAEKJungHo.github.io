@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Data Driven Workflows",
+ "summary": "Orchestrating Kafka Events into Modular Tasks",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-data-driven-workflows",
+ "updated": "2024-12-12 18:12:24 +0900",
+ "children": []
+}

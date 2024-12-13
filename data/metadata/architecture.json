@@ -26,7 +26,7 @@
   "architecture/architecture-cloud-native",
   "architecture/architecture-components",
   "architecture/architecture-crdts",
-  "architecture/architecture-data-driven",
+  "architecture/architecture-data-driven-workflows",
   "architecture/architecture-decision-records",
   "architecture/architecture-dependency",
   "architecture/architecture-did",

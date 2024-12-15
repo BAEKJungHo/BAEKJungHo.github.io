@@ -39,8 +39,13 @@ __Test Type Cheat Sheet__:
 
 ![](/resource/wiki/performance-k6/test-type-cheat-sheet.png)
 
-__Metrics__:
+### Metrics
+
+![](/resource/wiki/performance-k6/metrics-cal.png)
+
 - [K6 Metrics](https://grafana.com/docs/k6/latest/using-k6/metrics/)
+
+![](/resource/wiki/performance-k6/metrics.png)
 
 ## Links
 

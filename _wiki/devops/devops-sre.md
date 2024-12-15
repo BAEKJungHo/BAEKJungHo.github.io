@@ -4,7 +4,7 @@ title   : Site Reliability Engineering
 summary : SLO, SLO
 date    : 2024-03-20 15:54:32 +0900
 updated : 2024-03-20 20:15:24 +0900
-tag     : devops observability sre sli slo
+tag     : devops observability sre sli slo performance
 toc     : true
 comment : true
 public  : true

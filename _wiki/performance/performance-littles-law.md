@@ -64,9 +64,6 @@ Throughput (RPS) measures the system's ability to handle requests over time.
      - Peak Factor = Peak Traffic / Normal Traffic
      - 피크 시간대에 최대 트래픽이 평소의 10배라면, **최대 트래픽 / 평소 트래픽 = 10**
 3. **Calculate Daily Throughput**:
-  - **Total Requests in a Day**:
-    - Requests = DAU * Average Requests per User per Day
-  - **Average RPS**:
-    - Daily Average RPS = Total Daily Requests / 86,400(seconds/day)
-  - **Maximum RPS**:
-    - Daily Max RPS = Daily Average RPS * Peak Factor
+   - **Total Requests in a Day**: Requests = DAU * Average Requests per User per Day
+   - **Average RPS**: Daily Average RPS = Total Daily Requests / 86,400(seconds/day)
+   - **Maximum RPS**: Daily Max RPS = Daily Average RPS * Peak Factor

@@ -20,7 +20,8 @@ latex   : true
 
 ___[Little's Law](https://en.wikipedia.org/wiki/Little%27s_law)___ provides a fundamental formula for performance capacity:
 
-- $N = Z * (R + T)$
+$$N = Z * (R + T)$$
+ 
 - **N**: Number of Virtual Users (VUser)
 - **Z**: Transactions Per Second (TPS)
 - **R**: Response Time (in seconds)
@@ -43,11 +44,13 @@ By collecting TPS, Response Time, and Think Time from project-specific business 
 
 ### Active User, Current User
 
-- $Active User = TPS * Response Time$
-  - Users actively engaged in request and response during the response time.
-- $Concurrent User = TPS * (Response Time + Think Time)$
-    - - Users active within the interval of request and response, including Think Time.
-- $Request Interval = Response Time + Think Time $
+$$Active User = TPS * Response Time$$
+- Users actively engaged in request and response during the response time.
+
+$$Concurrent User = TPS * (Response Time + Think Time)$$
+- Users active within the interval of request and response, including Think Time.
+
+$$Request Interval = Response Time + Think Time$$
 
 ### Throughput(RPS)
 

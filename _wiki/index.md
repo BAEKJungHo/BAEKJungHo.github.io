@@ -611,6 +611,11 @@ regenerate: true
 
 * [[/aws/aws-ssm]]
 
+## Performance
+
+* [[/performance/performance-littles-law]]
+* [[/performance/performance-k6]]
+
 ## Database
 
 * [[/database/mysql-index]]

@@ -1,4 +1,7 @@
 [
  "experience/experience-premature-optimization",
- "infra/infra-load-stress-smoke"
+ "infra/infra-load-stress-smoke",
+ "performance",
+ "performance/performance-k6",
+ "performance/performance-littles-law"
 ]

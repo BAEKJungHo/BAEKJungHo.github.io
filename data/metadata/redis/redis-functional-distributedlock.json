@@ -1,9 +1,9 @@
 {
  "type": "wiki",
- "title": "Improving Performance with Functional Distributed Locks, A Comparison with AOP Based Distributed Locks",
+ "title": "Functional DistributedLock",
  "summary": "",
  "parent": "redis",
  "url": "/wiki/redis/redis-functional-distributedlock",
- "updated": "2024-11-07 13:55:24 +0900",
+ "updated": "2024-12-17 13:55:24 +0900",
  "children": []
 }

@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Concurrency Resolution",
- "summary": "동시성 이슈 해결방법",
+ "summary": "",
  "parent": "spring",
  "url": "/wiki/spring/spring-concurrency-resolve",
  "updated": "2022-08-07 00:15:24 +0900",

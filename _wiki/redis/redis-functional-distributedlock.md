@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : Improving Performance with Functional Distributed Locks, A Comparison with AOP Based Distributed Locks
+title   : Functional DistributedLock
 summary : 
-date    : 2024-11-07 13:15:32 +0900
-updated : 2024-11-07 13:55:24 +0900
+date    : 2024-12-17 13:15:32 +0900
+updated : 2024-12-17 13:55:24 +0900
 tag     : redis lock distributed
 toc     : true
 comment : true
@@ -71,6 +71,54 @@ class OrderService {
     }
 }
 ```
+
+### Challenges of Combining Distributed Locks with Transactional Logic
+
+Functional Distributed Lock 을 사용하는 경우, ___[Declarative Transaction](https://klarciel.net/wiki/spring/spring-declarative-transaction/)___ 을 같이 사용하면 ___[Concurrency](https://klarciel.net/wiki/spring/spring-concurrency/)___ 이슈가 발생한다.
+
+__Occurrence Concurrency Issue__:
+
+```kotlin
+@Transaction
+fun order(protocol: OrderProtocol) {
+    val user = userRepository.retrieve(protocol.userId)
+    redisClient.executeWithLock(key = lockKey, waitTime = 400L, leaseTime = 1000L) {
+        // validation protocol is valid (내부적으로 Entity Graph 탐색으로 인한 쿼리 조회 발생)
+        // ... Fetch
+        // Create Entity
+        // Insert
+    }
+    eventPublisher.publish(/** Order Completed Event */)
+}
+```
+
+위와 같은 코드가 있을 때, validation 로직에서는 내부적으로 Entity Graph 탐색으로 인한 쿼리 조회 발생하고 있다고 가정하자.
+이때 실제로 Insert 로직이 끝나고 Event 까지 publish 되어야 Transaction 이 끝나고, Flush 가 된다.
+따라서, 실제로 DB 에 반영되기 전에 동시 다발적으로 validation 로직을 실행하게되어 동시성 이슈가 발생할 수 있다.
+
+___[Programmatic Transaction Management](https://docs.spring.io/spring-framework/reference/data-access/transaction/programmatic.html)___ 방식을 사용하여 아래와 같은 형태의 코드를 만들어야 한다.
+
+```kotlin
+fun order(protocol: OrderProtocol) {
+    val user = userRepository.retrieve(protocol.userId)
+
+    /**
+     * 독립적인 작업을 나타내는 하나의 Task 로 볼 수 있다.
+     */
+    redisClient.executeWithLock(key = lockKey, waitTime = 400L, leaseTime = 1000L) {
+        tx.execute {
+            // validation protocol is valid (내부적으로 Entity Graph 탐색으로 인한 쿼리 조회 발생)
+            // ... Fetch
+            // Create Entity
+            // Insert
+        }
+    }
+    
+    eventPublisher.publish(/** Order Completed Event */)
+}
+```
+
+- [Data Driven Workflows](https://klarciel.net/wiki/architecture/architecture-data-driven-workflows/)
 
 ## Links
 

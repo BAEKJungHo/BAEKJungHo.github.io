@@ -4,7 +4,7 @@ title   : Forward to EventLoop
 summary : Direct Memory Access, Java NIO, Streams, Buffers
 date    : 2024-02-12 15:05:32 +0900
 updated : 2024-02-12 15:15:24 +0900
-tag     : reactive linux operatingsystem designpattern multiplexing java buffer
+tag     : reactive linux operatingsystem designpattern multiplexing eventloop
 toc     : true
 comment : true
 public  : true

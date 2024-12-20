@@ -39,7 +39,6 @@
  "linux/linux-increase-kernel-memory",
  "linux/linux-oom-killer",
  "oop/oop-firstclasscollection",
- "reactive/reactive-eventloop",
  "reactive/reactive-executor-service",
  "refactoring/refactoring-aliasbug",
  "spring/spring-exception-hierarchy",

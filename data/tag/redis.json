@@ -7,5 +7,6 @@
  "redis/redis-functional-distributedlock",
  "redis/redis-lock",
  "redis/redis-queue",
+ "redis/redis-single-thread",
  "spring/spring-concurrency-resolve"
 ]

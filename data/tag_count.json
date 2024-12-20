@@ -44,10 +44,6 @@
   "size": 1
  },
  {
-  "name": "buffer",
-  "size": 1
- },
- {
   "name": "buildtool",
   "size": 2
  },
@@ -228,6 +224,10 @@
   "size": 4
  },
  {
+  "name": "eventloop",
+  "size": 2
+ },
+ {
   "name": "exchange",
   "size": 1
  },
@@ -341,7 +341,7 @@
  },
  {
   "name": "java",
-  "size": 49
+  "size": 48
  },
  {
   "name": "javascript",
@@ -477,7 +477,7 @@
  },
  {
   "name": "multiplexing",
-  "size": 1
+  "size": 2
  },
  {
   "name": "mutex",
@@ -581,7 +581,7 @@
  },
  {
   "name": "redis",
-  "size": 9
+  "size": 10
  },
  {
   "name": "refactoring",

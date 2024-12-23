@@ -261,6 +261,7 @@ regenerate: true
 * [[/test/test-harness]]
 * [[/test/tdd-design-driven-testing]]
 * [[/test/tdd-aaa]]
+* [[/test/tdd-kotest-spring-autowired]]
 
 ## TDD
 

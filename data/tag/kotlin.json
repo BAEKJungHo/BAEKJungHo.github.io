@@ -73,5 +73,6 @@
  "refactoring/refactoring-parallelchange",
  "spring/spring-jackson",
  "spring/spring-pojo",
- "test/test-design-by-contract"
+ "test/test-design-by-contract",
+ "test/test-kotest-spring-autowired"
 ]

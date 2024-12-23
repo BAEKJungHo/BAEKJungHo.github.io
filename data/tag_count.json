@@ -380,8 +380,12 @@
   "size": 1
  },
  {
+  "name": "kotest",
+  "size": 1
+ },
+ {
   "name": "kotlin",
-  "size": 75
+  "size": 76
  },
  {
   "name": "ksp",
@@ -709,7 +713,7 @@
  },
  {
   "name": "test",
-  "size": 37
+  "size": 38
  },
  {
   "name": "theory",

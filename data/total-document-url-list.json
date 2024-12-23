@@ -610,6 +610,7 @@
  "/wiki/test/test-harness",
  "/wiki/test/test-integration",
  "/wiki/test/test-intuitive-naming",
+ "/wiki/test/test-kotest-spring-autowired",
  "/wiki/test/test-no-silver-bullet",
  "/wiki/test/test-object-mother",
  "/wiki/test/test-property-based-test",

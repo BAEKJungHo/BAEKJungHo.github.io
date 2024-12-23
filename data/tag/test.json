@@ -30,6 +30,7 @@
  "test/test-harness",
  "test/test-integration",
  "test/test-intuitive-naming",
+ "test/test-kotest-spring-autowired",
  "test/test-no-silver-bullet",
  "test/test-object-mother",
  "test/test-property-based-test",

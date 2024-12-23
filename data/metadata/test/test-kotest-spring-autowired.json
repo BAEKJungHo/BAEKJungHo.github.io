@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Autowiring in Spring Integration Tests with Kotest",
+ "summary": "",
+ "parent": "test",
+ "url": "/wiki/test/test-kotest-spring-autowired",
+ "updated": "2024-12-23 10:29:24 +0900",
+ "children": []
+}

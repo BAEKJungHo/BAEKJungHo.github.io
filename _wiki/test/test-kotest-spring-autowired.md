@@ -49,6 +49,10 @@ class BookingDistributedLockConcurrencyIntegrationTest: DescribeSpec() {
 }
 ```
 
+SpringExtension 은 ___[Project Level Config](https://kotest.io/docs/framework/project-config.html)___ 로 구성할 수 있다.
+
+- [Test Method Callbacks](https://kotest.io/docs/extensions/spring.html#test-method-callbacks)
+
 ### SpringTestExtension
 
 ```kotlin

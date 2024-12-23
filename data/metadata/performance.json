@@ -6,6 +6,7 @@
  "url": "/wiki/performance",
  "updated": "2024-02-09 20:55:09 +0900",
  "children": [
+  "performance/performance-essence",
   "performance/performance-k6",
   "performance/performance-littles-law"
  ]

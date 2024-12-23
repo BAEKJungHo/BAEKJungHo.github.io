@@ -615,6 +615,7 @@ regenerate: true
 
 * [[/performance/performance-littles-law]]
 * [[/performance/performance-k6]]
+* [[/performance/performance-essence]]
 
 ## Database
 

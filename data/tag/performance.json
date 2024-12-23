@@ -3,6 +3,7 @@
  "experience/experience-premature-optimization",
  "infra/infra-load-stress-smoke",
  "performance",
+ "performance/performance-essence",
  "performance/performance-k6",
  "performance/performance-littles-law"
 ]

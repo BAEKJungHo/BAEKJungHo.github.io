@@ -446,7 +446,7 @@ try {
 
 요약하면 다음과 같다.
 
-- 분산 노드 간 이벤트를 전달 용이성 및 높은 성능을 위한 이벤트 기반 매커니즘을 채용한 Pub/Sub 아키텍처를 사용
+- 분산 노드 간 이벤트 전달 용이성 및 높은 성능을 위한 이벤트 기반 매커니즘을 채용한 Pub/Sub 아키텍처를 사용
 - Async, Nonblocking 아키텍처를 위해서 Semaphore 를 Async 하게 사용
 - Semaphore 사용 시 Atomic 연산과, CAS 연산을 활용하여 동기화
 - LuaScript 를 통해 해당 연산이 Atomic 하게 Redis Server 에서 처리됨

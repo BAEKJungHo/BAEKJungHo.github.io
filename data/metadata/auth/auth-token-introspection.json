@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Token Introspection",
+ "summary": "OAuth 2.0 Resource Server Opaque Token",
+ "parent": "auth",
+ "url": "/wiki/auth/auth-token-introspection",
+ "updated": "2024-12-18 23:21:24 +0900",
+ "children": []
+}

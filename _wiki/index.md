@@ -558,6 +558,7 @@ regenerate: true
 * [[/auth/auth-replay-attack]]
 * [[/auth/auth-the-laws-of-identity]]
 * [[/auth/auth-social-login]]
+* [[/auth/auth-token-introspection]]
 
 ## Design pattern
 

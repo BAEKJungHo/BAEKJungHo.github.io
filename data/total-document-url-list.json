@@ -85,6 +85,7 @@
  "/wiki/auth/auth-scram",
  "/wiki/auth/auth-social-login",
  "/wiki/auth/auth-the-laws-of-identity",
+ "/wiki/auth/auth-token-introspection",
  "/wiki/aws",
  "/wiki/aws/aws-ssm",
  "/wiki/buildtool",

@@ -1,6 +1,7 @@
 [
  "designpattern/designpattern-fire-and-forget",
  "redis",
+ "redis/redis-deep-dive-concurrency",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-duplicated-store-prevent",
  "redis/redis-fenced-lock",

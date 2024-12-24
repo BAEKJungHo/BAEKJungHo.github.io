@@ -490,6 +490,7 @@ regenerate: true
 * [[/redis/redis-distributed-lock-drawbacks]]
 * [[/redis/redis-fenced-lock]]
 * [[/redis/redis-functional-distributedlock]]
+* [[/redis/redis-deep-dive-concurrency]]
 
 ## Infra
 

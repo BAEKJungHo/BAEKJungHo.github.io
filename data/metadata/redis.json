@@ -6,6 +6,7 @@
  "url": "/wiki/redis",
  "updated": "2022-01-18 20:55:09 +0900",
  "children": [
+  "redis/redis-deep-dive-concurrency",
   "redis/redis-distributed-lock-drawbacks",
   "redis/redis-duplicated-store-prevent",
   "redis/redis-fenced-lock",

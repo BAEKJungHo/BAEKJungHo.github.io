@@ -5,6 +5,7 @@
  "go/go-rwlock",
  "java/java-atomic",
  "msa/msa-concurrency-distributedlock",
+ "redis/redis-deep-dive-concurrency",
  "redis/redis-fenced-lock",
  "spring/spring-concurrency",
  "spring/spring-concurrency-resolve"

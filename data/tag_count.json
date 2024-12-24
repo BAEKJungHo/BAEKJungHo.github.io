@@ -93,7 +93,7 @@
  },
  {
   "name": "concurrency",
-  "size": 9
+  "size": 10
  },
  {
   "name": "consensus",
@@ -417,7 +417,7 @@
  },
  {
   "name": "lock",
-  "size": 10
+  "size": 11
  },
  {
   "name": "logging",
@@ -585,7 +585,7 @@
  },
  {
   "name": "redis",
-  "size": 10
+  "size": 11
  },
  {
   "name": "refactoring",
@@ -686,6 +686,10 @@
  {
   "name": "swift",
   "size": 2
+ },
+ {
+  "name": "synchronization",
+  "size": 1
  },
  {
   "name": "systemdesign",

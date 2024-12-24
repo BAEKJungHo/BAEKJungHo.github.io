@@ -16,7 +16,7 @@ latex   : true
 
 ## Deadlock
 
-__[교착 상태(膠着狀態, deadlock)](https://en.wikipedia.org/wiki/Deadlock)__ 은 두 개 이상의 작업이 서로 상대방의 작업이 끝나기 만을 기다리고 있기 때문에 결과적으로 아무것도 완료되지 못하는 상태를 의미한다.
+__[교착상태(膠着狀態, deadlock)](https://en.wikipedia.org/wiki/Deadlock)__ 은 두 개 이상의 작업이 서로 상대방의 작업이 끝나기 만을 기다리고 있기 때문에 결과적으로 아무것도 완료되지 못하는 상태를 의미한다.
 
 ![](/resource/wiki/os-deadlock/deadlock.png)
 

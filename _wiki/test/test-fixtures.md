@@ -95,6 +95,10 @@ class LegacyTestFixtures {
 }
 ```
 
+많은 코드 라인 수를 차지하는 Fixture 를 테스트 코드에서 정의하게 되면 가독성이 심각하게 저하된다.
+아래에서 소개할 Test fixture 디렉터리에 정의할 수 있지만, 어떤 기준, 이름 등으로 정의할지 명확해지기 전이라면 임시로 아래로 빼놓을 수 있다.
+이렇게 아래에 정의해둔 픽스처들을 추후에 Refactoring 하는 것은, 테스트 코드에서 정의된 테스트 픽스처들을 찾아서 리팩토링 하는 것보다 상대적으로 비용이 저렴하다.
+
 ### Reusability
 
 _[java-test-fixtures](https://docs.gradle.org/current/userguide/java_testing.html#sec:java_test_fixtures)_ 플러그인을 사용하면 테스트용으로 작성한 Builder, Helper 클래스 등을 다른 모듈과 공유할 수 있다.

@@ -65,8 +65,6 @@ Shared Memory 모델의 Concurrent Programming 에서는, 한 코어(CPU)에서�
 이때 등장하는 개념이 ___[Memory Barrier(Fence)](https://en.wikipedia.org/wiki/Memory_barrier)___ 이다.
 Memory Barrier 는 CPU 의 레지스터나 캐시 값의 변경 내용을 메인 메모리에 반영하도록 강제하는 동작을 말한다. 이 과정을 ___"메모리로의 Flush"___ 라고도 표현하며, 이를 통해 다른 CPU 코어가 최신 값을 읽을 수 있도록 보장한다.
 
-메모리 장벽은 멀티코어 환경에서 메모리 가시성을 확보하는 중요한 역할을 하며, 쓰레드 간 데이터 동기화와 같은 병렬 처리 작업에서 필수적인 개념입니다.
-
 __Monitor Lock__:
 
 - monitorenter 를 실행하면 락을 얻으려고 시도하고, 객체가 잠겨있지 않거나 현재 스레드가 락을 이미 소유하고 있다면 lock counter 를 1 증가 시킨다.

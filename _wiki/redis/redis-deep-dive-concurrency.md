@@ -130,6 +130,11 @@ Hotspot JVM CAS 연산 메서드들을 처리하는 방식은 JIT 컴파일하�
 
 AtomicInteger 와 같은 클래스들에서도 Unsafe 클래스의 CAS 연산을 이용하고 있다. 
 
+![](/resource/wiki/redis-deep-dive-concurrency/atomicinteger.png)
+
+AtomicInteger 를 보면 value 값이 volatile 로 되어있는 것을 볼 수 있다. 즉, 메모리 가시성을 위한 것임을 알 수 있다.
+(예를 들어, 굳이 CAS 연산이 필요 없더라도 메모리 가시성을 유지해야하는 Integer 에 대해서는 AtomicInteger 를 사용해도 될 것 같다.)
+
 CAS 연산이 완벽한 것 처럼 보이지만, ___[ABA](https://en.wikipedia.org/wiki/ABA_problem)___ 문제가 존재한다. 따라서, ABA 문제를 해결해야 한다면 Atomic Class 보다 기존의 Mutex 매커니즘을 이용하는 것이 좋다.
 
 #### Concurrent Data Structures
@@ -226,7 +231,6 @@ ___[Actor](https://en.wikipedia.org/wiki/Actor_model)___ 는 lock-based synchron
 ### Software Transactional Memory
 
 ___[Software Transactional Memory](https://ko.wikipedia.org/wiki/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4_%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%94%EB%84%90_%EB%A9%94%EB%AA%A8%EB%A6%AC)___  공유 메모리으로의 접근을 제어하기 위한 데이터베이스 트랜잭션과 유사한 동시성 제어 구조이다.
-
 
 - [Transactional Memory(트랜젝션 메모리)](https://blog.naver.com/jjoommnn/130038506187)
 

@@ -714,8 +714,8 @@ try {
 
 ![](/resource/wiki/redis-deep-dive-concurrency/tryAcquire.png)
 
-주석을 되게 잘 읽어야하는데, 잘 보면 ___Some other thread invokes the release method ~~___ 를 볼 수 있다. 
-따라서, 다른 스레드에서 락을 해제할 없도록 하기 위해서는 Redisson TryLock 을 구현할 때, Redisson 에서 지원하는 아래 메서드를 finally 구문에 꼭 써줘야 한다.
+주석을 되게 잘 읽어야하는데, 잘 보면 ___Some other thread invokes the release method ...___ 를 볼 수 있다. 
+따라서, 다른 스레드에서 락을 해제할 수 없도록 하기 위해서는 Redisson TryLock 을 구현할 때, Redisson 에서 지원하는 아래 메서드를 finally 구문에 꼭 써줘야 한다.
 
 ```java
 @Override

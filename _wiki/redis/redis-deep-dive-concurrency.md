@@ -439,7 +439,7 @@ public CompletableFuture<E> subscribe(String entryName, String channelName) {
 }
 ```
 
-Pub/Sub 을 사용한 이유는 <mark><em><strong>이벤트(데이터 준비, 연결 요청 등)가 발생하면 알려주는 매커니즘</strong></em></mark> 을 위한 것이라 볼 수 있다. ___Design to Performance; Redis Single-Threaded Architectures___ 를 읽었다면 해당 매커니즘이 높은 동시성을 달성하기 위한 본질 이라는 것을 알 수 있다.
+Pub/Sub 을 사용한 이유는 <mark><em><strong>이벤트(데이터 준비, 연결 요청 등)가 발생하면 알려주는 매커니즘</strong></em></mark> 을 위한 것이라 볼 수 있다. ___[Design to Performance; Redis Single-Threaded Architectures](https://klarciel.net/wiki/redis/redis-single-thread/)___ 를 읽었다면 해당 매커니즘이 높은 동시성을 달성하기 위한 본질 이라는 것을 알 수 있다.
 또한, ___[Redis Pub/Sub](https://redis.io/docs/latest/develop/interact/pubsub/)___ 을 통해 분산 노드 간 이벤트를 전달하고, 데이터를 공유하거나 연결을 관리하기가 용이하다.
 
 여기서 entry 라는 것을 볼 수 있는데, id + Lock 의 Key 임을 알 수 있다. 

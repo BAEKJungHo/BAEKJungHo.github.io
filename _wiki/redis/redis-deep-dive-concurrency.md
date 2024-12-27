@@ -4,7 +4,7 @@ title   : Deep Dive Concurrency
 summary : 
 date    : 2024-12-24 12:15:32 +0900
 updated : 2024-12-24 12:55:24 +0900
-tag     : redis concurrency synchronization lock
+tag     : redis concurrency synchronization lock reentrancy volatile
 toc     : true
 comment : true
 public  : true

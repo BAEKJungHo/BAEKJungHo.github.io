@@ -58,8 +58,16 @@ DeadLock 을 방지하는 다른 방법으로는 대기 상태에 제한 시간�
 LiveLock 은 ___기아 상태(Starvation)___ 일종이다. 기아 상태는 스레드가 필요한 자원을 얻지 못해 일하지 못하는 상황이다. 대표적으로 서버 자원을 고갈 시키는 공격 방식인 DDos 공격이 있다.
 
 이러한 Mutex 의 특징을 활용한 대표적인 Java 의 동기화 기법에는 ___[synchronized](https://www.geeksforgeeks.org/synchronization-in-java/)___ 가 있다. synchronized 는 ___[Monitor](https://docs.oracle.com/javase/specs/jvms/se6/html/Instructions2.doc9.html)___ 라는 것을 사용한다. synchronized 키워드를 컴파일 하면 monitorenter 와 monitorexit 이라는 두 가지 바이트코드 명령어가 생성되고,
-각각 동기화 블록 전후에 실행된다. synchronized 는 ___Reentrancy(재진입성)___ 특징을 지니고 있다. 동일한 스레드 내에서는 synchronized 로 동기화된 블록에 다시 진입할 수 있다. 즉, 락을 이미 소유한 스레드는 동기화된 블록에 여러번 진입해도 블록되지 않는다.
+각각 동기화 블록 전, 후에 실행된다. synchronized 는 ___Reentrancy(재진입성)___ 특징을 지니고 있다. 동일한 스레드 내에서는 synchronized 로 동기화된 블록에 다시 진입할 수 있다. 즉, 락을 이미 소유한 스레드는 동기화된 블록에 여러번 진입해도 블록되지 않는다.
 또한 ___가시성(Visibility)___ 특징을 지닌다. 블록을 빠져나올 때 스레드 로컬 메모리에 반영된 새로운 값을 메인 메모리에 반영한다.
+
+Shared Memory 모델의 Concurrent Programming 에서는, 한 코어(CPU)에서의 값 변경을 여러 코어(CPU)가 공유하는 메인 메모리로 반영하는 작업을 적절히 수행해야 메모리 가시성을 유지할 수 있게된다.
+이때 등장하는 개념이 ___[Memory Barrier(Fence)](https://en.wikipedia.org/wiki/Memory_barrier)___ 이다.
+Memory Barrier 는 CPU 의 레지스터나 캐시 값의 변경 내용을 메인 메모리에 반영하도록 강제하는 동작을 말한다. 이 과정을 ___"메모리로의 Flush"___ 라고도 표현하며, 이를 통해 다른 CPU 코어가 최신 값을 읽을 수 있도록 보장한다.
+
+메모리 장벽은 멀티코어 환경에서 메모리 가시성을 확보하는 중요한 역할을 하며, 쓰레드 간 데이터 동기화와 같은 병렬 처리 작업에서 필수적인 개념입니다.
+
+__Monitor Lock__:
 
 - monitorenter 를 실행하면 락을 얻으려고 시도하고, 객체가 잠겨있지 않거나 현재 스레드가 락을 이미 소유하고 있다면 lock counter 를 1 증가 시킨다.
 - monitorexit 을 실행하면 lock counter 를 1씩 감소시킨다. 그리고 카운터가 0이되면 락이 해제된다.
@@ -126,6 +134,25 @@ AtomicInteger 와 같은 클래스들에서도 Unsafe 클래스의 CAS 연산을
 
 CAS 연산이 완벽한 것 처럼 보이지만, ___[ABA](https://en.wikipedia.org/wiki/ABA_problem)___ 문제가 존재한다. 따라서, ABA 문제를 해결해야 한다면 Atomic Class 보다 기존의 Mutex 매커니즘을 이용하는 것이 좋다.
 
+#### Concurrent Data Structures
+
+Lock-Free 동시성 자료 구조들(Concurrent Data Structures)은 위에서 설명한 CAS 로 대부분 구현이 되어있다.
+
+동시성 자료구조 중에 가장 중요한 자료구조를 뽑아보라고 한다면 ___Queue___ 라고 할 수 다. 큐를 활용하면 쓰레드 간의 소통을 할 수 있습니다. 그중에서도 ___채널(Channel)___ 은 큐에 더 이상 요소를 추가할 수 없도록 닫는 기능과 채널의 메시지를 대기하는 기능을 추가한 것이다. 채널을 활용하면 비동기적으로 처리되는 스트림을 구현할 수 있다.
+
+쓰레드 간의 소통을 큐로 하는 방식은 ___[생산자-소비자 패턴(Producer-Consumer Pattern)](https://ko.wikipedia.org/wiki/%EC%83%9D%EC%82%B0%EC%9E%90-%EC%86%8C%EB%B9%84%EC%9E%90_%EB%AC%B8%EC%A0%9C)___ 을 기반으로 이루어진다.
+
+이 패턴에서, 큐는 ___데이터를 공유하는 중간 매개체 역할___ 을 한다. 하나의 쓰레드(생산자)가 데이터를 생성하여 큐에 추가하고, 다른 쓰레드(소비자)가 큐에서 데이터를 가져와 처리하는 방식이다.
+- 공유 큐(Shared Queue): 큐는 쓰레드 간에 공유되며, 동기화 메커니즘을 통해 안전하게 접근된다.
+- 생산자(Producer): 데이터를 생성하고 큐에 넣는다.
+- 소비자(Consumer): 큐에서 데이터를 꺼내 처리한다
+
+큐를 기반으로 한 채널은 큐에 다음과 같은 기능을 추가한 구조:
+- 닫기(Close): 더 이상 데이터를 추가할 수 없도록 큐를 닫는다.
+- 대기(Blocking Wait): 큐가 비어 있을 때 대기하거나, 큐가 닫히면 작업을 종료한다.
+
+ConcurrentLinkedQueue, BlockingQueue 등이 존재한다.
+
 #### Synchronization-Free Mechanisms
 
 ___[Blocking, NonBlocking](https://klarciel.net/wiki/reactive/reactive-async-nonblocking/)___ 등의 동기화 도움 없이도 Thread-Safe 를 달성 할 수 있다.
@@ -136,14 +163,74 @@ Immutable Object 나 ___[Side Effect](https://klarciel.net/wiki/functional/funct
 
 ___[ThreadLocal](https://klarciel.net/wiki/spring/spring-concurrency/#threadlocal-%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%A0-%EB%95%8C%EB%8F%84-%EC%A3%BC%EC%9D%98%EC%A0%90%EC%9D%B4-%EC%9E%88%EB%8A%94%EB%8D%B0)___ 또한 Synchronization-Free Mechanism 이다. 
 
-#### Synchronization Design
+### Synchronization Design
 
 동기화를 설계할 때 대표적인 문제 2가지를 참고하면 좋다.
 
 - [Producer-Consumer Problem](https://ko.wikipedia.org/wiki/%EC%83%9D%EC%82%B0%EC%9E%90-%EC%86%8C%EB%B9%84%EC%9E%90_%EB%AC%B8%EC%A0%9C)
 - [Readers–writers Problem](https://en.wikipedia.org/wiki/Readers%E2%80%93writers_problem)
+  - [rwlock](https://klarciel.net/wiki/go/go-rwlock/)
 
 위 2가지 문제들은 Mutex 와 Semaphore 를 활용하여 해결할 수 있다.
+
+#### Producer-Consumer Problems
+
+__[Producer-Consumer Problem](https://ko.wikipedia.org/wiki/%EC%83%9D%EC%82%B0%EC%9E%90-%EC%86%8C%EB%B9%84%EC%9E%90_%EB%AC%B8%EC%A0%9C)__:
+
+- 변수
+  - Empty(Semaphore) : 버퍼 내에 저장할 공간이 있는지를 나타낸다. (초기값은 n)
+  - Full(Semaphore) : 버퍼 내에 소비할 아이템이 있는지를 나타낸다. (초기값은 0)
+  - Mutex(Lock) : 버퍼에 대한 접근을 통제한다. (초기값은 1)
+
+- Producer
+
+```
+do {
+     ...
+     아이템을 생산한다.
+     ...
+     wait(empty);  //버퍼에 빈 공간이 생길 때까지 기다린다.
+     wait(mutex); //임계 구역에 진입할 수 있을 때까지 기다린다.
+     ...
+     아이템을 버퍼에 추가한다.
+     ...
+     signal(mutex); //임계 구역을 빠져나왔다고 알려준다.
+     signal(full);  //버퍼에 아이템이 있다고 알려준다.
+} while (1);
+```
+
+- Consumer
+
+```
+do {
+     wait(full);    //버퍼에 아이템이 생길 때까지 기다린다.
+     wait(mutex);
+     ...
+     버퍼로부터 아이템을 가져온다.
+     ...
+     signal(mutex);
+     signal(empty); //버퍼에 빈 공간이 생겼다고 알려준다.
+     ...
+     아이템을 소비한다.
+     ...
+} while (1);
+```
+
+이 개념을 잘 익혀두면 아래에서 분석할 Redisson TryLock 로직을 이해하기 편하다.
+
+### Actor
+
+___[Actor](https://en.wikipedia.org/wiki/Actor_model)___ 는 lock-based synchronization 를 제거한다.
+각각의 액터가 독립적인 실행 단위로 동작하며 메시지 전달을 통해서만 상호작용하는 방식이다.
+
+구현체로는 ___[Akka](https://doc.akka.io/libraries/akka-core/current/typed/actors.html)___ 가 있다.
+
+### Software Transactional Memory
+
+___[Software Transactional Memory](https://ko.wikipedia.org/wiki/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4_%ED%8A%B8%EB%9E%9C%EC%9E%AD%EC%85%94%EB%84%90_%EB%A9%94%EB%AA%A8%EB%A6%AC)___  공유 메모리으로의 접근을 제어하기 위한 데이터베이스 트랜잭션과 유사한 동시성 제어 구조이다.
+
+
+- [Transactional Memory(트랜젝션 메모리)](https://blog.naver.com/jjoommnn/130038506187)
 
 ### Lock Optimization
 
@@ -152,7 +239,7 @@ Blocking 동기화 기법이 성능 문제를 야기 시키는 이유는 스레�
 
 다른 방법은 위에서 설명한 Synchronization-Free Mechanisms 을 사용하면 된다.
 
-### Deep Dive Redisson TryLock
+### In Depth Redisson TryLock 
 
 Redisson TryLock 로직을 제대로 이해하기 위해선 온갖 지식을 다 써먹어야 한다. ___[Design to Performance; Redis Single-Threaded Architectures](https://klarciel.net/wiki/redis/redis-single-thread/)___ 글을 통해서 Redis 의 작업이 비차단이어야 하는 이유를 먼저 학습해야 한다.
 
@@ -167,9 +254,10 @@ public boolean tryLock(long waitTime, long leaseTime, TimeUnit unit) throws Inte
     long current = System.currentTimeMillis();
     long threadId = Thread.currentThread().getId();
     Long ttl = tryAcquire(waitTime, leaseTime, unit, threadId);
+    
     // lock acquired
     if (ttl == null) {
-        return true;
+        return true; // 락 획득 성공
     }
     
     time -= System.currentTimeMillis() - current;
@@ -179,6 +267,8 @@ public boolean tryLock(long waitTime, long leaseTime, TimeUnit unit) throws Inte
     }
     
     current = System.currentTimeMillis();
+    
+    // 락이 해제될 때 알림을 받기 위해 구독
     CompletableFuture<RedissonLockEntry> subscribeFuture = subscribe(threadId);
     try {
         subscribeFuture.get(time, TimeUnit.MILLISECONDS);
@@ -206,12 +296,14 @@ public boolean tryLock(long waitTime, long leaseTime, TimeUnit unit) throws Inte
             return false;
         }
     
+        // 락 획득 재시도 루프
         while (true) {
             long currentTime = System.currentTimeMillis();
             ttl = tryAcquire(waitTime, leaseTime, unit, threadId);
+            
             // lock acquired
             if (ttl == null) {
-                return true;
+                return true; // 락 획득 성공
             }
 
             time -= System.currentTimeMillis() - currentTime;
@@ -220,9 +312,11 @@ public boolean tryLock(long waitTime, long leaseTime, TimeUnit unit) throws Inte
                 return false;
             }
 
+            // Semaphore 를 사용한 대기
             // waiting for message
             currentTime = System.currentTimeMillis();
             if (ttl >= 0 && ttl < time) {
+                // Semaphore(getLatch())를 사용해 다른 스레드가 락을 해제할 때까지 대기
                 commandExecutor.getNow(subscribeFuture).getLatch().tryAcquire(ttl, TimeUnit.MILLISECONDS);
             } else {
                 commandExecutor.getNow(subscribeFuture).getLatch().tryAcquire(time, TimeUnit.MILLISECONDS);
@@ -274,6 +368,8 @@ CompletableFuture<RedissonLockEntry> subscribeFuture = subscribe(threadId);
 여기서 문제가 되는 지점이 Blocking 이다. 일반적인 Semaphore 를 사용하면 성능 문제가 있을 있다. 따라서 높은 성능을 위해서는 Semaphore 도 Async 하게 동작하도록 해야할 것이다. 그래서 subscribe 를 들여다 보면 ___AsyncSemaphore___ 를 만들어서 사용하는 것을 볼 수 있다.
 CompletableFuture 와 잘 통합된다.
 
+__subscribe__:
+
 ```java
 /**
  * @param channelName threadId
@@ -283,8 +379,58 @@ public CompletableFuture<E> subscribe(String entryName, String channelName) {
     CompletableFuture<E> newPromise = new CompletableFuture<>();
 
     semaphore.acquire().thenAccept(c -> {
-        // 공유 리소스 사용
-        semaphore.release(); // 작업 완료 후 릴리즈
+        if (newPromise.isDone()) {
+            semaphore.release();
+            return;
+        }
+
+        E entry = entries.get(entryName);
+        if (entry != null) {
+            entry.acquire(); 
+            semaphore.release();
+            entry.getPromise().whenComplete((r, e) -> {
+                if (e != null) {
+                    newPromise.completeExceptionally(e);
+                    return;
+                }
+                newPromise.complete(r);
+            });
+            return;
+        }
+
+        E value = createEntry(newPromise);
+        value.acquire();
+
+        E oldValue = entries.putIfAbsent(entryName, value);
+        if (oldValue != null) {
+            oldValue.acquire();
+            semaphore.release();
+            oldValue.getPromise().whenComplete((r, e) -> {
+                if (e != null) {
+                    newPromise.completeExceptionally(e);
+                    return;
+                }
+                newPromise.complete(r);
+            });
+            return;
+        }
+
+        RedisPubSubListener<Object> listener = createListener(channelName, value);
+        CompletableFuture<PubSubConnectionEntry> s = service.subscribeNoTimeout(LongCodec.INSTANCE, channelName, semaphore, listener);
+        newPromise.whenComplete((r, e) -> {
+            if (e != null) {
+                s.completeExceptionally(e);
+            }
+        });
+        s.whenComplete((r, e) -> {
+            if (e != null) {
+                entries.remove(entryName);
+                value.getPromise().completeExceptionally(e);
+                return;
+            }
+            value.getPromise().complete(value);
+        });
+
     });
 
     return newPromise;
@@ -293,6 +439,138 @@ public CompletableFuture<E> subscribe(String entryName, String channelName) {
 
 Pub/Sub 을 사용한 이유는 <mark><em><strong>이벤트(데이터 준비, 연결 요청 등)가 발생하면 알려주는 매커니즘</strong></em></mark> 을 위한 것이라 볼 수 있다. ___Design to Performance; Redis Single-Threaded Architectures___ 를 읽었다면 해당 매커니즘이 높은 동시성을 달성하기 위한 본질 이라는 것을 알 수 있다.
 또한, ___[Redis Pub/Sub](https://redis.io/docs/latest/develop/interact/pubsub/)___ 을 통해 분산 노드 간 이벤트를 전달하고, 데이터를 공유하거나 연결을 관리하기가 용이하다.
+
+여기서 entry 라는 것을 볼 수 있는데, id + Lock 의 Key 임을 알 수 있다. 
+
+![](/resource/wiki/redis-deep-dive-concurrency/entry.png)
+
+channelName 은 threadId 이다. 그리고 service.getSemaphore 로직을 보면 `private final AsyncSemaphore[] locks = new AsyncSemaphore[50];` 이렇게 되어있는 걸 볼 수 있다.
+위에서 배운 것 처럼 Semaphore 는 N 개의 스레드가 동시에 접근 가능하도록 된 매커니즘이기 때문에, Entry 에 대해서 Lock 을 획득하면 semaphore 는 release 를 해줘야 다음 스레드가 들어올 수 있다.
+
+entry.acquire 부분을 따라가면 다음과 같은 클래스를 볼 수 있다.
+
+```java
+public class RedissonLockEntry implements PubSubEntry<RedissonLockEntry> {
+
+    // volatile 키워드를 사용하여 멀티스레드 환경에서 counter 변수의 가시성을 보장
+    private volatile int counter;  // 락 획득 횟수를 추적, Reentrancy
+    
+    // Semaphore 를 통해 락 획득/해제 시의 동기화 처리
+    // 락의 획득 가능 여부를 제어하는 세마포어
+    // 다른 스레드의 접근을 블록하는데 사용됨
+    // 해당 값을 통해 락을 획득할 수 있는지 알 수 있음
+    private final Semaphore latch;  // 동기화를 위한 세마포어
+    
+    private final CompletableFuture<RedissonLockEntry> promise;  // 비동기 작업 완료를 처리
+    
+    // ConcurrentLinkedQueue 를 사용하여 thread-safe 한 리스너 관리
+    private final ConcurrentLinkedQueue<Runnable> listeners;  // 이벤트 리스너 목록
+    
+    // permits 이 0으로 초기화된다는 것은 "처음에는 아무도 리소스를 획득할 수 없는 상태"를 의미
+    // 락을 처음 생성할 때는 아무도 접근할 수 없게 하기 위함
+    // 락이 해제될 때만 다른 스레드가 깨어나서 락 획득을 시도하도록 제어
+    // 불필요한 락 획득 시도를 방지하고 효율적인 대기 구현
+    public RedissonLockEntry(CompletableFuture<RedissonLockEntry> promise) {
+        super();
+        this.latch = new Semaphore(0);
+        this.promise = promise;
+    }
+
+    // 현재 락 획득 횟수를 반환
+    public int acquired() {
+        return counter;
+    }
+    
+    // 락 카운터를 증가
+    public void acquire() {
+        counter++;
+    }
+
+    // 락 카운터를 감소시키고 현재 값을 반환
+    public int release() {
+        return --counter;
+    }
+
+    // 락 작업의 완료를 비동기적으로 처리하기 위한 CompletableFuture 를 반환
+    public CompletableFuture<RedissonLockEntry> getPromise() {
+        return promise;
+    }
+
+    // 락 상태 변경 시 실행될 리스너를 추가
+    public void addListener(Runnable listener) {
+        listeners.add(listener);
+    }
+
+    public boolean removeListener(Runnable listener) {
+        return listeners.remove(listener);
+    }
+
+    public ConcurrentLinkedQueue<Runnable> getListeners() {
+        return listeners;
+    }
+
+    public Semaphore getLatch() {
+        return latch;
+    }
+
+    @Override
+    public String toString() {
+        return "RedissonLockEntry{" +
+                "counter=" + counter +
+                '}';
+    }
+}
+```
+
+acquire()와 release() 메서드의 단순성
+- 단순히 카운터를 증감하는 것만으로 재진입을 관리
+- 동일 스레드가 여러 번 락을 획득할 수 있게 함
+
+```java
+public class RecursiveExample {
+    private RedissonLockEntry lockEntry;
+
+    public void recursiveMethod(int depth) {
+        lockEntry.acquire();  // 첫 호출: counter = 1
+        try {
+            if (depth > 0) {
+                recursiveMethod(depth - 1);  // 재귀 호출: counter = 2, 3, ...
+            }
+        } finally {
+            lockEntry.release();  // 각 단계마다 counter 감소
+        }
+    }
+}
+```
+
+만약 재진입성이 없다면:
+- 동일 스레드가 락을 두 번 이상 획득하려고 할 때 데드락 발생
+- 재귀적 호출이나 중첩된 메서드에서 락을 사용할 수 없음
+
+재진입성이 있기 때문에:
+- 동일 스레드는 락을 여러 번 획득 가능
+- counter 가 0이 될 때까지 실제 락은 유지됨
+- 다른 스레드는 counter 가 0이 될 때까지 대기
+
+entry release 의 경우에는 unsubscribe 시에 처리된다.
+
+```java
+public void unsubscribe(E entry, String entryName, String channelName) {
+    ChannelName cn = new ChannelName(channelName);
+    AsyncSemaphore semaphore = service.getSemaphore(cn);
+    semaphore.acquire().thenAccept(c -> {
+        if (entry.release() == 0) {
+            entries.remove(entryName);
+            service.unsubscribeLocked(cn)
+                    .whenComplete((r, e) -> {
+                        semaphore.release();
+                    });
+        } else {
+            semaphore.release();
+        }
+    });
+}
+```
 
 AsyncSemaphore 를 살펴보자.
 
@@ -408,8 +686,10 @@ try {
         }
     
         // waiting for message
+        // 여기서 Semaphore tryAcquire 를 통해서 latch 를 증가시킴을 알 수 있다. 
         currentTime = System.currentTimeMillis();
         if (ttl >= 0 && ttl < time) {
+            // 주어진 ttl 동안 permit 을 기다림
             commandExecutor.getNow(subscribeFuture).getLatch().tryAcquire(ttl, TimeUnit.MILLISECONDS);
         } else {
             commandExecutor.getNow(subscribeFuture).getLatch().tryAcquire(time, TimeUnit.MILLISECONDS);
@@ -428,7 +708,42 @@ try {
 
 주어진 대기 시간 내에서 락을 획득하려 시도하며, 락을 획득하지 못할 경우 남은 시간 동안 메시지를 기다리다가 실패 시 구독을 해제한다.
 
-내부적으로 tryAcquire 로직을 따라가면 LuaScript 를 사용 중인 것을 볼 수 있다.
+`commandExecutor.getNow(subscribeFuture).getLatch().tryAcquire` 코드를 들어가면 다음과 같이 설명이 되어있다.
+
+![](/resource/wiki/redis-deep-dive-concurrency/tryAcquire.png)
+
+주석을 되게 잘 읽어야하는데, 잘 보면 ___Some other thread invokes the release method ~~___ 를 볼 수 있다. 
+따라서, 다른 스레드에서 락을 해제할 없도록 하기 위해서는 Redisson TryLock 을 구현할 때, Redisson 에서 지원하는 아래 메서드를 finally 구문에 꼭 써줘야 한다.
+
+```java
+@Override
+public boolean isHeldByCurrentThread() {
+    return isHeldByThread(Thread.currentThread().getId());
+}
+```
+
+다른 주의점은 tryLock 은 기본적으로 ___non-fair___ Lock 이다. 즉, 스레드가 진입한 순서대로 락을 획득하는게 아니다.
+
+```java
+Semaphore semaphore = new Semaphore(1); // permits = 1
+
+// Thread A가 permit 보유 중
+// Thread B, C, D가 대기 중...
+
+// Thread E가 새로 도착
+boolean acquired = semaphore.tryAcquire(5, TimeUnit.SECONDS);
+```
+
+이 경우 Thread E는:
+- Thread A가 permit 을 release 할 때
+- B, C, D가 대기 중이더라도
+- 먼저 permit 을 획득할 수 있음 (비공정)
+
+만약 FairLock 을 원하면 RedissonFairLock 을 사용하면 된다.
+
+__LuaScript__:
+
+세마포어 말고 코드에 작성된 tryAcquire 로직을 따라가면 LuaScript 를 사용 중인 것을 볼 수 있다.
 
 ```java
 <T> RFuture<T> tryLockInnerAsync(long waitTime, long leaseTime, TimeUnit unit, long threadId, RedisStrictCommand<T> command) {
@@ -450,6 +765,11 @@ try {
 - Async, Nonblocking 아키텍처를 위해서 Semaphore 를 Async 하게 사용
 - Semaphore 사용 시 Atomic 연산과, CAS 연산을 활용하여 동기화
 - LuaScript 를 통해 해당 연산이 Atomic 하게 Redis Server 에서 처리됨
+
+## Links
+
+- [Jeffrey Richter - Concurrent Affairs : Build a Richer Thread Synchronization Lock](https://learn.microsoft.com/en-us/archive/msdn-magazine/2006/march/concurrent-affairs-build-a-richer-thread-synchronization-lock)
+- [9가지 프로그래밍 언어로 배우는 개념: 5편 - 동시성 프로그래밍](https://tech.devsisters.com/posts/programming-languages-5-concurrent-programming/)
 
 ## References
 

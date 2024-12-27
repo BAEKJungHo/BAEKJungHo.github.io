@@ -105,6 +105,8 @@ Executors.newFixedThreadPool(200)
 
 ## Links
 
+- [Java 가상 스레드, 깊이 있는 소스 코드 분석과 작동 원리 2편 - 컨텍스트 스위칭](https://techblog.lycorp.co.jp/ko/about-java-virtual-thread-2)
+- [Java 가상 스레드, 깊이 있는 소스 코드 분석과 작동 원리 1편 - 생성과 시작](https://techblog.lycorp.co.jp/ko/about-java-virtual-thread-1)
 - [The Ultimate Guide to Java Virtual Threads](https://blog.rockthejvm.com/ultimate-guide-to-java-virtual-threads/)
 - [VirtualThread Monitoring](https://jeyzer.org/virtual-threads/)
 - [Non-blocking Algorithms](https://jenkov.com/tutorials/java-concurrency/non-blocking-algorithms.html)

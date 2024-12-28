@@ -84,7 +84,7 @@ LinkedIn 에는 짧은 소개와 나의 Wiki 링크 뿐이었지만, Wiki 가 �
 > 
 > __문제 정의__
 > - 동시 배차 요청 시, 첫 번째 요청은 처리가 되지만 두 번째 요청은 에러로 인해 배차 처리가 되지 않는다.
-> - ___[Concurrency](https://baekjungho.github.io/wiki/spring/spring-concurrency-resolve/)___ 를 해결하기 위해, 공유 자원(shared resource)인 운행 중인 차량 Id 에 대해서 Distributed Lock 이 적용되어 있었다. 하지만 락이 점유 중이라면 Exception 을 발생시켜 문제가 되었다.
+> - ___[Concurrency](https://baekjungho.github.io/wiki/spring/spring-concurrency-resolve/)___ 를 해결하기 위해, 공유 자원(shared resource)인 운행 중인 차량의 무분별한 상태 변경을 보호하기 위해서 Distributed Lock 이 적용되어 있었다. 하지만 락이 점유 중이라면 Exception 을 발생시켜 문제가 되었다.
 > 
 > __해결 과정__
 > 1. 동시성 이슈 해결을 위해 Lock 을 사용하는 것이 타당한지를 검토

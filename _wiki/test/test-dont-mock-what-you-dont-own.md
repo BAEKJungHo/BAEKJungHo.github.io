@@ -29,7 +29,6 @@ Mocking 하지 말라는 의미인데, ___[TestDoubles](https://klarciel.net/wik
 __[Portable Service Abstraction](https://klarciel.net/wiki/spring/spring-psa/)__:
 
 ```kotlin
-// Example in Kotlin
 interface PaymentProcessor {
     fun processPayment(amount: BigDecimal): Boolean
 }

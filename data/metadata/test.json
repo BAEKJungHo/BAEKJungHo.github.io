@@ -19,6 +19,7 @@
   "test/test-design-driven-testing",
   "test/test-design-for-testability",
   "test/test-detroit-mockist",
+  "test/test-dont-mock-what-you-dont-own",
   "test/test-effective-unittest",
   "test/test-enable-refactoring",
   "test/test-fixtures",

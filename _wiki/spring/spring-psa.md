@@ -4,7 +4,7 @@ title   : PSA
 summary : Portable Service Abstraction
 date    : 2022-04-17 15:02:32 +0900
 updated : 2022-04-17 15:12:24 +0900
-tag     : spring
+tag     : spring test
 toc     : true
 comment : true
 public  : true
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-# PSA
+## PSA
 
 - PSA 는 환경과 세부 기술의 변화와 관계 없이 일관된 방식으로 기술에 접근할 수 있게 해준다.
 - POJO 로 개발된 코드는 특정 기술에 직접 노출되어 만들어지면 안되는데, 이를 위해 스프링에서 제공하는 대표적인 기술이 `PSA` 이다.
@@ -23,14 +23,14 @@ latex   : true
 - 추상화 계층을 사용해서 어떤 기술을 내부에 숨기고 개발자에게 편의성을 제공해주는 것을 서비스 추상화(Service Abstraction) 이라고 한다.
 - 서비스 추상화로 제공되는 기술을 다른 기술 스택으로 간편하게 바꿀 수 있는 확장성을 갖고 있는 것이 PSA 이다.
 
-## PSA 핵심
+__핵심__:
 
 - __특정 세부적인 기술에 종속되지 않게 해준다.__
 - __테스트가 어렵게 만들어진 API 나 설정을 통해 주요 기능을 외부에서 제어하게 만들고 싶은 경우 사용할 수 있다.__
 
-## PSA 적용하기
+## Examples
 
-### 기존 코드
+__AS-IS__:
 
 ```java
 public class RepositoryRank {
@@ -61,7 +61,7 @@ API 를 매번호출하게 되면 GitHub API 자체에 제한이 있을 수도 �
 
 이러한 문제를 PSA 를 사용하여 해결할 수 있다.
 
-### 리팩토링
+__TO-BE__:
 
 테스트하기 어려운 부분(`GitHub github = GitHub.connect()`)을 추상화하는 것이다.
 

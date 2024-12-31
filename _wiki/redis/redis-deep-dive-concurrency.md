@@ -79,6 +79,12 @@ ___[Platform Thread(carrier) 는 OS Thread 에 1:1 바인딩](https://klarciel.n
 따라서, ___Mode Conversion___ 에 시간을 많이 소모하게 된다. 이러한 모드 전환(Mode Conversion) 비용을 줄이기 위해 JVM 은 나름대로 최적화를 수행한다.
 예를 들면, 스레드를 Block 하라고 OS 에 알리기 전에 busy waiting(or spinning) 코드를 추가하여 모드 전환이 자주 발생하지 않도록 한다.
 
+> [Java 가상 스레드, 깊이 있는 소스 코드 분석과 작동 원리 3편 - 고정 이슈와 한계](https://techblog.lycorp.co.jp/ko/about-java-virtual-thread-3) 
+>
+> JDK 진영에서도 이와 같은 고정 이슈의 심각성을 인지하고 이를 개선하기 위해 노력하고 있습니다. 예를 들어 synchornized 사용 시 고정 이슈가 발생하는 구체적인 원인은 객체의 모니터를 가상 스레드가 아닌 플랫폼 스레드가 소유하기 때문인데요. 이를 해결하기 위해 JVM의 synchronized 구현을 변경해 플랫폼 스레드가 아닌 가상 스레드 레벨에서 모니터를 관리하는 방향으로 개선하는 작업이 진행 중입니다. 이 사항은 JEP 491 문서에서 확인할 수 있습니다. 이 JEP 개발이 언제 완료될지 아직 자세히 알 수는 없지만, 완료된다면 더욱 많은 프로젝트에서 보다 적극적으로 가상 스레드를 도입할 것으로 기대하고 있습니다.
+>
+> - [JEP 491: Synchronize Virtual Threads without Pinning](https://openjdk.org/jeps/491)
+
 __Mutex with Busy Waiting__:
 
 ```java

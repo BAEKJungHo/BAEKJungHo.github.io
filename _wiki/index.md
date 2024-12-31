@@ -262,6 +262,7 @@ regenerate: true
 * [[/test/tdd-design-driven-testing]]
 * [[/test/tdd-aaa]]
 * [[/test/tdd-kotest-spring-autowired]]
+* [[/test/tdd-dont-mock-what-you-dont-own]]
 
 ## TDD
 

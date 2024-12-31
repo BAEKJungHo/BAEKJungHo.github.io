@@ -92,7 +92,7 @@ interface UserPersistencePort {
 }
 ```
 
-### Adapter Layer
+#### Adapter Layer
 
 ```kotlin
 package com.example.hexagonal.adpater.`in`.web

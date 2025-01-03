@@ -58,6 +58,12 @@ DB 를 사용하다보면 발생할 수 있는 예외의 원인들이 다양하�
 
 In practice, Exception Hierarchy is very important. 
 
+__DataAccessException__:
+
+![](/resource/wiki/spring-exception-hierarchy/dataaccessexception.png)
+
+Exception Hierarchy 를 구성할 때 ___[DataAccessException](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/dao/DataAccessException.html)___ 을 참고하여 설계할 수 있다.
+
 __First Step - Define common specifications for exception classes:__
 
 ```kotlin
@@ -121,7 +127,7 @@ throw DomainException(ErrorType.OutOfStock)
 
 두 번째가 정말 큰 단점이라고 생각한다.
 
-Datadog 같은 Monitoring Tool 을 사용하는 경우 [APM(Application Performance Monitoring)](https://www.datadoghq.com/product/apm/) 에서 ErrorType 으로 필터링을 할 수 있다. 어떤 에러가 빈번하게 발생했는지 발생 빈도 횟수도 보여준다.
+Datadog 같은 Monitoring Tool 을 사용하는 경우 [APM(Application Performance Monitoring)](https://www.datadoghq.com/product/apm/) 에서 Exception 으로 필터링을 할 수 있다. 어떤 예외가 빈번하게 발생했는지 발생 빈도 횟수도 보여준다.
 
 __Filtering by ErrorType:__
 

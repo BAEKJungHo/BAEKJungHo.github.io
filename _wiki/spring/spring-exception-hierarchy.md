@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Exception Hierarchy
-summary : 
+summary :
 date    : 2023-04-23 15:05:32 +0900
 updated : 2023-04-23 15:15:24 +0900
 tag     : spring java architecture
@@ -136,8 +136,15 @@ Search for: env:real error.type:org.dope.backend.server.api.base.exception.OutOf
 ```
 
 APM Dashboard 를 구성할 때 Issues 에서 ISSUE DETAILS 를 구성하는 항목이 Java 의 경우에는 Exception 이름이다.
-
 따라서 예외가 세분화되어있으면 어떤 예외가 발생 빈도가 높은지 파악하기 수월하다.
+
+### Tips
+
+- 예외를 Layer 별로 세분화 하면 모니터링 측면에서 이점이 있으며, 코드 리뷰나 API 설계 시 의도를 명확히 전달하는 데 유리하다.
+- 예외를 Layer 별로 세분화 하면 계층 간 책임이 명확히 분리되고, 비즈니스 로직과 API 응답 스펙을 독립적으로 유지할 수 있다.
+- api, domain, infra 등 각 Layer 를 각각의 팀이라고 생각하자. api, infra 변경의 이유가 domain 에 영향을 주면 안된다.
+- common 모듈은 보통 프로젝트 전반에서 공유되는 유틸리티와 공통 기능을 제공하기 위해 만들어지지만, 장기적으로는 모듈 간 강한 의존성과 책임 불분명이라는 문제가 발생할 수 있다. 이를 해결하려면 common 모듈을 해체하고 각 기능의 책임에 따라 더 적합한 위치로 옮기는 리팩토링이 필요하다.
+- 일반적으로 ResponseCode(or ErrorType) 을 Exception 클래스의 속성에 정의하여 사용하고, ExceptionHandler 로 발생한 예외를 클라이언트 응답으로 처리하곤 하는데, 이 경우 Infra, Domain 등 모든 Layer 에서 ResponseCode 를 의존하게 된다. ResponseCode 는 Application Layer 에 속하는게 맞다. 따라서, Domain, Infra Layer 에서 정의되는 예외 클래스들은 ResponseCode 를 굳이 가지고 있지 않아도 된다. 대신 해당 예외가 발생했을 때 어떤 ResponseCode 로 보낼지에 대해서는 ExceptionHandler 에서 Mapping 해야할 것이다.
 
 ## References
 

@@ -2,8 +2,8 @@
 layout  : wiki
 title   : INTERFACE
 summary : 
-date    : 2025-01-11 19:28:32 +0900
-updated : 2025-01-11 20:15:24 +0900
+date    : 2025-01-01 19:28:32 +0900
+updated : 2025-01-01 20:15:24 +0900
 tag     : designpattern
 toc     : true
 comment : true

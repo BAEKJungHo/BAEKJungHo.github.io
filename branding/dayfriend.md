@@ -10,6 +10,8 @@ latex: true
 
 ## 하루친구
 
+![](/resource/branding/dayfriend/dayfriend-app.jpeg)
+
 고향을 떠나 서울, 경기에서 지내다보니 <mark><em><strong>니즈 : 가끔 맛있는 음식을 먹고, 영화를 보고, 카페를 가는 등의 동네친구</strong></em></mark> 가 생기면 좋겠다는 생각을 많이 했다.
 
 동네 친구를 만들기 위해서 신림에 살았을 적엔 '당근 마켓', '소모임' 을 주로 이용했다.

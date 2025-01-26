@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Index
-summary : MySQL Index
+summary : 
 date    : 2022-04-22 15:28:32 +0900
 updated : 2022-04-22 18:15:24 +0900
 tag     : database
@@ -392,6 +392,21 @@ select * from test where name like'%이%' -- 처음 %가 붙으면 table scan �
 - not 연산자는 긍정문으로 변경
 - insert, delete 등 데이터의 변경이 많은 컬럼은 인덱스를 걸지 않은 편이 좋음. 인덱스를 만드는데 시간과 저장공간이 소비되고 만들고 난 후에도 추가적인 공간이 필요. 데이터를 변경 (insert, update, delete)를 하면 (특히 insert) 인덱스를 다시 조정해야하기 때문에 자원이 많이 소모됨
 
+## FullTextIndex
+
+`title LIKE '%범죄도시%'` 조건은 부분 매칭을 포함하므로 일반적인 B-Tree 인덱스가 활용되기 어렵다.
+
+`%`가 앞에 있으면 **일치하는 문자열을 찾기 위해 전체 테이블을 순차적으로 읽어야** 한다.
+
+___[Full-Text Index](https://dev.mysql.com/doc/refman/8.4/en/innodb-fulltext-index.html)___ 는 단어 기반 검색을 지원하며, 특히 `%단어%` 같은 패턴 매칭에서 효율적이다.
+(텍스트의 의미적 구조를 분석하여 단어 단위로 인덱스를 생성, 단어 기반 정확한 검색이 필요한 경우 사용)
+
+- 단어 기반 검색에서 빠른 성능
+- 긴 텍스트에 대해 효율적, 긴 문서에서 특정 키워드를 빠르게 찾을 때 사용
+
+부분 문자열 검색의 경우에는 N-gram 인덱스라는 것도 있다.
+예를 들면, "대학"만 입력해도 "서울대학교"를 찾아야 하는 경우가 포함된다.
+단어를 더 많이 쪼개므로, 데이터 양이 크게 증가하여, “단어 기반 정확한 검색” 이 필요한 경우에 사용하면 FullTextIndex 보다 성능이 좋지 않을 수 있다.
 
 ## Links
 

@@ -2,6 +2,7 @@
  "cleancode",
  "cleancode/cleancode-cleancode",
  "cleancode/cleancode-cognitive-load",
+ "cleancode/cleancode-comment",
  "cleancode/cleancode-deadcode",
  "cleancode/cleancode-defensive-offensive",
  "cleancode/cleancode-good-implementation",

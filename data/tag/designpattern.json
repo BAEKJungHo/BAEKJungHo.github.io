@@ -25,6 +25,7 @@
  "designpattern/designpattern-template-method",
  "designpattern/designpattern-watch-dog",
  "kotlin/kotlin-delegate",
+ "oop/oop-law-of-demeter",
  "reactive/reactive-eventloop",
  "spring/spring-jpa-osiv",
  "test/test-object-mother"

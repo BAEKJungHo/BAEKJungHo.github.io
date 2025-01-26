@@ -443,6 +443,8 @@ regenerate: true
 * [[/oop/oop-firstclasscollection]]
 * [[/oop/oop-encapsulation]]
 * [[/oop/oop-polymorphism]]
+* [[/oop/oop-minimalist-concepts]]
+* [[/oop/oop-law-of-demeter]]
 
 ## Crypto
 

@@ -62,6 +62,8 @@ object SideEffectExample extends App {
 }
 ```
 
+부수 효과가 있는 함수를 나타내는 분명한 지표는 결과 타입이 Unit 인가 하는 점이다. 어떤 함수가 관심의 대상이 될 만한 값을 반환하지 않는다면, 그런 함수가 주변 세계에 영향을 끼칠 수 있는 유일한 방법은 어떤 형태로든 부수 효과를 통하는 것일 수 밖에 없다.
+
 ## References
 
 - Programming in Scala 4/e / Martin Odersky

@@ -130,6 +130,7 @@ regenerate: true
 * [[/functional/functional-defensive-copy]]
 * [[/functional/functional-potential-errors]]
 * [[/functional/functional-functions]]
+* [[/functional/functional-object]]
 
 ## Observability
 

@@ -201,6 +201,7 @@
  "/wiki/functional",
  "/wiki/functional/functional-copy-on-write",
  "/wiki/functional/functional-defensive-copy",
+ "/wiki/functional/functional-functional-object",
  "/wiki/functional/functional-functions",
  "/wiki/functional/functional-potential-errors",
  "/wiki/functional/functional-sideeffect",

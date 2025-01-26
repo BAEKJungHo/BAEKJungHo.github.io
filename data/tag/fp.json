@@ -7,6 +7,7 @@
  "functional",
  "functional/functional-copy-on-write",
  "functional/functional-defensive-copy",
+ "functional/functional-functional-object",
  "functional/functional-functions",
  "functional/functional-potential-errors",
  "functional/functional-sideeffect",

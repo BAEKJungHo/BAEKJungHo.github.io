@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Writing Effective Comments for Readability and Maintainability
 summary : 
-date    : 2025-01-25 16:01:32 +0900
-updated : 2025-01-25 16:05:24 +0900
+date    : 2025-01-18 16:01:32 +0900
+updated : 2025-01-18 16:05:24 +0900
 tag     : cleancode
 toc     : true
 comment : true

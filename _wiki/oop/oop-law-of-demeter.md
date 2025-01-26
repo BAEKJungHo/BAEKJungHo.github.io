@@ -16,7 +16,7 @@ latex   : true
 
 ## Law of Demeter
 
-___[LoD(Law of Demeter)](https://www.baeldung.com/java-demeter-law)___ 는 최소 지식의 원칙(the least knowledge principle) 이라고도 한다. 최소 지식 원칙은 모든 유닛이 자신과 매우 밀접하게 관련된 유닛에 대해서 제한된 지식만 알아야 한다.
+___[LoD(Law of Demeter)](https://www.baeldung.com/java-demeter-law)___ 는 ___[최소 지식의 원칙(the least knowledge principle)](https://klarciel.net/wiki/oop/oop-minimalist-concepts/)___ 이라고도 한다. 최소 지식 원칙은 모든 유닛이 자신과 매우 밀접하게 관련된 유닛에 대해서 제한된 지식만 알아야 한다.
 
 ![](/resource/wiki/oop-law-of-demeter/law-of-demeter.png)
 *<small><a href="https://www2.ccs.neu.edu/research/demeter/papers/law-of-demeter/oopsla88-law-of-demeter.pdf">Object-Oriented Programming : An Objective Sense of Style </a></small>*

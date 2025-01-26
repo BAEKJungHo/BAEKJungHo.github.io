@@ -27,6 +27,40 @@ DomainModel 은 데이터와 프로세스가 혼합된 구조이다.
 다른 하나는 RichDomainModel 이 있다. RichDomainModel 은 상속, ___[Strategy](https://baekjungho.github.io/wiki/designpattern/designpattern-strategy/)___ 패턴등의 다양한 GoF 패턴, 그리고 복잡한 객체 그래프 탐색을 필요로 한다.
 RichDomainModel 에는 __Data Mapper__ 가 필요하다. RichDomainModel 은 ___[POJO](https://baekjungho.github.io/wiki/spring/spring-pojo/)___ DomainModel 이다.
 
+풍성한 도메인 모델(Rich Domain Model) 이란 데이터와 비지니스 로직을 하나의 클래스에서 관리하는 모델을 의미하며, OOP 의 캡슐화 특성을 만족한다. ___[DDD](https://baekjungho.github.io/wiki/ddd/)___ 는 주로 비지니스 시스템을 분리하고, 비지니스 모듈을 분할해 비지니스 도메인 모델과 상호 작용을 정의하는 방법을 설계할 때 사용된다.
+DDD 를 잘하기 위한 핵심은 DDD 의 개념에 대한 이해가 아니라 비지니스에 친숙해 지는 것이다. 개념을 잘 알고 있어도 비지니스에 익숙하지 않으면 합리적인 ___[Domain Modeling](https://baekjungho.github.io/wiki/ddd/ddd-modeling/)___ 을 얻을 수 없다.
+
+```kotlin
+import java.math.BigDecimal
+
+// Rich Domain Model
+class Wallet(private val id: Long) {
+    private val createTime: Long = System.currentTimeMillis()
+    private var balance: BigDecimal = BigDecimal.ZERO
+
+    fun getBalance(): BigDecimal {
+        return balance
+    }
+
+    fun debit(amount: BigDecimal) {
+        if (balance < amount) {
+            throw InsufficientBalanceException("Insufficient balance to debit $amount")
+        }
+        balance = balance.subtract(amount)
+    }
+
+    fun credit(amount: BigDecimal) {
+        if (amount < BigDecimal.ZERO) {
+            throw InvalidAmountException("Invalid amount to credit: $amount")
+        }
+        balance = balance.add(amount)
+    }
+}
+
+class InsufficientBalanceException(message: String) : RuntimeException(message)
+class InvalidAmountException(message: String) : RuntimeException(message)
+```
+
 <mark><em><strong>DomainModel 은 비지니스 동작을 반영하며, 비지니스 동작은 자주 변경해야 하므로 이 계층을 손쉽게 수정, 변경, 테스트할 수 있게 만드는 것이 아주 중요하다.</strong></em></mark>
 
 비지니스 논리를 도메인 객체에 반영할 때 흔히 하는 고민은 도메인 객체가 과하게 비대해지는 것이다. 이 경우 일반적인 동작과 특정 사례의 동작을 구분해서 일반적인 동작은 DomainModel 에 반영하며 특정 사례의 동작은 다른 Layer 에 반영하는 경우도 있는데,
@@ -38,8 +72,7 @@ RichDomainModel 에는 __Data Mapper__ 가 필요하다. RichDomainModel 은 ___
 
 DomainModel 이 필요한 시점은 유효성 검사, 계산, 파생 등 복잡하고 끊임없이 변하는 비지니스 규칙을 구현해야할 때 DomainModel 을 사용해 비지니스 규칙을 처리하는 것이 좋다.
 
-___[Domain Modeling](https://baekjungho.github.io/wiki/ddd/ddd-modeling/)___ 에 대한 방법은 ___[DDD](https://baekjungho.github.io/wiki/ddd/)___ 를 공부해보면 좋다. 
-
 ## References
 
 - Patterns of Enterprise Application Architecture / Martin Fowler
+- 设计模式之美 / 王争

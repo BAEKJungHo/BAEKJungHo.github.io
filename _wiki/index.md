@@ -495,6 +495,7 @@ regenerate: true
 * [[/redis/redis-fenced-lock]]
 * [[/redis/redis-functional-distributedlock]]
 * [[/redis/redis-deep-dive-concurrency]]
+* [[/redis/redis-optimistic-lock]]
 
 ## Infra
 

@@ -12,6 +12,7 @@
   "redis/redis-fenced-lock",
   "redis/redis-functional-distributedlock",
   "redis/redis-lock",
+  "redis/redis-optimistic-lock",
   "redis/redis-queue",
   "redis/redis-single-thread"
  ]

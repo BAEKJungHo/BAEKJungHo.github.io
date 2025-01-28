@@ -532,6 +532,7 @@
  "/wiki/redis/redis-fenced-lock",
  "/wiki/redis/redis-functional-distributedlock",
  "/wiki/redis/redis-lock",
+ "/wiki/redis/redis-optimistic-lock",
  "/wiki/redis/redis-queue",
  "/wiki/redis/redis-single-thread",
  "/wiki/refactoring",

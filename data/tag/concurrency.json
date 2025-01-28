@@ -7,6 +7,7 @@
  "msa/msa-concurrency-distributedlock",
  "redis/redis-deep-dive-concurrency",
  "redis/redis-fenced-lock",
+ "redis/redis-optimistic-lock",
  "spring/spring-concurrency",
  "spring/spring-concurrency-resolve"
 ]

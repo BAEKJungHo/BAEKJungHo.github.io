@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Optimistic Concurrency Control; Optimistic Locking",
+ "summary": "Pessimistic Lock",
+ "parent": "redis",
+ "url": "/wiki/redis/redis-optimistic-lock",
+ "updated": "2024-01-28 13:55:24 +0900",
+ "children": []
+}

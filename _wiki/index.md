@@ -659,6 +659,8 @@ regenerate: true
 * [[/cleancode/cleancode-readability]]
 * [[/cleancode/cleancode-cleancode]]
 * [[/cleancode/cleancode-comment]]
+* [[/cleancode/cleancode-decoupling]]
+
 
 ## Flutter
 

@@ -13,7 +13,7 @@
  },
  {
   "name": "architecture",
-  "size": 72
+  "size": 73
  },
  {
   "name": "argon",
@@ -85,7 +85,7 @@
  },
  {
   "name": "cleancode",
-  "size": 11
+  "size": 12
  },
  {
   "name": "cloudnative",
@@ -593,7 +593,7 @@
  },
  {
   "name": "refactoring",
-  "size": 8
+  "size": 9
  },
  {
   "name": "resilience4j",
@@ -697,7 +697,7 @@
  },
  {
   "name": "systemdesign",
-  "size": 3
+  "size": 4
  },
  {
   "name": "tbd",
@@ -721,7 +721,7 @@
  },
  {
   "name": "test",
-  "size": 40
+  "size": 41
  },
  {
   "name": "theory",

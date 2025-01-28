@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Optimistic Concurrency Control; Optimistic Locking
 summary : Pessimistic Lock
-date    : 2024-01-28 13:15:32 +0900
-updated : 2024-01-28 13:55:24 +0900
+date    : 2025-01-15 13:15:32 +0900
+updated : 2025-01-15 13:55:24 +0900
 tag     : redis lock concurrency
 toc     : true
 comment : true

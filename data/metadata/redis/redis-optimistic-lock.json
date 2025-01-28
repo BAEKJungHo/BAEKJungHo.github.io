@@ -4,6 +4,6 @@
  "summary": "Pessimistic Lock",
  "parent": "redis",
  "url": "/wiki/redis/redis-optimistic-lock",
- "updated": "2024-01-28 13:55:24 +0900",
+ "updated": "2025-01-15 13:55:24 +0900",
  "children": []
 }

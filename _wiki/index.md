@@ -111,6 +111,7 @@ regenerate: true
 * [[/architecture/architecture-duplexing]]
 * [[/architecture/architecture-vcard]]
 * [[/architecture/architecture-data-driven-workflows]]
+* [[/architecture/architecture-decision-making-principles]]
 
 ## Kata
 

@@ -22,6 +22,7 @@
  "architecture/architecture-components",
  "architecture/architecture-crdts",
  "architecture/architecture-data-driven-workflows",
+ "architecture/architecture-decision-making-principles",
  "architecture/architecture-decision-records",
  "architecture/architecture-dependency",
  "architecture/architecture-did",

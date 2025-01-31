@@ -18,6 +18,8 @@ latex   : true
 
 ![](/resource/wiki/architecture-life-cycle-activities/lifecycle.png)
 
+___[Decision Making Principles](https://klarciel.net/wiki/architecture/architecture-decision-making-principles/)___
+
 ## References
 
 - Designing Software Architectures: A Practical Approach SECOND EDITION / Rick Kazman

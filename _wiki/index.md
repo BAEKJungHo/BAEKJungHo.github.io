@@ -46,6 +46,7 @@ regenerate: true
 
 * [[/systemdesign/systemdesign-chatting-application]]
 * [[/systemdesign/systemdesign-back-of-the-envelope-estimation]
+* [[/systemdesign/systemdesign-software-architecture]]
 
 ## API
 

@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Software Architectures
+title   : Experience of Software Architectures
 summary : Correlation between DomainPurity and Productivity, Protocol, Mixed Architectures
 date    : 2024-08-07 11:02:32 +0900
 updated : 2024-08-07 12:12:24 +0900

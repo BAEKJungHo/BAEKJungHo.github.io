@@ -52,6 +52,7 @@
  "/wiki/architecture/architecture-idempotency-design",
  "/wiki/architecture/architecture-lambda",
  "/wiki/architecture/architecture-layered",
+ "/wiki/architecture/architecture-life-cycle-activities",
  "/wiki/architecture/architecture-managed-service",
  "/wiki/architecture/architecture-map-reduce",
  "/wiki/architecture/architecture-mqtt",

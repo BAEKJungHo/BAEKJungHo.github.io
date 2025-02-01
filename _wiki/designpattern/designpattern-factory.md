@@ -120,6 +120,7 @@ __Structure__:
 ![](/resource/wiki/designpattern-factory/factory-method.png)
 
 RuleConfigSerializerFactory 첫 번째 예제에서 if 문의 분기를 없애기 위해서는 ___[Polymorphism](https://klarciel.net/wiki/oop/oop-polymorphism/)___ 을 사용하는 방법이 있다.
+즉, ___[Factory Method Pattern](https://en.wikipedia.org/wiki/Factory_method_pattern)___ 의 핵심은 다형성을 이용하는 것이다.
 
 ```kotlin
 interface IRuleConfigSerializerFactory {

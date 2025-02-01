@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Strategy
-summary : Strategy Pattern, Template Callback Pattern
+title   : STRATEGY
+summary : 
 date    : 2022-08-03 15:28:32 +0900
 updated : 2022-08-03 18:15:24 +0900
 tag     : designpattern
@@ -14,9 +14,9 @@ latex   : true
 * TOC
 {:toc}
 
-## Strategy
+## STRATEGY
 
-> 전략 패턴은 한 유형의 알고리즘을 보유한 상태에서 런타임에 적절한 알고리즘을 선택하는 기법을 의미한다.
+전략 패턴은 한 유형의 알고리즘을 보유한 상태에서 런타임에 적절한 알고리즘을 선택하는 기법을 의미한다.
 
 템플릿 메서드 패턴을 사용할 때, 상속으로 인한 결합도 증가 및 서브 클래스에서 불필요한 메서드 구현 등의 단점등이 있었다. 전략 패턴을 사용하면 이런 부분을 해결할 수 있다.
 

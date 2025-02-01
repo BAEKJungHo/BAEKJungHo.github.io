@@ -58,14 +58,14 @@ Effective Java 에서 가장 첫 번째로 소개되는 내용이 ___생성자 �
 
 __Naming Conventions__:
 
-```
-from : 하나의 매개 변수를 받아서 객체를 생성.
-of : 여러개의 매개 변수를 받아서 객체를 생성.
-getInstance | instance : 인스턴스를 생성. 이전에 반환했던 것과 같을 수 있음.
-newInstance | create : 새로운 인스턴스를 생성.
-get[OtherType] : 다른 타입의 인스턴스를 생성. 이전에 반환했던 것과 같을 수 있음.
-new[OtherType] : 다른 타입의 새로운 인스턴스를 생성.
-```
+| Naming Convention           | Description                            |
+|-----------------------------|----------------------------------------|
+| **from**                    | 하나의 매개변수를 받아서 객체를 생성                   |
+| **of**                      | 여러 개의 매개변수를 받아서 객체를 생성                 |
+| **getInstance or instance** | 인스턴스를 생성하며, 이전에 반환했던 것과 같을 수 있음 |
+| **newInstance or create**   | 새로운 인스턴스를 생성                                   |
+| **get[OtherType]**          | 다른 타입의 인스턴스를 생성하며, 이전에 반환했던 것과 같을 수 있음 |
+| **new[OtherType]**          | 다른 타입의 새로운 인스턴스를 생성                    |
 
 다음 예제는 XML, JSON, YML, Properties 등의 직렬화 객체를 생성해야 하는 경우이다.
 

@@ -90,14 +90,14 @@ __Client__:
 
 ```kotlin
 fun main() {
-    // ✅ URL 을 이용한 커넥션 설정
+    // URL 을 이용한 커넥션 설정
     val connection1 = ConnectionConfig.Builder()
         .user("admin")
         .password("securePassword")
         .url("jdbc:mysql://example.com:3306/dbname")
         .build()
     
-    // ✅ HostName 과 Port 를 이용한 커넥션 설정
+    // HostName 과 Port 를 이용한 커넥션 설정
     val connection2 = ConnectionConfig.Builder()
         .user("admin")
         .password("securePassword")

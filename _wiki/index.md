@@ -585,6 +585,8 @@ regenerate: true
 * [[/designpattern/designpattern-watch-dog]]
 * [[/designpattern/designpattern-fire-and-forget]]
 * [[/designpattern/designpattern-interface-design-thought]]
+* [[/designpattern/designpattern-factory]]
+* [[/designpattern/designpattern-builder]]
 
 ## DDD
 

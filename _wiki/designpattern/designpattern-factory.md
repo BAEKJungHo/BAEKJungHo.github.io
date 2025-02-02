@@ -16,12 +16,13 @@ latex   : true
 
 ## FACTORY
 
-__Design Principles__:
-- ___[의존성 뒤집기 원칙(Dependency Inversion Principle)](https://klarciel.net/wiki/oop/oop-solid/)___: 추상화된 것에 의존하도록 만들어라. 구상 클래스에 의존하도록 만들지 않도록 한다.
-- 이 원칙을 따르는 경우 ___MOCK___ 을 통한 객체 생성을 시뮬레이션 하기 쉽기 때문에 ___[Testability](https://klarciel.net/wiki/test/test-design-for-testability/)___ 가 증가한다.
-
 팩토리 패턴(Factory Pattern) 은 객체 생성을 캡슐화하여, 클라이언트 코드가 직접 객체의 구체적인 클래스를 알지 않아도 적절한 객체를 생성할 수 있도록 하는 디자인 패턴이다.
 즉, ___"객체를 생성하는 책임을 별도의 팩토리 클래스나 메서드가 담당하는 패턴"___ 이다.
+
+### Design Principles
+
+- ___[의존성 뒤집기 원칙(Dependency Inversion Principle)](https://klarciel.net/wiki/oop/oop-solid/)___: 추상화된 것에 의존하도록 만들어라. 구상 클래스에 의존하도록 만들지 않도록 한다.
+- 이 원칙을 따르는 경우 ___MOCK___ 을 통한 객체 생성을 시뮬레이션 하기 쉽기 때문에 ___[Testability](https://klarciel.net/wiki/test/test-design-for-testability/)___ 가 증가한다.
 
 ### Static Factory Method; Simple Factory Pattern
 

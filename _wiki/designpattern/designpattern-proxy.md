@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : Proxy
+title   : PROXY
 summary : 
-date    : 2023-03-15 15:28:32 +0900
-updated : 2023-03-15 18:15:24 +0900
+date    : 2025-02-05 09:28:32 +0900
+updated : 2025-02-05 10:15:24 +0900
 tag     : designpattern proxy
 toc     : true
 comment : true
@@ -14,19 +14,20 @@ latex   : true
 * TOC
 {:toc}
 
-## Proxy
+## PROXY
 
-프록시 패턴은 __특정 객체에 대한 접근을 제어하거나 기능을 추가__ 할 수 있는 패턴을 의미한다.
+Provide a surrogate for another object to control access to it.
 
-> 부가 기능 추가가 목적인 Proxy 패턴을 [Decorator](https://baekjungho.github.io/wiki/designpattern/designpattern-decorator/) 패턴이라고 한다.
+### Design Principles
 
-![](/resource/wiki/designpattern-proxy/proxy.png)
+___[Proxy](https://en.wikipedia.org/wiki/Proxy_pattern)___ 패턴은 __특정 객체에 대한 접근을 제어하거나 기능을 추가__ 할 수 있는 패턴을 의미한다.
+원본 클래스를 변경하지 않은 상태로 ___proxy class___ 를 도입하여 원본 클래스와 관련 없는 새로운 기능을 추가하는 것이다.
+
+![](/resource/wiki/designpattern-proxy/proxy-structure.png)
 
 1. __Subject__: This is the interface or abstract class that defines the operations that the real object and the proxy must implement.
 2. __RealSubject__: This is the real object that the proxy represents. It implements the operations defined in the subject interface.
 3. __Proxy__: This is the object that acts as a surrogate or placeholder for the real object. It implements the subject interface and delegates the operations to the real object.
-
-코드로 보면 다음과 같다.
 
 __Subject:__
 
@@ -59,12 +60,12 @@ class Proxy: Subject {
 }
 ```
 
-이러한 방식으로 구현해서 사용하면 된다.
-
 ### Remote Proxy
 
+GoF 디자인 패턴에서는 RPC 에서 프록시 패턴을 적용하는 것을 Remote Proxy 로 정의하고 있다.
+
 원격 프록시(Remote Proxy)는 프록시는 로컬에 있고, RealSubject 가 원격 서버(다른 서버)에 존재하는 경우 사용할 수 있다.
-프록시는 네트워크 통신을 통해 클라이언트 요청을 RealSubject 로 전달한다.
+프록시는 네트워크 통신을 통해 클라이언트 요청을 RealSubject 로 전달한다. 
 
 __Subjects:__
 
@@ -117,6 +118,8 @@ fun main() {
     products.forEach { println(it.name) }
 }
 ```
+
+클라이언트는 서버와의 상호 작용에 대한 세부 사항은 알지 못한 채 RPC 서비스를 기본 기능인 것처럼 사용할 수 있다.
 
 ### Virtual Proxy
 
@@ -225,6 +228,16 @@ fun main() {
 }
 ```
 
-## Links
+### Dynamic Proxy
 
-- [프록시(Proxy) 패턴 - 완벽 마스터하기](https://inpa.tistory.com/entry/GOF-%F0%9F%92%A0-%ED%94%84%EB%A1%9D%EC%8B%9CProxy-%ED%8C%A8%ED%84%B4-%EC%A0%9C%EB%8C%80%EB%A1%9C-%EB%B0%B0%EC%9B%8C%EB%B3%B4%EC%9E%90)
+프록시 패턴의 단점은, 원본 클래스에 대한 프록시 클래스를 생성해야한다. 이 개수가 많아진다면 프로젝트의 클래스 수가 증가하고
+코드의 유지 관리 비용이 증가한다. 또한 프록시 클래스의 코드는 원본 코드와 유사하므로 불필요한 개발 리소스도 들어간다는 단점이 있다.
+
+이를 위해서 Reflection 기반의 ___[Dynamic Proxy](https://klarciel.net/wiki/java/java-dynamicproxy/)___ 를 활용할 수 있다.
+
+___[Aspect Oriented Programming(AOP)](https://klarciel.net/wiki/spring/spring-aop/)___ 의 주요 패러다임 중 하나가 트랜잭션 관리, 로깅, 유효성 검사 등과 같은 관심사를 분리하는 것이다. 따라서 AOP 를 많이 사용하는 프레임워크가 ___Proxy Mechanism___ 에 의존하는 것은 당연하다.
+
+## References
+
+- Gangs of Four Design Patterns
+- 设计模式之美 / 王争

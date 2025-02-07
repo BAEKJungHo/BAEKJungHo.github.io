@@ -112,6 +112,7 @@ regenerate: true
 * [[/architecture/architecture-vcard]]
 * [[/architecture/architecture-data-driven-workflows]]
 * [[/architecture/architecture-decision-making-principles]]
+* [[/architecture/architecture-type-driven]]
 
 ## Kata
 

@@ -64,7 +64,7 @@ ___[Object Oriented Programming](https://klarciel.net/wiki/oop/oop-real-oop/)___
 
 subject type 은 action type 과 1:N 관계를 갖는다. 만약, 차 문이라고 하면 LOCK/UNLOCK, OPEN/CLOSE 의 action type 을 가질 수 있다.
 
-![](/resource/wiki/architecture-type-driven/type-driven-vehicle-control.png)
+![](/resource/wiki/architecture-type-driven/vehicle-control-type-driven.png)
 
 시스템에서 정의한 Type 에 따라서 어떤 로직(검증, Vehicle API 호출 등)을 수행해야하는 지 ___결정(decisions)___ 되어야 한다.
 

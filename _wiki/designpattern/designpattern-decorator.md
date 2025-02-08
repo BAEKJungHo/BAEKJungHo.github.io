@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : DECORATOR
+title   : _DECORATOR_
 summary : 
 date    : 2025-02-07 16:28:32 +0900
 updated : 2025-02-07 19:15:24 +0900

@@ -6,6 +6,7 @@
  "url": "/wiki/designpattern",
  "updated": "2022-04-15 20:55:09 +0900",
  "children": [
+  "designpattern/designpattern-adapter",
   "designpattern/designpattern-builder",
   "designpattern/designpattern-callback",
   "designpattern/designpattern-chain-of-responsibility",

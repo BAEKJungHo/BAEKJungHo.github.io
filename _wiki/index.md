@@ -589,6 +589,7 @@ regenerate: true
 * [[/designpattern/designpattern-factory]]
 * [[/designpattern/designpattern-builder]]
 * [[/designpattern/designpattern-prototype]]
+* [[/designpattern/designpattern-adapter]]
 
 ## DDD
 

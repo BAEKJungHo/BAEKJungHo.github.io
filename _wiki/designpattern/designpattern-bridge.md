@@ -24,7 +24,7 @@ latex   : true
 ### Design Principles
 
 상속대신 합성(composition)을 사용하여 많은 서브 클래스를 만들어야 하는 문제를 해결한다. 
-___M X N___ 을 ___M + N___ 문제로 해결해준다.
+___M X N___ 을 ___M + N___ (으)로 해결해준다.
 
 ![](/resource/wiki/designpattern-bridge/structure.png)
 

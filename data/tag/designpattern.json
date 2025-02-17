@@ -10,6 +10,7 @@
  "ddd/ddd-modeling",
  "designpattern",
  "designpattern/designpattern-adapter",
+ "designpattern/designpattern-bridge",
  "designpattern/designpattern-builder",
  "designpattern/designpattern-callback",
  "designpattern/designpattern-chain-of-responsibility",

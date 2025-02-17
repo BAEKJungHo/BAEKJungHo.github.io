@@ -160,6 +160,7 @@
  "/wiki/ddd/ddd-service",
  "/wiki/designpattern",
  "/wiki/designpattern/designpattern-adapter",
+ "/wiki/designpattern/designpattern-bridge",
  "/wiki/designpattern/designpattern-builder",
  "/wiki/designpattern/designpattern-callback",
  "/wiki/designpattern/designpattern-chain-of-responsibility",

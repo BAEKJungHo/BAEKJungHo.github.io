@@ -17,6 +17,7 @@
  "designpattern/designpattern-cloud",
  "designpattern/designpattern-decorator",
  "designpattern/designpattern-desired-actual",
+ "designpattern/designpattern-facade",
  "designpattern/designpattern-factory",
  "designpattern/designpattern-fire-and-forget",
  "designpattern/designpattern-intercepting-filter",

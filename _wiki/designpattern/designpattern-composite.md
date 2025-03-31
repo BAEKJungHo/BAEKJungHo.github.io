@@ -29,7 +29,7 @@ latex   : true
 
 컴포지트 패턴은 단일 역할 원칙을 깨면서 대신에 투명성(transparency)을 확보하기 위한 패턴이다. Component 클래스에는 두 종류의 기능이 모두 들어있다 보니까 안정성은 약간 떨어진다. 하지만, 컴포지트 패턴을 배움으로써 가이드라인을 항상 따를 필요는 없고 상황에 따라 원칙을 적절하게 사용해야한다는것을 보여준다.
 
-![](/resource/wiki/designpattern-composite/composite-meaning.png)
+![](/resource/wiki/designpattern-composite/composite.png)
 
 - Component (그래픽 요소): 객체의 공통 인터페이스를 정의하고, 기본 동작 및 자식 관리 기능을 제공할 수 있다.
 - Leaf (단일 요소: 사각형, 선, 텍스트 등): 자식이 없는 개별 객체로, 기본 구성 요소의 동작을 정의한다.

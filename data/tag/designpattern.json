@@ -15,6 +15,7 @@
  "designpattern/designpattern-callback",
  "designpattern/designpattern-chain-of-responsibility",
  "designpattern/designpattern-cloud",
+ "designpattern/designpattern-composite",
  "designpattern/designpattern-decorator",
  "designpattern/designpattern-desired-actual",
  "designpattern/designpattern-facade",

@@ -115,6 +115,7 @@
  "/wiki/cleancode/cleancode-readability",
  "/wiki/crypto",
  "/wiki/crypto/crypto-asymmetric-cryptography",
+ "/wiki/crypto/crypto-core",
  "/wiki/crypto/crypto-hash-deterministic",
  "/wiki/crypto/crypto-hash-secure-property",
  "/wiki/crypto/crypto-kerckhoffs-principle",

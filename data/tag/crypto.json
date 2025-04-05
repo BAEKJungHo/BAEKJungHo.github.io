@@ -4,6 +4,7 @@
  "auth/auth-hmac",
  "crypto",
  "crypto/crypto-asymmetric-cryptography",
+ "crypto/crypto-core",
  "crypto/crypto-hash-deterministic",
  "crypto/crypto-hash-secure-property",
  "crypto/crypto-kerckhoffs-principle",

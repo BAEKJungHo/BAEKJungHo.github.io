@@ -552,6 +552,8 @@
  "/wiki/refactoring/refactoring-local-variable",
  "/wiki/refactoring/refactoring-parallelchange",
  "/wiki/refactoring/refactoring-prerequisite",
+ "/wiki/sdv",
+ "/wiki/sdv/sdv-proximity-based-auth",
  "/wiki/spring",
  "/wiki/spring/spring-aop",
  "/wiki/spring/spring-async",

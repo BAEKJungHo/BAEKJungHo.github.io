@@ -458,6 +458,10 @@ regenerate: true
 * [[/crypto/crypto-hash-secure-property]]
 * [[/crypto/crypto-core]]
 
+## SDV
+
+* [[/sdv/sdv-proximity-based-auth]]
+
 ## GRPC
 
 * [[/grpc/grpc-protobuffer]]

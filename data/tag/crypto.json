@@ -9,5 +9,6 @@
  "crypto/crypto-hash-secure-property",
  "crypto/crypto-kerckhoffs-principle",
  "crypto/crypto-password-encryption",
- "linux/linux-ssh"
+ "linux/linux-ssh",
+ "sdv/sdv-proximity-based-auth"
 ]

@@ -1,3 +1,4 @@
 [
- "realworld/realworld-vehicle-controls"
+ "realworld/realworld-vehicle-controls",
+ "sdv/sdv-proximity-based-auth"
 ]

@@ -598,6 +598,7 @@ regenerate: true
 * [[/designpattern/designpattern-bridge]]
 * [[/designpattern/designpattern-facade]]
 * [[/designpattern/designpattern-composite]]
+* [[/designpattern/designpattern-flyweight]]
 
 ## DDD
 

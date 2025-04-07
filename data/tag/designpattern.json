@@ -21,6 +21,7 @@
  "designpattern/designpattern-facade",
  "designpattern/designpattern-factory",
  "designpattern/designpattern-fire-and-forget",
+ "designpattern/designpattern-flyweight",
  "designpattern/designpattern-intercepting-filter",
  "designpattern/designpattern-interface-design-thought",
  "designpattern/designpattern-observer",

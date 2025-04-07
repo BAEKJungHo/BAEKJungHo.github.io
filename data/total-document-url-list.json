@@ -78,6 +78,7 @@
  "/wiki/auth/auth-certificate-authority",
  "/wiki/auth/auth-client-credentials",
  "/wiki/auth/auth-device-authz-grant",
+ "/wiki/auth/auth-digital-signature",
  "/wiki/auth/auth-exchange",
  "/wiki/auth/auth-hmac",
  "/wiki/auth/auth-jwt",

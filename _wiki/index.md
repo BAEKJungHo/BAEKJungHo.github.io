@@ -573,6 +573,7 @@ regenerate: true
 * [[/auth/auth-the-laws-of-identity]]
 * [[/auth/auth-social-login]]
 * [[/auth/auth-token-introspection]]
+* [[/auth/auth-digital-signature]]
 
 ## Design pattern
 

@@ -574,6 +574,7 @@ regenerate: true
 * [[/auth/auth-social-login]]
 * [[/auth/auth-token-introspection]]
 * [[/auth/auth-digital-signature]]
+* [[/auth/auth-key-exchange]]
 
 ## Design pattern
 

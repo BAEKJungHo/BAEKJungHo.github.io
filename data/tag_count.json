@@ -29,7 +29,7 @@
  },
  {
   "name": "auth",
-  "size": 17
+  "size": 18
  },
  {
   "name": "aws",
@@ -125,7 +125,7 @@
  },
  {
   "name": "crypto",
-  "size": 12
+  "size": 13
  },
  {
   "name": "cs",

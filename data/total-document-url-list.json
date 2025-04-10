@@ -82,6 +82,7 @@
  "/wiki/auth/auth-exchange",
  "/wiki/auth/auth-hmac",
  "/wiki/auth/auth-jwt",
+ "/wiki/auth/auth-key-exchange",
  "/wiki/auth/auth-keycloak",
  "/wiki/auth/auth-oauth",
  "/wiki/auth/auth-oidc",

@@ -2,6 +2,7 @@
  "altorithm/algorithm-hash",
  "auth/auth-certificate-authority",
  "auth/auth-hmac",
+ "auth/auth-key-exchange",
  "crypto",
  "crypto/crypto-asymmetric-cryptography",
  "crypto/crypto-core",

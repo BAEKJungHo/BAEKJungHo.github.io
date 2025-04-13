@@ -20,7 +20,7 @@ latex   : true
 
 Also Known As ___Dependents___, ___[Publish-Subscribe](https://klarciel.net/wiki/architecture/architecture-pub-sub/)___
 
-## Design Principle
+### Design Principle
 
 ![](/resource/wiki/designpattern-observer/observer-structure.png)
 

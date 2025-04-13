@@ -75,5 +75,6 @@
  "observability/architecture-domain-oriented-observability",
  "realworld/realworld-smarthome-control-command",
  "spring/spring-exception-hierarchy",
+ "systemdesign/systemdesign-distributed-messaging-queue",
  "systemdesign/systemdesign-software-architecture"
 ]

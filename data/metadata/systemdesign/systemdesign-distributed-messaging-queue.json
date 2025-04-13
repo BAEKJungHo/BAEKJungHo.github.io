@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Distributed Messaging Queue",
+ "summary": "Event Streaming Platform",
+ "parent": "systemdesign",
+ "url": "/wiki/systemdesign/systemdesign-distributed-messaging-queue",
+ "updated": "2025-04-12 18:12:24 +0900",
+ "children": []
+}

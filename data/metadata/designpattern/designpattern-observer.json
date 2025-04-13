@@ -1,9 +1,9 @@
 {
  "type": "wiki",
- "title": "Observer",
- "summary": "옵저버 패턴",
+ "title": "OBSERVER",
+ "summary": "",
  "parent": "designpattern",
  "url": "/wiki/designpattern/designpattern-observer",
- "updated": "2022-10-01 20:15:24 +0900",
+ "updated": "2025-04-13 13:15:24 +0900",
  "children": []
 }

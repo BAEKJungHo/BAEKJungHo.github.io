@@ -1,9 +1,9 @@
 {
  "type": "wiki",
- "title": "Chain of Responsibility",
- "summary": "행동 패턴 - 책임 연쇄 패턴",
+ "title": "CHAIN OF RESPONSIBILITY",
+ "summary": "",
  "parent": "designpattern",
  "url": "/wiki/designpattern/designpattern-chain-of-responsibility",
- "updated": "2022-12-13 18:15:24 +0900",
+ "updated": "2025-04-14 18:15:24 +0900",
  "children": []
 }

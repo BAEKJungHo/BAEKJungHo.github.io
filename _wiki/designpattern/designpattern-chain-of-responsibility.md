@@ -1,9 +1,9 @@
 ---
 layout  : wiki
-title   : Chain of Responsibility
-summary : 행동 패턴 - 책임 연쇄 패턴
-date    : 2022-12-13 15:28:32 +0900
-updated : 2022-12-13 18:15:24 +0900
+title   : CHAIN OF RESPONSIBILITY
+summary : 
+date    : 2025-04-14 15:28:32 +0900
+updated : 2025-04-14 18:15:24 +0900
 tag     : designpattern
 toc     : true
 comment : true
@@ -14,11 +14,13 @@ latex   : true
 * TOC
 {:toc}
 
-## Chain of Responsibility
+## CHAIN OF RESPONSIBILITY
 
-The Chain of Responsibility relies on transforming particular behaviors into stand-alone objects called handlers
+![](/resource/wiki/designpattern-chain-of-responsibility/chain-of-responsibility-meaning.png)
 
-![](/resource/wiki/designpattern-chain-of-responsibility/cor.png)
+### Design Principle
+
+![](/resource/wiki/designpattern-chain-of-responsibility/cor-structure.png)
 
 - __Defines__
   - 요청을 보내는 쪽(sender)과 요청을 처리하는 쪽(receiver)의 분리하는 패턴
@@ -32,13 +34,9 @@ The Chain of Responsibility relies on transforming particular behaviors into sta
   - [Spring Security Filter](https://docs.spring.io/spring-security/site/docs/4.2.1.RELEASE/reference/htmlsingle/#security-filter-chain)
     - [How to Spring Security filter chain works](https://stackoverflow.com/questions/41480102/how-spring-security-filter-chain-works)
 
-## UML
+![](/resource/wiki/designpattern-chain-of-responsibility/cor.png)
 
-![](/resource/wiki/designpattern-chain-of-responsibility/cor-uml.png)
-
-## Examples
-
-![](/resource/wiki/designpattern-chain-of-responsibility/concrete.png)
+책임 연쇄 패턴은 프레임워크에서 사용하는 필터, 인터셉터, 플러그인을 개발하기 위해 사용된다.
 
 ### RequestHandler
 
@@ -121,3 +119,10 @@ public class Client {
 
 - [Chain of Responsibility - Guru](https://refactoring.guru/design-patterns/chain-of-responsibility)
 - [GoF DesignPattern - Inflearn](https://www.inflearn.com/course/%EB%94%94%EC%9E%90%EC%9D%B8-%ED%8C%A8%ED%84%B4/dashboard)
+
+## References
+
+- Gangs of Four Design Patterns
+- 设计模式之美 / 王争
+- Head First Design Pattern / 에릭 프리먼, 엘리자베스 프리먼, 케이시 시에라, 버트 베이츠 저 / O'REILLY
+- Java 객체지향 디자인 패턴 / 정인상, 채흥석 저 / 한빛미디어

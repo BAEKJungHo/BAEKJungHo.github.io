@@ -4,5 +4,6 @@
  "http/http-famous-api",
  "http/http-headers",
  "http/http-localstorage",
- "infra"
+ "infra",
+ "network/network-binary-based-protocol"
 ]

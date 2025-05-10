@@ -2,6 +2,7 @@
  "architecture/architecture-retry-mechanism",
  "linux/linux-message-traffic-path",
  "linux/linux-ssh",
+ "network/network-binary-based-protocol",
  "network/network-blip",
  "network/network-dmz",
  "network/network-dns",

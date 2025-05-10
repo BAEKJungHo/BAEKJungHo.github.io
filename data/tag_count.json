@@ -40,6 +40,10 @@
   "size": 1
  },
  {
+  "name": "binary",
+  "size": 1
+ },
+ {
   "name": "bluetooth",
   "size": 1
  },
@@ -313,7 +317,7 @@
  },
  {
   "name": "http",
-  "size": 6
+  "size": 7
  },
  {
   "name": "idempotency",
@@ -497,7 +501,7 @@
  },
  {
   "name": "network",
-  "size": 20
+  "size": 21
  },
  {
   "name": "nodejs",
@@ -549,6 +553,10 @@
  },
  {
   "name": "product",
+  "size": 1
+ },
+ {
+  "name": "protocol",
   "size": 1
  },
  {

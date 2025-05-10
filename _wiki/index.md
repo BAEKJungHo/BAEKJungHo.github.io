@@ -719,6 +719,7 @@ regenerate: true
 * [[/network/network-dns]]
 * [[/network/network-blip]]
 * [[/network/network-throughput-latency]]
+* [[/network/network-binary-based-protocol]]
 
 ## Http
 

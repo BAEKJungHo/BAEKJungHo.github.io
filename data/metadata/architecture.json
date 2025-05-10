@@ -62,7 +62,7 @@
   "architecture/architecture-type-driven",
   "architecture/architecture-uuid",
   "architecture/architecture-vcard",
-  "architecture/architecture-zero-payload",
+  "architecture/architecture-zero-trust",
   "dod/dod-data-oriented"
  ]
 }

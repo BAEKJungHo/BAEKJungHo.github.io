@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-zero-trust",
  "crypto/crypto-password-encryption",
  "linux/linux-ssh",
  "network/network-security-attacks",

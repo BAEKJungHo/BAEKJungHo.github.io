@@ -1,6 +1,5 @@
 [
  "architecture/architecture-event-driven-system",
  "architecture/architecture-pub-sub",
- "architecture/architecture-zero-payload",
  "kafka/kafka-consumer-options-strategy"
 ]

@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-zero-trust",
  "sdv",
  "sdv/sdv-proximity-based-auth"
 ]

@@ -114,6 +114,7 @@ regenerate: true
 * [[/architecture/architecture-data-driven-workflows]]
 * [[/architecture/architecture-decision-making-principles]]
 * [[/architecture/architecture-type-driven]]
+* [[/architecture/architecture-zero-trust]]
 
 ## Kata
 

@@ -57,7 +57,7 @@
  "architecture/architecture-type-driven",
  "architecture/architecture-uuid",
  "architecture/architecture-vcard",
- "architecture/architecture-zero-payload",
+ "architecture/architecture-zero-trust",
  "caching/architecture-cache-strategy",
  "cleancode/cleancode-cleancode",
  "cleancode/cleancode-decoupling",

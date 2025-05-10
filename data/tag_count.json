@@ -221,7 +221,7 @@
  },
  {
   "name": "eventdriven",
-  "size": 4
+  "size": 3
  },
  {
   "name": "eventloop",
@@ -625,11 +625,11 @@
  },
  {
   "name": "sdv",
-  "size": 2
+  "size": 3
  },
  {
   "name": "security",
-  "size": 5
+  "size": 6
  },
  {
   "name": "shallowcopy",

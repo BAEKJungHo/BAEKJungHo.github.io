@@ -116,6 +116,10 @@ regenerate: true
 * [[/architecture/architecture-type-driven]]
 * [[/architecture/architecture-zero-trust]]
 
+## Principle
+
+* [[/principle/principle-postels-law]]
+
 ## Kata
 
 * [[/kata/kata-hotdog]]

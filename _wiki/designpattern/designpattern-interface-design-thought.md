@@ -4,7 +4,7 @@ title   : INTERFACE
 summary : 
 date    : 2025-01-01 19:28:32 +0900
 updated : 2025-01-01 20:15:24 +0900
-tag     : designpattern
+tag     : designpattern principle
 toc     : true
 comment : true
 public  : true
@@ -37,7 +37,31 @@ Swift 의 ___[protocol](https://bbiguduk.gitbook.io/swift/language-guide-1/proto
 
 Spring 에서는 ___[Portable Service Abstraction](https://klarciel.net/wiki/spring/spring-psa/)___ 를 통해 인터페이스 설계 사상을 반영한 것을 알 수 있다.
 
+___Interface___ 가 클수록 추상화는 약해진다. 실제로 인터페이스에 메서드가 늘어날 수록 재사용성은 떨어질 수 있다. 인터페이스를 간결하게 만들면 인터페이스를 조합해서 상위 수준의 추상화를 정의할 수 있다.
+
+```go
+type Reader interface {
+  Read(p []byte) (n int, err error)
+}
+
+type Writer interface {
+  Write(p []byte) (n int, err error)
+}
+
+type ReadWriter interface {
+  Reader
+  Writer
+}
+```
+
+Go 에서는 인터페이스를 기본적으로 클라이언트(사용자) 측에 둔다.
+
+이는 ___[Interface Segregation Principle](https://klarciel.net/wiki/oop/oop-solid/)___ 과도 잘 맞다.
+Provider 측에 구체적인 구현을 드러내고, 이를 사용할 지 추상화가 더 필요할 지는 사용자 측에서 직접 판단하는 게 좋다.
+단, 설계 방향성이 제공자 측에 두는게 더 나은 경우도 있다.
+
 ## References
 
 - Design Patterns: Elements of Reusable Object-Oriented Software / GoF
 - 设计模式之美 / 王争
+- Go 100 Mistakes and How to Avoid Them / Teiva Harsanyi / MANNING

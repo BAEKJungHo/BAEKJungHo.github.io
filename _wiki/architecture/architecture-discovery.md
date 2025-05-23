@@ -2,8 +2,8 @@
 layout  : wiki
 title   : DISCOVERY
 summary : 
-date    : 2023-05-18 18:02:32 +0900
-updated : 2023-05-18 19:12:24 +0900
+date    : 2025-05-18 18:02:32 +0900
+updated : 2025-05-18 19:12:24 +0900
 tag     : architecture cloudnative
 toc     : true
 comment : true

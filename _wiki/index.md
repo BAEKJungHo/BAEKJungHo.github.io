@@ -115,6 +115,7 @@ regenerate: true
 * [[/architecture/architecture-decision-making-principles]]
 * [[/architecture/architecture-type-driven]]
 * [[/architecture/architecture-zero-trust]]
+* [[/architecture/architecture-discovery]]
 
 ## Principle
 

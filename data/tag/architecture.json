@@ -27,6 +27,7 @@
  "architecture/architecture-dependency",
  "architecture/architecture-did",
  "architecture/architecture-discord-store-message",
+ "architecture/architecture-discovery",
  "architecture/architecture-distributed-pk",
  "architecture/architecture-domain-model",
  "architecture/architecture-duplexing",

@@ -3,6 +3,7 @@
  "architecture/architecture-aws-well",
  "architecture/architecture-cloud-native",
  "architecture/architecture-did",
+ "architecture/architecture-discovery",
  "architecture/architecture-nats",
  "architecture/architecture-reliability",
  "architecture/architecture-scalable",

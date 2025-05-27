@@ -116,6 +116,7 @@ regenerate: true
 * [[/architecture/architecture-type-driven]]
 * [[/architecture/architecture-zero-trust]]
 * [[/architecture/architecture-discovery]]
+* [[/architecture/architecture-stream]]
 
 ## Principle
 

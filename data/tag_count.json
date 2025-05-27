@@ -13,7 +13,7 @@
  },
  {
   "name": "architecture",
-  "size": 79
+  "size": 80
  },
  {
   "name": "argon",
@@ -698,6 +698,10 @@
  {
   "name": "stack",
   "size": 2
+ },
+ {
+  "name": "stream",
+  "size": 1
  },
  {
   "name": "subnet",

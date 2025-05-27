@@ -59,6 +59,7 @@
   "architecture/architecture-schema-registry",
   "architecture/architecture-software",
   "architecture/architecture-stratified-design",
+  "architecture/architecture-stream",
   "architecture/architecture-sync-messaging",
   "architecture/architecture-type-driven",
   "architecture/architecture-uuid",

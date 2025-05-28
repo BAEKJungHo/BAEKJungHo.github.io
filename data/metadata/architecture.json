@@ -36,6 +36,7 @@
   "architecture/architecture-distributed-pk",
   "architecture/architecture-domain-model",
   "architecture/architecture-duplexing",
+  "architecture/architecture-event",
   "architecture/architecture-event-driven-system",
   "architecture/architecture-eventdriven-statemachine",
   "architecture/architecture-functional",

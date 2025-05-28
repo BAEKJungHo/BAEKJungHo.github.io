@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Command Query Responsibility Segregation",
+ "summary": "",
+ "parent": "ddd",
+ "url": "/wiki/ddd/ddd-cqrs",
+ "updated": "2025-05-19 15:12:24 +0900",
+ "children": []
+}

@@ -626,6 +626,7 @@ regenerate: true
 * [[/ddd/ddd-character-architectures]]
 * [[/ddd/ddd-reduce-dependency]]
 * [[/ddd/ddd-modeling]]
+* [[/ddd/ddd-cqrs]]
 
 ## Data Oriented Design
 

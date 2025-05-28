@@ -7,6 +7,7 @@
  "ddd/ddd-anticorruption-layer",
  "ddd/ddd-bounded-context",
  "ddd/ddd-claim",
+ "ddd/ddd-cqrs",
  "ddd/ddd-essence",
  "ddd/ddd-event",
  "ddd/ddd-factory",

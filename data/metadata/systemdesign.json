@@ -8,6 +8,7 @@
  "children": [
   "systemdesign/systemdesign-back-of-the-envelope-estimation",
   "systemdesign/systemdesign-chatting-application",
+  "systemdesign/systemdesign-coupon",
   "systemdesign/systemdesign-distributed-messaging-queue",
   "systemdesign/systemdesign-software-architecture"
  ]

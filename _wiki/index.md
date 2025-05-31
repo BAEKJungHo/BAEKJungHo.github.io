@@ -48,6 +48,7 @@ regenerate: true
 * [[/systemdesign/systemdesign-back-of-the-envelope-estimation]
 * [[/systemdesign/systemdesign-software-architecture]]
 * [[/systemdesign/systemdesign-distributed-messaging-queue]]
+* [[/systemdesign/systemdesign-software-coupon]]
 
 ## API
 

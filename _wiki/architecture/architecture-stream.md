@@ -16,39 +16,104 @@ latex   : true
 
 ## STREAM
 
-일반적으로 ___[stream](https://en.wikipedia.org/wiki/Stream_(computing))___ 은 시간 흐름에 따라 점진적으로 생산된 데이터를 일컫는다.
-사용자는 데이터를 어제도 물론 오늘도 생산하며 서비스가 존재하는 한 계속해서 생산된다. 따라서 데이터셋은 어떤 의미로든 절대 "완료" 되지 않는다. 따라서 ___스트림 처리(stream process)___ 라고 하면 무한 데이터 처리를 의미한다.
-스트림 처리는 매 초(분)이 끝나는 시점에 해당 분량의 데이터를 처리하거나(e.g 광고 클릭 이벤트 집계 시스템), 고정된 시간 조각이라는 개념을 버리고 이벤트가 발생할 때마다 처리할 수 있다.
+A ___[stream](https://en.wikipedia.org/wiki/Stream_(computing))___ represents data that is progressively produced over time. Unlike traditional batch processing where you work with finite datasets, streams deal with continuous, unbounded data flows that never truly "complete."
 
-광고 클릭 이벤트 집계 시스템을 구축하는 경우에는 각 분산된 서버에 존재하는 로그 파일을 가지고 집계를 하기도 한다. 즉, 입출력 파일이 작업 대상이고 입력이 파일(바이트 연속)일 때 대개 첫 번째 단계로 파일을 분석해 레코드의 연속으로 바꾸는 처리를 한다.
-레코드는 보통 스트림 처리에서 ___[EVENT](https://klarciel.net/wiki/architecture/architecture-event/)___ 라고도 한다.
+All streams across different domains share the fundamental essence of ___"continuous data flow with real-time processing"!___ Streams transform how we think about data: from "having data" to ___"flowing data"___ - enabling real-time, scalable, and resilient systems.
 
-스트림 시스템에서는 대개 토픽(topic), 주제(subject) 이나 스트림(stream) 으로 관련 이벤트를 묶고, 이벤트를 consumer 에게 알려주는 방법으로 ___Messaging System___ 을 사용한다.
+Users generate data yesterday, today, and will continue generating data as long as the service exists. This fundamental characteristic means that ___stream processing___ is essentially about handling infinite data processing scenarios.
 
-___[Publish/Subscribe System](https://klarciel.net/wiki/architecture/architecture-pub-sub/)___ 을 구별하는데 도움이 되는 질문은 아래 2가지 이다.
-- __생산자가 소비자가 메시지를 처리하는 속도보다 빠르게 메시지를 전송하면 어떻게 될까?__
-  - a. 메시지를 버리기
-  - b. 큐에 버퍼링(backpressure, flow control, Unix Pipe 와 TCP 는 이 방식을 사용)
-    - 작은 고정 크기 버퍼를 두고 버퍼가 가득 차면 수신자가 버퍼에서 데이터를 가져갈 때까지 전송자를 막음
-  - c. 생산자가 메시지를 더 보내지 못하게 막음
-  - 메시지가 큐에 버퍼링 될 때 큐 크기가 증가함에 따라 어떤 현상이 발생하는지 이해하는 것이 중요함
-    - 큐 크기가 메모리 크기보다 더 커지면 시스템이 중단 되는가?
-    - 메시지를 디스크에 쓰는가?
-    - 디스크에 쓴다면 디스크 접근이 메시징 시스템의 성능에 어떤 영향을 주는가?
-- __노드가 죽거나 일시적으로 오프라인 된다면 어떻게 될까? 메시지가 유실이 될까?__
-  - 메시지 유실을 허용할 것인지 ? (허용하지 않는다면 Persistency 가 필요함)
-  - 메시지 유실 허용 여부는 시스템에 따라 다름
+Stream processing can operate in two main modes:
+- **Time-windowed processing**: Processing data at fixed intervals (e.g., aggregating ad click events every minute)
+- **Event-driven processing**: Processing data immediately as events occur, without fixed time boundaries
 
-모든 데이터 처리 시스템에는 두 가지 시간 영역이 있다.
+> All streams across different domains share the fundamental essence of ___"continuous data flow with real-time processing"!___ Streams transform how we think about data: from "having data" to ___"flowing data"___ - enabling real-time, scalable, and resilient systems.
 
-- 이벤트 시간(event time): 이벤트가 실제 발생한 시간
-- 처리 시간(processing time): 이벤트가 처리 시스템에서 관측된 시간
+All data processing systems operate with two distinct time concepts:
+- **Event Time**: When the event actually occurred in the real world
+- **Processing Time**: When the event was observed and processed by the system
 
-따라서 보통 데이터 팀에서는 Client, Server 들이 이벤트를 발신하고 수신한 시각 등을 요구하기도 한다.
+> Data teams often require precise timestamps for when clients and servers send and receive events to maintain data integrity and enable accurate analysis.
 
-### Various Contexts
+## Event Organization and Messaging Systems in Stream Processing
 
-- [Stream in HTTP2](https://klarciel.net/wiki/network/network-binary-based-protocol/)
+When building systems like ad click event aggregation, you often work with log files distributed across multiple servers. The typical processing pipeline involves:
+
+__File-Based Stream Processing__:
+- Input Source: Log files scattered across distributed servers
+- File Format: Input consists of files (sequence of bytes) from various sources
+- Parsing Stage: The first step typically involves analyzing files and converting them into a sequence of records
+- Record Processing: Each record becomes a unit of processing in the stream
+
+In stream processing terminology, these records are commonly referred to as ___[EVENT](https://klarciel.net/wiki/architecture/architecture-event/)___.
+
+__Stream systems organize related events using__:
+- Topics: Logical groupings of similar events
+- Subjects: Alternative term for topics in some systems
+- Streams: The actual data flow channels
+
+To notify consumers about new events, stream systems rely on ___Messaging Systems___ that implement various delivery patterns.
+
+### Key Design Questions for Pub/Sub Systems
+
+When designing ___[Publish/Subscribe System](https://klarciel.net/wiki/architecture/architecture-pub-sub/)___, two critical questions help determine the appropriate architecture:
+
+### Handling Producer-Consumer Speed Mismatch
+
+What happens when producers send messages faster than consumers can process them?
+
+- __Option A: Drop Messages__
+   - enable to data loss (message throwing)
+   - Suitable for non-critical, high-volume scenarios
+- __Option B: Buffer in Queue (Backpressure/Flow Control)__
+   - Strategy used by Unix Pipes and TCP
+   - Maintains a small, fixed-size buffer
+   - Blocks sender when buffer is full until receiver consumes data
+- __Option C: Block Producer__
+  - Prevents the producer from sending additional messages
+  - Avoids message loss but can create system bottlenecks
+
+__Critical Buffer Management Considerations__:
+- When messages are buffered in queues, it's essential to understand the implications of growing queue sizes:
+  - Memory Management:
+    - What happens when queue size exceeds available memory?
+    - Does the system crash or gracefully handle the overflow?
+  - Disk Persistence:
+    - Does the system write messages to disk when memory is exhausted?
+    - If disk storage is used, how does disk I/O impact messaging system performance?
+  - Performance Impact:
+    - How does increasing queue size affect overall system throughput?
+    - What are the latency implications of different buffering strategies?
+
+### Fault Tolerance and Message Durability
+
+What happens when nodes fail or go offline temporarily? Will messages be lost?
+
+__Message Loss Tolerance Assessment__:
+- Acceptable Loss: Can the system afford to lose some messages?
+- Zero Loss Requirement: If message loss is unacceptable, persistence mechanisms are mandatory
+
+__System-Specific Trade-offs__:
+- Different systems have varying tolerance levels based on business requirements
+- Financial systems typically require zero message loss
+- Analytics systems might tolerate some data loss for better performance
+- Real-time gaming systems might prioritize low latency over perfect delivery
+
+__Persistence Strategies__:
+- In-memory only: Fast but vulnerable to data loss
+- Write-ahead logging: Balances performance and durability
+- Replicated storage: Provides high availability and fault tolerance
+- Hybrid approaches: Combine multiple strategies based on message criticality
+
+## Stream Applications Across Domains
+
+Whether it's database change streams, network packet flows, multimedia streaming, IoT sensor data, or financial market feeds - they all embody the same fundamental concept: ___processing continuous sequences of data elements as they arrive, enabling real-time insights and immediate responses___. This essence transcends specific technologies and domains, making stream processing a universal paradigm in modern computing systems.
+
+Streams are fundamental to many modern systems:
+- **Real-time Analytics**: Processing user behavior data as it happens
+- **IoT Data Processing**: Handling sensor data from connected devices
+- **Financial Trading**: Processing market data and executing trades
+- **Social Media**: Managing user interactions and content feeds
+- **Network Protocols**: [Stream in HTTP2](https://klarciel.net/wiki/network/network-binary-based-protocol/)
 
 ## References
 

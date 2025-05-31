@@ -57,7 +57,7 @@ To notify consumers about new events, stream systems rely on ___Messaging System
 
 When designing ___[Publish/Subscribe System](https://klarciel.net/wiki/architecture/architecture-pub-sub/)___, two critical questions help determine the appropriate architecture:
 
-### Handling Producer-Consumer Speed Mismatch
+#### Handling Producer-Consumer Speed Mismatch
 
 What happens when producers send messages faster than consumers can process them?
 
@@ -84,7 +84,7 @@ __Critical Buffer Management Considerations__:
     - How does increasing queue size affect overall system throughput?
     - What are the latency implications of different buffering strategies?
 
-### Fault Tolerance and Message Durability
+#### Fault Tolerance and Message Durability
 
 What happens when nodes fail or go offline temporarily? Will messages be lost?
 

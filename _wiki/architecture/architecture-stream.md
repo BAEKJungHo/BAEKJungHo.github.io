@@ -18,7 +18,7 @@ latex   : true
 
 A ___[stream](https://en.wikipedia.org/wiki/Stream_(computing))___ represents data that is progressively produced over time. Unlike traditional batch processing where you work with finite datasets, streams deal with continuous, unbounded data flows that never truly "complete."
 
-All streams across different domains share the fundamental essence of ___"continuous data flow with real-time processing"!___ Streams transform how we think about data: from "having data" to ___"flowing data"___ - enabling real-time, scalable, and resilient systems.
+All streams across different domains share the fundamental essence of <mark><em><strong>"continuous data flow with real-time processing"!</strong></em></mark> Streams transform how we think about data: from "having data" to <mark><em><strong>"flowing data"</strong></em></mark> - enabling real-time, scalable, and resilient systems.
 
 Users generate data yesterday, today, and will continue generating data as long as the service exists. This fundamental characteristic means that ___stream processing___ is essentially about handling infinite data processing scenarios.
 
@@ -114,6 +114,10 @@ Streams are fundamental to many modern systems:
 - **Financial Trading**: Processing market data and executing trades
 - **Social Media**: Managing user interactions and content feeds
 - **Network Protocols**: [Stream in HTTP2](https://klarciel.net/wiki/network/network-binary-based-protocol/)
+
+### Java Stream
+
+Java Stream 은 기본 스트림의 핵심 철학을 차용했지만, 유한한 컬렉션 처리에 특화된 API 이다.
 
 ## References
 

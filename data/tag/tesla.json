@@ -1,4 +1,5 @@
 [
  "realworld/realworld-vehicle-controls",
- "sdv/sdv-proximity-based-auth"
+ "sdv/sdv-proximity-based-auth",
+ "security/security-signed-certificates"
 ]

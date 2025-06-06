@@ -50,6 +50,10 @@ regenerate: true
 * [[/systemdesign/systemdesign-distributed-messaging-queue]]
 * [[/systemdesign/systemdesign-software-coupon]]
 
+## Security
+
+* [[/security/security-signed-certificates]]
+
 ## API
 
 * [[/api/api-too-many-requests]]

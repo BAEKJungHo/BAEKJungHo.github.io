@@ -19,5 +19,6 @@
  "network/network-tcp-performance",
  "network/network-telnet",
  "network/network-throughput-latency",
+ "security/security-signed-certificates",
  "troubleshooting/troubleshooting-webclientrequestexception"
 ]

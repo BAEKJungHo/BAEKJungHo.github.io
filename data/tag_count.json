@@ -133,7 +133,7 @@
  },
  {
   "name": "crypto",
-  "size": 13
+  "size": 14
  },
  {
   "name": "cs",
@@ -505,7 +505,7 @@
  },
  {
   "name": "network",
-  "size": 21
+  "size": 22
  },
  {
   "name": "nodejs",
@@ -645,7 +645,7 @@
  },
  {
   "name": "security",
-  "size": 6
+  "size": 8
  },
  {
   "name": "shallowcopy",
@@ -745,7 +745,7 @@
  },
  {
   "name": "tesla",
-  "size": 2
+  "size": 3
  },
  {
   "name": "test",

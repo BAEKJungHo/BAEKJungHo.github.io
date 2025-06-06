@@ -3,6 +3,8 @@
  "crypto/crypto-password-encryption",
  "linux/linux-ssh",
  "network/network-security-attacks",
+ "security",
+ "security/security-signed-certificates",
  "spring/spring-principal",
  "spring/spring-security"
 ]

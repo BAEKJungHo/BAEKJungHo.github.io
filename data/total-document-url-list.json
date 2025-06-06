@@ -563,6 +563,8 @@
  "/wiki/refactoring/refactoring-prerequisite",
  "/wiki/sdv",
  "/wiki/sdv/sdv-proximity-based-auth",
+ "/wiki/security",
+ "/wiki/security/security-signed-certificates",
  "/wiki/spring",
  "/wiki/spring/spring-aop",
  "/wiki/spring/spring-async",

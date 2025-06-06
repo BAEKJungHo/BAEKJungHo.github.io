@@ -11,5 +11,6 @@
  "crypto/crypto-kerckhoffs-principle",
  "crypto/crypto-password-encryption",
  "linux/linux-ssh",
- "sdv/sdv-proximity-based-auth"
+ "sdv/sdv-proximity-based-auth",
+ "security/security-signed-certificates"
 ]

@@ -19,7 +19,7 @@ latex   : true
 현실 세계에서 ___서명(署名, signature)___ 이란 계약서나 문서 하단에 직접 자신의 이름을 쓰는 행위를 의미한다.
 서명은 위조가 어렵도록 본인만의 고유한 필체를 사용하거나 지장을 사용한다. 이는 본인이 확인했음을 증명하며, 책임을 진다는 의미가 있다.
 
-___[Digital Signature](https://en.wikipedia.org/wiki/Digital_signature)___ 는 금융 거래 등 보안이 중요한 시스템에서 메시지의 ___진위 여부(Authenticity)___ 와 ___유효성(Integrity)___ 을 검증하는 데 사용된다.
+___[Digital Signature](https://klarciel.net/wiki/auth/auth-certificate-authority/)___ 는 금융 거래 등 보안이 중요한 시스템에서 메시지의 ___진위 여부(Authenticity)___ 와 ___유효성(Integrity)___ 을 검증하는 데 사용된다.
 
 ![](/resource/wiki/security-signed-certificates/digital-signature.png)
 

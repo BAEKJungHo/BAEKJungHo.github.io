@@ -44,11 +44,10 @@ __Remote Control Command Requirements__:
 
 > <mark><em><strong>Tesla uses signed certificates for everything</strong></em></mark>
 ![](/resource/wiki/security-signed-certificates/signed-command.png)
-*<small>Sign the command to control the Tesla vehicle.</small>*
 
 __Process of forming a secure channel__:
 1. [Generating a server TLS key and certificate](https://github.com/teslamotors/vehicle-command)
-2. 서버는 위에서 생성한 개인키에서 공유키를 파생시키고 해당 공유키를 테슬라로 넘겨서 테슬라로 부터 공유키를 전달받아서 `privateKey.Exchange(vehicleInfo.publicKey)` 를 통해서 공유 비밀을 생성한다. 서버의 개인키와 Tesla 의 공개키를 사용해 shared secret 을 계산하고, Tesla 도 자신의 개인키와 TVC의 공개키로 동일한 shared secret을 계산한다.
+2. 서버는 위에서 생성한 개인키에서 공유키를 파생시키고 해당 공유키를 테슬라로 넘겨서 테슬라로 부터 공유키를 전달받아서 `privateKey.Exchange(vehicleInfo.publicKey)` 를 통해서 공유 비밀(shared secret)을 생성한다. 서버의 개인키와 Tesla 의 공개키를 사용해 shared secret 을 계산하고, Tesla 도 자신의 개인키와 서버의 공개키로 동일한 공유 비밀을 계산한다.
    즉, 양쪽만 알고 있는 대칭 키(세션 키) 확보한다. 공유 비밀을 생성할 때 사용되는 알고리즘은 ___[ECDH(Elliptic Curve Diffie-Hellman)](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman)___ 이다.
 3. 공유 비밀을 SHA-1 으로 해시하고, 특정 길이만큼 잘라서 해당 값을 세션 키로 사용한다.
 4. 그리고 세션 키로 HMAC 을 생성해서 HMAC 태그값을 sub_sigData 필드에 삽입하여 RoutableMessage 라는 protobuf 를 base64 로 인코딩하여 TESLA Fleet API 의 ___[signed_command](https://developer.tesla.com/docs/fleet-api/endpoints/vehicle-endpoints#signed-command)___ API 를 호출한다.
@@ -80,15 +79,15 @@ message RoutableMessage {
 }
 ```
 
-이러한 테슬라의 통신 매커니즘은 단순한 "Digital Signature" 를 넘어서, 양방향 인증 + 세션 키를 통한 메시지 무결성 검증 + 메시지 리플레이 방지를 통합한 보안 채널을 형성한다. (세션마다 키를 바꾸면 리플레이 공격 방지가 가능하다.)
+이러한 테슬라의 통신 매커니즘은 단순한 "Digital Signature" 를 넘어서, 양방향 인증 + 세션 키를 통한 메시지 무결성 검증 + 메시지 리플레이 방지를 통합한 보안 채널을 형성한다. 세션마다 키를 바꾸면 리플레이 공격 방지가 가능하다.
 
 간단히 말하면, 공개키 기반 서명은 ‘누가 보냈는가’를 검증하는 용도이고, ___[공유 비밀(shared secrets)](https://en.wikipedia.org/wiki/Shared_secret)___ + ___[HMAC](https://klarciel.net/wiki/auth/auth-hmac/)___ 은 ‘메시지가 조작되지 않았고, 재사용되지 않았는가’를 확인하기 위한 세션 보안이다.
 
 일반적인 Digital Signature 는 RSA 기반이며, RSA 기반 전통 서명은 무겁고 느려서 차량에는 부담이 된다. ECDH 는 공개키 기반이지만 빠르고 가볍기 때문에 공유 비밀(세션 키 - 기밀성 & 일회성 키)을 생성할 때 쓰인다.
 그리고 HMAC 을 이용하여 공유 비밀 기반 인증 및 무결성 보장한다.
 
-- ECDH 는 "우리 둘만 아는 비밀"을 만들고,
-- HMAC 은 그 비밀을 활용해 "내가 보낸 메시지임"을 증명한다.
+- ECDH 는 "우리 둘만 아는 비밀" 을 만들고,
+- HMAC 은 그 비밀을 활용해 "내가 보낸 메시지임" 을 증명한다.
 
 ### Certificate Chains Explained
 

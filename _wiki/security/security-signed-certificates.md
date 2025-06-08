@@ -19,11 +19,13 @@ latex   : true
 현실 세계에서 ___서명(署名, signature)___ 이란 계약서나 문서 하단에 직접 자신의 이름을 쓰는 행위를 의미한다.
 서명은 위조가 어렵도록 본인만의 고유한 필체를 사용하거나 지장을 사용한다. 이는 본인이 확인했음을 증명하며, 책임을 진다는 의미가 있다.
 
+![](/resource/wiki/security-signed-certificates/digital-signature-page.png)
+
 ___[Digital Signature](https://klarciel.net/wiki/auth/auth-certificate-authority/)___ 는 금융 거래 등 보안이 중요한 시스템에서 메시지의 ___진위 여부(Authenticity)___ 와 ___유효성(Integrity)___ 을 검증하는 데 사용된다.
 
 ![](/resource/wiki/security-signed-certificates/digital-signature.png)
 
-위와 그림이 전자 서명에서 사용되는 방식이다. 개인키를 비공개로 아주 잘 보관해야 한다. 공개키(public key)는 서명된 메시지(signed message)의 진위 여부를 검증하는데 사용된다.
+위와 그림이 전자 서명에서 사용되는 방식이다. 개인키(private key)를 비공개로 아주 잘 보관해야 한다. 공개키(public key)는 서명된 메시지(signed message)의 진위 여부를 검증하는데 사용된다.
 위 그림과 같은 암호화 방식을 ___[Public-key cryptography(asymmetric cryptography)](https://en.wikipedia.org/wiki/Public-key_cryptography)___ 라고 하는데, ___[Symmetric-key algorithm](https://en.wikipedia.org/wiki/Symmetric-key_algorithm)___ 에 비해서 속도가 느리다.
 또한 재생 공격을 방지할 수 없다는 단점이 있다.
 

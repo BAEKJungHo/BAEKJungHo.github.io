@@ -49,8 +49,48 @@ __Examples__:
 
 Trie 에서는 모든 비교에 상수 시간이 필요하지만, 길이가 m 인 문자열을 조회하려면 m번의 비교가 필요하다. 기수 트리(radix tree)는 이러한 작업을 더 적은 비교로 수행할 수 있으며, 훨씬 적은 노드가 필요하다.
 
-대표적으로 Go 의 고성능 라우터인 ___[HttpRouter](https://github.com/julienschmidt/httprouter)___ 에서 이 
+대표적으로 Go 의 고성능 라우터인 ___[HttpRouter](https://github.com/julienschmidt/httprouter)___ 에서 Radix Tree 를 사용한다.
+URL 경로는 계층 구조를 가지고 있으며 제한된 문자 집합(바이트 값)만 사용하기 때문에 공통 접두사(common prefix)가 많을 가능성이 높다. 이를 통해 라우팅 문제를 훨씬 더 작은 단위로 쉽게 줄일 수 있다.
 
-## Links
+Here is a short example what the routing tree for the GET request method could look like:
 
-- [NATS 내부에서 살펴보는 메시지 매칭 구현](https://on.com2us.com/tech/nats_sublist/)
+```
+Priority   Path             Handle
+9          \                *<1>
+3          ├s               nil
+2          |├earch\         *<2>
+1          |└upport\        *<3>
+2          ├blog\           *<4>
+1          |    └:post      nil
+1          |         └\     *<5>
+2          ├about-us\       *<6>
+1          |        └team\  *<7>
+1          └contact\        *<8>
+```
+
+`*<number>` 는 핸들러 함수(포인터)의 메모리 주소를 나타낸다.
+
+Priority 값은 주로 라우팅 최적화에서 사용된다. 예를 들어 httprouter 에서는 퍼포먼스를 높이기 위해서 자식 노드 탐색 시 우선순위를 고려해 가장 가능성이 높은 경로부터 먼저 탐색한다.
+즉, 많은 경로를 품고 있는(자식이 많은) 노드부터 먼저 살펴본다. 왜냐하면 그럴수록 우리가 원하는 경로를 찾을 확률이 높기 때문이다.
+많은 경로를 담당하는 노드를 먼저 살펴보는 이유는, "한 번의 탐색으로 많은 경로를 커버할 수 있어서" 이다. 이것은 비용 대비 효율이 좋은 탐색 방식이라서, Priority 값을 기반으로 왼쪽부터 오른쪽으로 탐색한다.
+
+- Root /는 9 → 서브트리에 총 9개의 경로가 있음
+- s → search/ + support/ 두 개 포함 → priority 3
+- blog/ 아래엔 3개의 노드 → priority 2
+- leaf 노드는 priority 1
+
+__/blog/:post/ 경로의 경우__:
+
+```
+├blog\           *<4>
+└:post           nil
+ └\             *<5>
+```
+
+- blog\ → /blog/로 끝나는 경로 → 핸들러 4
+- :post → path parameter (예: /blog/golang에서 post=golang)
+- \ → path 가 슬래시로 종료될 때만 매칭됨 → 핸들러 5
+- e.g
+  - GET /blog/ → 핸들러 4
+  - GET /blog/intro/ → 핸들러 5
+  - GET /blog/intro → 매칭 안됨 (핸들러 없음, nil)

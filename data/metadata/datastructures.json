@@ -8,6 +8,7 @@
  "children": [
   "datastructures/datastructures-recursion",
   "datastructures/datastructures-stack-heap",
+  "datastructures/datastructures-trie",
   "datastructures/datastructures-visualizations"
  ]
 }

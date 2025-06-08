@@ -4,11 +4,11 @@ title   : DIGITAL TREE
 summary : 
 date    : 2025-06-08 11:28:32 +0900
 updated : 2025-06-08 12:15:24 +0900
-tag     : algorithm datastructures trie
+tag     : datastructures trie
 toc     : true
 comment : true
 public  : true
-parent  : [[/algorithm]]
+parent  : [[/datastructures]]
 latex   : true
 ---
 * TOC
@@ -42,6 +42,14 @@ __Examples__:
 |API 라우팅|	path 기반 탐색 최적화|
 |Pub/Sub 토픽 매칭|	wildcard 포함 효율적 매칭|
 |키워드 필터링|	불쾌어 등 필터링 트리 구성|
+
+## Radix Tree
+
+기존 Trie 는 노드가 문자 하나만 가지면 낭비가 된다. 따라서, 공통으로 사용되는 공통 접두사(common prefix) 를 압축(compact) 하여 사용하는 것을 ___[compact prefix tree (or Radix tree, PATRICIA tree)](https://en.wikipedia.org/wiki/Radix_tree)___ 라고 한다.
+
+Trie 에서는 모든 비교에 상수 시간이 필요하지만, 길이가 m 인 문자열을 조회하려면 m번의 비교가 필요하다. 기수 트리(radix tree)는 이러한 작업을 더 적은 비교로 수행할 수 있으며, 훨씬 적은 노드가 필요하다.
+
+대표적으로 Go 의 고성능 라우터인 ___[HttpRouter](https://github.com/julienschmidt/httprouter)___ 에서 이 
 
 ## Links
 

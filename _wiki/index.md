@@ -753,13 +753,13 @@ regenerate: true
 * [[/algorithm/algorithm-hash]]
 * [[/algorithm/algorithm-bloom-filter]]
 * [[/algorithm/algorithm-compare-and-swap]]
-* [[/algorithm/algorithm-trie]]
 
 ## DataStructures
 
 * [[/datastructures/datastructures-recursion]]
 * [[/datastructures/datastructures-stack-heap]]
 * [[/datastructures/datastructures-visualizations]]
+* [[/datastructures/datastructures-trie]]
 
 ## Languages
 

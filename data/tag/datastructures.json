@@ -1,10 +1,10 @@
 [
  "altorithm/algorithm-bloom-filter",
  "altorithm/algorithm-hash",
- "altorithm/algorithm-trie",
  "datastructures",
  "datastructures/datastructures-recursion",
  "datastructures/datastructures-stack-heap",
+ "datastructures/datastructures-trie",
  "datastructures/datastructures-visualizations",
  "functional/functional-copy-on-write"
 ]

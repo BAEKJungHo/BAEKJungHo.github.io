@@ -10,5 +10,6 @@
  "altorithm/algorithm-run-length-encoding",
  "altorithm/algorithm-time-complexity",
  "altorithm/algorithm-token-bucket",
+ "altorithm/algorithm-trie",
  "reactive/reactive-replenishing-optimization"
 ]

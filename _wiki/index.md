@@ -753,6 +753,7 @@ regenerate: true
 * [[/algorithm/algorithm-hash]]
 * [[/algorithm/algorithm-bloom-filter]]
 * [[/algorithm/algorithm-compare-and-swap]]
+* [[/algorithm/algorithm-trie]]
 
 ## DataStructures
 

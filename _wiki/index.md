@@ -507,6 +507,7 @@ regenerate: true
 * [[/kafka/kafka-consumer-options-strategy]]
 * [[/kafka/kafak-filesystem]]
 * [[/kafka/kafka-message-inversion]]
+* [[/kafka/kafak-exactly-once]]
 
 ## Redis
 

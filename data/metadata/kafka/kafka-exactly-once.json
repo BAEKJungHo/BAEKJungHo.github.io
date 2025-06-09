@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Exactly-once processing strategy in an Event-Driven Architectures",
+ "summary": "Producer Delivery, Message Delivery Guarantees",
+ "parent": "kafka",
+ "url": "/wiki/kafka/kafka-exactly-once",
+ "updated": "2025-06-09 12:15:24 +0900",
+ "children": []
+}

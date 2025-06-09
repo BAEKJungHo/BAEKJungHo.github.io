@@ -7,6 +7,7 @@
  "kafka/kafak-filesystem",
  "kafka/kafak-headers",
  "kafka/kafka-consumer-options-strategy",
+ "kafka/kafka-exactly-once",
  "kafka/kafka-message-inversion",
  "reactive/reactive-pub-sub",
  "systemdesign/systemdesign-distributed-messaging-queue"

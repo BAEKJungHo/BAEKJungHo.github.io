@@ -66,6 +66,7 @@
  "cleancode/cleancode-decoupling",
  "ddd/ddd-reduce-dependency",
  "dod/dod-data-oriented",
+ "kafka/kafka-exactly-once",
  "kotlin/kotlin-structured-concurrency",
  "kubernetes/kubernetes-service-mesh",
  "logging/logging-nonblocking-pipeline",

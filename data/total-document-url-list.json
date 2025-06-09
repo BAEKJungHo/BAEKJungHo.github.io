@@ -328,6 +328,7 @@
  "/wiki/kafka/kafak-filesystem",
  "/wiki/kafka/kafak-headers",
  "/wiki/kafka/kafka-consumer-options-strategy",
+ "/wiki/kafka/kafka-exactly-once",
  "/wiki/kafka/kafka-message-inversion",
  "/wiki/kata",
  "/wiki/kata/kata-hotdog",

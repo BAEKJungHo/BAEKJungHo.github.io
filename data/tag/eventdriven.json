@@ -1,5 +1,6 @@
 [
  "architecture/architecture-event-driven-system",
  "architecture/architecture-pub-sub",
- "kafka/kafka-consumer-options-strategy"
+ "kafka/kafka-consumer-options-strategy",
+ "kafka/kafka-exactly-once"
 ]

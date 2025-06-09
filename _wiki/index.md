@@ -22,6 +22,7 @@ regenerate: true
 * [[/magazine/magazine-dissection-status-management]]
 * [[/magazine/magazine-critical-thinking]]
 * [[/magazine/magazine-abstraction-to-essence]]
+* [[/magazine/magazine-nature]]
 
 ## Mobility
 

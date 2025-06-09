@@ -67,7 +67,7 @@ __Must-Know Topics__:
 - ___[Operating systems](https://klarciel.net/wiki/operatingsystem/)___: processes, threads, memory management
 - ___[Networking](https://klarciel.net/tag/#network)___: protocols (TCP/IP, HTTP), latency, bandwidth
 - ___[Databases](https://klarciel.net/wiki/database/)___: indexing, transactions, consistency models
-- ___[Algorithms](https://klarciel.net/wiki/algorithm/) & ___[data structures](https://klarciel.net/wiki/datastructures/)___
+- ___[Algorithms](https://klarciel.net/wiki/algorithm/)___ & ___[Data Structures](https://klarciel.net/wiki/datastructures/)___
 - ___[Distributed Systems](https://klarciel.net/tag/#distributed)___: CAP theorem, consensus, replication
 
 __References__:

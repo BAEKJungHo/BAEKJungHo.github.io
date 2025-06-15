@@ -39,6 +39,7 @@
   "spring/spring-logging",
   "spring/spring-mdc",
   "spring/spring-nplusone",
+  "spring/spring-oop",
   "spring/spring-openapi",
   "spring/spring-openapi-impl",
   "spring/spring-parameterized-typeref",

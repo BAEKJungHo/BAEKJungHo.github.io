@@ -46,6 +46,7 @@
  "spring/spring-mdc",
  "spring/spring-netty",
  "spring/spring-nplusone",
+ "spring/spring-oop",
  "spring/spring-openapi",
  "spring/spring-openapi-impl",
  "spring/spring-parameterized-typeref",

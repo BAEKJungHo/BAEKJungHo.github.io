@@ -142,6 +142,7 @@
  "/wiki/database/database-serializable-tx",
  "/wiki/database/database-surrogatekey",
  "/wiki/database/database-tx",
+ "/wiki/database/database-vector-embedding",
  "/wiki/database/hikaricp-concepts",
  "/wiki/database/mysql-index",
  "/wiki/database/query-index",

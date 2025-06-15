@@ -684,6 +684,7 @@ regenerate: true
 * [[/database/database-data-anonymization]
 * [[/database/database-natural-keys]]
 * [[/database/database-tx]]
+* [[/database/database-vector-embedding]]
 
 ## Clean Code
 

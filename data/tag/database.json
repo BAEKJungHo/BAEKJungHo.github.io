@@ -19,6 +19,7 @@
  "database/database-serializable-tx",
  "database/database-surrogatekey",
  "database/database-tx",
+ "database/database-vector-embedding",
  "database/hikaricp-concepts",
  "database/mysql-index",
  "database/query-index",

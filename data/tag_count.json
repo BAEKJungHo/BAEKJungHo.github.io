@@ -145,7 +145,7 @@
  },
  {
   "name": "database",
-  "size": 29
+  "size": 30
  },
  {
   "name": "datamart",
@@ -789,6 +789,10 @@
  },
  {
   "name": "uuid",
+  "size": 1
+ },
+ {
+  "name": "vector",
   "size": 1
  },
  {

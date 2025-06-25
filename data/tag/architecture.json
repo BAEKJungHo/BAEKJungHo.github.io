@@ -60,6 +60,7 @@
  "architecture/architecture-type-driven",
  "architecture/architecture-uuid",
  "architecture/architecture-vcard",
+ "architecture/architecture-window",
  "architecture/architecture-zero-trust",
  "caching/architecture-cache-strategy",
  "cleancode/cleancode-cleancode",

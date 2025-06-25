@@ -124,6 +124,7 @@ regenerate: true
 * [[/architecture/architecture-discovery]]
 * [[/architecture/architecture-event]]
 * [[/architecture/architecture-stream]]
+* [[/architecture/architecture-window]]
 
 ## Principle
 

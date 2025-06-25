@@ -6,6 +6,7 @@
  "url": "/wiki/architecture",
  "updated": "2022-12-21 20:55:09 +0900",
  "children": [
+  "altorithm/algorithm-randomized-expotential-backoff",
   "architecture/architecture-abstraction",
   "architecture/architecture-amqp",
   "architecture/architecture-analysis-estimation",

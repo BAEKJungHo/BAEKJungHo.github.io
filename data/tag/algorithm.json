@@ -7,6 +7,7 @@
  "altorithm/algorithm-hash",
  "altorithm/algorithm-huffman-coding",
  "altorithm/algorithm-parametric-search",
+ "altorithm/algorithm-randomized-expotential-backoff",
  "altorithm/algorithm-run-length-encoding",
  "altorithm/algorithm-time-complexity",
  "altorithm/algorithm-token-bucket",

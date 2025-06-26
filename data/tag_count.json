@@ -92,6 +92,10 @@
   "size": 12
  },
  {
+  "name": "cloud",
+  "size": 1
+ },
+ {
   "name": "cloudnative",
   "size": 13
  },
@@ -185,7 +189,7 @@
  },
  {
   "name": "designpattern",
-  "size": 38
+  "size": 39
  },
  {
   "name": "devops",
@@ -645,7 +649,7 @@
  },
  {
   "name": "sdv",
-  "size": 3
+  "size": 4
  },
  {
   "name": "security",
@@ -749,7 +753,7 @@
  },
  {
   "name": "tesla",
-  "size": 3
+  "size": 4
  },
  {
   "name": "test",

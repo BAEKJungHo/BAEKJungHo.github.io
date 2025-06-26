@@ -1,6 +1,7 @@
 [
  "architecture/architecture-backend-for-frontend",
  "architecture/architecture-branchbyabstraction",
+ "architecture/architecture-callback",
  "architecture/architecture-circuit-breaker",
  "architecture/architecture-domain-model",
  "architecture/architecture-map-reduce",

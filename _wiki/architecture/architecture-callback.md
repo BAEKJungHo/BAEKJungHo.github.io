@@ -4,7 +4,7 @@ title   : CALLBACK
 summary : 
 date    : 2024-11-04 11:02:32 +0900
 updated : 2024-11-04 12:12:24 +0900
-tag     : architecture
+tag     : architecture designpattern
 toc     : true
 comment : true
 public  : true

@@ -79,7 +79,7 @@ regenerate: true
 
         <!-- Recently Changed Documents -->
         <div class="recently-changed">
-            <h3>Recently Changed Documents</h3>
+            <h3>Documents</h3>
             <ul class="post-list">
                 {% assign documents = site.wiki | sort: 'updated' | reverse %}
                 {% for doc in documents limit: 10 %}

@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-## Some drawbacks of component teams
+## Some drawbacks of component teams, Alternative is Feature Team
 
 ![](/resource/wiki/agile-component-team/component-team.png)
 

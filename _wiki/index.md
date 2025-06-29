@@ -767,6 +767,10 @@ regenerate: true
 * [[/datastructures/datastructures-visualizations]]
 * [[/datastructures/datastructures-trie]]
 
+## Agile
+
+* [[/agile/agile-component-team]]
+
 ## Languages
 
 * [[/language/language-jp]]

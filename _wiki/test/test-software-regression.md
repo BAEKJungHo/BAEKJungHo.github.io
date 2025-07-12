@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Software Regression
 summary : 
-date    : 2024-07-08 11:54:32 +0900
-updated : 2024-07-08 12:15:24 +0900
+date    : 2025-07-08 11:54:32 +0900
+updated : 2025-07-08 12:15:24 +0900
 tag     : test
 toc     : true
 comment : true

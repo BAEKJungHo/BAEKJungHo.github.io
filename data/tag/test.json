@@ -37,6 +37,7 @@
  "test/test-no-silver-bullet",
  "test/test-object-mother",
  "test/test-property-based-test",
+ "test/test-software-regression",
  "test/test-specification-based-test",
  "test/test-testdoubles",
  "test/test-the-practical-test-pyramid"

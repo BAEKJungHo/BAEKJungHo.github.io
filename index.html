@@ -13,7 +13,8 @@ regenerate: true
         <div class="profile-info">
             <div class="profile-header">
                 <h3>FLEXIBLE ENGINEER</h3>
-                <p>A Seeker of Software’s Essence</p>
+                <p><mark><em><strong>A Seeker of Software’s Essence</strong></em></mark></p>
+                <p>現 Connected Service Engineer at 42dot</p>
             </div>
             <div class="profile-links">
                 Lasting success comes not from avoiding risk, but from making smart bets on yourself and taking bold, informed action. <br>
@@ -23,66 +24,12 @@ regenerate: true
 
     <!-- Content Section -->
     <section class="content-section">
-        <!-- Careers -->
-        <div class="careers">
-            <h3>Careers</h3>
-            <div class="latest-post-details">
-                <div class="career-info">
-                    <div class="post-meta">
-                        <strong><em>現 Connected Service Engineer at 42dot</em></strong>
-                    </div>
-                    <div class="post-excerpt">
-                        Experience in advancing the autonomous ride-hailing service, TAP!, and developing vehicle control products for connected services.
-                    </div>
-                    <ul class="tag-list">
-                        <li class="post-tag">
-                            Kotlin Java Spring Test Redis Kafka PostgreSQL Kubernetes Datadog OpenSearch
-                        </li>
-                    </ul>
-                </div>
-                <div class="career-info">
-                    <div class="post-meta">
-                        <strong><em>前 Backend Engineer at TableManager</em></strong>
-                    </div>
-                    <div class="post-excerpt">
-                        Maintenance of reservation solution and payment. Development of pickup order service using kakao chatbot.
-                    </div>
-                    <ul class="tag-list">
-                        <li class="post-tag">
-                            Kotlin Java Typescript NodeJS AWS DDD MySQL
-                        </li>
-                    </ul>
-                </div>
-                <div class="career-info">
-                    <div class="post-meta">
-                        <strong><em>前 Backend Engineer at Mayeye</em></strong>
-                    </div>
-                    <div class="post-excerpt">
-                        Establish of small business tenant confirmation certificate issuance system. Development various Websites.
-                    </div>
-                    <ul class="tag-list">
-                        <li class="post-tag">
-                            Java Tomcat Spring Mybatis Jsp MySQL Oracle
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- QR Code Section -->
-<!--            <div class="qr-section">-->
-<!--                <div class="qr-container">-->
-<!--                    <div class="qr-item">-->
-<!--                        <img src="./resource/value/value-qr.png" alt="Value QR">-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-        </div>
-
         <!-- Recently Changed Documents -->
         <div class="recently-changed">
-            <h3>Documents</h3>
+            <h3>Recent Document</h3>
             <ul class="post-list">
                 {% assign documents = site.wiki | sort: 'updated' | reverse %}
-                {% for doc in documents limit: 10 %}
+                {% for doc in documents limit: 1 %}
                 {% if doc.public == true and doc.title != 'wiki' %}
                 <li>
                     <div>
@@ -184,11 +131,13 @@ regenerate: true
 
     .content-section {
         display: flex;
+        justify-content: center;
         gap: 2rem;
     }
 
-    .careers, .recently-changed {
-        flex: 1;
+    .recently-changed {
+        max-width: 800px;
+        width: 100%;
     }
 
     .post-list {

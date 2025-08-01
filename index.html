@@ -14,7 +14,7 @@ regenerate: true
             <div class="profile-header">
                 <h3>FLEXIBLE ENGINEER</h3>
                 <p><mark><em><strong>A Seeker of Software’s Essence</strong></em></mark></p>
-                <p>現 Connected Service Engineer at 42dot</p>
+<!--                <p>現 Connected Service Engineer at 42dot</p>-->
             </div>
             <div class="profile-links">
                 Lasting success comes not from avoiding risk, but from making smart bets on yourself and taking bold, informed action. <br>
@@ -26,31 +26,31 @@ regenerate: true
     <section class="content-section">
         <!-- Recently Changed Documents -->
         <div class="recently-changed">
-            <h3>Recent Document</h3>
-            <ul class="post-list">
-                {% assign documents = site.wiki | sort: 'updated' | reverse %}
-                {% for doc in documents limit: 1 %}
-                {% if doc.public == true and doc.title != 'wiki' %}
-                <li>
-                    <div>
-                        <a class="post-link" href="{{ doc.url | prepend: site.baseurl }}">
-                            <div class="post-meta">
-                                {{ doc.updated | date: "%Y.%m.%d" }} - {{ doc.title }}
-                            </div>
-                            <div class="post-excerpt">{{ doc.summary }}</div>
-                            {% if doc.tag %}
-                            <ul class="tag-list">
-                                <li class="post-tag">
-                                    {{ doc.tag }}
-                                </li>
-                            </ul>
-                            {% endif %}
-                        </a>
-                    </div>
-                </li>
-                {% endif %}
-                {% endfor %}
-            </ul>
+<!--            <h3>Recent Document</h3>-->
+<!--            <ul class="post-list">-->
+<!--                {% assign documents = site.wiki | sort: 'updated' | reverse %}-->
+<!--                {% for doc in documents limit: 1 %}-->
+<!--                {% if doc.public == true and doc.title != 'wiki' %}-->
+<!--                <li>-->
+<!--                    <div>-->
+<!--                        <a class="post-link" href="{{ doc.url | prepend: site.baseurl }}">-->
+<!--                            <div class="post-meta">-->
+<!--                                {{ doc.updated | date: "%Y.%m.%d" }} - {{ doc.title }}-->
+<!--                            </div>-->
+<!--                            <div class="post-excerpt">{{ doc.summary }}</div>-->
+<!--                            {% if doc.tag %}-->
+<!--                            <ul class="tag-list">-->
+<!--                                <li class="post-tag">-->
+<!--                                    {{ doc.tag }}-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                            {% endif %}-->
+<!--                        </a>-->
+<!--                    </div>-->
+<!--                </li>-->
+<!--                {% endif %}-->
+<!--                {% endfor %}-->
+<!--            </ul>-->
             <h4>
                 <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>
             </h4>

@@ -8,6 +8,7 @@
  "architecture/architecture-automotive",
  "architecture/architecture-aws-well",
  "architecture/architecture-backend-for-frontend",
+ "architecture/architecture-backward-compatibility",
  "architecture/architecture-branchbyabstraction",
  "architecture/architecture-bulkhead",
  "architecture/architecture-callback",

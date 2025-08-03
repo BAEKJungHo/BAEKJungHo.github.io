@@ -125,6 +125,7 @@ regenerate: true
 * [[/architecture/architecture-event]]
 * [[/architecture/architecture-stream]]
 * [[/architecture/architecture-window]]
+* [[/architecture/architecture-backward-compatibility]]
 
 ## Principle
 

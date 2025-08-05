@@ -47,16 +47,16 @@ regenerate: true
                     {% if doc.public == true %}
                     <li>
                         <a href="{{ doc.url | prepend: site.baseurl }}">
-                            <span class="doc-date">{{ doc.date | date: "%Y.%m.%d" }}</span>
+<!--                            <span class="doc-date">{{ doc.date | date: "%Y.%m.%d" }}</span>-->
                             <span class="doc-title">{{ doc.title }}</span>
                         </a>
                     </li>
                     {% endif %}
                     {% endfor %}
                 </ul>
-                <h4>
-                    <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>
-                </h4>
+<!--                <h4>-->
+<!--                    <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>-->
+<!--                </h4>-->
             </div>
         </div>
     </section>

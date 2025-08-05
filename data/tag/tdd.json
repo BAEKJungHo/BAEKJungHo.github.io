@@ -1,10 +1,12 @@
 [
+ "book/tdd-knight-what-is-tdd",
  "tdd",
  "tdd/tdd-acceptance-test",
  "tdd/tdd-ai",
  "tdd/tdd-dontblame",
  "tdd/tdd-interface-design-decisions",
  "tdd/tdd-red-green-refactor",
+ "tddknight",
  "test/test-design-driven-testing",
  "test/test-enable-refactoring",
  "test/test-the-practical-test-pyramid"

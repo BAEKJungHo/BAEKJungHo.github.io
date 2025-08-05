@@ -7,14 +7,14 @@ regenerate: true
 <div class="main-container">
     <!-- Profile Section -->
     <section class="profile-section">
-<!--        <div class="profile-image">-->
-<!--            <img src="./resource/softwareseeker.png" alt="Profile">-->
-<!--        </div>-->
+        <!--        <div class="profile-image">-->
+        <!--            <img src="./resource/softwareseeker.png" alt="Profile">-->
+        <!--        </div>-->
         <div class="profile-info">
             <div class="profile-header">
                 <h3>FLEXIBLE ENGINEER</h3>
                 <p><mark><em><strong>A Seeker of Software’s Essence</strong></em></mark></p>
-<!--                <p>現 Connected Service Engineer at 42dot</p>-->
+                <!--                <p>現 Connected Service Engineer at 42dot</p>-->
             </div>
             <div class="profile-links">
                 <em>Lasting success comes not from avoiding risk, but from making smart bets on yourself and taking bold, informed action.</em> <br>
@@ -24,44 +24,40 @@ regenerate: true
 
                 I have experience in architecture design, implementation, and ensuring high availability in complex domains such as vehicle control and data synchronization. This includes analyzing Tesla’s Virtual Key Provisioning and Vehicle Control open-source projects and contributing to establishing the direction of 42dot’s vehicle control authentication system. I also addressed a concurrent dispatch issue in TAP!’s autonomous bus service through data-driven decision-making, improving system stability.
             </div>
-<!--            <h4>-->
-<!--                <a href="/recent/">Documents ({{ site.wiki | size | minus: 1 }} items)</a>-->
-<!--            </h4>-->
+            <!--            <h4>-->
+            <!--                <a href="/recent/">Documents ({{ site.wiki | size | minus: 1 }} items)</a>-->
+            <!--            </h4>-->
         </div>
     </section>
 
     <!-- Content Section -->
     <section class="content-section">
-        <!-- Recently Changed Documents -->
-        <div class="recently-changed">
-<!--            <h3>Recent Document</h3>-->
-<!--            <ul class="post-list">-->
-<!--                {% assign documents = site.wiki | sort: 'updated' | reverse %}-->
-<!--                {% for doc in documents limit: 1 %}-->
-<!--                {% if doc.public == true and doc.title != 'wiki' %}-->
-<!--                <li>-->
-<!--                    <div>-->
-<!--                        <a class="post-link" href="{{ doc.url | prepend: site.baseurl }}">-->
-<!--                            <div class="post-meta">-->
-<!--                                {{ doc.updated | date: "%Y.%m.%d" }} - {{ doc.title }}-->
-<!--                            </div>-->
-<!--                            <div class="post-excerpt">{{ doc.summary }}</div>-->
-<!--                            {% if doc.tag %}-->
-<!--                            <ul class="tag-list">-->
-<!--                                <li class="post-tag">-->
-<!--                                    {{ doc.tag }}-->
-<!--                                </li>-->
-<!--                            </ul>-->
-<!--                            {% endif %}-->
-<!--                        </a>-->
-<!--                    </div>-->
-<!--                </li>-->
-<!--                {% endif %}-->
-<!--                {% endfor %}-->
-<!--            </ul>-->
-<!--            <h4>-->
-<!--                <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>-->
-<!--            </h4>-->
+        <div class="book-section">
+            <!-- Left side: Book Image -->
+            <div class="book-image">
+                <img src="./resource/book/TDD_KNIGHT.png" alt="TDD Knight Book">
+            </div>
+
+            <!-- Right side: Book Documents -->
+            <div class="book-documents">
+                <h3>TDD KNIGHT</h3>
+                <ul class="book-list">
+                    {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}
+                    {% for doc in book_docs %}
+                    {% if doc.public == true %}
+                    <li>
+                        <a href="{{ doc.url | prepend: site.baseurl }}">
+                            <span class="doc-date">{{ doc.date | date: "%Y.%m.%d" }}</span>
+                            <span class="doc-title">{{ doc.title }}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                <h4>
+                    <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>
+                </h4>
+            </div>
         </div>
     </section>
 </div>
@@ -140,7 +136,72 @@ regenerate: true
     .content-section {
         display: flex;
         justify-content: center;
-        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .book-section {
+        display: flex;
+        gap: 3rem;
+        align-items: flex-start;
+        max-width: 1000px;
+        width: 100%;
+    }
+
+    .book-image {
+        flex: 0 0 300px;
+    }
+
+    .book-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .book-documents {
+        flex: 1;
+    }
+
+    .book-documents h3 {
+        margin: 0 0 1.5rem 0;
+        color: #0c0a8e;
+        font-size: 1.5rem;
+    }
+
+    .book-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+    }
+
+    .book-list li {
+        margin-bottom: 1rem;
+    }
+
+    .book-list a {
+        display: flex;
+        gap: 1rem;
+        text-decoration: none;
+        color: #333;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+        transition: all 0.2s;
+    }
+
+    .book-list a:hover {
+        color: #0000EE;
+        border-bottom-color: #0000EE;
+    }
+
+    .doc-date {
+        color: #666;
+        font-family: monospace;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+    }
+
+    .doc-title {
+        flex: 1;
     }
 
     .recently-changed {
@@ -202,7 +263,7 @@ regenerate: true
     }
 
     @media (max-width: 768px) {
-        .profile-section, .content-section {
+        .profile-section {
             flex-direction: column;
         }
 
@@ -218,6 +279,20 @@ regenerate: true
 
         .profile-links {
             justify-content: center;
+        }
+
+        .book-section {
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .book-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .book-image img {
+            max-width: 250px;
         }
     }
 </style>

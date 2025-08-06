@@ -32,32 +32,20 @@ regenerate: true
 
     <!-- Content Section -->
     <section class="content-section">
-        <div class="book-section">
-            <!-- Left side: Book Image -->
-            <div class="book-image">
-                <img src="./resource/book/TDD_KNIGHT.png" alt="TDD Knight Book">
-            </div>
-
-            <!-- Right side: Book Documents -->
-            <div class="book-documents">
-                <h3>TDD KNIGHT</h3>
-                <ul class="book-list">
-                    {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}
-                    {% for doc in book_docs %}
-                    {% if doc.public == true %}
-                    <li>
-                        <a href="{{ doc.url | prepend: site.baseurl }}">
-<!--                            <span class="doc-date">{{ doc.date | date: "%Y.%m.%d" }}</span>-->
-                            <span class="doc-title">{{ doc.title }}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-<!--                <h4>-->
-<!--                    <a href="/recent/">View all documents ({{ site.wiki | size | minus: 1 }} items)</a>-->
-<!--                </h4>-->
-            </div>
+        <div class="book-documents">
+            <h3><a href="/wiki/tddknight">TDD KNIGHT</a></h3>
+            <ul class="book-list">
+                {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}
+                {% for doc in book_docs %}
+                {% if doc.public == true %}
+                <li>
+                    <a href="{{ doc.url | prepend: site.baseurl }}">
+                        <span class="doc-title">{{ doc.title }}</span>
+                    </a>
+                </li>
+                {% endif %}
+                {% endfor %}
+            </ul>
         </div>
     </section>
 </div>
@@ -134,38 +122,25 @@ regenerate: true
     }
 
     .content-section {
-        display: flex;
-        justify-content: center;
-        padding: 2rem;
-    }
-
-    .book-section {
-        display: flex;
-        gap: 3rem;
-        align-items: flex-start;
-        max-width: 1000px;
-        width: 100%;
-    }
-
-    .book-image {
-        flex: 0 0 300px;
-    }
-
-    .book-image img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 2rem 20px;
     }
 
     .book-documents {
-        flex: 1;
+        max-width: 800px;
     }
 
     .book-documents h3 {
         margin: 0 0 1.5rem 0;
-        color: #0c0a8e;
         font-size: 1.5rem;
+    }
+
+    .book-documents h3 a {
+        color: #0c0a8e;
+        text-decoration: none;
+    }
+
+    .book-documents h3 a:hover {
+        text-decoration: underline;
     }
 
     .book-list {
@@ -193,73 +168,8 @@ regenerate: true
         border-bottom-color: #0000EE;
     }
 
-    .doc-date {
-        color: #666;
-        font-family: monospace;
-        font-size: 0.9rem;
-        flex-shrink: 0;
-    }
-
     .doc-title {
         flex: 1;
-    }
-
-    .recently-changed {
-        max-width: 800px;
-        width: 100%;
-    }
-
-    .post-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .post-list li {
-        margin-bottom: 0.2rem;
-    }
-
-    .career-info {
-        margin-bottom: 0.2rem;
-    }
-
-    .qr-section {
-        margin: 2rem 0;
-        /*padding: 20px;*/
-        /*background-color: #f8f9fa;*/
-        border-radius: 8px;
-    }
-
-    .qr-container {
-        display: flex;
-        gap: 2rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-    }
-
-    .qr-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .qr-item img {
-        width: 150px;
-        height: 150px;
-        object-fit: contain;
-        border: 1px solid #e1e4e8;
-        border-radius: 8px;
-        padding: 10px;
-        background-color: white;
-        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    .qr-item p {
-        margin-top: 0.5rem;
-        font-weight: bold;
-        color: #555;
     }
 
     @media (max-width: 768px) {
@@ -279,20 +189,6 @@ regenerate: true
 
         .profile-links {
             justify-content: center;
-        }
-
-        .book-section {
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .book-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .book-image img {
-            max-width: 250px;
         }
     }
 </style>

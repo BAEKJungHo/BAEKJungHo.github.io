@@ -13,4 +13,6 @@ latex   : false
 
 ## TDD KNIGHT
 
-***TDD KNIGHT*** 는 Chess Game Engine 을 ***[TDD](https://klarciel.net/wiki/tdd/)*** 로 구현하면서 얻은 INSIGHT 와 TDD 지식을 책 처럼 풀어 쓴 글입니다.
+![](/resource/book/TDD_KNIGHT.png)
+
+***TDD KNIGHT*** 는 Chess Game Engine 을 ***[TDD](https://klarciel.net/wiki/tdd/)*** 로 구현하면서 얻은 INSIGHT 를 책 처럼 풀어 쓴 글입니다.

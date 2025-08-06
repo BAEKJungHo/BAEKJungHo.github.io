@@ -742,6 +742,8 @@ test("체크메이트 상황에서 게임이 종료된다") {
 
 ## 결론: 테스트 설계는 소프트웨어 설계
 
+> "Test design is software design. Bad tests are bad software." — Michael Feathers
+
 Michael Feathers의 말처럼, **"테스트 설계는 소프트웨어 설계"**이다. 좋은 테스트는:
 
 1. **단일 책임**을 가지고

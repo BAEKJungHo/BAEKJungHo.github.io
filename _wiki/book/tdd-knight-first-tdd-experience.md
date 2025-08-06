@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : TDD KNIGHT@First TDD Experience - Position Class Implementation
+title   : Chapter2 - First TDD Experience Position Class Implementation
 summary : 
 date    : 2025-08-05 10:08:32 +0900
 updated : 2025-08-05 10:15:24 +0900

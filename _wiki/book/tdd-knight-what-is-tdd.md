@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : TDD KNIGHT@What is Test-Driven Development
+title   : Chapter1 - What is Test-Driven Development
 summary : 
 date    : 2025-08-04 10:08:32 +0900
 updated : 2025-08-04 10:15:24 +0900

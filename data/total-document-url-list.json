@@ -101,6 +101,7 @@
  "/wiki/auth/auth-token-introspection",
  "/wiki/aws",
  "/wiki/aws/aws-ssm",
+ "/wiki/book/tdd-knight-first-tdd-experience",
  "/wiki/book/tdd-knight-what-is-tdd",
  "/wiki/buildtool",
  "/wiki/buildtool/gradle-build-performance",

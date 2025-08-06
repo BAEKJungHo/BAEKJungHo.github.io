@@ -134,6 +134,7 @@ regenerate: true
 ## TDD KNIGHT
 
 * [[/book/tdd-knight-what-is-tdd]]
+* [[/book/tdd-knight-first-tdd-experience]
 
 ## Kata
 

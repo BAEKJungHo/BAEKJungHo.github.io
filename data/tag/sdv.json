@@ -2,5 +2,6 @@
  "architecture/architecture-zero-trust",
  "designpattern/designpattern-desired-actual",
  "sdv",
+ "sdv/sdv-history",
  "sdv/sdv-proximity-based-auth"
 ]

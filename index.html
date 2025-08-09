@@ -52,20 +52,64 @@ regenerate: true
         <div class="sdv-section">
             <h3><a href="/wiki/sdv">SDV/CONNECT</a></h3>
             <div class="pixel-car-container">
-                <div class="road">
-                    <div class="road-line"></div>
-                    <div class="road-line"></div>
-                    <div class="road-line"></div>
+                <!-- Night Sky Background -->
+                <div class="night-sky">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
                 </div>
-                <div class="pixel-car">
+                
+                <!-- City Silhouette -->
+                <div class="city-silhouette">
+                    <div class="building building1"></div>
+                    <div class="building building2"></div>
+                    <div class="building building3"></div>
+                    <div class="building building4"></div>
+                    <div class="building building5"></div>
+                </div>
+                
+                <!-- Street Lamps -->
+                <div class="street-lamps">
+                    <div class="lamp lamp1">
+                        <div class="lamp-post"></div>
+                        <div class="lamp-light"></div>
+                    </div>
+                    <div class="lamp lamp2">
+                        <div class="lamp-post"></div>
+                        <div class="lamp-light"></div>
+                    </div>
+                    <div class="lamp lamp3">
+                        <div class="lamp-post"></div>
+                        <div class="lamp-light"></div>
+                    </div>
+                </div>
+                
+                <!-- Road -->
+                <div class="road"></div>
+                
+                <!-- Tesla Car -->
+                <div class="tesla-car">
+                    <div class="car-shadow"></div>
                     <div class="car-body">
+                        <div class="car-main"></div>
                         <div class="car-roof"></div>
-                        <div class="car-window"></div>
-                        <div class="car-door"></div>
+                        <div class="car-windshield"></div>
+                        <div class="car-door-handle"></div>
+                        <div class="car-headlight"></div>
+                        <div class="car-taillight"></div>
                     </div>
                     <div class="car-wheels">
-                        <div class="wheel"></div>
-                        <div class="wheel"></div>
+                        <div class="wheel front-wheel">
+                            <div class="wheel-rim"></div>
+                        </div>
+                        <div class="wheel rear-wheel">
+                            <div class="wheel-rim"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,173 +256,332 @@ regenerate: true
         text-decoration: underline;
     }
 
-    /* Pixel Car Animation */
+    /* High Quality Pixel Art Tesla Animation */
     .pixel-car-container {
         position: relative;
-        height: 100px;
+        height: 140px;
         overflow: hidden;
-        background: #f0f0f0;
-        border-radius: 8px;
+        background: linear-gradient(to bottom, 
+            #0a0a1e 0%, 
+            #1a1a3a 40%, 
+            #2a2a4a 70%, 
+            #3a3a5a 100%);
+        border-radius: 12px;
         margin-top: 1rem;
+        box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.3);
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
     }
 
+    /* Night Sky with Stars */
+    .night-sky {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        pointer-events: none;
+    }
+
+    .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: #fff;
+        border-radius: 50%;
+        animation: twinkle 3s ease-in-out infinite alternate;
+    }
+
+    .star:nth-child(1) { top: 10px; left: 20%; animation-delay: 0s; }
+    .star:nth-child(2) { top: 20px; left: 60%; animation-delay: 0.5s; }
+    .star:nth-child(3) { top: 15px; left: 80%; animation-delay: 1s; }
+    .star:nth-child(4) { top: 25px; left: 30%; animation-delay: 1.5s; }
+    .star:nth-child(5) { top: 30px; left: 70%; animation-delay: 2s; }
+    .star:nth-child(6) { top: 12px; left: 45%; animation-delay: 2.5s; }
+    .star:nth-child(7) { top: 18px; left: 10%; animation-delay: 0.3s; }
+    .star:nth-child(8) { top: 35px; left: 90%; animation-delay: 1.8s; }
+
+    @keyframes twinkle {
+        0% { opacity: 0.3; transform: scale(1); }
+        100% { opacity: 1; transform: scale(1.2); }
+    }
+
+    /* City Silhouette */
+    .city-silhouette {
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        height: 40px;
+        opacity: 0.6;
+    }
+
+    .building {
+        position: absolute;
+        bottom: 0;
+        background: #1a1a2e;
+        border-top: 1px solid #2a2a4a;
+    }
+
+    .building1 { left: 10%; width: 15px; height: 30px; }
+    .building2 { left: 25%; width: 20px; height: 25px; }
+    .building3 { left: 45%; width: 18px; height: 35px; }
+    .building4 { left: 65%; width: 16px; height: 20px; }
+    .building5 { left: 85%; width: 22px; height: 28px; }
+
+    /* Random building lights */
+    .building::after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: #ffeb3b;
+        top: 30%;
+        left: 50%;
+        border-radius: 1px;
+        animation: building-light 4s ease-in-out infinite;
+    }
+
+    @keyframes building-light {
+        0%, 50% { opacity: 0; }
+        25%, 75% { opacity: 1; }
+    }
+
+    /* Street Lamps */
+    .street-lamps {
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        height: 60px;
+        pointer-events: none;
+    }
+
+    .lamp {
+        position: absolute;
+        bottom: 0;
+    }
+
+    .lamp1 { left: 15%; }
+    .lamp2 { left: 50%; }
+    .lamp3 { left: 85%; }
+
+    .lamp-post {
+        position: absolute;
+        bottom: 0;
+        width: 3px;
+        height: 50px;
+        background: linear-gradient(to top, #444 0%, #666 100%);
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .lamp-light {
+        position: absolute;
+        bottom: 45px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 8px;
+        background: #333;
+        border-radius: 2px;
+    }
+
+    .lamp-light::before {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        background: radial-gradient(circle, rgba(255, 223, 0, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        animation: lamp-glow 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes lamp-glow {
+        0% { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
+        100% { opacity: 0.8; transform: translateX(-50%) scale(1.1); }
+    }
+
+    /* Simple Road */
     .road {
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 40px;
-        background: #333;
+        background: linear-gradient(to bottom, #2a2a2a 0%, #1a1a1a 100%);
+        border-top: 2px solid #3a3a3a;
     }
 
-    .road-line {
+    /* Tesla Car */
+    .tesla-car {
         position: absolute;
-        bottom: 18px;
+        bottom: 35px;
+        left: -90px;
+        width: 80px;
+        height: 45px;
+        animation: tesla-drive 12s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px rgba(220, 20, 60, 0.3));
+    }
+
+    @keyframes tesla-drive {
+        0% { left: -90px; }
+        50% { left: calc(50% - 40px); }
+        100% { left: 100%; }
+    }
+
+    /* Car Shadow */
+    .car-shadow {
+        position: absolute;
+        bottom: -8px;
+        left: 5px;
+        width: 70px;
         height: 4px;
-        width: 30px;
-        background: #fff;
-        animation: road-move 2s linear infinite;
+        background: rgba(0, 0, 0, 0.4);
+        border-radius: 50%;
+        filter: blur(2px);
+        animation: shadow-move 12s ease-in-out infinite;
     }
 
-    .road-line:nth-child(1) {
-        left: 0;
+    @keyframes shadow-move {
+        0%, 100% { transform: scaleX(0.8); opacity: 0.3; }
+        50% { transform: scaleX(1.2); opacity: 0.6; }
     }
 
-    .road-line:nth-child(2) {
-        left: 150px;
-        animation-delay: 0.66s;
-    }
-
-    .road-line:nth-child(3) {
-        left: 300px;
-        animation-delay: 1.33s;
-    }
-
-    @keyframes road-move {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-150px);
-        }
-    }
-
-    .pixel-car {
-        position: absolute;
-        bottom: 30px;
-        left: -80px;
-        width: 60px;
-        height: 40px;
-        animation: car-drive 8s linear infinite;
-    }
-
-    @keyframes car-drive {
-        from {
-            left: -80px;
-        }
-        to {
-            left: 100%;
-        }
-    }
-
+    /* Tesla Car Body */
     .car-body {
         position: relative;
-        width: 60px;
-        height: 30px;
+        width: 80px;
+        height: 35px;
+    }
+
+    .car-main {
+        position: absolute;
+        bottom: 0;
+        left: 5px;
+        width: 70px;
+        height: 20px;
+        background: linear-gradient(45deg, #dc143c 0%, #b91c3c 50%, #a0182f 100%);
+        border-radius: 2px;
+        box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.2);
     }
 
     .car-roof {
         position: absolute;
-        top: 0;
-        left: 15px;
-        width: 30px;
-        height: 12px;
-        background: #0c0a8e;
+        top: 5px;
+        left: 20px;
+        width: 40px;
+        height: 15px;
+        background: linear-gradient(45deg, #b91c3c 0%, #a0182f 100%);
+        border-radius: 8px 8px 2px 2px;
     }
 
-    .car-roof::before,
-    .car-roof::after {
-        content: '';
+    .car-windshield {
         position: absolute;
+        top: 7px;
+        left: 25px;
+        width: 30px;
+        height: 10px;
+        background: linear-gradient(135deg, #87ceeb 0%, #4682b4 100%);
+        border-radius: 4px 4px 1px 1px;
+        opacity: 0.9;
+    }
+
+    .car-door-handle {
+        position: absolute;
+        bottom: 8px;
+        left: 35px;
+        width: 2px;
+        height: 4px;
+        background: #333;
+        border-radius: 1px;
+    }
+
+    .car-headlight {
+        position: absolute;
+        bottom: 8px;
+        right: 5px;
         width: 6px;
         height: 6px;
-        background: #0c0a8e;
+        background: radial-gradient(circle, #fff 0%, #fffacd 70%, #ffff88 100%);
+        border-radius: 50%;
+        box-shadow: 0 0 8px rgba(255, 255, 136, 0.8);
+        animation: headlight-glow 2s ease-in-out infinite alternate;
     }
 
-    .car-roof::before {
-        top: 6px;
-        left: -6px;
+    @keyframes headlight-glow {
+        0% { opacity: 0.8; transform: scale(1); }
+        100% { opacity: 1; transform: scale(1.1); }
     }
 
-    .car-roof::after {
-        top: 6px;
-        right: -6px;
-    }
-
-    .car-window {
+    .car-taillight {
         position: absolute;
-        top: 2px;
-        left: 20px;
-        width: 20px;
-        height: 8px;
-        background: #87CEEB;
+        bottom: 8px;
+        left: 8px;
+        width: 4px;
+        height: 4px;
+        background: #ff0000;
+        border-radius: 50%;
+        box-shadow: 0 0 4px rgba(255, 0, 0, 0.6);
     }
 
-    .car-door {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 18px;
-        background: #0c0a8e;
-        border-radius: 2px 2px 0 0;
-    }
-
-    .car-door::before {
-        content: '';
-        position: absolute;
-        top: 2px;
-        left: 22px;
-        width: 2px;
-        height: 12px;
-        background: #000;
-    }
-
+    /* Tesla Wheels */
     .car-wheels {
         position: absolute;
         bottom: -5px;
-        width: 60px;
+        left: 8px;
+        width: 64px;
         display: flex;
         justify-content: space-between;
-        padding: 0 8px;
     }
 
     .wheel {
-        width: 10px;
-        height: 10px;
-        background: #000;
+        width: 14px;
+        height: 14px;
+        background: radial-gradient(circle, #333 0%, #111 70%, #000 100%);
         border-radius: 50%;
-        animation: wheel-spin 0.5s linear infinite;
+        border: 2px solid #555;
+        animation: tesla-wheel-spin 0.3s linear infinite;
+        position: relative;
     }
 
-    @keyframes wheel-spin {
-        from {
-            transform: rotate(0deg);
-        }
-        to {
-            transform: rotate(360deg);
-        }
+    .wheel-rim {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        background: radial-gradient(circle, #666 0%, #444 100%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
     }
 
-    .wheel::before {
+    .wheel-rim::before {
         content: '';
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 4px;
-        height: 4px;
-        background: #666;
-        border-radius: 50%;
+        width: 2px;
+        height: 6px;
+        background: #777;
         transform: translate(-50%, -50%);
+    }
+
+    .wheel-rim::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 6px;
+        height: 2px;
+        background: #777;
+        transform: translate(-50%, -50%);
+    }
+
+    @keyframes tesla-wheel-spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
     }
 
     @media (max-width: 768px) {

@@ -47,6 +47,29 @@ regenerate: true
                 {% endfor %}
             </ul>
         </div>
+        
+        <!-- SDV/CONNECT Section -->
+        <div class="sdv-section">
+            <h3><a href="/wiki/sdv">SDV/CONNECT</a></h3>
+            <div class="pixel-car-container">
+                <div class="road">
+                    <div class="road-line"></div>
+                    <div class="road-line"></div>
+                    <div class="road-line"></div>
+                </div>
+                <div class="pixel-car">
+                    <div class="car-body">
+                        <div class="car-roof"></div>
+                        <div class="car-window"></div>
+                        <div class="car-door"></div>
+                    </div>
+                    <div class="car-wheels">
+                        <div class="wheel"></div>
+                        <div class="wheel"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </div>
 
@@ -123,9 +146,12 @@ regenerate: true
 
     .content-section {
         padding: 2rem 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
     }
 
-    .book-documents {
+    .book-documents, .sdv-section {
         max-width: 800px;
     }
 
@@ -169,6 +195,190 @@ regenerate: true
 
     .doc-title {
         flex: 1;
+    }
+
+    /* SDV Section Styles */
+    .sdv-section h3 {
+        margin: 0 0 1.5rem 0;
+        font-size: 1.5rem;
+    }
+
+    .sdv-section h3 a {
+        color: #0c0a8e;
+        text-decoration: none;
+    }
+
+    .sdv-section h3 a:hover {
+        text-decoration: underline;
+    }
+
+    /* Pixel Car Animation */
+    .pixel-car-container {
+        position: relative;
+        height: 100px;
+        overflow: hidden;
+        background: #f0f0f0;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+
+    .road {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        background: #333;
+    }
+
+    .road-line {
+        position: absolute;
+        bottom: 18px;
+        height: 4px;
+        width: 30px;
+        background: #fff;
+        animation: road-move 2s linear infinite;
+    }
+
+    .road-line:nth-child(1) {
+        left: 0;
+    }
+
+    .road-line:nth-child(2) {
+        left: 150px;
+        animation-delay: 0.66s;
+    }
+
+    .road-line:nth-child(3) {
+        left: 300px;
+        animation-delay: 1.33s;
+    }
+
+    @keyframes road-move {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-150px);
+        }
+    }
+
+    .pixel-car {
+        position: absolute;
+        bottom: 30px;
+        left: -80px;
+        width: 60px;
+        height: 40px;
+        animation: car-drive 8s linear infinite;
+    }
+
+    @keyframes car-drive {
+        from {
+            left: -80px;
+        }
+        to {
+            left: 100%;
+        }
+    }
+
+    .car-body {
+        position: relative;
+        width: 60px;
+        height: 30px;
+    }
+
+    .car-roof {
+        position: absolute;
+        top: 0;
+        left: 15px;
+        width: 30px;
+        height: 12px;
+        background: #0c0a8e;
+    }
+
+    .car-roof::before,
+    .car-roof::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #0c0a8e;
+    }
+
+    .car-roof::before {
+        top: 6px;
+        left: -6px;
+    }
+
+    .car-roof::after {
+        top: 6px;
+        right: -6px;
+    }
+
+    .car-window {
+        position: absolute;
+        top: 2px;
+        left: 20px;
+        width: 20px;
+        height: 8px;
+        background: #87CEEB;
+    }
+
+    .car-door {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 18px;
+        background: #0c0a8e;
+        border-radius: 2px 2px 0 0;
+    }
+
+    .car-door::before {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 22px;
+        width: 2px;
+        height: 12px;
+        background: #000;
+    }
+
+    .car-wheels {
+        position: absolute;
+        bottom: -5px;
+        width: 60px;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 8px;
+    }
+
+    .wheel {
+        width: 10px;
+        height: 10px;
+        background: #000;
+        border-radius: 50%;
+        animation: wheel-spin 0.5s linear infinite;
+    }
+
+    @keyframes wheel-spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .wheel::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 4px;
+        height: 4px;
+        background: #666;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
     }
 
     @media (max-width: 768px) {

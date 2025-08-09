@@ -486,6 +486,7 @@ regenerate: true
 ## SDV
 
 * [[/sdv/sdv-proximity-based-auth]]
+* [[/sdv/sdv-history]]
 
 ## GRPC
 

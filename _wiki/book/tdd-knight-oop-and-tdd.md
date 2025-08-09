@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-# Chapter4 - Driving OOP, DDD, DESIGNPATTERN design with TDD
+# Driving OOP, DDD, DESIGNPATTERN design with TDD
 
 > "Objects are not just bundles of data and functions. They are models of concepts in your domain." - Eric Evans
 

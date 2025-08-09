@@ -136,6 +136,8 @@ regenerate: true
 * [[/book/tdd-knight-what-is-tdd]]
 * [[/book/tdd-knight-first-tdd-experience]
 * [[/book/tdd-knight-test-design-principle]
+* [[/book/tdd-knight-oop-and-tdd]
+* [[/book/tdd-knight-complex-business-logic-improved]
 
 ## Kata
 

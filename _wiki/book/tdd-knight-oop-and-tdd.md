@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Chapter4 - Driving OOP design with TDD
+title   : Chapter4 - Driving OOP, DDD, DESIGNPATTERN design with TDD
 summary : 
 date    : 2025-08-07 10:08:32 +0900
 updated : 2025-08-07 10:15:24 +0900
@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-# Chapter 4: Driving OOP design with TDD
+# Chapter4 - Driving OOP, DDD, DESIGNPATTERN design with TDD
 
 > "Objects are not just bundles of data and functions. They are models of concepts in your domain." - Eric Evans
 

@@ -7,6 +7,7 @@
  "updated": "2025-08-01 20:55:09 +0900",
  "children": [
   "book/tdd-knight-first-tdd-experience",
+  "book/tdd-knight-oop-and-tdd",
   "book/tdd-knight-test-design-principle",
   "book/tdd-knight-what-is-tdd"
  ]

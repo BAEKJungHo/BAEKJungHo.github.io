@@ -16,7 +16,6 @@ latex   : true
 
 # What is TDD ?
 
-
 ## 1.1 TDD의 정의
 
 TDD(Test-Driven Development)는 개발자가 프로덕션 코드를 작성하기 전에 요구 사항에 집중하여 새로운 기능에 대한 테스트 시나리오를 먼저 생각하고 작성하게 한다.

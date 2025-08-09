@@ -31,14 +31,49 @@
                 document.getElementById('document-list').innerHTML = `<ul class="post-list">${html}</ul>`
             }
 
-            if (data.children && data.children.sort) {
-                insertChildren(data.children.sort());
+            if (data.children && data.children.length > 0) {
+                // 자식 문서들의 메타데이터를 먼저 가져와서 updated 날짜로 정렬
+                sortChildrenByUpdated(data.children).then(sortedChildren => {
+                    insertChildren(sortedChildren);
+                });
             }
             return;
         })
         .catch(function(error) {
             console.error(error);
         });
+
+    /**
+     * 자식 문서들의 메타데이터를 가져와서 updated 날짜 기준으로 내림차순 정렬합니다.
+     */
+    async function sortChildrenByUpdated(children) {
+        const childrenWithMetadata = await Promise.all(
+            children.map(async (child) => {
+                try {
+                    const response = await fetch(`/data/metadata/${child}.json`);
+                    const data = await response.json();
+                    return {
+                        name: child,
+                        updated: data.updated
+                    };
+                } catch (error) {
+                    console.error(`Error fetching metadata for ${child}:`, error);
+                    return {
+                        name: child,
+                        updated: '0000-00-00' // 에러 시 가장 뒤로 정렬
+                    };
+                }
+            })
+        );
+
+        // updated 날짜 기준 내림차순 정렬
+        childrenWithMetadata.sort((a, b) => {
+            return b.updated.localeCompare(a.updated);
+        });
+
+        // 정렬된 문서 이름만 반환
+        return childrenWithMetadata.map(item => item.name);
+    }
 
     /**
      * 자식 문서들의 목록을 받아, 자식 문서 하나 하나의 링크를 만들어 삽입합니다.

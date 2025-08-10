@@ -34,7 +34,7 @@ regenerate: true
     <section class="content-section">
         <div class="content-wrapper">
             <div class="book-documents">
-                <h3><a href="/wiki/tddknight">TDD KNIGHT</a></h3>
+                <h3><strong><a href="/wiki/tddknight">TDD KNIGHT</a></strong></h3>
                 <ul class="book-list">
                     {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}
                     {% for doc in book_docs %}
@@ -51,7 +51,7 @@ regenerate: true
             
             <!-- Domain Section -->
             <div class="domain-section">
-                <h3>DOMAIN</h3>
+                <h3><strong>DOMAIN</strong></h3>
                 <ul class="domain-list">
                     <li>
                         <a href="/wiki/sdv">SDV/CONNECT</a>

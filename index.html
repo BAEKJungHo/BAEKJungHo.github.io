@@ -48,71 +48,14 @@ regenerate: true
             </ul>
         </div>
         
-        <!-- SDV/CONNECT Section -->
-        <div class="sdv-section">
-            <h3><a href="/wiki/sdv">SDV/CONNECT</a></h3>
-            <div class="pixel-car-container">
-                <!-- Night Sky Background -->
-                <div class="night-sky">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                </div>
-                
-                <!-- City Silhouette -->
-                <div class="city-silhouette">
-                    <div class="building building1"></div>
-                    <div class="building building2"></div>
-                    <div class="building building3"></div>
-                    <div class="building building4"></div>
-                    <div class="building building5"></div>
-                </div>
-                
-                <!-- Street Lamps -->
-                <div class="street-lamps">
-                    <div class="lamp lamp1">
-                        <div class="lamp-post"></div>
-                        <div class="lamp-light"></div>
-                    </div>
-                    <div class="lamp lamp2">
-                        <div class="lamp-post"></div>
-                        <div class="lamp-light"></div>
-                    </div>
-                    <div class="lamp lamp3">
-                        <div class="lamp-post"></div>
-                        <div class="lamp-light"></div>
-                    </div>
-                </div>
-                
-                <!-- Road -->
-                <div class="road"></div>
-                
-                <!-- Tesla Car -->
-                <div class="tesla-car">
-                    <div class="car-shadow"></div>
-                    <div class="car-body">
-                        <div class="car-main"></div>
-                        <div class="car-roof"></div>
-                        <div class="car-windshield"></div>
-                        <div class="car-door-handle"></div>
-                        <div class="car-headlight"></div>
-                        <div class="car-taillight"></div>
-                    </div>
-                    <div class="car-wheels">
-                        <div class="wheel front-wheel">
-                            <div class="wheel-rim"></div>
-                        </div>
-                        <div class="wheel rear-wheel">
-                            <div class="wheel-rim"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Domain Section -->
+        <div class="domain-section">
+            <h3>DOMAIN</h3>
+            <ul class="domain-list">
+                <li>
+                    <a href="/wiki/sdv">SDV/CONNECT</a>
+                </li>
+            </ul>
         </div>
     </section>
 </div>
@@ -195,7 +138,7 @@ regenerate: true
         gap: 3rem;
     }
 
-    .book-documents, .sdv-section {
+    .book-documents, .domain-section {
         max-width: 800px;
     }
 
@@ -241,19 +184,35 @@ regenerate: true
         flex: 1;
     }
 
-    /* SDV Section Styles */
-    .sdv-section h3 {
+    /* Domain Section Styles */
+    .domain-section h3 {
         margin: 0 0 1.5rem 0;
         font-size: 1.5rem;
-    }
-
-    .sdv-section h3 a {
         color: #0c0a8e;
-        text-decoration: none;
     }
 
-    .sdv-section h3 a:hover {
-        text-decoration: underline;
+    .domain-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .domain-list li {
+        margin-bottom: 0.8rem;
+    }
+
+    .domain-list a {
+        display: inline-block;
+        text-decoration: none;
+        color: #333;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid transparent;
+        transition: all 0.2s;
+    }
+
+    .domain-list a:hover {
+        color: #0000EE;
+        border-bottom-color: #0000EE;
     }
 
     /* High Quality Pixel Art Tesla Animation */

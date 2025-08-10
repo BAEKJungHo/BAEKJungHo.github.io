@@ -32,30 +32,32 @@ regenerate: true
 
     <!-- Content Section -->
     <section class="content-section">
-        <div class="book-documents">
-            <h3><a href="/wiki/tddknight">TDD KNIGHT</a></h3>
-            <ul class="book-list">
-                {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}
-                {% for doc in book_docs %}
-                {% if doc.public == true %}
-                <li>
-                    <a href="{{ doc.url | prepend: site.baseurl }}">
-                        <span class="doc-title">{{ doc.title }}</span>
-                    </a>
-                </li>
-                {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
-        
-        <!-- Domain Section -->
-        <div class="domain-section">
-            <h3>DOMAIN</h3>
-            <ul class="domain-list">
-                <li>
-                    <a href="/wiki/sdv">SDV/CONNECT</a>
-                </li>
-            </ul>
+        <div class="content-wrapper">
+            <div class="book-documents">
+                <h3><a href="/wiki/tddknight">TDD KNIGHT</a></h3>
+                <ul class="book-list">
+                    {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}
+                    {% for doc in book_docs %}
+                    {% if doc.public == true %}
+                    <li>
+                        <a href="{{ doc.url | prepend: site.baseurl }}">
+                            <span class="doc-title">{{ doc.title }}</span>
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+            
+            <!-- Domain Section -->
+            <div class="domain-section">
+                <h3>DOMAIN</h3>
+                <ul class="domain-list">
+                    <li>
+                        <a href="/wiki/sdv">SDV/CONNECT</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 </div>
@@ -135,11 +137,23 @@ regenerate: true
         padding: 2rem 20px;
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 2rem;
+    }
+
+    .content-wrapper {
+        display: flex;
+        gap: 2rem;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
     }
 
     .book-documents, .domain-section {
-        max-width: 800px;
+        flex: 1;
+    }
+
+    .sdv-animation-section {
+        margin-top: 1rem;
     }
 
     .book-documents h3 {
@@ -560,6 +574,11 @@ regenerate: true
 
         .profile-links {
             justify-content: center;
+        }
+
+        .content-wrapper {
+            flex-direction: column;
+            gap: 1.5rem;
         }
     }
 </style>

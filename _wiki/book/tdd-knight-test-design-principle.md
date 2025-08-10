@@ -26,7 +26,7 @@ latex   : true
 
 #### 잘못된 예: 여러 개념을 한 번에 검증
 ```kotlin
-// ❌ 나쁜 테스트: 너무 많은 것을 한 번에 검증
+// 나쁜 테스트: 너무 많은 것을 한 번에 검증
 @Test
 fun `체스 게임 전체 기능 테스트`() {
     // 보드 초기화 검증
@@ -54,7 +54,7 @@ fun `체스 게임 전체 기능 테스트`() {
 
 #### 올바른 예: 단일 개념 검증
 ```kotlin
-// ✅ 좋은 테스트: 하나의 개념만 검증
+// 좋은 테스트: 하나의 개념만 검증
 context("체스 게임 초기화") {
     test("게임이 초기화되면 백색이 먼저 시작한다") {
         val game = Game.initialize()
@@ -88,7 +88,7 @@ context("기물 이동") {
 
 #### 기준 1: 논리적 응집성
 ```kotlin
-// ✅ 논리적으로 응집된 검증
+// 논리적으로 응집된 검증
 test("보드 초기화 시 모든 기물이 올바른 위치에 배치된다") {
     val board = Board.initialize()
     
@@ -104,7 +104,7 @@ test("보드 초기화 시 모든 기물이 올바른 위치에 배치된다") {
 
 #### 기준 2: 실패 영향 범위
 ```kotlin
-// ✅ 실패 영향이 명확히 구분됨
+// 실패 영향이 명확히 구분됨
 test("폰이 전방으로 1칸 이동할 수 있다") {
     val pawn = Pawn(Color.WHITE)
     pawn.isValidMove(Position('e', 2), Position('e', 3)) shouldBe true
@@ -120,7 +120,7 @@ test("폰이 초기 위치에서 2칸 이동할 수 있다") {
 
 #### 기준 3: 변경 빈도
 ```kotlin
-// ✅ 변경 빈도가 다른 개념들은 분리
+// 변경 빈도가 다른 개념들은 분리
 test("일반적인 폰 이동 규칙") {
     // 기본 규칙 (변경 빈도 낮음)
 }
@@ -134,7 +134,7 @@ test("앙파상 특별 규칙") {
 
 #### Single Responsibility Principle (SRP)
 ```kotlin
-// ✅ 하나의 책임만 검증
+// 하나의 책임만 검증
 class PositionTest {
     // 오직 Position 클래스의 동작만 검증
 }
@@ -146,7 +146,7 @@ class PawnTest {
 
 #### Open/Closed Principle (OCP)
 ```kotlin
-// ✅ 새로운 기물 추가 시 기존 테스트 수정 불필요
+// 새로운 기물 추가 시 기존 테스트 수정 불필요
 abstract class PieceMovementTest {
     abstract fun createPiece(): Piece
     abstract fun getValidMoves(): List<Pair<Position, Position>>
@@ -173,7 +173,7 @@ class PawnMovementTest : PieceMovementTest() {
 
 #### Liskov Substitution Principle (LSP)
 ```kotlin
-// ✅ 모든 Piece 구현체가 동일한 계약을 준수
+// 모든 Piece 구현체가 동일한 계약을 준수
 @Test
 fun `모든 기물이 Piece 인터페이스를 올바르게 구현한다`() {
     val pieces = listOf(
@@ -201,12 +201,12 @@ fun `모든 기물이 Piece 인터페이스를 올바르게 구현한다`() {
 
 #### 1. 도메인 지식의 정확한 표현
 ```kotlin
-// ✅ 한국어: 도메인 개념이 명확
+// 한국어: 도메인 개념이 명확
 test("앙파상으로 상대방 폰을 잡을 수 있다") {
     // 체스 규칙의 복잡성이 그대로 드러남
 }
 
-// ❌ 영어: 도메인 개념이 모호
+// 영어: 도메인 개념이 모호
 test("en passant capture is valid") {
     // 비체스플레이어에게는 의미 불명확
 }
@@ -214,7 +214,7 @@ test("en passant capture is valid") {
 
 #### 2. 비즈니스 언어와의 일치
 ```kotlin
-// ✅ 비즈니스 요구사항과 일치
+// 비즈니스 요구사항과 일치
 // 요구사항: "킹이 공격받고 있을 때는 체크 상태이다"
 test("킹이 공격받고 있을 때 체크 상태를 감지한다") {
     // 요구사항과 테스트명이 정확히 일치
@@ -223,22 +223,22 @@ test("킹이 공격받고 있을 때 체크 상태를 감지한다") {
 
 #### 3. 테스트 리포트의 가독성
 ```
-✅ 폰이 전방으로 1칸 이동할 수 있다
-✅ 폰이 초기 위치에서 2칸 이동할 수 있다  
-✅ 폰이 대각선으로 적 기물을 잡을 수 있다
-❌ 폰이 후방으로 이동할 수 없다
+폰이 전방으로 1칸 이동할 수 있다
+폰이 초기 위치에서 2칸 이동할 수 있다  
+폰이 대각선으로 적 기물을 잡을 수 있다
+폰이 후방으로 이동할 수 없다
 ```
 
 ### 비즈니스 용어 vs 기술 용어
 
 #### 비즈니스 용어 우선
 ```kotlin
-// ✅ 비즈니스 용어 사용
+// 비즈니스 용어 사용
 test("체크메이트가 되면 게임이 종료된다") {
     // 체스 플레이어가 이해할 수 있는 용어
 }
 
-// ❌ 기술 용어 사용
+// 기술 용어 사용
 test("GameState.CHECKMATE가 반환되면 isGameOver()가 true를 반환한다") {
     // 구현 세부사항에 집중
 }
@@ -246,7 +246,7 @@ test("GameState.CHECKMATE가 반환되면 isGameOver()가 true를 반환한다")
 
 #### 도메인 전문가와의 소통
 ```kotlin
-// ✅ 도메인 전문가(체스 플레이어)와 소통 가능
+// 도메인 전문가(체스 플레이어)와 소통 가능
 test("킹사이드 캐슬링을 할 수 있다") {
     // 체스 용어 그대로 사용
 }
@@ -276,7 +276,7 @@ test("스테일메이트 상황에서는 무승부가 된다") {
 
 #### 부정적 케이스의 명확한 표현
 ```kotlin
-// ✅ 무엇이 불가능한지 명확히 표현
+// 무엇이 불가능한지 명확히 표현
 test("폰이 후방으로 이동할 수 없다") {
     val pawn = Pawn(Color.WHITE)
     pawn.isValidMove(Position('e', 4), Position('e', 3)) shouldBe false
@@ -381,7 +381,7 @@ class GameTest : FunSpec({
 
 #### 공유 상태 사용 시 주의사항
 ```kotlin
-// ❌ 나쁜 예: 공유 상태로 인한 의존성
+// 나쁜 예: 공유 상태로 인한 의존성
 class BadGameTest : FunSpec({
     private lateinit var game: Game  // 공유 상태
     
@@ -399,7 +399,7 @@ class BadGameTest : FunSpec({
     }
 })
 
-// ✅ 좋은 예: 각 테스트가 독립적
+// 좋은 예: 각 테스트가 독립적
 class GoodGameTest : FunSpec({
     test("첫 번째 테스트") {
         val game = Game.initialize()
@@ -684,7 +684,7 @@ test("앙파상은 상대방 폰이 2칸 전진한 직후에만 가능하다") {
 
 #### DRY (Don't Repeat Yourself)
 ```kotlin
-// ❌ 중복된 테스트 설정
+// 중복된 테스트 설정
 class PawnTest : FunSpec({
     test("백색 폰 이동 테스트 1") {
         val pawn = Pawn(Color.WHITE)
@@ -699,7 +699,7 @@ class PawnTest : FunSpec({
     }
 })
 
-// ✅ 공통 설정 추출
+// 공통 설정 추출
 class PawnTest : FunSpec({
     fun createWhitePawn() = Pawn(Color.WHITE)
     fun createInitialBoard() = Board.initialize()
@@ -714,7 +714,7 @@ class PawnTest : FunSpec({
 
 #### 가독성 우선
 ```kotlin
-// ✅ 의도가 명확한 헬퍼 메서드
+// 의도가 명확한 헬퍼 메서드
 fun createCheckmateScenario(): Game {
     return GameBuilder()
         .withCustomBoard { squares ->

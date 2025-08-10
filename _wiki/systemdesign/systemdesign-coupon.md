@@ -142,7 +142,7 @@ public class CouponIssueService {
             // Step 6: 요청 상태 추적
             redisTemplate.opsForValue().set("coupon:status:" + requestId, "PROCESSING", Duration.ofMinutes(10));
             
-            log.info("✅ Coupon issue queued. User: {}, Remaining stock: {}", userId, remainingStock);
+            log.info("Coupon issue queued. User: {}, Remaining stock: {}", userId, remainingStock);
             
             return CouponIssueResponse.builder()
                 .requestId(requestId)
@@ -193,7 +193,7 @@ public class CouponIssueConsumer {
             }
             
         } catch (Exception e) {
-            log.error("❌ Error processing coupon queue", e);
+            log.error("Error processing coupon queue", e);
         }
     }
     
@@ -234,7 +234,7 @@ public class CouponIssueConsumer {
                 // 3. 사용자별 쿠폰 목록 캐시 업데이트
                 updateUserCouponCache(item.getUserId(), userCoupon);
                 
-                log.info("✅ Coupon issued successfully. User: {}, CouponCode: {}", 
+                log.info("Coupon issued successfully. User: {}, CouponCode: {}", 
                     item.getUserId(), userCoupon.getId());
                 
             } catch (Exception e) {
@@ -386,9 +386,9 @@ public class WaitingQueueService {
                             result -> {
                                 // 대기열에서 제거
                                 redisTemplate.opsForZSet().remove(queueKey, userId);
-                                log.info("✅ User {} moved from waiting queue to processing", userId);
+                                log.info("User {} moved from waiting queue to processing", userId);
                             },
-                            error -> log.error("❌ Failed to process user {} from waiting queue", userId, error)
+                            error -> log.error("Failed to process user {} from waiting queue", userId, error)
                         );
                 }
             }

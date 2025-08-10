@@ -365,7 +365,7 @@ public class InfiniteStreamCharacteristics {
 __전통적인 스트림 처리의 한계__:
 
 ```java
-// ❌ 전통적인 방식의 문제점
+// 전통적인 방식의 문제점
 public class TraditionalStreamProcessing {
     
     // 문제 1: 블로킹 I/O

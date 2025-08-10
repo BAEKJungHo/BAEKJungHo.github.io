@@ -149,7 +149,7 @@ public class BufferedInputStream extends FilterInputStream {
 ```java
 InputStream input = new FileInputStream("data.txt");
 InputStream buffered = new BufferedInputStream(input);
-InputStream data = new DataInputStream(buffered); // ❌ 불가능!
+InputStream data = new DataInputStream(buffered); // 불가능!
 ```
 
 ## References

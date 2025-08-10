@@ -288,7 +288,7 @@ class Pawn(color: Color) : Piece(color, PieceType.PAWN) {
 
 **TDD 원칙: 외부 행동만 테스트**
 ```kotlin
-// ✅ 좋은 테스트: 외부 행동 검증
+// 좋은 테스트: 외부 행동 검증
 test("폰의 모든 유효한 이동 패턴을 검증한다") {
     val pawn = Pawn(Color.WHITE)
     
@@ -298,7 +298,7 @@ test("폰의 모든 유효한 이동 패턴을 검증한다") {
     pawn.isValidMove(Position('e', 5), Position('f', 6)) shouldBe false // isDiagonalCapture (Board 없이는 false)
 }
 
-// ❌ 나쁜 테스트: 내부 구현 테스트
+// 나쁜 테스트: 내부 구현 테스트
 test("isSimpleForwardMove 메서드가 올바르게 동작한다") {
     // Private 메서드에 직접 접근 - 캡슐화 위반
 }

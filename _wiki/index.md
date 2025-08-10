@@ -138,7 +138,8 @@ regenerate: true
 * [[/book/tdd-knight-test-design-principle]
 * [[/book/tdd-knight-oop-and-tdd]
 * [[/book/tdd-knight-complex-business-logic-improved]
-
+* [[/book/tdd-knight-refactoring]
+* 
 ## Kata
 
 * [[/kata/kata-hotdog]]

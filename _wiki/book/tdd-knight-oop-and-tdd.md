@@ -193,7 +193,7 @@ class PawnMovementStrategy : MovementStrategy { /* ... */ }
 class RookMovementStrategy : MovementStrategy { /* ... */ }
 ```
 
-**TDD가 상속을 선택한 이유:**
+**상속을 선택한 이유:**
 1. **테스트 단순성**: 각 기물을 독립적으로 테스트하기 쉬움
 2. **도메인 모델 일치**: 체스에서 각 기물은 본질적으로 다른 개체
 3. **확장성**: 새로운 기물 추가 시 기존 코드 변경 불필요

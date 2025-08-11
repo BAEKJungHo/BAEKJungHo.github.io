@@ -46,14 +46,14 @@ test("비숍이 유효한 이동을 할 수 있다") {
 }
 ```
 
-이 테스트들은 **공통 패턴**을 보여줍니다:
+이 테스트들은 **공통 패턴**을 보여준다:
 1. 기물 생성
 2. 이동 유효성 검증
 3. 결과 확인
 
 ### TDD가 요구하는 설계: Piece 인터페이스
 
-Kent Beck의 **"Immediate feedback for interface design decisions"** 원칙에 따라, 테스트가 공통 인터페이스의 필요성을 알려줍니다:
+Kent Beck의 **"Immediate feedback for interface design decisions"** 원칙에 따라, 테스트가 공통 인터페이스의 필요성을 알려준다:
 
 ```kotlin
 // 테스트가 요구하는 공통 추상화

@@ -3,5 +3,6 @@
  "designpattern/designpattern-desired-actual",
  "sdv",
  "sdv/sdv-history",
- "sdv/sdv-proximity-based-auth"
+ "sdv/sdv-proximity-based-auth",
+ "sdv/sdv-vehicle-to-grid"
 ]

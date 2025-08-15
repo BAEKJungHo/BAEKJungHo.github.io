@@ -490,6 +490,7 @@ regenerate: true
 
 * [[/sdv/sdv-proximity-based-auth]]
 * [[/sdv/sdv-history]]
+* [[/sdv/sdv-vehicle-to-grid]]
 
 ## GRPC
 

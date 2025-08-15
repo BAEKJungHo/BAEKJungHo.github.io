@@ -8,6 +8,7 @@
  "children": [
   "network/network-binary-based-protocol",
   "network/network-blip",
+  "network/network-design-principle",
   "network/network-dmz",
   "network/network-dns",
   "network/network-half-close",

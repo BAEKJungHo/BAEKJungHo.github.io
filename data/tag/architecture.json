@@ -81,8 +81,6 @@
  "network/network-design-principle",
  "observability/architecture-domain-oriented-observability",
  "realworld/realworld-smarthome-control-command",
- "sdv/sdv-cloud-architecture",
- "sdv/sdv-service-oriented-architecture",
  "spring/spring-exception-hierarchy",
  "systemdesign/systemdesign-distributed-messaging-queue",
  "systemdesign/systemdesign-software-architecture"

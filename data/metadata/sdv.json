@@ -6,19 +6,9 @@
  "url": "/wiki/sdv",
  "updated": "2025-03-22 20:55:09 +0900",
  "children": [
-  "sdv/sdv-autonomous-driving-systems",
-  "sdv/sdv-cloud-architecture",
-  "sdv/sdv-connectivity-protocols",
-  "sdv/sdv-cybersecurity",
-  "sdv/sdv-data-analytics",
   "sdv/sdv-digital-twin",
-  "sdv/sdv-edge-computing",
-  "sdv/sdv-fleet-management",
   "sdv/sdv-history",
-  "sdv/sdv-ota-update-systems",
   "sdv/sdv-proximity-based-auth",
-  "sdv/sdv-service-oriented-architecture",
-  "sdv/sdv-telematics-fundamentals",
   "sdv/sdv-vehicle-to-grid"
  ]
 }

@@ -10,6 +10,7 @@
   "systemdesign/systemdesign-chatting-application",
   "systemdesign/systemdesign-coupon",
   "systemdesign/systemdesign-distributed-messaging-queue",
+  "systemdesign/systemdesign-payment",
   "systemdesign/systemdesign-software-architecture"
  ]
 }

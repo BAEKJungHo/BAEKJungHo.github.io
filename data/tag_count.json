@@ -12,12 +12,16 @@
   "size": 13
  },
  {
+  "name": "analytics",
+  "size": 1
+ },
+ {
   "name": "api",
   "size": 7
  },
  {
   "name": "architecture",
-  "size": 85
+  "size": 87
  },
  {
   "name": "argon",
@@ -34,6 +38,10 @@
  {
   "name": "auth",
   "size": 18
+ },
+ {
+  "name": "autonomous",
+  "size": 1
  },
  {
   "name": "aws",
@@ -97,15 +105,23 @@
  },
  {
   "name": "cloud",
-  "size": 1
+  "size": 2
  },
  {
   "name": "cloudnative",
   "size": 13
  },
  {
+  "name": "computing",
+  "size": 1
+ },
+ {
   "name": "concurrency",
   "size": 11
+ },
+ {
+  "name": "connectivity",
+  "size": 1
  },
  {
   "name": "consensus",
@@ -148,8 +164,12 @@
   "size": 1
  },
  {
+  "name": "cybersecurity",
+  "size": 1
+ },
+ {
   "name": "data",
-  "size": 4
+  "size": 5
  },
  {
   "name": "database",
@@ -224,7 +244,15 @@
   "size": 3
  },
  {
+  "name": "driving",
+  "size": 1
+ },
+ {
   "name": "dx",
+  "size": 1
+ },
+ {
+  "name": "edge",
   "size": 1
  },
  {
@@ -253,6 +281,10 @@
  },
  {
   "name": "fixturemonkey",
+  "size": 1
+ },
+ {
+  "name": "fleet",
   "size": 1
  },
  {
@@ -448,6 +480,10 @@
   "size": 15
  },
  {
+  "name": "management",
+  "size": 1
+ },
+ {
   "name": "mapstruct",
   "size": 1
  },
@@ -544,6 +580,10 @@
   "size": 12
  },
  {
+  "name": "ota",
+  "size": 1
+ },
+ {
   "name": "owasp",
   "size": 2
  },
@@ -577,6 +617,10 @@
  },
  {
   "name": "protocol",
+  "size": 1
+ },
+ {
+  "name": "protocols",
   "size": 1
  },
  {
@@ -653,7 +697,7 @@
  },
  {
   "name": "sdv",
-  "size": 6
+  "size": 17
  },
  {
   "name": "security",
@@ -682,6 +726,10 @@
  {
   "name": "snowflake",
   "size": 2
+ },
+ {
+  "name": "soa",
+  "size": 1
  },
  {
   "name": "socket",
@@ -737,7 +785,7 @@
  },
  {
   "name": "systemdesign",
-  "size": 7
+  "size": 8
  },
  {
   "name": "tbd",
@@ -750,6 +798,10 @@
  {
   "name": "tdd",
   "size": 17
+ },
+ {
+  "name": "telematics",
+  "size": 1
  },
  {
   "name": "term",

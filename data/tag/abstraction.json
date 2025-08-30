@@ -1,4 +1,5 @@
 [
  "architecture/architecture-abstraction",
- "architecture/architecture-software-fundamental"
+ "architecture/architecture-software-fundamental",
+ "network/network-design-principle"
 ]

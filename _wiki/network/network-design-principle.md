@@ -4,7 +4,7 @@ title   : NETWORK DESIGN PRINCIPLE
 summary : Architecting Digital Highways for Data Packets
 date    : 2025-08-12 15:02:32 +0900
 updated : 2025-08-12 18:12:24 +0900
-tag     : network architecture
+tag     : network architecture abstraction
 toc     : true
 comment : true
 public  : true

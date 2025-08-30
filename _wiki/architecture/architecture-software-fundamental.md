@@ -2,8 +2,8 @@
 layout  : wiki
 title   : SOFTWARE FUNDAMENTALS; CRITICAL THINKING & ABSTRACTION
 summary :
-date    : 2025-08-30 15:02:32 +0900
-updated : 2025-08-30 18:12:24 +0900
+date    : 2025-08-30 12:02:32 +0900
+updated : 2025-08-30 12:12:24 +0900
 tag     : architecture software abstraction
 toc     : true
 comment : true

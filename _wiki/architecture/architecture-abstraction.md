@@ -4,7 +4,7 @@ title   : ABSTRACTION
 summary : 
 date    : 2024-09-10 15:02:32 +0900
 updated : 2024-09-10 18:12:24 +0900
-tag     : architecture cs
+tag     : architecture cs abstraction
 toc     : true
 comment : true
 public  : true

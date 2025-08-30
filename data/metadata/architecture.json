@@ -61,6 +61,7 @@
   "architecture/architecture-scalable",
   "architecture/architecture-schema-registry",
   "architecture/architecture-software",
+  "architecture/architecture-software-fundamental",
   "architecture/architecture-stratified-design",
   "architecture/architecture-stream",
   "architecture/architecture-sync-messaging",

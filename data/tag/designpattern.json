@@ -8,6 +8,7 @@
  "architecture/architecture-pub-sub",
  "architecture/architecture-schema-registry",
  "architecture/architecture-sync-messaging",
+ "database/database-modeling",
  "ddd/ddd-modeling",
  "designpattern",
  "designpattern/designpattern-adapter",

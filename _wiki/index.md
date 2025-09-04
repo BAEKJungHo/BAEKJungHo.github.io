@@ -701,6 +701,7 @@ regenerate: true
 * [[/database/database-natural-keys]]
 * [[/database/database-tx]]
 * [[/database/database-vector-embedding]]
+* [[/database/database-modeling]]
 
 ## Clean Code
 

@@ -36,6 +36,7 @@
   "architecture/architecture-discord-store-message",
   "architecture/architecture-discovery",
   "architecture/architecture-distributed-pk",
+  "architecture/architecture-distributed-transaction",
   "architecture/architecture-domain-model",
   "architecture/architecture-duplexing",
   "architecture/architecture-event",

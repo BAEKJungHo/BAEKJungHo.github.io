@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "A Deep Dive into Distributed Transactions; Patterns and Trade-offs in Practice",
+ "summary": "Two Phase Commit, Try-Confirm/Cancel, Event Sourcing",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-distributed-transaction",
+ "updated": "2025-08-31 14:12:24 +0900",
+ "children": []
+}

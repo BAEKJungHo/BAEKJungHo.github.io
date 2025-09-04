@@ -10,6 +10,7 @@
  "database/database-datamart",
  "database/database-language-translation",
  "database/database-metadata-lock",
+ "database/database-modeling",
  "database/database-natural-keys",
  "database/database-normalization",
  "database/database-partitioning",

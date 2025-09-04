@@ -1,6 +1,7 @@
 [
  "altorithm/algorithm-randomized-expotential-backoff",
  "architecture/architecture-cap",
+ "architecture/architecture-distributed-transaction",
  "caching/msa-cache-consistency",
  "caching/msa-distributed-caching",
  "database/database-cassandra-kkv",

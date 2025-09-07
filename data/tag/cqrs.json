@@ -1,3 +1,4 @@
 [
+ "architecture/architecture-distributed-transaction",
  "ddd/ddd-cqrs"
 ]

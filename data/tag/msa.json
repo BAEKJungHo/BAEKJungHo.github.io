@@ -5,6 +5,7 @@
  "architecture/architecture-crdts",
  "architecture/architecture-discord-store-message",
  "architecture/architecture-distributed-pk",
+ "architecture/architecture-distributed-transaction",
  "caching/msa-cache-consistency",
  "caching/msa-distributed-caching",
  "database/database-cassandra-kkv",

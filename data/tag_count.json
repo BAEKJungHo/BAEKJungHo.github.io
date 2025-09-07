@@ -137,7 +137,7 @@
  },
  {
   "name": "cqrs",
-  "size": 1
+  "size": 2
  },
  {
   "name": "crdts",
@@ -505,7 +505,7 @@
  },
  {
   "name": "msa",
-  "size": 31
+  "size": 32
  },
  {
   "name": "multiplexing",
@@ -745,7 +745,7 @@
  },
  {
   "name": "systemdesign",
-  "size": 8
+  "size": 9
  },
  {
   "name": "tbd",

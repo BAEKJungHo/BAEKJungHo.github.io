@@ -4,7 +4,7 @@ title   : Consumer Options Optimization Strategy
 summary : 
 date    : 2024-03-12 20:54:32 +0900
 updated : 2024-03-12 21:15:24 +0900
-tag     : kafka eventdriven
+tag     : kafka eventdriven zeropayload
 toc     : true
 comment : true
 public  : true

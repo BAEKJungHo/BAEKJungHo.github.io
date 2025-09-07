@@ -453,7 +453,7 @@
  },
  {
   "name": "magazine",
-  "size": 15
+  "size": 16
  },
  {
   "name": "mapstruct",
@@ -826,5 +826,9 @@
  {
   "name": "webflux",
   "size": 4
+ },
+ {
+  "name": "zeropayload",
+  "size": 1
  }
 ]

@@ -23,6 +23,7 @@ regenerate: true
 * [[/magazine/magazine-critical-thinking]]
 * [[/magazine/magazine-abstraction-to-essence]]
 * [[/magazine/magazine-nature]]
+* [[/magazine/magazine-engineering-field-notes]]
 
 ## Mobility
 

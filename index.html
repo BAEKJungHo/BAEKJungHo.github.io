@@ -20,9 +20,7 @@ regenerate: true
                 <em>Lasting success comes not from avoiding risk, but from making smart bets on yourself and taking bold, informed action.</em> <br>
             </div>
             <div class="profile-description">
-                I place great importance on identifying the essence of a problem and reflecting it in system design and implementation. In areas where decisions can be validated with data, I rely strictly on quantitative analysis. For aspects that are less measurable—such as system design, technology stack selection, or architecture decisions—I avoid over-engineering and instead proceed with well-founded reasoning and logical persuasion.
-
-                I have experience in architecture design, implementation, and ensuring high availability in complex domains such as vehicle control and data synchronization. This includes analyzing Tesla’s Virtual Key Provisioning and Vehicle Control open-source projects and contributing to establishing the direction of 42dot’s vehicle control authentication system. I also addressed a concurrent dispatch issue in TAP!’s autonomous bus service through data-driven decision-making, improving system stability.
+                A developer with strong critical thinking skills, the ability to define problems clearly, and a talent for writing high-quality technical documentation, combined with excellent communication skills.
             </div>
             <!--            <h4>-->
             <!--                <a href="/recent/">Documents ({{ site.wiki | size | minus: 1 }} items)</a>-->
@@ -31,35 +29,35 @@ regenerate: true
     </section>
 
     <!-- Content Section -->
-    <section class="content-section">
-        <div class="content-wrapper">
-            <div class="book-documents">
-                <h3><strong><a href="/wiki/tddknight">TDD KNIGHT</a></strong></h3>
-                <ul class="book-list">
-                    {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}
-                    {% for doc in book_docs %}
-                    {% if doc.public == true %}
-                    <li>
-                        <a href="{{ doc.url | prepend: site.baseurl }}">
-                            <span class="doc-title">{{ doc.title }}</span>
-                        </a>
-                    </li>
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-            </div>
-            
-            <!-- Domain Section -->
-            <div class="domain-section">
-                <h3><strong>DOMAIN</strong></h3>
-                <ul class="domain-list">
-                    <li>
-                        <a href="/wiki/sdv">SDV/CONNECT</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<!--    <section class="content-section">-->
+<!--        <div class="content-wrapper">-->
+<!--            <div class="book-documents">-->
+<!--                <h3><strong><a href="/wiki/tddknight">TDD KNIGHT</a></strong></h3>-->
+<!--                <ul class="book-list">-->
+<!--                    {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}-->
+<!--                    {% for doc in book_docs %}-->
+<!--                    {% if doc.public == true %}-->
+<!--                    <li>-->
+<!--                        <a href="{{ doc.url | prepend: site.baseurl }}">-->
+<!--                            <span class="doc-title">{{ doc.title }}</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    {% endif %}-->
+<!--                    {% endfor %}-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--            -->
+<!--            &lt;!&ndash; Domain Section &ndash;&gt;-->
+<!--            <div class="domain-section">-->
+<!--                <h3><strong>DOMAIN</strong></h3>-->
+<!--                <ul class="domain-list">-->
+<!--                    <li>-->
+<!--                        <a href="/wiki/sdv">SDV/CONNECT</a>-->
+<!--                    </li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 </div>
 
 {% include createLink.html %}

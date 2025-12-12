@@ -18,6 +18,7 @@
   "network/network-polling",
   "network/network-port-forwarding",
   "network/network-security-attacks",
+  "network/network-socket-protocol",
   "network/network-ssrf",
   "network/network-subnet",
   "network/network-tcp",

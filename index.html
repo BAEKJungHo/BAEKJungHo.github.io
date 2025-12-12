@@ -29,24 +29,24 @@ regenerate: true
     </section>
 
     <!-- Content Section: Favorite Documents -->
-    <section class="content-section">
-        <div class="content-wrapper">
-            <div class="favorite-documents">
-                <h3><strong>FAVORITES</strong></h3>
-                <ul class="favorite-list">
-                    {% assign favorite_docs = site.wiki | where: "favorite", true | where: "public", true | sort: 'date' | reverse %}
-                    {% for doc in favorite_docs %}
-                    <li>
-                        <a href="{{ doc.url | prepend: site.baseurl }}">
-                            <span class="doc-title">{{ doc.title }}</span>
-                            <span class="doc-date">{{ doc.date | date: "%Y-%m-%d" }}</span>
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-        </div>
-    </section>
+<!--    <section class="content-section">-->
+<!--        <div class="content-wrapper">-->
+<!--            <div class="favorite-documents">-->
+<!--                <h3><strong>FAVORITES</strong></h3>-->
+<!--                <ul class="favorite-list">-->
+<!--                    {% assign favorite_docs = site.wiki | where: "favorite", true | where: "public", true | sort: 'date' | reverse %}-->
+<!--                    {% for doc in favorite_docs %}-->
+<!--                    <li>-->
+<!--                        <a href="{{ doc.url | prepend: site.baseurl }}">-->
+<!--                            <span class="doc-title">{{ doc.title }}</span>-->
+<!--                            <span class="doc-date">{{ doc.date | date: "%Y-%m-%d" }}</span>-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    {% endfor %}-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
 </div>
 
 {% include createLink.html %}

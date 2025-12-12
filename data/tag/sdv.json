@@ -1,6 +1,7 @@
 [
  "architecture/architecture-zero-trust",
  "designpattern/designpattern-desired-actual",
+ "network/network-socket-protocol",
  "sdv",
  "sdv/sdv-digital-twin",
  "sdv/sdv-history",

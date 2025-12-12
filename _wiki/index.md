@@ -756,6 +756,7 @@ regenerate: true
 * [[/network/network-throughput-latency]]
 * [[/network/network-binary-based-protocol]]
 * [[/network/network-design-principle]]
+* [[/network/network-socket-protocol]]
 
 ## Http
 

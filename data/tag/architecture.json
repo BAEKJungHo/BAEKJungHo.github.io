@@ -81,6 +81,7 @@
  "msa/msa-service-discovery",
  "msa/msa-xa",
  "network/network-design-principle",
+ "network/network-socket-protocol",
  "observability/architecture-domain-oriented-observability",
  "realworld/realworld-smarthome-control-command",
  "spring/spring-exception-hierarchy",

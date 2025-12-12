@@ -9,6 +9,7 @@ toc     : true
 public  : true
 parent  : [[/index]]
 latex   : false
+favorite: true
 ---
 
 ## TDD KNIGHT

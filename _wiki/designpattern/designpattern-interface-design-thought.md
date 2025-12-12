@@ -10,6 +10,7 @@ comment : true
 public  : true
 parent  : [[/designpattern]]
 latex   : true
+favorite: true
 ---
 * TOC
 {:toc}

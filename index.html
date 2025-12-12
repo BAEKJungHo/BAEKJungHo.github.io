@@ -28,36 +28,25 @@ regenerate: true
         </div>
     </section>
 
-    <!-- Content Section -->
-<!--    <section class="content-section">-->
-<!--        <div class="content-wrapper">-->
-<!--            <div class="book-documents">-->
-<!--                <h3><strong><a href="/wiki/tddknight">TDD KNIGHT</a></strong></h3>-->
-<!--                <ul class="book-list">-->
-<!--                    {% assign book_docs = site.wiki | where_exp: "item", "item.url contains '/book/'" | sort: 'date' %}-->
-<!--                    {% for doc in book_docs %}-->
-<!--                    {% if doc.public == true %}-->
-<!--                    <li>-->
-<!--                        <a href="{{ doc.url | prepend: site.baseurl }}">-->
-<!--                            <span class="doc-title">{{ doc.title }}</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    {% endif %}-->
-<!--                    {% endfor %}-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--            -->
-<!--            &lt;!&ndash; Domain Section &ndash;&gt;-->
-<!--            <div class="domain-section">-->
-<!--                <h3><strong>DOMAIN</strong></h3>-->
-<!--                <ul class="domain-list">-->
-<!--                    <li>-->
-<!--                        <a href="/wiki/sdv">SDV/CONNECT</a>-->
-<!--                    </li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
+    <!-- Content Section: Favorite Documents -->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <div class="favorite-documents">
+                <h3><strong>FAVORITES</strong></h3>
+                <ul class="favorite-list">
+                    {% assign favorite_docs = site.wiki | where: "favorite", true | where: "public", true | sort: 'date' | reverse %}
+                    {% for doc in favorite_docs %}
+                    <li>
+                        <a href="{{ doc.url | prepend: site.baseurl }}">
+                            <span class="doc-title">{{ doc.title }}</span>
+                            <span class="doc-date">{{ doc.date | date: "%Y-%m-%d" }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
 </div>
 
 {% include createLink.html %}
@@ -221,6 +210,52 @@ regenerate: true
         border-bottom-color: #0000EE;
     }
 
+    /* Favorite Documents Styles */
+    .favorite-documents {
+        flex: 1;
+    }
+
+    .favorite-documents h3 {
+        margin: 0 0 1.5rem 0;
+        font-size: 1.5rem;
+        color: #2563eb;
+    }
+
+    .favorite-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .favorite-list li {
+        margin-bottom: 0.8rem;
+    }
+
+    .favorite-list a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-decoration: none;
+        color: #333;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #eee;
+        transition: all 0.2s;
+    }
+
+    .favorite-list a:hover {
+        color: #0000EE;
+        border-bottom-color: #0000EE;
+    }
+
+    .favorite-list .doc-title {
+        flex: 1;
+    }
+
+    .favorite-list .doc-date {
+        font-size: 0.85rem;
+        color: #888;
+        margin-left: 1rem;
+    }
 
     @media (max-width: 768px) {
         .profile-section {

@@ -485,6 +485,7 @@ public void onMessage(Session session, byte[] message) {
 - [HTTP 1.1 - keep-alive, pipelining, multiple connections](https://klarciel.net/wiki/network/network-tcp-performance/)
 - [Connection Pool, HikariCP, TCP 3-way Handshake](https://klarciel.net/wiki/spring/spring-jdbc/)
 - [Polling, Long-Polling, WebSockets, Server-Sent Events](https://klarciel.net/wiki/network/network-polling/)
+- [커널과 함께 알아보는 소켓과 TCP Deep Dive](https://brewagebear.github.io/linux-kernel-internal-3/#step-31-time_wait-%EC%86%8C%EC%BC%93)
 - [TCP Health Check](https://klarciel.net/wiki/network/network-tcp/)
 
 ## References

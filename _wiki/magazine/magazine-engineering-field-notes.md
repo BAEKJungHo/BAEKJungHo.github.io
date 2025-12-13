@@ -18,6 +18,7 @@ latex   : true
 
 - 엔지니어에게 가장 중요한 본질은 ***[CRITICAL THINKING](https://klarciel.net/wiki/architecture/architecture-software-fundamental/)*** 이다.
 - ***문제의 본질***을 찾는 과정은 매우 중요하며 즐겁다.
+- ***문제 정의***를 잘 하는 것이 가장 중요하다.
 - ***[ABSTRACTION](https://klarciel.net/wiki/architecture/architecture-abstraction/)*** 를 제대로 이해 하는 과정은 엔지니어로써 한 단계 상승하는 길이 된다.
 - 시스템 설계 과정에서 하나의 역할(e.g 차량과의 커넥션을 맺는 서버)에 충실한 서버가 필요하기도 하다.
 - ***[Test-Driven Development](https://klarciel.net/wiki/tddknight/)*** 는 Agent 를 활용하여 코드를 작성함에 있어서 문서화와 심리적 안정망으로서 좋은 도구가 된다.

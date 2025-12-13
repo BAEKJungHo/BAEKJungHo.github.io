@@ -241,7 +241,69 @@ WebSocket 의 프레임은 단순하다.
 첫 번째는 Heartbeat & Keep-Alive 이다.
 
 - TCP keepalive 가 2시간이더라도 세션을 지속적으로 유지하기 위해서 ping/pong 을 (e.g N초 간격) 주기적으로 보내야 한다.
-- 서버도 차량으로부터 Ping 이 N회 이상 안 오면, 소켓을 강제로 끊고(Force Close) 리소스를 정리해야 한다. 그래야 차량이 재접속을 시도할 때 좀비 소켓과 충돌하지 않는다.
+- 서버도 차량으로부터 Ping 이 N회 이상 안 오면, 소켓을 강제로 끊고(Force Close) 리소스를 정리해야 한다. 그래야 차량이 재접속을 시도할 때 **좀비 소켓**과 충돌하지 않는다.
+
+#### Zombie Connection
+
+**좀비 커넥션(zombie connection)** 이란 서버 입장에서는 연결이 살아있다고 생각하지만, 실제로는 더 이상 통신이 불가능한 TCP 연결을 의미한다.
+
+```
+서버: ESTABLISHED
+현실: 클라이언트는 이미 사라짐
+```
+
+TCP 는 커넥션이 맺어져있는지 상태 확인을 위해서는 **데이터 전송**이 필요하다. 따라서 아무 트래픽이 없으면 클라이언트가 꺼졌는지, 네트워크가 끊겼는지, NAT 가 세션을 정리했는지 알 수 없다.
+
+__Scenario 1__:
+
+```
+Client ── TCP 연결 ── Server
+Client 전원 OFF (FIN/RST 못 보냄)
+```
+
+위 와 같은 상황에서 서버는 ESTABLISHED 상태이며, 클라이언트는 끊어져서 패킷 전달이 불가능하다. 이런 상황을 ***Half-Open Connection*** 이라고 한다.
+
+다음과 같은 상황에서도 좀비 커넥션이 누적될 수 있다.
+
+__Scenario 2__:
+
+```
+LTE 연결 중 → Wi-Fi 전환
+기존 IP/NAT 세션 증발
+```
+
+클라이언트는 새 연결을 사용하고, 서버는 기존 연결 유지 하게 되어 좀비 커넥션이 누적된다.
+
+__Scenario 3__:
+
+```
+30~120초 동안 트래픽 없음
+NAT 테이블 삭제
+```
+
+NAT / 방화벽 Idle Timeout 으로 인해, NAT 에서는 드랍되었는데, 서버는 연결이 살아있다고 착각하는 상황이다.
+
+이러한 좀비 커넥션은 아래와 같은 문제가 존재한다. DAU 10k 이상이면 바로 장애로 연결된다.
+
+| 문제     | 설명                    |
+| ------ | --------------------- |
+| FD 고갈  | 파일 디스크립터 누수           |
+| 메모리 누수 | connection context 유지 |
+| 고스트 유저 | online 판단 오류          |
+| 명령 유실  | 실제 전달 불가              |
+| 장애 전파  | 커넥션 풀 고갈              |
+
+__해결 방안__:
+- Heartbeat / Ping-Pong (server: ping, client: pong -> N회 미수신 → close())
+  - Ping에 timestamp / seq 포함
+- Write Timeout (write 실패 시 즉시 연결 정리)
+- Idle Connection 정책 (N분 이상 무활동 -> 강제 종료)
+  - WebSocket, gRPC streaming 
+- TCP KeepAlive (Optional)
+- 커넥션 풀 / 세션 관리
+  - userId ↔ connection 매핑
+  - 마지막 heartbeat timestamp 저장
+  - stale connection 정리 스케줄러
 
 ### Stateful Server Architecture
 

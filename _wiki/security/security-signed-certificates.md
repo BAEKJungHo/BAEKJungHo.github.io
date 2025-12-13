@@ -4,7 +4,7 @@ title   : SIGNED CERTIFICATES
 summary : 
 date    : 2025-06-04 15:54:32 +0900
 updated : 2025-06-04 20:15:24 +0900
-tag     : security network tesla crypto
+tag     : security sdv network tesla crypto
 toc     : true
 comment : true
 public  : true
@@ -51,7 +51,7 @@ __Remote Control Command Requirements__:
 __Process of forming a secure channel__:
 1. [Generating a server TLS key and certificate](https://github.com/teslamotors/vehicle-command)
 2. 서버는 위에서 생성한 개인키에서 공유키를 파생시키고 해당 공유키를 테슬라로 넘겨서 테슬라로 부터 공유키를 전달받아서 `privateKey.Exchange(vehicleInfo.publicKey)` 를 통해서 공유 비밀(shared secret)을 생성한다. 서버의 개인키와 Tesla 의 공개키를 사용해 shared secret 을 계산하고, Tesla 도 자신의 개인키와 서버의 공개키로 동일한 공유 비밀을 계산한다.
-   즉, 양쪽만 알고 있는 대칭 키(세션 키) 확보한다. 공유 비밀을 생성할 때 사용되는 알고리즘은 ___[ECDH(Elliptic Curve Diffie-Hellman)](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman)___ 이다.
+   즉, 양쪽만 알고 있는 대칭 키(세션 키) 확보한다. 공유 비밀을 생성할 때 사용되는 Key Exchange 알고리즘은 ___[ECDH(Elliptic Curve Diffie-Hellman)](https://en.wikipedia.org/wiki/Elliptic-curve_Diffie%E2%80%93Hellman)___ 이다.
 3. 공유 비밀을 SHA-1 으로 해시하고, 특정 길이만큼 잘라서 해당 값을 세션 키로 사용한다.
 4. 그리고 세션 키로 HMAC 을 생성해서 HMAC 태그값을 sub_sigData 필드에 삽입하여 RoutableMessage 라는 protobuf 를 base64 로 인코딩하여 TESLA Fleet API 의 ___[signed_command](https://developer.tesla.com/docs/fleet-api/endpoints/vehicle-endpoints#signed-command)___ API 를 호출한다.
 
@@ -83,6 +83,7 @@ message RoutableMessage {
 ```
 
 이러한 테슬라의 통신 매커니즘은 단순한 "Digital Signature" 를 넘어서, 양방향 인증 + 세션 키를 통한 메시지 무결성 검증 + 메시지 리플레이 방지를 통합한 보안 채널을 형성한다. 세션마다 키를 바꾸면 리플레이 공격 방지가 가능하다.
+즉, 해커가 "문 열기" 패킷을 녹음했다가 다시 틀어도, 세션 키나 카운터(HMAC 태그)가 바뀌어 거절 당한다.
 
 간단히 말하면, 공개키 기반 서명은 ‘누가 보냈는가’를 검증하는 용도이고, ___[공유 비밀(shared secrets)](https://en.wikipedia.org/wiki/Shared_secret)___ + ___[HMAC](https://klarciel.net/wiki/auth/auth-hmac/)___ 은 ‘메시지가 조작되지 않았고, 재사용되지 않았는가’를 확인하기 위한 세션 보안이다.
 
@@ -91,6 +92,12 @@ message RoutableMessage {
 
 - ECDH 는 "우리 둘만 아는 비밀" 을 만들고,
 - HMAC 은 그 비밀을 활용해 "내가 보낸 메시지임" 을 증명한다.
+
+***명령의 무결성 & 권한 검증을 위한 테슬라의 아키텍처***를 간략하게 요약하면 다음과 같다.
+
+1. **ECDH(Key Exchange)**: Cloud의 PrivateKey 와 Vehicle 의 PublicKey 를 조합해 Shared Secret 을 만든다. (이건 수학적으로 Cloud 와 Vehicle 둘만 만들 수 있다).
+2. **HMAC(Signing)**: 이 Shared Secret 으로 "창문 열어"라는 메시지에 서명(Tagging)을 한다.
+3. **Validation**: 차량은 자신이 만든 Shared Secret 으로 HMAC 을 검증합니다. 맞으면 수행한다.
 
 ### Certificate Chains Explained
 

@@ -152,7 +152,8 @@ RTO는 **"일정 시간 동안 답이 없으면 죽은 것으로 간주한다"**
 
 다음 특징은 ***흐름 제어(Flow Control)*** 이다.
 
-흐름 제어는 송신자가 데이터를 너무 빨리 보내서 **수신자의 버퍼(Receive Buffer)** 가 넘치는 것을 막는 기능이다. 수신자는 "나 지금 윈도우 사이즈(Window Size)가 이만큼 남았어"라고 ACK 패킷에 담아 지속적으로 알려준다.
+흐름 제어는 송신자가 데이터를 너무 빨리 보내서 ***수신자의 버퍼(Receive Buffer)*** 가 넘치는 것을 막는 기능이다. 수신자는 "나 지금 윈도우 사이즈(Window Size)가 이만큼 남았어"라고 ACK 패킷에 담아 지속적으로 알려준다.
+TCP Flow control 과 Congestion control 은 모든 Connection 의 처리량을 조절하며, 처리량은 ***cwnd(Congestion Window)*** size 에 따라서 조절된다.
 
 다음 예시를 보자.
 
@@ -168,7 +169,7 @@ RTO는 **"일정 시간 동안 답이 없으면 죽은 것으로 간주한다"**
 
 리눅스 커널의 기본 혼잡 제어 알고리즘은 **CUBIC**이다. CUBIC은 **"패킷 유실 = 혼잡"**으로 간주한다.
 * **문제:** 무선 네트워크(LTE/5G) 환경에서는 혼잡하지 않아도 전파 간섭으로 패킷이 종종 유실된다. CUBIC은 이를 혼잡으로 오판하고 전송 속도를 뚝 떨어뜨린다. 속도가 널뛰기하는 주원인이다.
-* **해결책 (BBR):** 구글이 만든 **TCP BBR(Bottleneck Bandwidth and RTT)** 알고리즘은 패킷 유실이 아니라 **'대역폭과 RTT'**를 측정해서 속도를 조절한다.
+* **해결책 (BBR):** 구글이 만든 ***[TCP BBR(Bottleneck Bandwidth and RTT)](https://blog.acolyer.org/2017/03/31/bbr-congestion-based-congestion-control/)*** 알고리즘은 패킷 유실이 아니라 **'대역폭과 RTT'**를 측정해서 속도를 조절한다.
 
 ## gRPC Bi-directional Streaming
 
@@ -544,10 +545,12 @@ public void onMessage(Session session, byte[] message) {
 
 ## Links
 
+- [RFC-2001: TCP Slow Start, Congestion Avoidance, Fast Retransmit, and Fast Recovery Algorithms](https://datatracker.ietf.org/doc/html/rfc2001)
 - [HTTP 1.1 - keep-alive, pipelining, multiple connections](https://klarciel.net/wiki/network/network-tcp-performance/)
 - [Connection Pool, HikariCP, TCP 3-way Handshake](https://klarciel.net/wiki/spring/spring-jdbc/)
 - [Polling, Long-Polling, WebSockets, Server-Sent Events](https://klarciel.net/wiki/network/network-polling/)
 - [커널과 함께 알아보는 소켓과 TCP Deep Dive](https://brewagebear.github.io/linux-kernel-internal-3/#step-31-time_wait-%EC%86%8C%EC%BC%93)
+- [TCP Error Recovery](https://www.brainbackdoor.com/network/tcp-error-recovery)
 - [TCP Health Check](https://klarciel.net/wiki/network/network-tcp/)
 
 ## References

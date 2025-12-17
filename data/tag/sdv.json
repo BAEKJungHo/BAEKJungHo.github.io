@@ -1,7 +1,10 @@
 [
  "architecture/architecture-zero-trust",
  "designpattern/designpattern-desired-actual",
+ "network/network-nat",
  "network/network-socket-protocol",
+ "network/network-vpn",
+ "network/network-webrtc",
  "sdv",
  "sdv/sdv-digital-twin",
  "sdv/sdv-history",

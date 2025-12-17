@@ -11,6 +11,7 @@
  "network/network-idempotency",
  "network/network-latency",
  "network/network-layeredarchitectures",
+ "network/network-nat",
  "network/network-polling",
  "network/network-port-forwarding",
  "network/network-security-attacks",
@@ -21,6 +22,8 @@
  "network/network-tcp-performance",
  "network/network-telnet",
  "network/network-throughput-latency",
+ "network/network-vpn",
+ "network/network-webrtc",
  "security/security-signed-certificates",
  "troubleshooting/troubleshooting-webclientrequestexception"
 ]

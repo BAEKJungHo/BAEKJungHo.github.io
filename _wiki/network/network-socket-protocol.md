@@ -2,8 +2,8 @@
 layout  : wiki
 title   : SOCKET, PROTOCOL
 summary : Architecting for Safety-Critical Remote Control Commands
-date    : 2025-12-08 15:54:32 +0900
-updated : 2025-12-08 20:15:24 +0900
+date    : 2025-12-14 15:54:32 +0900
+updated : 2025-12-14 20:15:24 +0900
 tag     : network tcp sdv architecture
 toc     : true
 comment : true

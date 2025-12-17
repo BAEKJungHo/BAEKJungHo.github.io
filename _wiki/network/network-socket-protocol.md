@@ -95,7 +95,7 @@ TCP 는 IP가 패킷을 뒤죽박죽으로 배달해도, 수신 측에서 **시�
 - MQTT Keepalive Timeout
 - 실시간 영상·원격 제어 프레임 드랍
 
-핸드오버(Handover) 상황에서 사용자가 답답함을 느껴 "창문 열기" 명령을 여러 번 클릭(RetryStorming)하면 다음과 같은 현상이 발생한다.
+***[Network Handover](https://klarciel.net/wiki/network/network-vpn/)*** 상황에서 사용자가 답답함을 느껴 "창문 열기" 명령을 여러 번 클릭(RetryStorming)하면 다음과 같은 현상이 발생한다.
 
 1. 사용자가 반응이 없자 '열기' 버튼을 5번 누른다.
 2. 애플리케이션은 5번의 send()를 호출한다.

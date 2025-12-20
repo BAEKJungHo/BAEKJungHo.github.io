@@ -28,8 +28,8 @@ ISP 제공 업체(SK, KT 등)에서 제공해주는 인터넷 회선은 기본�
 > - 192.168.0.0 ~ 192.168.255.255
 
 우리의 ***Peer(Mac, iPhone 등)*** 들은 공유기 등을 통해서 IP 를 할당받는데 이때 IP 는 사설(private) IP 이며, 이러한 peer 를 구분하기 위해서 ***[Port Forwarding](https://klarciel.net/wiki/network/network-port-forwarding/)*** 이 필요하다.
-그리고 이러한 사설 IP 가 인터넷 통신을 하기 위해서는 공인(public) IP 로 변환이 되어야 한다. 이러한 네트워크 주소 변환 매커니즘(NAT)을 사용하는 이유는
-이는 IPv4 ***자원을 절약하고, 보안을 강화***하기 위해서이다. NAT 를 사용하면 외부에서 내부 디바이스로 임의 접근이 기본적으로 차단된다.
+그리고 이러한 사설 IP 가 인터넷 통신을 하기 위해서는 공인(public) IP 로 변환이 되어야 한다. 이러한 <mark><em><strong>네트워크 주소 변환 매커니즘(NAT)을 사용하는 이유는
+이는 IPv4 자원을 절약하고, 보안을 강화하기 위해서이다.</strong></em></mark> NAT 를 사용하면 외부에서 내부 디바이스로 임의 접근이 기본적으로 차단된다.
 
 ![](/resource/wiki/network-nat/nat1.png)
 

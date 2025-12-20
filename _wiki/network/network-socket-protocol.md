@@ -73,7 +73,7 @@ TCP/IP 의 각 책임과 역할은 다음과 같다. ***[IP(Internet Protocol)](
 
 보이지 않는 병목을 찾아내고, 시스템이 처한 환경(유선/무선)에 맞춰 성능을 튜닝하기 위해서 TCP 의 특징을 잘 이해해야 한다.
 
-TCP 의 특징은 다음과 같다.
+***[TCP](https://en.wikipedia.org/wiki/User_Datagram_Protocol)*** 는 순서 보장 및 재전송 매커니즘을 통한 데이터 전송 보장을 지원한다. 이러한 특징을 ***신뢰성 보장 매커니즘(reliability mechanisms)*** 이라 한다.
 
 ### Ordered Data Transfer, Retransmit
 

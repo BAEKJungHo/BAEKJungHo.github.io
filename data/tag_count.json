@@ -664,6 +664,10 @@
   "size": 1
  },
  {
+  "name": "sdp",
+  "size": 1
+ },
+ {
   "name": "sdv",
   "size": 12
  },
@@ -802,6 +806,10 @@
  {
   "name": "tunneling",
   "size": 2
+ },
+ {
+  "name": "udp",
+  "size": 1
  },
  {
   "name": "uml",

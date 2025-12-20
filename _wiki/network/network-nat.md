@@ -17,7 +17,7 @@ favorite: true
 
 ## NAT
 
-네트워킹에서 빼놓을 수 없는 ***[NAT(Network Address Translation)](https://ko.wikipedia.org/wiki/%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC_%EC%A3%BC%EC%86%8C_%EB%B3%80%ED%99%98)*** 에 대해서 살펴보자.
+네트워킹에서 빼놓을 수 없는 ***[NAT(Network Address Translation)](https://datatracker.ietf.org/doc/html/rfc1631)*** 에 대해서 살펴보자.
 
 ISP 제공 업체(SK, KT 등)에서 제공해주는 인터넷 회선은 기본적으로 한 대의 기기만 직접적으로 연결할 수 있다.
 “공유기(Router)”는 하나의 인터넷 회선을 연결하여, 이를 내부 네트워크로 나누고, 각 기기에 인터넷을 사용할 수 있는 사설 IP를 “무선 랜카드 or 유선 랜카드(Network Interface Card)” 에 자동으로 할당해준다. 이 덕분에, 여러 기기가 하나의 “인터넷 회선”을 통해 인터넷에 접속할 수 있는 환경이 만들어진다.

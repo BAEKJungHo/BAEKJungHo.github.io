@@ -75,6 +75,8 @@ TCP/IP 의 각 책임과 역할은 다음과 같다. ***[IP(Internet Protocol)](
 
 TCP 의 특징은 다음과 같다.
 
+### Ordered Data Transfer, Retransmit
+
 첫 번째 특징은 ***순서 보장(Ordered Data Transfer)과 재전송(Retransmit)*** 이다.
 
 TCP 는 IP가 패킷을 뒤죽박죽으로 배달해도, 수신 측에서 **시퀀스 번호(Sequence Number)** 를 이용해 원래 순서대로 재조립(정렬)한다.
@@ -149,6 +151,8 @@ RTO는 **"일정 시간 동안 답이 없으면 죽은 것으로 간주한다"**
 
 이 문제를 해결하기 위해 현대의 TCP 는 **SACK 옵션**을 사용한다.
 "나 2번은 못 받았는데, **[3번, 5번]은 확실히 받았어**"라고 ACK 헤더의 옵션 필드에 명시해 주는 것이다. 이렇게 하면 송신자는 2번과 4번만 콕 집어서 재전송할 수 있다.
+
+### Flow Control
 
 다음 특징은 ***흐름 제어(Flow Control)*** 이다.
 

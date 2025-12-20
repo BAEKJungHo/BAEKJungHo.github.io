@@ -4,7 +4,7 @@ title   : WebRTC; Web Real-Time Communication
 summary : NAT Traversal and Real-Time Communication
 date    : 2025-12-15 15:54:32 +0900
 updated : 2025-12-15 20:15:24 +0900
-tag     : network sdv sdp udp nat webrtc
+tag     : network sdv sdp udp nat webrtc dtls
 toc     : true
 comment : true
 public  : true
@@ -234,6 +234,21 @@ a=sendrecv
 - 둘 다 sendrecv 트랜시버이며, 두 스트림을 받고, 두 스트림을 보낼 수 있음
 - ICE 후보와 인증 세부 정보가 있어 연결을 시도할 수 있음
 - 인증서 지문이 있어 안전한 통화를 설정할 수 있음
+
+#### Datagram Transport Layer Security
+
+***[DTLS(Datagram Transport Layer Security)](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B7%B8%EB%9E%A8_%EC%A0%84%EC%86%A1_%EA%B3%84%EC%B8%B5_%EB%B3%B4%EC%95%88)*** 는 한마디로 정의하면 ***"UDP 위에서 동작하도록 개조된 TLS(SSL)"*** 이다.
+
+TLS 는 하위 계층(Transport Layer)이 다음 두 가지를 보장한다고 믿는다.
+- Reliability (신뢰성): 패킷은 절대 유실되지 않는다.
+- Ordering (순서): 패킷은 보낸 순서대로 도착한다.
+
+하지만, UDP 는 패킷이 유실될 수 있고 순서가 뒤바뀔 수 있기 때문에 TLS 의 보안성은 유지하면서, UDP 의 불안정성을 극복하기 위해 자체적인 재전송 및 순서 제어 기능을 탑재한 
+매커니즘이 필요하며 이것이 DTLS 이다.
+
+WebRTC 스택에서 DTLS 는 **미디어(SRTP)** 와 **데이터(SCTP)** 를 보호하는 중추적인 역할을 한다.
+영상/음성이 아닌 파일 전송, 채팅 메시지 등을 담당하는 ***DataChannel 은 SCTP 패킷을 사용한다.*** 이 SCTP 패킷은 ***DTLS 패킷 안에 캡슐화(Encapsulation)*** 되어 전송된다.
+즉, 데이터 채널은 DTLS 터널을 그대로 통과한다.
 
 ### TURN
 

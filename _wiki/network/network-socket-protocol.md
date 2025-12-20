@@ -239,6 +239,25 @@ WebSocket 의 프레임은 단순하다.
     * 만약 100MB 짜리 큰 파일을 보내고 있다면, 그 뒤에 대기 중인 "채팅 메시지(1KB)"는 앞선 파일 전송이 끝날 때까지 대기해야 한다.
     * 개발자가 애플리케이션 레벨에서 직접 채널을 나누는 로직을 짜지 않는 한, **직렬 처리(Serial Processing)** 가 강제된다.
 
+### HTTP Upgrade
+
+
+```
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Access-Control-Allow-Origin: http://example.com
+Sec-WebSocket-Accpet: s3pPLMBiTxaQ9kYGzzhZRbK+x0o=
+Sec-WebSocket-Protocol: appProtocol-v2
+Sec-WebSocket-Extensions: x-custom-extension
+```
+
+- Sec-WebSocket-Version: 클라이언트가 사용하고자 하는 웹소켓 프로토콜의 버전. 만약 서버가 클라이언트의 버전을 지원하지 않으면, 서버 쪽에서는 자신이 지원하는 버전 목록을 보내야함
+- Sec-WebSocket-Key: 클라이언트 측에서 자동생성된 키. 이 키를 이용하여 서버가 요청한 프로토콜 버전을 지원하는지 시험. 이 키의 내용물은 GUID(전역 고유 식별자)로 이루어져 있고, SHA1 해시 연산이 끝난 후 BASE64 로 인코딩된 문자열을 클라이언트에게 전달한다.
+- Sec-WebSocket-Accept: 프로토콜을 지원함을 증명하는 서명된 키값
+- Sec-WebSocket-Protocol: 서버가 선택한 애플리케이션 서브프로토콜
+- Sec-WebSocket-Extensions: 현재 커넥션에 사용할 웹소켓 확장 기능을 협상하기 위해 사용. 서버가 선택한 웹소켓 확장 기능 목록
+
 차량 원격 제어 실무에서는 다음과 같은 사항을 고려해야 한다.
 
 ### Heartbeat & Keep-Alive

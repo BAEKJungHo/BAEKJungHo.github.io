@@ -147,7 +147,7 @@ __The Handover Moment__:
 - Step 3: 패킷의 변신 (Encapsulation Change)
   - 앱은 여전히 똑같은 패킷을 tun0로 던진다. VPN 클라이언트는 이를 받아서 **포장지(Outer Header)** 만 바꾼다.
 - Step 4: 서버의 처리 (Cryptokey Routing / Roaming)
-  - 서버는 패킷을 받습니다. Src IP가 갑자기 바뀌어서 들어온다.
+  - 서버는 패킷을 받는다. Src IP가 갑자기 바뀌어서 들어온다.
   - 하지만 복호화를 해보니 **"서명(Key)이 일치"**하고 **"Inner IP가 10.8.0.2로 동일"**하다.
   - 서버: "아, User A가 LTE에서 WiFi로 갈아탔구나. 엔드포인트 주소만 업데이트하고 세션은 그대로 유지하자."
 

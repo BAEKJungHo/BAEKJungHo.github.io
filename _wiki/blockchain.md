@@ -13,8 +13,7 @@ latex   : false
 
 # BLOCKCHAIN
 
-***[BLOCKCHAIN](https://en.wikipedia.org/wiki/Blockchain)*** 은 중앙 기관 없이 여러 참여자들이 거래 이력을 함께 관리하는 분산 장부(Distributed Ledger) 이다.
-즉, 중앙 기관 없이도 단일한 진실(Single Source of Truth)을 합의하기 위한 프로토콜(protocol) 이다.
+***[BLOCKCHAIN](https://en.wikipedia.org/wiki/Blockchain)*** 은 중앙 기관 없이도 단일한 진실(Single Source of Truth)을 합의하기 위한 프로토콜(protocol)이며, 중앙 기관 없이 여러 참여자들이 거래 이력을 함께 관리하는 분산 장부(Distributed Ledger) 이다.
 
 기존 전자 결제에서는 ***[이중 지불 문제(double spending problem)](https://en.wikipedia.org/wiki/Double-spending)*** 가 존재한다. 
 이중 지불 문제란 화폐를 두 번 이상 무단으로 사용되는 경우를 의미한다. 예를 들면 트랜잭션의 비명시적 일관성(e.g 계좌 이체에서, A 계좌에서 출금이 일어나고 그 돈이 B 계좌로 입금된다 했을 때, 트랜잭션의 전과 후 두 계좌 잔고의 합이 같아야 한다.)이 깨져서 발생할 수도 있다.

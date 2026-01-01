@@ -52,6 +52,10 @@
   "size": 1
  },
  {
+  "name": "bitcoin",
+  "size": 1
+ },
+ {
   "name": "blockchain",
   "size": 1
  },

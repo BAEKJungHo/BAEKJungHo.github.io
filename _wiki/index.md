@@ -25,6 +25,8 @@ regenerate: true
 * [[/magazine/magazine-nature]]
 * [[/magazine/magazine-engineering-field-notes]]
 
+## Blockchain
+
 ## Mobility
 
 * [[/mobility/mobility-lidar-radar]]

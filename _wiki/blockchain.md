@@ -120,3 +120,8 @@ PoW는 ***'노력(Work)'을 증명하여 '합의(Consensus)'를 이루는 방식
   - 이 경제적 인센티브 구조가 시스템 보안의 핵심
 
 이러한 프로토콜이 <mark><em><strong>"물리적 에너지(연산)가 디지털 불변성(보안)으로 치환되는 과정"</strong></em></mark> 을 갖는다.
+
+
+## References
+
+- [Bitcoin Book](https://github.com/bitcoinbook/bitcoinbook)

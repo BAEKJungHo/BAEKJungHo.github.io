@@ -12,7 +12,7 @@ parent  : [[/blockchain]]
 latex   : true
 ---
 * TOC
-  {:toc}
+{:toc}
 
 ## Little Endian, Big Endian
 

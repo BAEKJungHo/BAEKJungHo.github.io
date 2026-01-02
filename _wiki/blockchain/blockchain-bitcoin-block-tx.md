@@ -20,7 +20,7 @@ Block is Container for bitcoin transactions.
 
 ![](/resource/wiki/blockchain-bitcoin-network/block.png)
 
-이러한 블록들이 사슬(chain) 형태로 구성되는 것을 BlockChain 이라 하며, ***Distributed Transaction Ledger*** 이다.
+이러한 블록들이 사슬(chain) 형태로 구성되는 것을 ***BlockChain(Distributed Transaction Ledger)*** 이라 한다.
 블록은 거래 내역의 모음이며, 맨 위에는 블록에 포함된 데이터를 요약한 블록 헤더가 있다.
 
 __Block__:

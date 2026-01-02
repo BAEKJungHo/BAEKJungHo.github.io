@@ -16,10 +16,8 @@ latex   : true
 
 ## Little Endian, Big Endian
 
-Little Endian 과 Big Endian 은 멀티바이트 데이터(e.g int, long)를 메모리에 어떤 순서로 저장하느냐에 대한 규칙이다.
-
 CPU 는 보통 1바이트 단위로 메모리에 접근하지만, int(4바이트), long(8바이트) 같은 데이터는 여러 바이트로 구성된다. 즉, 바이트를 순서대로 저장해야 한다.
-"이 여러 바이트를 어느쪽 부터 저장할 것인가"가 Endian 문제이다. 
+시스템이 내부적으로 사용하는 바이트 순서를 ***internal byte order*** 라고 한다. Little-endian / Big-endian은 internal byte order 를 정의하는 규칙이다. 즉, 멀티바이트 데이터(e.g int, long)를 메모리에 어떤 순서로 저장하느냐에 대한 규칙이다.
 
 예를 들어 숫자 0x12345678 를 메모리에 저장하는 경우 아래와 같이 된다.
 
@@ -43,3 +41,7 @@ __Little Endian__:
 - x86 / x64 (Intel, AMD) CPU는 Little Endian
 - 타입 변환에도 유리 
   - 예를 들어 0x00000010 이라는 값을 저장할때 Little Endian 은 10 00 00 00 으로 저장한다. Big Endian 은 00 00 00 10 으로 저장한다. 이 값을 1바이트로 cast 하는 경우 Little Endian 은 뒤의 값을 잘라버리면 된다.
+
+
+비트코인은 네트워크 전송 시 Little-endian 을 사용하며
+사람이 보는 블록 해시는 Big-endian 으로 되어있다.

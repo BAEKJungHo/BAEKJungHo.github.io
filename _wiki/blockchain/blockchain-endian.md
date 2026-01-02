@@ -26,6 +26,7 @@ CPU 는 보통 1바이트 단위로 메모리에 접근하지만, int(4바이트
 | Big-endian    | 12 34 56 78 |
 | Little-endian | 78 56 34 12 |
 
+![](/resource/wiki/blockchain-endian/byte-order.png)
 
 __Big Endian__:
 - 가장 큰 자리수(MSB, Most Significant Byte)를 가장 낮은 메모리 주소에 저장한다.
@@ -68,3 +69,7 @@ __부동소수점 오류 방지__:
 
 __미래 가치 상승에 대비__:
 - 비트코인이 전 세계적인 지불 수단이 되었을 때, 1 BTC의 가치가 매우 높아질 것을 대비했다. 만약 1 BTC가 10억 원이 된다면, 커피 한 잔(5,000원)을 사기 위해서는 0.000005 BTC를 보내야 한다. 이는 직관적이지 않다. 대신 "500 사토시(sats)를 보낸다"라고 표현하는 것이 훨씬 계산과 표기에 유리하다.
+
+## Links
+
+- [What does the little-endian notation improve for Bitcoin?](https://bitcoin.stackexchange.com/questions/103345/what-does-the-little-endian-notation-improve-for-bitcoin#answer-103349)

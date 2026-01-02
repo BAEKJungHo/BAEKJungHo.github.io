@@ -1,5 +1,6 @@
 [
  "architecture/architecture-retry-mechanism",
+ "blockchain/blockchain-bitcoin-block-tx",
  "linux/linux-message-traffic-path",
  "linux/linux-ssh",
  "network/network-binary-based-protocol",

@@ -28,6 +28,7 @@ regenerate: true
 ## Blockchain
 
 * [[/blockchain/blockchain-endian]]
+* [[/blockchain/blockchain-bitcoin-block-tx]]
 
 ## Mobility
 

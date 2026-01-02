@@ -1,4 +1,5 @@
 [
  "blockchain",
+ "blockchain/blockchain-bitcoin-block-tx",
  "blockchain/blockchain-endian"
 ]

@@ -53,11 +53,11 @@
  },
  {
   "name": "bitcoin",
-  "size": 2
+  "size": 3
  },
  {
   "name": "blockchain",
-  "size": 2
+  "size": 3
  },
  {
   "name": "bluetooth",
@@ -541,7 +541,7 @@
  },
  {
   "name": "network",
-  "size": 27
+  "size": 28
  },
  {
   "name": "nodejs",

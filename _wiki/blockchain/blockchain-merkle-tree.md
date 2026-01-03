@@ -46,7 +46,7 @@ Block Hash = SHA256(SHA256(Block Header))
 여기서 중요한 점은 ***블록 해시는 블록안의 모든 거래(transaction)에 의존한다.*** 따라서, 거래가 하나라도 변경되면 블록 해시가 변경되고, 블록 헤더가 변경되어 작업 증명을 다시 해야 하는 상황이 발생한다.
 
 이 문제(디스크 공간을 절약하고 블록의 해시를 깨지 않기 위해)를 해결하기 위해서 사용되는 자료구조가 ***[Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree)*** 이다.
-머클 트리(merkle tree)의 핵심 아이디어는 ***"여러 데이터를 해시로 요약하고, 그 요약을 다시 해시한다"*** 이다.
+머클 트리(merkle tree)의 핵심 아이디어는 <mark><em><strong>"여러 데이터를 해시로 요약하고, 그 요약을 다시 해시한다"</strong></em></mark> 이다.
 
 ![](/resource/wiki/blockchain-merkle-tree/merkletree1.png)
 

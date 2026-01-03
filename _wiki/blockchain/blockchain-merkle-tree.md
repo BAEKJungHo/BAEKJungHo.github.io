@@ -69,6 +69,8 @@ Block Hash = SHA256(SHA256(Block Header))
 
 SPV(Simplified Payment Verification)는 블록체인 전체를 다운로드 하지 않고도 특정 거래가 블록에 포함되어있는지 검증하는 방법이다. SPV 노드는 블록 헤더만 다운로드한다.
 
+![](/resource/wiki/blockchain-merkle-tree/spv.png)
+
 이해하기 쉽게 말하면, SPV 는 영수증(Tx) 하나를 확인하기 위해 백화점의 10년 치 장부(Blockchain)를 다 뒤지는 대신, 백화점 결재 도장이 찍힌 일일 마감표(Block Header)와 영수증 꾸러미(Merkle Path)만 확인하는 똑똑한 검증 방식이다.
 
 SPV 노드가 "A가 나에게 1BTC 를 보냈다"는 거래(Tx)를 검증하는 과정은 다음과 같다.

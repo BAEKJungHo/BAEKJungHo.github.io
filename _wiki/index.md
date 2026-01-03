@@ -29,6 +29,7 @@ regenerate: true
 
 * [[/blockchain/blockchain-endian]]
 * [[/blockchain/blockchain-bitcoin-block-tx]]
+* [[/blockchain/blockchain-bitcoin-merkle-tree]]
 
 ## Mobility
 

@@ -11,6 +11,7 @@
   "network/network-design-principle",
   "network/network-dmz",
   "network/network-dns",
+  "network/network-eth0",
   "network/network-half-close",
   "network/network-idempotency",
   "network/network-latency",

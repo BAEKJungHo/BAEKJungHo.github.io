@@ -6,5 +6,6 @@
  "docker/docker-overlay-network",
  "kubernetes/kubernetes-container-hierarchy",
  "kubernetes/kubernetes-open-container-initiative",
- "logging/logging-rotation"
+ "logging/logging-rotation",
+ "network/network-eth0"
 ]

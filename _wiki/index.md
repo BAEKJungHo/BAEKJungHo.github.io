@@ -769,6 +769,7 @@ regenerate: true
 * [[/network/network-nat]]
 * [[/network/network-vpn]]
 * [[/network/network-webrtc]]
+* [[/network/network-eth0]]
 
 ## Http
 

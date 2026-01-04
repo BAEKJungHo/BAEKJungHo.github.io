@@ -4,5 +4,6 @@
  "blockchain/blockchain-bitcoin-block-tx",
  "blockchain/blockchain-checksum",
  "blockchain/blockchain-endian",
+ "blockchain/blockchain-genesis-block",
  "blockchain/blockchain-merkle-tree"
 ]

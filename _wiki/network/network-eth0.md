@@ -4,7 +4,7 @@ title   : The Lifecycle of a Network Packet in Linux
 summary : eth0, veth
 date    : 2025-12-18 15:02:32 +0900
 updated : 2025-12-18 18:12:24 +0900
-tag     : network docker
+tag     : network docker linux
 toc     : true
 comment : true
 public  : true

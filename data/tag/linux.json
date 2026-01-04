@@ -10,6 +10,7 @@
  "linux/linux-os",
  "linux/linux-ssh",
  "linux/linux-unix-philosophy",
+ "network/network-eth0",
  "network/network-port-forwarding",
  "network/network-telnet",
  "reactive/reactive-async-nonblocking",

@@ -31,6 +31,7 @@ regenerate: true
 * [[/blockchain/blockchain-bitcoin-block-tx]]
 * [[/blockchain/blockchain-bitcoin-merkle-tree]]
 * [[/blockchain/blockchain-checksum]
+* [[/blockchain/blockchain-base58]
 
 ## Mobility
 

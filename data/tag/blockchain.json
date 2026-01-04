@@ -1,5 +1,6 @@
 [
  "blockchain",
+ "blockchain/blockchain-base58",
  "blockchain/blockchain-bitcoin-block-tx",
  "blockchain/blockchain-checksum",
  "blockchain/blockchain-endian",

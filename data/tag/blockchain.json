@@ -1,6 +1,7 @@
 [
  "blockchain",
  "blockchain/blockchain-bitcoin-block-tx",
+ "blockchain/blockchain-checksum",
  "blockchain/blockchain-endian",
  "blockchain/blockchain-merkle-tree"
 ]

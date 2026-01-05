@@ -33,6 +33,7 @@ regenerate: true
 * [[/blockchain/blockchain-checksum]
 * [[/blockchain/blockchain-base58]
 * [[/blockchain/blockchain-genesis-block]
+* [[/blockchain/blockchain-segwit-locking-script]
 
 ## Mobility
 

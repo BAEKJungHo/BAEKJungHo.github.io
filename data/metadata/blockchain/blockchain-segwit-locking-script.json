@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Segwit Locking Script",
+ "summary": "Bech32, Remove Transaction Malleability",
+ "parent": "blockchain",
+ "url": "/wiki/blockchain/blockchain-segwit-locking-script",
+ "updated": "2026-01-05 12:15:24 +0900",
+ "children": []
+}

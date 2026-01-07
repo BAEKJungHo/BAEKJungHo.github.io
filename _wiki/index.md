@@ -34,6 +34,7 @@ regenerate: true
 * [[/blockchain/blockchain-base58]
 * [[/blockchain/blockchain-genesis-block]
 * [[/blockchain/blockchain-segwit-locking-script]
+* [[/blockchain/blockchain-uxto]
 
 ## Mobility
 

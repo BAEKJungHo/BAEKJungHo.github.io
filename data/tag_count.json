@@ -53,11 +53,11 @@
  },
  {
   "name": "bitcoin",
-  "size": 9
+  "size": 10
  },
  {
   "name": "blockchain",
-  "size": 9
+  "size": 10
  },
  {
   "name": "bluetooth",
@@ -217,7 +217,7 @@
  },
  {
   "name": "distributed",
-  "size": 18
+  "size": 19
  },
  {
   "name": "dns",

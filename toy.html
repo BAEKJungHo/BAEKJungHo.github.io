@@ -1,0 +1,117 @@
+---
+layout: document
+title: Toy
+permalink: /toy/
+public: true
+---
+<div>
+    <ul id="toy-list" class="tag-list"></ul>
+</div>
+
+<div id="toy-collection"></div>
+
+<script src="/js/axios.min.js"></script>
+<script>
+    ;(function() {
+        axios.get(`/data/toy_count.json`, {})
+            .then((resp) => {
+                if (resp == null || resp.data == null) {
+                    return;
+                }
+                const toys = resp.data;
+
+                let template = '';
+                for (let i = 0; i < toys.length; i++) {
+                    const toy = toys[i];
+                    template += `
+                    <li class="tag-item">
+                        <a href="#${toy.name}" onclick="showToy('${toy.name}')">${toy.name}<sup>${toy.size}</sup></a>
+                    </li>`
+                }
+                document.getElementById('toy-list').innerHTML = template;
+
+                showInitToy();
+            });
+    })();
+
+    /*
+     * 주어진 toy에 해당하는 모든 문서의 목록을 보여줍니다.
+     */
+    function showToy(toyName) {
+        axios.get(`/data/toy/${toyName}.json`, {})
+            .then((resp) => createLinks(resp, toyName));
+    }
+
+    /*
+     * 주어진 toy에 해당하는 모든 문서의 링크를 만들어 줍니다.
+     */
+    function createLinks(resp, toyName) {
+        if (resp.data == null) {
+            return;
+        }
+
+        const data = resp.data;
+        const documents = [];
+
+        let listItems = '';
+        for (let i = 0; i < data.length; i++) {
+            const idText = getDocumentElementId(toyName, data[i]);
+            listItems += `<li id="${idText}"></li>`;
+        }
+        const template = `
+            <h3>${toyName}</h3>
+            <ul class="post-list"> ${listItems} </ul>`;
+
+        document.getElementById('toy-collection').innerHTML = template;
+
+        for (let i = 0; i < data.length; i ++) {
+            setTimeout(() => insertDocumentLink(data[i], toyName), 0);
+        }
+    }
+
+    /*
+     * 문서 하나의 링크를 생성합니다.
+     */
+    function insertDocumentLink(documentId, toyName) {
+        axios.get(`/data/metadata/${documentId}.json`, {})
+            .then((resp) => {
+                if (resp == null || resp.data == null) {
+                    return;
+                }
+                const d = resp.data;
+
+                const updatedDate = d.updated.replace(/^(\d{4}-\d{2}-\d{2}).*$/, '$1')
+                const summaryText = (d.summary == null || /^\s*$/.test(d.summary))
+                    ? ('')
+                    : ('-' + d.summary);
+                const subDocument = (d.children && d.children.length > 0)
+                    ? `- 서브 문서: ${d.children.length} 개`
+                    : '';
+
+                const link = `
+                <a class="post-link" href="${d.url}">
+                    <span>${d.title}</span>
+                    <div class="post-meta" style="float: right;" title="${d.updated}">${updatedDate}</div>
+                    <div class="post-excerpt">${summaryText}</div>
+                    <div class="post-sub-document">${subDocument}</div>
+                </a>`;
+
+                const idText = getDocumentElementId(toyName, documentId);
+                document.getElementById(idText).innerHTML = link;
+            });
+    }
+
+    function getDocumentElementId(toyName, documentId) {
+        return `toy-${toyName}-${documentId}`;
+    }
+
+    function showInitToy() {
+        const url = window.location.href;
+        const req = /#([^\s]+)$/.exec(url);
+        if(Array.isArray(req)) {
+            let toyName = decodeURI(req.pop());
+            showToy(toyName);
+        }
+    }
+</script>
+

@@ -106,6 +106,7 @@
  "/wiki/blockchain",
  "/wiki/blockchain/blockchain-base58",
  "/wiki/blockchain/blockchain-bitcoin-block-tx",
+ "/wiki/blockchain/blockchain-bitcoin-varint",
  "/wiki/blockchain/blockchain-byzantine",
  "/wiki/blockchain/blockchain-checksum",
  "/wiki/blockchain/blockchain-endian",

@@ -2,6 +2,7 @@
  "altorithm/algorithm-randomized-expotential-backoff",
  "architecture/architecture-cap",
  "architecture/architecture-distributed-transaction",
+ "blockchain/blockchain-bitcoin-varint",
  "blockchain/blockchain-byzantine",
  "caching/msa-cache-consistency",
  "caching/msa-distributed-caching",

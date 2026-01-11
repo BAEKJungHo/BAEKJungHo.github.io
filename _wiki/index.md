@@ -36,6 +36,7 @@ regenerate: true
 * [[/blockchain/blockchain-segwit-locking-script]
 * [[/blockchain/blockchain-uxto]
 * [[/blockchain/blockchain-byzantine]
+* [[/blockchain/blockchain-bitcoin-varint]
 
 ## Mobility
 

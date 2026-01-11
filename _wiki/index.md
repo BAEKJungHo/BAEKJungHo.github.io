@@ -37,6 +37,8 @@ regenerate: true
 * [[/blockchain/blockchain-uxto]
 * [[/blockchain/blockchain-byzantine]
 * [[/blockchain/blockchain-bitcoin-varint]
+* [[/blockchain/blockchain-bitnode]
+* [[/blockchain/blockchain-bitnode-encoding-endians]
 
 ## Mobility
 

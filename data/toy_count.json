@@ -1,5 +1,9 @@
 [
  {
+  "name": "Bitcoin",
+  "size": 2
+ },
+ {
   "name": "TDD",
   "size": 7
  }

@@ -45,17 +45,34 @@ public: true
     /*
      * 주어진 toy에 해당하는 모든 문서의 링크를 만들어 줍니다.
      */
-    function createLinks(resp, toyName) {
+    async function createLinks(resp, toyName) {
         if (resp.data == null) {
             return;
         }
 
         const data = resp.data;
-        const documents = [];
+
+        // 모든 문서의 메타데이터를 먼저 가져옵니다
+        const metadataPromises = data.map(documentId =>
+            axios.get(`/data/metadata/${documentId}.json`, {})
+                .then(resp => ({
+                    id: documentId,
+                    metadata: resp.data
+                }))
+        );
+
+        const documentsWithMetadata = await Promise.all(metadataPromises);
+
+        // 날짜(updated) 기준 내림차순으로 정렬
+        documentsWithMetadata.sort((a, b) => {
+            const dateA = new Date(a.metadata.updated);
+            const dateB = new Date(b.metadata.updated);
+            return dateB - dateA; // 내림차순 (최신순)
+        });
 
         let listItems = '';
-        for (let i = 0; i < data.length; i++) {
-            const idText = getDocumentElementId(toyName, data[i]);
+        for (let i = 0; i < documentsWithMetadata.length; i++) {
+            const idText = getDocumentElementId(toyName, documentsWithMetadata[i].id);
             listItems += `<li id="${idText}"></li>`;
         }
         const template = `
@@ -64,41 +81,39 @@ public: true
 
         document.getElementById('toy-collection').innerHTML = template;
 
-        for (let i = 0; i < data.length; i ++) {
-            setTimeout(() => insertDocumentLink(data[i], toyName), 0);
+        // 정렬된 순서대로 문서 링크 삽입
+        for (let i = 0; i < documentsWithMetadata.length; i++) {
+            insertDocumentLinkWithMetadata(documentsWithMetadata[i].id, documentsWithMetadata[i].metadata, toyName);
         }
     }
 
     /*
-     * 문서 하나의 링크를 생성합니다.
+     * 문서 하나의 링크를 생성합니다 (메타데이터가 이미 있는 경우).
      */
-    function insertDocumentLink(documentId, toyName) {
-        axios.get(`/data/metadata/${documentId}.json`, {})
-            .then((resp) => {
-                if (resp == null || resp.data == null) {
-                    return;
-                }
-                const d = resp.data;
+    function insertDocumentLinkWithMetadata(documentId, metadata, toyName) {
+        if (metadata == null) {
+            return;
+        }
 
-                const updatedDate = d.updated.replace(/^(\d{4}-\d{2}-\d{2}).*$/, '$1')
-                const summaryText = (d.summary == null || /^\s*$/.test(d.summary))
-                    ? ('')
-                    : ('-' + d.summary);
-                const subDocument = (d.children && d.children.length > 0)
-                    ? `- 서브 문서: ${d.children.length} 개`
-                    : '';
+        const d = metadata;
+        const updatedDate = d.updated.replace(/^(\d{4}-\d{2}-\d{2}).*$/, '$1')
+        const summaryText = (d.summary == null || /^\s*$/.test(d.summary))
+            ? ('')
+            : ('-' + d.summary);
+        const subDocument = (d.children && d.children.length > 0)
+            ? `- 서브 문서: ${d.children.length} 개`
+            : '';
 
-                const link = `
-                <a class="post-link" href="${d.url}">
-                    <span>${d.title}</span>
-                    <div class="post-meta" style="float: right;" title="${d.updated}">${updatedDate}</div>
-                    <div class="post-excerpt">${summaryText}</div>
-                    <div class="post-sub-document">${subDocument}</div>
-                </a>`;
+        const link = `
+        <a class="post-link" href="${d.url}">
+            <span>${d.title}</span>
+            <div class="post-meta" style="float: right;" title="${d.updated}">${updatedDate}</div>
+            <div class="post-excerpt">${summaryText}</div>
+            <div class="post-sub-document">${subDocument}</div>
+        </a>`;
 
-                const idText = getDocumentElementId(toyName, documentId);
-                document.getElementById(idText).innerHTML = link;
-            });
+        const idText = getDocumentElementId(toyName, documentId);
+        document.getElementById(idText).innerHTML = link;
     }
 
     function getDocumentElementId(toyName, documentId) {

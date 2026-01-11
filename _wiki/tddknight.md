@@ -1,7 +1,7 @@
 ---
 layout  : category
 title   : TDD KNIGHT
-summary : 
+summary :
 date    : 2025-08-01 18:30:40 +0900
 updated : 2025-08-01 20:55:09 +0900
 tag     : tdd
@@ -10,7 +10,7 @@ public  : true
 parent  : [[/index]]
 latex   : false
 favorite: true
-toy     : tdd
+toy     : TDD
 ---
 
 ## TDD KNIGHT

@@ -10,6 +10,7 @@ public  : true
 parent  : [[/index]]
 latex   : false
 favorite: true
+toy     : tdd
 ---
 
 ## TDD KNIGHT

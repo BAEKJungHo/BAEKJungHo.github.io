@@ -10,6 +10,7 @@ comment : true
 public  : true
 parent  : [[/tddknight]]
 latex   : true
+toy     : TDD
 ---
 * TOC
 {:toc}

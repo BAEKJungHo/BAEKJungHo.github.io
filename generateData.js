@@ -10,6 +10,7 @@ main();
 function main() {
     const list = [];
     const tagMap = {};
+    const toyMap = {};
     const pageMap = {};
 
     getFiles('./_wiki', 'wiki', list);
@@ -37,8 +38,27 @@ function main() {
         });
     });
 
+    dataList.forEach(function collectToyMap(data) {
+        if (!data.toy) {
+            return;
+        }
+
+        const toyName = data.toy;
+        if (!toyMap[toyName]) {
+            toyMap[toyName] = [];
+        }
+        toyMap[toyName].push({
+            fileName: data.fileName,
+            // updated: data.updated || data.date,
+        });
+    });
+
     for (const tag in tagMap) {
         tagMap[tag].sort(lexicalOrderingBy('fileName'));
+    }
+
+    for (const toy in toyMap) {
+        toyMap[toy].sort(lexicalOrderingBy('fileName'));
     }
 
     dataList.sort(lexicalOrderingBy('fileName'))
@@ -69,6 +89,8 @@ function main() {
 
     saveTagFiles(tagMap, pageMap);
     saveTagCount(tagMap);
+    saveToyFiles(toyMap, pageMap);
+    saveToyCount(toyMap);
     saveMetaDataFiles(pageMap);
     saveDocumentUrlList(pageMap);
 }
@@ -194,6 +216,61 @@ function saveTagCount(tagMap) {
     const sortedList = list.sort((lexicalOrderingBy('name')));
 
     saveToFile("./data/tag_count.json", JSON.stringify(sortedList, null, 1), PRINT);
+}
+
+/**
+ * toy 하나의 정보 파일을 만든다.
+ * 각 toy 하나는 하나의 json 파일을 갖게 된다.
+ * 예를 들어 TDD 라는 toy가 있다면 ./data/toy/TDD.json 파일이 만들어진다.
+ */
+function saveToyFiles(toyMap, pageMap) {
+    fs.mkdirSync('./data/toy', { recursive: true }, (err) => {
+        if (err) {
+            return console.log(err);
+        }
+    })
+
+    const completedToys = {};
+
+    for (const toy in toyMap) {
+        if (completedToys[toy.toLowerCase()]) {
+            console.log("중복 toy가 있습니다.", toy);
+            break;
+        }
+        completedToys[toy.toLowerCase()] = true;
+
+        const collection = [];
+        const toyDatas = toyMap[toy];
+
+        for (const index in toyDatas) {
+            const toyData = toyDatas[index];
+            const data = pageMap[toyData.fileName]
+
+            const documentId = (data.type === 'wiki')
+                ? toyData.fileName
+                : data.url;
+
+            collection.push(documentId);
+        }
+
+        saveToFile(`./data/toy/${toy}.json`, JSON.stringify(collection, null, 1), NO_PRINT);
+    }
+}
+
+/**
+ * toy 하나가 갖는 자식 문서의 수를 파일로 저장한다.
+ */
+function saveToyCount(toyMap) {
+    const list = [];
+    for (const toy in toyMap) {
+        list.push({
+            name: toy,
+            size: toyMap[toy].length
+        });
+    }
+    const sortedList = list.sort((lexicalOrderingBy('name')));
+
+    saveToFile("./data/toy_count.json", JSON.stringify(sortedList, null, 1), PRINT);
 }
 
 /**

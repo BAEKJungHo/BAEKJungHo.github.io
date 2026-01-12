@@ -11,6 +11,7 @@
   "blockchain/blockchain-bitcoin-varint",
   "blockchain/blockchain-bitnode",
   "blockchain/blockchain-bitnode-encoding-endians",
+  "blockchain/blockchain-bitnode-encoding-varint",
   "blockchain/blockchain-byzantine",
   "blockchain/blockchain-checksum",
   "blockchain/blockchain-endian",

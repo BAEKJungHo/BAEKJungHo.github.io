@@ -15,7 +15,7 @@ toy     : Bitcoin
 * TOC
 {:toc}
 
-## BITCOIN NODE - Encoding Endian
+# BITCOIN NODE - Encoding Endian
 
 비트코인 네트워크에서는 HTTP 나 JSON 을 쓰지 않고 ***바이너리(Binary)*** 로 데이터를 TCP 로 직접 주고 받는다.
 이때 모든 정수(Integer)는 ***[Little Endian](https://klarciel.net/wiki/blockchain/blockchain-endian/)*** 으로 통신한다. (일부 네트워크 포트나 IP 는 Big Endian 이지만 대부분은 Little Endian)
@@ -27,11 +27,15 @@ toy     : Bitcoin
 
 블록 해시를 계산할 때 바이트 순서가 하나라도 틀리면 전혀 다른 해시값이 나온다. 특히 비트코인은 내부적으로는 Little Endian 을 쓰지만, 블록 탐색기(Explorer)에서 볼 때는 Big Endian 으로 뒤집어서 보여주는 경우가 많다(예: 블록 해시). 이를 위한 변환 함수가 필수이다.
 
-### Package Structure
+- Internal (Little-endian): 비트코인 프로토콜(P2P 메시지)이나 DB(LevelDB)에 저장될 때는 이 순서로 저장된다.
+- Display (Big-endian): 블록 익스플로러(Blockchain.com 등)나 사람이 읽을 때는 **가독성(앞쪽의 0을 보기 위해)** 을 위해 뒤집어서 표현한다.
+- "난이도 목표(Difficulty Target)를 직관적으로 비교하기 위해, 사람이 볼 때는 큰 자릿수(Big Endian)가 앞에 오도록 뒤집어서 출력한다.
+
+## Package Structure
 
 - pkg/encoding 
 
-### TDD
+## TDD
 
 먼저 binary_test.go 파일을 만들고 테스트 코드를 아래와 같이 정의한다.
 

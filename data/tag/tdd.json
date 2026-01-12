@@ -1,5 +1,6 @@
 [
  "blockchain/blockchain-bitnode",
+ "blockchain/blockchain-bitnode-crypto-hash",
  "blockchain/blockchain-bitnode-encoding-endians",
  "blockchain/blockchain-bitnode-encoding-varint",
  "book/tdd-knight-complex-business-logic-improved-tdd",

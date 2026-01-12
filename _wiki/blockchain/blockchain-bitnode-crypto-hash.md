@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : BITCOIN NODE - Hash
+title   : BITCOIN NODE - Double Hash
 summary : 
 date    : 2026-01-12 17:54:32 +0900
 updated : 2026-01-12 18:15:24 +0900
@@ -69,14 +69,16 @@ H2 = SHA256(H1)
 
 __Bitcoin 에서 Double SHA256이 사용되는 곳__:
 
-```
-hash = SHA256(SHA256(data))
-```
-
 ***[블록의 식별자인 '블록 해시(Block Hash)' 또한 Double Hash 를 사용](https://klarciel.net/wiki/blockchain/blockchain-merkle-tree/)*** 한다.
 
-| 용도          | 이유         |
-| ----------- | ---------- |
-| Block Hash  | PoW 비교용 정수 |
-| TXID        | 트랜잭션 식별자   |
-| Merkle Tree | 트리 내부 노드   |
+| 용도 | 설명 | 예시 |
+|------|------|------|
+| **Block Hash** | Proof-of-Work 대상 | Genesis: `000000000019d6...` |
+| **Transaction ID (TXID)** | 트랜잭션 고유 식별자 | `3ba3edfd7a7b12b2...` |
+| **Merkle Tree Node** | 트랜잭션 집계 | 부모 = H(left\|\|right) |
+
+__공식__:
+
+```
+DoubleSHA256(x) = SHA-256(SHA-256(x))
+```

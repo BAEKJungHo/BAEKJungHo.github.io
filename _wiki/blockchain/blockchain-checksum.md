@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : Checksum
-summary : Bitcoin Address
+title   : Checksum, Bitcoin Address
+summary : 
 date    : 2026-01-04 11:54:32 +0900
 updated : 2026-01-04 12:15:24 +0900
 tag     : blockchain bitcoin

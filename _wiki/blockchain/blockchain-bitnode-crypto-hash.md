@@ -17,7 +17,7 @@ toy     : Bitcoin
 
 # BITCOIN NODE - Hash
 
-비트코인이 필요로 하는 해시 함수의 특성은 다음과 같다.
+비트코인이 필요로 하는 ***[해시 함수(Hash Function)](https://klarciel.net/wiki/altorithm/algorithm-hash/)*** 의 특성은 다음과 같다.
 
 | 속성 | 설명 | 비트코인에서의 활용 |
 |------|------|-------------------|

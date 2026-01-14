@@ -15,6 +15,7 @@
   "network/network-half-close",
   "network/network-idempotency",
   "network/network-latency",
+  "network/network-latency-bandwidth",
   "network/network-layeredarchitectures",
   "network/network-nat",
   "network/network-polling",

@@ -40,6 +40,7 @@ regenerate: true
 * [[/blockchain/blockchain-bitnode]
 * [[/blockchain/blockchain-bitnode-encoding-endians]
 * [[/blockchain/blockchain-bitnode-encoding-varint]
+* [[/blockchain/blockchain-bitnode-crypto-hash]
 
 ## Mobility
 
@@ -777,6 +778,7 @@ regenerate: true
 * [[/network/network-vpn]]
 * [[/network/network-webrtc]]
 * [[/network/network-eth0]]
+* [[/network/network-latency-bandwidth]]
 
 ## Http
 

@@ -27,7 +27,6 @@
  "network/network-throughput-latency",
  "network/network-vpn",
  "network/network-webrtc",
- "network/network-webrtc2",
  "security/security-signed-certificates",
  "troubleshooting/troubleshooting-webclientrequestexception"
 ]

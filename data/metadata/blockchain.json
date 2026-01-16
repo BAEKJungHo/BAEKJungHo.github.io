@@ -18,6 +18,7 @@
   "blockchain/blockchain-endian",
   "blockchain/blockchain-genesis-block",
   "blockchain/blockchain-merkle-tree",
+  "blockchain/blockchain-proof-of-work",
   "blockchain/blockchain-segwit-locking-script",
   "blockchain/blockchain-uxto"
  ]

@@ -53,11 +53,11 @@
  },
  {
   "name": "bitcoin",
-  "size": 15
+  "size": 16
  },
  {
   "name": "blockchain",
-  "size": 15
+  "size": 16
  },
  {
   "name": "bluetooth",
@@ -237,7 +237,7 @@
  },
  {
   "name": "dtls",
-  "size": 2
+  "size": 1
  },
  {
   "name": "dx",
@@ -529,7 +529,7 @@
  },
  {
   "name": "nat",
-  "size": 3
+  "size": 2
  },
  {
   "name": "netflix",
@@ -541,7 +541,7 @@
  },
  {
   "name": "network",
-  "size": 31
+  "size": 30
  },
  {
   "name": "nodejs",
@@ -677,11 +677,11 @@
  },
  {
   "name": "sdp",
-  "size": 2
+  "size": 1
  },
  {
   "name": "sdv",
-  "size": 13
+  "size": 12
  },
  {
   "name": "security",
@@ -821,7 +821,7 @@
  },
  {
   "name": "udp",
-  "size": 2
+  "size": 1
  },
  {
   "name": "uml",
@@ -857,7 +857,7 @@
  },
  {
   "name": "webrtc",
-  "size": 2
+  "size": 1
  },
  {
   "name": "websocket",

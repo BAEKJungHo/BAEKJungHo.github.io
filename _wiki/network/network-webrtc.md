@@ -18,6 +18,7 @@ favorite: true
 ## WebRTC
 
 ***[WebRTC(Web Real-Time Communication)](https://webrtcforthecurious.com/ko/docs/01-what-why-and-how/)*** 는 두 에이전트(agent, 웹 브라우저나 앱)간 서로 직접 오디오, 비디오, 데이터를 주고받을 수 있게 해주는 오픈소스 기술로, P2P(Peer-to-Peer) 방식으로 실시간 통신을 지원하여 화상 통화, 채팅, 파일 공유 등 다양한 실시간 웹 애플리케이션을 구축하는 데 사용된다.
+WebRTC 구현을 위해서 여러가지 개념들을 공부해야 하는데, WebRTC 는 ***“경로 탐색(ICE) + 보안(DTLS) + 실시간 미디어(SRTP)”의 조합*** 이라고 일단 생각하고 해당 개념들을 위주로 공부하면 좋다.
 
 WebRTC 를 본격적으로 배우기 전에, Media Streaming 은 기본적으로 ***[UDP(User Datagram Protocol)](https://en.wikipedia.org/wiki/User_Datagram_Protocol)*** 를 사용하기 때문에,
 UDP 의 특징에 대해서 배울 필요가 있다.
@@ -147,6 +148,10 @@ WebRTC 의 경우 ***[SDP(Session Description Protocol)](https://datatracker.iet
 
 WebRTC 에이전트를 생성했을 때, 상대 피어에 대해 아는 것은 없습니다. 누구와 연결할지, 무엇을 보낼지 전혀 모릅니다! 시그널링은 통화를 가능하게 만드는 초기 부트스트랩 단계입니다. 이 값들을 교환한 뒤에는 WebRTC 에이전트끼리 직접 통신할 수 있습니다.
 
+#### Flow
+
+![](/resource/wiki/network-webrtc/signalling-flow.png)
+
 #### Session Description Protocol
 
 멀티미디어 화상 회의, VoIP 통화, 스트리밍 비디오 등 세션을 시작할 때 미디어 세부 정보, 전송 주소, 기타 세션 설명 메타데이터를 참가자에게 전달해야 한다.
@@ -235,21 +240,6 @@ a=sendrecv
 - ICE 후보와 인증 세부 정보가 있어 연결을 시도할 수 있음
 - 인증서 지문이 있어 안전한 통화를 설정할 수 있음
 
-#### Datagram Transport Layer Security
-
-***[DTLS(Datagram Transport Layer Security)](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B7%B8%EB%9E%A8_%EC%A0%84%EC%86%A1_%EA%B3%84%EC%B8%B5_%EB%B3%B4%EC%95%88)*** 는 한마디로 정의하면 ***"UDP 위에서 동작하도록 개조된 TLS(SSL)"*** 이다.
-
-TLS 는 하위 계층(Transport Layer)이 다음 두 가지를 보장한다고 믿는다.
-- Reliability (신뢰성): 패킷은 절대 유실되지 않는다.
-- Ordering (순서): 패킷은 보낸 순서대로 도착한다.
-
-하지만, UDP 는 패킷이 유실될 수 있고 순서가 뒤바뀔 수 있기 때문에 TLS 의 보안성은 유지하면서, UDP 의 불안정성을 극복하기 위해 자체적인 재전송 및 순서 제어 기능을 탑재한 
-매커니즘이 필요하며 이것이 DTLS 이다.
-
-WebRTC 스택에서 DTLS 는 **미디어(SRTP)** 와 **데이터(SCTP)** 를 보호하는 중추적인 역할을 한다.
-영상/음성이 아닌 파일 전송, 채팅 메시지 등을 담당하는 ***DataChannel 은 SCTP 패킷을 사용한다.*** 이 SCTP 패킷은 ***DTLS 패킷 안에 캡슐화(Encapsulation)*** 되어 전송된다.
-즉, 데이터 채널은 DTLS 터널을 그대로 통과한다.
-
 ### TURN
 
 ***[TURN(Traversal Using Relays around NAT)](https://datatracker.ietf.org/doc/html/rfc5766)*** 프로토콜은 모든 것이 실패했을 때 UDP 를 버리고 TCP 로 전환하는 기능을 한다.
@@ -269,60 +259,74 @@ TURN 프로토콜은 피어 간에 데이터를 왕복 운반하는 공용 중�
 
 ![](/resource/wiki/network-webrtc/ice.png)
 
-__ICE Candidate Gathering Process__:
+ICE 의 목적은 NAT/방화벽 환경에서, 실제로 UDP 패킷이 왕복 가능한 네트워크 경로를 찾는 것이다. ICE는 **“직접 패킷을 보내서 되는지 안 되는지 시험”** 한다.
 
-이 다이어그램은 애플리케이션이 NAT 를 거쳐 STUN/TURN 서버와 통신하고, 확보된 주소(Candidate)를 **상대방(Peer)** 에게 시그널링하는 전체 과정을 설명한다.
+각 Peer 는 다음 후보들을 수집한다.
 
-![](/resource/wiki/network-webrtc/ice-candidate.png)
+| 타입    | 의미                    |
+| ----- | --------------------- |
+| Host  | 로컬 IP (192.168.x.x 등) |
+| Srflx | STUN으로 얻은 공인 IP       |
+| Relay | TURN 서버 주소            |
 
 ```
-sequenceDiagram
-    autonumber
-    
-    box "Internal Network" #e1f5fe
-        participant App as 💻 WebRTC App<br/>(Client)
-        participant NAT as 🧱 NAT Device<br/>(Router/CGNAT)
-    end
-
-    box "Public Internet" #fff3e0
-        participant STUN as 🌍 STUN Server
-        participant TURN as 🔄 TURN Server
-        participant Peer as 👤 Other Party<br/>(via Signaling)
-    end
-
-    %% Phase 1: Host Candidates (Local)
-    Note over App, Peer: 🏠 Phase 1: Host Candidate (사설 IP 수집)
-    
-    App->>App: 1. 내 장치의 NIC 스캔<br/>(192.168.x.x, 10.x.x.x)
-    App-->>Peer: [Signal] Host Candidate 전송<br/>(즉시 전송: Trickle ICE)
-    Note right of App: 같은 공유기 내 연결은<br/>여기서 성공!
-
-    %% Phase 2: Server Reflexive Candidates (STUN)
-    Note over App, Peer: 🌏 Phase 2: Srflx Candidate (공인 IP 확인)
-    
-    App->>NAT: 2. Binding Request (UDP)
-    Note right of NAT: 📝 NAT Table 생성<br/>(Internal -> External Port 매핑)
-    NAT->>STUN: Forward Request<br/>(Src가 공인 IP로 변경됨)
-    
-    STUN-->>NAT: 3. Binding Success (XOR-MAPPED-ADDRESS)<br/>Payload에 공인 IP:Port 담음
-    NAT-->>App: Forward Response
-    
-    App-->>Peer: [Signal] Srflx Candidate 전송<br/>(P2P 연결의 핵심 정보)
-
-    %% Phase 3: Relay Candidates (TURN)
-    Note over App, Peer: 🔄 Phase 3: Relay Candidate (중계 서버 할당)
-    
-    App->>NAT: 4. Allocate Request (UDP/TCP)
-    NAT->>TURN: Forward Request
-    
-    TURN->>TURN: 5. Relay Port 할당<br/>(공인 IP:RelayPort 확보)
-    TURN-->>NAT: Allocate Success (Relayed Address)
-    NAT-->>App: Forward Response
-    
-    App-->>Peer: [Signal] Relay Candidate 전송<br/>(최후의 수단: 보험)
-
-    Note over App, Peer: ✅ 모든 후보 수집 완료 (End of Gathering)
+Candidate A:
+- 192.168.0.10:53421 (Host)
+- 13.124.xxx.xxx:62001 (Srflx)
+- turn.example.com:3478 (Relay)
 ```
+
+***ICE Connectivity Check*** 과정에서는 A -> B, B -> A 로 UDP Packet 을 보내서 응답이 오는지 확인한다. 응답이 오면 Valid Candidate Pair 이다.
+
+```
+A (Srflx)  --->  B (Srflx)   ❌ (NAT 차단)
+A (Relay)  --->  B (Relay)   ✅
+```
+
+ICE는 가장 좋은 경로부터 시도한다.
+- Host ↔ Host
+- Srflx ↔ Srflx
+- Host ↔ Srflx
+- Relay ↔ Anything (최후 수단)
+
+TURN은 비싸기 때문에 마지막이다. ICE 가 성공하면 하나의 Selected Candidate Pair 결정되고 이후에 이 경로로 통신하게 된다.
+
+### DTLS(Datagram Transport Layer Security)
+
+***[DTLS(Datagram Transport Layer Security)](https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EA%B7%B8%EB%9E%A8_%EC%A0%84%EC%86%A1_%EA%B3%84%EC%B8%B5_%EB%B3%B4%EC%95%88)*** 는 한마디로 정의하면 ***"UDP 위에서 동작하도록 개조된 TLS(SSL)"*** 이다.
+즉, TLS를 UDP 위에서 구현한 보안 핸드셰이크이며 HTTPS 같은 신뢰를 UDP 에서도 보장하기 위한 프로토콜이다.
+
+DTLS 는 ICE Connectivity Check 성공 이후에 동작한다.
+
+```
+ICE 성공
+→ DTLS Handshake
+→ SRTP Key 생성
+```
+
+TLS 는 하위 계층(Transport Layer)이 다음 두 가지를 보장한다고 믿는다.
+- **Reliability(신뢰성)**: 패킷은 절대 유실되지 않는다.
+- **Ordering (순서)**: 패킷은 보낸 순서대로 도착한다.
+
+하지만, UDP 는 패킷이 유실될 수 있고 순서가 뒤바뀔 수 있기 때문에 TLS 의 보안성은 유지하면서, UDP 의 불안정성을 극복하기 위해 자체적인 재전송 및 순서 제어 기능을 탑재한
+매커니즘이 필요하며 이것이 DTLS 이다.
+
+WebRTC 스택에서 DTLS 는 **미디어(SRTP)** 와 **데이터(SCTP)** 를 보호하는 중추적인 역할을 한다.
+영상/음성이 아닌 파일 전송, 채팅 메시지 등을 담당하는 ***DataChannel 은 SCTP 패킷을 사용한다.*** 이 SCTP 패킷은 ***DTLS 패킷 안에 캡슐화(Encapsulation)*** 되어 전송된다.
+즉, 데이터 채널은 DTLS 터널을 그대로 통과한다.
+
+### SRTP(Secure RTP)
+
+SRTP 는 실제 음성,영상 데이터를 암호화 해서 전송한다. 즉, RTP 패킷을 암호화하고 무결성 보호 역할을 담당한다.
+따라서 Audio / Video Payload 가 보호된다.
+
+SRTP Key 는 DTLS Handshake 결과로 생성된다.
+
+__Flow__:
+
+- ICE → "이 길로 패킷이 실제로 가나?"
+- DTLS → "이 길이 안전한가?"
+- SRTP → "그럼 이제 암호화해서 미디어 보내자"
 
 ## Links
 

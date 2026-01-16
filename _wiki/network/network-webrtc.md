@@ -13,7 +13,7 @@ latex   : true
 favorite: true
 ---
 * TOC
-  {:toc}
+{:toc}
 
 ## WebRTC
 

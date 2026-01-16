@@ -29,6 +29,7 @@
   "network/network-telnet",
   "network/network-throughput-latency",
   "network/network-vpn",
-  "network/network-webrtc"
+  "network/network-webrtc",
+  "network/network-webrtc2"
  ]
 }

@@ -1,4 +1,5 @@
 [
  "network/network-nat",
- "network/network-webrtc"
+ "network/network-webrtc",
+ "network/network-webrtc2"
 ]

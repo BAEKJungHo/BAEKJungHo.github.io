@@ -5,6 +5,7 @@
  "network/network-socket-protocol",
  "network/network-vpn",
  "network/network-webrtc",
+ "network/network-webrtc2",
  "sdv",
  "sdv/sdv-digital-twin",
  "sdv/sdv-history",

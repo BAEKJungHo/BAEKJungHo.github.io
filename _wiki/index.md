@@ -41,6 +41,8 @@ regenerate: true
 * [[/blockchain/blockchain-bitnode-encoding-endians]
 * [[/blockchain/blockchain-bitnode-encoding-varint]
 * [[/blockchain/blockchain-bitnode-crypto-hash]
+* [[/blockchain/blockchain-cypherpunk]]
+* [[/blockchain/blockchain-proof-of-work]]
 
 ## Mobility
 

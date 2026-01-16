@@ -15,6 +15,7 @@
   "blockchain/blockchain-bitnode-encoding-varint",
   "blockchain/blockchain-byzantine",
   "blockchain/blockchain-checksum",
+  "blockchain/blockchain-cypherpunk",
   "blockchain/blockchain-endian",
   "blockchain/blockchain-genesis-block",
   "blockchain/blockchain-merkle-tree",

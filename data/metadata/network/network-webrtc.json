@@ -1,7 +1,7 @@
 {
  "type": "wiki",
- "title": "WebRTC; Web Real-Time Communication",
- "summary": "NAT Traversal and Real-Time Communication",
+ "title": "WebRTC",
+ "summary": "Web Real-Time Communication",
  "parent": "network",
  "url": "/wiki/network/network-webrtc",
  "updated": "2025-12-15 20:15:24 +0900",

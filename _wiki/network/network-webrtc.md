@@ -1,7 +1,7 @@
 ---
 layout  : wiki
-title   : WebRTC; Web Real-Time Communication
-summary : NAT Traversal and Real-Time Communication
+title   : WebRTC
+summary : Web Real-Time Communication
 date    : 2025-12-15 15:54:32 +0900
 updated : 2025-12-15 20:15:24 +0900
 tag     : network sdv sdp udp nat webrtc dtls

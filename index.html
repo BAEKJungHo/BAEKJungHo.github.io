@@ -13,7 +13,8 @@ regenerate: true
         <div class="profile-info">
             <div class="profile-header">
                 <h3>FLEXIBLE ENGINEER</h3>
-<!--                <p><mark><em><strong>A Seeker of Software’s Essence</strong></em></mark></p>-->
+                <img src="./resource/about/matrix.gif" class="matrix-gif" alt="Matrix Animation">
+<!--                <p><mark><em><strong>A Seeker of Software's Essence</strong></em></mark></p>-->
                 <!--                <p>現 Connected Service Engineer at 42dot</p>-->
             </div>
             <div class="profile-links">
@@ -39,8 +40,6 @@ regenerate: true
             <!--            </h4>-->
         </div>
     </section>
-
-    <img src="./resource/about/matrix.gif" style="width: 740px; height: auto;" alt="Profile">
 
     <!-- Content Section: Favorite Documents -->
 <!--    <section class="content-section">-->
@@ -106,6 +105,15 @@ regenerate: true
         font-size: 1.5rem;
         font-weight: bold;
         color: #0000EE;
+    }
+
+    .matrix-gif {
+        width: 100%;
+        max-width: 600px;
+        height: 60px;
+        object-fit: cover;
+        margin-top: 0.5rem;
+        border-radius: 4px;
     }
 
     .profile-header p {
@@ -293,6 +301,11 @@ regenerate: true
         .content-wrapper {
             flex-direction: column;
             gap: 1.5rem;
+        }
+
+        .matrix-gif {
+            max-width: 100%;
+            height: 50px;
         }
     }
 </style>

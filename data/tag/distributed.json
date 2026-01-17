@@ -3,7 +3,6 @@
  "architecture/architecture-cap",
  "architecture/architecture-distributed-transaction",
  "blockchain/blockchain-bitcoin-varint",
- "blockchain/blockchain-bitcoin-wallet",
  "blockchain/blockchain-byzantine",
  "caching/msa-cache-consistency",
  "caching/msa-distributed-caching",

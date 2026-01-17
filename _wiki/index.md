@@ -43,6 +43,7 @@ regenerate: true
 * [[/blockchain/blockchain-bitnode-crypto-hash]
 * [[/blockchain/blockchain-cypherpunk]]
 * [[/blockchain/blockchain-proof-of-work]]
+* [[/blockchain/blockchain-bitcoin-wallet]]
 
 ## Mobility
 

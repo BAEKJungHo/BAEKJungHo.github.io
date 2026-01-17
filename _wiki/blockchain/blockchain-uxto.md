@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : UXTO
+title   : UTXO
 summary : Unspent transaction output
 date    : 2026-01-06 18:54:32 +0900
 updated : 2026-01-06 19:15:24 +0900
@@ -16,7 +16,7 @@ latex   : true
 
 ## Unspent transaction output
 
-***[UXTO(Unspent transaction output)](https://en.wikipedia.org/wiki/Unspent_transaction_output)*** 는 미사용 거래 출력으로 "아직 소비되지 않은 거래의 결과물" 이다.
+***[UTXO(Unspent transaction output)](https://en.wikipedia.org/wiki/Unspent_transaction_output)*** 는 미사용 거래 출력으로 "아직 소비되지 않은 거래의 결과물" 이다.
 
 - 은행(Account Model): 내 장부에 10,000원이라는 숫자가 있고, 3,000원을 쓰면 숫자가 7,000원으로 업데이트된다. (Update 방식)
 - UTXO: 내 지갑에 10,000원짜리 지폐 한 장이 있다. 3,000원을 쓰려면, 10,000원 지폐를 내고(Input), 3,000원은 가게에 주고, 7,000원을 **거스름돈(Change)** 으로 돌려받는다(Output). 이때 돌려받은 7,000원이 바로 새로운 UTXO 가 된다.

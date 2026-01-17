@@ -2,6 +2,7 @@
  "altorithm/algorithm-bloom-filter",
  "altorithm/algorithm-hash",
  "blockchain/blockchain-merkle-tree",
+ "book",
  "datastructures",
  "datastructures/datastructures-recursion",
  "datastructures/datastructures-stack-heap",

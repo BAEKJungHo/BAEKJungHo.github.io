@@ -3,6 +3,7 @@
  "blockchain/blockchain-base58",
  "blockchain/blockchain-bitcoin-block-tx",
  "blockchain/blockchain-bitcoin-varint",
+ "blockchain/blockchain-bitcoin-wallet",
  "blockchain/blockchain-bitnode",
  "blockchain/blockchain-bitnode-crypto-hash",
  "blockchain/blockchain-bitnode-encoding-endians",

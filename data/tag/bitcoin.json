@@ -11,6 +11,7 @@
  "blockchain/blockchain-byzantine",
  "blockchain/blockchain-checksum",
  "blockchain/blockchain-cypherpunk",
+ "blockchain/blockchain-double-spending-problem",
  "blockchain/blockchain-endian",
  "blockchain/blockchain-genesis-block",
  "blockchain/blockchain-merkle-tree",

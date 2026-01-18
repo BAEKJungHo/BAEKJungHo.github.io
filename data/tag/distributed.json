@@ -4,6 +4,7 @@
  "architecture/architecture-distributed-transaction",
  "blockchain/blockchain-bitcoin-varint",
  "blockchain/blockchain-byzantine",
+ "blockchain/blockchain-decentralization",
  "caching/msa-cache-consistency",
  "caching/msa-distributed-caching",
  "database/database-cassandra-kkv",

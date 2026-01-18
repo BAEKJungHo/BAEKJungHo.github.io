@@ -4,7 +4,7 @@ title   : Decentralization
 summary : 
 date    : 2026-01-18 12:54:32 +0900
 updated : 2026-01-18 13:15:24 +0900
-tag     : blockchain bitcoin distributed
+tag     : blockchain bitcoin distributed decentralization
 toc     : true
 comment : true
 public  : true

@@ -15,6 +15,7 @@
   "blockchain/blockchain-bitnode-crypto-hash",
   "blockchain/blockchain-bitnode-encoding-endians",
   "blockchain/blockchain-bitnode-encoding-varint",
+  "blockchain/blockchain-bitnode-transaction",
   "blockchain/blockchain-byzantine",
   "blockchain/blockchain-checksum",
   "blockchain/blockchain-cypherpunk",

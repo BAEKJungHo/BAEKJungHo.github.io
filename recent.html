@@ -3,9 +3,8 @@ layout: home
 adsense: false
 ---
 {% assign documents = site.wiki | sort: 'updated' | reverse %}
-{% assign public_docs = documents | where_exp: "doc", "doc.public != false and doc.title != 'wiki'" %}
 <div id="app">
-    <H3 class="indent">Documents ({{ public_docs.size }} items)</H3>
+    <H3 class="indent">Documents {{ site.wiki | size | minus: 1 }} items</H3>
     <ul class="post-list">
 {% for doc in documents %}{% if doc.public != false and doc.title != 'wiki' %}
         <li>

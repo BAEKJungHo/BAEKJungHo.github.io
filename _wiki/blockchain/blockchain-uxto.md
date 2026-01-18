@@ -36,6 +36,59 @@ UTXO는 공개키 암호화를 통해 소유권을 관리한다. 기술적으로
 
 이 과정이 반복되면서 코인의 탄생(채굴)부터 현재까지 이어지는 **'소유권의 체인(Chain of Ownership)'** 이 형성된다.
 
+### Account Model vs UTXO Model
+
+**Account Model** (Banks, Ethereum):
+```
+Account Balance Ledger:
+┌──────────────┬─────────┐
+│   Account    │ Balance │
+├──────────────┼─────────┤
+│ Alice        │  $1,000 │
+│ Bob          │    $500 │
+│ Charlie      │  $2,000 │
+└──────────────┴─────────┘
+
+Transaction: Alice sends Bob $100
+Result: Alice = $900, Bob = $600
+```
+
+**UTXO Model** (Bitcoin):
+```
+UTXO Set (Unspent Outputs):
+┌──────────┬────────┬───────┬──────────┐
+│   TXID   │ Output │ Value │  Owner   │
+├──────────┼────────┼───────┼──────────┤
+│ 4a5e1e.. │   0    │ 1 BTC │  Alice   │
+│ 7b3c2a.. │   1    │ 2 BTC │  Bob     │
+│ 9f8d5b.. │   2    │ 0.5   │  Charlie │
+└──────────┴────────┴───────┴──────────┘
+
+Transaction: Alice sends Bob 0.3 BTC
+
+Input:  Consumes Alice's 1 BTC output
+Output 0: Creates 0.3 BTC output for Bob
+Output 1: Creates 0.7 BTC output for Alice (change)
+
+New UTXO Set:
+┌──────────┬────────┬───────┬──────────┐
+│   TXID   │ Output │ Value │  Owner   │
+├──────────┼────────┼───────┼──────────┤
+│ new_tx.. │   0    │ 0.3   │  Bob     │  ← NEW
+│ new_tx.. │   1    │ 0.7   │  Alice   │  ← NEW (change)
+│ 7b3c2a.. │   1    │ 2 BTC │  Bob     │
+│ 9f8d5b.. │   2    │ 0.5   │  Charlie │
+└──────────┴────────┴───────┴──────────┘
+```
+
+__Why UTXO?__
+1. **Parallel Validation**: Different transactions spending different UTXOs can be validated in parallel
+2. **Stateless Verification**: You only need the referenced UTXO to verify a transaction, not the entire history
+3. **Double-Spend Prevention**: Once a UTXO is spent, it's removed from the set—no race conditions
+4. **Privacy**: Users can generate new addresses for each transaction
+5. **Simplicity**: Clear ownership chain—either a UTXO exists (unspent) or it doesn't (spent)
+
+
 ## Links
 
 - [UXTO 가 무엇인가요? - Upbit](https://support.upbit.com/hc/ko/articles/40850785727257-UTXO%EA%B0%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80%EC%9A%94)

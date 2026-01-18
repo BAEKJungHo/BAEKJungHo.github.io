@@ -1,6 +1,7 @@
 [
  "blockchain",
  "blockchain/blockchain-base58",
+ "blockchain/blockchain-bitcoin-address",
  "blockchain/blockchain-bitcoin-block-tx",
  "blockchain/blockchain-bitcoin-varint",
  "blockchain/blockchain-bitcoin-wallet",

@@ -46,6 +46,7 @@ regenerate: true
 * [[/blockchain/blockchain-bitcoin-wallet]]
 * [[/blockchain/blockchain-double-spending-problem]]
 * [[/blockchain/blockchain-mechanism]]
+* [[/blockchain/blockchain-bitcoin-address]]
 
 ## Mobility
 

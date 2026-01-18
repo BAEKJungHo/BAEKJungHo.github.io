@@ -105,6 +105,7 @@
  "/wiki/aws/aws-ssm",
  "/wiki/blockchain",
  "/wiki/blockchain/blockchain-base58",
+ "/wiki/blockchain/blockchain-bitcoin-address",
  "/wiki/blockchain/blockchain-bitcoin-block-tx",
  "/wiki/blockchain/blockchain-bitcoin-varint",
  "/wiki/blockchain/blockchain-bitcoin-wallet",

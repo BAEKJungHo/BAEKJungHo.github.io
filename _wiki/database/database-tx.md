@@ -4,7 +4,7 @@ title   : Tx
 summary : 
 date    : 2024-08-30 18:28:32 +0900
 updated : 2024-08-30 20:15:24 +0900
-tag     : database jpa
+tag     : database jpa tradeoff
 toc     : true
 comment : true
 public  : true

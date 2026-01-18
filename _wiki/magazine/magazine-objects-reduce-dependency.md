@@ -4,7 +4,7 @@ title   : Thoughts of Objects to Reduce Dependencies Between Packages
 summary : 패키지간 의존성을 줄이기 위한 객체에 대한 고찰 및 생산성과 안정성에 대한 트레이드오프
 date    : 2023-03-14 19:54:32 +0900
 updated : 2023-03-14 20:15:24 +0900
-tag     : magazine
+tag     : magazine tradeoff
 toc     : true
 comment : true
 public  : true

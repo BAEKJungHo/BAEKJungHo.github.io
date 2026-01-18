@@ -4,7 +4,7 @@ title   : STREAM
 summary : 
 date    : 2025-05-27 08:02:32 +0900
 updated : 2025-05-27 08:12:24 +0900
-tag     : architecture stream
+tag     : architecture stream tradeoff
 toc     : true
 comment : true
 public  : true

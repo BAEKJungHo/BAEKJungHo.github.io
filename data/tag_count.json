@@ -9,7 +9,7 @@
  },
  {
   "name": "ai",
-  "size": 1
+  "size": 2
  },
  {
   "name": "algorithm",
@@ -485,7 +485,7 @@
  },
  {
   "name": "magazine",
-  "size": 16
+  "size": 18
  },
  {
   "name": "mapstruct",
@@ -737,7 +737,7 @@
  },
  {
   "name": "software",
-  "size": 4
+  "size": 5
  },
  {
   "name": "spec",
@@ -797,7 +797,7 @@
  },
  {
   "name": "tdd",
-  "size": 22
+  "size": 23
  },
  {
   "name": "term",
@@ -826,6 +826,10 @@
  {
   "name": "throughput",
   "size": 1
+ },
+ {
+  "name": "tradeoff",
+  "size": 11
  },
  {
   "name": "trie",

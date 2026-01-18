@@ -1,0 +1,13 @@
+[
+ "architecture/architecture-cap",
+ "architecture/architecture-distributed-transaction",
+ "architecture/architecture-stream",
+ "book/tdd-knight-complex-business-logic-improved-tdd",
+ "database/database-tx",
+ "designpattern/designpattern-factory",
+ "java/java-gc-collector",
+ "magazine/magazine-nature",
+ "magazine/magazine-objects-reduce-dependency",
+ "magazine/magazine-tdd-after-tdd-ai",
+ "magazine/magazine-tradeoff"
+]

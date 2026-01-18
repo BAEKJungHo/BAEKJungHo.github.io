@@ -4,7 +4,7 @@ title   : NATURE
 summary : 
 date    : 2025-06-01 11:28:32 +0900
 updated : 2025-06-01 12:15:24 +0900
-tag     : magazine software
+tag     : magazine software tradeoff
 toc     : true
 comment : true
 public  : true

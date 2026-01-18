@@ -4,7 +4,7 @@ title   : A Deep Dive into Distributed Transactions; Patterns and Trade-offs in 
 summary : Two Phase Commit, Try-Confirm/Cancel, Event Sourcing
 date    : 2025-08-31 12:02:32 +0900
 updated : 2025-08-31 14:12:24 +0900
-tag     : architecture distributed eventsourcing msa cqrs systemdesign
+tag     : architecture distributed eventsourcing msa cqrs systemdesign tradeoff
 toc     : true
 comment : true
 public  : true

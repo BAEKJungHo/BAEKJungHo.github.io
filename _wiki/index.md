@@ -69,6 +69,8 @@ regenerate: true
 * [[/mobility/mobility-connected-service]]
 * [[/mobility/mobility-vent-heat]]
 * [[/magazine/magazine-broaden-horizons]]
+* [[/magazine/magazine-tradeoff]]
+* [[/magazine/magazine-tdd-after-tdd-ai]]
 
 ## System Design
 

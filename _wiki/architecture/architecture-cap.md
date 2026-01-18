@@ -4,7 +4,7 @@ title   : CAP Theory of Design Principles for Distributed Systems
 summary : 
 date    : 2023-03-21 15:02:32 +0900
 updated : 2023-03-21 15:12:24 +0900
-tag     : architecture msa distributed
+tag     : architecture msa distributed tradeoff
 toc     : true
 comment : true
 public  : true

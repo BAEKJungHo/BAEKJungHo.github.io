@@ -4,7 +4,7 @@ title   : FACTORY
 summary : 
 date    : 2025-02-01 11:28:32 +0900
 updated : 2025-02-01 12:15:24 +0900
-tag     : designpattern
+tag     : designpattern tradeoff
 toc     : true
 comment : true
 public  : true

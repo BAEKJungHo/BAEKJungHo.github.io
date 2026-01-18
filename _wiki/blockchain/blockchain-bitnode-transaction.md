@@ -754,7 +754,7 @@ We achieved **97.7% test coverage** with comprehensive tests covering:
 
 ### 1. Happy Path Tests
 
-✅ **Genesis Block Coinbase Parsing**
+**Genesis Block Coinbase Parsing**
 ```go
 func TestGenesisBlockCoinbase(t *testing.T) {
     // Parses the real Genesis Block coinbase transaction
@@ -762,7 +762,7 @@ func TestGenesisBlockCoinbase(t *testing.T) {
 }
 ```
 
-✅ **Round-Trip Serialization**
+**Round-Trip Serialization**
 ```go
 func TestTransactionSerialization(t *testing.T) {
     // Deserialize → Serialize → Compare
@@ -770,7 +770,7 @@ func TestTransactionSerialization(t *testing.T) {
 }
 ```
 
-✅ **Multiple Inputs/Outputs**
+**Multiple Inputs/Outputs**
 ```go
 func TestMultipleInputsOutputs(t *testing.T) {
     // Tests realistic transactions with 2 inputs, 3 outputs
@@ -780,7 +780,7 @@ func TestMultipleInputsOutputs(t *testing.T) {
 
 ### 2. Error Path Tests
 
-✅ **Serialization Errors**
+**Serialization Errors**
 ```go
 func TestSerializeErrors(t *testing.T) {
     // Tests 12 different failure points:
@@ -793,7 +793,7 @@ func TestSerializeErrors(t *testing.T) {
 }
 ```
 
-✅ **Deserialization Errors**
+**Deserialization Errors**
 ```go
 func TestDeserializeIncompleteInput(t *testing.T) {
     // Tests 5 different incomplete input scenarios:
@@ -815,7 +815,7 @@ func TestDeserializeIncompleteOutput(t *testing.T) {
 
 ### 3. Edge Cases
 
-✅ **Empty Transaction**
+**Empty Transaction**
 ```go
 func TestEmptyTransaction(t *testing.T) {
     // Transaction with no inputs and no outputs
@@ -823,7 +823,7 @@ func TestEmptyTransaction(t *testing.T) {
 }
 ```
 
-✅ **Coinbase Detection**
+**Coinbase Detection**
 ```go
 func TestTxInput(t *testing.T) {
     // Tests IsCoinbase() for both coinbase and normal inputs
@@ -832,7 +832,7 @@ func TestTxInput(t *testing.T) {
 
 ### 4. Integration Tests
 
-✅ **Transaction Hashing**
+**Transaction Hashing**
 ```go
 func TestTransactionHash(t *testing.T) {
     // Verifies internal hash (little-endian)
@@ -901,10 +901,9 @@ Now that we have transaction serialization and deserialization working, we can b
 
 Every component builds on the transaction foundation we've established here.
 
-## References
+## Links
 
 - [Bitcoin Developer Guide - Transactions](https://developer.bitcoin.org/reference/transactions.html)
 - [Bitcoin Wiki - Transaction](https://en.bitcoin.it/wiki/Transaction)
-- [Mastering Bitcoin - Chapter 6: Transactions](https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch06.asciidoc)
 - [Genesis Block on Blockchain.com](https://www.blockchain.com/btc/block/0)
 - [Learn Me a Bitcoin - Transactions](https://learnmeabitcoin.com/technical/transaction)

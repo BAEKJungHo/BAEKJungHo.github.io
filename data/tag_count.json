@@ -53,11 +53,11 @@
  },
  {
   "name": "bitcoin",
-  "size": 22
+  "size": 23
  },
  {
   "name": "blockchain",
-  "size": 22
+  "size": 23
  },
  {
   "name": "bluetooth",
@@ -168,6 +168,10 @@
   "size": 1
  },
  {
+  "name": "dapp",
+  "size": 1
+ },
+ {
   "name": "data",
   "size": 4
  },
@@ -262,6 +266,10 @@
  {
   "name": "etc",
   "size": 7
+ },
+ {
+  "name": "ethereum",
+  "size": 1
  },
  {
   "name": "eventdriven",
@@ -613,7 +621,7 @@
  },
  {
   "name": "protocol",
-  "size": 1
+  "size": 2
  },
  {
   "name": "proxy",

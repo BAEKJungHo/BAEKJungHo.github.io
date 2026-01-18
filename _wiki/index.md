@@ -48,6 +48,7 @@ regenerate: true
 * [[/blockchain/blockchain-mechanism]]
 * [[/blockchain/blockchain-bitcoin-address]]
 * [[/blockchain/blockchain-decentralization]]
+* [[/blockchain/blockchain-smart-contract]]
 
 ## Mobility
 

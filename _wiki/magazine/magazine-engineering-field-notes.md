@@ -19,6 +19,7 @@ latex   : true
 - 엔지니어에게 가장 중요한 본질은 ***[CRITICAL THINKING](https://klarciel.net/wiki/architecture/architecture-software-fundamental/)*** 이다.
 - ***문제의 본질***을 찾는 과정은 매우 중요하며 즐겁다.
 - ***문제 정의***를 잘 하는 것이 가장 중요하다.
+- ***[TRADEOFF](https://klarciel.net/wiki/magazine/magazine-tradeoff/)*** 는 엔지니어에게 큰 즐거움이다.
 - ***[ABSTRACTION](https://klarciel.net/wiki/architecture/architecture-abstraction/)*** 를 제대로 이해 하는 과정은 엔지니어로써 한 단계 상승하는 길이 된다.
 - 시스템 설계 과정에서 하나의 역할(e.g 차량과의 커넥션을 맺는 서버)에 충실한 서버가 필요하기도 하다.
 - ***[Test-Driven Development](https://klarciel.net/wiki/tddknight/)*** 는 Agent 를 활용하여 코드를 작성함에 있어서 문서화와 심리적 안정망으로서 좋은 도구가 된다.
@@ -42,3 +43,9 @@ latex   : true
 - 협업에 있어서는 ***[인지 부하(cognitive load)](https://github.com/zakirullin/cognitive-load/blob/main/README.ko.md)*** 를 줄이는 노력을 의식적으로 해야 한다. 팀원을 위한 배려이다.
 - 유능하지만 ***주도성***이 부족한 엔지니어는 계속해서 사소한 개선만 반복하며 진짜 성과를 놓치게 된다. 의사결정자에게 ***눈에 띄는***, 명확한 결과물을 전달해야 "일을 한 것"으로 인정받을 수 있다. 자신이 하는 일이 상위 관리자에게 읽히고 평가될 수 있는 형태인지 항상 점검해야 한다.
 - 백번 듣는 것보다 한 번 보는게 낫고, 백번 보는 것보다 한 번 만들어보는게 낫다.
+- 아키텍처 변경 사항 등 어떤 의사결정이 내려진 동기를 잘 추적할 수 있게 해야 한다.
+
+## GUIDE
+
+- [Microsoft - Considerations for Service Design](https://github.com/microsoft/api-guidelines/blob/vNext/azure/ConsiderationsForServiceDesign.md)
+- [Microsoft - REST API](https://github.com/microsoft/api-guidelines/blob/vNext/azure/Guidelines.md)

@@ -15,6 +15,7 @@ latex   : false
 
 ### 2026
 
+- (ing) 모던 API 아키텍처 설계 /  James Gough, Daniel Bryant, Matthew Auburn 저
 - (ing) 비트코인의 탄생부터 블록체인의 미래까지 명쾌하게 이해하는 비트코인·블록체인 바이블 / 장세형 저
 - (1/18) 블록체인 해설서 / 이병욱 저
 - (1/18) 해커와 화가 / Graham, Paul 저

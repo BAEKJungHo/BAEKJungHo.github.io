@@ -4,6 +4,10 @@
   "size": 3
  },
  {
+  "name": "adr",
+  "size": 1
+ },
+ {
   "name": "agile",
   "size": 2
  },

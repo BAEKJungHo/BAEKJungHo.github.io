@@ -4,7 +4,7 @@ title   : Architecture Decision Records
 summary : 
 date    : 2023-10-05 15:02:32 +0900
 updated : 2023-10-05 15:12:24 +0900
-tag     : architecture
+tag     : architecture adr
 toc     : true
 comment : true
 public  : true
@@ -15,6 +15,15 @@ latex   : true
 {:toc}
 
 ## Architecture Decision Records
+
+Architecture Decision Records 에는 **상태, 컨텍스트, 결정사항, 결론** 이라는 4가지 핵심 섹션이 존재한다.
+- ADR 제안은 상태에서 만들어진다.
+- 컨텍스트는 상황을 설정하고 의사결정을 내려아하는 문제나 범위를 서술한다.
+- 결정사항은 어떤 계획을 수립하는지, 어떻게 계획을 실행할 것인지를 명확하게 정의한다. 모든 결정사항은 아키텍처상의 결론이나 트레이드오프로 이어진다.
+
+> 프로젝트가 살아있는 동안 추적하기 가장 어려운 것 중 하나는 어떤 의사결정이 내려진 동기다. by Michael Nygard.
+
+ADR 을 리뷰할 때는 ADR 에 기록된 결정사항에 동의하는지 또는 다른 대안은 없는지 확인하는 것이 중요하다. ADR 을 작성하기에 앞서 충분한 논의를 하고 그 결과를 기록하는게 좋다.
 
 단비교육 에서 [AWS Control Tower 도입을 결정](https://aws.amazon.com/ko/blogs/tech/danbiedu-architecture-modernization-using-aws-control-tower/)하면서, Architecture Decision Records 도입을 하기로 했다고 한다.
 

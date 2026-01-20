@@ -50,6 +50,7 @@ regenerate: true
 * [[/blockchain/blockchain-decentralization]]
 * [[/blockchain/blockchain-smart-contract]]
 * [[/blockchain/blockchain-bitnode-transaction]]
+* [[/blockchain/blockchain-bitnode-merkle-tree]]
 
 ## Mobility
 

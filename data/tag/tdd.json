@@ -3,6 +3,7 @@
  "blockchain/blockchain-bitnode-crypto-hash",
  "blockchain/blockchain-bitnode-encoding-endians",
  "blockchain/blockchain-bitnode-encoding-varint",
+ "blockchain/blockchain-bitnode-merkle-tree",
  "blockchain/blockchain-bitnode-transaction",
  "book/tdd-knight-complex-business-logic-improved-tdd",
  "book/tdd-knight-first-tdd-experience",

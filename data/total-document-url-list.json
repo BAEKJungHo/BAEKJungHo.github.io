@@ -113,6 +113,7 @@
  "/wiki/blockchain/blockchain-bitnode-crypto-hash",
  "/wiki/blockchain/blockchain-bitnode-encoding-endians",
  "/wiki/blockchain/blockchain-bitnode-encoding-varint",
+ "/wiki/blockchain/blockchain-bitnode-merkle-tree",
  "/wiki/blockchain/blockchain-bitnode-transaction",
  "/wiki/blockchain/blockchain-byzantine",
  "/wiki/blockchain/blockchain-checksum",

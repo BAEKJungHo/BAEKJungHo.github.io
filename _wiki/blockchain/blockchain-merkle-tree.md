@@ -1,6 +1,6 @@
 ---
 layout  : wiki
-title   : Merkle Tree
+title   : Merkle Tree, Merkle Proof
 summary : Block
 date    : 2026-01-03 11:54:32 +0900
 updated : 2026-01-03 12:15:24 +0900
@@ -15,6 +15,8 @@ latex   : true
 {:toc}
 
 ## Merkle Tree
+
+머클 트리(Merkle Tree)는 비트코인의 '압축 알고리즘'이다.
 
 ***[블록(Block)](https://klarciel.net/wiki/blockchain/blockchain-bitcoin-block-tx/)*** 은 아래와 같이 되어있다.
 
@@ -65,7 +67,7 @@ Block Hash = SHA256(SHA256(Block Header))
 - **위변조 감지 (Tamper Proof)**: 누군가 악의적으로 과거의 거래 내역을 단 1비트라도 수정하거나 삭제하면, 머클 루트 값이 완전히 바뀌게 된다. 이는 곧 블록 헤더의 변경을 의미하며, 해당 블록 이후의 모든 작업 증명을 다시 해야 하므로 사실상 조작이 불가능하다.
 - **가벼운 검증 (SPV, Simplified Payment Verification)**: 특정 거래가 블록에 포함되어 있는지 확인하기 위해 블록 전체를 다운로드할 필요가 없다. **머클 경로(Merkle Path)** 에 해당하는 몇 개의 해시값만 있으면, 루트 값과 대조하여 수 밀리초 안에 검증이 가능하다.
 
-### Simplified Payment Verification
+### SPV - Simplified Payment Verification
 
 SPV(Simplified Payment Verification)는 블록체인 전체를 다운로드 하지 않고도 특정 거래가 블록에 포함되어있는지 검증하는 방법이다. SPV 노드는 블록 헤더만 다운로드한다.
 

@@ -61,11 +61,11 @@
  },
  {
   "name": "bitcoin",
-  "size": 24
+  "size": 25
  },
  {
   "name": "blockchain",
-  "size": 24
+  "size": 25
  },
  {
   "name": "bluetooth",
@@ -805,7 +805,7 @@
  },
  {
   "name": "tdd",
-  "size": 24
+  "size": 25
  },
  {
   "name": "term",

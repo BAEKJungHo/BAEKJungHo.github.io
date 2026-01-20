@@ -324,6 +324,7 @@ regenerate: true
 * [[/test/tdd-kotest-spring-autowired]]
 * [[/test/tdd-dont-mock-what-you-dont-own]]
 * [[/test/test-software-regression]]
+* [[/test/test-quadrants-pyramid]]
 
 ## TDD
 

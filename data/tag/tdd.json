@@ -21,5 +21,6 @@
  "tddknight",
  "test/test-design-driven-testing",
  "test/test-enable-refactoring",
+ "test/test-quadrants-pyramid",
  "test/test-the-practical-test-pyramid"
 ]

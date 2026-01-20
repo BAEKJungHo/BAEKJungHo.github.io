@@ -1,4 +1,5 @@
 [
  "agile",
- "agile/agile-component-team"
+ "agile/agile-component-team",
+ "test/test-quadrants-pyramid"
 ]

@@ -19,5 +19,6 @@
  "ddd/ddd-service",
  "functional/functional-functions",
  "kotlin/kotlin-value-object",
- "msa/msa-stream-processing"
+ "msa/msa-stream-processing",
+ "test/test-quadrants-pyramid"
 ]

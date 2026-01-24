@@ -26,6 +26,7 @@
   "blockchain/blockchain-genesis-block",
   "blockchain/blockchain-mechanism",
   "blockchain/blockchain-merkle-tree",
+  "blockchain/blockchain-pos",
   "blockchain/blockchain-proof-of-work",
   "blockchain/blockchain-segwit-locking-script",
   "blockchain/blockchain-smart-contract",

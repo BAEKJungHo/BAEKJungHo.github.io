@@ -1,6 +1,7 @@
 [
  "architecture/architecture-cap",
  "architecture/architecture-distributed-transaction",
+ "architecture/architecture-software-fundamental",
  "architecture/architecture-stream",
  "book/tdd-knight-complex-business-logic-improved-tdd",
  "database/database-tx",

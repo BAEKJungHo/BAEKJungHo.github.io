@@ -9,3 +9,4 @@ package-lock.json
 .jekyll-cache/
 CLAUDE.md
 /.claude/
+/resume/

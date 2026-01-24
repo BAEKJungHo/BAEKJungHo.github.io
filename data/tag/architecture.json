@@ -75,6 +75,7 @@
  "kubernetes/kubernetes-service-mesh",
  "logging/logging-nonblocking-pipeline",
  "magazine/magazine-ffsc",
+ "magazine/magazine-tradeoff",
  "mobility/mobility-connected-service",
  "msa/msa-eventual-consistency",
  "msa/msa-service-connectivity",

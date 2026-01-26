@@ -158,6 +158,7 @@ regenerate: true
 * [[/architecture/architecture-window]]
 * [[/architecture/architecture-backward-compatibility]]
 * [[/architecture/architecture-software-fundamentals]]
+* [[/architecture/architecture-gw-adr]]
 
 ## Principle
 

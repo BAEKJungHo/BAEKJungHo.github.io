@@ -43,6 +43,7 @@
   "architecture/architecture-event-driven-system",
   "architecture/architecture-eventdriven-statemachine",
   "architecture/architecture-functional",
+  "architecture/architecture-gw-adr",
   "architecture/architecture-hexagonal",
   "architecture/architecture-idempotency-design",
   "architecture/architecture-lambda",

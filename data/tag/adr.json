@@ -1,3 +1,4 @@
 [
- "architecture/architecture-decision-records"
+ "architecture/architecture-decision-records",
+ "architecture/architecture-gw-adr"
 ]

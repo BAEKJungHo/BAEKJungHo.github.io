@@ -1,0 +1,9 @@
+{
+ "type": "wiki",
+ "title": "Architecture Decision Record - API Gateway",
+ "summary": "",
+ "parent": "architecture",
+ "url": "/wiki/architecture/architecture-gw-adr",
+ "updated": "2026-01-24 18:12:24 +0900",
+ "children": []
+}

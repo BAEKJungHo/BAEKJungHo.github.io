@@ -43,6 +43,13 @@ git rebase --continue # 충돌 해결 후 rebase 진행
 # push feature branch
 ```
 
+만약, feature 브랜치가 MR 이 올라가있는 상태에서 다른 사람의 MR 이 먼저 머지된 경우에 아래처럼 처리할 수 있다.
+
+```sh
+git rebase origin/develop
+git push --force-with-lease origin feature/XXX
+```
+
 ## Links
 
 - [Udacity Git Commit Message Style Guide](https://udacity.github.io/git-styleguide/)

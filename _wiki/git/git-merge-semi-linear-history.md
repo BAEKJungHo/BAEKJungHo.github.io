@@ -47,6 +47,7 @@ git rebase --continue # 충돌 해결 후 rebase 진행
 
 ```sh
 git rebase origin/develop
+git rebase --continue # 충돌 해결 후 rebase 진행
 git push --force-with-lease origin feature/XXX
 ```
 

@@ -54,6 +54,10 @@ regenerate: true
 * [[/blockchain/blockchain-pos]]
 * [[/blockchain/blockchain-web3]]
 
+## Hardware
+
+* [[/hardware/hardware-trustzone]]
+
 ## Mobility
 
 * [[/mobility/mobility-lidar-radar]]

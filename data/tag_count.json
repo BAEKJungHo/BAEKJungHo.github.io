@@ -32,6 +32,10 @@
   "size": 1
  },
  {
+  "name": "arm",
+  "size": 1
+ },
+ {
   "name": "atlassian",
   "size": 1
  },
@@ -300,6 +304,10 @@
   "size": 4
  },
  {
+  "name": "fido",
+  "size": 1
+ },
+ {
   "name": "fixturemonkey",
   "size": 1
  },
@@ -353,6 +361,10 @@
  },
  {
   "name": "grpc",
+  "size": 2
+ },
+ {
+  "name": "hardware",
   "size": 2
  },
  {
@@ -517,7 +529,7 @@
  },
  {
   "name": "mobile",
-  "size": 3
+  "size": 4
  },
  {
   "name": "mobility",
@@ -601,6 +613,10 @@
  },
  {
   "name": "parallel",
+  "size": 1
+ },
+ {
+  "name": "passkey",
   "size": 1
  },
  {
@@ -806,6 +822,10 @@
  {
   "name": "tdd",
   "size": 25
+ },
+ {
+  "name": "tee",
+  "size": 1
  },
  {
   "name": "term",

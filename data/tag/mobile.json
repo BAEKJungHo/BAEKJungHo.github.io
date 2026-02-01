@@ -1,4 +1,5 @@
 [
+ "hardware/hardware-trustzone",
  "mobile",
  "mobile/mobile-background-foreground",
  "mobile/mobile-deeplink"

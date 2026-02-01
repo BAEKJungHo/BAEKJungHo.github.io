@@ -764,6 +764,10 @@
   "size": 6
  },
  {
+  "name": "solana",
+  "size": 1
+ },
+ {
   "name": "spec",
   "size": 3
  },

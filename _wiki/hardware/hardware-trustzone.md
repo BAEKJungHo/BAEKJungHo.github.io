@@ -1,10 +1,10 @@
 ---
 layout  : wiki
 title   : Demystifying Passkeys; CTAP MakeCredential and GetAssertion
-summary : Passkey, FIDO, TrustZone, Trusted Execution Environment
+summary : Passkey, FIDO, TrustZone, Trusted Execution Environment, Seed Vault
 date    : 2026-02-01 11:54:32 +0900
 updated : 2026-02-01 12:15:24 +0900
-tag     : hardware arm mobile tee fido passkey
+tag     : hardware arm mobile tee fido passkey solana
 toc     : true
 comment : true
 public  : true
@@ -121,6 +121,34 @@ __Email Login with Passkey Flow__:
 6. 사용자는 생체 인식이나 PIN 입력으로 본인임을 인증하여 도전 과제에 응답한다.
 7. 그러면 장치는 서명된 도전 과제를 이메일 업체로 돌려 보내고, 이메일 업체는 공개 키를 사용하여 이를 확인한다.
 8. 사용자에게 이메일 계정에 대한 액세스 권한이 부여된다.
+
+## Seed Vault
+
+***[Seed Vault](https://docs.solanamobile.com/developers/seed-vault)*** is a system service providing secure key custody to Wallet apps.
+Your keys, seeds, and secrets never leave the secure execution environment, while UI components built into Android handle interaction with the user to provide a secure transaction signing experience to users.
+
+키의 생성·보관·사용은 TEE의 책임이고, OS(Seed Vault)는 그 키에 대한 접근과 사용을 중개하고 통제하는 관리자일 뿐이다.
+
+```
+┌────────────────────────────┐
+│        Wallet App          │
+│   "이 트랜잭션 서명해줘"        │
+└─────────────▲──────────────┘
+              │ IPC
+┌─────────────┴──────────────┐
+│     Android OS (Seed Vault)│
+│  - 접근 제어                 │
+│  - 사용자 인증 UI            │
+│  - 정책 판단                 │
+└─────────────▲──────────────┘
+              │ Secure Call
+┌─────────────┴──────────────┐
+│   TEE / Secure Element     │
+│  - Private Key 저장         │
+│  - 서명 연산                 │
+│  - 키 export 불가            │
+└────────────────────────────┘
+```
 
 ## Links
 

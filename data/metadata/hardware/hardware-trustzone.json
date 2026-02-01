@@ -1,7 +1,7 @@
 {
  "type": "wiki",
  "title": "Demystifying Passkeys; CTAP MakeCredential and GetAssertion",
- "summary": "Passkey, FIDO, TrustZone, Trusted Execution Environment",
+ "summary": "Passkey, FIDO, TrustZone, Trusted Execution Environment, Seed Vault",
  "parent": "hardware",
  "url": "/wiki/hardware/hardware-trustzone",
  "updated": "2026-02-01 12:15:24 +0900",

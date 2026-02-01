@@ -2,8 +2,8 @@
 layout  : wiki
 title   : Demystifying Passkeys; CTAP MakeCredential and GetAssertion
 summary : Passkey, FIDO, TrustZone, Trusted Execution Environment
-date    : 2026-01-18 11:54:32 +0900
-updated : 2026-01-18 12:15:24 +0900
+date    : 2026-02-01 11:54:32 +0900
+updated : 2026-02-01 12:15:24 +0900
 tag     : hardware arm mobile tee fido passkey
 toc     : true
 comment : true

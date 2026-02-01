@@ -24,5 +24,6 @@
  "blockchain/blockchain-proof-of-work",
  "blockchain/blockchain-segwit-locking-script",
  "blockchain/blockchain-smart-contract",
- "blockchain/blockchain-uxto"
+ "blockchain/blockchain-uxto",
+ "blockchain/blockchain-web3"
 ]

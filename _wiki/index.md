@@ -52,6 +52,7 @@ regenerate: true
 * [[/blockchain/blockchain-bitnode-transaction]]
 * [[/blockchain/blockchain-bitnode-merkle-tree]]
 * [[/blockchain/blockchain-pos]]
+* [[/blockchain/blockchain-web3]]
 
 ## Mobility
 

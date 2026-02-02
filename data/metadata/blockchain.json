@@ -21,6 +21,7 @@
   "blockchain/blockchain-checksum",
   "blockchain/blockchain-cypherpunk",
   "blockchain/blockchain-decentralization",
+  "blockchain/blockchain-defi",
   "blockchain/blockchain-double-spending-problem",
   "blockchain/blockchain-endian",
   "blockchain/blockchain-genesis-block",

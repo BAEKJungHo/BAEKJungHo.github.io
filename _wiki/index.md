@@ -53,6 +53,7 @@ regenerate: true
 * [[/blockchain/blockchain-bitnode-merkle-tree]]
 * [[/blockchain/blockchain-pos]]
 * [[/blockchain/blockchain-web3]]
+* [[/blockchain/blockchain-defi]]
 
 ## Hardware
 

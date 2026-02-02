@@ -69,7 +69,7 @@
  },
  {
   "name": "blockchain",
-  "size": 27
+  "size": 28
  },
  {
   "name": "bluetooth",
@@ -226,6 +226,10 @@
  {
   "name": "deeplink",
   "size": 2
+ },
+ {
+  "name": "defi",
+  "size": 1
  },
  {
   "name": "delta",

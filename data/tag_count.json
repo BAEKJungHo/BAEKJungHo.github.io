@@ -25,7 +25,7 @@
  },
  {
   "name": "architecture",
-  "size": 90
+  "size": 89
  },
  {
   "name": "argon",
@@ -69,7 +69,7 @@
  },
  {
   "name": "blockchain",
-  "size": 30
+  "size": 31
  },
  {
   "name": "bluetooth",
@@ -133,7 +133,7 @@
  },
  {
   "name": "cloudnative",
-  "size": 13
+  "size": 12
  },
  {
   "name": "concurrency",
@@ -242,6 +242,10 @@
  {
   "name": "devops",
   "size": 8
+ },
+ {
+  "name": "did",
+  "size": 1
  },
  {
   "name": "digitalkey",
@@ -933,6 +937,10 @@
  },
  {
   "name": "zeropayload",
+  "size": 1
+ },
+ {
+  "name": "zkp",
   "size": 1
  }
 ]

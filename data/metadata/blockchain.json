@@ -27,6 +27,7 @@
   "blockchain/blockchain-genesis-block",
   "blockchain/blockchain-mechanism",
   "blockchain/blockchain-merkle-tree",
+  "blockchain/blockchain-nft",
   "blockchain/blockchain-pos",
   "blockchain/blockchain-proof-of-work",
   "blockchain/blockchain-rwa",

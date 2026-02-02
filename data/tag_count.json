@@ -69,7 +69,7 @@
  },
  {
   "name": "blockchain",
-  "size": 28
+  "size": 29
  },
  {
   "name": "bluetooth",
@@ -717,6 +717,10 @@
  },
  {
   "name": "rust",
+  "size": 1
+ },
+ {
+  "name": "rwa",
   "size": 1
  },
  {

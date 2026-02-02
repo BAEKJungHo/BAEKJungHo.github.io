@@ -29,6 +29,7 @@
   "blockchain/blockchain-merkle-tree",
   "blockchain/blockchain-pos",
   "blockchain/blockchain-proof-of-work",
+  "blockchain/blockchain-rwa",
   "blockchain/blockchain-segwit-locking-script",
   "blockchain/blockchain-smart-contract",
   "blockchain/blockchain-uxto",

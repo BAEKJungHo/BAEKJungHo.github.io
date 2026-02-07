@@ -32,6 +32,19 @@ ___[Digital Signature](https://klarciel.net/wiki/auth/auth-certificate-authority
 
 ![](/resource/wiki/security-signed-certificates/replay-attacks.png)
 
+## SINGED COMMAND PROTOCOL
+
+테슬라의 Fleet API 를 사용하기 위해서는 ***Signed Command Protocol*** 을 이해할 필요가 있다.
+
+Singed Command Protocol 은 Cloud Private Key + Vehicle Public Key 조합을 통해 Shared Secret 생성 하게 되고,
+ECDH 기반 Key Exchange 로 세션 단위로 공유 비밀을 생성함으로써 일회성 키 기반 보안 채널을 형성한다.
+또한 생성된 Shared Secret 을 이용해 HMAC Tag 를 생성하여 메시지 위·변조 여부 검증하는 방식을 가지고 있다.
+
+- RSA 기반 전통 서명은 차량 환경에서 연산 비용이 큼
+- ECDH 는 경량 공개키 기반 Key Exchange 에 적합
+- Shared Secret + HMAC 구조는 세션 단위 기밀성·무결성·재사용 방지까지 통합 가능
+- 공개키 기반 서명은 Identity 검증, 공유 비밀 기반 HMAC은 세션 보안 강화를 담당하는 역할 분리 구조
+
 ### Secure Channel
 
 TESLA Vehicle 에 Door Lock/Unlock 과 같은 원격 제어 명령(remote control command)를 보낼때, replay attack 이 일어난다면 인명 피해가 일어날 수도 있을 것이다.

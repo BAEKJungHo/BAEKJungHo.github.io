@@ -4,7 +4,7 @@ title   : SOCKET, PROTOCOL
 summary :
 date    : 2025-12-14 15:54:32 +0900
 updated : 2025-12-14 20:15:24 +0900
-tag     : network tcp sdv architecture websocket
+tag     : network protocol tcp sdv architecture websocket grpc
 toc     : true
 comment : true
 public  : true

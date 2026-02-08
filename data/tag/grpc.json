@@ -1,4 +1,5 @@
 [
  "grpc",
- "grpc/grpc-protobuffer"
+ "grpc/grpc-protobuffer",
+ "network/network-socket-protocol"
 ]

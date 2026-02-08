@@ -369,7 +369,7 @@
  },
  {
   "name": "grpc",
-  "size": 2
+  "size": 3
  },
  {
   "name": "hardware",
@@ -657,7 +657,7 @@
  },
  {
   "name": "protocol",
-  "size": 2
+  "size": 3
  },
  {
   "name": "proxy",

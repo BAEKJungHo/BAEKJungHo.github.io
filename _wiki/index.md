@@ -539,6 +539,7 @@ regenerate: true
 ## GRPC
 
 * [[/grpc/grpc-protobuffer]]
+* [[/grpc/grpc-fundamentals]]
 
 ## Docker
 

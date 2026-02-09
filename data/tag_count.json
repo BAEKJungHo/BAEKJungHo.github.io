@@ -25,7 +25,7 @@
  },
  {
   "name": "architecture",
-  "size": 89
+  "size": 90
  },
  {
   "name": "argon",
@@ -369,7 +369,7 @@
  },
  {
   "name": "grpc",
-  "size": 3
+  "size": 4
  },
  {
   "name": "hardware",
@@ -397,7 +397,7 @@
  },
  {
   "name": "http",
-  "size": 7
+  "size": 8
  },
  {
   "name": "idempotency",
@@ -589,7 +589,7 @@
  },
  {
   "name": "network",
-  "size": 30
+  "size": 31
  },
  {
   "name": "nft",
@@ -656,6 +656,10 @@
   "size": 1
  },
  {
+  "name": "protobuf",
+  "size": 1
+ },
+ {
   "name": "protocol",
   "size": 3
  },
@@ -717,6 +721,10 @@
  },
  {
   "name": "robotaxi",
+  "size": 1
+ },
+ {
+  "name": "rpc",
   "size": 1
  },
  {

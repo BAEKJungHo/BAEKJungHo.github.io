@@ -17,7 +17,7 @@ latex   : false
 
 - (ing) 블록체인과 WEB 3.0 장자철학으로 이해하다 / 박수억 저
 - (ing) 오픈소스 프록시 바이블 / 배문 저
-- (ing) 모던 API 아키텍처 설계 / James Gough, Daniel Bryant, Matthew Auburn 저
+- (2/09) 모던 API 아키텍처 설계 / James Gough, Daniel Bryant, Matthew Auburn 저
 - (1/24) IT 세계의 괴물들 / 아무준수 저
 - (1/19) 비트코인의 탄생부터 블록체인의 미래까지 명쾌하게 이해하는 비트코인·블록체인 바이블 / 장세형 저
 - (1/18) 블록체인 해설서 / 이병욱 저

@@ -416,6 +416,10 @@
   "size": 2
  },
  {
+  "name": "iot",
+  "size": 1
+ },
+ {
   "name": "jackson",
   "size": 2
  },
@@ -530,6 +534,10 @@
  {
   "name": "memoryleak",
   "size": 3
+ },
+ {
+  "name": "messaging",
+  "size": 1
  },
  {
   "name": "methodology",
@@ -661,7 +669,7 @@
  },
  {
   "name": "protocol",
-  "size": 3
+  "size": 4
  },
  {
   "name": "proxy",

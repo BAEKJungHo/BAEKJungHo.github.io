@@ -108,6 +108,10 @@
   "size": 1
  },
  {
+  "name": "cap",
+  "size": 1
+ },
+ {
   "name": "cassandra",
   "size": 2
  },

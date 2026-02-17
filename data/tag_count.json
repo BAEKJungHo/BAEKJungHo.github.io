@@ -769,7 +769,7 @@
  },
  {
   "name": "security",
-  "size": 8
+  "size": 9
  },
  {
   "name": "shallowcopy",
@@ -901,7 +901,7 @@
  },
  {
   "name": "tradeoff",
-  "size": 12
+  "size": 13
  },
  {
   "name": "trie",

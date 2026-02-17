@@ -3,6 +3,7 @@
  "crypto/crypto-password-encryption",
  "linux/linux-ssh",
  "network/network-security-attacks",
+ "sdv/sdv-tesla-signed-command-protocol",
  "security",
  "security/security-signed-certificates",
  "spring/spring-principal",

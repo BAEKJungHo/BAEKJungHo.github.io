@@ -2,5 +2,6 @@
  "designpattern/designpattern-desired-actual",
  "realworld/realworld-vehicle-controls",
  "sdv/sdv-proximity-based-auth",
+ "sdv/sdv-tesla-signed-command-protocol",
  "security/security-signed-certificates"
 ]

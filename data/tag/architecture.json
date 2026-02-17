@@ -71,6 +71,7 @@
  "ddd/ddd-reduce-dependency",
  "dod/dod-data-oriented",
  "grpc/grpc-fundamentals",
+ "kafka/kafak-fundamentals",
  "kafka/kafka-exactly-once",
  "kotlin/kotlin-structured-concurrency",
  "kubernetes/kubernetes-service-mesh",

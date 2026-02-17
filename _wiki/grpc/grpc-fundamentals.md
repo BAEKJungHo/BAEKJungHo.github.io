@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-# gRPC Fundamentals
+# GRPC FUNDAMENTALS
 
 ## History of RPC
 

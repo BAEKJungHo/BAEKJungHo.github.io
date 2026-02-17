@@ -2,5 +2,6 @@
  "architecture/architecture-mqtt",
  "blockchain/blockchain-smart-contract",
  "network/network-binary-based-protocol",
- "network/network-socket-protocol"
+ "network/network-socket-protocol",
+ "sdv/sdv-tesla-signed-command-protocol"
 ]

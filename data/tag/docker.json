@@ -4,6 +4,7 @@
  "docker/docker-dockerizing",
  "docker/docker-dockerizing-whole-linux-server",
  "docker/docker-overlay-network",
+ "infra/infra-kubernetes",
  "kubernetes/kubernetes-container-hierarchy",
  "kubernetes/kubernetes-open-container-initiative",
  "logging/logging-rotation",

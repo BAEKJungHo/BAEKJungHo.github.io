@@ -9,6 +9,7 @@
  "caching/msa-distributed-caching",
  "database/database-cassandra-kkv",
  "database/database-serializable-tx",
+ "kafka/kafak-fundamentals",
  "logging/logging-mastering",
  "logging/logging-the-log",
  "msa/msa-eventual-consistency",

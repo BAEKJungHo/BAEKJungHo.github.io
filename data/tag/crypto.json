@@ -12,5 +12,6 @@
  "crypto/crypto-password-encryption",
  "linux/linux-ssh",
  "sdv/sdv-proximity-based-auth",
+ "sdv/sdv-tesla-signed-command-protocol",
  "security/security-signed-certificates"
 ]

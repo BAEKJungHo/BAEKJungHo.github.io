@@ -9,6 +9,7 @@
   "kafka/kafak-acknowledgement",
   "kafka/kafak-basic",
   "kafka/kafak-filesystem",
+  "kafka/kafak-fundamentals",
   "kafka/kafak-headers",
   "kafka/kafka-consumer-options-strategy",
   "kafka/kafka-exactly-once",

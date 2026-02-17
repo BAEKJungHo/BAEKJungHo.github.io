@@ -22,6 +22,7 @@
   "infra/infra-incident",
   "infra/infra-ip",
   "infra/infra-k6",
+  "infra/infra-kubernetes",
   "infra/infra-load-balancer",
   "infra/infra-load-stress-smoke",
   "infra/infra-load-test",

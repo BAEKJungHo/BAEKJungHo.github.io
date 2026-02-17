@@ -535,6 +535,7 @@ regenerate: true
 * [[/sdv/sdv-history]]
 * [[/sdv/sdv-vehicle-to-grid]]
 * [[/sdv/sdv-digital-twin]]
+* [[/sdv/sdv-tesla-signed-command-protocol]]
 
 ## GRPC
 
@@ -569,6 +570,7 @@ regenerate: true
 * [[/kafka/kafak-filesystem]]
 * [[/kafka/kafka-message-inversion]]
 * [[/kafka/kafak-exactly-once]]
+* [[/kafka/kafak-fundamentals]]
 
 ## Redis
 
@@ -610,6 +612,7 @@ regenerate: true
 * [[/infra/infra-rds-aurora]]
 * [[/infra/infra-envoy-proxy]]
 * [[/infra/infra-load-balancer]]
+* [[/infra/infra-kubernetes]]
 
 ## Mobile
 

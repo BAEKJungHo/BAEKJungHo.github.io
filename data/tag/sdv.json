@@ -9,6 +9,7 @@
  "sdv/sdv-digital-twin",
  "sdv/sdv-history",
  "sdv/sdv-proximity-based-auth",
+ "sdv/sdv-tesla-signed-command-protocol",
  "sdv/sdv-vehicle-to-grid",
  "security/security-signed-certificates"
 ]

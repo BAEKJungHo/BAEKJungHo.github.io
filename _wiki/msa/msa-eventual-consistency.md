@@ -124,7 +124,7 @@ Client ◀──response── Node A
 ⏱ 최소 2 RTT(Round-Trip Time) + fsync 비용
 ```
 
-대륙 간 왕복 지연은 100~300ms 에 달한다. 지리적으로 분산된 3개 복제본을 가진 시스템에서의 쓰기 지연은 $2 \times \max(\text{RTT to all replicas})$ 이다. Eventual Consistency 모델을 채택하면 로컬 노드에서 즉시 쓰기를 완료하고(~1ms), 복제는 비동기로 처리할 수 있다.
+대륙 간 왕복 지연은 100~300ms 에 달한다. 지리적으로 분산된 3개 복제본을 가진 시스템에서의 쓰기 지연은 $$2 \times \max(\text{RTT to all replicas})$$ 이다. Eventual Consistency 모델을 채택하면 로컬 노드에서 즉시 쓰기를 완료하고(~1ms), 복제는 비동기로 처리할 수 있다.
 
 ### Microservices and Polyglot Persistence
 
@@ -182,12 +182,12 @@ Node C: [A:1, B:2, C:1]  ← C가 A의 1번, B의 2번 이벤트를 수신
 ```
 
 __인과성 판별__:
-- $V(a) < V(b)$ (모든 성분이 $\leq$, 최소 하나가 $<$) → a 가 b 에 **선행(happened-before)**
-- $V(a) \nless V(b)$ 이고 $V(b) \nless V(a)$ → 두 이벤트는 **동시적(concurrent)** → 충돌
+- $$V(a) < V(b)$$ (모든 성분이 $$\leq$$, 최소 하나가 $$<$$) → a 가 b 에 **선행(happened-before)**
+- $$V(a) \nless V(b)$$ 이고 $$V(b) \nless V(a)$$ → 두 이벤트는 **동시적(concurrent)** → 충돌
 
 Vector Clock 으로 동시적 이벤트를 감지하면, 애플리케이션이 도메인 로직에 맞게 병합할 수 있다. Amazon Dynamo(2007)가 이 방식을 사용했다.
 
-__제약사항__: 저장 공간이 노드 수에 비례하여 $O(n)$ 으로 증가하며, 모든 메시지에 벡터를 포함해야 하므로 노드가 빈번하게 변경되는 환경에서는 부담이 된다.
+__제약사항__: 저장 공간이 노드 수에 비례하여 $$O(n)$$ 으로 증가하며, 모든 메시지에 벡터를 포함해야 하므로 노드가 빈번하게 변경되는 환경에서는 부담이 된다.
 
 ### Quorum-based Eventual Consistency
 
@@ -195,9 +195,9 @@ __제약사항__: 저장 공간이 노드 수에 비례하여 $O(n)$ 으로 증�
 
 $$W + R > N$$
 
-- $N$: 전체 복제본 수
-- $W$: 쓰기 시 확인 응답이 필요한 복제본 수
-- $R$: 읽기 시 확인 응답이 필요한 복제본 수
+- $$N$$: 전체 복제본 수
+- $$W$$: 쓰기 시 확인 응답이 필요한 복제본 수
+- $$R$$: 읽기 시 확인 응답이 필요한 복제본 수
 
 이 조건을 만족하면 읽기와 쓰기가 반드시 하나 이상의 최신 복제본을 포함하게 된다.
 
@@ -209,11 +209,11 @@ __트레이드오프__:
 | W=1, R=N | 쓰기 빠름, 읽기 느림 |
 | W=⌈(N+1)/2⌉, R=⌈(N+1)/2⌉ | 균형 설정 |
 
-__주의__: $R + W > N$ 은 Quorum 겹침을 보장하지만, 이것만으로 Linearizability 가 보장되지는 않는다. Concurrent write 에서의 LWW 타임스탬프 충돌, Hinted Handoff, Clock skew 등이 여전히 문제가 될 수 있다.
+__주의__: $$R + W > N$$ 은 Quorum 겹침을 보장하지만, 이것만으로 Linearizability 가 보장되지는 않는다. Concurrent write 에서의 LWW 타임스탬프 충돌, Hinted Handoff, Clock skew 등이 여전히 문제가 될 수 있다.
 
 #### Sloppy Quorum and Hinted Handoff
 
-***Sloppy Quorum*** 은 지정된 복제본 노드가 아닌 다른 가용 노드에 임시로 쓰기를 허용하는 방식이다. 복제본 노드가 일시적으로 불가용할 때도 쓰기를 차단하지 않는다. Sloppy Quorum 은 표준 Quorum 의 $W + R > N$ 겹침 보장을 희생하여 가용성을 높인 변형이다. 즉, 임시 노드에 쓰여진 데이터는 원래의 지정 복제본이 아니므로 읽기 Quorum 과 겹치지 않을 수 있다.
+***Sloppy Quorum*** 은 지정된 복제본 노드가 아닌 다른 가용 노드에 임시로 쓰기를 허용하는 방식이다. 복제본 노드가 일시적으로 불가용할 때도 쓰기를 차단하지 않는다. Sloppy Quorum 은 표준 Quorum 의 $$W + R > N$$ 겹침 보장을 희생하여 가용성을 높인 변형이다. 즉, 임시 노드에 쓰여진 데이터는 원래의 지정 복제본이 아니므로 읽기 Quorum 과 겹치지 않을 수 있다.
 
 ***Hinted Handoff*** 는 Sloppy Quorum 의 후속 과정이다.
 

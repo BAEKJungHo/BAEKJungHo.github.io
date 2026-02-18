@@ -2,6 +2,7 @@
  "altorithm/algorithm-randomized-expotential-backoff",
  "architecture/architecture-cap",
  "architecture/architecture-distributed-transaction",
+ "architecture/architecture-gossip",
  "blockchain/blockchain-bitcoin-varint",
  "blockchain/blockchain-byzantine",
  "blockchain/blockchain-decentralization",

@@ -55,6 +55,7 @@
  "/wiki/architecture/architecture-event-driven-system",
  "/wiki/architecture/architecture-eventdriven-statemachine",
  "/wiki/architecture/architecture-functional",
+ "/wiki/architecture/architecture-gossip",
  "/wiki/architecture/architecture-gw-adr",
  "/wiki/architecture/architecture-hexagonal",
  "/wiki/architecture/architecture-idempotency-design",

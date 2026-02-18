@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-gossip",
  "architecture/architecture-mqtt",
  "blockchain/blockchain-smart-contract",
  "network/network-binary-based-protocol",

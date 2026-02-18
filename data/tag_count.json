@@ -25,7 +25,7 @@
  },
  {
   "name": "architecture",
-  "size": 92
+  "size": 93
  },
  {
   "name": "argon",
@@ -153,7 +153,7 @@
  },
  {
   "name": "coroutine",
-  "size": 14
+  "size": 15
  },
  {
   "name": "cors",
@@ -485,7 +485,7 @@
  },
  {
   "name": "kotlin",
-  "size": 76
+  "size": 77
  },
  {
   "name": "ksp",

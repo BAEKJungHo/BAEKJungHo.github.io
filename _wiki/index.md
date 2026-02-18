@@ -169,6 +169,7 @@ regenerate: true
 * [[/architecture/architecture-software-fundamentals]]
 * [[/architecture/architecture-gw-adr]]
 * [[/architecture/architecture-gossip]]
+* [[/architecture/architecture-suspend-mechanism]]
 
 ## Principle
 

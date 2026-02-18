@@ -60,6 +60,7 @@
  "architecture/architecture-software-fundamental",
  "architecture/architecture-stratified-design",
  "architecture/architecture-stream",
+ "architecture/architecture-suspend-mechanism",
  "architecture/architecture-sync-messaging",
  "architecture/architecture-type-driven",
  "architecture/architecture-uuid",

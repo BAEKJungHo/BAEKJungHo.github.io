@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-suspend-mechanism",
  "go/go-concurrency",
  "java/java-virtual-thread",
  "kotlin/kotlin-continuation",

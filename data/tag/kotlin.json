@@ -1,5 +1,6 @@
 [
  "architecture/architecture-eventdriven-statemachine",
+ "architecture/architecture-suspend-mechanism",
  "buildtool/gradle-standard",
  "cleancode/cleancode-knowledge",
  "cleancode/cleancode-readability",

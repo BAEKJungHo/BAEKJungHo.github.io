@@ -559,9 +559,8 @@ Kubernetes에서 리소스 관리는 ***requests***와 ***limits***로 이루어
 
 ### CPU Requests and Limits
 
-***CPU requests***: Pod이 필요로 하는 최소 CPU 양. 스케줄러가 노드를 선택할 때 사용한다. 노드의 allocatable CPU에서 이미 할당된 requests를 빼서 여유가 있는 노드에 배치한다.
-
-***CPU limits***: Pod이 사용할 수 있는 최대 CPU 양. 이를 초과하면 ***throttling***된다.
+- ***CPU requests***: Pod이 필요로 하는 최소 CPU 양. 스케줄러가 노드를 선택할 때 사용한다. 노드의 allocatable CPU에서 이미 할당된 requests를 빼서 여유가 있는 노드에 배치한다.
+- ***CPU limits***: Pod이 사용할 수 있는 최대 CPU 양. 이를 초과하면 ***throttling***된다.
 
 CPU는 ***밀리코어(millicores)*** 단위로 표현한다:
 - `1000m` = `1` = 1 CPU 코어
@@ -584,9 +583,14 @@ cgroup의 CPU 컨트롤러는 두 파일로 제한을 설정한다:
 
 ***Multi-threaded 환경에서의 Throttling***: 여러 스레드가 동시에 실행되는 경우, 모든 스레드의 CPU 사용 시간 합이 quota에 계산된다. 예를 들어 4-core 시스템에서 500m limit을 가진 컨테이너가 4개 스레드를 실행하면, 각 스레드가 100ms 주기 동안 약 12.5ms씩 실행될 수 있다.
 
-CPU throttling은 다음 경우에 발생한다:
-- 애플리케이션이 CPU limit을 초과하려 할 때
-- 멀티스레드 애플리케이션에서 여러 스레드가 합쳐서 limit을 초과할 때
+CPU Throttling은 K8s의 `resources.limits.cpu` 설정 때문에 발생한다.
+- 현상
+  - 애플리케이션이 CPU limit을 초과하려 할 때
+  - 멀티스레드 애플리케이션에서 여러 스레드가 합쳐서 limit을 초과할 때
+- 의미: 컨테이너가 정해진 시간(Quota) 동안 사용할 수 있는 CPU 양을 모두 소진했을 때, 리눅스 커널(CFS 스케줄러)이 강제로 해당 컨테이너의 CPU 사용을 중단시키는 현상이다.
+- K8s 상황: 노드에 CPU 자원이 남아돌더라도, 컨테이너가 설정된 limit을 넘어서면 가차 없이 발생합니다.
+- GC에 미치는 영향: GC가 실행될 때 병렬로 작업을 처리해야 하는데, 도중에 Throttling이 걸리면 GC 스레드가 멈춰버린다. 이로 인해 실제 청소할 양은 적어도 STW(Stop-The-World) 시간이 비정상적으로 길어지게 된다.
+- 해결책: CPU limits를 상향하거나 제거
 
 Throttling 확인:
 
@@ -599,6 +603,44 @@ cat /sys/fs/cgroup/cpu/kubepods/.../cpu.stat
 ```
 
 ***CPU requests는 throttling에 영향을 주지 않는다***. Requests는 스케줄링과 우선순위에만 사용되며, limits만이 실제 CPU 사용량을 제한한다.
+
+### CPU Starvation
+
+CPU Starvation은 프로세스가 일을 하고 싶어도 실행될 CPU 자원 자체를 할당받지 못하는 상황을 의미한다. 즉, 노드 전체의 자원 부족 및 경합이 주된 원인이다.
+
+- 의미: 스레드가 'Runable(실행 대기)' 상태임에도 불구하고, OS 스케줄러가 CPU를 할당해주지 않아 실제로 일을 하지 못하고 굶고(Starving) 있는 상태이다. 즉, 스레드가 CPU 차례를 계속 기다린다.
+- K8s 상황: * 노드 전체의 CPU 사용률이 100%에 도달하여 다른 컨테이너들과의 경쟁에서 밀릴 때.
+- requests는 낮게 잡고 limits는 높게 잡은 'Burstable' 등급의 Pod들이 한 노드에 몰려 자원 경합이 심할 때 발생한다.
+- GC에 미치는 영향: GC 스레드가 CPU를 점유하려고 하지만, OS가 다른 급한 일(다른 컨테이너나 커널 작업 등)을 처리하느라 GC 스레드를 뒤로 미룬다. 결과적으로 GC 수행 속도가 현저히 느려진다.
+- 해결책: 노드 증설(Scaling) 또는 Pod 재배치
+
+### K8S Scheduling
+
+__K8s의 스케줄링 원칙: "Request 기준"__:
+- K8s 스케줄러가 Pod를 어느 노드에 배치할지 결정할 때, limits는 아예 보지 않습니다. 오직 requests 값만 보고 노드의 여유 공간을 계산한다.
+- 노드 사양: CPU 8 Core
+- Pod 설정: requests: 1 / limits: 4 (Burstable 등급)
+- 결과: 스케줄러는 이 노드에 위와 같은 Pod를 8개나 배치할 수 있다고 판단
+
+모든 Pod가 평소에 CPU를 1 Core 미만으로 사용한다면 아무 문제가 없다. 남는 자원(Idle CPU)이 많기 때문에, 특정 Pod가 잠깐 바빠져서 1 Core 이상(Limit인 4 Core 근처까지) 사용하더라도 노드는 이를 수용할 수 있습니다. 이것이 Burstable 등급의 장점인 **'유연한 자원 활용'** 이다.
+
+문제는 갑자기 모든 Pod가 동시에 바빠질 때 발생합니다. 예를 들어, 특정 시점에 8개의 Pod가 일제히 트래픽을 받거나 GC(Garbage Collection)를 수행한다고 가정해 보자.
+
+- 8개의 Pod가 각각 자신의 limits인 4 Core를 쓰겠다고 손을 든다.
+- 전체 요구량은 32 Core 된다.
+- 하지만 물리적인 노드의 자원은 여전히 8 Core 이다.
+
+이때 리눅스 커널의 스케줄러(CFS)가 개입한다. 자원이 부족하면 커널은 각 Pod가 보장받은 requests 비율에 맞춰 자원을 쪼개서 분배한다.
+- 결과: 각 Pod는 4 Core를 쓰고 싶어 하지만, 실제로는 1 Core 내외의 자원만 할당받게 된다.
+- 현상: 애플리케이션 입장에서는 limits까지 쓸 수 있다고 설정되어 있는데, 실제 CPU 연산 속도는 평소보다 훨씬 느려진다.
+- 특히 GC 스레드들이 CPU를 점유해서 빨리 청소를 끝내야 하는데, 다른 Pod들과의 경쟁 때문에 CPU 차례가 오지 않아 STW(Stop-The-World) 시간이 수 배로 늘어난다.
+- 이것이 바로 CPU Starvation 이다.
+
+만약 특정 시점에 모든 Pod의 응답 속도가 느려지고 GC 시간이 튀고 있다면, 다음을 확인해야 한다.
+- Node CPU Utilization: 노드 전체 사용률이 100%에 근접했는가? (Starvation 의심)
+- CPU Throttling Metric: `container_cpu_cfs_throttled_seconds_total` 이 증가했는가? (Limit 도달 의심)
+
+__중요한 서비스라면 requests와 limits를 동일하게 설정하는 Guaranteed 등급을 사용하여 자원을 점유(Reserved)하는 것이 가장 안전하다.__
 
 ### Memory Requests and Limits
 

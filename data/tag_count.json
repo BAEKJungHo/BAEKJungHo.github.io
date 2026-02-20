@@ -8,6 +8,10 @@
   "size": 2
  },
  {
+  "name": "aes",
+  "size": 1
+ },
+ {
   "name": "agile",
   "size": 3
  },
@@ -50,6 +54,10 @@
  {
   "name": "aws",
   "size": 4
+ },
+ {
+  "name": "base64",
+  "size": 1
  },
  {
   "name": "batch",
@@ -116,6 +124,10 @@
   "size": 2
  },
  {
+  "name": "cbc",
+  "size": 1
+ },
+ {
   "name": "ccs",
   "size": 1
  },
@@ -177,10 +189,14 @@
  },
  {
   "name": "crypto",
-  "size": 15
+  "size": 16
  },
  {
   "name": "cs",
+  "size": 1
+ },
+ {
+  "name": "csfle",
   "size": 1
  },
  {
@@ -400,6 +416,14 @@
   "size": 1
  },
  {
+  "name": "hkdf",
+  "size": 1
+ },
+ {
+  "name": "hmac",
+  "size": 1
+ },
+ {
   "name": "http",
   "size": 8
  },
@@ -569,7 +593,7 @@
  },
  {
   "name": "mongodb",
-  "size": 2
+  "size": 3
  },
  {
   "name": "monitoring",

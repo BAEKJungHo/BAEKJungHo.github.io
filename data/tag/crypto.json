@@ -6,6 +6,7 @@
  "crypto",
  "crypto/crypto-asymmetric-cryptography",
  "crypto/crypto-core",
+ "crypto/crypto-data-encryption",
  "crypto/crypto-hash-deterministic",
  "crypto/crypto-hash-secure-property",
  "crypto/crypto-kerckhoffs-principle",

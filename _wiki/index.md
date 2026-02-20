@@ -530,6 +530,7 @@ regenerate: true
 * [[/crypto/crypto-hash-deterministic]]
 * [[/crypto/crypto-hash-secure-property]]
 * [[/crypto/crypto-core]]
+* [[/crypto/crypto-data-encryption]]
 
 ## SDV
 

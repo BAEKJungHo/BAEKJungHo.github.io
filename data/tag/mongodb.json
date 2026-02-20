@@ -1,4 +1,5 @@
 [
  "architecture/architecture-map-reduce",
+ "crypto/crypto-data-encryption",
  "database/database-modeling"
 ]

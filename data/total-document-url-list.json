@@ -40,6 +40,7 @@
  "/wiki/architecture/architecture-clean-impl",
  "/wiki/architecture/architecture-cloud-native",
  "/wiki/architecture/architecture-components",
+ "/wiki/architecture/architecture-consistent-hash",
  "/wiki/architecture/architecture-crdts",
  "/wiki/architecture/architecture-data-driven-workflows",
  "/wiki/architecture/architecture-decision-making-principles",

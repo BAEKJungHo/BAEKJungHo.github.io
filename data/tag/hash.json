@@ -1,5 +1,6 @@
 [
  "altorithm/algorithm-hash",
+ "architecture/architecture-consistent-hash",
  "auth/auth-hmac",
  "crypto/crypto-hash-deterministic",
  "crypto/crypto-hash-secure-property"

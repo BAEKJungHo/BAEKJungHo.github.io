@@ -29,7 +29,7 @@
  },
  {
   "name": "architecture",
-  "size": 93
+  "size": 94
  },
  {
   "name": "argon",
@@ -397,7 +397,7 @@
  },
  {
   "name": "hash",
-  "size": 4
+  "size": 5
  },
  {
   "name": "healthcheck",

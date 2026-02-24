@@ -27,6 +27,7 @@
   "architecture/architecture-clean",
   "architecture/architecture-cloud-native",
   "architecture/architecture-components",
+  "architecture/architecture-consistent-hash",
   "architecture/architecture-crdts",
   "architecture/architecture-data-driven-workflows",
   "architecture/architecture-decision-making-principles",

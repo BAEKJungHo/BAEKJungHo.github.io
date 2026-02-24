@@ -17,6 +17,7 @@
  "msa/msa-fault-tolerance",
  "msa/msa-xa",
  "network/network-blip",
+ "network/network-ordered-system",
  "observability/msa-distributed-tracing",
  "redis/redis-distributed-lock-drawbacks",
  "redis/redis-fenced-lock",

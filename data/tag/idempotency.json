@@ -1,5 +1,6 @@
 [
  "architecture/architecture-idempotency-design",
  "network/network-idempotency",
+ "network/network-ordered-system",
  "troubleshooting/troubleshooting-idempotency"
 ]

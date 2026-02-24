@@ -87,6 +87,7 @@
  "msa/msa-service-discovery",
  "msa/msa-xa",
  "network/network-design-principle",
+ "network/network-ordered-system",
  "network/network-socket-protocol",
  "observability/architecture-domain-oriented-observability",
  "realworld/realworld-smarthome-control-command",

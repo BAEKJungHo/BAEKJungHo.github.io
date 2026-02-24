@@ -170,6 +170,7 @@ regenerate: true
 * [[/architecture/architecture-gw-adr]]
 * [[/architecture/architecture-gossip]]
 * [[/architecture/architecture-suspend-mechanism]]
+* [[/architecture/architecture-consistent-hash]]
 
 ## Principle
 
@@ -810,6 +811,7 @@ regenerate: true
 * [[/network/network-webrtc]]
 * [[/network/network-eth0]]
 * [[/network/network-latency-bandwidth]]
+* [[/network/network-ordered-system]]
 
 ## Http
 

@@ -6,5 +6,6 @@
  "http/http-headers",
  "http/http-localstorage",
  "infra",
- "network/network-binary-based-protocol"
+ "network/network-binary-based-protocol",
+ "network/network-ordered-system"
 ]

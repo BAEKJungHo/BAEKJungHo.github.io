@@ -4,7 +4,7 @@ title   : Never Trust the Network Designing Ordered Systems
 summary :
 date    : 2026-02-24 11:54:32 +0900
 updated : 2026-02-24 22:15:24 +0900
-tag     : network architecture tcp idempotency distributed
+tag     : network architecture http tcp idempotency distributed
 toc     : true
 comment : true
 public  : true

@@ -545,7 +545,7 @@ Event Structure:
 | Imperative | "문을 열어라" (UNLOCK_DOOR) | 엄격한 순서 보장 필요 |
 | State-based | "문 상태를 UNLOCKED로 만들어라" | Last-Writer-Wins 가능 |
 
-Imperative 커맨드는 실행 자체가 부수 효과(side effect)를 발생시키므로 순서가 뒤바뀌면 위험하다. State-based 커맨드는 최종 목표 상태만 중요하므로 Desired/Actual State Pattern으로 처리할 수 있다.
+Imperative 커맨드는 실행 자체가 부수 효과(side effect)를 발생시키므로 순서가 뒤바뀌면 위험하다. State-based 커맨드는 최종 목표 상태만 중요하므로 ***[Desired/Actual State Pattern](https://klarciel.net/wiki/designpattern/designpattern-desired-actual/)*** 으로 처리할 수 있다.
 
 이 절에서는 Imperative 커맨드의 순서 보장에 초점을 맞춘다.
 

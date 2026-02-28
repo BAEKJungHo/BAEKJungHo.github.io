@@ -168,6 +168,10 @@
   "size": 15
  },
  {
+  "name": "coroutines",
+  "size": 1
+ },
+ {
   "name": "cors",
   "size": 1
  },
@@ -428,6 +432,10 @@
   "size": 9
  },
  {
+  "name": "http2",
+  "size": 1
+ },
+ {
   "name": "idempotency",
   "size": 4
  },
@@ -509,7 +517,7 @@
  },
  {
   "name": "kotlin",
-  "size": 77
+  "size": 78
  },
  {
   "name": "ksp",
@@ -858,6 +866,10 @@
  {
   "name": "stream",
   "size": 2
+ },
+ {
+  "name": "streaming",
+  "size": 1
  },
  {
   "name": "subnet",

@@ -8,6 +8,7 @@
  "designpattern/designpattern-callback",
  "functional/functional-defensive-copy",
  "functional/functional-potential-errors",
+ "grpc/grpc-fundamentals",
  "java/java-anonymous-class",
  "java/java-date",
  "java/java-deserialize-generic",

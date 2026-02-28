@@ -1,7 +1,7 @@
 ---
 layout  : wiki
 title   : Never Trust the Network Designing Ordered Systems
-summary :
+summary : TCP Byte-Stream Ordering
 date    : 2026-02-24 11:54:32 +0900
 updated : 2026-02-24 22:15:24 +0900
 tag     : network architecture http tcp idempotency distributed

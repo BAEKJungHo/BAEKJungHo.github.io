@@ -73,6 +73,7 @@ async function main() {
         questions: questions.map((q, i) => ({
             id: i + 1,
             question: q.question,
+            answer: q.answer || '',
             tags: q.tags,
             references: q.references
         }))
@@ -230,7 +231,7 @@ async function generateQuestions(parsedFiles, topic, questionsPerDay) {
 
 ## 규칙
 1. 질문은 반드시 한글로 작성합니다.
-2. 답변은 생성하지 않습니다. 질문만 생성합니다.
+2. 각 질문에 대한 모범 답변도 함께 생성합니다. 답변은 시니어 엔지니어 수준의 깊이 있는 내용이어야 합니다.
 3. 각 질문은 깊이 있는 사고와 실무 경험을 요구해야 합니다.
 4. 단순 암기형이 아닌, 설계/판단/트레이드오프를 묻는 질문이어야 합니다.
 5. 반드시 아래 JSON 형식으로만 응답해주세요. 다른 텍스트는 포함하지 마세요.
@@ -244,6 +245,7 @@ ${docsSection}
 [
   {
     "question": "질문 내용",
+    "answer": "모범 답변 내용 (핵심 개념 설명, 실무 관점 포함)",
     "tags": ["tag1", "tag2"],
     "references": [
       { "title": "문서 제목", "url": "/wiki/path/" }
@@ -255,7 +257,7 @@ ${docsSection}
 
     const message = await client.messages.create({
         model: 'claude-sonnet-4-5-20250929',
-        max_tokens: 2000,
+        max_tokens: 4000,
         messages: [{ role: 'user', content: prompt }]
     });
 

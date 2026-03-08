@@ -6,6 +6,7 @@
     {
       "id": 1,
       "question": "쿠버네티스 클러스터에서 Pod가 CrashLoopBackOff 상태에 빠졌을 때, 이를 체계적으로 진단하기 위한 접근 방법을 설명해주세요. 각 단계에서 확인해야 할 로그, 이벤트, 리소스 상태를 구체적으로 논해주세요.",
+      "answer": "CrashLoopBackOff 진단은 먼저 kubectl describe pod로 이벤트와 종료 코드를 확인하고, kubectl logs --previous로 이전 컨테이너의 로그를 분석하는 것에서 시작합니다. OOMKilled 상태라면 리소스 limits 설정을 검토해야 하고, 애플리케이션 에러라면 ConfigMap이나 Secret 마운트, 환경변수 설정을 점검합니다. Liveness Probe 설정이 너무 공격적이어서 애플리케이션 초기화 시간보다 짧은 경우에도 발생할 수 있으므로, initialDelaySeconds와 periodSeconds를 적절히 조정해야 합니다. 최종적으로 kubectl get events --sort-by=.metadata.creationTimestamp로 클러스터 수준의 이벤트를 시간순으로 확인하여 근본 원인을 파악합니다.",
       "tags": ["kubernetes", "infra"],
       "references": [
         { "title": "Docker Container", "url": "/wiki/docker/docker-container/" }
@@ -14,6 +15,7 @@
     {
       "id": 2,
       "question": "프로덕션 환경에서 Docker 이미지의 보안을 강화하기 위한 베스트 프랙티스를 설명해주세요. 멀티스테이지 빌드, 비루트 사용자 실행, 이미지 스캐닝 등의 전략을 포함하여 답해주세요.",
+      "answer": "프로덕션 Docker 이미지 보안의 핵심은 공격 표면을 최소화하는 것입니다. 멀티스테이지 빌드를 통해 빌드 도구와 소스 코드를 최종 이미지에서 제거하고, distroless나 Alpine 기반의 최소 베이스 이미지를 사용합니다. 컨테이너는 반드시 비루트 사용자로 실행해야 하며, USER 지시문과 함께 readOnlyRootFilesystem 설정을 활용합니다. CI/CD 파이프라인에 Trivy나 Snyk 같은 이미지 스캐닝 도구를 통합하여 알려진 CVE를 자동으로 탐지하고, 이미지 서명(Cosign)을 통해 공급망 보안도 확보해야 합니다.",
       "tags": ["docker", "infra", "security"],
       "references": [
         { "title": "Docker Container", "url": "/wiki/docker/docker-container/" }
@@ -22,6 +24,7 @@
     {
       "id": 3,
       "question": "AWS에서 고가용성(High Availability) 아키텍처를 설계할 때, VPC 서브넷 구성과 보안 그룹 설정의 핵심 원칙을 설명해주세요. Multi-AZ 배포와 관련하여 네트워크 세그멘테이션 전략은 어떻게 수립해야 하나요?",
+      "answer": "고가용성 VPC 설계에서는 최소 2개 이상의 가용영역(AZ)에 걸쳐 퍼블릭/프라이빗 서브넷을 구성하고, NAT Gateway도 AZ별로 배치하여 단일 장애점을 제거합니다. 보안 그룹은 최소 권한 원칙에 따라 인바운드 규칙을 설정하되, 계층별(웹/앱/DB)로 분리하여 각 계층의 보안 그룹이 이전 계층만 참조하도록 체이닝합니다. 네트워크 세그멘테이션은 NACL과 보안 그룹을 조합하여 구현하며, 프라이빗 서브넷의 DB 계층은 특정 앱 서브넷의 CIDR 블록에서만 접근 가능하도록 제한하는 것이 핵심입니다.",
       "tags": ["aws", "infra", "network"],
       "references": [
         { "title": "VPC Subnet", "url": "/wiki/infra/infra-vpc-subnet/" },

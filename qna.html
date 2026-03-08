@@ -103,6 +103,14 @@ public: true
                 // Question text
                 html += '<div style="margin-bottom: 4px;">' + q.question + '</div>';
 
+                // Answer toggle (only if answer exists)
+                if (q.answer) {
+                    html += '<details style="margin: 6px 0 8px 0;">';
+                    html += '<summary style="cursor:pointer;color:#0c0a8e;font-size:0.85rem;user-select:none;">답변 보기</summary>';
+                    html += '<div style="margin-top:8px;padding:10px 14px;background:#f8f8fa;border-left:3px solid #0c0a8e;font-size:0.9rem;line-height:1.7;white-space:pre-wrap;">' + q.answer + '</div>';
+                    html += '</details>';
+                }
+
                 // Reference links
                 if (q.references && q.references.length > 0) {
                     html += '<div class="post-meta">';

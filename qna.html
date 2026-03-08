@@ -86,22 +86,22 @@ public: true
             if (sectionTitle) {
                 html += '<h2>' + sectionTitle + '</h2>';
             }
-            html += '<h3>' + data.date + ' (' + data.dayOfWeek + ') - ' + data.topic + '</h3>';
-            html += '<ul class="post-list">';
+            html += '<h3>' + data.date + ' (' + data.dayOfWeek + ')</h3>';
+            html += '<ul class="post-list" style="margin-top: 8px;">';
 
             for (var i = 0; i < data.questions.length; i++) {
                 var q = data.questions[i];
-                html += '<li style="margin-bottom: 12px;">';
+                html += '<li style="margin-bottom: 20px;">';
 
                 // Tags as chips
-                html += '<div style="margin-bottom: 4px;">';
+                html += '<div style="margin-bottom: 6px;">';
                 for (var j = 0; j < q.tags.length; j++) {
                     html += '<span style="display:inline-block;background:#0c0a8e;color:#fff;padding:1px 7px;border-radius:8px;font-size:0.75rem;margin-right:4px;">' + q.tags[j] + '</span>';
                 }
                 html += '</div>';
 
                 // Question text
-                html += '<div style="margin-bottom: 4px;">' + q.question + '</div>';
+                html += '<div style="margin-bottom: 6px;line-height:1.7;">' + q.question + '</div>';
 
                 // Answer toggle (only if answer exists)
                 if (q.answer) {

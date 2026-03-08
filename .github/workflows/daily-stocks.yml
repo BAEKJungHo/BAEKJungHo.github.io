@@ -1,0 +1,49 @@
+name: Daily Stock Newsletter Generation
+
+on:
+  schedule:
+    # 매일 KST 18시 = UTC 09:00, 월~금만
+    - cron: '0 9 * * 1-5'
+  workflow_dispatch: # 수동 실행 지원
+
+permissions:
+  contents: write
+
+jobs:
+  generate-stocks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate daily stock newsletter
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TZ: Asia/Seoul
+        run: node tool/generate-stocks.js
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet _stocks/ 2>/dev/null && ! git ls-files --others --exclude-standard _stocks/ | grep -q .; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add _stocks/
+          git commit -m "chore: generate daily stock newsletter ($(date +%Y-%m-%d))"
+          git push

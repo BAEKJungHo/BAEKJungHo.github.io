@@ -35,6 +35,9 @@ collections:
     wiki:
         output: true
         permalink: /:collection/:path/
+    stocks:
+        output: true
+        permalink: /stocks/:path/
 
 # Comment Service
 disqus:

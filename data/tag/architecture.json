@@ -68,6 +68,7 @@
  "architecture/architecture-vcard",
  "architecture/architecture-window",
  "architecture/architecture-zero-trust",
+ "blockchain/blockchain-dpki",
  "caching/architecture-cache-strategy",
  "cleancode/cleancode-cleancode",
  "cleancode/cleancode-decoupling",

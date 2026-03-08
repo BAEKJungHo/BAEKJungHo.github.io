@@ -57,6 +57,7 @@ regenerate: true
 * [[/blockchain/blockchain-rwa]]
 * [[/blockchain/blockchain-defi]]
 * [[/blockchain/blockchain-did]]
+* [[/blockchain/blockchain-dpki]]
 
 ## Hardware
 

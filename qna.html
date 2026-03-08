@@ -1,0 +1,123 @@
+---
+layout: document
+title: QNA
+permalink: /qna/
+public: true
+---
+<div>
+    <p style="color: #808094; font-style: italic;">AI 가 매일 생성하는 시니어 엔지니어 면접 질문입니다.</p>
+</div>
+
+<div id="qna-today"></div>
+<div id="qna-past"></div>
+
+<script src="/js/axios.min.js"></script>
+<script>
+    ;(function() {
+        var today = new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+        var yyyy = today.getFullYear();
+        var mm = String(today.getMonth() + 1).padStart(2, '0');
+        var dd = String(today.getDate()).padStart(2, '0');
+        var todayStr = yyyy + '-' + mm + '-' + dd;
+
+        axios.get('/data/qna/index.json', {})
+            .then(function(resp) {
+                if (resp == null || resp.data == null) {
+                    return;
+                }
+                var dates = resp.data;
+                var todayDates = [];
+                var pastDates = [];
+
+                for (var i = 0; i < dates.length; i++) {
+                    if (dates[i] === todayStr) {
+                        todayDates.push(dates[i]);
+                    } else {
+                        pastDates.push(dates[i]);
+                    }
+                }
+
+                // Sort past dates in reverse chronological order
+                pastDates.sort(function(a, b) { return b.localeCompare(a); });
+
+                if (todayDates.length > 0) {
+                    loadDateSection(todayDates[0], 'qna-today', "Today's Questions");
+                }
+
+                if (pastDates.length > 0) {
+                    renderPastSections(pastDates);
+                }
+            });
+
+        function loadDateSection(date, containerId, sectionTitle) {
+            axios.get('/data/qna/' + date + '.json', {})
+                .then(function(resp) {
+                    if (resp == null || resp.data == null) {
+                        return;
+                    }
+                    var data = resp.data;
+                    var container = document.getElementById(containerId);
+                    container.innerHTML = renderDateBlock(data, sectionTitle);
+                });
+        }
+
+        function renderPastSections(dates) {
+            var container = document.getElementById('qna-past');
+            container.innerHTML = '<h2>Past Questions</h2><div id="qna-past-list"></div>';
+
+            var promises = [];
+            for (var i = 0; i < dates.length; i++) {
+                promises.push(axios.get('/data/qna/' + dates[i] + '.json', {}));
+            }
+
+            Promise.all(promises).then(function(responses) {
+                var html = '';
+                for (var i = 0; i < responses.length; i++) {
+                    if (responses[i] != null && responses[i].data != null) {
+                        html += renderDateBlock(responses[i].data, null);
+                    }
+                }
+                document.getElementById('qna-past-list').innerHTML = html;
+            });
+        }
+
+        function renderDateBlock(data, sectionTitle) {
+            var html = '';
+            if (sectionTitle) {
+                html += '<h2>' + sectionTitle + '</h2>';
+            }
+            html += '<h3>' + data.date + ' (' + data.dayOfWeek + ') - ' + data.topic + '</h3>';
+            html += '<ul class="post-list">';
+
+            for (var i = 0; i < data.questions.length; i++) {
+                var q = data.questions[i];
+                html += '<li style="margin-bottom: 12px;">';
+
+                // Tags as chips
+                html += '<div style="margin-bottom: 4px;">';
+                for (var j = 0; j < q.tags.length; j++) {
+                    html += '<span style="display:inline-block;background:#0c0a8e;color:#fff;padding:1px 7px;border-radius:8px;font-size:0.75rem;margin-right:4px;">' + q.tags[j] + '</span>';
+                }
+                html += '</div>';
+
+                // Question text
+                html += '<div style="margin-bottom: 4px;">' + q.question + '</div>';
+
+                // Reference links
+                if (q.references && q.references.length > 0) {
+                    html += '<div class="post-meta">';
+                    for (var k = 0; k < q.references.length; k++) {
+                        var ref = q.references[k];
+                        html += '<a class="post-link" href="' + ref.url + '" style="margin-right:8px;font-size:0.8rem;">' + ref.title + '</a>';
+                    }
+                    html += '</div>';
+                }
+
+                html += '</li>';
+            }
+
+            html += '</ul>';
+            return html;
+        }
+    })();
+</script>

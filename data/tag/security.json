@@ -1,5 +1,6 @@
 [
  "architecture/architecture-zero-trust",
+ "blockchain/blockchain-dpki",
  "crypto/crypto-password-encryption",
  "linux/linux-ssh",
  "network/network-security-attacks",

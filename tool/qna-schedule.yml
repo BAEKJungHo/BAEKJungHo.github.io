@@ -1,0 +1,32 @@
+schedule:
+  monday:
+    topic: "Network"
+    tags: ["network", "http", "grpc"]
+    wiki_dirs: ["network", "grpc"]
+  tuesday:
+    topic: "Distributed Systems"
+    tags: ["distributed", "msa", "kafka"]
+    wiki_dirs: ["msa", "kafka"]
+  wednesday:
+    topic: "System Architecture Design"
+    tags: ["architecture", "systemdesign"]
+    wiki_dirs: ["architecture", "systemdesign"]
+  thursday:
+    topic: "Programming Languages (Go, Java, Kotlin)"
+    tags: ["go", "java", "kotlin"]
+    wiki_dirs: ["go", "java", "kotlin"]
+  friday:
+    topic: "Data Structures & Algorithms"
+    tags: ["algorithm", "datastructures", "datastructure"]
+    wiki_dirs: ["altorithm", "datastructures"]
+  saturday:
+    topic: "AI, Infrastructure (K8s, Docker, AWS)"
+    tags: ["infra", "kubernetes", "docker", "aws", "ai"]
+    wiki_dirs: ["infra", "docker", "kubernetes", "aws"]
+  sunday:
+    topic: "Design Patterns, TDD, DDD, FP, OOP"
+    tags: ["designpattern", "tdd", "ddd", "functional", "oop"]
+    wiki_dirs: ["designpattern", "tdd", "ddd", "functional", "oop", "driven"]
+
+questions_per_day: 3
+difficulty: "senior"

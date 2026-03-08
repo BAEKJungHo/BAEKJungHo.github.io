@@ -24,6 +24,7 @@
   "blockchain/blockchain-defi",
   "blockchain/blockchain-did",
   "blockchain/blockchain-double-spending-problem",
+  "blockchain/blockchain-dpki",
   "blockchain/blockchain-endian",
   "blockchain/blockchain-genesis-block",
   "blockchain/blockchain-mechanism",

@@ -1,0 +1,33 @@
+{
+  "date": "2026-03-07",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "쿠버네티스 클러스터에서 Pod가 CrashLoopBackOff 상태에 빠졌을 때, 이를 체계적으로 진단하기 위한 접근 방법을 설명해주세요. 각 단계에서 확인해야 할 로그, 이벤트, 리소스 상태를 구체적으로 논해주세요.",
+      "tags": ["kubernetes", "infra"],
+      "references": [
+        { "title": "Docker Container", "url": "/wiki/docker/docker-container/" }
+      ]
+    },
+    {
+      "id": 2,
+      "question": "프로덕션 환경에서 Docker 이미지의 보안을 강화하기 위한 베스트 프랙티스를 설명해주세요. 멀티스테이지 빌드, 비루트 사용자 실행, 이미지 스캐닝 등의 전략을 포함하여 답해주세요.",
+      "tags": ["docker", "infra", "security"],
+      "references": [
+        { "title": "Docker Container", "url": "/wiki/docker/docker-container/" }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "AWS에서 고가용성(High Availability) 아키텍처를 설계할 때, VPC 서브넷 구성과 보안 그룹 설정의 핵심 원칙을 설명해주세요. Multi-AZ 배포와 관련하여 네트워크 세그멘테이션 전략은 어떻게 수립해야 하나요?",
+      "tags": ["aws", "infra", "network"],
+      "references": [
+        { "title": "VPC Subnet", "url": "/wiki/infra/infra-vpc-subnet/" },
+        { "title": "Security Group", "url": "/wiki/infra/infra-security-group/" },
+        { "title": "Availability", "url": "/wiki/infra/infra-availability/" }
+      ]
+    }
+  ]
+}

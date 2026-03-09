@@ -234,72 +234,69 @@ async function generateQuestions(parsedFiles, topic, questionsPerDay) {
 2. 각 질문에 대한 모범 답변도 함께 생성합니다. 답변은 시니어 엔지니어 수준의 깊이 있는 내용이어야 합니다.
 3. 각 질문은 깊이 있는 사고와 실무 경험을 요구해야 합니다.
 4. 단순 암기형이 아닌, 설계/판단/트레이드오프를 묻는 질문이어야 합니다.
-5. 반드시 아래 JSON 형식으로만 응답해주세요. 다른 텍스트는 포함하지 마세요.
 
 ## 오늘의 주제: ${topic}
 
 ## 참고 문서
 ${docsSection}
 
-## 출력 형식 (JSON array만 반환)
-[
-  {
-    "question": "질문 내용",
-    "answer": "모범 답변 내용 (핵심 개념 설명, 실무 관점 포함)",
-    "tags": ["tag1", "tag2"],
-    "references": [
-      { "title": "문서 제목", "url": "/wiki/path/" }
-    ]
-  }
-]`;
+위 문서를 참고하여 generate_questions 도구를 사용해서 면접 질문을 생성해주세요.`;
+
+    const tools = [{
+        name: 'generate_questions',
+        description: '시니어 엔지니어 면접 질문과 모범 답변을 생성합니다.',
+        input_schema: {
+            type: 'object',
+            properties: {
+                questions: {
+                    type: 'array',
+                    items: {
+                        type: 'object',
+                        properties: {
+                            question: { type: 'string', description: '면접 질문 (한글)' },
+                            answer: { type: 'string', description: '모범 답변 (핵심 개념 설명, 실무 관점 포함)' },
+                            tags: { type: 'array', items: { type: 'string' }, description: '관련 태그' },
+                            references: {
+                                type: 'array',
+                                items: {
+                                    type: 'object',
+                                    properties: {
+                                        title: { type: 'string' },
+                                        url: { type: 'string' }
+                                    },
+                                    required: ['title', 'url']
+                                },
+                                description: '참고 문서'
+                            }
+                        },
+                        required: ['question', 'answer', 'tags', 'references']
+                    }
+                }
+            },
+            required: ['questions']
+        }
+    }];
 
     console.log('Calling Claude API...');
 
     const message = await client.messages.create({
         model: 'claude-sonnet-4-5-20250929',
         max_tokens: 16000,
-        messages: [{ role: 'user', content: prompt }]
+        messages: [{ role: 'user', content: prompt }],
+        tools,
+        tool_choice: { type: 'tool', name: 'generate_questions' }
     });
 
-    // Check if response was truncated
-    if (message.stop_reason === 'max_tokens') {
-        console.warn('Warning: API response was truncated due to max_tokens limit');
-    }
-
-    const responseText = message.content
-        .filter(block => block.type === 'text')
-        .map(block => block.text)
-        .join('');
-
-    if (!responseText.trim()) {
-        throw new Error('API returned empty response');
-    }
-
-    // Parse JSON from response (handle potential markdown code blocks)
-    let jsonStr = responseText.trim();
-    const codeBlockMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/);
-    if (codeBlockMatch) {
-        jsonStr = codeBlockMatch[1].trim();
-    }
-
-    // Extract JSON array even if there's surrounding text
-    const arrayMatch = jsonStr.match(/\[[\s\S]*\]/);
-    if (arrayMatch) {
-        jsonStr = arrayMatch[0];
-    }
-
-    let questions;
-    try {
-        questions = JSON.parse(jsonStr);
-    } catch (parseErr) {
-        console.error('Failed to parse JSON response. Raw response (first 500 chars):');
-        console.error(responseText.substring(0, 500));
+    const toolUseBlock = message.content.find(block => block.type === 'tool_use');
+    if (!toolUseBlock) {
         console.error(`Stop reason: ${message.stop_reason}`);
-        throw new Error(`JSON parse failed: ${parseErr.message}`);
+        throw new Error('API did not return a tool_use response');
     }
 
-    if (!Array.isArray(questions)) {
-        throw new Error('API response is not a JSON array');
+    const questions = toolUseBlock.input.questions;
+
+    if (!Array.isArray(questions) || questions.length === 0) {
+        throw new Error('API returned empty questions array');
     }
 
     return questions;

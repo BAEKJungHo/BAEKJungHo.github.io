@@ -257,14 +257,23 @@ ${docsSection}
 
     const message = await client.messages.create({
         model: 'claude-sonnet-4-5-20250929',
-        max_tokens: 4000,
+        max_tokens: 16000,
         messages: [{ role: 'user', content: prompt }]
     });
+
+    // Check if response was truncated
+    if (message.stop_reason === 'max_tokens') {
+        console.warn('Warning: API response was truncated due to max_tokens limit');
+    }
 
     const responseText = message.content
         .filter(block => block.type === 'text')
         .map(block => block.text)
         .join('');
+
+    if (!responseText.trim()) {
+        throw new Error('API returned empty response');
+    }
 
     // Parse JSON from response (handle potential markdown code blocks)
     let jsonStr = responseText.trim();
@@ -273,7 +282,21 @@ ${docsSection}
         jsonStr = codeBlockMatch[1].trim();
     }
 
-    const questions = JSON.parse(jsonStr);
+    // Extract JSON array even if there's surrounding text
+    const arrayMatch = jsonStr.match(/\[[\s\S]*\]/);
+    if (arrayMatch) {
+        jsonStr = arrayMatch[0];
+    }
+
+    let questions;
+    try {
+        questions = JSON.parse(jsonStr);
+    } catch (parseErr) {
+        console.error('Failed to parse JSON response. Raw response (first 500 chars):');
+        console.error(responseText.substring(0, 500));
+        console.error(`Stop reason: ${message.stop_reason}`);
+        throw new Error(`JSON parse failed: ${parseErr.message}`);
+    }
 
     if (!Array.isArray(questions)) {
         throw new Error('API response is not a JSON array');

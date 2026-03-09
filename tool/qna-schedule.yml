@@ -18,7 +18,7 @@ schedule:
   friday:
     topic: "Data Structures & Algorithms"
     tags: ["algorithm", "datastructures", "datastructure"]
-    wiki_dirs: ["altorithm", "datastructures"]
+    wiki_dirs: ["algorithm", "datastructures"]
   saturday:
     topic: "AI, Infrastructure (K8s, Docker, AWS)"
     tags: ["infra", "kubernetes", "docker", "aws", "ai"]
@@ -28,5 +28,5 @@ schedule:
     tags: ["designpattern", "tdd", "ddd", "functional", "oop"]
     wiki_dirs: ["designpattern", "tdd", "ddd", "functional", "oop", "driven"]
 
-questions_per_day: 3
+questions_per_day: 1
 difficulty: "senior"

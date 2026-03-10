@@ -47,8 +47,32 @@
     ],
     "msa/msa-iac": [
       "2026-03-10"
+    ],
+    "architecture/architecture-abstraction": [
+      "2026-03-11"
+    ],
+    "architecture/architecture-amqp": [
+      "2026-03-11"
+    ],
+    "architecture/architecture-analysis-estimation": [
+      "2026-03-11"
+    ],
+    "architecture/architecture-api-design": [
+      "2026-03-11"
+    ],
+    "architecture/architecture-async-nonblocking": [
+      "2026-03-11"
+    ],
+    "architecture/architecture-automotive": [
+      "2026-03-11"
+    ],
+    "architecture/architecture-aws-well": [
+      "2026-03-11"
+    ],
+    "architecture/architecture-backend-for-frontend": [
+      "2026-03-11"
     ]
   },
-  "totalQuestionsGenerated": 2,
-  "lastGenerated": "2026-03-10"
+  "totalQuestionsGenerated": 3,
+  "lastGenerated": "2026-03-11"
 }

@@ -1,0 +1,35 @@
+{
+  "date": "2026-03-11",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 e-커머스 플랫폼에서 웹, 모바일 앱, IoT 디바이스를 모두 지원해야 하는 상황입니다. Backend For Frontend(BFF) 패턴 도입을 검토 중일 때, 이 패턴을 적용하는 것의 장단점과 함께 추상화(Abstraction) 관점에서 BFF가 시스템 복잡도를 어떻게 관리하는지 설명해주세요. 또한 BFF 패턴 대신 API Gateway만 사용하는 방식과 비교했을 때 어떤 트레이드오프가 있을까요?",
+      "answer": "**BFF 패턴의 장점:**\n\n1. **추상화를 통한 복잡도 관리**: BFF는 백엔드 마이크로서비스의 복잡한 내부 구조를 숨기고, 각 프론트엔드에 최적화된 단순한 인터페이스를 제공합니다. 이는 문서에서 언급된 '불필요한 세부사항을 숨겨 복잡성을 줄인다(Hides unnecessary details to Reduce complexity)'는 추상화의 핵심 원리를 실현합니다.\n\n2. **클라이언트별 최적화**: 웹은 풍부한 데이터를, 모바일은 경량화된 페이로드를, IoT는 최소한의 데이터만 받도록 각각 조정할 수 있습니다.\n\n3. **데이터 집계 및 오케스트레이션**: 여러 마이크로서비스 호출을 BFF에서 처리하여 클라이언트의 네트워크 요청 수를 줄입니다.\n\n4. **독립적인 배포 및 확장**: 각 BFF는 담당 프론트엔드의 요구사항에 따라 독립적으로 배포하고 확장할 수 있습니다.\n\n5. **프로토콜 변환**: REST, GraphQL, gRPC 등 클라이언트에 적합한 프로토콜로 변환 가능합니다.\n\n**BFF 패턴의 단점:**\n\n1. **코드 중복 가능성**: 각 BFF에서 인증, 로깅, 에러 핸들링 등의 공통 로직이 중복될 수 있습니다.\n\n2. **운영 복잡도 증가**: 관리해야 할 서비스 수가 증가하여 모니터링, 배포, 디버깅이 복잡해집니다.\n\n3. **팀 간 조율**: 각 BFF를 어느 팀이 소유할지, 프론트엔드 팀인지 백엔드 팀인지 결정해야 합니다.\n\n4. **추가 레이턴시**: BFF가 중간 계층으로 추가되어 네트워크 홉이 하나 더 생깁니다.\n\n**API Gateway와의 트레이드오프:**\n\n- **API Gateway 단독 사용**: 라우팅, 인증, rate limiting 등의 공통 기능을 중앙 집중화합니다. 하지만 클라이언트별 로직은 프론트엔드나 백엔드에 분산되어 처리해야 합니다.\n\n- **BFF + API Gateway 조합**: API Gateway는 공통 관심사(보안, 라우팅)를 처리하고, BFF는 클라이언트별 비즈니스 로직과 데이터 변환을 담당합니다. 이는 관심사의 분리(Separation of Concerns)를 명확히 합니다.\n\n**실무 판단 기준:**\n\n- 클라이언트 간 요구사항 차이가 크고, 각 클라이언트가 독립적으로 진화해야 한다면 BFF 패턴이 적합합니다.\n- 클라이언트 간 공통점이 많고 단순한 라우팅과 인증만 필요하다면 API Gateway만으로 충분합니다.\n- 팀 구조도 중요합니다. 프론트엔드 팀이 백엔드 개발 역량을 갖추고 있다면 BFF를 각 팀이 소유하는 것이 효율적입니다.\n\n**추상화 관점에서의 설계 원칙:**\n\nBFF는 데이터 추상화(Data Abstractions)의 좋은 예시입니다. 문서의 '상자' 비유처럼, 프론트엔드는 데이터가 어떻게 저장되고 조합되는지 알 필요 없이 필요한 기능(API)만 사용하면 됩니다. 이를 통해 백엔드 마이크로서비스 구조가 변경되어도 BFF 인터페이스만 유지하면 프론트엔드는 영향을 받지 않습니다.",
+      "tags": [
+        "architecture",
+        "designpattern",
+        "system-design",
+        "abstraction",
+        "bff",
+        "api-gateway",
+        "microservices"
+      ],
+      "references": [
+        {
+          "title": "Backend For Frontend",
+          "url": "/wiki/architecture/architecture-backend-for-frontend"
+        },
+        {
+          "title": "ABSTRACTION",
+          "url": "/wiki/architecture/architecture-abstraction"
+        },
+        {
+          "title": "Backends for Frontends Pattern - AWS",
+          "url": "https://aws.amazon.com/ko/blogs/mobile/backends-for-frontends-pattern/"
+        }
+      ]
+    }
+  ]
+}

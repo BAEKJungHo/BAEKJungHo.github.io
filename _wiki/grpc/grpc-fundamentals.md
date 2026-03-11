@@ -2601,7 +2601,7 @@ class SessionServiceTest {
 
 __Setup__: Client `keepAliveTime=10s`, Server `permitKeepAliveTime=5min` (기본값)
 
-__현상__: 서버가 GOAWAY(ENHANCE_YOUR_CALM) 전송 → 클라이언트 UNAVAILABLE → 자동 재연결 → 같은 PING 빈도 → 다시 GOAWAY → 무한 반복. 메트릭에서 reconnect 횟수가 폭증한다.
+__현상__: 서버가 GOAWAY(ENHANCE_YOUR_CALM, too_many_pings) 전송 → 클라이언트 UNAVAILABLE → 자동 재연결 → 같은 PING 빈도 → 다시 GOAWAY → 무한 반복. 메트릭에서 reconnect 횟수가 폭증한다.
 
 __감지__: `grpc_client_reconnect_total` 급증, 로그에 ENHANCE_YOUR_CALM 반복
 

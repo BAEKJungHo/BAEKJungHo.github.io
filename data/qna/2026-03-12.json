@@ -1,0 +1,35 @@
+{
+  "date": "2026-03-12",
+  "dayOfWeek": "목요일",
+  "topic": "Programming Languages (Go, Java, Kotlin)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Go 언어에서 'Share memory by communicating' 철학을 채택한 이유와, 실무에서 Channel 기반 동시성 제어와 Mutex 기반 동시성 제어 중 어떤 것을 선택할지 판단하는 기준에 대해 설명해주세요. 각 방식의 트레이드오프와 함께 실제 경험한 사례가 있다면 말씀해주세요.",
+      "answer": "Go는 'Share memory by communicating' 철학을 통해 전통적인 멀티스레딩의 복잡성을 해결하고자 했습니다. pthreads와 같은 저수준 동기화 메커니즘(mutex, condition variables, memory barriers)은 복잡한 설계를 요구하고 데드락, 레이스 컨디션 등의 문제를 야기하기 쉽습니다. Go는 CSP(Communicating Sequential Processes) 모델을 언어 레벨에서 지원하여, goroutine 간 데이터 공유를 공유 메모리가 아닌 channel을 통한 통신으로 해결합니다.\n\n**선택 기준:**\n\n1. **Channel 사용이 적합한 경우:**\n   - 데이터의 소유권을 명확히 이전해야 할 때\n   - 작업 분배 패턴(worker pool)을 구현할 때\n   - 이벤트 기반 통신이 필요할 때\n   - 코드의 가독성과 유지보수성이 중요할 때\n   - 예: 생산자-소비자 패턴, 파이프라인 처리\n\n2. **Mutex 사용이 적합한 경우:**\n   - 단순한 상태 보호가 필요할 때 (예: 카운터, 캐시)\n   - 성능이 극도로 중요하고 오버헤드를 최소화해야 할 때\n   - 여러 goroutine이 동일한 데이터 구조에 빈번하게 접근할 때\n   - 잠금 범위가 명확하고 제한적일 때\n\n**트레이드오프:**\n\n- **Channel:**\n  - 장점: 데이터 레이스 방지, 코드 명확성, 조합 가능성(composability) 높음\n  - 단점: 약간의 성능 오버헤드, 버퍼 크기 관리 필요, 잘못 사용 시 데드락 가능\n\n- **Mutex:**\n  - 장점: 낮은 오버헤드, 단순한 상태 보호에 효율적\n  - 단점: 잘못 사용 시 데드락/레이스 컨디션 위험, 코드 복잡도 증가\n\n**실무 경험 예시:**\n분산 시스템에서 rate limiter를 구현할 때, 초기에는 channel을 사용했으나 고빈도 요청 처리 시 성능 병목이 발생했습니다. 단순히 요청 카운트와 타임스탬프만 보호하면 되는 경우였기에 sync.Mutex로 변경하여 성능을 개선했습니다. 반면, 이벤트 스트림 처리 파이프라인에서는 각 단계별 goroutine 간 데이터 전달에 channel을 사용하여 명확한 데이터 흐름과 백프레셔 제어를 구현했습니다.\n\n일반적으로 'Start with channels, optimize with mutexes if needed' 원칙을 따르며, 프로파일링을 통해 실제 병목 지점을 확인한 후 최적화하는 것이 바람직합니다.",
+      "tags": [
+        "go",
+        "concurrency",
+        "channel",
+        "mutex",
+        "goroutine",
+        "csp",
+        "trade-off"
+      ],
+      "references": [
+        {
+          "title": "Explained Concurrency - Go Wiki",
+          "url": "/wiki/go/go-concurrency"
+        },
+        {
+          "title": "Effective Go - Share by Communicating",
+          "url": "https://go.dev/doc/effective_go#concurrency"
+        },
+        {
+          "title": "Go Mutex Documentation",
+          "url": "/wiki/go/go-mutex"
+        }
+      ]
+    }
+  ]
+}

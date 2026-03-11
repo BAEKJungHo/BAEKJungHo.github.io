@@ -71,8 +71,32 @@
     ],
     "architecture/architecture-backend-for-frontend": [
       "2026-03-11"
+    ],
+    "go/go-concurrency": [
+      "2026-03-12"
+    ],
+    "go/go-empty-interface-generics": [
+      "2026-03-12"
+    ],
+    "go/go-error-std": [
+      "2026-03-12"
+    ],
+    "go/go-fuzz": [
+      "2026-03-12"
+    ],
+    "go/go-method-function": [
+      "2026-03-12"
+    ],
+    "go/go-mutex": [
+      "2026-03-12"
+    ],
+    "go/go-panic": [
+      "2026-03-12"
+    ],
+    "go/go-pointers": [
+      "2026-03-12"
     ]
   },
-  "totalQuestionsGenerated": 3,
-  "lastGenerated": "2026-03-11"
+  "totalQuestionsGenerated": 4,
+  "lastGenerated": "2026-03-12"
 }

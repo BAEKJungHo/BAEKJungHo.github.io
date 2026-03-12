@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-13",
+  "dayOfWeek": "금요일",
+  "topic": "Data Structures & Algorithms",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 검색 자동완성 시스템을 설계한다고 가정해봅시다. Trie와 HashMap 중 어떤 자료구조를 선택하시겠습니까? 각각의 장단점과 트레이드오프를 메모리 효율성, 검색 성능, 확장성 관점에서 설명해주시고, 실제 프로덕션 환경에서 고려해야 할 추가적인 최적화 방안도 함께 논의해주세요.",
+      "answer": "**핵심 선택: Trie 기반 설계 + 최적화**\n\n**1. Trie vs HashMap 비교**\n\n**Trie의 장점:**\n- 접두사 기반 검색에 최적화: O(k) 시간복잡도 (k는 검색어 길이)\n- 메모리 효율성: 공통 접두사를 공유하여 중복 제거\n- Prefix matching, wildcard 검색 자연스럽게 지원\n- 사전순 정렬된 결과를 쉽게 얻을 수 있음\n\n**Trie의 단점:**\n- 메모리 오버헤드: 각 노드마다 포인터 배열 필요 (영문 기준 26~256개)\n- 캐시 지역성(cache locality) 부족: 노드가 메모리에 분산되어 있음\n- 구현 복잡도가 상대적으로 높음\n\n**HashMap의 장점:**\n- O(1) 평균 조회 시간\n- 구현이 단순하고 표준 라이브러리 활용 가능\n- 메모리 레이아웃이 연속적이어서 캐시 친화적\n\n**HashMap의 단점:**\n- 접두사 검색에 비효율적: 모든 키를 순회해야 함 O(N)\n- 자동완성처럼 \"부분 매칭\"이 필요한 경우 사용 불가\n- 정렬된 결과를 얻으려면 추가 정렬 필요\n\n**2. 실무적 설계 결정**\n\n검색 자동완성의 핵심 요구사항은 \"사용자가 입력한 접두사로 시작하는 모든 단어 찾기\"이므로 **Trie가 적합**합니다.\n\n**3. 프로덕션 환경 최적화 방안**\n\n**a) Radix Tree (Compressed Trie) 사용:**\n- 단일 자식 노드 체인을 압축하여 메모리 절약\n- 예: \"search\" → \"se\" → \"a\" → \"r\" → \"c\" → \"h\" 대신 \"search\" 단일 노드\n- 메모리 사용량 30-50% 절감 가능\n\n**b) 인기도 기반 Top-K 최적화:**\n- 각 노드에 인기도 상위 K개 항목을 캐싱\n- 검색 시 전체 서브트리 탐색 없이 빠른 응답\n- 예: \"pyt\" 노드에 [\"python\", \"pytorch\", \"pytest\"] 미리 저장\n\n**c) 메모리 효율화:**\n- Array 대신 HashMap으로 자식 노드 저장 (sparse한 경우)\n- 영문 26개가 아닌 실제 사용되는 문자만 저장\n- 대소문자 정규화로 노드 수 절반 감소\n\n**d) 분산 시스템 설계:**\n- 알파벳 범위 기반 샤딩 (a-m, n-z)\n- 언어별 Trie 분리 (영어, 한글, 일본어)\n- Redis나 Memcached로 hot path 캐싱\n\n**e) 업데이트 전략:**\n- Immutable Trie + Copy-on-Write 패턴\n- Read-heavy 워크로드에서 lock-free 읽기 가능\n- 배치 업데이트로 쓰기 부하 분산\n\n**f) 추가 최적화:**\n- Double Array Trie (메모리 효율성 극대화)\n- Ternary Search Tree (메모리와 성능의 균형)\n- Bloom Filter로 존재하지 않는 접두사 빠르게 필터링\n\n**4. 실제 사례**\n- Google Search: Multi-stage Trie with caching\n- Elasticsearch: FST (Finite State Transducer) 기반 자동완성\n- Redis: Sorted Set + Lexicographical range queries\n\n**5. 결론**\n대규모 검색 자동완성은 Trie를 기본으로 하되, Radix Tree 압축, 인기도 캐싱, 샤딩 전략을 결합한 하이브리드 접근이 최적입니다. 단순 정확 매칭에는 HashMap이 유리하지만, prefix matching이 핵심인 자동완성에서는 Trie의 구조적 우위가 명확합니다.",
+      "tags": [
+        "datastructures",
+        "trie",
+        "system-design",
+        "performance-optimization",
+        "trade-offs"
+      ],
+      "references": [
+        {
+          "title": "DIGITAL TREE",
+          "url": "/wiki/datastructures/datastructures-trie"
+        },
+        {
+          "title": "Difference Stack and Heap",
+          "url": "/wiki/datastructures/datastructures-stack-heap"
+        }
+      ]
+    }
+  ]
+}

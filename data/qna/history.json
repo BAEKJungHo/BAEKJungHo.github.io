@@ -107,8 +107,32 @@
     ],
     "datastructures/datastructures-visualizations": [
       "2026-03-13"
+    ],
+    "infra/infra-availability": [
+      "2026-03-14"
+    ],
+    "infra/infra-awsec2ssh": [
+      "2026-03-14"
+    ],
+    "infra/infra-bashrc": [
+      "2026-03-14"
+    ],
+    "infra/infra-bastion": [
+      "2026-03-14"
+    ],
+    "infra/infra-ci-cd": [
+      "2026-03-14"
+    ],
+    "infra/infra-cloud": [
+      "2026-03-14"
+    ],
+    "infra/infra-collision-domain": [
+      "2026-03-14"
+    ],
+    "infra/infra-customer": [
+      "2026-03-14"
     ]
   },
-  "totalQuestionsGenerated": 5,
-  "lastGenerated": "2026-03-13"
+  "totalQuestionsGenerated": 6,
+  "lastGenerated": "2026-03-14"
 }

@@ -1,0 +1,35 @@
+{
+  "date": "2026-03-14",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "회사의 주요 서비스가 Auto-Scaling을 사용하여 트래픽 급증에 대응하고 있습니다. 그런데 피크 시간대에 WAS 인스턴스를 Scale-Out 했음에도 불구하고 오히려 TPS가 감소하고 응답 시간이 급격히 증가하는 현상이 발생했습니다. 이러한 상황의 원인을 진단하고, 어떤 관점에서 문제를 해결해야 하는지 설명해주세요. 또한 Bastion Server와 같은 인프라 아키텍처 패턴을 적용할 때 고려해야 할 트레이드오프는 무엇인가요?",
+      "answer": "이 문제는 전형적인 병목 지점(Bottleneck) 이동 현상입니다. WAS를 Scale-Out 하면 애플리케이션 레이어의 처리 능력은 증가하지만, 그만큼 데이터베이스에 대한 요청도 비례하여 증가합니다. 결과적으로 데이터베이스가 처리하지 못하고 대기하는 쿼리들이 누적되고, 이는 Connection Pool 고갈로 이어져 WAS에서도 요청을 물고 있는 상태가 되어 전체 TPS가 감소하게 됩니다.\n\n해결 방안은 다음과 같습니다:\n\n1. **데이터베이스 레이어 최적화**\n   - 슬로우 쿼리 분석 및 인덱스 최적화\n   - Read Replica를 활용한 읽기 부하 분산\n   - 집계 테이블 또는 Materialized View 도입\n   - Connection Pool 설정 최적화 (max connections, timeout 등)\n\n2. **캐싱 전략 도입**\n   - Redis, Memcached 등을 활용한 애플리케이션 레벨 캐싱\n   - DB 쿼리 결과 캐싱으로 데이터베이스 부하 감소\n   - CDN을 통한 정적 컨텐츠 캐싱\n\n3. **비동기 처리 패턴**\n   - 즉시 응답이 필요하지 않은 작업은 메시지 큐(Kafka, RabbitMQ 등)를 통한 비동기 처리\n   - Event-Driven Architecture 도입 검토\n\n4. **올바른 TPS 목표 설정**\n   - Stress Test를 통해 각 레이어별 한계점 파악\n   - 전체 시스템의 병목 지점을 기준으로 적정 TPS 목표 설정\n\nBastion Server 패턴의 트레이드오프:\n\n**장점:**\n- 보안 집중화: 22번 포트 접근을 Bastion Server에만 오픈하여 보안 관리 포인트 최소화\n- 감사 로그(Audit Log) 중앙화: 모든 관리자 접속 이력을 한 곳에서 추적 가능\n- 트래픽 분리: 서비스 트래픽과 관리자 트래픽을 물리적으로 분리하여 DDos 공격 시에도 관리 접근 가능\n- Auto-Scaling 환경에서 효율적: 서비스 서버가 동적으로 생성/삭제되어도 Bastion만 관리하면 됨\n\n**단점:**\n- Single Point of Failure(SPOF): Bastion Server가 다운되면 모든 서버 접근 불가 → 이중화 필요\n- 추가 홉(Hop)으로 인한 접속 복잡도 증가: 로컬 → Bastion → 타겟 서버로 2단계 접속 필요\n- 추가 비용: Bastion 전용 인스턴스 운영 비용 발생\n- 성능 오버헤드: 많은 관리자가 동시에 작업할 경우 Bastion의 네트워크 대역폭이 병목이 될 수 있음\n\n**실무 권장사항:**\n- Bastion Server는 Multi-AZ로 이중화하고, Auto-Scaling Group 구성\n- Session Manager(AWS Systems Manager)나 Azure Bastion 같은 관리형 서비스 고려\n- VPN과 함께 사용하여 특정 IP 대역만 Bastion 접근 허용\n- 접속 이력을 CloudWatch, ELK Stack 등으로 중앙 집중식 로깅",
+      "tags": [
+        "infra",
+        "performance",
+        "scalability",
+        "security",
+        "bastion",
+        "database-optimization",
+        "architecture"
+      ],
+      "references": [
+        {
+          "title": "Availability and Performance",
+          "url": "/wiki/infra/infra-availability"
+        },
+        {
+          "title": "Bastion Server",
+          "url": "/wiki/infra/infra-bastion"
+        },
+        {
+          "title": "Collision Domain",
+          "url": "/wiki/infra/infra-collision-domain"
+        }
+      ]
+    }
+  ]
+}

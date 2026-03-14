@@ -1,0 +1,40 @@
+{
+  "date": "2026-03-15",
+  "dayOfWeek": "일요일",
+  "topic": "Design Patterns, TDD, DDD, FP, OOP",
+  "questions": [
+    {
+      "id": 1,
+      "question": "레거시 시스템을 마이크로서비스로 전환하는 프로젝트에서 기존 모놀리식 API를 점진적으로 교체해야 합니다. 이 과정에서 Adapter 패턴과 Decorator 패턴을 어떻게 조합하여 사용할 수 있을까요? 각 패턴의 역할과 적용 시점, 그리고 이러한 접근 방식의 장단점을 실무 경험을 바탕으로 설명해주세요.",
+      "answer": "이 질문은 두 가지 구조적 패턴의 차이점과 실무 적용 능력을 평가합니다.\n\n**패턴별 역할 분담:**\n\n1. **Adapter 패턴의 역할**\n   - 레거시 시스템과 새로운 마이크로서비스 간의 인터페이스 불일치 해결\n   - 기존 코드 변경 없이 새로운 인터페이스로 변환\n   - Anti-Corruption Layer 구현에 활용\n\n2. **Decorator 패턴의 역할**\n   - 로깅, 모니터링, 캐싱 등 부가 기능 동적 추가\n   - 기존 비즈니스 로직과 관련된 기능 확장 (예: 응답 데이터 변환, 에러 핸들링)\n   - Circuit Breaker, Retry 로직 등 resilience 패턴 적용\n\n**적용 시나리오 예시:**\n\n```kotlin\n// Legacy System Interface\ninterface LegacyOrderService {\n    fun getOrderData(orderId: String): LegacyOrderData\n}\n\n// New System Interface\ninterface OrderService {\n    fun getOrder(orderId: OrderId): Order\n}\n\n// Adapter: 인터페이스 변환\nclass OrderServiceAdapter(\n    private val legacyService: LegacyOrderService\n) : OrderService {\n    override fun getOrder(orderId: OrderId): Order {\n        val legacyData = legacyService.getOrderData(orderId.value)\n        return Order.fromLegacy(legacyData) // 데이터 구조 변환\n    }\n}\n\n// Decorator Base\nabstract class OrderServiceDecorator(\n    private val orderService: OrderService\n) : OrderService {\n    override fun getOrder(orderId: OrderId): Order {\n        return orderService.getOrder(orderId)\n    }\n}\n\n// Concrete Decorator: 로깅 추가\nclass LoggingOrderServiceDecorator(\n    private val orderService: OrderService,\n    private val logger: Logger\n) : OrderServiceDecorator(orderService) {\n    override fun getOrder(orderId: OrderId): Order {\n        logger.info(\"Fetching order: ${orderId.value}\")\n        val startTime = System.currentTimeMillis()\n        try {\n            val order = super.getOrder(orderId)\n            logger.info(\"Order fetched successfully in ${System.currentTimeMillis() - startTime}ms\")\n            return order\n        } catch (e: Exception) {\n            logger.error(\"Failed to fetch order: ${orderId.value}\", e)\n            throw e\n        }\n    }\n}\n\n// Concrete Decorator: 캐싱 추가\nclass CachingOrderServiceDecorator(\n    private val orderService: OrderService,\n    private val cache: Cache<OrderId, Order>\n) : OrderServiceDecorator(orderService) {\n    override fun getOrder(orderId: OrderId): Order {\n        return cache.get(orderId) ?: run {\n            val order = super.getOrder(orderId)\n            cache.put(orderId, order)\n            order\n        }\n    }\n}\n\n// 조합 사용\nval service = CachingOrderServiceDecorator(\n    LoggingOrderServiceDecorator(\n        OrderServiceAdapter(legacyOrderService),\n        logger\n    ),\n    cache\n)\n```\n\n**적용 시점:**\n\n1. **Adapter 먼저 적용**\n   - 레거시 시스템과의 인터페이스 불일치 해결이 최우선\n   - 새로운 도메인 모델 정의 및 변환 로직 구현\n   - Strangler Fig Pattern과 함께 사용하여 점진적 전환\n\n2. **Decorator 이후 적용**\n   - 기본 기능이 안정화된 후 부가 기능 추가\n   - 운영 환경에서의 observability 향상\n   - 성능 최적화 (캐싱, 배치 처리 등)\n\n**장점:**\n\n1. **관심사의 명확한 분리**\n   - Adapter: 인터페이스 변환 책임\n   - Decorator: 부가 기능 책임\n   - 각 클래스가 단일 책임 원칙(SRP) 준수\n\n2. **유연한 확장성**\n   - 런타임에 동적으로 기능 조합 가능\n   - 새로운 Decorator 추가 시 기존 코드 변경 불필요 (OCP)\n\n3. **점진적 마이그레이션 지원**\n   - Feature Toggle과 결합하여 단계적 전환 가능\n   - A/B 테스팅에 유리\n\n4. **테스트 용이성**\n   - 각 계층을 독립적으로 테스트 가능\n   - Mock 객체 주입이 간단\n\n**단점:**\n\n1. **복잡도 증가**\n   - 래핑 레이어가 많아질수록 디버깅 어려움\n   - 스택 트레이스가 깊어짐\n   - 성능 오버헤드 (매우 빈번한 호출 시)\n\n2. **설정 및 구성 복잡성**\n   - DI 컨테이너 설정이 복잡해질 수 있음\n   - 데코레이터 적용 순서가 중요 (예: 캐싱 vs 로깅)\n\n3. **타입 안정성 이슈**\n   - 과도한 추상화로 인해 특정 구현체 타입이 필요한 경우 문제\n   - 런타임에 잘못된 조합 가능성\n\n**실무 Best Practices:**\n\n1. **명확한 네이밍 컨벤션**\n   - Adapter는 'XXXAdapter', Decorator는 'XXXDecorator' 접미사 사용\n\n2. **데코레이터 순서 문서화**\n   - 특히 캐싱, 트랜잭션, 로깅의 순서는 결과에 영향\n\n3. **Builder 패턴과 조합**\n   - 복잡한 데코레이터 체인 구성을 간소화\n\n4. **모니터링 및 메트릭**\n   - 각 계층의 성능 측정 (Decorator 패턴 활용)\n\n5. **Circuit Breaker 적용**\n   - 레거시 시스템 장애 시 fallback 전략\n\n이러한 접근 방식은 Netflix의 Hystrix, Spring Cloud의 Resilience4j 등 많은 프레임워크에서 사용하는 패턴이며, 실무에서 안전하고 점진적인 시스템 전환을 가능하게 합니다.",
+      "tags": [
+        "designpattern",
+        "adapter",
+        "decorator",
+        "proxy",
+        "microservices",
+        "legacy-modernization",
+        "solid",
+        "architecture"
+      ],
+      "references": [
+        {
+          "title": "Adapter Pattern",
+          "url": "/wiki/designpattern/designpattern-adapter"
+        },
+        {
+          "title": "Decorator Pattern",
+          "url": "/wiki/designpattern/designpattern-decorator"
+        },
+        {
+          "title": "Bridge Pattern",
+          "url": "/wiki/designpattern/designpattern-bridge"
+        },
+        {
+          "title": "Cloud Design Patterns",
+          "url": "/wiki/designpattern/designpattern-cloud"
+        }
+      ]
+    }
+  ]
+}

@@ -131,8 +131,32 @@
     ],
     "infra/infra-customer": [
       "2026-03-14"
+    ],
+    "designpattern/designpattern-adapter": [
+      "2026-03-15"
+    ],
+    "designpattern/designpattern-bridge": [
+      "2026-03-15"
+    ],
+    "designpattern/designpattern-builder": [
+      "2026-03-15"
+    ],
+    "designpattern/designpattern-callback": [
+      "2026-03-15"
+    ],
+    "designpattern/designpattern-chain-of-responsibility": [
+      "2026-03-15"
+    ],
+    "designpattern/designpattern-cloud": [
+      "2026-03-15"
+    ],
+    "designpattern/designpattern-composite": [
+      "2026-03-15"
+    ],
+    "designpattern/designpattern-decorator": [
+      "2026-03-15"
     ]
   },
-  "totalQuestionsGenerated": 6,
-  "lastGenerated": "2026-03-14"
+  "totalQuestionsGenerated": 7,
+  "lastGenerated": "2026-03-15"
 }

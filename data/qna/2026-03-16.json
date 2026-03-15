@@ -1,0 +1,31 @@
+{
+  "date": "2026-03-16",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 글로벌 서비스에서 사용자 경험 개선을 위해 레이턴시(Latency)를 최적화해야 합니다. Latency의 4가지 구성 요소(Propagation, Transmission, Processing, Queuing Delay)를 설명하고, 각 요소별로 실무에서 적용할 수 있는 최적화 전략과 그 트레이드오프를 설명해주세요. 또한 대역폭(Bandwidth)을 증가시키는 것만으로는 왜 레이턴시 문제를 근본적으로 해결할 수 없는지, BDP(Bandwidth-Delay Product) 개념과 연결하여 설명해주세요.",
+      "answer": "레이턴시는 패킷이 출발지에서 목적지까지 이동하는데 걸리는 총 시간으로, 4가지 구성 요소로 분해됩니다.\n\n**1. Propagation Delay (전파 지연)**\n- 정의: 전기 신호나 빛이 물리적 매체를 통과하는 시간\n- 결정 요인: 거리와 매체의 전파 속도 (빛의 속도는 물리적 상한)\n- 최적화 전략:\n  * CDN(Content Delivery Network) 배치: 사용자와 가까운 엣지 서버에 콘텐츠 캐싱\n  * Edge Computing: 계산 로직을 사용자 근처로 이동\n  * Multi-Region 배포: 주요 지역별 데이터센터 운영\n- 트레이드오프:\n  * 비용 증가: 전세계 인프라 구축 및 유지보수 비용\n  * 데이터 일관성 문제: 지역 간 데이터 동기화 복잡도 증가\n  * 운영 복잡도: 다중 리전 모니터링 및 장애 대응\n\n**2. Transmission Delay (전송 지연)**\n- 정의: 데이터 패킷 전체를 링크에 밀어넣는데 걸리는 시간 (패킷 크기 / 대역폭)\n- 최적화 전략:\n  * 대역폭 증설: 회선 용량 업그레이드\n  * 데이터 압축: Gzip, Brotli 등을 통한 페이로드 크기 감소\n  * Protocol Optimization: HTTP/2, HTTP/3(QUIC) 사용\n  * 불필요한 데이터 제거: API 응답 최적화, 이미지 최적화\n- 트레이드오프:\n  * 압축 CPU 오버헤드: 압축/해제에 따른 Processing Delay 증가\n  * 비용: 고대역폭 회선 비용 증가\n\n**3. Processing Delay (처리 지연)**\n- 정의: 라우터/스위치가 패킷 헤더를 읽고 라우팅 결정하는 시간\n- 최적화 전략:\n  * 고성능 네트워크 장비 사용\n  * 라우팅 테이블 최적화\n  * 불필요한 방화벽 규칙 제거\n  * 애플리케이션 레벨: 효율적인 요청 처리 로직, 비동기 처리\n- 트레이드오프:\n  * 하드웨어 비용\n  * 보안 vs 성능: 상세한 패킷 검사는 지연 증가\n\n**4. Queuing Delay (큐잉 지연)**\n- 정의: 네트워크 장비 버퍼에서 처리를 기다리는 시간\n- 특징: 트래픽 혼잡 시 기하급수적으로 증가 (가장 변동성 큰 요소)\n- 최적화 전략:\n  * Load Balancing: 트래픽을 여러 경로/서버로 분산\n  * Traffic Shaping: Rate Limiting, QoS(Quality of Service) 정책\n  * Auto Scaling: 트래픽 증가 시 자동 확장\n  * Connection Pooling: 연결 재사용으로 새 연결 생성 오버헤드 감소\n  * Backpressure 메커니즘: 과부하 시 요청 거부 또는 지연\n- 트레이드오프:\n  * 인프라 비용: 충분한 여유 용량 확보 필요\n  * 복잡도: 동적 스케일링 로직 구현 및 모니터링\n\n**대역폭 증가만으로는 레이턴시를 근본적으로 해결할 수 없는 이유:**\n\n대역폭은 '단위 시간당 전송할 수 있는 최대 데이터 양'이며, 이는 수도관의 굵기에 비유됩니다. 반면 레이턴시는 '물이 수도관을 통과하는 속도'입니다.\n\n- 대역폭 증가는 **Transmission Delay만 감소**시킵니다 (패킷 크기 / 대역폭)\n- **Propagation Delay는 물리적 거리와 매체 속도에 의해 결정**되므로 대역폭과 무관\n- Processing Delay와 Queuing Delay도 대역폭과 직접적 관련 없음\n\n**BDP(Bandwidth-Delay Product)와의 연관성:**\n\nBDP = Bandwidth × Round-Trip Time (RTT)\n- 의미: 네트워크 '파이프' 안에 동시에 존재할 수 있는 데이터 양\n- 예: 100Mbps 대역폭, 100ms RTT → BDP = 1.25MB\n- 실무적 의미:\n  * TCP Window Size는 최소한 BDP 이상이어야 대역폭을 완전히 활용\n  * 대역폭을 10배 증가시켜도 RTT가 그대로면 BDP만 커질 뿐, 첫 패킷의 왕복 시간은 동일\n  * 고대역폭-고지연 네트워크(예: 위성 통신)에서는 BDP가 매우 커서 TCP 튜닝 필수\n\n**실무 전략 종합:**\n1. P50, P95, P99 등 백분위 기반 모니터링으로 Tail Latency 추적\n2. Tail Latency Amplification 고려: 병렬 요청 중 하나만 느려도 전체 응답 지연\n3. 지역별 Propagation Delay 분석 후 CDN/Edge 우선 배치\n4. Queuing Delay가 가장 가변적이므로 모니터링과 Auto Scaling에 투자\n5. 대역폭 증설은 대용량 파일 전송에는 효과적이나, 작은 요청이 많은 서비스(API, 웹)에서는 제한적\n6. Protocol 선택: HTTP/3(QUIC)는 HOL(Head-of-Line) Blocking 문제 해결로 Queuing Delay 개선",
+      "tags": [
+        "network",
+        "latency",
+        "bandwidth",
+        "performance",
+        "optimization",
+        "cdn",
+        "bdp"
+      ],
+      "references": [
+        {
+          "title": "Latency, Bandwidth - Network Performance Fundamentals",
+          "url": "/wiki/network/network-latency-bandwidth"
+        },
+        {
+          "title": "Tail Latency Amplification - Latency Monitoring",
+          "url": "/wiki/network/network-latency"
+        }
+      ]
+    }
+  ]
+}

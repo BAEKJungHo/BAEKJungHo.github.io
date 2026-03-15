@@ -155,8 +155,32 @@
     ],
     "designpattern/designpattern-decorator": [
       "2026-03-15"
+    ],
+    "network/network-latency-bandwidth": [
+      "2026-03-16"
+    ],
+    "network/network-latency": [
+      "2026-03-16"
+    ],
+    "network/network-layeredarchitectures": [
+      "2026-03-16"
+    ],
+    "network/network-nat": [
+      "2026-03-16"
+    ],
+    "network/network-ordered-system": [
+      "2026-03-16"
+    ],
+    "network/network-polling": [
+      "2026-03-16"
+    ],
+    "network/network-port-forwarding": [
+      "2026-03-16"
+    ],
+    "network/network-security-attacks": [
+      "2026-03-16"
     ]
   },
-  "totalQuestionsGenerated": 7,
-  "lastGenerated": "2026-03-15"
+  "totalQuestionsGenerated": 8,
+  "lastGenerated": "2026-03-16"
 }

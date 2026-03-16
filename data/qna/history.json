@@ -179,8 +179,32 @@
     ],
     "network/network-security-attacks": [
       "2026-03-16"
+    ],
+    "msa/msa-message-delivery": [
+      "2026-03-17"
+    ],
+    "msa/msa-polyglot": [
+      "2026-03-17"
+    ],
+    "msa/msa-reactive-manifesto": [
+      "2026-03-17"
+    ],
+    "msa/msa-saga": [
+      "2026-03-17"
+    ],
+    "msa/msa-service-connectivity": [
+      "2026-03-17"
+    ],
+    "msa/msa-service-discovery": [
+      "2026-03-17"
+    ],
+    "msa/msa-soa": [
+      "2026-03-17"
+    ],
+    "msa/msa-stream-processing": [
+      "2026-03-17"
     ]
   },
-  "totalQuestionsGenerated": 8,
-  "lastGenerated": "2026-03-16"
+  "totalQuestionsGenerated": 9,
+  "lastGenerated": "2026-03-17"
 }

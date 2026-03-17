@@ -203,8 +203,32 @@
     ],
     "msa/msa-stream-processing": [
       "2026-03-17"
+    ],
+    "architecture/architecture-backward-compatibility": [
+      "2026-03-18"
+    ],
+    "architecture/architecture-branchbyabstraction": [
+      "2026-03-18"
+    ],
+    "architecture/architecture-bulkhead": [
+      "2026-03-18"
+    ],
+    "architecture/architecture-callback": [
+      "2026-03-18"
+    ],
+    "architecture/architecture-canary": [
+      "2026-03-18"
+    ],
+    "architecture/architecture-cap": [
+      "2026-03-18"
+    ],
+    "architecture/architecture-cdn": [
+      "2026-03-18"
+    ],
+    "architecture/architecture-character-architectures": [
+      "2026-03-18"
     ]
   },
-  "totalQuestionsGenerated": 9,
-  "lastGenerated": "2026-03-17"
+  "totalQuestionsGenerated": 10,
+  "lastGenerated": "2026-03-18"
 }

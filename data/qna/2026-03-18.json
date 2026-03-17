@@ -1,0 +1,39 @@
+{
+  "date": "2026-03-18",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 레거시 시스템을 마이크로서비스 아키텍처로 전환하는 프로젝트를 리드하게 되었습니다. 이 과정에서 서비스는 계속 운영되어야 하며, 기존 클라이언트들과의 호환성도 유지해야 합니다. Branch by Abstraction 패턴을 적용하면서 Forward/Backward Compatibility를 어떻게 보장할 것인지, 그리고 이 전환 과정에서 발생할 수 있는 주요 위험 요소와 이를 완화하기 위한 전략을 설명해주세요.",
+      "answer": "이 질문은 시스템 마이그레이션의 복합적인 문제를 다루는 것으로, 다음과 같이 접근할 수 있습니다.\n\n**1. Branch by Abstraction 적용 전략:**\n\n먼저 레거시 시스템과 새 시스템 사이에 추상화 계층(Abstraction Layer)을 도입합니다. 이 계층은 인터페이스 역할을 하며, 초기에는 레거시 구현체를 호출하다가 점진적으로 새로운 마이크로서비스 구현체로 트래픽을 라우팅합니다.\n\n구체적인 단계:\n- 1단계: 레거시 코드 앞에 추상화 인터페이스 생성\n- 2단계: 새로운 마이크로서비스 구현을 병행하여 개발\n- 3단계: Feature Toggle이나 Canary 배포를 통해 일부 트래픽만 새 서비스로 라우팅\n- 4단계: 모니터링 및 검증 후 점진적으로 트래픽 비율 증가\n- 5단계: 레거시 시스템 제거\n\n**2. Forward/Backward Compatibility 보장:**\n\n**API 설계 관점:**\n- 새로운 필드 추가 시 반드시 Optional로 설계하고 기본값 제공\n- API 버저닝 전략 수립 (URL 기반 /v1, /v2 또는 Header 기반)\n- Protobuf나 JSON Schema에서 'unknown fields ignore' 설정 활성화\n\n**데이터 스키마 관점:**\n- 데이터베이스 스키마 변경 시 Expand-Contract 패턴 적용\n  * Expand: 새 컬럼 추가 (NULL 허용)\n  * Migrate: 데이터 이전\n  * Contract: 구 컬럼 제거\n- 이벤트 스키마의 경우 Schema Registry 활용하여 버전 관리\n\n**클라이언트 호환성:**\n- 구버전 클라이언트를 위한 Adapter 패턴 구현\n- API Gateway에서 요청 변환 및 라우팅 처리\n- 최소 2-3개 버전의 API를 동시에 지원하는 정책 수립\n\n**3. 주요 위험 요소와 완화 전략:**\n\n**위험 1: 데이터 정합성 문제**\n- 완화: 이중 쓰기(Dual Write) 시 분산 트랜잭션 또는 Saga 패턴 적용\n- 데이터 동기화 검증을 위한 Reconciliation 배치 작업 구현\n- 문제 발생 시 빠른 롤백을 위한 Feature Toggle 활용\n\n**위험 2: 성능 저하**\n- 완화: 추상화 계층이 성능 병목이 되지 않도록 비동기 처리 고려\n- Bulkhead 패턴 적용하여 새 서비스 장애가 레거시에 영향 주지 않도록 격리\n- 1% Canary 배포로 소규모 트래픽부터 성능 검증\n\n**위험 3: 장애 전파**\n- 완화: Circuit Breaker 패턴을 추상화 계층에 적용\n- 새 서비스 장애 시 자동으로 레거시로 Fallback하는 메커니즘 구현\n- 각 마이크로서비스별 독립적인 모니터링 및 알람 구축\n\n**위험 4: 복잡도 증가**\n- 완화: 전환 기간 중 명확한 ownership 정의\n- 문서화 및 팀 간 커뮤니케이션 강화\n- 전환이 완료된 컴포넌트는 신속하게 레거시 제거\n\n**4. 실무적 권장사항:**\n\n- 가장 비즈니스 크리티컬하지 않은 서비스부터 시작하여 학습\n- Observability 구축 우선: 로깅, 메트릭, 트레이싱\n- 조직 구조도 함께 고려 (Conway's Law)\n- 전환 과정의 각 단계마다 명확한 성공 기준과 롤백 계획 수립\n\n이러한 접근 방식을 통해 서비스 중단 없이 안전하게 시스템을 전환할 수 있으며, 각 단계에서 학습하고 조정할 수 있는 유연성을 확보할 수 있습니다.",
+      "tags": [
+        "architecture",
+        "system-design",
+        "compatibility",
+        "migration",
+        "microservices",
+        "branch-by-abstraction",
+        "risk-management"
+      ],
+      "references": [
+        {
+          "title": "Forward Compatibility, Backward Compatibility",
+          "url": "/wiki/architecture/architecture-backward-compatibility"
+        },
+        {
+          "title": "Branch By Abstraction",
+          "url": "/wiki/architecture/architecture-branchbyabstraction"
+        },
+        {
+          "title": "Bulkhead Pattern",
+          "url": "/wiki/architecture/architecture-bulkhead"
+        },
+        {
+          "title": "Canary Deployment",
+          "url": "/wiki/architecture/architecture-canary"
+        }
+      ]
+    }
+  ]
+}

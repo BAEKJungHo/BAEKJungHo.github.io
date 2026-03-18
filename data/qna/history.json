@@ -227,8 +227,32 @@
     ],
     "architecture/architecture-character-architectures": [
       "2026-03-18"
+    ],
+    "go/go-polymorphism-function": [
+      "2026-03-19"
+    ],
+    "go/go-profiling": [
+      "2026-03-19"
+    ],
+    "go/go-rwlock": [
+      "2026-03-19"
+    ],
+    "go/go-unix-signal-handling": [
+      "2026-03-19"
+    ],
+    "go/go-vendoring": [
+      "2026-03-19"
+    ],
+    "java/execution-java": [
+      "2026-03-19"
+    ],
+    "java/java-abstraction-by-wrapping": [
+      "2026-03-19"
+    ],
+    "java/java-anonymous-class": [
+      "2026-03-19"
     ]
   },
-  "totalQuestionsGenerated": 10,
-  "lastGenerated": "2026-03-18"
+  "totalQuestionsGenerated": 11,
+  "lastGenerated": "2026-03-19"
 }

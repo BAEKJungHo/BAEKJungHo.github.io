@@ -255,8 +255,32 @@
     ],
     "java/java-anonymous-class": [
       "2026-03-19"
+    ],
+    "infra/infra-deployment": [
+      "2026-03-21"
+    ],
+    "infra/infra-docker": [
+      "2026-03-21"
+    ],
+    "infra/infra-elasticbeanstalk": [
+      "2026-03-21"
+    ],
+    "infra/infra-envoy-proxy": [
+      "2026-03-21"
+    ],
+    "infra/infra-gateway": [
+      "2026-03-21"
+    ],
+    "infra/infra-incident": [
+      "2026-03-21"
+    ],
+    "infra/infra-ip": [
+      "2026-03-21"
+    ],
+    "infra/infra-k6": [
+      "2026-03-21"
     ]
   },
-  "totalQuestionsGenerated": 12,
-  "lastGenerated": "2026-03-20"
+  "totalQuestionsGenerated": 13,
+  "lastGenerated": "2026-03-21"
 }

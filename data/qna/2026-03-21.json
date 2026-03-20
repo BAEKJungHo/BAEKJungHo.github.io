@@ -1,0 +1,42 @@
+{
+  "date": "2026-03-21",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처 환경에서 Canary 배포 전략을 도입하려고 합니다. Rolling Update, Blue-Green 배포와 비교했을 때 Canary 배포의 장단점은 무엇이며, 실제 프로덕션 환경에서 Canary 배포를 안전하게 운영하기 위해 어떤 모니터링 지표와 롤백 전략을 수립해야 할까요? 또한 Kubernetes 환경에서 이를 구현할 때 고려해야 할 사항들에 대해 설명해주세요.",
+      "answer": "**Canary 배포의 장단점:**\n\n**장점:**\n- 점진적 트래픽 전환을 통해 리스크를 최소화할 수 있습니다. 예를 들어 5% → 25% → 50% → 100% 방식으로 단계적으로 증가시킬 수 있습니다.\n- 실제 프로덕션 트래픽으로 새 버전을 검증할 수 있어, 실전 환경에서의 문제를 조기에 발견할 수 있습니다.\n- 문제 발생 시 소수의 사용자에게만 영향을 미치므로 blast radius를 제한할 수 있습니다.\n- A/B 테스트와 결합하여 비즈니스 메트릭 비교가 가능합니다.\n\n**단점:**\n- 구현 복잡도가 높고, 정교한 트래픽 라우팅 메커니즘이 필요합니다.\n- 모니터링 및 메트릭 수집 인프라가 필수적입니다.\n- Rolling Update보다 배포 시간이 길어질 수 있습니다.\n- 두 버전이 동시에 실행되므로 데이터베이스 스키마 호환성 등을 신중히 고려해야 합니다.\n\n**Rolling Update vs Blue-Green vs Canary 비교:**\n- Rolling Update: 점진적 교체, 리소스 효율적이지만 롤백이 복잡하고 두 버전이 혼재\n- Blue-Green: 즉시 전환, 빠른 롤백, 하지만 2배의 리소스 필요\n- Canary: 점진적 트래픽 전환, 리스크 최소화, 하지만 구현 복잡도 높음\n\n**필수 모니터링 지표:**\n\n1. **Golden Signals (SRE 관점):**\n   - Latency: p50, p95, p99 응답 시간\n   - Traffic: 초당 요청 수 (RPS)\n   - Errors: 에러율 (4xx, 5xx)\n   - Saturation: CPU, 메모리, 디스크 사용률\n\n2. **비즈니스 메트릭:**\n   - 전환율 (Conversion Rate)\n   - 사용자 이탈률\n   - 핵심 기능 성공률\n\n3. **인프라 메트릭:**\n   - Pod 재시작 횟수\n   - 네트워크 I/O\n   - Database connection pool 상태\n\n**롤백 전략:**\n\n1. **자동 롤백 조건 설정:**\n```yaml\n# 예시: Flagger를 사용한 자동 롤백 설정\napiVersion: flagger.app/v1beta1\nkind: Canary\nmetadata:\n  name: app-canary\nspec:\n  analysis:\n    threshold: 5\n    maxWeight: 50\n    stepWeight: 10\n    metrics:\n    - name: request-success-rate\n      thresholdRange:\n        min: 99\n    - name: request-duration\n      thresholdRange:\n        max: 500\n```\n\n2. **수동 롤백 프로세스:**\n   - 트래픽을 즉시 이전 버전으로 전환\n   - 명확한 롤백 책임자 지정\n   - 롤백 SOP(Standard Operating Procedure) 문서화\n\n3. **단계별 중단 시나리오:**\n   - 5% 단계에서 에러율 증가 → 즉시 중단\n   - 25% 단계에서 지연 시간 증가 → 트래픽 비율 감소 후 재검증\n   - Critical 알람 발생 시 자동 롤백\n\n**Kubernetes 환경 구현 시 고려사항:**\n\n1. **Service Mesh 활용 (Istio, Linkerd):**\n   - VirtualService와 DestinationRule을 통한 정교한 트래픽 제어\n   - Weight-based routing 구현\n```yaml\napiVersion: networking.istio.io/v1beta1\nkind: VirtualService\nmetadata:\n  name: app-canary\nspec:\n  hosts:\n  - app\n  http:\n  - match:\n    - headers:\n        user-agent:\n          regex: .*Chrome.*\n    route:\n    - destination:\n        host: app\n        subset: v2\n      weight: 10\n    - destination:\n        host: app\n        subset: v1\n      weight: 90\n```\n\n2. **Progressive Delivery 도구:**\n   - Flagger: 자동화된 Canary 배포\n   - Argo Rollouts: GitOps 기반 progressive delivery\n   - 점진적 트래픽 증가 자동화\n\n3. **Observability 스택:**\n   - Prometheus + Grafana: 메트릭 수집 및 시각화\n   - Jaeger/Tempo: 분산 트레이싱\n   - ELK Stack: 로그 집계 및 분석\n   - 버전별 메트릭 비교 대시보드 구축\n\n4. **Database Migration 전략:**\n   - Backward compatible 스키마 변경\n   - Dual writing 패턴 고려\n   - Feature flag를 통한 데이터 액세스 제어\n\n5. **트래픽 라우팅 고려사항:**\n   - Session Affinity: 동일 사용자는 동일 버전으로 라우팅\n   - Header-based routing: 특정 사용자 그룹 대상 테스트\n   - Geo-based routing: 지역별 점진적 배포\n\n**실무 운영 팁:**\n\n1. 배포 시간대는 트래픽이 적은 시간 선택\n2. 각 단계별 충분한 soak time (예: 30분) 확보\n3. On-call 엔지니어 대기 및 즉시 대응 체계 구축\n4. Runbook 작성 및 정기적 업데이트\n5. 배포 후 Post-mortem을 통한 지속적 개선\n\n이러한 종합적인 접근을 통해 Canary 배포의 이점을 최대화하면서 리스크를 최소화할 수 있습니다.",
+      "tags": [
+        "kubernetes",
+        "deployment-strategy",
+        "canary",
+        "blue-green",
+        "rolling-update",
+        "devops",
+        "monitoring",
+        "rollback",
+        "service-mesh",
+        "progressive-delivery"
+      ],
+      "references": [
+        {
+          "title": "Deployment Strategy - Rolling Update, Blue-Green, Canary",
+          "url": "/wiki/infra/infra-deployment"
+        },
+        {
+          "title": "Incident, Defect tracking - 장애 대응",
+          "url": "/wiki/infra/infra-incident"
+        },
+        {
+          "title": "Envoy Proxy",
+          "url": "/wiki/infra/infra-envoy-proxy"
+        },
+        {
+          "title": "Configuring a Load Test Environment with k6 + grafana + influxdb",
+          "url": "/wiki/infra/infra-k6"
+        }
+      ]
+    }
+  ]
+}

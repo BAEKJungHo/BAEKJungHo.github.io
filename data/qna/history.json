@@ -279,8 +279,32 @@
     ],
     "infra/infra-k6": [
       "2026-03-21"
+    ],
+    "designpattern/designpattern-desired-actual": [
+      "2026-03-22"
+    ],
+    "designpattern/designpattern-facade": [
+      "2026-03-22"
+    ],
+    "designpattern/designpattern-factory": [
+      "2026-03-22"
+    ],
+    "designpattern/designpattern-fire-and-forget": [
+      "2026-03-22"
+    ],
+    "designpattern/designpattern-flyweight": [
+      "2026-03-22"
+    ],
+    "designpattern/designpattern-intercepting-filter": [
+      "2026-03-22"
+    ],
+    "designpattern/designpattern-interface-design-thought": [
+      "2026-03-22"
+    ],
+    "designpattern/designpattern-observer": [
+      "2026-03-22"
     ]
   },
-  "totalQuestionsGenerated": 13,
-  "lastGenerated": "2026-03-21"
+  "totalQuestionsGenerated": 14,
+  "lastGenerated": "2026-03-22"
 }

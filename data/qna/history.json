@@ -303,8 +303,32 @@
     ],
     "designpattern/designpattern-observer": [
       "2026-03-22"
+    ],
+    "network/network-socket-protocol": [
+      "2026-03-23"
+    ],
+    "network/network-ssrf": [
+      "2026-03-23"
+    ],
+    "network/network-subnet": [
+      "2026-03-23"
+    ],
+    "network/network-tcp-performance": [
+      "2026-03-23"
+    ],
+    "network/network-tcp": [
+      "2026-03-23"
+    ],
+    "network/network-telnet": [
+      "2026-03-23"
+    ],
+    "network/network-throughput-latency": [
+      "2026-03-23"
+    ],
+    "network/network-vpn": [
+      "2026-03-23"
     ]
   },
-  "totalQuestionsGenerated": 14,
-  "lastGenerated": "2026-03-22"
+  "totalQuestionsGenerated": 15,
+  "lastGenerated": "2026-03-23"
 }

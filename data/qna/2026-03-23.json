@@ -1,0 +1,40 @@
+{
+  "date": "2026-03-23",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "회사에서 마이크로서비스 간 통신을 위해 gRPC를 도입하려고 합니다. 하지만 서비스 간 네트워크 지연(latency)이 증가하고 있다는 모니터링 결과를 받았습니다. TCP의 특성과 VPN 환경을 고려할 때, 어떤 부분들을 점검하고 최적화해야 할까요? 특히 TCP slow start, MTU/MSS, 그리고 VPN 터널링 오버헤드 측면에서 설명해주세요.",
+      "answer": "이 문제는 여러 네트워크 레이어에서 복합적으로 접근해야 합니다.\n\n**1. TCP Slow Start와 Connection Pooling**\n- gRPC는 HTTP/2 기반으로 TCP connection을 사용합니다. 새로운 연결마다 TCP slow start가 발생하여 초기 congestion window(cwnd)가 작아 처리량이 제한됩니다.\n- 해결책: gRPC의 connection pooling을 활용하거나 keep-alive 설정을 최적화하여 연결 재사용률을 높입니다. 또한 TCP_NODELAY 옵션으로 Nagle 알고리즘을 비활성화해 작은 패킷의 즉시 전송을 보장할 수 있습니다.\n\n**2. MTU/MSS 최적화**\n- VPN 환경에서는 터널링 오버헤드(IPsec의 경우 약 50-73 바이트, OpenVPN은 약 70-100 바이트)로 인해 실제 사용 가능한 MTU가 줄어듭니다.\n- 표준 이더넷 MTU 1500바이트에서 VPN 헤더를 제외하면 실제 payload는 1400바이트 정도로 제한됩니다.\n- 문제: MSS가 제대로 조정되지 않으면 패킷 단편화(fragmentation)가 발생하고, 이는 재전송과 지연을 야기합니다.\n- 해결책: \n  - VPN 인터페이스의 MTU를 명시적으로 설정 (예: 1400바이트)\n  - TCP MSS clamping을 라우터나 방화벽에서 설정\n  - `ip link set dev tun0 mtu 1400` 같은 명령으로 VPN 인터페이스 MTU 조정\n\n**3. VPN 터널링 오버헤드 분석**\n- 터널링은 '패킷 안에 패킷을 넣는' 캡슐화 기술로, 추가 헤더가 붙습니다.\n- 구조: [VPN Header] [IP Header] [TCP Header] [gRPC/HTTP2] [Application Data]\n- 오버헤드 영향:\n  - 네트워크 대역폭 사용량 증가 (약 5-10%)\n  - 암호화/복호화로 인한 CPU 사용량 증가\n  - 추가적인 홉(hop)으로 인한 지연 증가\n- 해결책:\n  - VPN 프로토콜 선택 최적화 (WireGuard는 IPsec보다 오버헤드가 적음)\n  - 압축 옵션 검토 (단, CPU 트레이드오프 고려)\n  - Split tunneling으로 내부 트래픽만 VPN 경유\n\n**4. 모니터링과 측정**\n```bash\n# 네트워크 상태 확인\nsar -n DEV,TCP,ETCP 5\n\n# 재전송률 확인 (0.01% 이하가 이상적)\nnetstat -s | grep retransmit\n\n# MTU 확인\nip link show\n\n# Path MTU Discovery\ntracepath {destination}\n```\n\n**5. 실무적 접근**\n- retrans/s 메트릭 모니터링: 재전송률이 0.5% 이상이면 네트워크 품질 문제 의심\n- active/s vs passive/s: 서비스 간 연결 패턴 분석\n- VPN 없는 환경과 비교 테스트로 오버헤드 정량화\n\n**Trade-off 고려사항**\n- 보안(VPN 암호화) vs 성능(지연시간)\n- Connection pooling vs 리소스 사용량\n- MTU 크기 조정 vs 호환성\n\n결론적으로, gRPC와 VPN 환경에서의 지연 문제는 단일 원인이 아닌 TCP 특성, VPN 오버헤드, 네트워크 설정의 복합적 문제입니다. 계층별로 측정하고 최적화하되, 각 최적화의 트레이드오프를 이해하고 비즈니스 요구사항에 맞게 조정해야 합니다.",
+      "tags": [
+        "network",
+        "tcp",
+        "vpn",
+        "grpc",
+        "performance",
+        "latency",
+        "mtu",
+        "tunneling"
+      ],
+      "references": [
+        {
+          "title": "SOCKET, PROTOCOL",
+          "url": "/wiki/network/network-socket-protocol"
+        },
+        {
+          "title": "TCP Performance",
+          "url": "/wiki/network/network-tcp-performance"
+        },
+        {
+          "title": "VPN",
+          "url": "/wiki/network/network-vpn"
+        },
+        {
+          "title": "TCP Health Check",
+          "url": "/wiki/network/network-tcp"
+        }
+      ]
+    }
+  ]
+}

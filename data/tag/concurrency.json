@@ -2,6 +2,7 @@
  "altorithm/algorithm-compare-and-swap",
  "database/database-serializable-tx",
  "go/go-concurrency",
+ "go/go-fundamental",
  "go/go-rwlock",
  "java/java-atomic",
  "msa/msa-concurrency-distributedlock",

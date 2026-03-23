@@ -232,6 +232,7 @@ regenerate: true
 * [[/go/go-polymorphism-function]]
 * [[/go/go-error-std]]
 * [[/go/go-rwlock]]
+* [[/go/go-fundamentals]]
 
 ## Kotlin
 

@@ -136,6 +136,10 @@
   "size": 1
  },
  {
+  "name": "channel",
+  "size": 1
+ },
+ {
   "name": "cicd",
   "size": 1
  },
@@ -153,7 +157,7 @@
  },
  {
   "name": "concurrency",
-  "size": 11
+  "size": 12
  },
  {
   "name": "consensus",
@@ -205,6 +209,10 @@
  },
  {
   "name": "csfle",
+  "size": 1
+ },
+ {
+  "name": "csp",
   "size": 1
  },
  {
@@ -365,7 +373,7 @@
  },
  {
   "name": "gc",
-  "size": 4
+  "size": 5
  },
  {
   "name": "git",
@@ -385,7 +393,7 @@
  },
  {
   "name": "goroutine",
-  "size": 1
+  "size": 2
  },
  {
   "name": "gpt",
@@ -418,6 +426,10 @@
  {
   "name": "helm",
   "size": 2
+ },
+ {
+  "name": "hexagonal",
+  "size": 1
  },
  {
   "name": "hibernate",
@@ -841,6 +853,10 @@
  },
  {
   "name": "solana",
+  "size": 1
+ },
+ {
+  "name": "solid",
   "size": 1
  },
  {

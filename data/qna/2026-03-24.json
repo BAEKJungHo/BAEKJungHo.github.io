@@ -1,0 +1,48 @@
+{
+  "date": "2026-03-24",
+  "dayOfWeek": "화요일",
+  "topic": "Distributed Systems",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 트래픽을 처리하는 마이크로서비스 아키텍처에서 새로운 주문 처리 API를 배포해야 합니다. 프로덕션 환경의 안정성을 보장하면서도 실제 트래픽 패턴으로 충분한 검증을 수행하려고 합니다. Traffic Shadowing, Kafka를 활용한 이벤트 기반 아키텍처, 그리고 분산 트랜잭션(2PC) 방식을 각각 고려할 때, 어떤 접근 방식을 선택하시겠습니까? 각 방식의 트레이드오프를 설명하고, 실무에서 겪을 수 있는 구체적인 문제점과 해결 방안을 함께 제시해주세요.",
+      "answer": "이 질문은 세 가지 분산 시스템 패턴의 깊은 이해와 실무 경험을 요구합니다.\n\n**1. Traffic Shadowing 접근 방식**\n\n장점:\n- 프로덕션 트래픽을 복제하여 실제 환경과 동일한 조건에서 테스트 가능\n- 사용자에게 영향을 주지 않고 새로운 API의 성능, 에러율, 레이턴시 검증 가능\n- 특정 비율(%)의 트래픽만 선택적으로 미러링하여 단계적 검증 가능\n\n단점 및 고려사항:\n- 인프라 비용 증가 (테스트 서버 추가 필요)\n- 트래픽이 적은 서비스에서는 효과가 제한적\n- 쓰기 작업(write operation)의 경우 중복 실행 방지를 위한 추가 로직 필요\n- 미러링된 트래픽의 응답을 무시하므로, 실제 데이터 정합성 문제는 발견하기 어려움\n\n실무 적용:\n```\n[Production API] → [Load Balancer] → [Traffic Mirroring Layer]\n                                       ├→ [Prod Server] (실제 응답)\n                                       └→ [Test Server] (응답 무시, 로깅)\n```\n\n**2. Kafka 기반 이벤트 드리븐 아키텍처**\n\n장점:\n- 비동기 처리로 높은 처리량(Throughput) 달성\n- PageCache 활용으로 디스크 I/O를 메모리 수준으로 최적화\n- Zero Copy, Batch Processing으로 네트워크/디스크 오버헤드 최소화\n- Consumer Group을 통한 수평 확장 용이\n- 파티션 단위 순서 보장 (같은 주문 ID를 key로 사용 시)\n- 여러 다운스트림 서비스가 동일한 이벤트를 독립적으로 소비 가능\n\n단점 및 고려사항:\n- 즉각적인 일관성(Immediate Consistency) 보장 불가 (Eventual Consistency)\n- Consumer Rebalancing 시 처리 지연 발생\n  - 애플리케이션 배포 시 최소 2번의 리밸런싱 (기존 종료 + 신규 시작)\n  - `max.poll.interval.ms` 초과 시 리밸런싱으로 중복 처리 가능성\n- Offset 관리의 복잡성\n  - auto.commit.enable=true: 메시지 손실 가능성 (처리 전 commit)\n  - auto.commit.enable=false: 중복 처리 가능성 (처리 후 commit 전 장애)\n- Zero Payload 패턴 적용 시 추가 API 호출로 인한 latency 증가\n\n실무 최적화 전략:\n```java\n// Consumer 설정 최적화\nprops.put(\"max.poll.records\", 500);  // 배치 크기 조정\nprops.put(\"max.poll.interval.ms\", 300000);  // 5분\nprops.put(\"enable.auto.commit\", false);  // 수동 커밋\nprops.put(\"isolation.level\", \"read_committed\");  // 트랜잭션 지원\n\n// 처리 로직\ntry {\n    List<ConsumerRecord> records = consumer.poll(Duration.ofMillis(100));\n    for (ConsumerRecord record : records) {\n        processOrder(record);  // 멱등성 보장 필요\n    }\n    consumer.commitSync();  // 동기 커밋으로 정확성 보장\n} catch (Exception e) {\n    // 에러 처리 및 재시도 로직\n}\n```\n\nPartition 수 결정:\n- Consumer 수와 동일하거나 배수로 설정 (균등 분배)\n- 처리량 = (Partition 수) × (Partition당 처리량)\n- 너무 많은 파티션은 리밸런싱 시간 증가\n\n**3. 분산 트랜잭션 (Two-Phase Commit) 방식**\n\n장점:\n- 강력한 일관성 보장 (ACID)\n- 모든 참여 노드가 원자적으로 commit 또는 rollback\n\n단점 및 치명적 문제:\n- 성능: MySQL 기준 단일 노드 트랜잭션 대비 10배 이상 느림\n- 가용성: 모든 참여자가 응답해야 하므로 한 곳의 장애가 전체 실패로 전파\n- 내결함성(Fault Tolerance) 저하: 장애 증폭 효과\n- 클라우드 환경에서 대부분 미지원 (운영 복잡도)\n- Coordinator 장애 시 전체 시스템 블로킹 가능\n\n실무적 권장사항:\n```\nPrepare Phase:\n  Coordinator → Participant A: \"준비되었나?\"\n                 Participant B: \"준비되었나?\"\n  (A 또는 B 중 하나라도 타임아웃 → 전체 Abort)\n  \nCommit Phase:\n  Coordinator → All: \"Commit\" (모든 참여자 대기)\n  \n문제: Participant B 장애 시 A도 블로킹됨\n```\n\n**실무 선택 기준 및 하이브리드 접근**\n\n추천 조합:\n```\n[단계 1] Traffic Shadowing으로 초기 검증\n- 10% → 30% → 50% 점진적 트래픽 증가\n- 성능 메트릭, 에러율 모니터링\n\n[단계 2] Kafka 이벤트 기반 아키텍처로 전환\n- 주문 생성 → OrderCreated 이벤트 발행\n- 결제, 재고, 배송 서비스가 독립적으로 구독\n- Outbox Pattern으로 메시지 발행 보장\n  (주문 DB에 이벤트 저장 → CDC로 Kafka 발행)\n\n[단계 3] Saga Pattern으로 분산 트랜잭션 대체\n- Choreography: 각 서비스가 이벤트 기반 보상 트랜잭션 수행\n- Orchestration: 중앙 Orchestrator가 흐름 제어\n```\n\n실제 구현 예시:\n```\nOrder Service:\n  1. 주문 생성 + OrderCreated 이벤트 저장 (로컬 트랜잭션)\n  2. CDC(Debezium) → Kafka 발행\n  \nPayment Service (Consumer):\n  props.put(\"enable.auto.commit\", false);\n  props.put(\"max.poll.interval.ms\", 180000);  // 결제 처리 시간 고려\n  \n  try {\n      Record record = consumer.poll();\n      Payment payment = processPayment(record);  // 멱등성 키: orderId\n      \n      if (payment.failed()) {\n          producer.send(new PaymentFailed(orderId));  // 보상 이벤트\n      }\n      \n      consumer.commitSync();  // 처리 완료 후 커밋\n  } catch (Exception e) {\n      // Dead Letter Queue로 전송\n  }\n```\n\n**결론:**\n- 2PC는 마이크로서비스 환경에서 피해야 함 (가용성/성능 트레이드오프 불리)\n- Traffic Shadowing은 초기 검증 단계로 활용\n- Kafka 기반 Eventual Consistency + Saga Pattern이 대규모 트래픽 환경에 최적\n- Consumer 설정 최적화가 성공의 핵심 (offset 관리, rebalancing 최소화)\n- 모니터링: Consumer Lag, Rebalancing 빈도, Partition 분배 균형 추적 필수",
+      "tags": [
+        "distributed-systems",
+        "microservices",
+        "kafka",
+        "traffic-shadowing",
+        "2pc",
+        "saga-pattern",
+        "event-driven",
+        "trade-off"
+      ],
+      "references": [
+        {
+          "title": "Traffic Shadowing",
+          "url": "/wiki/msa/msa-traffic-shadowing"
+        },
+        {
+          "title": "eXtended Architecture - Distributed Transaction",
+          "url": "/wiki/msa/msa-xa"
+        },
+        {
+          "title": "Kafka Fundamentals",
+          "url": "/wiki/kafka/kafak-fundamentals"
+        },
+        {
+          "title": "Kafka PageCache Centric Designs",
+          "url": "/wiki/kafka/kafak-filesystem"
+        },
+        {
+          "title": "Consumer Options Optimization Strategy",
+          "url": "/wiki/kafka/kafka-consumer-options-strategy"
+        },
+        {
+          "title": "Kafka Acknowledgement",
+          "url": "/wiki/kafka/kafak-acknowledgement"
+        }
+      ]
+    }
+  ]
+}

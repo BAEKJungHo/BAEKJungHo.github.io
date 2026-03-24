@@ -351,8 +351,32 @@
     ],
     "kafka/kafka-consumer-options-strategy": [
       "2026-03-24"
+    ],
+    "architecture/architecture-circuit-breaker": [
+      "2026-03-25"
+    ],
+    "architecture/architecture-clean-impl": [
+      "2026-03-25"
+    ],
+    "architecture/architecture-clean": [
+      "2026-03-25"
+    ],
+    "architecture/architecture-cloud-native": [
+      "2026-03-25"
+    ],
+    "architecture/architecture-components": [
+      "2026-03-25"
+    ],
+    "architecture/architecture-consistent-hash": [
+      "2026-03-25"
+    ],
+    "architecture/architecture-crdts": [
+      "2026-03-25"
+    ],
+    "architecture/architecture-data-driven-workflows": [
+      "2026-03-25"
     ]
   },
-  "totalQuestionsGenerated": 16,
-  "lastGenerated": "2026-03-24"
+  "totalQuestionsGenerated": 17,
+  "lastGenerated": "2026-03-25"
 }

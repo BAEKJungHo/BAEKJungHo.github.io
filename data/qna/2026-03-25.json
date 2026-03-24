@@ -1,0 +1,30 @@
+{
+  "date": "2026-03-25",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 환경에서 Circuit Breaker 패턴을 도입할 때, Fallback 전략을 설계해야 합니다. Fallback 응답으로 캐시된 데이터를 반환하는 방식과 기본값(default value)을 반환하는 방식의 트레이드오프를 설명하고, 각각 어떤 비즈니스 상황에서 적합한지 실무 경험을 바탕으로 설명해주세요. 또한 Circuit Breaker의 상태 전환(CLOSED → OPEN → HALF_OPEN) 시 임계값과 타임아웃을 결정하는 기준은 무엇인가요?",
+      "answer": "Circuit Breaker의 Fallback 전략은 시스템의 가용성과 데이터 정합성 사이의 균형을 맞추는 핵심 설계 결정입니다.\n\n**Fallback 전략 비교:**\n\n1. **캐시 기반 Fallback**\n   - 장점: 사용자에게 최근 유효했던 실제 데이터를 제공하여 UX 저하를 최소화\n   - 단점: 캐시 인프라(Redis 등) 추가 필요, 캐시 무효화 전략 필요, 오래된 데이터 제공 가능성\n   - 적합한 상황: 상품 목록, 사용자 프로필, 추천 시스템 등 실시간성이 크리티컬하지 않고 stale data가 허용되는 경우\n\n2. **기본값 기반 Fallback**\n   - 장점: 구현이 단순하고 추가 인프라 불필요, 예측 가능한 동작\n   - 단점: 사용자 경험 저하 가능성, 비즈니스 로직에 따라 의미 없는 응답이 될 수 있음\n   - 적합한 상황: 부가 기능(배너, 추천 위젯 등), Boolean 플래그, Feature Toggle 같은 비핵심 기능\n\n**실무 적용 예시:**\n- 결제 시스템: Fallback 사용 X, 명시적 실패 처리 (정합성 최우선)\n- 상품 상세 조회: 캐시 기반 Fallback (최근 조회된 데이터 반환)\n- 추천 배너: 기본 배너 반환 또는 숨김 처리\n\n**상태 전환 임계값 결정 기준:**\n\n1. **CLOSED → OPEN (실패율 임계값)**\n   - Sliding Window 방식 권장 (최근 N개 요청 중 실패율)\n   - 일반적으로 50-60% 실패율, 최소 요청 수(예: 20개) 조건 추가\n   - 근거: 네트워크 일시적 장애와 실제 서비스 다운을 구분\n\n2. **타임아웃 설정**\n   - P99 레이턴시의 1.5-2배를 기준으로 설정\n   - 예: 정상 응답 시간이 P99 기준 500ms라면, 타임아웃은 750-1000ms\n   - 너무 짧으면: 정상 요청도 실패 처리 (false positive)\n   - 너무 길면: Thread pool exhaustion, 전체 시스템 지연\n\n3. **OPEN → HALF_OPEN (대기 시간)**\n   - 일반적으로 5-30초 사이\n   - 대상 서비스의 평균 복구 시간(MTTR)을 기준으로 설정\n   - 너무 짧으면: 복구되지 않은 서비스에 불필요한 요청\n   - 너무 길면: 복구된 서비스 활용 지연\n\n4. **HALF_OPEN 상태 처리**\n   - 제한된 수의 요청만 허용 (예: 3-5개)\n   - 모두 성공 시 CLOSED, 하나라도 실패 시 OPEN\n\n**모니터링 지표:**\n- Circuit Breaker 상태 전환 빈도\n- Fallback 실행 비율\n- 전체 요청 대비 실패율\n- 복구 소요 시간\n\n실무에서는 Hystrix(deprecated), Resilience4j, Spring Cloud Circuit Breaker 등을 활용하며, 각 서비스의 특성에 맞게 파라미터를 조정하고 지속적으로 모니터링하며 튜닝하는 것이 중요합니다.",
+      "tags": [
+        "architecture",
+        "msa",
+        "designpattern",
+        "circuit-breaker",
+        "resilience",
+        "fallback"
+      ],
+      "references": [
+        {
+          "title": "Circuit Breaker with Fallback Improving Resiliency",
+          "url": "/wiki/architecture/architecture-circuit-breaker"
+        },
+        {
+          "title": "Circuit Breaker Design Pattern - Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Circuit_breaker_design_pattern"
+        }
+      ]
+    }
+  ]
+}

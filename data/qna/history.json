@@ -375,8 +375,32 @@
     ],
     "architecture/architecture-data-driven-workflows": [
       "2026-03-25"
+    ],
+    "go/go-fundamental": [
+      "2026-03-26"
+    ],
+    "java/java-atomic": [
+      "2026-03-26"
+    ],
+    "java/java-bigdecimal": [
+      "2026-03-26"
+    ],
+    "java/java-cglib": [
+      "2026-03-26"
+    ],
+    "java/java-date": [
+      "2026-03-26"
+    ],
+    "java/java-deserialize-generic": [
+      "2026-03-26"
+    ],
+    "java/java-dynamicproxy": [
+      "2026-03-26"
+    ],
+    "java/java-effective-final": [
+      "2026-03-26"
     ]
   },
-  "totalQuestionsGenerated": 17,
-  "lastGenerated": "2026-03-25"
+  "totalQuestionsGenerated": 18,
+  "lastGenerated": "2026-03-26"
 }

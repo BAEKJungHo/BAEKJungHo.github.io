@@ -1,0 +1,32 @@
+{
+  "date": "2026-03-26",
+  "dayOfWeek": "목요일",
+  "topic": "Programming Languages (Go, Java, Kotlin)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Go의 goroutine을 사용한 동시성 처리와 Java의 멀티스레딩을 비교했을 때, 각각의 메모리 모델과 동시성 제어 메커니즘의 차이를 설명하고, 대규모 트래픽을 처리하는 웹 서버를 설계한다면 어떤 언어와 전략을 선택하시겠습니까? 선택의 근거와 함께 각 언어에서 발생할 수 있는 메모리 가시성(visibility) 문제와 해결 방법을 구체적으로 설명해주세요.",
+      "answer": "이 질문은 Go와 Java의 동시성 모델에 대한 깊은 이해와 실무적인 트레이드오프 판단을 요구합니다.\n\n**1. 메모리 모델 비교**\n\nGo의 경우:\n- CSP(Communicating Sequential Processes) 모델을 기반으로 설계되어 'Do not communicate by sharing memory; instead, share memory by communicating' 원칙을 따릅니다\n- Goroutine은 경량 스레드로, OS 스레드보다 훨씬 적은 메모리(~2KB 스택)를 사용하며, Go 런타임이 M:N 스케줄링을 통해 관리합니다\n- Channel을 통한 메시지 패싱으로 메모리 가시성 문제를 해결하며, channel 연산은 happens-before 관계를 보장합니다\n\nJava의 경우:\n- JMM(Java Memory Model)은 각 스레드가 자체 캐시를 가지며, 주 메모리와의 동기화가 명시적으로 필요합니다\n- volatile 키워드는 메모리 가시성 문제를 해결하지만, 복합 연산의 원자성은 보장하지 않습니다\n- Atomic 클래스들은 CAS(Compare-And-Swap) 연산을 통해 lock-free 동시성을 제공합니다\n- synchronized나 ReentrantLock 같은 명시적 잠금 메커니즘이 필요합니다\n\n**2. 메모리 가시성 문제와 해결책**\n\nGo에서:\n```go\n// 문제 상황: 공유 변수 사용\nvar ready bool\nvar data int\n\ngo func() {\n    data = 42\n    ready = true  // reordering 발생 가능\n}()\n\nfor !ready {}\nfmt.Println(data)  // 0이 출력될 수 있음\n\n// 해결책 1: Channel 사용\ndone := make(chan bool)\ngo func() {\n    data = 42\n    done <- true  // happens-before 보장\n}()\n<-done\nfmt.Println(data)  // 항상 42 출력\n\n// 해결책 2: sync.Mutex 사용\nvar mu sync.Mutex\nmu.Lock()\ndata = 42\nready = true\nmu.Unlock()\n```\n\nJava에서:\n```java\n// 문제 상황: 참고 문서의 TaskRunner 예제와 동일\nprivate static int number;\nprivate static boolean ready;\n\n// 해결책 1: volatile 사용 (가시성 보장)\nprivate static volatile int number;\nprivate static volatile boolean ready;\n\n// 해결책 2: AtomicInteger 사용 (원자성 + 가시성)\nprivate static AtomicInteger number = new AtomicInteger();\nprivate static AtomicBoolean ready = new AtomicBoolean();\n\n// 해결책 3: synchronized 블록\nsynchronized(lock) {\n    number = 42;\n    ready = true;\n}\n```\n\n**3. 대규모 트래픽 웹 서버 설계 전략**\n\n**Go를 선택하는 경우:**\n\n장점:\n- 수만 개의 동시 연결을 처리하기에 적합 (C10K 문제 해결)\n- Goroutine의 낮은 메모리 오버헤드로 리소스 효율성이 높음\n- 컨텍스트 스위칭 비용이 매우 낮음\n- 간결한 동시성 코드로 유지보수성 향상\n- 빠른 컴파일과 단일 바이너리 배포로 운영 효율성 증대\n\n적합한 시나리오:\n- 마이크로서비스 아키텍처\n- 실시간 스트리밍 서버\n- API 게이트웨이\n- WebSocket 기반 실시간 통신\n\n설계 전략:\n```go\n// Worker Pool 패턴\nfunc handleRequests() {\n    requests := make(chan Request, 1000)\n    \n    // Worker goroutines\n    for i := 0; i < runtime.NumCPU(); i++ {\n        go worker(requests)\n    }\n    \n    // Request dispatcher\n    http.HandleFunc(\"/\", func(w http.ResponseWriter, r *http.Request) {\n        select {\n        case requests <- Request{w, r}:\n        case <-time.After(100 * time.Millisecond):\n            http.Error(w, \"Server busy\", http.StatusServiceUnavailable)\n        }\n    })\n}\n```\n\n**Java를 선택하는 경우:**\n\n장점:\n- 성숙한 생태계와 풍부한 라이브러리\n- Spring WebFlux를 통한 리액티브 프로그래밍 지원\n- Virtual Threads (Project Loom, Java 19+)로 Go와 유사한 경량 스레드 지원\n- JVM의 강력한 모니터링과 프로파일링 도구\n- 엔터프라이즈급 프레임워크와 보안 기능\n\n적합한 시나리오:\n- 복잡한 비즈니스 로직과 트랜잭션 처리\n- 레거시 시스템과의 통합\n- 엔터프라이즈 환경의 규제 요구사항\n\n설계 전략:\n```java\n// Virtual Threads 사용 (Java 21+)\nExecutor executor = Executors.newVirtualThreadPerTaskExecutor();\n\nserver.createContext(\"/\", exchange -> {\n    executor.execute(() -> {\n        // 각 요청을 Virtual Thread로 처리\n        handleRequest(exchange);\n    });\n});\n\n// 또는 WebFlux를 통한 리액티브 접근\n@RestController\npublic class ReactiveController {\n    public Mono<Response> handleRequest(Request request) {\n        return processAsync(request)\n            .subscribeOn(Schedulers.boundedElastic());\n    }\n}\n```\n\n**4. 실무적 판단 기준**\n\n나는 다음 요소를 고려하여 선택하겠습니다:\n\n- **순수 I/O 바운드 워크로드 + 신규 프로젝트**: Go 선택\n  - 네트워크 프록시, API 게이트웨이, 채팅 서버 등\n  - 간결한 코드베이스와 빠른 개발 사이클 필요\n\n- **복잡한 비즈니스 로직 + 기존 Java 생태계**: Java 선택\n  - 금융 거래 시스템, ERP, 복잡한 트랜잭션 처리\n  - Spring 생태계의 이점 활용 필요\n\n- **하이브리드 접근**: \n  - Go로 프론트엔드 API 레이어 구축 (고성능, 낮은 레이턴시)\n  - Java로 백엔드 비즈니스 로직 처리 (복잡한 도메인 로직, 트랜잭션)\n\n**5. 성능 최적화 고려사항**\n\nGo:\n- GOMAXPROCS 튜닝으로 스케줄러 최적화\n- Buffer를 가진 channel로 backpressure 관리\n- sync.Pool로 객체 재사용\n- pprof를 통한 프로파일링\n\nJava:\n- GC 튜닝 (G1GC, ZGC 선택)\n- Thread pool 크기 최적화\n- JIT 컴파일러 워밍업 고려\n- VisualVM, JProfiler를 통한 모니터링\n\n결론적으로, 단순 고처리량 I/O 워크로드라면 Go를, 복잡한 비즈니스 로직과 엔터프라이즈 요구사항이 있다면 Java를 선택하되, 두 언어의 강점을 조합한 마이크로서비스 아키텍처도 고려할 수 있습니다.",
+      "tags": [
+        "go",
+        "java",
+        "concurrency",
+        "goroutine",
+        "volatile",
+        "memory-visibility",
+        "system-design",
+        "performance"
+      ],
+      "references": [
+        {
+          "title": "GO FUNDAMENTALS - Design Philosophy and Concurrency",
+          "url": "/wiki/go/go-fundamental"
+        },
+        {
+          "title": "Volatile Solves Memory Visibility and Atomic Solves Concurrency",
+          "url": "/wiki/java/java-atomic"
+        }
+      ]
+    }
+  ]
+}

@@ -98,19 +98,23 @@
     ],
     "datastructures/datastructures-recursion": [
       "2026-03-13",
-      "2026-03-20"
+      "2026-03-20",
+      "2026-03-27"
     ],
     "datastructures/datastructures-stack-heap": [
       "2026-03-13",
-      "2026-03-20"
+      "2026-03-20",
+      "2026-03-27"
     ],
     "datastructures/datastructures-trie": [
       "2026-03-13",
-      "2026-03-20"
+      "2026-03-20",
+      "2026-03-27"
     ],
     "datastructures/datastructures-visualizations": [
       "2026-03-13",
-      "2026-03-20"
+      "2026-03-20",
+      "2026-03-27"
     ],
     "infra/infra-availability": [
       "2026-03-14"
@@ -401,6 +405,6 @@
       "2026-03-26"
     ]
   },
-  "totalQuestionsGenerated": 18,
-  "lastGenerated": "2026-03-26"
+  "totalQuestionsGenerated": 19,
+  "lastGenerated": "2026-03-27"
 }

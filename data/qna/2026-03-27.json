@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-27",
+  "dayOfWeek": "금요일",
+  "topic": "Data Structures & Algorithms",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 실시간 검색 자동완성 시스템을 설계한다고 가정해봅시다. Trie 자료구조를 사용하는 것과 HashMap을 사용하는 것 중 어떤 방식을 선택하시겠습니까? 각 선택의 트레이드오프를 메모리, 성능, 확장성 측면에서 설명하고, 어떤 상황에서 Radix Tree(압축 Trie)로의 최적화를 고려해야 하는지 실무 관점에서 논의해주세요.",
+      "answer": "이 질문은 자료구조 선택의 트레이드오프와 실무적 최적화 전략을 평가합니다.\n\n**Trie vs HashMap 비교:**\n\n1. **Trie의 장점:**\n   - 접두사(prefix) 기반 검색에 최적화: O(k) 시간복잡도 (k=검색어 길이)\n   - 자동완성 시 부분 문자열로 모든 후보를 효율적으로 탐색 가능\n   - 와일드카드 매칭, 범위 검색 등 복잡한 쿼리 지원\n   - PREFIX SHARING으로 공통 접두사를 공유하여 공간 절약\n\n2. **Trie의 단점:**\n   - 메모리 오버헤드: O(N × K), 각 노드마다 포인터 배열 필요\n   - 캐시 지역성이 낮아 실제 성능이 이론보다 떨어질 수 있음\n   - 구현 복잡도가 높음\n\n3. **HashMap의 장점:**\n   - 정확한 키 매칭에서 O(1) 평균 시간복잡도\n   - 메모리 효율적 (해시 테이블 + 키-값 쌍)\n   - 구현이 단순하고 안정적\n\n4. **HashMap의 단점:**\n   - 접두사 검색 불가능: 모든 키를 순회해야 함 O(N)\n   - 자동완성에는 부적합\n\n**실무적 선택 기준:**\n\n- **Trie 선택 상황:** 검색 자동완성, API 라우팅, Pub/Sub 토픽 매칭처럼 접두사 기반 검색이 핵심인 경우\n- **HashMap 선택 상황:** 정확한 키 매칭만 필요하고, 접두사 검색이 불필요한 경우\n\n**Radix Tree(압축 Trie) 최적화:**\n\nRadix Tree는 단일 자식만 가진 노드 체인을 압축하여 메모리와 탐색 깊이를 줄입니다.\n\n최적화가 필요한 상황:\n1. **긴 공통 접두사가 많은 데이터:** 예) URL 경로, 도메인 이름\n2. **메모리 제약:** 노드 수를 줄여 메모리 사용량 감소\n3. **깊이가 깊은 트리:** 탐색 시 노드 방문 횟수를 줄여 성능 향상\n\n**실무 설계 고려사항:**\n\n1. **하이브리드 접근:** \n   - 인메모리 Trie로 빠른 응답 제공\n   - 백엔드 DB에 전체 데이터 저장\n   - 캐싱 전략으로 인기 검색어 우선 처리\n\n2. **분산 처리:**\n   - Trie를 prefix 범위별로 샤딩\n   - 각 노드가 특정 접두사 범위만 처리\n\n3. **메모리 최적화:**\n   - Radix Tree로 압축\n   - 빈도가 낮은 노드는 디스크로 페이징\n   - Double Array Trie 등 공간 효율적 구현 고려\n\n4. **성능 모니터링:**\n   - 평균/최대 탐색 깊이 추적\n   - 메모리 사용량 대비 쿼리 성능 측정\n   - 캐시 히트율 분석\n\n결론적으로, 실시간 검색 자동완성에는 Trie가 더 적합하며, 메모리 제약이 있거나 긴 공통 접두사가 많다면 Radix Tree 최적화를 고려해야 합니다.",
+      "tags": [
+        "datastructures",
+        "trie",
+        "system-design",
+        "tradeoff",
+        "optimization"
+      ],
+      "references": [
+        {
+          "title": "DIGITAL TREE",
+          "url": "/wiki/datastructures/datastructures-trie"
+        },
+        {
+          "title": "Difference Stack and Heap",
+          "url": "/wiki/datastructures/datastructures-stack-heap"
+        }
+      ]
+    }
+  ]
+}

@@ -403,8 +403,32 @@
     ],
     "java/java-effective-final": [
       "2026-03-26"
+    ],
+    "infra/infra-kubernetes": [
+      "2026-03-28"
+    ],
+    "infra/infra-load-balancer": [
+      "2026-03-28"
+    ],
+    "infra/infra-load-stress-smoke": [
+      "2026-03-28"
+    ],
+    "infra/infra-load-test": [
+      "2026-03-28"
+    ],
+    "infra/infra-network-segmentation": [
+      "2026-03-28"
+    ],
+    "infra/infra-rds-aurora": [
+      "2026-03-28"
+    ],
+    "infra/infra-reverse-proxy": [
+      "2026-03-28"
+    ],
+    "infra/infra-security-group": [
+      "2026-03-28"
     ]
   },
-  "totalQuestionsGenerated": 19,
-  "lastGenerated": "2026-03-27"
+  "totalQuestionsGenerated": 20,
+  "lastGenerated": "2026-03-28"
 }

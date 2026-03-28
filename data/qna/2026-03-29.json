@@ -1,0 +1,29 @@
+{
+  "date": "2026-03-29",
+  "dayOfWeek": "일요일",
+  "topic": "Design Patterns, TDD, DDD, FP, OOP",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 전자상거래 시스템에서 주문 처리 로직을 구현해야 합니다. 결제, 재고 차감, 배송 준비, 알림 발송 등의 단계가 있고, 각 단계는 비즈니스 요구사항에 따라 자주 변경됩니다. Template Method 패턴과 Strategy 패턴 중 어떤 것을 선택하시겠습니까? 각 패턴의 장단점과 선택 기준, 그리고 실제 구현 시 고려해야 할 트레이드오프를 설명해주세요.",
+      "answer": "이 질문은 두 행동 패턴(Behavioral Pattern) 간의 근본적인 차이와 적용 상황을 이해하는지 평가합니다.\n\n**Template Method 패턴의 특징:**\n- 알고리즘의 골격(skeleton)을 상위 클래스에 정의하고, 세부 구현을 하위 클래스에 위임\n- 상속 기반 접근 방식\n- 컴파일 타임에 알고리즘 구조가 결정됨\n- 전체 흐름은 고정되고, 특정 단계만 커스터마이징 가능\n\n**Strategy 패턴의 특징:**\n- 알고리즘 전체를 캡슐화하여 교체 가능하게 만듦\n- 구성(Composition) 기반 접근 방식\n- 런타임에 알고리즘 변경 가능\n- DI(Dependency Injection)와 자연스럽게 결합\n\n**주문 처리 시스템에 대한 선택:**\n\n저는 **Strategy 패턴을 선택**하겠습니다. 그 이유는 다음과 같습니다:\n\n1. **유연성**: 결제 방식(신용카드, 페이팔, 암호화폐 등)이 런타임에 동적으로 결정되어야 하며, 사용자 선택에 따라 전략이 바뀝니다.\n\n2. **확장성**: 새로운 결제 방법이나 배송 방식을 추가할 때 기존 코드를 수정하지 않고 새로운 Strategy 구현체만 추가하면 됩니다(Open-Closed Principle).\n\n3. **테스트 용이성**: 각 전략을 독립적으로 테스트할 수 있으며, Mock 객체 주입이 쉽습니다.\n\n4. **의존성 관리**: 상속의 강한 결합도를 피하고, 인터페이스 의존을 통해 느슨한 결합을 유지합니다.\n\n**구현 예시:**\n\n```kotlin\n// Strategy Interface\ninterface PaymentStrategy {\n    fun processPayment(amount: BigDecimal, context: PaymentContext): PaymentResult\n}\n\ninterface InventoryStrategy {\n    fun deductStock(orderItems: List<OrderItem>): InventoryResult\n}\n\ninterface NotificationStrategy {\n    fun sendNotification(order: Order): NotificationResult\n}\n\n// Context\nclass OrderProcessor(\n    private val paymentStrategy: PaymentStrategy,\n    private val inventoryStrategy: InventoryStrategy,\n    private val notificationStrategy: NotificationStrategy\n) {\n    fun processOrder(order: Order): OrderResult {\n        return try {\n            val paymentResult = paymentStrategy.processPayment(order.amount, order.paymentContext)\n            val inventoryResult = inventoryStrategy.deductStock(order.items)\n            val notificationResult = notificationStrategy.sendNotification(order)\n            \n            OrderResult.success(paymentResult, inventoryResult, notificationResult)\n        } catch (e: Exception) {\n            OrderResult.failure(e)\n        }\n    }\n}\n```\n\n**Template Method를 선택할 수 있는 경우:**\n\n만약 주문 처리의 전체 흐름(결제 → 재고 → 배송 → 알림)이 절대 바뀌지 않고, 각 단계의 세부 구현만 달라진다면 Template Method도 고려할 수 있습니다:\n\n```kotlin\nabstract class OrderProcessTemplate {\n    // Template Method\n    fun processOrder(order: Order): OrderResult {\n        validateOrder(order)\n        val paymentResult = processPayment(order)\n        val inventoryResult = deductInventory(order)\n        prepareShipping(order)\n        sendNotification(order)\n        return OrderResult.success()\n    }\n    \n    protected abstract fun processPayment(order: Order): PaymentResult\n    protected abstract fun deductInventory(order: Order): InventoryResult\n    \n    // Hook method\n    protected open fun sendNotification(order: Order) {\n        // 기본 구현 또는 비어있음\n    }\n}\n```\n\n**트레이드오프 고려사항:**\n\n1. **복잡도 vs 유연성**\n   - Strategy: 초기 설정이 복잡하지만 높은 유연성\n   - Template Method: 구조가 단순하지만 변경에 경직됨\n\n2. **클래스 수**\n   - Strategy: 전략마다 별도 클래스 필요 (많은 클래스)\n   - Template Method: 상속 계층으로 관리 (적은 클래스)\n\n3. **변경의 범위**\n   - Strategy: 알고리즘 전체를 교체 가능\n   - Template Method: 특정 단계만 커스터마이징\n\n4. **의존성 주입**\n   - Strategy: Spring 등 DI 컨테이너와 자연스럽게 통합\n   - Template Method: 상속 기반이라 DI 활용이 제한적\n\n**실무 권장사항:**\n\n전자상거래 시스템처럼 요구사항 변경이 잦고, 다양한 외부 시스템(PG사, 물류사 등)과 연동해야 하는 경우, **Strategy 패턴과 Template Callback 패턴의 조합**을 권장합니다. 이는 Spring Framework가 채택한 방식이기도 합니다.\n\n```kotlin\nclass OrderService(\n    private val strategies: Map<OrderType, OrderProcessingStrategy>\n) {\n    fun processOrder(order: Order) {\n        val strategy = strategies[order.type] \n            ?: throw IllegalArgumentException(\"Unknown order type\")\n        strategy.process(order)\n    }\n}\n```\n\n이 방식은 Strategy 패턴의 유연성과 Template Method의 구조적 안정성을 모두 활용할 수 있습니다.",
+      "tags": [
+        "designpattern",
+        "strategy",
+        "template-method",
+        "oop",
+        "trade-off"
+      ],
+      "references": [
+        {
+          "title": "Template Method Pattern",
+          "url": "/wiki/designpattern/designpattern-template-method"
+        },
+        {
+          "title": "Strategy Pattern",
+          "url": "/wiki/designpattern/designpattern-strategy"
+        }
+      ]
+    }
+  ]
+}

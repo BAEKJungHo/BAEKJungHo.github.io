@@ -1,0 +1,36 @@
+{
+  "date": "2026-03-30",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "WebRTC 기반 실시간 화상 회의 시스템을 구축할 때, STUN/TURN 서버 배치 전략과 NAT traversal 실패 시나리오에 대한 fallback 설계를 어떻게 하시겠습니까? 또한 대규모 트래픽 환경에서 TURN 서버 비용을 최소화하기 위한 아키텍처 설계 방안을 설명해주세요.",
+      "answer": "WebRTC 기반 화상 회의 시스템의 네트워크 전략은 다음과 같이 설계할 수 있습니다.\n\n**1. STUN/TURN 배치 전략**\n\n- **지역별 분산 배치**: 사용자와 가장 가까운 지역에 STUN/TURN 서버를 배치하여 레이턴시를 최소화합니다. AWS/GCP의 글로벌 리전을 활용하거나 CDN과 유사한 PoP(Point of Presence) 전략을 사용합니다.\n\n- **STUN 우선, TURN 후순위**: ICE(Interactive Connectivity Establishment) 프로토콜에서 connection candidate를 수집할 때 다음 순서로 시도합니다:\n  1. Host candidate (직접 연결)\n  2. Server Reflexive candidate (STUN을 통한 NAT traversal)\n  3. Relay candidate (TURN 서버 중계)\n\n- **동적 TURN 할당**: 모든 연결에 TURN을 사용하지 않고, P2P 연결 실패 시에만 TURN으로 fallback하여 비용을 절감합니다.\n\n**2. NAT Traversal 실패 시나리오와 Fallback 설계**\n\n- **Symmetric NAT 대응**: 가장 제한적인 NAT 타입인 Symmetric NAT 환경에서는 TURN이 필수입니다. ICE gathering 단계에서 NAT 타입을 판별하고, Symmetric NAT 감지 시 즉시 TURN candidate를 우선순위로 올립니다.\n\n- **ICE Timeout 처리**: ICE connectivity check가 일정 시간(예: 5초) 내에 실패하면, 즉시 TURN relay로 전환합니다. 이때 사용자에게 \"연결 중\" 상태를 명확히 표시하여 UX를 개선합니다.\n\n- **Graceful Degradation**: \n  - P2P 연결 실패 → TURN 중계 연결\n  - TURN 연결 실패 → 품질 저하 모드(해상도/프레임레이트 감소)\n  - 완전 실패 → WebSocket 기반 텍스트 채팅으로 fallback\n\n**3. TURN 서버 비용 최적화 전략**\n\n- **선택적 TURN 사용**: \n  - 통계 데이터 수집을 통해 실제 TURN이 필요한 비율을 파악 (일반적으로 5-20%)\n  - 네트워크 환경이 좋은 사용자들(기업 네트워크, 클라우드 환경)은 P2P 성공률이 높으므로 TURN 사용을 최소화\n\n- **SFU(Selective Forwarding Unit) 하이브리드 아키텍처**:\n  - 1:1 통화는 P2P 우선\n  - 다대다(3인 이상) 회의는 SFU 서버를 통한 중앙 집중식 라우팅\n  - SFU는 TURN보다 효율적이면서도 대역폭 제어와 품질 관리가 용이\n\n- **트래픽 기반 비용 관리**:\n  - TURN 서버의 대역폭 사용량 모니터링 (CloudWatch, Prometheus)\n  - 피크 시간대 스케일링과 오프피크 시간대 스케일인\n  - 해상도/비트레이트 adaptive streaming으로 대역폭 사용 최적화\n\n- **오픈소스 활용**: coturn 같은 오픈소스 TURN 서버를 자체 호스팅하여 상용 서비스(Twilio, Agora) 대비 비용 절감\n\n**4. 실무적 모니터링 지표**\n\n- ICE connection state 전이 추적 (new → checking → connected → completed)\n- P2P 성공률, TURN 사용률, 평균 연결 시간\n- TURN 서버 대역폭 사용량, RTT(Round Trip Time), 패킷 손실률\n- 지역별/NAT 타입별 통계 분석\n\n**5. 보안 고려사항**\n\n- TURN 서버는 credential 기반 인증 (time-limited token)\n- DTLS/SRTP로 미디어 스트림 암호화\n- Signaling 서버는 HTTPS/WSS 사용\n\n이러한 전략을 통해 사용자 경험을 유지하면서도 인프라 비용을 최적화할 수 있습니다. 특히 P2P 우선 전략과 SFU 하이브리드 아키텍처는 TURN 비용을 70-80% 수준으로 절감할 수 있는 핵심 설계 포인트입니다.",
+      "tags": [
+        "network",
+        "webrtc",
+        "nat",
+        "turn",
+        "stun",
+        "architecture",
+        "distributed-systems",
+        "cost-optimization"
+      ],
+      "references": [
+        {
+          "title": "WebRTC",
+          "url": "/wiki/network/network-webrtc"
+        },
+        {
+          "title": "Network Blip - Fault Tolerance",
+          "url": "/wiki/network/network-blip"
+        },
+        {
+          "title": "WebRTC for the Curious",
+          "url": "https://webrtcforthecurious.com/ko/docs/01-what-why-and-how/"
+        }
+      ]
+    }
+  ]
+}

@@ -30,22 +30,28 @@
       "2026-03-09"
     ],
     "msa/msa-antifragile": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-03-31"
     ],
     "msa/msa-api-gateway": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-03-31"
     ],
     "msa/msa-business-agility": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-03-31"
     ],
     "msa/msa-concurrency-distributedlock": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-03-31"
     ],
     "msa/msa-event-deconcern": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-03-31"
     ],
     "msa/msa-eventual-consistency": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-03-31"
     ],
     "msa/msa-fault-tolerance": [
       "2026-03-10"
@@ -465,8 +471,14 @@
     ],
     "grpc/grpc-protobuffer": [
       "2026-03-30"
+    ],
+    "kafka/kafka-exactly-once": [
+      "2026-03-31"
+    ],
+    "kafka/kafka-message-inversion": [
+      "2026-03-31"
     ]
   },
-  "totalQuestionsGenerated": 22,
-  "lastGenerated": "2026-03-30"
+  "totalQuestionsGenerated": 23,
+  "lastGenerated": "2026-03-31"
 }

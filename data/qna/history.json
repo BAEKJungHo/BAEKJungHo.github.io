@@ -477,8 +477,32 @@
     ],
     "kafka/kafka-message-inversion": [
       "2026-03-31"
+    ],
+    "architecture/architecture-decision-making-principles": [
+      "2026-04-01"
+    ],
+    "architecture/architecture-decision-records": [
+      "2026-04-01"
+    ],
+    "architecture/architecture-dependency": [
+      "2026-04-01"
+    ],
+    "architecture/architecture-discord-store-message": [
+      "2026-04-01"
+    ],
+    "architecture/architecture-discovery": [
+      "2026-04-01"
+    ],
+    "architecture/architecture-distributed-pk": [
+      "2026-04-01"
+    ],
+    "architecture/architecture-distributed-transaction": [
+      "2026-04-01"
+    ],
+    "architecture/architecture-domain-model": [
+      "2026-04-01"
     ]
   },
-  "totalQuestionsGenerated": 23,
-  "lastGenerated": "2026-03-31"
+  "totalQuestionsGenerated": 24,
+  "lastGenerated": "2026-04-01"
 }

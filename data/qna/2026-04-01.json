@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-01",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처에서 여러 서비스에 걸친 주문 처리 시스템을 설계한다고 가정해봅시다. 주문 서비스, 재고 서비스, 결제 서비스가 각각 독립적인 데이터베이스를 사용하는 상황에서 데이터 일관성을 보장해야 합니다. 2PC(Two-Phase Commit), TCC(Try-Confirm/Cancel), Event Sourcing 중 어떤 방식을 선택하시겠습니까? 각 패턴의 트레이드오프를 설명하고, 선택한 방식의 구체적인 구현 전략과 실패 시나리오 처리 방안을 제시해주세요.",
+      "answer": "# 핵심 답변 구조\n\n## 1. 상황 분석 및 선택\n저는 **Event Sourcing 기반의 Saga 패턴**을 선택하겠습니다. 그 이유는 마이크로서비스 환경에서 가용성과 확장성을 우선시하면서도 최종 일관성(Eventual Consistency)을 보장할 수 있기 때문입니다.\n\n## 2. 각 패턴의 트레이드오프 분석\n\n### 2PC (Two-Phase Commit)\n**장점:**\n- 강한 일관성(Strong Consistency) 보장\n- 명확한 트랜잭션 경계\n\n**단점:**\n- Blocking Protocol로 인한 성능 저하\n- Coordinator가 SPOF(Single Point of Failure)가 될 수 있음\n- 참여자들이 PREPARE 후 리소스를 lock한 채 대기하여 가용성 저하\n- 클라우드 네이티브 환경에서 네트워크 파티션 발생 시 전체 시스템 블로킹 위험\n- 여러 이기종 데이터베이스가 X/Open XA 표준을 지원해야 함\n\n### TCC (Try-Confirm/Cancel)\n**장점:**\n- 비즈니스 레벨에서 트랜잭션 제어 가능\n- 2PC보다 락 보유 시간이 짧아 성능 개선\n\n**단점:**\n- Try, Confirm, Cancel 각 단계별 비즈니스 로직 구현 복잡도 증가\n- 보상 트랜잭션(Cancel) 구현이 어려울 수 있음\n- 모든 서비스가 TCC 패턴을 지원하도록 설계해야 함\n\n### Event Sourcing + Saga\n**장점:**\n- 높은 가용성과 확장성\n- 느슨한 결합(Loose Coupling)으로 서비스 독립성 보장\n- 이벤트 로그를 통한 완벽한 감사 추적(Audit Trail)\n- 시스템 상태 재구성 가능\n- 서비스 장애 시에도 다른 서비스 영향 최소화\n\n**단점:**\n- 최종 일관성으로 인한 일시적 불일치 상태 존재\n- 이벤트 순서 보장 및 멱등성(Idempotency) 처리 필요\n- 보상 트랜잭션 설계 복잡도\n- 디버깅 및 모니터링 복잡성 증가\n\n## 3. Event Sourcing 기반 구현 전략\n\n### Architecture Design\n```kotlin\n// 주문 이벤트 정의\nsealed class OrderEvent {\n    abstract val orderId: String\n    abstract val timestamp: Long\n    \n    data class OrderCreated(\n        override val orderId: String,\n        override val timestamp: Long,\n        val customerId: String,\n        val items: List<OrderItem>\n    ) : OrderEvent()\n    \n    data class InventoryReserved(\n        override val orderId: String,\n        override val timestamp: Long\n    ) : OrderEvent()\n    \n    data class PaymentCompleted(\n        override val orderId: String,\n        override val timestamp: Long,\n        val paymentId: String\n    ) : OrderEvent()\n    \n    data class OrderCompleted(\n        override val orderId: String,\n        override val timestamp: Long\n    ) : OrderEvent()\n    \n    // 보상 이벤트\n    data class OrderCancelled(\n        override val orderId: String,\n        override val timestamp: Long,\n        val reason: String\n    ) : OrderEvent()\n}\n\n// Saga Orchestrator\nclass OrderSaga(\n    private val eventStore: EventStore,\n    private val eventBus: EventBus\n) {\n    suspend fun processOrder(request: OrderRequest): OrderResult {\n        val orderId = generateOrderId()\n        \n        return try {\n            // 1. 주문 생성 이벤트 발행\n            val orderCreated = OrderEvent.OrderCreated(\n                orderId = orderId,\n                timestamp = System.currentTimeMillis(),\n                customerId = request.customerId,\n                items = request.items\n            )\n            eventStore.append(orderCreated)\n            eventBus.publish(orderCreated)\n            \n            // 2. 재고 예약 대기 (비동기)\n            // 3. 결제 처리 대기 (비동기)\n            // 각 단계는 이벤트 핸들러에서 처리\n            \n            OrderResult.Success(orderId)\n        } catch (e: Exception) {\n            // 보상 트랜잭션 시작\n            initiateCompensation(orderId, e.message)\n            OrderResult.Failed(orderId, e.message)\n        }\n    }\n    \n    private suspend fun initiateCompensation(orderId: String, reason: String?) {\n        val cancelEvent = OrderEvent.OrderCancelled(\n            orderId = orderId,\n            timestamp = System.currentTimeMillis(),\n            reason = reason ?: \"Unknown error\"\n        )\n        eventStore.append(cancelEvent)\n        eventBus.publish(cancelEvent)\n    }\n}\n\n// 재고 서비스 이벤트 핸들러\nclass InventoryEventHandler(\n    private val inventoryRepository: InventoryRepository,\n    private val eventBus: EventBus\n) {\n    @EventHandler\n    suspend fun handle(event: OrderEvent.OrderCreated) {\n        try {\n            // 멱등성 체크\n            if (isAlreadyProcessed(event.orderId)) {\n                return\n            }\n            \n            // 재고 예약\n            inventoryRepository.reserve(event.items)\n            \n            // 성공 이벤트 발행\n            eventBus.publish(\n                OrderEvent.InventoryReserved(\n                    orderId = event.orderId,\n                    timestamp = System.currentTimeMillis()\n                )\n            )\n        } catch (e: InsufficientInventoryException) {\n            // 실패 시 보상 트랜잭션 트리거\n            eventBus.publish(\n                OrderEvent.OrderCancelled(\n                    orderId = event.orderId,\n                    timestamp = System.currentTimeMillis(),\n                    reason = \"Insufficient inventory\"\n                )\n            )\n        }\n    }\n    \n    @EventHandler\n    suspend fun handle(event: OrderEvent.OrderCancelled) {\n        // 예약된 재고 복구\n        inventoryRepository.release(event.orderId)\n    }\n}\n```\n\n## 4. 실패 시나리오 처리 방안\n\n### 4.1 네트워크 파티션\n- **메시지 재시도 메커니즘**: Exponential backoff를 적용한 재시도\n- **Dead Letter Queue**: 일정 횟수 실패 후 DLQ로 이동하여 수동 처리\n\n### 4.2 서비스 장애\n- **Circuit Breaker 패턴**: 연속된 실패 감지 시 빠른 실패(Fail-fast)\n- **Timeout 설정**: 각 단계별 적절한 timeout 설정\n\n### 4.3 중복 메시지 처리\n- **멱등성 키 사용**: 이벤트 ID 기반 중복 처리 방지\n```kotlin\nclass IdempotencyChecker(private val redis: RedisClient) {\n    suspend fun checkAndMark(eventId: String): Boolean {\n        return redis.setNX(\"processed:$eventId\", \"true\", Duration.ofDays(7))\n    }\n}\n```\n\n### 4.4 보상 트랜잭션 실패\n- **재시도 로직**: 보상 트랜잭션도 실패할 수 있으므로 재시도 필요\n- **수동 개입 알림**: 최종적으로 실패 시 운영팀에 알림\n- **Eventual Consistency 모니터링**: 일관성 복구 시간 추적\n\n## 5. 모니터링 및 관찰성(Observability)\n\n```kotlin\nclass SagaMonitor {\n    fun trackSagaProgress(orderId: String) {\n        // 분산 추적\n        val span = tracer.buildSpan(\"order-saga\").start()\n        \n        // 메트릭 수집\n        metrics.recordSagaStep(orderId, \"order_created\")\n        \n        // 로그 기록\n        logger.info(\n            \"Saga progress\",\n            kv(\"orderId\", orderId),\n            kv(\"step\", \"order_created\"),\n            kv(\"timestamp\", System.currentTimeMillis())\n        )\n    }\n}\n```\n\n## 6. 의사결정 근거 (ADR 관점)\n\n### Context\n- 마이크로서비스 환경에서 각 서비스는 독립적으로 배포/확장되어야 함\n- 클라우드 네이티브 환경에서 네트워크 파티션은 불가피\n- 비즈니스 요구사항: 주문 처리 중 일시적 불일치는 허용 가능하나, 최종적으로 일관성 보장 필요\n\n### Decision\nEvent Sourcing + Saga 패턴 선택\n\n### Consequences\n- 가용성과 확장성 향상으로 비즈니스 성장에 유리\n- 완벽한 감사 추적으로 규제 준수 용이\n- 초기 구현 복잡도는 높으나, 장기적 유지보수성 향상\n- 개발팀의 분산 시스템에 대한 이해도 향상 필요\n\n## 7. 실무 적용 시 고려사항\n\n1. **이벤트 버전 관리**: 스키마 진화(Schema Evolution)를 고려한 이벤트 설계\n2. **CQRS 패턴 결합**: 읽기 모델 최적화를 위해 CQRS 함께 적용\n3. **Event Store 선택**: Kafka, EventStoreDB 등 적절한 이벤트 저장소 선택\n4. **팀 역량**: 팀의 분산 시스템 경험에 따라 단계적 도입 고려",
+      "tags": [
+        "architecture",
+        "distributed-transaction",
+        "microservices",
+        "event-sourcing",
+        "saga",
+        "trade-off",
+        "system-design"
+      ],
+      "references": [
+        {
+          "title": "Distributed Transaction Patterns",
+          "url": "/wiki/architecture/architecture-distributed-transaction"
+        },
+        {
+          "title": "Decision Making Principles",
+          "url": "/wiki/architecture/architecture-decision-making-principles"
+        },
+        {
+          "title": "Architecture Decision Records",
+          "url": "/wiki/architecture/architecture-decision-records"
+        },
+        {
+          "title": "CAP Theorem",
+          "url": "https://klarciel.net/wiki/architecture/architecture-cap/"
+        }
+      ]
+    }
+  ]
+}

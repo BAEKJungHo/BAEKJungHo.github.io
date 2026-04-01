@@ -501,8 +501,32 @@
     ],
     "architecture/architecture-domain-model": [
       "2026-04-01"
+    ],
+    "java/java-exploring-hidden-cost": [
+      "2026-04-02"
+    ],
+    "java/java-forkjoinframework": [
+      "2026-04-02"
+    ],
+    "java/java-garbage-collection": [
+      "2026-04-02"
+    ],
+    "java/java-gc-collector": [
+      "2026-04-02"
+    ],
+    "java/java-gc-generation-design": [
+      "2026-04-02"
+    ],
+    "java/java-iterable": [
+      "2026-04-02"
+    ],
+    "java/java-javaagent": [
+      "2026-04-02"
+    ],
+    "java/java-jdk-vendors": [
+      "2026-04-02"
     ]
   },
-  "totalQuestionsGenerated": 24,
-  "lastGenerated": "2026-04-01"
+  "totalQuestionsGenerated": 25,
+  "lastGenerated": "2026-04-02"
 }

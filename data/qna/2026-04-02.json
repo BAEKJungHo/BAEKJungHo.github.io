@@ -1,0 +1,34 @@
+{
+  "date": "2026-04-02",
+  "dayOfWeek": "목요일",
+  "topic": "Programming Languages (Go, Java, Kotlin)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 트래픽을 처리하는 Java 애플리케이션에서 GC 튜닝을 진행해야 하는 상황입니다. CMS Collector와 G1GC 중 하나를 선택해야 할 때, 각 Collector의 특징과 트레이드오프를 설명하고, 어떤 상황에서 어떤 Collector를 선택하는 것이 적절한지 실무 관점에서 설명해주세요. 또한 GC 튜닝 시 모니터링해야 할 핵심 지표는 무엇인가요?",
+      "answer": "**CMS Collector의 특징:**\n\nCMS(Concurrent Mark Sweep)는 저중단(low pause) 컬렉터로 설계되었습니다. Full GC 동안 애플리케이션 스레드를 멈추지 않고 백그라운드 스레드를 사용하여 주기적으로 Old Generation을 처리합니다. Minor GC는 여러 스레드로 수행하며 애플리케이션 스레드를 중지시킵니다.\n\n**CMS의 장단점:**\n- 장점: Stop-The-World 시간이 짧아 응답시간이 중요한 애플리케이션에 적합\n- 단점: Compaction을 수행하지 않아 메모리 단편화(Fragmentation) 발생 가능, CPU 리소스를 더 많이 사용, Concurrent Mode Failure 발생 시 Full GC로 전환되어 긴 중단 발생\n\n**G1GC의 특징:**\n\nG1GC(Garbage First)는 힙을 Region 단위로 나누어 관리하며, 예측 가능한 중단 시간을 목표로 설계되었습니다. Young/Old Generation 구분이 논리적으로만 존재하며, 가비지가 가장 많은 Region을 우선적으로 수집합니다.\n\n**G1GC의 장단점:**\n- 장점: 예측 가능한 중단 시간 제공(-XX:MaxGCPauseMillis), Compaction을 수행하여 메모리 단편화 문제 해결, 대용량 힙(6GB 이상)에서 효율적\n- 단점: 작은 힙에서는 오버헤드가 클 수 있음, CMS보다 CPU 사용량이 더 높을 수 있음\n\n**선택 기준:**\n\n1. **CMS를 선택하는 경우:**\n   - 힙 크기가 상대적으로 작은 경우(4GB 이하)\n   - 응답 시간이 매우 중요하고 짧은 중단 시간이 필수적인 경우\n   - Old Generation의 객체 수명이 비교적 예측 가능한 경우\n\n2. **G1GC를 선택하는 경우:**\n   - 대용량 힙(6GB 이상)을 사용하는 경우\n   - 예측 가능한 중단 시간이 필요한 경우\n   - 메모리 단편화 문제를 겪고 있는 경우\n   - Java 9 이상을 사용하는 경우 (Java 9부터 기본 GC)\n\n**GC 튜닝 시 모니터링해야 할 핵심 지표:**\n\n1. **Stop-The-World 시간:** GC 튜닝의 핵심 목표는 STW 시간을 줄이는 것입니다. Minor GC와 Full GC의 발생 빈도와 소요 시간을 모니터링해야 합니다.\n\n2. **GC 빈도:** GC가 너무 자주 발생하면 애플리케이션 처리량(Throughput)이 감소합니다.\n\n3. **힙 메모리 사용률:** Young Generation과 Old Generation의 사용률을 모니터링하여 적절한 크기 조정이 필요한지 판단합니다.\n\n4. **Promotion Rate:** Young Generation에서 Old Generation으로 승격되는 객체의 비율입니다. 이 비율이 높으면 Old Generation이 빨리 차서 Full GC가 자주 발생할 수 있습니다.\n\n5. **Allocation Rate:** 객체 생성 속도를 나타내며, 이 값이 높으면 Young Generation이 빨리 차서 Minor GC가 자주 발생합니다.\n\n6. **애플리케이션 처리량:** GC로 인해 실제 애플리케이션 코드가 실행되는 시간의 비율입니다.\n\n**실무 팁:**\n- JVM 옵션으로 GC 로그를 활성화하여 지속적으로 모니터링 (-Xlog:gc* 또는 -XX:+PrintGCDetails)\n- VisualVM, JConsole, Prometheus + Grafana 등의 도구를 활용\n- 성능 테스트 환경에서 충분한 부하 테스트를 통해 GC 동작을 검증\n- 한 번에 하나의 파라미터만 변경하여 영향도를 측정",
+      "tags": [
+        "java",
+        "gc",
+        "performance",
+        "tradeoff",
+        "cms",
+        "g1gc"
+      ],
+      "references": [
+        {
+          "title": "Garbage Collector Algorithms",
+          "url": "/wiki/java/java-gc-collector"
+        },
+        {
+          "title": "GC",
+          "url": "/wiki/java/java-garbage-collection"
+        },
+        {
+          "title": "Generation Based Design of Garbage Collection",
+          "url": "/wiki/java/java-gc-generation-design"
+        }
+      ]
+    }
+  ]
+}

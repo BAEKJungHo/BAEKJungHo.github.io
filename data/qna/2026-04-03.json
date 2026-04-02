@@ -1,0 +1,29 @@
+{
+  "date": "2026-04-03",
+  "dayOfWeek": "금요일",
+  "topic": "Data Structures & Algorithms",
+  "questions": [
+    {
+      "id": 1,
+      "question": "재귀 함수를 사용하여 복잡한 문제를 해결할 때 StackOverflow가 발생할 수 있습니다. 이 문제를 해결하기 위한 접근 방법들과 각각의 트레이드오프를 설명해주세요. 특히, 꼬리 재귀 최적화(Tail Call Optimization)와 반복문 변환, 메모이제이션의 관점에서 실무적인 판단 기준을 제시해주세요.",
+      "answer": "StackOverflow 문제를 해결하는 방법은 크게 세 가지 접근이 있습니다.\n\n**1. 꼬리 재귀 최적화(Tail Call Optimization)**\n- 재귀 호출이 함수의 마지막 연산일 때, 컴파일러가 스택 프레임을 재사용하도록 최적화하는 기법입니다.\n- Kotlin에서는 `tailrec` 키워드로 명시적으로 지원하지만, Java는 JVM 레벨에서 공식적으로 지원하지 않습니다.\n- 장점: 스택 공간을 O(1)로 유지하면서 재귀의 표현력을 유지할 수 있습니다.\n- 단점: 모든 재귀를 꼬리 재귀 형태로 변환할 수 없으며, 언어/플랫폼 지원에 의존적입니다.\n\n**2. 반복문(Iteration)으로 변환**\n- 재귀를 명시적인 스택 자료구조와 반복문으로 변환합니다.\n- 장점: StackOverflow 위험이 없고, 모든 환경에서 동작하며, 성능이 예측 가능합니다.\n- 단점: 코드 가독성이 떨어지고, 복잡한 재귀(예: 트리 순회)는 구현이 복잡해집니다.\n- 실무 판단: 깊이가 예측 불가능하거나 매우 깊을 수 있는 경우(예: 파일 시스템 탐색, 깊은 JSON 파싱)에는 반복문 변환이 안전합니다.\n\n**3. 메모이제이션(Memoization)**\n- 중복 계산을 제거하여 재귀 호출 깊이를 줄이는 방법입니다.\n- 예: 피보나치 수열에서 f(n) = f(n-1) + f(n-2)를 순수 재귀로 구현하면 O(2^n) 호출이 발생하지만, 메모이제이션을 사용하면 O(n)으로 줄어듭니다.\n- 장점: 재귀의 표현력을 유지하면서 성능을 대폭 개선합니다.\n- 단점: 메모리 사용량이 증가하고, Thread-safety 고려가 필요합니다(Heap 영역 사용).\n\n**실무 판단 기준**\n- **재귀 깊이가 예측 가능하고 얕은 경우**(< 1000): 순수 재귀 사용\n- **중복 계산이 많은 경우**: 메모이제이션 적용 (DP 문제)\n- **깊이가 깊거나 예측 불가능한 경우**: 반복문으로 변환\n- **함수형 언어 또는 Kotlin 사용**: 꼬리 재귀 최적화 고려\n- **프로덕션 환경**: Stack 영역은 제한적(보통 1-2MB)이므로, 깊이가 수천 이상 갈 수 있다면 반복문이 안전합니다.\n\n추가로, JVM 옵션으로 `-Xss` 플래그를 사용해 스택 크기를 조정할 수 있지만, 이는 근본적인 해결책이 아니며 메모리 낭비를 초래할 수 있습니다.",
+      "tags": [
+        "datastructures",
+        "recursion",
+        "stack",
+        "optimization",
+        "memory-management"
+      ],
+      "references": [
+        {
+          "title": "Recursion and Memoization",
+          "url": "/wiki/datastructures/datastructures-recursion"
+        },
+        {
+          "title": "Difference Stack and Heap",
+          "url": "/wiki/datastructures/datastructures-stack-heap"
+        }
+      ]
+    }
+  ]
+}

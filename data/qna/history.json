@@ -529,8 +529,32 @@
     ],
     "java/java-jdk-vendors": [
       "2026-04-02"
+    ],
+    "infra/infra-serverless": [
+      "2026-04-04"
+    ],
+    "infra/infra-vpc-subnet": [
+      "2026-04-04"
+    ],
+    "infra/infra-web-performance-budget": [
+      "2026-04-04"
+    ],
+    "infra/infra-webpagetest": [
+      "2026-04-04"
+    ],
+    "docker/docker-container": [
+      "2026-04-04"
+    ],
+    "docker/docker-dockerizing-whole-linux-server": [
+      "2026-04-04"
+    ],
+    "docker/docker-dockerizing": [
+      "2026-04-04"
+    ],
+    "docker/docker-overlay-network": [
+      "2026-04-04"
     ]
   },
-  "totalQuestionsGenerated": 26,
-  "lastGenerated": "2026-04-03"
+  "totalQuestionsGenerated": 27,
+  "lastGenerated": "2026-04-04"
 }

@@ -553,8 +553,32 @@
     ],
     "docker/docker-overlay-network": [
       "2026-04-04"
+    ],
+    "tdd/tdd-ai": [
+      "2026-04-05"
+    ],
+    "tdd/tdd-dontblame": [
+      "2026-04-05"
+    ],
+    "tdd/tdd-interface-design-decisions": [
+      "2026-04-05"
+    ],
+    "tdd/tdd-red-green-refactor": [
+      "2026-04-05"
+    ],
+    "ddd/ddd-aggregate": [
+      "2026-04-05"
+    ],
+    "ddd/ddd-anticorruption-layer": [
+      "2026-04-05"
+    ],
+    "ddd/ddd-bounded-context": [
+      "2026-04-05"
+    ],
+    "ddd/ddd-claim": [
+      "2026-04-05"
     ]
   },
-  "totalQuestionsGenerated": 27,
-  "lastGenerated": "2026-04-04"
+  "totalQuestionsGenerated": 28,
+  "lastGenerated": "2026-04-05"
 }

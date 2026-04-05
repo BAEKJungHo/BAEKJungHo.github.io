@@ -1,0 +1,34 @@
+{
+  "date": "2026-04-06",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "실시간 자율주행 차량 제어 시스템을 설계한다고 가정해봅시다. 클라이언트(차량)에서 서버로 '좌회전', '직진', '정지' 같은 제어 명령을 HTTP/1.1로 전송하는 상황입니다. TCP는 바이트 스트림의 순서를 보장하는데, 왜 애플리케이션 레벨에서 추가적인 순서 보장 메커니즘이 필요한가요? 그리고 이를 어떻게 설계하시겠습니까?",
+      "answer": "TCP가 보장하는 것은 '단일 TCP 연결 내에서의 바이트 스트림 순서'입니다. 하지만 실무에서는 다음과 같은 이유로 요청의 의미상 순서가 역전될 수 있습니다:\n\n**1. 순서 역전이 발생하는 실무 시나리오:**\n- **연결 재수립**: 모바일 네트워크에서 셀룰러 핸드오버나 Wi-Fi 전환 시 새로운 TCP 연결이 생성됩니다. 기존 연결의 '정지' 요청이 지연되고 새 연결의 '직진' 요청이 먼저 도착할 수 있습니다.\n- **클라이언트 재시도**: 타임아웃으로 인한 재시도 시 원본 요청이 서버에서 처리 중인데 재시도 요청이 먼저 완료될 수 있습니다.\n- **로드 밸런서**: L7 로드 밸런서가 요청을 여러 백엔드 인스턴스에 분산하면, 각 워커의 처리 속도 차이로 응답 순서가 뒤바뀔 수 있습니다.\n- **비동기 처리**: 서버가 요청을 메시지 큐에 넣고 여러 워커가 동시 처리하면 완료 순서가 보장되지 않습니다.\n\n**2. 설계 방안:**\n\n**(A) Sequence Number 기반 설계:**\n```java\nclass VehicleCommand {\n    private long sequenceNumber; // 클라이언트가 단조 증가하는 번호 부여\n    private String commandType;  // TURN_LEFT, GO_STRAIGHT, STOP\n    private long timestamp;\n}\n```\n- 클라이언트는 각 명령에 단조 증가하는 시퀀스 번호를 부여합니다.\n- 서버는 순서가 맞지 않는 명령을 감지하여 재정렬 버퍼에 보관하거나 거부합니다.\n\n**(B) Idempotency Key 활용:**\n```java\n// Redis를 사용한 멱등성 보장\npublic class CommandProcessor {\n    public Response processCommand(VehicleCommand cmd) {\n        String idempotencyKey = cmd.getIdempotencyKey();\n        \n        // 이미 처리된 명령인지 확인\n        if (redis.exists(\"processed:\" + idempotencyKey)) {\n            return redis.get(\"result:\" + idempotencyKey);\n        }\n        \n        // 순서 검증: 현재 시퀀스가 마지막 처리된 시퀀스보다 정확히 1 큰지 확인\n        long lastSeq = redis.get(\"last_seq:\" + vehicleId);\n        if (cmd.getSequenceNumber() != lastSeq + 1) {\n            return Response.error(\"OUT_OF_ORDER\");\n        }\n        \n        // 명령 실행\n        Result result = executeCommand(cmd);\n        \n        // 결과 저장 및 시퀀스 업데이트 (원자적으로)\n        redis.multi();\n        redis.set(\"processed:\" + idempotencyKey, \"true\", \"EX\", 3600);\n        redis.set(\"result:\" + idempotencyKey, result);\n        redis.set(\"last_seq:\" + vehicleId, cmd.getSequenceNumber());\n        redis.exec();\n        \n        return result;\n    }\n}\n```\n\n**(C) 단일 연결 + HTTP/2 스트림 활용:**\n- HTTP/2의 단일 스트림을 사용하여 순서를 보장합니다.\n- 연결 재수립 시에도 스트림 ID를 기반으로 순서를 추적합니다.\n\n**(D) 벡터 클록 또는 논리 시계:**\n- 분산 환경에서 인과 관계를 추적하기 위해 Lamport Timestamp나 Vector Clock을 사용합니다.\n- 단, 차량 제어처럼 전역 순서(total order)가 필요한 경우 단일 리더 패턴이 더 적합합니다.\n\n**3. 트레이드오프:**\n- **순서 보장 강도 vs 처리량**: 엄격한 순서 보장은 병렬 처리를 제한하여 처리량을 낮춥니다.\n- **복잡도 vs 안정성**: 재정렬 버퍼, 타임아웃 처리 등은 시스템 복잡도를 높입니다.\n- **레이턴시**: 순서가 맞지 않는 요청을 버퍼링하면 정상 요청의 레이턴시도 증가합니다.\n\n**4. 실무 권장사항:**\n- 차량 제어처럼 순서가 critical한 경우: Sequence Number + Idempotency Key + 단일 워커 처리\n- 금융 거래: Exactly-once semantics를 위해 DB의 unique constraint와 트랜잭션 활용\n- 일반 API: Idempotency Key만으로도 중복 처리 방지 가능\n\n**결론**: TCP는 네트워크 계층의 순서만 보장하므로, 애플리케이션이 의미 있는 순서를 보장하려면 시퀀스 번호, 멱등성 키, 재정렬 로직 등을 명시적으로 설계해야 합니다. 특히 모바일, 분산 시스템, 재시도가 빈번한 환경에서는 '네트워크를 믿지 마라'는 원칙이 필수입니다.",
+      "tags": [
+        "network",
+        "tcp",
+        "distributed-systems",
+        "idempotency",
+        "architecture",
+        "senior"
+      ],
+      "references": [
+        {
+          "title": "Never Trust the Network Designing Ordered Systems",
+          "url": "/wiki/network/network-ordered-system"
+        },
+        {
+          "title": "Idempotency with Redis",
+          "url": "/wiki/network/network-idempotency"
+        },
+        {
+          "title": "Transmission Control Protocol - RFC 9293",
+          "url": "https://datatracker.ietf.org/doc/html/rfc9293"
+        }
+      ]
+    }
+  ]
+}

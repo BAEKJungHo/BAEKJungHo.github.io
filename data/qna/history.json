@@ -57,10 +57,12 @@
       "2026-03-31"
     ],
     "msa/msa-fault-tolerance": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-04-07"
     ],
     "msa/msa-iac": [
-      "2026-03-10"
+      "2026-03-10",
+      "2026-04-07"
     ],
     "architecture/architecture-abstraction": [
       "2026-03-11"
@@ -212,22 +214,28 @@
       "2026-03-16"
     ],
     "msa/msa-message-delivery": [
-      "2026-03-17"
+      "2026-03-17",
+      "2026-04-07"
     ],
     "msa/msa-polyglot": [
-      "2026-03-17"
+      "2026-03-17",
+      "2026-04-07"
     ],
     "msa/msa-reactive-manifesto": [
-      "2026-03-17"
+      "2026-03-17",
+      "2026-04-07"
     ],
     "msa/msa-saga": [
-      "2026-03-17"
+      "2026-03-17",
+      "2026-04-07"
     ],
     "msa/msa-service-connectivity": [
-      "2026-03-17"
+      "2026-03-17",
+      "2026-04-07"
     ],
     "msa/msa-service-discovery": [
-      "2026-03-17"
+      "2026-03-17",
+      "2026-04-07"
     ],
     "msa/msa-soa": [
       "2026-03-17"
@@ -587,6 +595,6 @@
       "2026-04-05"
     ]
   },
-  "totalQuestionsGenerated": 29,
-  "lastGenerated": "2026-04-06"
+  "totalQuestionsGenerated": 30,
+  "lastGenerated": "2026-04-07"
 }

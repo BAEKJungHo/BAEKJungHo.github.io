@@ -1,0 +1,42 @@
+{
+  "date": "2026-04-07",
+  "dayOfWeek": "화요일",
+  "topic": "Distributed Systems",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처에서 분산 트랜잭션 처리를 위해 Saga 패턴을 도입하려고 합니다. Choreography 기반과 Orchestration 기반 Saga 중 어떤 방식을 선택할지, 그리고 각 방식의 트레이드오프와 실패 시나리오(보상 트랜잭션)를 어떻게 설계할 것인지 설명해주세요. 또한, 이벤트 기반 아키텍처에서 메시지 유실을 방지하기 위해 Transactional Outbox 패턴을 함께 적용할 때 고려해야 할 사항은 무엇인가요?",
+      "answer": "## Saga 패턴 선택 시 고려사항\n\n### Choreography 기반 Saga\n**장점:**\n- 서비스 간 느슨한 결합(loose coupling)으로 독립성이 높음\n- 중앙 조정자가 없어 단일 실패 지점(SPOF)이 없음\n- 서비스 추가/변경 시 유연성이 높음\n\n**단점:**\n- 전체 워크플로우를 파악하기 어려움 (분산된 로직)\n- 순환 종속성 발생 가능성\n- 디버깅과 모니터링이 복잡함\n- 보상 트랜잭션 순서 제어가 어려움\n\n### Orchestration 기반 Saga\n**장점:**\n- 중앙 오케스트레이터가 워크플로우를 명확하게 관리\n- 전체 프로세스 가시성이 높음\n- 보상 트랜잭션 순서 제어가 용이\n- 비즈니스 로직의 중앙 집중화로 이해하기 쉬움\n\n**단점:**\n- 오케스트레이터가 SPOF가 될 수 있음\n- 서비스 간 결합도가 높아질 수 있음\n- 오케스트레이터의 복잡도가 증가할 수 있음\n\n## 선택 기준\n\n**Choreography 선택:**\n- 서비스 수가 적고 워크플로우가 단순할 때\n- 서비스 독립성과 자율성이 중요할 때\n- 이벤트 기반 아키텍처가 이미 성숙했을 때\n\n**Orchestration 선택:**\n- 복잡한 비즈니스 프로세스와 다단계 워크플로우\n- 명확한 트랜잭션 순서와 조건부 로직이 필요할 때\n- 중앙 집중식 모니터링과 제어가 필요할 때\n\n## 보상 트랜잭션 설계 원칙\n\n1. **멱등성(Idempotency) 보장**: 같은 보상 트랜잭션이 여러 번 실행되어도 결과가 동일해야 함\n2. **보상 가능성 판단**: 모든 트랜잭션이 보상 가능한 것은 아님 (예: 이메일 발송)\n3. **Pivot Transaction 식별**: 보상이 불가능한 지점을 파악하고, 그 이전에 모든 검증 완료\n4. **타임아웃 정책**: 각 단계별 타임아웃을 설정하고 재시도 전략 수립\n5. **보상 순서**: 일반적으로 정방향 트랜잭션의 역순으로 보상 실행\n\n**매도 주문 예제의 보상 설계:**\n```\n정방향: T1(주문생성) → T2(수량예약) → T3(수수료부과) → T4(시장제출) → T5(상태갱신)\n보상: C5 → C4 → C3 → C2 → C1\n\n- T3 실패 시: C2(수량예약 해제) → C1(주문취소)\n- T4 실패 시: C3(수수료환불) → C2 → C1\n```\n\n## Transactional Outbox 패턴 적용 시 고려사항\n\n### 1. 데이터 일관성 보장\n- 비즈니스 데이터와 Outbox 메시지를 **동일한 로컬 트랜잭션**에서 처리\n- 데이터베이스 트랜잭션이 커밋되어야만 메시지도 함께 저장됨\n\n### 2. Message Relay 구현 방식 선택\n\n**Polling Publisher:**\n- 주기적으로 Outbox 테이블을 폴링하여 메시지 발행\n- 구현이 단순하지만 실시간성이 떨어짐\n- 데이터베이스 부하 고려 필요\n\n**Transaction Log Tailing (CDC):**\n- 데이터베이스의 트랜잭션 로그를 모니터링 (MySQL binlog, PostgreSQL WAL)\n- 실시간성이 높고 데이터베이스 부하가 적음\n- Debezium 같은 CDC 도구 활용 권장\n\n### 3. Outbox 테이블 설계\n```sql\nCREATE TABLE outbox (\n  event_id BIGINT PRIMARY KEY AUTO_INCREMENT,  -- 순서 보장\n  aggregate_type VARCHAR(255),                 -- 집합 타입\n  aggregate_id VARCHAR(255),                   -- 집합 ID\n  event_type VARCHAR(255),                     -- 이벤트 타입\n  payload JSON,                                -- 이벤트 데이터\n  created_at TIMESTAMP,\n  published_at TIMESTAMP,                      -- 발행 완료 시간\n  status VARCHAR(50)                           -- PENDING, PUBLISHED, FAILED\n);\n```\n\n### 4. 메시지 순서 보장\n- event_id를 순차적으로 생성하여 순서 보장\n- 같은 aggregate_id에 대한 메시지는 순서대로 처리\n- Kafka의 경우 aggregate_id를 파티션 키로 사용\n\n### 5. 중복 메시지 처리\n- 메시지 소비자 측에서 **멱등성** 구현 필수\n- 이벤트 ID를 활용한 중복 체크 메커니즘\n- 분산 환경에서는 최소 한 번(at-least-once) 전달 보장\n\n### 6. 성능 최적화\n- Outbox 테이블의 무한 증가 방지: 발행 완료된 메시지 주기적 정리\n- 인덱스 전략: (status, created_at) 복합 인덱스\n- 배치 처리: 여러 메시지를 한 번에 발행\n\n### 7. 모니터링과 장애 복구\n- 발행되지 않은 메시지 모니터링 (PENDING 상태가 오래된 메시지)\n- Dead Letter Queue 구성으로 반복 실패 메시지 처리\n- Saga 실패 시 알림 및 수동 개입 프로세스\n\n## 실무 적용 사례\n\n**토스 증권 사례:**\n- Resilience4j를 활용한 Circuit Breaker 패턴으로 장애 전파 차단\n- 비동기 메시징으로 서비스 간 느슨한 결합 유지\n- 실시간 모니터링으로 이상 징후 조기 감지\n\n**결론:**\nSaga 패턴 선택은 시스템의 복잡도, 팀의 성숙도, 비즈니스 요구사항을 종합적으로 고려해야 합니다. 일반적으로 초기에는 Orchestration으로 시작하여 명확한 워크플로우를 확립하고, 시스템이 성숙하면서 필요에 따라 Choreography로 전환하는 것을 권장합니다. Transactional Outbox 패턴은 메시지 유실을 방지하는 핵심 패턴이며, CDC 방식의 Message Relay를 활용하면 실시간성과 안정성을 모두 확보할 수 있습니다.",
+      "tags": [
+        "distributed-systems",
+        "saga-pattern",
+        "transactional-outbox",
+        "event-driven-architecture",
+        "microservices",
+        "fault-tolerance"
+      ],
+      "references": [
+        {
+          "title": "Fault Tolerance",
+          "url": "/wiki/msa/msa-fault-tolerance"
+        },
+        {
+          "title": "Message Delivery in Event Driven Architecture",
+          "url": "/wiki/msa/msa-message-delivery"
+        },
+        {
+          "title": "Saga Pattern",
+          "url": "/wiki/msa/msa-saga"
+        },
+        {
+          "title": "Microservices.io - Saga Pattern",
+          "url": "https://microservices.io/patterns/data/saga.html"
+        },
+        {
+          "title": "Microservices.io - Transactional Outbox",
+          "url": "https://microservices.io/patterns/data/transactional-outbox.html"
+        }
+      ]
+    }
+  ]
+}

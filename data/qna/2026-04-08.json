@@ -1,0 +1,39 @@
+{
+  "date": "2026-04-08",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 주문 처리 시스템을 설계하는 상황을 가정해봅시다. 주문 생성 후 알림 발송, 재고 차감, 결제 처리 등 여러 후속 작업이 필요합니다. 이때 (1) 이벤트 기반 아키텍처를 도입한다면 Internal Event와 External Event를 어떻게 구분하여 설계하시겠습니까? (2) 알림 시스템의 신뢰성을 보장하기 위해 이중화(Duplexing)를 적용한다면 어떤 트레이드오프를 고려해야 하며, (3) Event Sourcing과 Saga 패턴 중 어떤 것을 선택할지 그 이유와 함께 설명해주세요.",
+      "answer": "**1. Internal Event와 External Event 구분 설계:**\n\nInternal Event는 주문 도메인 내부의 비관심사를 분리하는 데 사용합니다. 예를 들어:\n- `OrderCreatedEvent`: 주문 생성 후 내부적으로 주문 통계 업데이트, 로깅, 감사 추적 등을 처리\n- `OrderValidatedEvent`: 주문 검증 후 내부 상태 전이를 관리\n\n이러한 내부 이벤트는 도메인 로직과 부가적인 정책(로깅, 메트릭 수집 등)을 분리하여 단일 책임 원칙을 준수합니다.\n\nExternal Event는 외부 시스템과의 의존성을 격리하는 데 사용합니다:\n- `OrderPlacedEvent`: 외부 알림 시스템, 재고 시스템, 결제 시스템에 전달\n- ZERO-PAYLOAD 방식을 적용하여 orderId와 최소 메타데이터만 포함\n- 각 구독자(알림, 재고, 결제 서비스)는 필요한 데이터를 별도 API 호출로 조회\n\n이렇게 구분하는 이유는 발행자(Publisher)가 구독자(Subscriber)의 비즈니스 로직을 알 필요가 없도록 결합도를 낮추기 위함입니다.\n\n**2. 알림 시스템 이중화 시 트레이드오프:**\n\n신뢰성이 중요한 알림 시스템의 경우 다음과 같은 이중화 전략을 고려할 수 있습니다:\n\n**설계 옵션:**\n- Primary: FCM (Firebase Cloud Messaging)\n- Secondary: Firestore + 클라이언트 폴링 또는 WebSocket 기반 실시간 연결\n\n**트레이드오프:**\n\n*장점:*\n- 신뢰성 향상: FCM 장애 시에도 Firestore를 통해 알림 전달 보장\n- SLA 준수: 5분 내 주문 수락이라는 비즈니스 요구사항 충족\n- 감사 추적: Firestore에 알림 이력이 자동으로 남음\n\n*단점:*\n- 비용 증가: Firestore 읽기/쓰기 비용, WebSocket 연결 유지 비용\n- 복잡도 증가: 두 채널 간 동기화, 중복 알림 방지 로직 필요\n- 레이턴시: 폴링 방식의 경우 실시간성이 떨어질 수 있음\n- 운영 부담: 두 시스템의 모니터링, 장애 처리, 헬스체크 필요\n\n**구현 시 고려사항:**\n- Idempotency: 중복 알림 처리를 위한 멱등성 키 설계\n- Circuit Breaker: FCM 장애 감지 시 자동으로 Secondary 채널로 전환\n- Graceful Degradation: 부분 장애 시에도 서비스 지속\n\n**3. Event Sourcing vs Saga 패턴 선택:**\n\n**Saga 패턴 선택을 권장하는 경우:**\n\n주문 처리 시스템에서는 **Saga 패턴**이 더 적합합니다. 이유는 다음과 같습니다:\n\n*적합한 이유:*\n- 분산 트랜잭션 관리: 주문→재고→결제→알림으로 이어지는 서비스 간 트랜잭션 오케스트레이션 필요\n- 보상 트랜잭션: 결제 실패 시 재고 복구, 주문 취소 등 compensating action이 명확함\n- 비즈니스 프로세스 가시성: 주문 상태 추적이 용이 (OrderPending → OrderApproved → PaymentProcessed)\n- 구현 복잡도: Event Sourcing보다 상대적으로 구현이 간단함\n\n*구현 예시:*\n```kotlin\n// Choreography-based Saga\n1. OrderService: OrderCreatedEvent 발행\n2. InventoryService: 재고 확인 후 InventoryReservedEvent 발행\n3. PaymentService: 결제 처리 후 PaymentCompletedEvent 발행\n4. NotificationService: 알림 발송\n\n// 실패 시 보상\n- PaymentFailedEvent → InventoryService가 재고 복구\n- InventoryInsufficientEvent → OrderService가 주문 취소\n```\n\n**Event Sourcing을 추가로 고려하는 경우:**\n\nEvent Sourcing은 다음 요구사항이 있을 때 Saga와 함께 사용할 수 있습니다:\n- 완벽한 감사 추적(Audit Trail): 주문의 모든 상태 변화 이력을 불변 로그로 보관\n- 시점 복원(Point-in-time Recovery): 특정 시점의 주문 상태 재구성 필요\n- 복잡한 비즈니스 규칙: 이벤트 기반으로 복잡한 상태 전이 로직 표현\n\n*단점:*\n- 구현 복잡도 높음: Event Store, Snapshot 전략, Event Migration 필요\n- 쿼리 어려움: 현재 상태 조회를 위해 CQRS 패턴 필수\n- 운영 부담: 이벤트 저장소 관리, 이벤트 버전 관리\n\n**결론:**\n\n초기에는 **Saga 패턴**으로 시작하여 분산 트랜잭션 관리에 집중하고, 감사 추적이나 복잡한 이벤트 기반 로직이 필요해지면 점진적으로 **Event Sourcing**을 특정 Aggregate에 선택적으로 적용하는 것이 현실적입니다. 또한 Hexagonal Architecture를 함께 적용하여 비즈니스 로직을 격리하면, 나중에 아키텍처 패턴을 변경할 때도 핵심 도메인 로직의 수정을 최소화할 수 있습니다.",
+      "tags": [
+        "architecture",
+        "eventdriven",
+        "duplexing",
+        "saga",
+        "eventsourcing",
+        "system-design",
+        "distributed-system"
+      ],
+      "references": [
+        {
+          "title": "DUPLEXING",
+          "url": "/wiki/architecture/architecture-duplexing"
+        },
+        {
+          "title": "Event Driven System",
+          "url": "/wiki/architecture/architecture-event-driven-system"
+        },
+        {
+          "title": "EVENT",
+          "url": "/wiki/architecture/architecture-event"
+        },
+        {
+          "title": "Hexagonal Architecture",
+          "url": "/wiki/architecture/architecture-hexagonal"
+        }
+      ]
+    }
+  ]
+}

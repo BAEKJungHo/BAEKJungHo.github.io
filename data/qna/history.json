@@ -593,8 +593,32 @@
     ],
     "ddd/ddd-claim": [
       "2026-04-05"
+    ],
+    "architecture/architecture-duplexing": [
+      "2026-04-08"
+    ],
+    "architecture/architecture-event-driven-system": [
+      "2026-04-08"
+    ],
+    "architecture/architecture-event": [
+      "2026-04-08"
+    ],
+    "architecture/architecture-eventdriven-statemachine": [
+      "2026-04-08"
+    ],
+    "architecture/architecture-functional": [
+      "2026-04-08"
+    ],
+    "architecture/architecture-gossip": [
+      "2026-04-08"
+    ],
+    "architecture/architecture-gw-adr": [
+      "2026-04-08"
+    ],
+    "architecture/architecture-hexagonal": [
+      "2026-04-08"
     ]
   },
-  "totalQuestionsGenerated": 30,
-  "lastGenerated": "2026-04-07"
+  "totalQuestionsGenerated": 31,
+  "lastGenerated": "2026-04-08"
 }

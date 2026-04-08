@@ -617,8 +617,32 @@
     ],
     "architecture/architecture-hexagonal": [
       "2026-04-08"
+    ],
+    "java/java-jvm-aot": [
+      "2026-04-09"
+    ],
+    "java/java-jvm-warmup": [
+      "2026-04-09"
+    ],
+    "java/java-mapstruct": [
+      "2026-04-09"
+    ],
+    "java/java-memoryleak": [
+      "2026-04-09"
+    ],
+    "java/java-multithreading": [
+      "2026-04-09"
+    ],
+    "java/java-virtual-thread": [
+      "2026-04-09"
+    ],
+    "kotlin/kotlin-action-calculate": [
+      "2026-04-09"
+    ],
+    "kotlin/kotlin-assign-type": [
+      "2026-04-09"
     ]
   },
-  "totalQuestionsGenerated": 31,
-  "lastGenerated": "2026-04-08"
+  "totalQuestionsGenerated": 32,
+  "lastGenerated": "2026-04-09"
 }

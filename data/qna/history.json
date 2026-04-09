@@ -116,25 +116,29 @@
       "2026-03-13",
       "2026-03-20",
       "2026-03-27",
-      "2026-04-03"
+      "2026-04-03",
+      "2026-04-10"
     ],
     "datastructures/datastructures-stack-heap": [
       "2026-03-13",
       "2026-03-20",
       "2026-03-27",
-      "2026-04-03"
+      "2026-04-03",
+      "2026-04-10"
     ],
     "datastructures/datastructures-trie": [
       "2026-03-13",
       "2026-03-20",
       "2026-03-27",
-      "2026-04-03"
+      "2026-04-03",
+      "2026-04-10"
     ],
     "datastructures/datastructures-visualizations": [
       "2026-03-13",
       "2026-03-20",
       "2026-03-27",
-      "2026-04-03"
+      "2026-04-03",
+      "2026-04-10"
     ],
     "infra/infra-availability": [
       "2026-03-14"
@@ -643,6 +647,6 @@
       "2026-04-09"
     ]
   },
-  "totalQuestionsGenerated": 32,
-  "lastGenerated": "2026-04-09"
+  "totalQuestionsGenerated": 33,
+  "lastGenerated": "2026-04-10"
 }

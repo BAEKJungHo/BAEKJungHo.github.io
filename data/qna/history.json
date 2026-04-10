@@ -645,8 +645,32 @@
     ],
     "kotlin/kotlin-assign-type": [
       "2026-04-09"
+    ],
+    "kubernetes/kubernetes-architecture": [
+      "2026-04-11"
+    ],
+    "kubernetes/kubernetes-container-hierarchy": [
+      "2026-04-11"
+    ],
+    "kubernetes/kubernetes-helm": [
+      "2026-04-11"
+    ],
+    "kubernetes/kubernetes-istio": [
+      "2026-04-11"
+    ],
+    "kubernetes/kubernetes-keda": [
+      "2026-04-11"
+    ],
+    "kubernetes/kubernetes-namespace": [
+      "2026-04-11"
+    ],
+    "kubernetes/kubernetes-open-container-initiative": [
+      "2026-04-11"
+    ],
+    "kubernetes/kubernetes-qos": [
+      "2026-04-11"
     ]
   },
-  "totalQuestionsGenerated": 33,
-  "lastGenerated": "2026-04-10"
+  "totalQuestionsGenerated": 34,
+  "lastGenerated": "2026-04-11"
 }

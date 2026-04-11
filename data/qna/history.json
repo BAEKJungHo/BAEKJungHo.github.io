@@ -669,8 +669,32 @@
     ],
     "kubernetes/kubernetes-qos": [
       "2026-04-11"
+    ],
+    "ddd/ddd-cqrs": [
+      "2026-04-12"
+    ],
+    "ddd/ddd-essence": [
+      "2026-04-12"
+    ],
+    "ddd/ddd-event": [
+      "2026-04-12"
+    ],
+    "ddd/ddd-factory": [
+      "2026-04-12"
+    ],
+    "ddd/ddd-intention-revealing-interface": [
+      "2026-04-12"
+    ],
+    "ddd/ddd-modeling": [
+      "2026-04-12"
+    ],
+    "ddd/ddd-module": [
+      "2026-04-12"
+    ],
+    "ddd/ddd-quotes": [
+      "2026-04-12"
     ]
   },
-  "totalQuestionsGenerated": 34,
-  "lastGenerated": "2026-04-11"
+  "totalQuestionsGenerated": 35,
+  "lastGenerated": "2026-04-12"
 }

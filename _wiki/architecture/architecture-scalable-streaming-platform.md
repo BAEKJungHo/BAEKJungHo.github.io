@@ -289,7 +289,7 @@ __Anti-Pattern__:
 - **Unbounded buffer**: `make(chan T, math.MaxInt)` → OOM. 한 커넥션의 문제가 서버 전체를 죽인다.
 - **Global queue**: 모든 커넥션이 하나의 큐를 공유 → 한 slow consumer가 전체 throughput을 지배. **Per-connection queue가 핵심이다.**
 
-## Backpressure — Write Deadline + Queue Limit
+### Backpressure — Write Deadline + Queue Limit
 
 생산자(서버)가 소비자(클라이언트)보다 빠르면, 그 차이가 서버 내부에 누적되어 자원이 고갈된다. **"언제 포기할 것인가"에 대한 명확한 기준**이 없으면, 무한히 기다리거나 무한히 축적된다.
 

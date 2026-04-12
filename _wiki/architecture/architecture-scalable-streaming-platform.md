@@ -63,7 +63,7 @@ type Transport interface {
 
 이 interface 위의 모든 코드 — Reader, Writer, Heartbeat — 는 WebSocket인지 gRPC인지 모른다. 프로토콜 고유 기능(WebSocket Ping/Pong 등)은 타입 단언으로 처리하고, interface를 오염시키지 않는다.
 
-***Transport interface 의 본질은 "시간 제한이 있는 바이트 읽기/쓰기"이다. 이것만 추상화하면 상위 계층(Connection, Queue, Heartbeat)이 프로토콜에 독립적으로 작동한다.***
+<mark><em><strong>Transport interface 의 본질은 "시간 제한이 있는 바이트 읽기/쓰기"이다.</strong></em></mark> 이것만 추상화하면 상위 계층(Connection, Queue, Heartbeat)이 프로토콜에 독립적으로 작동한다.
 
 #### Deadline
 
@@ -76,7 +76,8 @@ Go 의 net.Conn 에서 Read deadline 은 SetReadDeadline(t time.Time) 코드가 
 하나의 커넥션에서 수신(Read)과 송신(Write)을 단일 실행 흐름으로 처리하면, TCP 송신 버퍼가 가득찬 순가에 Write 가 블로킹되고, 같은 흐름의 Read 도 멈춘다.
 즉, **느린 상대방 하나가 빠른 상대방의 수신까지 막는다.** 이것이 ***[Head-of-Line-Blocking](https://klarciel.net/wiki/network/network-socket-protocol/)*** 이다.
 
-***[네트워크 I/O 는 본질적으로 비대칭](https://klarciel.net/wiki/network/network-ordered-system/)*** 이다. 수신 속도(상대방의 전송 속도)와 송신 속도(상대방의 수신 처리 능력 및 네트워크 상태)는 독립 변수다. 따라서 **수신 경로와 송신 경로는 반드시 독립적으로 실행되어야 한다.**
+***[네트워크 I/O 는 본질적으로 비대칭](https://klarciel.net/wiki/network/network-ordered-system/)*** 이다. 
+수신 속도(상대방의 전송 속도)와 송신 속도(상대방의 수신 처리 능력 및 네트워크 상태)는 독립 변수다. 따라서, <mark><em><strong>수신 경로와 송신 경로는 반드시 독립적으로 실행되어야 한다.</strong></em></mark>
 
 Go에서의 자연스러운 형태는 **1 Connection = 2 Goroutines (Reader + Writer)**. 메모리 비용은 커넥션당 약 4KB (2 goroutines x 2KB 스택). 10만 커넥션이면 약 400MB — 합리적인 수준이다.
 실제로 ***[Tesla Fleet-Telemetry](https://github.com/teslamotors/fleet-telemetry)*** 가 이런 구조를 사용하고 있다.
@@ -221,6 +222,8 @@ func (c *Connection) OnMessage(data []byte) {
 
 독립된 두 흐름(Reader, Writer) 사이에는 경계(bounded buffer)가 존재해야 한다. 이 경계는 속도 차이를 흡수하는 동시에, 그 차이가 무한히 누적되는 것을 방지한다.
 
+<mark><em><strong>경계가 없으면 느린 하나가 전체를 죽인다. 경계는 "속도 차이의 흡수"와 "무한 누적의 차단"이라는 상충되는 두 목표를 동시에 달성한다.</strong></em></mark>
+
 Reader(수신)와 Writer(송신)의 속도가 다르기 때문에 Reader가 받은 응답을 Writer가 바로 보낼 수 없을 때 **임시 저장**이 필요하다.
 
 네트워크 I/O는 상대방의 처리 능력과 네트워크 상태에 의해 결정되므로, 송신은 언제든 지연될 수 있고, 이때 수신된 데이터를 임시로 저장할 완충 지점이 필요하다. 그러나 이 버퍼가 무한하면, 느린 소비자(slow consumer) 하나로 인해 데이터가 끝없이 누적되어 결국 서버 전체가 메모리 고갈(OOM)로 붕괴된다. 따라서 큐는 반드시 유한한 경계를 가져야 하며, 이 경계에 도달했을 때는 데이터를 버리거나(drop) 커넥션을 종료(disconnect)하는 정책적 선택이 필요하다. 결국 큐의 본질은, 속도 차이를 흡수하면서도 무한 누적을 차단하는 경계를 제공하여, 단일 지연이 전체 시스템 장애로 전파되는 것을 막는 데 있다.
@@ -297,7 +300,7 @@ __Anti-Pattern__:
 - **시간**: "얼마나 오래 기다릴 것인가" → Write Deadline
 - **공간**: "얼마나 많이 쌓을 것인가" → Queue Byte Limit
 
-이 두 축이 독립적이고, 이것이 배압(Backpressure)의 전부다.
+<mark><em><strong>Backpressure의 본질은 "포기 기준"이다. 기준은 시간(deadline)과 공간(byte limit) 두 축뿐이다.</strong></em></mark>
 
 Batching(배치 전송)은 throughput을 높이지만 slow consumer를 끊지 않는다. Sharding(샤딩)은 lock 경합을 줄이지만 이미 쌓인 부하를 해소하지 않는다. Rate Limiting(속도 제한)은 유입을 제한하지만 유출 문제를 해결하지 않는다. **이것들은 최적화(optimization)이지 배압(backpressure)이 아니다.**
 
@@ -357,7 +360,7 @@ Reader와 Writer가 독립적으로 실행되는 순간, 새로운 문제가 생
 
 Reader는 `Recv()`에서 블로킹 중이고, Writer는 `queue.Wait()`에서 블로킹 중이다. 상대방의 종료를 알리지 않으면 영원히 블로킹된다 → goroutine leak → 해당 커넥션의 goroutine, TCP 파일 디스크립터, 큐 메모리가 영원히 해제되지 않는다.
 
-종료의 본질은 **"상대방의 블로킹을 깨뜨리는 것"** 이다. 각 흐름은 상대방이 어디서 블로킹되는지 알고, 그 지점을 깨뜨리는 수단을 가져야 한다.
+<mark><em><strong>종료의 본질은 "상대방의 블로킹을 깨뜨리는 것" 이다. 각 흐름은 상대방이 어디서 블로킹되는지 알고, 그 지점을 깨뜨리는 수단을 가져야 한다.</strong></em></mark>
 
 두 방향의 교차 신호(cross-signal):
 1. **Reader → Writer**: Reader가 종료되면 `queue.Close()`를 호출한다. `Close()`는 `cond.Broadcast()`를 실행하여 `queue.Wait()`에서 블로킹 중인 Writer를 깨운다.
@@ -420,7 +423,8 @@ func (c *Connection) close(reason *Disconnect) {
 TCP Keep-Alive가 있지만 기본 간격이 2시간이라 실시간 시스템에는 부적합하다.
 
 10,000개 커넥션 중 1,000개가 half-open이면 서버 자원의 10%가 유령에게 소비된다. Registry에도 유령이 남아 "이 디바이스는 연결됨"이라고 잘못 보고한다.
-무음(silence)은 "살아있지만 할 말이 없는 것"과 "죽었는데 아직 모르는 것"을 구분할 수 없다. 따라서 **주기적 신호 + 응답 타임아웃**이 유일한 감지 수단이다.
+
+<mark><em><strong>생존 감지의 본질은 "무음을 죽음과 구분하는 메커니즘"이다. "주기적 신호 + 응답 타임아웃"이 이 구분을 가능하게 한다. 타임아웃 없는 신호는 무의미하고, 신호 없는 타임아웃은 데이터 전송 시에만 작동한다.</strong></em></mark>
 
 WebSocket의 ***[Ping/Pong 프레임(RFC 6455 §5.5)](https://datatracker.ietf.org/doc/html/rfc6455)*** 을 활용한다. 서버가 주기적으로 Ping(2바이트)을 보내고, 클라이언트는 Pong으로 응답한다. 핵심은 **ReadDeadline이 곧 Pong 타임아웃**이라는 것이다:
 
@@ -498,7 +502,9 @@ __Anti-Pattern__
 
 클라이언트가 보낸 발신자 ID를 그대로 신뢰하면, 악의적이든 버그이든 다른 디바이스를 사칭할 수 있다. 모든 하류 처리자(handler, router, command queue)가 독립적으로 "이 메시지가 정말 이 커넥션에서 왔는가?"를 검증해야 하고, **한 곳이라도 누락되면 보안 구멍**이 된다.
 
-신원의 본질은 **"인증 경계에서 한 번 확정하고, 이후 무조건 신뢰하는 것"** 이다. 서버가 인증 시점에 확정한 ID를 모든 메시지에 강제 덮어쓰면, 이후 모든 코드가 `msg.SenderID`를 무조건 신뢰할 수 있다. 검증 비용이 O(N x M)에서 O(M)으로 줄어든다.
+<mark><em><strong>신원의 본질은 "인증 경계에서 한 번 확정하고, 이후 경로에서 무조건 신뢰하는 것"이다.</strong></em></mark> 확정 지점이 늦어지거나 없으면, 신뢰 비용이 처리 경로 전체로 확산된다. 
+
+서버가 인증 시점에 확정한 ID를 모든 메시지에 강제 덮어쓰면, 이후 모든 코드가 `msg.SenderID`를 무조건 신뢰할 수 있다. 검증 비용이 O(N x M)에서 O(M)으로 줄어든다.
 
 eader가 메시지를 디코딩한 직후, handler에게 전달하기 직전에 서버가 인증한 ID로 강제 덮어쓴다. 이 지점이 **신뢰 경계(trust boundary)** 다. 이전은 신뢰 불가, 이후는 무조건 신뢰.
 
@@ -599,7 +605,9 @@ func (r *Registry) Lookup(id string) Connection {
 Delivery 는 ***[Telsa Vehicle Command](https://klarciel.net/wiki/sdv/sdv-tesla-signed-command-protocol/)*** 를 참고하여 작성하기 때문에
 ***Domain-Based Guarantee*** 를 전제로 한다.
 
-전달 보장의 수준은 **"실패 시 재전송의 비용"** 이 결정한다.
+<mark><em><strong>전달 보장의 수준은 "실패 시 재전송의 비용" 이 결정한다.</strong></em></mark>
+
+전달 보장은 비용 함수다. at-least-once의 비용(복잡도, 자원, 지연)이 유실 비용보다 작은 도메인에만 적용한다. 나머지는 유실을 허용하는 것이 합리적이다.
 
 문 잠금 명령이 유실되면 보안 위협이다 — 재전송 비용(ACK 추적 + retry)은 유실 비용에 비하면 미미하다. 반면 텔레메트리(속도, 배터리 상태)는 초당 수십 건 발생하고, 유실되면 다음 배치에서 최신값이 온다. 재전송하면 이미 낡은 값을 보내는 셈이다.
 

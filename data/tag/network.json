@@ -1,5 +1,6 @@
 [
  "architecture/architecture-retry-mechanism",
+ "architecture/architecture-scalable-streaming-platform",
  "blockchain/blockchain-bitcoin-block-tx",
  "grpc/grpc-fundamentals",
  "linux/linux-message-traffic-path",

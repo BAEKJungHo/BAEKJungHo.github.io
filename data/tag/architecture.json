@@ -56,6 +56,7 @@
  "architecture/architecture-reliability",
  "architecture/architecture-retry-mechanism",
  "architecture/architecture-scalable",
+ "architecture/architecture-scalable-streaming-platform",
  "architecture/architecture-schema-registry",
  "architecture/architecture-software",
  "architecture/architecture-software-fundamental",

@@ -1,4 +1,5 @@
 [
+ "architecture/architecture-scalable-streaming-platform",
  "cleancode/cleancode-deadcode",
  "go",
  "go/go-concurrency",

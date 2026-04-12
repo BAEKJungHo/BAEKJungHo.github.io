@@ -172,6 +172,7 @@ regenerate: true
 * [[/architecture/architecture-gossip]]
 * [[/architecture/architecture-suspend-mechanism]]
 * [[/architecture/architecture-consistent-hash]]
+* [[/architecture/architecture-scalable-streaming-platform]]
 
 ## Principle
 

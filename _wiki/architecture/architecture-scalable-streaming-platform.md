@@ -14,7 +14,7 @@ latex   : true
 * TOC
 {:toc}
 
-# SCALABLE MESSAGING PLATFORM
+# SCALABLE STREAMING PLATFORM
 
 확장 가능한 양방향 스트리밍 플랫폼을 만들기 위한 반드시 알아야할 **본질**에 대해서 정리 한다.
 

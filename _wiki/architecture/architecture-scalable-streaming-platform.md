@@ -4,7 +4,7 @@ title   : SCALABLE STREAMING PLATFORM
 summary : 
 date    : 2026-04-12 15:02:32 +0900
 updated : 2026-04-12 18:12:24 +0900
-tag     : architecture go network
+tag     : architecture systemdesign go network
 toc     : true
 comment : true
 public  : true

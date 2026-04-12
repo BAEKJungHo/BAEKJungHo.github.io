@@ -1,5 +1,6 @@
 [
  "architecture/architecture-distributed-transaction",
+ "architecture/architecture-scalable-streaming-platform",
  "cleancode/cleancode-decoupling",
  "systemdesign",
  "systemdesign/systemdesign-back-of-the-envelope-estimation",

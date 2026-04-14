@@ -1,0 +1,30 @@
+{
+  "date": "2026-04-15",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 결제 시스템을 설계할 때 중복 결제를 방지하기 위해 Idempotency를 어떻게 적용하시겠습니까? 특히 네트워크 불안정 환경에서 발생할 수 있는 3가지 시나리오(요청 미도달, 응답 유실, 서버 예외)를 각각 어떻게 처리할 것인지, 그리고 Idempotency Key의 저장소 선택과 만료 정책은 어떤 기준으로 결정하시겠습니까?",
+      "answer": "**핵심 설계 원칙:**\n\n1. **Idempotency Key 설계**\n   - 클라이언트가 UUID 또는 요청 고유 식별자를 `Idempotency-Key` 헤더에 포함하여 전송\n   - Key는 최대 255자, 충돌 가능성이 극히 낮은 UUID v4 사용 권장\n   - Key는 비즈니스 컨텍스트(사용자ID + 거래시각 등)와 함께 해싱하여 생성 가능\n\n2. **3가지 시나리오별 처리 전략:**\n\n   **시나리오 1: 서버로 요청 미도달**\n   - 클라이언트가 타임아웃 후 동일한 Idempotency Key로 재시도\n   - 서버는 해당 키가 저장소에 없으므로 신규 요청으로 처리\n   - 처리 결과를 Idempotency Key와 함께 저장\n\n   **시나리오 2: 요청 처리 완료 후 응답 유실**\n   - 가장 중요한 케이스로, 이미 결제가 완료되었지만 클라이언트가 응답을 받지 못한 상황\n   - 재시도 요청 시 서버는 Idempotency Key로 저장소 조회\n   - 이미 처리된 요청이면 저장된 응답(결제 결과, 트랜잭션 ID, 상태 등)을 캐시에서 조회하여 즉시 반환\n   - 실제 결제 로직은 실행하지 않음 (중복 결제 방지)\n\n   **시나리오 3: 서버 처리 중 예외 발생**\n   - 트랜잭션 rollback 처리\n   - 예외 상황은 저장소에 캐싱하지 않음 (재시도 시 정상 처리 가능하도록)\n   - 단, 동일 키로 동시 요청이 들어오는 것을 방지하기 위해 처리 중 상태를 임시로 저장할 수 있음\n\n3. **저장소 선택 기준:**\n\n   **Redis 선택 시:**\n   - 빠른 읽기/쓰기 성능 (마이크로초 단위 응답)\n   - TTL 기반 자동 만료 지원\n   - 메모리 기반이므로 비용 고려 필요\n   - 적합한 경우: 요청 빈도가 높고, 응답 속도가 critical한 경우\n\n   **RDBMS 선택 시:**\n   - 영구 저장 및 감사 추적(audit trail) 필요 시\n   - 트랜잭션과 함께 원자적으로 처리 가능\n   - 상대적으로 느린 성능\n   - 적합한 경우: 규제 요구사항으로 모든 요청 이력 보관 필요 시\n\n   **Hybrid 접근:**\n   - Redis에 최근 N시간 데이터 캐싱 (빠른 조회)\n   - RDBMS에 영구 저장 (감사 및 분석)\n   - Cache-Aside 패턴 적용\n\n4. **만료 정책 설계:**\n   - **권장 TTL: 24-72시간**\n   - 비즈니스 요구사항에 따라 조정 (예: 금융권은 더 길게)\n   - 클라이언트의 최대 재시도 시간 + 여유 시간\n   - 너무 짧으면: 정상적인 재시도 시 멱등성 보장 실패\n   - 너무 길면: 저장소 용량 낭비, 비용 증가\n\n5. **추가 고려사항:**\n   - **동시성 제어**: 동일 키로 동시 요청 시 분산 락(Distributed Lock) 사용\n   - **Exponential Backoff**: 재시도 간격을 지수적으로 증가시켜 서버 부하 완화\n   - **모니터링**: Idempotency Key 중복 요청 비율, 캐시 히트율 모니터링\n   - **보안**: Idempotency Key 예측 불가능하도록 설계, 타 사용자의 키 재사용 방지\n\n**실무 예시 (Stripe API 참고):**\n```\nPOST /v1/charges\nIdempotency-Key: {UUID}\nAmount: 1000\n\n1차 요청 -> 결제 처리 성공 -> 응답 유실\n2차 요청 (동일 Key) -> 저장된 결과 반환 (실제 결제 X)\n```\n\n이러한 설계를 통해 네트워크 불안정성으로 인한 중복 결제를 효과적으로 방지하고, 시스템의 신뢰성을 크게 향상시킬 수 있습니다.",
+      "tags": [
+        "architecture",
+        "idempotency",
+        "distributed-systems",
+        "payment",
+        "reliability",
+        "system-design"
+      ],
+      "references": [
+        {
+          "title": "Designing robust APIs with Idempotency",
+          "url": "/wiki/architecture/architecture-idempotency-design"
+        },
+        {
+          "title": "Idempotency Keys - Stripe API Pattern",
+          "url": "https://brandur.org/idempotency-keys"
+        }
+      ]
+    }
+  ]
+}

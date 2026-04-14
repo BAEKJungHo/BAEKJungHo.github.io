@@ -709,8 +709,32 @@
     ],
     "ddd/ddd-quotes": [
       "2026-04-12"
+    ],
+    "architecture/architecture-idempotency-design": [
+      "2026-04-15"
+    ],
+    "architecture/architecture-lambda": [
+      "2026-04-15"
+    ],
+    "architecture/architecture-layered": [
+      "2026-04-15"
+    ],
+    "architecture/architecture-life-cycle-activities": [
+      "2026-04-15"
+    ],
+    "architecture/architecture-managed-service": [
+      "2026-04-15"
+    ],
+    "architecture/architecture-map-reduce": [
+      "2026-04-15"
+    ],
+    "architecture/architecture-mqtt": [
+      "2026-04-15"
+    ],
+    "architecture/architecture-nats": [
+      "2026-04-15"
     ]
   },
-  "totalQuestionsGenerated": 37,
-  "lastGenerated": "2026-04-14"
+  "totalQuestionsGenerated": 38,
+  "lastGenerated": "2026-04-15"
 }

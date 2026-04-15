@@ -1,0 +1,40 @@
+{
+  "date": "2026-04-16",
+  "dayOfWeek": "목요일",
+  "topic": "Programming Languages (Go, Java, Kotlin)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Kotlin Coroutine에서 suspend 함수가 컴파일될 때 Continuation Passing Style(CPS)로 변환됩니다. 이 변환 과정을 설명하고, 왜 Kotlin이 Thread 기반의 동시성 모델 대신 CPS 기반의 Coroutine을 채택했는지 Context Switching 비용과 메모리 관리 관점에서 설명해주세요. 또한 실무에서 Coroutine을 사용할 때 주의해야 할 트레이드오프는 무엇인가요?",
+      "answer": "**CPS 변환 과정:**\n\nsuspend 함수는 컴파일 시점에 Continuation 파라미터가 추가됩니다. 예를 들어 `suspend fun createPost(token: Token, item: Item): Post`는 `Object createPost(Token token, Item item, Continuation<Post> cont)`로 변환됩니다. 이는 콜백 방식과 유사하며, 함수의 나머지 실행 부분을 Continuation 객체에 캡슐화합니다.\n\nCoroutine이 suspend 되면 현재 실행 상태(지역 변수, 실행 위치 등)를 Continuation 객체에 저장하고, resume 시 이 정보를 복원합니다. 이는 Thread의 Stack Frame과 유사한 역할을 하지만 Heap에 저장됩니다.\n\n**CPS 채택 이유 (Context Switching 및 메모리 관점):**\n\n1. **Context Switching 비용 절감:**\n   - Process: PCB를 통해 Heap, Stack 등 전체 메모리 영역을 교체 (비용 높음)\n   - Thread: Stack 영역만 교체 (Process보다 저렴)\n   - Coroutine: 동일 Thread 내에서 Continuation 객체만 교체하며 메모리를 공유 (Thread보다 훨씬 저렴)\n\n2. **메모리 효율성:**\n   - Thread는 각각 독립적인 Stack을 가지므로 (보통 1MB) 수천 개의 Thread 생성 시 메모리 부담이 큼\n   - Coroutine은 객체로 표현되어 Heap에 저장되며, 필요한 만큼만 메모리를 사용하므로 수만 개의 Coroutine도 생성 가능\n\n3. **비선점형 스케줄링:**\n   - Thread는 OS가 선점적으로 스케줄링하여 예측 불가능한 컨텍스트 스위칭 발생\n   - Coroutine은 yield, suspend 함수를 통해 명시적으로 실행을 양보하므로 더 예측 가능하고 제어 가능\n\n**실무에서의 트레이드오프:**\n\n1. **학습 곡선:** CPS, Structured Concurrency, CoroutineContext 등 새로운 개념 학습 필요\n\n2. **디버깅 복잡도:** 중단-재개 과정에서 다른 Thread로 전환될 수 있어 stack trace 분석이 어려울 수 있음\n\n3. **Blocking 호출 주의:** \n   - Thread.sleep()과 같은 blocking 호출은 Thread 자체를 block하므로 Coroutine의 이점 상실\n   - delay()와 같은 suspend 함수를 사용해야 함\n   - I/O 작업 시 적절한 Dispatcher(Dispatchers.IO) 선택 필요\n\n4. **예외 처리:** \n   - 자식 Coroutine의 예외가 부모로 전파되는 구조화된 동시성 모델\n   - SupervisorJob, CoroutineExceptionHandler 등을 이해하고 적절히 활용해야 함\n\n5. **취소 메커니즘:**\n   - CPU 집약적 작업에서는 isActive 체크나 yield() 호출이 없으면 취소가 불가능\n   - 적절한 협력적 취소 지점 설정 필요\n\n결론적으로 Kotlin Coroutine은 경량성과 효율성을 제공하지만, 비동기 프로그래밍의 복잡성을 완전히 제거하는 것은 아니므로 적절한 이해와 설계가 필요합니다.",
+      "tags": [
+        "kotlin",
+        "coroutine",
+        "CPS",
+        "continuation",
+        "concurrency",
+        "thread",
+        "context-switching",
+        "memory-management"
+      ],
+      "references": [
+        {
+          "title": "Continuation Passing Style",
+          "url": "/wiki/kotlin/kotlin-continuation"
+        },
+        {
+          "title": "Process, Thread, Coroutine",
+          "url": "/wiki/kotlin/kotlin-coroutine-thread"
+        },
+        {
+          "title": "Coroutine Cancel",
+          "url": "/wiki/kotlin/kotlin-coroutine-cancel"
+        },
+        {
+          "title": "Exception Handling in Kotlin Coroutine",
+          "url": "/wiki/kotlin/kotlin-coroutine-exception"
+        }
+      ]
+    }
+  ]
+}

@@ -733,8 +733,32 @@
     ],
     "architecture/architecture-nats": [
       "2026-04-15"
+    ],
+    "kotlin/kotlin-companion-object": [
+      "2026-04-16"
+    ],
+    "kotlin/kotlin-compiler-k2": [
+      "2026-04-16"
+    ],
+    "kotlin/kotlin-continuation": [
+      "2026-04-16"
+    ],
+    "kotlin/kotlin-coroutine-cancel": [
+      "2026-04-16"
+    ],
+    "kotlin/kotlin-coroutine-deferred-async": [
+      "2026-04-16"
+    ],
+    "kotlin/kotlin-coroutine-dispatcher": [
+      "2026-04-16"
+    ],
+    "kotlin/kotlin-coroutine-exception": [
+      "2026-04-16"
+    ],
+    "kotlin/kotlin-coroutine-thread": [
+      "2026-04-16"
     ]
   },
-  "totalQuestionsGenerated": 38,
-  "lastGenerated": "2026-04-15"
+  "totalQuestionsGenerated": 39,
+  "lastGenerated": "2026-04-16"
 }

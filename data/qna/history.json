@@ -145,22 +145,28 @@
       "2026-04-17"
     ],
     "infra/infra-availability": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-18"
     ],
     "infra/infra-awsec2ssh": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-18"
     ],
     "infra/infra-bashrc": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-18"
     ],
     "infra/infra-bastion": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-18"
     ],
     "infra/infra-ci-cd": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-18"
     ],
     "infra/infra-cloud": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-18"
     ],
     "infra/infra-collision-domain": [
       "2026-03-14"
@@ -761,8 +767,14 @@
     ],
     "kotlin/kotlin-coroutine-thread": [
       "2026-04-16"
+    ],
+    "kubernetes/kubernetes-service-mesh": [
+      "2026-04-18"
+    ],
+    "aws/aws-ssm": [
+      "2026-04-18"
     ]
   },
-  "totalQuestionsGenerated": 40,
-  "lastGenerated": "2026-04-17"
+  "totalQuestionsGenerated": 41,
+  "lastGenerated": "2026-04-18"
 }

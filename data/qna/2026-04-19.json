@@ -1,0 +1,29 @@
+{
+  "date": "2026-04-19",
+  "dayOfWeek": "일요일",
+  "topic": "Design Patterns, TDD, DDD, FP, OOP",
+  "questions": [
+    {
+      "id": 1,
+      "question": "DDD의 Domain Service 설계 시 서비스 간 의존성을 최소화해야 하는 이유와, 이를 위해 Dependency Inversion Principle(DIP)을 어떻게 적용할 수 있는지 설명해주세요. 또한 실무에서 Infrastructure Layer와의 의존성을 관리하기 위해 어떤 전략을 사용하셨나요?",
+      "answer": "Domain Service 간 의존성을 최소화해야 하는 주요 이유는 다음과 같습니다:\n\n**의존성 최소화의 필요성:**\n1. 테스트 용이성: Domain Layer는 비즈니스 로직의 핵심이므로 테스트 코드 작성이 가장 중요합니다. 서비스 간 의존성이 많으면 테스트를 위해 많은 Mock 객체가 필요하고, 테스트 설정이 복잡해집니다.\n2. 순환 의존성 방지: 서비스 간 참조 관계가 복잡해지면 순환 의존성이 발생할 수 있으며, 이는 코드 이해와 유지보수를 어렵게 만듭니다.\n3. 도메인 로직 파악 용이성: Root Service에 많은 의존성이 집중되면 도메인 로직의 흐름을 파악하기 어려워집니다.\n\n**DIP 적용 방법:**\nDIP는 '구현이 아닌 추상화에 의존'하는 원칙입니다. Domain Layer(상위 수준)가 Infrastructure Layer(하위 수준)에 직접 의존하지 않도록 설계해야 합니다.\n\n```kotlin\n// Domain Layer - Interface 정의\ninterface PaymentGateway {\n    fun processPayment(amount: Money): PaymentResult\n}\n\nclass OrderService(private val paymentGateway: PaymentGateway) {\n    fun completeOrder(order: Order) {\n        val result = paymentGateway.processPayment(order.totalAmount)\n        // 비즈니스 로직\n    }\n}\n\n// Infrastructure Layer - 구현체\nclass StripePaymentGateway : PaymentGateway {\n    override fun processPayment(amount: Money): PaymentResult {\n        // Stripe API 호출\n    }\n}\n```\n\n**실무 전략:**\n1. Interface Segregation: 각 도메인 서비스가 필요로 하는 최소한의 인터페이스만 정의하여 불필요한 의존성을 제거합니다.\n2. Facade Pattern 활용: 복잡한 Infrastructure 호출을 단순한 인터페이스로 추상화합니다.\n3. Anti-Corruption Layer: 외부 시스템과의 통합 시 도메인 모델을 보호하기 위한 변환 계층을 둡니다.\n4. Hexagonal Architecture(Ports and Adapters): Port(인터페이스)를 Domain Layer에 정의하고, Adapter(구현체)를 Infrastructure Layer에 배치하여 의존성 방향을 제어합니다.\n5. 의존성 주입 프레임워크 활용: Spring의 경우 @Configuration을 통해 의존성 주입을 관리하고, 테스트 시에는 @MockBean이나 별도의 Test Configuration을 사용합니다.\n\n이러한 전략들을 통해 Domain Layer의 독립성을 유지하면서도 필요한 Infrastructure 기능을 효과적으로 활용할 수 있습니다.",
+      "tags": [
+        "ddd",
+        "architecture",
+        "dependency-inversion",
+        "domain-service",
+        "layered-architecture"
+      ],
+      "references": [
+        {
+          "title": "Domain Service",
+          "url": "/wiki/ddd/ddd-service"
+        },
+        {
+          "title": "Reduce Dependency",
+          "url": "/wiki/ddd/ddd-reduce-dependency"
+        }
+      ]
+    }
+  ]
+}

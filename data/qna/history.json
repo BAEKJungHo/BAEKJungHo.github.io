@@ -773,8 +773,32 @@
     ],
     "aws/aws-ssm": [
       "2026-04-18"
+    ],
+    "ddd/ddd-reduce-dependency": [
+      "2026-04-19"
+    ],
+    "ddd/ddd-service": [
+      "2026-04-19"
+    ],
+    "functional/functional-copy-on-write": [
+      "2026-04-19"
+    ],
+    "functional/functional-defensive-copy": [
+      "2026-04-19"
+    ],
+    "functional/functional-functional-object": [
+      "2026-04-19"
+    ],
+    "functional/functional-functions": [
+      "2026-04-19"
+    ],
+    "functional/functional-potential-errors": [
+      "2026-04-19"
+    ],
+    "functional/functional-sideeffect": [
+      "2026-04-19"
     ]
   },
-  "totalQuestionsGenerated": 41,
-  "lastGenerated": "2026-04-18"
+  "totalQuestionsGenerated": 42,
+  "lastGenerated": "2026-04-19"
 }

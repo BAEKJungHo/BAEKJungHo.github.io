@@ -1,0 +1,38 @@
+{
+  "date": "2026-04-20",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "회사의 마이크로서비스 아키텍처에서 gRPC를 도입하려고 합니다. 외부 API 연동이 많은 환경에서 gRPC 통신 중 네트워크 순단(Network Blip)이 발생할 경우, 어떤 전략들을 조합하여 시스템의 안정성을 확보하시겠습니까? 특히 HTTP/2 멀티플렉싱 환경에서의 Head-of-Line Blocking 이슈와 연관지어 설명해주세요.",
+      "answer": "gRPC는 HTTP/2 기반으로 동작하여 단일 TCP 연결에서 여러 스트림을 멀티플렉싱할 수 있지만, TCP 레벨의 Head-of-Line Blocking은 여전히 존재합니다. 네트워크 순단 발생 시 다음과 같은 다층 방어 전략을 구현하겠습니다.\n\n**1. gRPC 레벨의 재시도 전략**\n- gRPC의 built-in retry policy를 활용하여 서비스 설정에 재시도 로직을 선언적으로 정의합니다.\n- Exponential Backoff(지수 백오프)를 적용하여 초기 재시도는 100ms, 이후 200ms, 400ms 식으로 점진적으로 간격을 늘립니다.\n- 최대 재시도 횟수는 3회로 제한하여 무한 재시도로 인한 리소스 낭비를 방지합니다.\n- idempotent한 메서드(GetUser 등)에만 자동 재시도를 적용하고, mutating 작업(CreateOrder 등)은 명시적 재시도 로직을 구현합니다.\n\n**2. Circuit Breaker 패턴 구현**\n- 서비스 A에서 서비스 B로의 gRPC 호출에 Circuit Breaker를 적용합니다(예: resilience4j, Hystrix 후속 라이브러리).\n- Closed(정상) → Open(차단) → Half-Open(시험) 상태 전환을 다음 기준으로 설정:\n  * 10초 내 실패율 50% 이상 시 Open 상태로 전환\n  * Open 상태에서 30초 후 Half-Open으로 전환하여 제한적 요청 허용\n  * Half-Open에서 성공 시 Closed로 복귀\n- Open 상태에서는 Fallback 로직을 즉시 실행하여 Fast Fail 처리합니다.\n\n**3. Timeout 계층적 설정**\n- Connection Timeout: 5초 (연결 수립 시간)\n- Request Timeout: 10초 (개별 RPC 호출)\n- Overall Timeout: 30초 (재시도 포함 전체 시간)\n- gRPC의 DeadlineExceeded 상태를 활용하여 타임아웃을 명시적으로 전파합니다.\n\n**4. HTTP/2 특성 고려사항**\n- HTTP/2는 애플리케이션 레벨에서 멀티플렉싱을 제공하지만, TCP 레벨의 패킷 손실 시 모든 스트림이 영향을 받습니다.\n- 중요도가 높은 RPC 호출은 별도의 gRPC 채널(Channel)을 생성하여 물리적으로 다른 TCP 연결을 사용하도록 격리합니다.\n- QUIC 프로토콜(HTTP/3) 도입을 장기적으로 검토하여 TCP의 Head-of-Line Blocking 자체를 해결할 수 있습니다.\n\n**5. Fallback 전략**\n- 캐시된 데이터 반환: 최근 성공한 응답을 로컬 캐시(Redis/Caffeine)에 저장하여 Fallback으로 사용\n- Degraded Response: 부분적인 데이터나 기본값 반환 (예: 사용자 프로필 일부만 반환)\n- 다른 서비스 엔드포인트로 Failover: 동일한 기능을 제공하는 백업 서비스가 있다면 자동 전환\n\n**6. 모니터링 및 알림**\n- gRPC의 status code(UNAVAILABLE, DEADLINE_EXCEEDED 등)를 메트릭으로 수집\n- Prometheus + Grafana로 실시간 실패율, 레이턴시 P99, Circuit Breaker 상태 모니터링\n- 재시도율이 임계값(예: 20%)을 초과하면 PagerDuty/Slack 알림 발송\n\n**7. 프로토콜 레벨 최적화**\n- gRPC KeepAlive 설정으로 유휴 연결의 조기 감지:\n  * KEEPALIVE_TIME: 30초\n  * KEEPALIVE_TIMEOUT: 10초\n- 이를 통해 네트워크 순단 발생 시 빠른 재연결을 유도합니다.\n\n**트레이드오프 고려사항:**\n- 재시도 로직은 latency를 증가시키므로, 사용자 대면 API는 더 짧은 timeout을 설정해야 합니다.\n- Circuit Breaker의 임계값이 너무 민감하면 일시적인 순단에도 과도하게 반응할 수 있으므로, 실제 트래픽 패턴을 분석하여 튜닝해야 합니다.\n- Fallback 데이터는 stale할 수 있으므로, 비즈니스 로직에서 데이터 신선도 요구사항을 명확히 정의해야 합니다.\n\n이러한 전략들을 조합하면 MongoDB 버전 업그레이드와 같은 계획된 순단뿐만 아니라, 예측 불가능한 네트워크 장애에도 견고하게 대응할 수 있습니다.",
+      "tags": [
+        "network",
+        "grpc",
+        "distributed",
+        "fault-tolerance",
+        "http2",
+        "resilience"
+      ],
+      "references": [
+        {
+          "title": "gRPC Fundamentals",
+          "url": "/wiki/grpc/grpc-fundamentals"
+        },
+        {
+          "title": "Network Blip Handling Strategies",
+          "url": "/wiki/network/network-blip"
+        },
+        {
+          "title": "Binary Packet Protocol",
+          "url": "/wiki/network/network-binary-based-protocol"
+        },
+        {
+          "title": "WebRTC - UDP and Real-time Communication",
+          "url": "/wiki/network/network-webrtc"
+        }
+      ]
+    }
+  ]
+}

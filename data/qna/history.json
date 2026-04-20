@@ -36,19 +36,23 @@
     ],
     "msa/msa-antifragile": [
       "2026-03-10",
-      "2026-03-31"
+      "2026-03-31",
+      "2026-04-21"
     ],
     "msa/msa-api-gateway": [
       "2026-03-10",
-      "2026-03-31"
+      "2026-03-31",
+      "2026-04-21"
     ],
     "msa/msa-business-agility": [
       "2026-03-10",
-      "2026-03-31"
+      "2026-03-31",
+      "2026-04-21"
     ],
     "msa/msa-concurrency-distributedlock": [
       "2026-03-10",
-      "2026-03-31"
+      "2026-03-31",
+      "2026-04-21"
     ],
     "msa/msa-event-deconcern": [
       "2026-03-10",
@@ -417,10 +421,12 @@
       "2026-04-14"
     ],
     "kafka/kafak-headers": [
-      "2026-03-24"
+      "2026-03-24",
+      "2026-04-21"
     ],
     "kafka/kafka-consumer-options-strategy": [
-      "2026-03-24"
+      "2026-03-24",
+      "2026-04-21"
     ],
     "architecture/architecture-circuit-breaker": [
       "2026-03-25"
@@ -531,10 +537,12 @@
       "2026-04-20"
     ],
     "kafka/kafka-exactly-once": [
-      "2026-03-31"
+      "2026-03-31",
+      "2026-04-21"
     ],
     "kafka/kafka-message-inversion": [
-      "2026-03-31"
+      "2026-03-31",
+      "2026-04-21"
     ],
     "architecture/architecture-decision-making-principles": [
       "2026-04-01"
@@ -807,6 +815,6 @@
       "2026-04-19"
     ]
   },
-  "totalQuestionsGenerated": 43,
-  "lastGenerated": "2026-04-20"
+  "totalQuestionsGenerated": 44,
+  "lastGenerated": "2026-04-21"
 }

@@ -1,0 +1,38 @@
+{
+  "date": "2026-04-22",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 결제 시스템을 설계할 때, 분산 환경에서 중복 결제(Double Payment)를 방지하기 위한 아키텍처를 어떻게 설계하시겠습니까? Idempotency Key, 재시도 메커니즘, 트랜잭션 격리 수준 등을 고려하여 설명해주세요.",
+      "answer": "대규모 결제 시스템에서 중복 결제 방지는 시스템의 신뢰성(Reliability)을 결정하는 핵심 요소입니다. 제가 제안하는 아키텍처는 다음과 같습니다.\n\n**1. Idempotency Key 기반 중복 방지**\n클라이언트는 각 결제 요청마다 고유한 Idempotency Key를 생성하여 전송합니다. 서버는 이 키를 Redis나 DynamoDB 같은 빠른 저장소에 저장하고, 동일한 키로 들어오는 요청은 이전 결과를 반환합니다. TTL을 설정하여 일정 시간 후 자동 삭제되도록 합니다.\n\n**2. 재시도 메커니즘 설계**\n네트워크 장애나 타임아웃 발생 시 Exponential Backoff 전략을 사용합니다. 재시도 횟수 제한(Retry Limit)을 두어 무한 재시도를 방지하고, 각 재시도마다 동일한 Idempotency Key를 사용하여 멱등성을 보장합니다. 로깅과 모니터링을 통해 재시도 패턴을 분석하고 시스템 개선에 활용합니다.\n\n**3. 분산 트랜잭션 관리**\nUber의 사례처럼 Cadence나 Temporal 같은 워크플로우 엔진을 사용하여 복잡한 결제 프로세스를 관리합니다. Saga 패턴을 적용하여 각 단계가 실패할 경우 보상 트랜잭션(Compensating Transaction)을 실행합니다.\n\n**4. 데이터베이스 수준의 보호**\n결제 트랜잭션 테이블에 Idempotency Key를 Unique Index로 설정하여 데이터베이스 레벨에서도 중복을 방지합니다. 트랜잭션 격리 수준은 Serializable이나 최소한 Repeatable Read를 사용하여 동시성 문제를 방지합니다.\n\n**5. 이벤트 소싱과 CQRS**\nMessage Broker(Kafka, RabbitMQ)를 활용한 Pub/Sub 아키텍처를 구축합니다. 결제 이벤트를 불변(immutable) 이벤트 스트림으로 저장하고, 각 이벤트에 시퀀스 번호를 부여하여 순서를 보장합니다. Consumer는 At-least-once 전달 보장과 함께 멱등성 처리를 구현합니다.\n\n**6. 모니터링과 알림**\nPrometheus 같은 모니터링 시스템을 구축하여 중복 결제 시도, 재시도 비율, 실패율 등을 실시간으로 추적합니다. 임계값을 초과하면 즉시 알림을 발송하여 신속한 대응이 가능하도록 합니다.\n\n**트레이드오프 고려사항:**\n- Idempotency Key 저장소의 성능과 비용 (Redis vs DynamoDB)\n- 강한 일관성 vs 가용성 (CAP 정리에 따른 선택)\n- 동기 vs 비동기 처리 (즉시 응답 vs 최종 일관성)\n- 워크플로우 엔진 도입의 복잡도 증가\n\n실무에서는 결제 금액, 트래픽 패턴, 비즈니스 요구사항에 따라 이러한 전략들을 조합하여 최적의 아키텍처를 설계해야 합니다.",
+      "tags": [
+        "architecture",
+        "payment",
+        "distributed-system",
+        "idempotency",
+        "reliability",
+        "transaction"
+      ],
+      "references": [
+        {
+          "title": "Uber's Payments Platform",
+          "url": "/wiki/architecture/architecture-payment"
+        },
+        {
+          "title": "Avoiding Double Payments in a Distributed Payments System - Airbnb Engineering",
+          "url": "https://medium.com/airbnb-engineering/avoiding-double-payments-in-a-distributed-payments-system-2981f6b070bb"
+        },
+        {
+          "title": "Retry Mechanism",
+          "url": "/wiki/architecture/architecture-retry-mechanism"
+        },
+        {
+          "title": "Idempotency Key that resolve consistency issues with retries",
+          "url": "/wiki/troubleshooting/troubleshooting-idempotency"
+        }
+      ]
+    }
+  ]
+}

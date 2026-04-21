@@ -813,8 +813,32 @@
     ],
     "functional/functional-sideeffect": [
       "2026-04-19"
+    ],
+    "architecture/architecture-payment": [
+      "2026-04-22"
+    ],
+    "architecture/architecture-prometheus": [
+      "2026-04-22"
+    ],
+    "architecture/architecture-provisioning": [
+      "2026-04-22"
+    ],
+    "architecture/architecture-pub-sub": [
+      "2026-04-22"
+    ],
+    "architecture/architecture-qr": [
+      "2026-04-22"
+    ],
+    "architecture/architecture-reliability": [
+      "2026-04-22"
+    ],
+    "architecture/architecture-retry-mechanism": [
+      "2026-04-22"
+    ],
+    "architecture/architecture-scalable-streaming-platform": [
+      "2026-04-22"
     ]
   },
-  "totalQuestionsGenerated": 44,
-  "lastGenerated": "2026-04-21"
+  "totalQuestionsGenerated": 45,
+  "lastGenerated": "2026-04-22"
 }

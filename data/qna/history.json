@@ -837,8 +837,32 @@
     ],
     "architecture/architecture-scalable-streaming-platform": [
       "2026-04-22"
+    ],
+    "kotlin/kotlin-coroutines-webflux": [
+      "2026-04-23"
+    ],
+    "kotlin/kotlin-coroutines": [
+      "2026-04-23"
+    ],
+    "kotlin/kotlin-delegate": [
+      "2026-04-23"
+    ],
+    "kotlin/kotlin-deserialize-dataclass": [
+      "2026-04-23"
+    ],
+    "kotlin/kotlin-equality": [
+      "2026-04-23"
+    ],
+    "kotlin/kotlin-exceptions-restriction": [
+      "2026-04-23"
+    ],
+    "kotlin/kotlin-first-citizen": [
+      "2026-04-23"
+    ],
+    "kotlin/kotlin-functor-monad": [
+      "2026-04-23"
     ]
   },
-  "totalQuestionsGenerated": 45,
-  "lastGenerated": "2026-04-22"
+  "totalQuestionsGenerated": 46,
+  "lastGenerated": "2026-04-23"
 }

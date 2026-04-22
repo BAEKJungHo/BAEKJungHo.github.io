@@ -1,0 +1,35 @@
+{
+  "date": "2026-04-23",
+  "dayOfWeek": "목요일",
+  "topic": "Programming Languages (Go, Java, Kotlin)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Kotlin Coroutines와 Spring WebFlux를 함께 사용할 때의 설계 고려사항과 트레이드오프에 대해 설명해주세요. 특히 Reactive Streams의 Publisher/Subscriber 모델과 Coroutines의 suspend 함수 간의 변환 시점과 성능 영향, 그리고 실제 프로덕션 환경에서 어떤 상황에 어떤 방식을 선택해야 하는지 경험을 바탕으로 말씀해주세요.",
+      "answer": "Kotlin Coroutines와 Spring WebFlux를 함께 사용할 때는 다음과 같은 설계 고려사항과 트레이드오프가 있습니다.\n\n**1. 프로그래밍 모델의 차이**\n- Reactive Streams (WebFlux)는 선언적이고 함수형 스타일로 비동기 데이터 스트림을 처리합니다 (Flux, Mono)\n- Coroutines는 명령형 스타일로 비동기 코드를 동기식처럼 작성할 수 있습니다 (suspend functions)\n- WebFlux의 가장 큰 문제는 코드의 Flow를 이해하기 어렵다는 것인데, Coroutines를 사용하면 비동기를 처리하면서도 코드를 동기식으로 이해할 수 있습니다\n\n**2. 변환 시점과 성능 영향**\n- Spring은 Coroutines와 Reactive types 간의 자동 변환을 지원합니다 (kotlinx-coroutines-reactor)\n- suspend fun을 반환하는 Controller 메서드는 내부적으로 Mono로 변환됩니다\n- Flow<T>는 Flux<T>로, Mono<T>는 suspend fun으로 상호 변환 가능합니다\n- 변환 오버헤드는 미미하지만, 불필요한 중첩 변환(Mono -> Flow -> Mono)은 피해야 합니다\n\n**3. 실무 선택 기준**\n\n*Coroutines를 선택하는 경우:*\n- 팀이 명령형 프로그래밍에 익숙하고 학습 곡선을 줄이고 싶을 때\n- 복잡한 비즈니스 로직에서 가독성이 중요할 때\n- 에러 핸들링을 try-catch로 자연스럽게 처리하고 싶을 때\n- 단순 요청-응답 패턴이 주를 이루는 API 서버\n\n*WebFlux (Reactive Streams)를 선택하는 경우:*\n- 백프레셔(backpressure) 제어가 중요한 스트리밍 시나리오\n- 복잡한 스트림 연산 (merge, zip, window 등)이 필요할 때\n- 외부 Reactive 라이브러리(R2DBC, Reactive Redis 등)와의 통합이 많을 때\n- 이미 팀이 Reactive 패러다임에 익숙한 경우\n\n*혼합 사용:*\n- Repository/Infrastructure 레이어는 Reactive types (R2DBC 등)\n- Service/Controller 레이어는 Coroutines로 변환하여 가독성 확보\n- 이 방식이 실무에서 가장 균형잡힌 접근법입니다\n\n**4. 주의사항**\n- Coroutines는 경량 스레드이지만 무한정 생성하면 메모리 이슈 발생 가능\n- CoroutineContext와 Dispatcher 설정을 명확히 해야 합니다 (Dispatchers.IO, Default 등)\n- Structured Concurrency를 통한 라이프사이클 관리가 중요합니다\n- suspend 함수 내에서 blocking 호출을 하면 전체 성능이 저하되므로 withContext(Dispatchers.IO) 사용 필요\n\n**5. 성능 특성**\n- 경량성: Coroutines는 수천~수만 개 생성 가능 (스레드 대비 매우 저렴)\n- Context Switching: Coroutines의 일시 중단/재개는 스레드 컨텍스트 스위칭보다 훨씬 가볍습니다\n- 메모리: Coroutines는 continuation 기반으로 상태를 저장하므로 메모리 효율적\n\n실제 프로덕션에서는 코드 가독성과 유지보수성을 우선시하여 Coroutines를 주로 사용하되, 스트리밍이나 백프레셔가 필요한 특정 부분에만 Reactive Streams를 직접 사용하는 하이브리드 접근을 추천합니다.",
+      "tags": [
+        "kotlin",
+        "coroutine",
+        "webflux",
+        "reactive",
+        "spring",
+        "architecture",
+        "performance"
+      ],
+      "references": [
+        {
+          "title": "Spring Coroutines Documentation",
+          "url": "https://docs.spring.io/spring-framework/reference/languages/kotlin/coroutines.html"
+        },
+        {
+          "title": "Coroutines with WebFlux",
+          "url": "/wiki/kotlin/kotlin-coroutines-webflux"
+        },
+        {
+          "title": "Kotlin Coroutines",
+          "url": "/wiki/kotlin/kotlin-coroutines"
+        }
+      ]
+    }
+  ]
+}

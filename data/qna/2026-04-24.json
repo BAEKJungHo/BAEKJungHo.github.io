@@ -1,0 +1,29 @@
+{
+  "date": "2026-04-24",
+  "dayOfWeek": "금요일",
+  "topic": "Data Structures & Algorithms",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 검색 자동완성 시스템을 설계한다고 가정합니다. 사용자가 입력하는 동안 실시간으로 추천어를 제공해야 하는데, HashMap과 Trie 중 어떤 자료구조를 선택하시겠습니까? 각 자료구조의 트레이드오프를 분석하고, 실제 프로덕션 환경에서 고려해야 할 메모리 최적화 전략과 성능 개선 방안을 구체적으로 설명해주세요.",
+      "answer": "이 질문은 자료구조의 이론적 이해와 실무적 판단력을 동시에 평가하는 질문입니다.\n\n**자료구조 선택: Trie가 유리한 이유**\n\n1. **접두사 검색의 효율성**: 자동완성은 본질적으로 prefix matching 문제입니다. Trie는 O(k) 시간복잡도로 접두사 검색이 가능하며(k는 입력 문자열 길이), 해당 접두사를 가진 모든 후보를 효율적으로 탐색할 수 있습니다. 반면 HashMap은 정확한 키 매칭에는 O(1)이지만, 접두사 기반 검색을 위해서는 전체 키를 순회해야 하므로 O(N)이 됩니다.\n\n2. **공통 접두사 공유**: 'apple', 'application', 'apply' 같은 단어들은 'app'이라는 공통 접두사를 공유합니다. Trie는 이를 한 번만 저장하여 메모리를 절약하지만, HashMap은 각 키를 독립적으로 저장합니다.\n\n**트레이드오프 분석**\n\n- **메모리 측면**: Trie의 이론적 공간복잡도는 O(N × K)로 HashMap보다 클 수 있습니다. 특히 알파벳이 큰 경우(예: 유니코드) 각 노드가 많은 자식 포인터를 가져야 하므로 메모리 오버헤드가 발생합니다.\n- **캐시 지역성**: HashMap은 해시 테이블 구조로 메모리 접근 패턴이 상대적으로 예측 가능하지만, Trie는 포인터 체이싱(pointer chasing)으로 인해 캐시 미스가 더 자주 발생할 수 있습니다.\n- **구현 복잡도**: Trie는 HashMap보다 구현이 복잡하며, 특히 삭제 연산 시 고려사항이 많습니다.\n\n**프로덕션 환경 최적화 전략**\n\n1. **Radix Tree(Compact Trie) 사용**: 단일 자식만 있는 노드 체인을 압축하여 메모리를 절약합니다. 예를 들어 'apple'을 a->p->p->l->e로 저장하지 않고 'apple' 전체를 하나의 엣지에 저장합니다.\n\n2. **하이브리드 접근**: \n   - 상위 레벨(처음 2-3글자)은 Trie로 빠른 접두사 필터링\n   - 하위 레벨은 각 노드에 정렬된 배열이나 작은 HashMap으로 저장\n   - 이를 통해 메모리 효율과 검색 속도의 균형을 맞춥니다.\n\n3. **빈도 기반 우선순위**: \n   - 각 노드에 인기도 점수를 저장하여 상위 K개 추천만 빠르게 반환\n   - Top-K heap을 노드마다 유지하거나, lazy evaluation으로 필요할 때만 계산\n\n4. **메모리 최적화**:\n   - Array 대신 HashMap으로 자식 노드 저장 (sparse한 경우)\n   - Ternary Search Tree: 각 노드가 3개의 포인터만 유지 (left, middle, right)\n   - 문자열 인터닝(string interning)으로 중복 문자열 제거\n\n5. **분산 처리**:\n   - 첫 글자나 해시값 기반으로 샤딩하여 여러 서버에 분산\n   - 각 샤드별로 독립적인 Trie 유지\n   - Redis나 Elasticsearch 같은 인메모리 DB 활용\n\n6. **캐싱 레이어**:\n   - 인기 검색어는 LRU 캐시에 저장\n   - CDN 엣지에서 지역별 인기 검색어 캐싱\n\n7. **비동기 업데이트**:\n   - 실시간 검색은 read-only Trie에서 수행\n   - 주기적으로 배치 업데이트하여 새로운 Trie 구성 후 스왑\n\n**실제 사례**:\nGoogle, Elasticsearch의 autocomplete 기능은 Trie 기반이며, 메모리 효율을 위해 FST(Finite State Transducer)라는 고도로 압축된 형태를 사용합니다. 반면 작은 규모나 정확한 매칭만 필요한 경우 Redis의 Sorted Set이나 HashMap으로도 충분할 수 있습니다.\n\n결론적으로, 자동완성 시스템에서는 Trie(또는 최적화된 변형)가 접두사 검색 특성상 더 적합하지만, 실제 프로덕션에서는 메모리, 트래픽, 데이터 규모를 고려한 하이브리드 접근이 필요합니다.",
+      "tags": [
+        "datastructures",
+        "trie",
+        "system-design",
+        "tradeoff",
+        "optimization"
+      ],
+      "references": [
+        {
+          "title": "DIGITAL TREE",
+          "url": "/wiki/datastructures/datastructures-trie"
+        },
+        {
+          "title": "Difference Stack and Heap",
+          "url": "/wiki/datastructures/datastructures-stack-heap"
+        }
+      ]
+    }
+  ]
+}

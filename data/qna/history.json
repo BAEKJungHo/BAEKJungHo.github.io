@@ -179,10 +179,12 @@
       "2026-04-18"
     ],
     "infra/infra-collision-domain": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-25"
     ],
     "infra/infra-customer": [
-      "2026-03-14"
+      "2026-03-14",
+      "2026-04-25"
     ],
     "designpattern/designpattern-adapter": [
       "2026-03-15"
@@ -321,22 +323,28 @@
       "2026-03-19"
     ],
     "infra/infra-deployment": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-04-25"
     ],
     "infra/infra-docker": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-04-25"
     ],
     "infra/infra-elasticbeanstalk": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-04-25"
     ],
     "infra/infra-envoy-proxy": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-04-25"
     ],
     "infra/infra-gateway": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-04-25"
     ],
     "infra/infra-incident": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-04-25"
     ],
     "infra/infra-ip": [
       "2026-03-21"
@@ -867,6 +875,6 @@
       "2026-04-23"
     ]
   },
-  "totalQuestionsGenerated": 47,
-  "lastGenerated": "2026-04-24"
+  "totalQuestionsGenerated": 48,
+  "lastGenerated": "2026-04-25"
 }

@@ -1,0 +1,38 @@
+{
+  "date": "2026-04-25",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처 환경에서 Blue-Green 배포와 Canary 배포 전략 중 어떤 것을 선택할지 결정해야 하는 상황입니다. 각 전략의 트레이드오프를 설명하고, 어떤 상황에서 어떤 전략이 더 적합한지 실무 경험을 바탕으로 설명해주세요. 특히, 인프라 비용, 롤백 전략, 모니터링 복잡도 측면에서 비교해주세요.",
+      "answer": "**Blue-Green 배포의 특징과 트레이드오프:**\n\nBlue-Green 배포는 전체 환경을 복제하여 새 버전(Green)을 배포한 후, 트래픽을 한 번에 전환하는 방식입니다.\n\n장점:\n- 빠른 롤백: 문제 발생 시 트래픽을 즉시 이전 환경(Blue)로 되돌릴 수 있어 복구 시간이 매우 짧습니다\n- 충분한 사전 테스트: 트래픽 전환 전에 Green 환경에서 내부 테스트를 완전히 수행할 수 있습니다\n- 명확한 버전 분리: 동일 시점에 두 버전이 혼재되지 않아 디버깅이 용이합니다\n\n단점:\n- 인프라 비용: 배포 시점에 인스턴스가 2배 필요하므로 비용이 높습니다\n- 데이터베이스 마이그레이션: 스키마 변경이 있는 경우 양방향 호환성을 고려해야 합니다\n- All-or-Nothing: 점진적 검증이 불가능하여 예상치 못한 프로덕션 이슈 발견이 늦을 수 있습니다\n\n**Canary 배포의 특징과 트레이드오프:**\n\nCanary 배포는 새 버전을 일부 사용자(예: 5~10%)에게만 먼저 배포하여 점진적으로 확대하는 방식입니다.\n\n장점:\n- 위험 최소화: 문제 발생 시 영향받는 사용자가 제한적입니다\n- 실제 프로덕션 검증: 실제 사용자 트래픽으로 새 버전을 검증할 수 있습니다\n- 비용 효율: 전체 인프라를 복제할 필요가 없어 상대적으로 저렴합니다\n- 점진적 확장: 트래픽 비율을 단계적으로 조정하며 모니터링할 수 있습니다\n\n단점:\n- 복잡한 모니터링: 두 버전의 메트릭을 동시에 추적하고 비교해야 합니다\n- 트래픽 라우팅 복잡도: Envoy, Istio 같은 Service Mesh나 정교한 로드밸런서 설정이 필요합니다\n- 긴 배포 시간: 점진적 확대 과정에서 전체 배포 완료까지 시간이 오래 걸립니다\n- 세션 일관성: 사용자가 요청마다 다른 버전을 받을 수 있어 sticky session 고려 필요합니다\n\n**상황별 적합한 전략:**\n\n1. **Blue-Green이 적합한 경우:**\n   - 금융/결제 등 안정성이 최우선인 미션 크리티컬 서비스\n   - 배포 빈도가 낮고(주 1회 이하) 충분한 QA 리소스가 있는 경우\n   - 데이터베이스 스키마 변경이 포함된 메이저 업데이트\n   - 롤백 속도가 가장 중요한 요구사항인 경우\n   - 예: 분기별 대규모 기능 릴리스, 규제 대응 업데이트\n\n2. **Canary가 적합한 경우:**\n   - 일일 수십 회 배포하는 애자일/DevOps 환경\n   - 마이크로서비스 아키텍처로 서비스가 독립적으로 배포 가능한 경우\n   - 사용자 행동에 따라 영향이 다를 수 있는 기능 (A/B 테스트와 결합 가능)\n   - 인프라 비용 최적화가 중요한 스타트업 환경\n   - 예: 추천 알고리즘 변경, UI 개선, 성능 최적화\n\n**실무 권장 사항:**\n\n제 경험상, 대부분의 마이크로서비스 환경에서는 Canary 배포를 기본 전략으로 사용하고, 다음 요소를 함께 구성하는 것이 효과적입니다:\n\n- Kubernetes + Istio/Linkerd 같은 Service Mesh로 트래픽 분할 자동화\n- Prometheus + Grafana로 버전별 Golden Signals(Latency, Traffic, Errors, Saturation) 대시보드 구성\n- Error rate, P99 latency 등 핵심 메트릭 기반 자동 롤백 정책 설정\n- Feature Flag를 함께 활용하여 배포와 기능 활성화 분리\n\n다만, 데이터베이스 마이그레이션이나 메이저 아키텍처 변경 시에는 Blue-Green으로 전환하는 하이브리드 접근이 리스크를 최소화할 수 있습니다.",
+      "tags": [
+        "infra",
+        "devops",
+        "kubernetes",
+        "deployment",
+        "microservices",
+        "trade-off"
+      ],
+      "references": [
+        {
+          "title": "Deployment Strategy - Rolling Update, Blue-Green, Canary",
+          "url": "/wiki/infra/infra-deployment"
+        },
+        {
+          "title": "Docker Container",
+          "url": "/wiki/infra/infra-docker"
+        },
+        {
+          "title": "Envoy Proxy",
+          "url": "/wiki/infra/infra-envoy-proxy"
+        },
+        {
+          "title": "Incident, Defect tracking",
+          "url": "/wiki/infra/infra-incident"
+        }
+      ]
+    }
+  ]
+}

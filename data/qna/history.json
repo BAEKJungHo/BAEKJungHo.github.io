@@ -873,8 +873,32 @@
     ],
     "kotlin/kotlin-functor-monad": [
       "2026-04-23"
+    ],
+    "functional/functional-skills": [
+      "2026-04-26"
+    ],
+    "functional/functional-timeline-cutting": [
+      "2026-04-26"
+    ],
+    "oop/oop-elegant-object": [
+      "2026-04-26"
+    ],
+    "oop/oop-encapsulation": [
+      "2026-04-26"
+    ],
+    "oop/oop-firstclasscollection": [
+      "2026-04-26"
+    ],
+    "oop/oop-law-of-demeter": [
+      "2026-04-26"
+    ],
+    "oop/oop-minimalist-concepts": [
+      "2026-04-26"
+    ],
+    "oop/oop-object-calisthenics": [
+      "2026-04-26"
     ]
   },
-  "totalQuestionsGenerated": 48,
-  "lastGenerated": "2026-04-25"
+  "totalQuestionsGenerated": 49,
+  "lastGenerated": "2026-04-26"
 }

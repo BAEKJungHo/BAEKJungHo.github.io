@@ -1,0 +1,41 @@
+{
+  "date": "2026-04-26",
+  "dayOfWeek": "일요일",
+  "topic": "Design Patterns, TDD, DDD, FP, OOP",
+  "questions": [
+    {
+      "id": 1,
+      "question": "함수형 프로그래밍의 Action, Calculate, Data 개념과 객체지향의 캡슐화(Encapsulation) 원칙을 비교했을 때, 두 패러다임에서 '상태 변경'을 다루는 방식의 차이점은 무엇인가요? 또한 실무에서 이 두 접근 방식을 혼용할 때 어떤 트레이드오프가 발생하며, 어떤 기준으로 선택하시겠습니까?",
+      "answer": "**핵심 개념 설명:**\n\n함수형 프로그래밍과 객체지향 프로그래밍은 상태 변경을 근본적으로 다르게 다룹니다.\n\n**함수형 프로그래밍 (Action, Calculate, Data):**\n- Calculate는 순수 함수로 같은 입력에 대해 항상 같은 출력을 반환하며, 부수효과가 없습니다\n- Data는 불변(immutable)하며 모든 이벤트에 대한 사실을 기록합니다\n- Action만이 부수효과를 가지며, 호출 시점과 횟수에 의존합니다\n- 함수형에서는 Action을 최소화하고 Calculate로 추출하려는 노력을 합니다\n- 상태 변경은 명시적으로 Action으로 분리되어 관리됩니다\n\n**객체지향 (캡슐화):**\n- 객체는 상태(state)와 행위(behavior)를 함께 캡슐화합니다\n- 캡슐화의 핵심은 객체가 항상 유효한(valid) 상태를 보장하는 것입니다\n- 상태 변경은 객체 내부에서 일어나며, 외부에서는 인터페이스를 통해서만 접근합니다\n- 불변성을 강제하지 않지만, First Class Collection이나 불변 객체 패턴을 통해 구현 가능합니다\n\n**실무적 트레이드오프:**\n\n1. **테스트 용이성 vs 도메인 응집성**\n   - FP: Calculate는 테스트가 매우 쉽고, 재사용성이 높음\n   - OOP: 도메인 로직과 상태가 한 곳에 있어 비즈니스 규칙 이해가 쉬움\n   - 트레이드오프: 복잡한 비즈니스 로직은 OOP로 응집시키되, 핵심 계산 로직은 순수 함수로 분리\n\n2. **동시성 처리**\n   - FP: 불변 데이터로 인해 동시성 이슈가 적음\n   - OOP: 가변 상태로 인해 동기화 메커니즘 필요\n   - 트레이드오프: Timeline Cutting처럼 분산 시스템에서는 FP 접근이 유리\n\n3. **코드 구조와 이해도**\n   - FP: Action 전파로 인해 전체 호출 체인이 Action이 될 수 있음\n   - OOP: Law of Demeter를 통해 의존성을 제한하고 결합도를 낮춤\n   - 트레이드오프: 도메인 경계에서는 OOP, 데이터 변환 파이프라인에서는 FP\n\n**선택 기준:**\n\n1. **비즈니스 로직이 복잡하고 상태 전이가 중요한 경우**: OOP + 캡슐화\n   - 예: 주문 상태 관리, 결제 프로세스\n   - Elegant Object 원칙에 따라 객체가 자신의 유효성을 보장\n\n2. **데이터 변환과 계산 중심인 경우**: FP\n   - 예: 데이터 집계, 통계 계산, ETL 파이프라인\n   - Calculate로 분리하여 테스트 용이성 확보\n\n3. **하이브리드 접근**:\n   - 도메인 모델은 OOP로 설계 (First Class Collection, 캡슐화)\n   - 비즈니스 규칙 계산은 순수 함수로 분리\n   - Action은 최외곽 레이어(Controller, Service)에 배치\n   - 예시 코드 구조:\n\n```kotlin\n// OOP: 도메인 모델 (상태 + 행위 캡슐화)\nclass Order(private val items: Items) { // First Class Collection\n    fun calculateTotal(): Money {\n        // 순수 함수 위임\n        return OrderCalculator.calculate(items.getItems())\n    }\n    \n    fun validateState() {\n        // 캡슐화: 객체가 자신의 유효성 보장\n        require(items.isNotEmpty()) { \"Order must have items\" }\n    }\n}\n\n// FP: 순수 계산 로직 분리\nobject OrderCalculator {\n    fun calculate(items: List<Item>): Money { // Calculate\n        return items.fold(Money.ZERO) { acc, item -> \n            acc.add(item.price) \n        }\n    }\n}\n\n// Action: 최외곽 레이어\nclass OrderService {\n    fun placeOrder(order: Order) { // Action\n        order.validateState()\n        val total = order.calculateTotal() // Calculate 호출\n        repository.save(order) // Action\n        eventPublisher.publish(OrderPlaced(order)) // Action\n    }\n}\n```\n\n이러한 하이브리드 접근은 YAGNI와 KISS 원칙을 준수하면서도, 각 패러다임의 장점을 살릴 수 있습니다.",
+      "tags": [
+        "fp",
+        "oop",
+        "design-pattern",
+        "encapsulation",
+        "functional-programming"
+      ],
+      "references": [
+        {
+          "title": "Components of Code in Functional Programming",
+          "url": "/wiki/functional/functional-skills"
+        },
+        {
+          "title": "Encapsulation",
+          "url": "/wiki/oop/oop-encapsulation"
+        },
+        {
+          "title": "Timeline Cutting",
+          "url": "/wiki/functional/functional-timeline-cutting"
+        },
+        {
+          "title": "First Class Collection",
+          "url": "/wiki/oop/oop-firstclasscollection"
+        },
+        {
+          "title": "Minimalist Concepts",
+          "url": "/wiki/oop/oop-minimalist-concepts"
+        }
+      ]
+    }
+  ]
+}

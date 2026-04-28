@@ -913,8 +913,32 @@
     ],
     "oop/oop-object-calisthenics": [
       "2026-04-26"
+    ],
+    "architecture/architecture-scalable": [
+      "2026-04-29"
+    ],
+    "architecture/architecture-schema-registry": [
+      "2026-04-29"
+    ],
+    "architecture/architecture-software-fundamental": [
+      "2026-04-29"
+    ],
+    "architecture/architecture-software": [
+      "2026-04-29"
+    ],
+    "architecture/architecture-stratified-design": [
+      "2026-04-29"
+    ],
+    "architecture/architecture-stream": [
+      "2026-04-29"
+    ],
+    "architecture/architecture-suspend-mechanism": [
+      "2026-04-29"
+    ],
+    "architecture/architecture-sync-messaging": [
+      "2026-04-29"
     ]
   },
-  "totalQuestionsGenerated": 51,
-  "lastGenerated": "2026-04-28"
+  "totalQuestionsGenerated": 52,
+  "lastGenerated": "2026-04-29"
 }

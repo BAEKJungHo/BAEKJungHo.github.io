@@ -1,0 +1,35 @@
+{
+  "date": "2026-04-29",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 이벤트 기반 마이크로서비스 아키텍처에서 Schema Registry를 도입할지 결정해야 합니다. Schema Registry 도입의 장단점과 트레이드오프를 설명하고, 어떤 상황에서 도입을 권장하며 어떤 상황에서는 오버엔지니어링이 될 수 있는지 실무 경험을 바탕으로 설명해주세요.",
+      "answer": "Schema Registry 도입에 대한 의사결정은 시스템의 특성과 요구사항을 깊이 이해해야 하는 중요한 아키텍처 결정입니다.\n\n**Schema Registry의 핵심 가치:**\n\n1. **타입 안정성(Type Safety)**: 비동기 메시징에서 생산자와 소비자 간의 계약(contract)을 명시적으로 정의하고 검증할 수 있습니다. 런타임 오류를 컴파일 타임 또는 배포 시점으로 앞당길 수 있습니다.\n\n2. **스키마 진화(Schema Evolution)**: 하위 호환성(backward compatibility)과 상위 호환성(forward compatibility)을 관리하면서 스키마를 안전하게 변경할 수 있습니다. Avro의 경우 스키마 ID 기반으로 버전 관리가 가능합니다.\n\n3. **문서화 및 거버넌스**: 스키마 자체가 살아있는 문서가 되며, 중앙화된 스키마 관리를 통해 데이터 거버넌스를 강화할 수 있습니다.\n\n**주요 트레이드오프:**\n\n1. **성능 오버헤드**: 매 메시지마다 직렬화/역직렬화 과정에서 스키마 검증이 발생합니다. 다만 이는 스키마 캐싱으로 상당 부분 완화 가능합니다. 실무에서 로컬 캐시를 적용하면 Schema Registry 호출은 초기 한 번 또는 스키마 변경 시에만 발생합니다.\n\n2. **운영 복잡도**: Schema Registry라는 추가 인프라 컴포넌트가 생기며, 이것의 가용성이 전체 시스템에 영향을 줍니다. 카프카와 함께 사용하는 경우 클러스터 구성, 백업, 모니터링 등 추가 운영 부담이 있습니다.\n\n3. **개발 프로세스 변화**: 스키마 우선 개발(Schema-First Development) 방식으로 전환되며, 스키마 변경에 대한 검토 및 승인 프로세스가 필요합니다.\n\n**도입을 권장하는 상황:**\n\n1. **다수의 팀/서비스가 동일한 이벤트를 소비**: 여러 팀이 같은 토픽을 구독하는 경우, 암묵적 계약보다 명시적 스키마가 훨씬 안전합니다. 예를 들어 주문 이벤트를 결제, 배송, 알림, 분석 팀이 모두 소비한다면 스키마 없이는 각 팀이 서로 다른 가정을 할 수 있습니다.\n\n2. **장기 운영되는 시스템**: 시간이 지나면서 스키마 변경이 불가피한데, Schema Registry 없이는 모든 소비자가 동시에 업데이트되어야 하는 부담이 있습니다. 실무에서 수십 개의 마이크로서비스가 있는 경우 이는 거의 불가능합니다.\n\n3. **규제/컴플라이언스 요구사항**: 금융, 헬스케어 등 데이터 무결성이 중요한 도메인에서는 스키마 기반 검증이 필수적입니다.\n\n4. **이기종 언어 환경**: Java, Python, Go 등 다양한 언어로 작성된 서비스들이 통신하는 경우, Avro/Protobuf 같은 언어 중립적 스키마가 큰 도움이 됩니다.\n\n**오버엔지니어링이 될 수 있는 상황:**\n\n1. **소규모 모놀리식에 가까운 시스템**: 3-4개 이하의 서비스만 있고, 모두 같은 팀이 관리한다면 JSON with strong typing (TypeScript, Kotlin data class)으로도 충분할 수 있습니다.\n\n2. **프로토타입/MVP 단계**: 빠른 검증이 필요한 초기 단계에서는 Schema Registry 도입이 개발 속도를 저하시킬 수 있습니다. 다만 향후 마이그레이션 비용을 고려해야 합니다.\n\n3. **이벤트 스키마가 극도로 단순한 경우**: 예를 들어 단순히 ID만 전달하는 알림성 이벤트라면 Schema Registry의 이점이 크지 않습니다.\n\n4. **내부 이벤트만 존재**: 하나의 서비스 내부에서만 사용되는 이벤트(internal event)라면 해당 서비스의 타입 시스템으로 충분합니다.\n\n**실무 권장사항:**\n\n제 경험상, 마이크로서비스가 5개 이상이고 팀 간 경계가 명확해지는 시점부터 Schema Registry 도입을 고려하는 것이 좋습니다. 초기에는 critical한 도메인 이벤트(주문, 결제 등)에만 적용하고, 점진적으로 확대하는 전략이 효과적입니다. \n\n또한 Avro vs Protobuf vs JSON Schema 선택 시에는, Avro는 데이터 크기가 중요한 경우, Protobuf는 RPC와 메시징을 모두 사용하는 경우, JSON Schema는 기존 REST API와의 일관성이 중요한 경우에 각각 장점이 있습니다.",
+      "tags": [
+        "architecture",
+        "cloudnative",
+        "designpattern",
+        "schema-registry",
+        "kafka",
+        "microservices",
+        "tradeoff"
+      ],
+      "references": [
+        {
+          "title": "Schema Registry",
+          "url": "/wiki/architecture/architecture-schema-registry"
+        },
+        {
+          "title": "Key Aspects of scalable architectures",
+          "url": "/wiki/architecture/architecture-scalable"
+        },
+        {
+          "title": "SOFTWARE FUNDAMENTALS; CRITICAL THINKING & ABSTRACTION",
+          "url": "/wiki/architecture/architecture-software-fundamental"
+        }
+      ]
+    }
+  ]
+}

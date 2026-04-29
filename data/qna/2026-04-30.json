@@ -1,0 +1,34 @@
+{
+  "date": "2026-04-30",
+  "dayOfWeek": "목요일",
+  "topic": "Programming Languages (Go, Java, Kotlin)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Kotlin의 제네릭에서 타입 소거(Type Erasure)로 인해 발생할 수 있는 문제점과, 이를 해결하기 위한 reified 키워드의 동작 원리 및 제약사항에 대해 설명하고, 실무에서 reified를 사용할 때와 사용하지 말아야 할 때의 판단 기준에 대해 논의해주세요.",
+      "answer": "# 타입 소거(Type Erasure)의 문제점\n\nJVM은 런타임에 제네릭 타입 정보를 보존하지 않습니다. 예를 들어 `List<String>`과 `List<Int>`는 런타임에 모두 `List`로만 존재합니다. 이로 인해 발생하는 주요 문제는:\n\n1. **런타임 타입 체크 불가**: `is T` 같은 타입 체크를 직접 수행할 수 없음\n2. **리플렉션 제약**: 제네릭 타입에 대한 리플렉션 정보를 얻을 수 없음\n3. **타입 안정성 저하**: 런타임에 타입 불일치 문제 발생 가능\n\n# reified 키워드의 동작 원리\n\n`reified` 키워드는 **inline 함수와 함께 사용**되어 컴파일 타임에 제네릭 타입 정보를 바이트코드로 직접 삽입합니다.\n\n```kotlin\n// reified 사용\ninline fun <reified T> isInstance(value: Any): Boolean {\n    return value is T  // 컴파일러가 실제 타입으로 치환\n}\n\n// 컴파일 후 호출 시점에 다음과 같이 변환됨\nval result = isInstance<String>(\"hello\")\n// -> val result = \"hello\" is String\n```\n\n**동작 원리**:\n- inline 함수는 호출 지점에 함수 본문이 복사됨\n- reified 타입 파라미터는 실제 타입으로 치환됨\n- 결과적으로 타입 정보가 바이트코드에 포함됨\n\n# reified의 제약사항\n\n1. **inline 함수에서만 사용 가능**: 함수 본문이 인라이닝되어야 타입 치환이 가능\n2. **클래스의 타입 파라미터에는 사용 불가**: 클래스는 인라이닝 불가\n3. **가상 함수에 사용 불가**: open, override 함수는 인라이닝 불가\n4. **프로퍼티에 사용 불가**: 일반 프로퍼티는 인라이닝 불가\n\n```kotlin\n// ❌ 불가능한 사용 사례들\nclass Container<reified T>  // 클래스에는 불가\nopen inline fun <reified T> process() {}  // open 함수 불가\n```\n\n# 실무 판단 기준\n\n## reified를 사용해야 할 때:\n\n1. **타입 체크가 필요한 유틸리티 함수**\n```kotlin\ninline fun <reified T> Gson.fromJson(json: String): T {\n    return fromJson(json, T::class.java)\n}\n```\n\n2. **타입 기반 필터링**\n```kotlin\ninline fun <reified T> List<*>.filterIsInstance(): List<T> {\n    return this.filter { it is T }.map { it as T }\n}\n```\n\n3. **리플렉션 기반 팩토리 패턴**\n```kotlin\ninline fun <reified T : Any> create(): T {\n    return T::class.createInstance()\n}\n```\n\n## reified를 사용하지 말아야 할 때:\n\n1. **함수가 큰 경우**: inline으로 인한 바이트코드 증가\n```kotlin\n// ❌ 나쁜 예: 큰 함수를 inline으로\ninline fun <reified T> complexProcess() {\n    // 100줄의 복잡한 로직\n    // 모든 호출 지점에 복사되어 바이트코드 크기 급증\n}\n```\n\n2. **재귀 함수**: 스택 오버플로우 위험\n```kotlin\n// ❌ 재귀와 inline 조합은 위험\ninline fun <reified T> recursiveProcess(depth: Int) {\n    if (depth > 0) recursiveProcess<T>(depth - 1)\n}\n```\n\n3. **인터페이스 추상화가 필요한 경우**: inline 함수는 다형성 제공 불가\n```kotlin\n// ❌ 인터페이스 구현 불가\ninterface Processor {\n    fun <T> process(item: T)  // inline 불가능\n}\n```\n\n4. **람다를 변수에 저장하거나 다른 함수에 전달하는 경우**\n```kotlin\ninline fun <reified T> process(noinline action: (T) -> Unit) {\n    // noinline을 써야 하므로 reified 장점 상실\n    val stored = action  // 저장 필요시\n}\n```\n\n# 트레이드오프 고려사항\n\n**장점**:\n- 타입 안정성 향상\n- 런타임 타입 체크 가능\n- 깔끔한 API 제공\n\n**단점**:\n- 바이트코드 크기 증가\n- 컴파일 시간 증가\n- 디버깅 복잡도 증가 (인라이닝으로 인한 스택 트레이스 변경)\n\n**권장사항**: 작고 자주 호출되는 유틸리티 함수에서 타입 정보가 필요한 경우에만 사용하고, 함수 크기가 10-15줄을 넘으면 일반 제네릭 함수로 대체를 고려해야 합니다.",
+      "tags": [
+        "kotlin",
+        "generics",
+        "reified",
+        "inline",
+        "type-erasure",
+        "design-decision"
+      ],
+      "references": [
+        {
+          "title": "Kotlin Generics",
+          "url": "/wiki/kotlin/kotlin-generics"
+        },
+        {
+          "title": "Kotlin Inline Functions",
+          "url": "/wiki/kotlin/kotlin-inline"
+        },
+        {
+          "title": "Minimizing mental complexity",
+          "url": "/wiki/kotlin/kotlin-minimizing-mental-complexity"
+        }
+      ]
+    }
+  ]
+}

@@ -937,8 +937,32 @@
     ],
     "architecture/architecture-sync-messaging": [
       "2026-04-29"
+    ],
+    "kotlin/kotlin-generics": [
+      "2026-04-30"
+    ],
+    "kotlin/kotlin-high-order-functions": [
+      "2026-04-30"
+    ],
+    "kotlin/kotlin-inline": [
+      "2026-04-30"
+    ],
+    "kotlin/kotlin-interface-protocol": [
+      "2026-04-30"
+    ],
+    "kotlin/kotlin-jdbc-batch": [
+      "2026-04-30"
+    ],
+    "kotlin/kotlin-ksp": [
+      "2026-04-30"
+    ],
+    "kotlin/kotlin-lambda": [
+      "2026-04-30"
+    ],
+    "kotlin/kotlin-minimizing-mental-complexity": [
+      "2026-04-30"
     ]
   },
-  "totalQuestionsGenerated": 52,
-  "lastGenerated": "2026-04-29"
+  "totalQuestionsGenerated": 53,
+  "lastGenerated": "2026-04-30"
 }

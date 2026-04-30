@@ -1,0 +1,34 @@
+{
+  "date": "2026-05-01",
+  "dayOfWeek": "금요일",
+  "topic": "Data Structures & Algorithms",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 검색 자동완성 시스템을 설계한다고 가정해봅시다. Trie, HashMap, Radix Tree 중 어떤 자료구조를 선택할 것이며, 각 선택의 트레이드오프는 무엇인가요? 또한 재귀적 탐색 구현 시 스택 오버플로우를 방지하기 위한 전략은 무엇인가요?",
+      "answer": "이 질문은 자료구조 선택, 메모리 관리, 재귀 최적화를 종합적으로 평가합니다.\n\n**자료구조 선택과 트레이드오프:**\n\n1. **Trie**: \n   - 장점: 접두사 탐색이 O(k) (k는 검색어 길이)로 매우 빠르며, 와일드카드 매칭과 사전순 정렬이 자연스럽게 지원됩니다.\n   - 단점: 메모리 사용량이 O(N×K)로 크며, 각 노드마다 자식 포인터 배열(예: 26개 알파벳)을 유지해야 합니다. 실무에서는 sparse한 경우 메모리 낭비가 심합니다.\n   - 적합한 경우: 접두사 매칭이 핵심이고, 메모리가 충분한 경우\n\n2. **HashMap**:\n   - 장점: 완전 일치 검색이 O(1)로 매우 빠르고, 메모리 효율이 상대적으로 좋습니다.\n   - 단점: 접두사 탐색 시 모든 키를 순회해야 하므로 O(N)이 됩니다. 자동완성처럼 부분 매칭이 필요한 경우 비효율적입니다.\n   - 적합한 경우: 완전 일치 검색만 필요한 경우\n\n3. **Radix Tree (Compact Prefix Tree)**:\n   - 장점: 공통 접두사를 압축하여 Trie보다 메모리 효율적입니다. 긴 공통 접두사가 많은 경우 노드 수가 크게 줄어듭니다.\n   - 단점: 구현 복잡도가 높고, 노드 분할/병합 로직이 필요합니다. 문자열 비교 시 단일 문자가 아닌 부분 문자열 비교가 필요합니다.\n   - 적합한 경우: URL 라우팅, IP 주소 매칭 등 공통 접두사가 긴 경우\n\n**실무 선택 전략:**\n대규모 자동완성 시스템의 경우, 저는 **하이브리드 접근**을 선택하겠습니다:\n- 1단계: 인기 검색어(상위 10%)는 HashMap에 캐싱하여 O(1) 접근\n- 2단계: 나머지는 Radix Tree로 구현하여 메모리 효율과 접두사 탐색 성능 균형\n- 추가 최적화: 각 노드에 빈도수를 저장하여 상위 k개 결과만 반환\n\n**스택 오버플로우 방지 전략:**\n\n1. **반복문 변환 (Iterative Approach)**:\n   - 재귀를 명시적 스택을 사용한 반복문으로 변환합니다.\n   ```java\n   Stack<TrieNode> stack = new Stack<>();\n   stack.push(root);\n   while (!stack.isEmpty()) {\n       TrieNode node = stack.pop();\n       // 처리 로직\n       for (TrieNode child : node.children) {\n           stack.push(child);\n       }\n   }\n   ```\n   - 장점: 스택 깊이를 제어할 수 있고, JVM 스택 제한(보통 1MB)에 걸리지 않습니다.\n\n2. **꼬리 재귀 최적화 (Tail Recursion)**:\n   - 코틀린의 `tailrec` 키워드를 사용하면 컴파일러가 반복문으로 변환해줍니다.\n   ```kotlin\n   tailrec fun search(node: TrieNode?, prefix: String, index: Int): Boolean {\n       if (node == null) return false\n       if (index == prefix.length) return node.isEndOfWord\n       return search(node.children[prefix[index]], prefix, index + 1)\n   }\n   ```\n   - 자바에서는 지원하지 않으므로 수동으로 반복문 변환이 필요합니다.\n\n3. **깊이 제한 (Depth Limiting)**:\n   - 재귀 깊이를 제한하여 특정 깊이 이상은 탐색하지 않습니다.\n   - 실무에서는 검색어 길이를 제한(예: 100자)하여 자연스럽게 깊이가 제한됩니다.\n\n4. **JVM 스택 크기 조정**:\n   - `-Xss` 옵션으로 스택 크기 증가 (예: `-Xss2m`)\n   - 근본적 해결책은 아니며, 메모리 낭비 가능성이 있습니다.\n\n**실무 권장사항:**\n- Trie 탐색은 일반적으로 깊이가 제한적(검색어 길이)이므로 스택 오버플로우 위험이 낮습니다.\n- 그러나 대규모 시스템에서는 안정성을 위해 반복적 구현을 선호합니다.\n- 메모리 측면에서는 Heap 영역에 Trie 노드가 할당되고, Stack 영역은 함수 호출에만 사용되므로, 노드 수가 많아도 Stack 크기는 검색어 길이에만 비례합니다.\n\n결론적으로, 자료구조 선택은 접근 패턴(완전 일치 vs 접두사 매칭), 메모리 제약, 구현 복잡도를 종합적으로 고려해야 하며, 재귀 구현 시에는 스택 안정성을 위해 반복문 변환이나 깊이 제한을 고려해야 합니다.",
+      "tags": [
+        "datastructures",
+        "trie",
+        "stack",
+        "recursion",
+        "system-design",
+        "tradeoffs"
+      ],
+      "references": [
+        {
+          "title": "Recursion and Memoization",
+          "url": "/wiki/datastructures/datastructures-recursion"
+        },
+        {
+          "title": "DIGITAL TREE",
+          "url": "/wiki/datastructures/datastructures-trie"
+        },
+        {
+          "title": "Difference Stack and Heap",
+          "url": "/wiki/datastructures/datastructures-stack-heap"
+        }
+      ]
+    }
+  ]
+}

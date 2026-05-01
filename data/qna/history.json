@@ -367,10 +367,12 @@
       "2026-04-25"
     ],
     "infra/infra-ip": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-05-02"
     ],
     "infra/infra-k6": [
-      "2026-03-21"
+      "2026-03-21",
+      "2026-05-02"
     ],
     "designpattern/designpattern-desired-actual": [
       "2026-03-22"
@@ -509,22 +511,28 @@
       "2026-03-26"
     ],
     "infra/infra-kubernetes": [
-      "2026-03-28"
+      "2026-03-28",
+      "2026-05-02"
     ],
     "infra/infra-load-balancer": [
-      "2026-03-28"
+      "2026-03-28",
+      "2026-05-02"
     ],
     "infra/infra-load-stress-smoke": [
-      "2026-03-28"
+      "2026-03-28",
+      "2026-05-02"
     ],
     "infra/infra-load-test": [
-      "2026-03-28"
+      "2026-03-28",
+      "2026-05-02"
     ],
     "infra/infra-network-segmentation": [
-      "2026-03-28"
+      "2026-03-28",
+      "2026-05-02"
     ],
     "infra/infra-rds-aurora": [
-      "2026-03-28"
+      "2026-03-28",
+      "2026-05-02"
     ],
     "infra/infra-reverse-proxy": [
       "2026-03-28"
@@ -967,6 +975,6 @@
       "2026-04-30"
     ]
   },
-  "totalQuestionsGenerated": 54,
-  "lastGenerated": "2026-05-01"
+  "totalQuestionsGenerated": 55,
+  "lastGenerated": "2026-05-02"
 }

@@ -1,0 +1,35 @@
+{
+  "date": "2026-05-02",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "AWS에서 고가용성 웹 서비스를 설계할 때, Public Subnet과 Private Subnet을 어떻게 구성하시겠습니까? 각 서브넷에 배치할 리소스와 보안 그룹 설정, 그리고 NAT Gateway의 역할에 대해 설명하고, 이러한 망 분리 전략이 가져오는 트레이드오프에 대해서도 논의해주세요.",
+      "answer": "**서브넷 구성 전략:**\n\n**1. Public Subnet 구성:**\n- **배치 리소스:** ALB/NLB, NAT Gateway, Bastion Host\n- **특징:** Internet Gateway(IGW)와 연결된 라우팅 테이블을 가지며, 인터넷에서 직접 접근 가능한 공인 IP 또는 Elastic IP를 할당받습니다.\n- **보안 그룹:** 외부 인터넷 트래픽(HTTP/HTTPS 80, 443 포트)을 허용하되, 소스 IP 제한이나 WAF를 통한 추가 보안 계층을 구성합니다.\n\n**2. Private Subnet 구성:**\n- **배치 리소스:** 애플리케이션 서버(EC2, ECS, EKS), RDS/Aurora 데이터베이스, ElastiCache\n- **특징:** 인터넷에서 직접 접근 불가능하며, NAT Gateway를 통해서만 외부 통신이 가능합니다.\n- **보안 그룹:** ALB의 보안 그룹에서만 인바운드 트래픽을 허용하고, 데이터베이스는 애플리케이션 서버의 보안 그룹에서만 접근을 허용합니다.\n\n**3. NAT Gateway의 역할:**\n- Private Subnet의 인스턴스가 외부 API 호출, 패키지 업데이트, 외부 서비스 연동 등을 위해 아웃바운드 인터넷 연결이 필요할 때 사용됩니다.\n- Public Subnet에 배치되며, Elastic IP를 할당받아 고정된 공인 IP로 외부 통신을 수행합니다.\n- 인바운드 연결은 차단하고 아웃바운드만 허용하여 보안을 강화합니다.\n\n**4. Multi-AZ 구성:**\n- 최소 2개 이상의 가용 영역(AZ)에 Public/Private Subnet을 각각 구성하여 단일 장애점(SPOF)을 제거합니다.\n- 각 AZ에 NAT Gateway를 배치하여 AZ 장애 시에도 인터넷 연결을 유지합니다.\n\n**트레이드오프 분석:**\n\n**장점:**\n- **보안 강화:** Defense in Depth 전략으로 다층 보안 구조를 구현하며, 데이터베이스와 같은 민감한 리소스를 인터넷으로부터 격리합니다.\n- **공격 표면 최소화:** Private Subnet의 리소스는 인터넷에서 직접 접근할 수 없어 DDoS, 무차별 대입 공격 등의 위험이 감소합니다.\n- **규제 준수:** 개인정보보호법, GDPR 등 데이터 보호 규정을 충족하기 위한 망 분리 요구사항을 만족합니다.\n\n**단점:**\n- **비용 증가:** NAT Gateway는 시간당 비용과 데이터 처리 비용이 발생하며, Multi-AZ 구성 시 각 AZ마다 NAT Gateway가 필요하여 비용이 배가됩니다.\n- **복잡도 증가:** 네트워크 토폴로지가 복잡해지고, 라우팅 테이블, 보안 그룹, NACL 관리가 어려워집니다.\n- **성능 오버헤드:** NAT Gateway를 거치는 트래픽은 추가적인 홉(hop)이 발생하여 레이턴시가 증가할 수 있습니다.\n- **디버깅 어려움:** 네트워크 문제 발생 시 여러 계층을 확인해야 하므로 트러블슈팅이 복잡합니다.\n\n**최적화 전략:**\n- VPC Endpoint(PrivateLink)를 사용하여 S3, DynamoDB 등 AWS 서비스 접근 시 NAT Gateway를 우회하고 비용과 레이턴시를 절감합니다.\n- 개발 환경에서는 단일 NAT Gateway 사용, 프로덕션에서는 Multi-AZ NAT Gateway로 비용과 가용성의 균형을 맞춥니다.\n- AWS Transit Gateway를 활용하여 여러 VPC 간 통신을 중앙 집중화하고 관리 복잡도를 낮춥니다.",
+      "tags": [
+        "AWS",
+        "VPC",
+        "네트워크",
+        "보안",
+        "인프라",
+        "망분리",
+        "고가용성"
+      ],
+      "references": [
+        {
+          "title": "Public IP, Private IP, Elastic IP",
+          "url": "/wiki/infra/infra-ip"
+        },
+        {
+          "title": "Network Segmentation",
+          "url": "/wiki/infra/infra-network-segmentation"
+        },
+        {
+          "title": "Load Balancer",
+          "url": "/wiki/infra/infra-load-balancer"
+        }
+      ]
+    }
+  ]
+}

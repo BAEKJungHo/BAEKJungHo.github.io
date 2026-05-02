@@ -973,8 +973,32 @@
     ],
     "kotlin/kotlin-minimizing-mental-complexity": [
       "2026-04-30"
+    ],
+    "oop/oop-oo": [
+      "2026-05-03"
+    ],
+    "oop/oop-polymorphism": [
+      "2026-05-03"
+    ],
+    "oop/oop-real-oop": [
+      "2026-05-03"
+    ],
+    "oop/oop-solid": [
+      "2026-05-03"
+    ],
+    "driven/development-design-docs": [
+      "2026-05-03"
+    ],
+    "driven/driven-data-analysis-three-rule": [
+      "2026-05-03"
+    ],
+    "driven/driven-data": [
+      "2026-05-03"
+    ],
+    "driven/driven-use": [
+      "2026-05-03"
     ]
   },
-  "totalQuestionsGenerated": 55,
-  "lastGenerated": "2026-05-02"
+  "totalQuestionsGenerated": 56,
+  "lastGenerated": "2026-05-03"
 }

@@ -1,0 +1,39 @@
+{
+  "date": "2026-05-04",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 트래픽을 처리하는 실시간 양방향 통신 서비스를 설계한다고 가정해봅시다. WebSocket, HTTP Long Polling, Server-Sent Events 중 어떤 기술을 선택하시겠습니까? 각 기술의 트레이드오프를 TCP 연결 관리, 서버 리소스, 프록시/로드밸런서 호환성, 그리고 순서 보장 측면에서 비교하여 설명해주세요. 또한 선택한 기술에서 발생할 수 있는 메시지 순서 역전 문제를 어떻게 해결하시겠습니까?",
+      "answer": "이 질문은 실시간 통신 기술 선택과 분산 시스템에서의 순서 보장이라는 두 가지 핵심 주제를 다룹니다.\n\n**기술별 트레이드오프 분석:**\n\n1. **WebSocket:**\n   - TCP 연결 관리: 단일 TCP 연결을 지속적으로 유지하여 양방향 전이중 통신 제공. Opening Handshake 후 낮은 오버헤드로 실시간 데이터 전송 가능\n   - 서버 리소스: 각 클라이언트당 하나의 지속적인 연결을 유지해야 하므로 C10K 문제 고려 필요. 하지만 HTTP 폴링 대비 헤더 오버헤드가 없어 대역폭 효율적\n   - 프록시/로드밸런서: Layer 7 프록시에서 sticky session 필요. 일부 레거시 프록시는 WebSocket Upgrade를 지원하지 않을 수 있음\n   - 순서 보장: 단일 TCP 연결 내에서는 바이트 스트림 순서 보장. 그러나 재연결 시나리오, 특히 모바일 환경의 셀룰러 핸드오버에서 연결이 끊겼다 재연결되면 애플리케이션 레벨 메시지 순서가 역전될 수 있음\n\n2. **HTTP Long Polling:**\n   - TCP 연결 관리: 각 요청마다 새로운 HTTP 연결 또는 keep-alive 연결 재사용. timeout 발생 시 재연결 필요\n   - 서버 리소스: 요청이 대기 상태로 서버 스레드/워커를 점유하므로 비동기 I/O 또는 이벤트 기반 아키텍처 필수\n   - 프록시/로드밸런서: 표준 HTTP이므로 호환성 우수. 하지만 각 요청이 다른 백엔드 서버로 라우팅될 수 있어 상태 관리 복잡\n   - 순서 보장: 서로 다른 HTTP 요청 간 순서는 TCP가 보장하지 않음. 네트워크 지연, 로드밸런서 라우팅에 따라 요청 2가 요청 1보다 먼저 처리될 수 있음\n\n3. **Server-Sent Events (SSE):**\n   - TCP 연결 관리: 서버→클라이언트 단방향 지속 연결. 클라이언트→서버는 별도 HTTP 요청 필요\n   - 서버 리소스: WebSocket과 유사하게 지속 연결 유지하지만 단방향이므로 다소 가벼움\n   - 프록시/로드밸런서: HTTP 기반이므로 호환성 좋으나, 일부 프록시의 버퍼링으로 인한 지연 발생 가능\n   - 순서 보장: 단일 연결 내 이벤트 순서는 보장되나, 재연결 시 이벤트 ID 기반 재동기화 필요\n\n**기술 선택 기준:**\n\n대규모 실시간 양방향 통신이 필요한 경우(채팅, 협업 도구, 실시간 게임) → **WebSocket 선택**\n- 이유: 낮은 레이턴시, 양방향 통신, 헤더 오버헤드 최소화\n- 단, 연결 관리와 스케일링을 위한 인프라 투자 필요 (Redis Pub/Sub, Message Queue 등)\n\n단방향 푸시가 주된 요구사항인 경우(주가 정보, 알림) → **SSE 선택**\n- 이유: 구현 단순, 표준 HTTP, 자동 재연결 지원\n\n레거시 환경이나 방화벽 제약이 있는 경우 → **Long Polling**\n- 이유: 최대 호환성, 하지만 리소스 효율성 낮음\n\n**메시지 순서 역전 문제 해결 방법:**\n\n1. **애플리케이션 레벨 시퀀스 번호:**\n   - 각 메시지에 monotonic sequence number 부여 (Lamport timestamp 또는 vector clock)\n   - 클라이언트는 수신 버퍼에서 시퀀스 번호 기반 재정렬 수행\n   - Out-of-order 메시지는 버퍼링 후 순서대로 처리\n\n2. **멱등성(Idempotency) 보장:**\n   - 각 요청에 unique request ID 부여\n   - 서버는 중복 요청 감지 및 필터링 (Redis 등으로 처리 이력 관리)\n   - 재시도로 인한 중복 실행 방지\n\n3. **Total Ordering via Coordinator:**\n   - 단일 조정자(Coordinator) 또는 합의 알고리즘(Raft, Paxos) 사용\n   - 모든 메시지가 조정자를 통과하며 전역 순서 부여\n   - 트레이드오프: 단일 장애점, 레이턴시 증가\n\n4. **인과 관계 기반 순서(Causal Ordering):**\n   - 완전한 전역 순서 대신 인과 관계가 있는 메시지만 순서 보장\n   - Vector clock으로 인과성 추적\n   - 예: 채팅에서 \"메시지 A\"와 \"A에 대한 답글 B\"는 순서 보장 필요하지만, 독립적인 메시지들은 순서 무관\n\n5. **연결 단위 파티셔닝:**\n   - 사용자별 또는 채널별로 특정 서버 인스턴스에 고정(sticky routing)\n   - 해당 파티션 내에서는 단일 TCP 연결 순서 보장 활용\n   - 트레이드오프: 로드 밸런싱 불균형 가능성\n\n**실무 권장 아키텍처:**\n\n```\n클라이언트 ←WebSocket→ Gateway (Sticky LB)\n                         ↓\n                    Message Queue (Kafka/RabbitMQ)\n                         ↓\n                    Worker Cluster\n                         ↓\n                    State Store (Redis)\n```\n\n- Gateway: WebSocket 연결 관리, 메시지에 seq# 부여\n- Message Queue: 순서 보장이 필요한 메시지는 동일 파티션으로 라우팅\n- Worker: 비즈니스 로직 처리, 멱등성 보장\n- State Store: 중복 제거 및 순서 검증\n\n이 설계는 TCP의 바이트 스트림 순서 보장을 활용하면서도, 재연결/재시도 시나리오에서 애플리케이션 레벨 순서를 보장합니다.",
+      "tags": [
+        "network",
+        "websocket",
+        "tcp",
+        "distributed-systems",
+        "real-time",
+        "architecture",
+        "scalability"
+      ],
+      "references": [
+        {
+          "title": "Real-time Web Communication - Polling, Long-Polling, WebSockets",
+          "url": "/wiki/network/network-polling"
+        },
+        {
+          "title": "Never Trust the Network: Designing Ordered Systems",
+          "url": "/wiki/network/network-ordered-system"
+        },
+        {
+          "title": "SOCKET, PROTOCOL - WebSocket",
+          "url": "/wiki/network/network-socket-protocol"
+        },
+        {
+          "title": "Network Layered Architectures - TCP Byte-Stream Ordering",
+          "url": "/wiki/network/network-layeredarchitectures"
+        }
+      ]
+    }
+  ]
+}

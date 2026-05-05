@@ -1,0 +1,33 @@
+{
+  "date": "2026-05-06",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 트래픽이 예상되는 이커머스 시스템을 설계할 때, Type Driven Architecture와 Object-Oriented Programming 중 어떤 접근 방식을 선택하시겠습니까? 각 접근 방식의 트레이드오프를 설명하고, 실제 프로젝트에서 어떤 기준으로 의사결정을 하실 건지 구체적으로 설명해주세요.",
+      "answer": "이 질문은 아키텍처 선택에 대한 깊이 있는 이해와 실무 경험을 요구합니다.\n\n**핵심 판단 기준:**\n\n1. **비즈니스 도메인의 복잡도**\n   - E-Commerce의 경우: 주문, 결제, 재고, 배송 등 복잡한 객체 간 협력이 핵심\n   - 이 경우 OOP가 더 적합 → 객체 간의 책임과 협력 관계를 명확히 표현 가능\n\n2. **Input/Output의 복잡도**\n   - 복잡한 I/O를 다루는 시스템: OOP 중심 설계\n   - 단순한 명령-응답 패턴: Type Driven Architecture 적합\n\n**Type Driven Architecture 선택 시나리오:**\n- IoT 디바이스 제어 시스템 (선박, 차량, 스마트홈)\n- 명령의 타입이 명확하고 제한적\n- 데이터 변환 파이프라인이 중심\n- 함수형 프로그래밍 언어(F#, Scala, Haskell) 사용 시\n\n**장점:**\n- 타입을 통한 계약(Contract) 명시로 컴파일 타임 안정성 확보\n- 타입 조합(Composition)을 통한 재사용성 증대\n- 제약된 타입(Constrained Types)으로 도메인 규칙을 타입 레벨에서 강제\n\n```fsharp\ntype UnitQuantity = UnitQuantity of int\ntype KilogramQuantity = KilogramQuantity of decimal\n// 잘못된 타입 사용을 컴파일 타임에 방지\n```\n\n**단점:**\n- 복잡한 비즈니스 로직 표현의 한계\n- 객체 간 상호작용이 많은 시스템에서는 오히려 복잡도 증가\n- 팀의 함수형 프로그래밍 숙련도 필요\n\n**OOP 선택 시나리오:**\n- 이커머스, 소셜 네트워크 등 복잡한 도메인\n- 객체 간 협력과 상태 관리가 중요\n- 복잡한 비즈니스 규칙과 워크플로우\n\n**장점:**\n- 복잡한 도메인 모델을 객체로 자연스럽게 표현\n- 캡슐화를 통한 복잡도 관리\n- 다형성을 활용한 유연한 설계\n\n**단점:**\n- 잘못된 OOP는 오히려 복잡도 증가\n- 과도한 추상화로 인한 성능 이슈 가능\n\n**실무 의사결정 프로세스:**\n\n1. **도메인 분석**: 비즈니스 로직의 복잡도 평가\n2. **팀 역량 평가**: 팀의 기술 스택과 숙련도 고려\n3. **확장성 요구사항**: 시스템이 어떻게 성장할지 예측\n4. **하이브리드 접근**: \n   - 핵심 도메인: OOP로 복잡한 비즈니스 로직 처리\n   - 데이터 처리 레이어: Type Driven으로 안정성 확보\n   - 예: Domain Layer는 OOP, API Request/Response DTO는 강타입 시스템\n\n**실제 설계 예시 (이커머스 주문 시스템):**\n\n```kotlin\n// Type Driven: 도메인 규칙을 타입으로 강제\n@JvmInline\nvalue class OrderQuantity private constructor(val value: Int) {\n    companion object {\n        fun of(value: Int): OrderQuantity {\n            require(value in 1..1000) { \"Quantity must be between 1 and 1000\" }\n            return OrderQuantity(value)\n        }\n    }\n}\n\n// OOP: 복잡한 비즈니스 로직은 객체 협력으로\nclass Order(\n    private val items: List<OrderItem>,\n    private val payment: Payment,\n    private val shipping: Shipping\n) {\n    fun process(): OrderResult {\n        // 복잡한 객체 간 협력 로직\n        payment.validate()\n        shipping.calculate(items)\n        return OrderResult.success()\n    }\n}\n```\n\n**결론:**\n단순히 하나를 선택하는 것이 아니라, 시스템의 각 레이어와 모듈의 특성에 맞게 하이브리드 접근을 취하는 것이 실무에서 가장 효과적입니다. 타입 시스템의 안정성과 객체지향의 표현력을 적절히 조합하여 사용하는 것이 시니어 엔지니어의 역량입니다.",
+      "tags": [
+        "architecture",
+        "system-design",
+        "type-driven",
+        "oop",
+        "trade-offs"
+      ],
+      "references": [
+        {
+          "title": "Type Driven Architecture",
+          "url": "/wiki/architecture/architecture-type-driven"
+        },
+        {
+          "title": "Object Oriented Programming",
+          "url": "https://klarciel.net/wiki/oop/oop-real-oop/"
+        },
+        {
+          "title": "DDD Modeling - Types and Functions",
+          "url": "https://klarciel.net/wiki/ddd/ddd-modeling/#types-and-functions"
+        }
+      ]
+    }
+  ]
+}

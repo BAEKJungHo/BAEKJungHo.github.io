@@ -1013,8 +1013,32 @@
     ],
     "driven/driven-use": [
       "2026-05-03"
+    ],
+    "architecture/architecture-type-driven": [
+      "2026-05-06"
+    ],
+    "architecture/architecture-uuid": [
+      "2026-05-06"
+    ],
+    "architecture/architecture-vcard": [
+      "2026-05-06"
+    ],
+    "architecture/architecture-window": [
+      "2026-05-06"
+    ],
+    "architecture/architecture-zero-trust": [
+      "2026-05-06"
+    ],
+    "systemdesign/systemdesign-back-of-the-envelope-estimation": [
+      "2026-05-06"
+    ],
+    "systemdesign/systemdesign-chatting-application": [
+      "2026-05-06"
+    ],
+    "systemdesign/systemdesign-coupon": [
+      "2026-05-06"
     ]
   },
-  "totalQuestionsGenerated": 58,
-  "lastGenerated": "2026-05-05"
+  "totalQuestionsGenerated": 59,
+  "lastGenerated": "2026-05-06"
 }

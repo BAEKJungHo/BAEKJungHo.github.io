@@ -1,0 +1,43 @@
+{
+  "date": "2026-05-09",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "레거시 시스템을 컨테이너화하려고 할 때, Reverse Proxy와 Load Balancer를 어떻게 설계하시겠습니까? 특히 기존 monolithic 애플리케이션을 단계적으로 마이크로서비스로 전환하는 과정에서 두 컴포넌트의 역할과 트레이드오프를 설명해주세요.",
+      "answer": "레거시 시스템의 컨테이너화 및 마이크로서비스 전환 시 Reverse Proxy와 Load Balancer 설계는 다음과 같이 접근합니다.\n\n**1. 초기 단계 - Reverse Proxy 중심 설계:**\n먼저 nginx나 Envoy를 Reverse Proxy로 배치하여 다음을 처리합니다:\n- TLS Termination: WAS가 비즈니스 로직에만 집중하도록 SSL/TLS 처리를 proxy에서 담당\n- Static Content Serving: 정적 리소스는 proxy에서 직접 처리하거나 CDN으로 라우팅\n- Request/Response 변환: 레거시 API와 신규 API 간 프로토콜 변환 (REST ↔ gRPC)\n- API Gateway 역할: 라우팅 규칙을 통해 URL path 기반으로 레거시/신규 서비스 분기\n\n**2. 중기 단계 - Strangler Fig Pattern 적용:**\n- Reverse Proxy의 라우팅 규칙을 활용하여 특정 기능부터 단계적으로 신규 마이크로서비스로 전환\n- 예: `/api/users/*` → 신규 User Service, 나머지 → 레거시 Monolith\n- Feature Flag와 결합하여 A/B 테스팅 및 점진적 트래픽 이동 (Canary Deployment)\n\n**3. 후기 단계 - Load Balancer 통합:**\n마이크로서비스가 증가하면서 Load Balancer 계층 추가:\n- L7 Load Balancer (ALB/NLB): 서비스별 health check, 세션 관리, 트래픽 분산\n- Service Mesh (Istio/Linkerd) 도입 고려: 서비스 간 통신, Circuit Breaking, Observability\n\n**주요 트레이드오프:**\n\n1. **단일 Reverse Proxy vs 분산 Load Balancer:**\n   - 단일 Proxy: 관리 단순, SPOF 위험, 수평 확장 제한\n   - 분산 LB: 고가용성, 복잡도 증가, 비용 상승\n   - 선택 기준: 트래픽 규모, SLA 요구사항, 팀 운영 역량\n\n2. **컨테이너 오케스트레이션 통합:**\n   - Kubernetes 환경: Ingress Controller (nginx-ingress/traefik) + Service (ClusterIP/LoadBalancer)\n   - Ingress: L7 라우팅, path-based routing\n   - Service: L4 load balancing, pod discovery\n   - 트레이드오프: 러닝커브 vs 자동화/확장성\n\n3. **보안 및 성능 고려사항:**\n   - Security Group 설계: Web tier(80/443 open) → App tier(443 from web only) → Data tier(5432 from app only)\n   - Keep-Alive 설정으로 Connection 재사용\n   - gzip 압축으로 전송 비용 절감\n   - Cache 설정으로 정적 리소스 캐싱 (First Byte Time 개선)\n\n4. **모니터링 및 관찰성:**\n   - Reverse Proxy 로그를 통한 트래픽 분석\n   - WebPageTest 등으로 First Contentful Paint, Speed Index 측정\n   - 성능 예산(Performance Budget) 설정: FCP < 1.5s, LCP < 2.5s 등\n\n**실무 권장사항:**\n- 초기에는 nginx Reverse Proxy로 시작하여 complexity 최소화\n- 트래픽이 증가하면 AWS ALB/NLB 또는 K8s Ingress로 전환\n- API Gateway (AWS API Gateway, Kong)는 인증/인가, Rate Limiting이 필요할 때 도입\n- 레거시 서버 전체를 Docker 이미지로 만들 때는 보안상 불필요한 서비스 제거 필수\n- Infrastructure as Code (Terraform/CloudFormation)로 설정 관리하여 Snowflake Server 방지",
+      "tags": [
+        "인프라",
+        "Docker",
+        "Kubernetes",
+        "아키텍처 설계",
+        "마이크로서비스",
+        "Reverse Proxy",
+        "Load Balancer"
+      ],
+      "references": [
+        {
+          "title": "Reverse Proxy",
+          "url": "/wiki/infra/infra-reverse-proxy"
+        },
+        {
+          "title": "Security Group",
+          "url": "/wiki/infra/infra-security-group"
+        },
+        {
+          "title": "Web Performance Budget",
+          "url": "/wiki/infra/infra-web-performance-budget"
+        },
+        {
+          "title": "Docker Container",
+          "url": "/wiki/docker/docker-container"
+        },
+        {
+          "title": "Dockerizing a whole physical Linux server",
+          "url": "/wiki/docker/docker-dockerizing-whole-linux-server"
+        }
+      ]
+    }
+  ]
+}

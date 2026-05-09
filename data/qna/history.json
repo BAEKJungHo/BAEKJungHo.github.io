@@ -205,22 +205,28 @@
       "2026-04-25"
     ],
     "designpattern/designpattern-adapter": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-10"
     ],
     "designpattern/designpattern-bridge": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-10"
     ],
     "designpattern/designpattern-builder": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-10"
     ],
     "designpattern/designpattern-callback": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-10"
     ],
     "designpattern/designpattern-chain-of-responsibility": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-10"
     ],
     "designpattern/designpattern-cloud": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-10"
     ],
     "designpattern/designpattern-composite": [
       "2026-03-15"
@@ -1049,8 +1055,14 @@
     ],
     "systemdesign/systemdesign-coupon": [
       "2026-05-06"
+    ],
+    "driven/extreme-programming": [
+      "2026-05-10"
+    ],
+    "driven/test-methodology": [
+      "2026-05-10"
     ]
   },
-  "totalQuestionsGenerated": 61,
-  "lastGenerated": "2026-05-09"
+  "totalQuestionsGenerated": 62,
+  "lastGenerated": "2026-05-10"
 }

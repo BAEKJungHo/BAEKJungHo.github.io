@@ -1,0 +1,42 @@
+{
+  "date": "2026-05-11",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 트래픽을 처리하는 API 서비스를 설계할 때, REST 기반 HTTP/1.1과 gRPC(HTTP/2) 중 어떤 것을 선택하시겠습니까? 각각의 트레이드오프를 네트워크 레이어 관점(TCP 연결 관리, 처리량, 지연시간)에서 설명하고, 실제 프로덕션 환경에서 고려해야 할 사항들을 논의해주세요.",
+      "answer": "이 질문은 프로토콜 선택에 대한 깊이 있는 이해와 실무 경험을 요구합니다.\n\n## REST/HTTP1.1의 특징\n\n**장점:**\n- 단순성과 범용성: 브라우저, 모바일, 서드파티 통합이 쉬움\n- 디버깅 용이: curl, 브라우저 개발자 도구로 쉽게 테스트\n- 캐싱: HTTP 캐시 헤더를 활용한 CDN/브라우저 캐싱 가능\n- 생태계: 광범위한 도구, 미들웨어, 모니터링 솔루션\n\n**단점:**\n- TCP 연결 오버헤드: 매 요청마다 새로운 연결이 필요할 수 있음 (Keep-Alive 미사용 시)\n- Head-of-Line Blocking: 하나의 요청이 완료될 때까지 다음 요청 대기\n- 텍스트 기반 프로토콜: JSON 직렬화/역직렬화 오버헤드\n- 타입 안정성 부족: 런타임 에러 가능성\n\n## gRPC/HTTP2의 특징\n\n**장점:**\n\n1. **연결 효율성 (Multiplexing)**\n   - 단일 TCP 연결로 여러 스트림 동시 처리\n   - TCP Slow Start 비용을 한 번만 지불\n   - Connection Pool 관리 부담 감소\n\n2. **낮은 지연시간 (Latency)**\n   - 바이너리 프로토콜로 파싱 오버헤드 최소화\n   - Header 압축 (HPACK)\n   - Protobuf의 효율적인 직렬화 (JSON 대비 3-10배 빠름)\n\n3. **높은 처리량 (Throughput)**\n   - 작은 메시지 크기 (Protobuf는 JSON 대비 30-50% 작음)\n   - 스트리밍 지원 (Server/Client/Bidirectional)\n   - Flow Control을 통한 백프레셔 관리\n\n4. **타입 안정성**\n   - .proto 파일로 강타입 계약 정의\n   - 컴파일 타임에 에러 검출\n   - 자동 코드 생성으로 클라이언트/서버 일관성 보장\n\n**단점:**\n- 브라우저 지원 제한: grpc-web 필요\n- 디버깅 어려움: 바이너리 프로토콜이라 사람이 읽기 어려움\n- 학습 곡선: Protobuf, HTTP/2 이해 필요\n- 생태계: REST 대비 제한적인 도구\n\n## 네트워크 레이어 관점 비교\n\n**TCP 연결 관리:**\n- REST: N개의 동시 요청 = N개의 TCP 연결 (또는 Keep-Alive Pool)\n- gRPC: N개의 동시 요청 = 1개의 TCP 연결 (Multiplexing)\n- 의미: gRPC는 TCP 3-way handshake 비용과 Slow Start 페널티를 크게 줄임\n\n**처리량 (Throughput):**\n- 메시지 크기가 작을수록 네트워크 대역폭 절약\n- gRPC는 바이너리 인코딩으로 더 많은 요청을 동일 대역폭에서 처리\n- 참고 문서의 배달 서비스 비유: gRPC는 '알뜰배달'처럼 한 번에 여러 메시지를 효율적으로 전송\n\n**지연시간 (Latency):**\n- REST: RTT(Round Trip Time) + TCP handshake + TLS handshake + 요청 처리\n- gRPC: (초기 한 번만) TCP handshake + TLS handshake, 이후 RTT + 요청 처리\n- HTTP/2의 Server Push로 추가 지연 감소 가능\n\n## 프로덕션 환경 고려사항\n\n**gRPC를 선택해야 하는 경우:**\n1. **마이크로서비스 간 통신 (Service-to-Service)**\n   - 내부 API는 성능과 타입 안정성이 중요\n   - 예: 결제 서비스 ↔ 주문 서비스 ↔ 재고 서비스\n\n2. **실시간 양방향 통신**\n   - Bidirectional Streaming이 필요한 경우\n   - 예: 실시간 채팅, IoT 센서 데이터 수집, 모니터링 시스템\n\n3. **높은 처리량/낮은 지연시간이 중요**\n   - 초당 수만 건의 요청 처리\n   - 모바일 앱의 배터리 효율성 (적은 데이터 전송)\n\n4. **강타입 계약이 필요**\n   - 다국어 팀 협업 (Java ↔ Go ↔ Python)\n   - API 버전 관리가 중요한 경우\n\n**REST를 선택해야 하는 경우:**\n1. **Public API / Third-Party 통합**\n   - 외부 개발자가 쉽게 접근 가능해야 함\n   - 문서화와 테스트 용이성\n\n2. **브라우저 직접 통신**\n   - SPA(Single Page Application)에서 직접 호출\n   - grpc-web은 추가 프록시 필요\n\n3. **캐싱이 중요**\n   - CDN, 브라우저 캐싱 활용\n   - 정적 컨텐츠, 읽기 위주 API\n\n4. **레거시 시스템 통합**\n   - 기존 HTTP 기반 인프라\n   - 모니터링, 로깅 도구 호환성\n\n## 하이브리드 접근\n\n실제 프로덕션에서는 두 가지를 혼합하는 것이 일반적입니다:\n\n```\n[Mobile/Web Client]\n    |\n    | REST/HTTP1.1 (Public API)\n    |\n[API Gateway]\n    |\n    | gRPC (Internal)\n    |\n[Microservices]\n    ├─ User Service\n    ├─ Order Service\n    └─ Payment Service\n```\n\n**추가 고려사항:**\n1. **로드밸런서 지원**: L7 LB가 gRPC를 지원하는지 확인 (Envoy, Traefik 권장)\n2. **모니터링**: gRPC 메트릭 수집 도구 (Prometheus + grpc_prometheus)\n3. **에러 처리**: gRPC Status Code vs HTTP Status Code 매핑 전략\n4. **타임아웃/재시도**: Deadline 전파, Circuit Breaker 패턴\n5. **보안**: mTLS 설정, 인증/인가 (JWT, OAuth2 통합)\n\n## 성능 최적화 팁\n\n**gRPC 사용 시:**\n- Channel Pool 재사용 (연결 생성 비용 절약)\n- Keepalive 설정으로 유휴 연결 유지\n- 메시지 크기 제한 설정 (DoS 방어)\n- Streaming을 활용한 백프레셔 관리\n\n**REST 사용 시:**\n- HTTP Keep-Alive 활성화\n- Connection Pool 튜닝\n- JSON 파싱 최적화 (Jackson, kotlinx.serialization)\n- 압축 (gzip) 사용\n\n결론적으로, 내부 마이크로서비스 통신에서는 gRPC가, 외부 Public API에서는 REST가 적합합니다. 하지만 무조건적인 정답은 없으며, 팀의 경험, 인프라 성숙도, 요구사항에 따라 결정해야 합니다.",
+      "tags": [
+        "network",
+        "grpc",
+        "http",
+        "http2",
+        "rest",
+        "performance",
+        "tcp",
+        "latency",
+        "throughput",
+        "architecture"
+      ],
+      "references": [
+        {
+          "title": "GRPC FUNDAMENTALS",
+          "url": "/wiki/grpc/grpc-fundamentals"
+        },
+        {
+          "title": "TCP Performance",
+          "url": "/wiki/network/network-tcp-performance"
+        },
+        {
+          "title": "Throughput and Latency understood by Delivery Services",
+          "url": "/wiki/network/network-throughput-latency"
+        },
+        {
+          "title": "Enhanced IP Addressing System",
+          "url": "/wiki/network/network-subnet"
+        }
+      ]
+    }
+  ]
+}

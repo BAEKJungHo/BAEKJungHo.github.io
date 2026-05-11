@@ -1,0 +1,31 @@
+{
+  "date": "2026-05-12",
+  "dayOfWeek": "화요일",
+  "topic": "Distributed Systems",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Kafka가 메시지 저장소로 메모리 기반 캐시 대신 파일시스템과 PageCache를 선택한 이유는 무엇이며, 이러한 설계 결정이 대용량 분산 시스템에서 갖는 트레이드오프는 무엇인가요? 특히 JVM 환경에서 in-memory cache를 사용할 때의 문제점과 함께 설명해주세요.",
+      "answer": "Kafka가 파일시스템과 PageCache를 선택한 핵심 이유는 세 가지입니다.\n\n첫째, **순차 디스크 I/O의 성능 특성**입니다. 'The Pathologies of Big Data' 논문에서도 언급되듯이, 순차적 디스크 액세스는 경우에 따라 랜덤 메모리 액세스보다 빠를 수 있습니다. 현대의 디스크는 대역폭이 넓고, OS의 read-ahead와 write-behind 최적화를 통해 순차 접근 시 매우 높은 처리량을 달성할 수 있습니다.\n\n둘째, **JVM의 메모리 오버헤드와 GC 문제**입니다. JVM 환경에서 in-heap 데이터가 증가하면:\n- 객체의 메모리 오버헤드가 매우 높아 실제 데이터 크기의 2배 이상을 차지할 수 있습니다\n- Garbage Collection이 점점 복잡해지고 느려지며, Full GC 발생 시 수 초간 Stop-The-World가 발생해 latency spike를 유발합니다\n- 힙 크기가 커질수록 GC 튜닝이 어려워지고 예측 가능성이 떨어집니다\n\n셋째, **운영체제 PageCache 활용의 장점**입니다:\n- OS 레벨에서 자동으로 메모리 관리가 이루어지므로 애플리케이션 레벨에서 복잡한 캐시 일관성 로직이 불필요합니다\n- 프로세스 재시작 후에도 PageCache가 warm 상태를 유지해 cold start 문제가 완화됩니다\n- Zero-copy 전송(sendfile 시스템 콜)을 통해 user space와 kernel space 간 데이터 복사 오버헤드를 제거할 수 있습니다\n\n**트레이드오프**:\n\n장점:\n- 높은 처리량과 예측 가능한 latency (GC pause 없음)\n- 간단한 아키텍처와 코드 복잡도 감소\n- 내구성(durability) 확보 용이 - 데이터가 이미 파일시스템에 있음\n- 메모리 효율성 - 동일한 데이터를 여러 consumer가 읽을 때 PageCache 공유\n\n단점:\n- 랜덤 액세스 패턴에서는 성능 저하 (Kafka는 순차 접근만 허용하여 이를 회피)\n- 디스크 장애 시 데이터 손실 가능성 (replication으로 보완)\n- Cold cache 상태에서 초기 성능 저하 가능\n- OS의 PageCache 정책에 의존하므로 fine-grained 제어가 어려움\n\n실무적으로 이러한 설계는 Kafka의 핵심 use case인 '높은 처리량의 순차적 로그 기반 스트리밍'에 최적화되어 있습니다. 만약 랜덤 액세스가 빈번하거나 매우 낮은 latency(<1ms)가 필요한 경우라면 in-memory 솔루션이 더 적합할 수 있습니다.",
+      "tags": [
+        "kafka",
+        "distributed-systems",
+        "performance",
+        "file-system",
+        "page-cache",
+        "jvm",
+        "architecture"
+      ],
+      "references": [
+        {
+          "title": "Kafka Design - Don't fear the Filesystem",
+          "url": "/wiki/kafka/kafak-filesystem"
+        },
+        {
+          "title": "The Pathologies of Big Data",
+          "url": "https://queue.acm.org/detail.cfm?id=1563874"
+        }
+      ]
+    }
+  ]
+}

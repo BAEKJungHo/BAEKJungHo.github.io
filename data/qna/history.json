@@ -83,22 +83,28 @@
       "2026-04-28"
     ],
     "architecture/architecture-abstraction": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-13"
     ],
     "architecture/architecture-amqp": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-13"
     ],
     "architecture/architecture-analysis-estimation": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-13"
     ],
     "architecture/architecture-api-design": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-13"
     ],
     "architecture/architecture-async-nonblocking": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-13"
     ],
     "architecture/architecture-automotive": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-13"
     ],
     "architecture/architecture-aws-well": [
       "2026-03-11"
@@ -1077,8 +1083,14 @@
     ],
     "driven/test-methodology": [
       "2026-05-10"
+    ],
+    "systemdesign/systemdesign-distributed-messaging-queue": [
+      "2026-05-13"
+    ],
+    "systemdesign/systemdesign-software-architecture": [
+      "2026-05-13"
     ]
   },
-  "totalQuestionsGenerated": 64,
-  "lastGenerated": "2026-05-12"
+  "totalQuestionsGenerated": 65,
+  "lastGenerated": "2026-05-13"
 }

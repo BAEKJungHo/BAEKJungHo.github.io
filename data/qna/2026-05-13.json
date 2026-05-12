@@ -1,0 +1,34 @@
+{
+  "date": "2026-05-13",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 이벤트 기반 시스템에서 Kafka와 같은 분산 메시징 큐를 도입할 때, Consumer Group의 파티션 수와 Consumer 인스턴스 수 간의 관계를 고려한 확장 전략을 설계해야 합니다. 트래픽이 급증하는 상황에서 처리량을 최대화하면서도 메시지 순서 보장과 장애 복구 능력을 유지하기 위해 어떤 트레이드오프를 고려해야 하며, 실제 프로덕션 환경에서 어떻게 파티셔닝 전략을 결정하시겠습니까?",
+      "answer": "이 질문에 대한 답변은 여러 측면에서의 트레이드오프 분석이 필요합니다.\n\n**1. 파티션 수와 Consumer 수의 관계:**\n- Kafka에서 특정 파티션의 메시지는 Consumer Group 내에서 단 하나의 Consumer만 소비할 수 있습니다. 따라서 Consumer 수가 파티션 수보다 많으면 일부 Consumer는 유휴 상태가 되어 리소스 낭비가 발생합니다.\n- 반대로 파티션 수가 Consumer 수보다 훨씬 많으면, 한 Consumer가 여러 파티션을 처리하게 되어 부하가 집중될 수 있습니다.\n\n**2. 처리량 최대화 전략:**\n- 파티션 수는 예상되는 최대 병렬 처리 수준을 고려하여 설정해야 합니다. 일반적으로 (예상 최대 Consumer 수 * 1.5~2) 정도로 여유있게 설정합니다.\n- 파티션 키 설계가 핵심입니다. 예를 들어 사용자 ID 기반 파티셔닝을 하면 특정 사용자의 이벤트는 동일 파티션으로 가므로 순서가 보장됩니다.\n- 하지만 Hot Key 문제를 주의해야 합니다. 특정 키에 트래픽이 몰리면 해당 파티션만 과부하가 걸리므로, 필요시 복합 키(composite key) 전략을 사용합니다.\n\n**3. 메시지 순서 보장 트레이드오프:**\n- 전역 순서 보장: 파티션을 1개만 사용하면 전역 순서가 보장되지만 확장성이 없습니다.\n- 파티션별 순서 보장: 현실적인 접근으로, 비즈니스 도메인에 맞는 파티션 키(예: 주문 ID, 사용자 ID)를 사용하여 필요한 범위 내에서만 순서를 보장합니다.\n- 순서가 중요하지 않은 이벤트는 라운드로빈 파티셔닝을 사용하여 부하를 균등 분산합니다.\n\n**4. 장애 복구 능력:**\n- Replication Factor를 최소 3으로 설정하여 브로커 장애 시에도 데이터 손실을 방지합니다.\n- min.insync.replicas를 2로 설정하여 최소한 2개의 replica에 데이터가 쓰여야 ACK를 반환하도록 합니다.\n- Consumer의 auto.offset.reset 정책과 enable.auto.commit 설정을 신중히 결정합니다. 프로덕션에서는 수동 커밋(manual commit)을 사용하여 처리 완료 후에만 offset을 커밋하는 것이 안전합니다.\n\n**5. 실제 프로덕션 파티셔닝 전략 결정 프로세스:**\n```\nStep 1: 정량적 분석\n- 예상 TPS (Transactions Per Second)\n- 평균 메시지 크기\n- 피크 트래픽 배율 (평균 대비)\n- 타겟 레이턴시 요구사항\n\nStep 2: 파티션 수 계산\n파티션 수 = max(목표 처리량 / 단일 파티션 처리량, 목표 Consumer 수)\n\nStep 3: 파티션 키 전략 수립\n- 순서 보장이 필요한 엔티티 식별 (예: userId, orderId)\n- 카디널리티 분석으로 Hot Key 가능성 평가\n- 필요시 복합 키 또는 Hash 기반 분산 적용\n\nStep 4: 모니터링 및 최적화\n- Lag monitoring: Consumer가 얼마나 뒤쳐져 있는지\n- Partition skew: 파티션 간 메시지 분포 불균형\n- Consumer rebalancing 빈도\n```\n\n**6. 트래픽 급증 시나리오 대응:**\n- Auto-scaling: Kubernetes HPA를 사용하여 Consumer Pod를 Lag 기반으로 자동 확장\n- Circuit Breaker 패턴: 다운스트림 서비스 장애 시 메시지 처리를 일시 중단하고 재시도\n- Dead Letter Queue: 반복 실패하는 메시지를 별도 토픽으로 분리하여 정상 플로우 차단 방지\n- Rate Limiting: Producer 측에서 백프레셔를 적용하여 시스템 과부하 방지\n\n**결론:**\n파티셔닝 전략은 비즈니스 요구사항(순서 보장 범위), 시스템 처리량 목표, 운영 복잡도 간의 균형을 찾는 과정입니다. 시작은 보수적으로 하되, 철저한 모니터링을 통해 점진적으로 최적화하는 접근이 가장 안전하며, 특히 파티션 수는 나중에 증가시킬 수 있지만 감소는 어려우므로 신중한 초기 설계가 중요합니다.",
+      "tags": [
+        "systemdesign",
+        "architecture",
+        "kafka",
+        "distributed-systems",
+        "scalability",
+        "messaging-queue"
+      ],
+      "references": [
+        {
+          "title": "Distributed Messaging Queue",
+          "url": "/wiki/systemdesign/systemdesign-distributed-messaging-queue"
+        },
+        {
+          "title": "Publish/Subscribe Architecture",
+          "url": "/wiki/architecture/architecture-pub-sub/"
+        },
+        {
+          "title": "ABSTRACTION",
+          "url": "/wiki/architecture/architecture-abstraction"
+        }
+      ]
+    }
+  ]
+}

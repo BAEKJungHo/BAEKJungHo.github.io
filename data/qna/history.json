@@ -1089,8 +1089,32 @@
     ],
     "systemdesign/systemdesign-software-architecture": [
       "2026-05-13"
+    ],
+    "kotlin/kotlin-mockk-springmockk": [
+      "2026-05-14"
+    ],
+    "kotlin/kotlin-mockk": [
+      "2026-05-14"
+    ],
+    "kotlin/kotlin-mutability-restriction": [
+      "2026-05-14"
+    ],
+    "kotlin/kotlin-nested": [
+      "2026-05-14"
+    ],
+    "kotlin/kotlin-null-handling-safely": [
+      "2026-05-14"
+    ],
+    "kotlin/kotlin-null-safety": [
+      "2026-05-14"
+    ],
+    "kotlin/kotlin-philosophy": [
+      "2026-05-14"
+    ],
+    "kotlin/kotlin-preconditions": [
+      "2026-05-14"
     ]
   },
-  "totalQuestionsGenerated": 65,
-  "lastGenerated": "2026-05-13"
+  "totalQuestionsGenerated": 66,
+  "lastGenerated": "2026-05-14"
 }

@@ -1,0 +1,29 @@
+{
+  "date": "2026-05-15",
+  "dayOfWeek": "금요일",
+  "topic": "Data Structures & Algorithms",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 검색 자동완성 시스템을 설계한다고 가정해봅시다. HashMap과 Trie 자료구조 중 어떤 것을 선택할지, 그리고 각각의 트레이드오프를 설명해주세요. 또한 메모리 효율성을 높이기 위해 Radix Tree(compact prefix tree)를 고려한다면 어떤 상황에서 유리할까요?",
+      "answer": "이 질문은 자료구조 선택에 대한 깊이 있는 이해와 실무 경험을 요구합니다.\n\n**HashMap vs Trie 트레이드오프:**\n\n1. **HashMap의 특징:**\n   - 시간복잡도: O(1) 평균 조회/삽입 (해시 충돌 없을 시)\n   - 메모리: O(N), N은 전체 문자열 개수\n   - 장점: 정확한 문자열 매칭에 매우 빠름\n   - 단점: 접두사 기반 검색(prefix search)이나 와일드카드 매칭이 불가능. 자동완성처럼 \"app\"로 시작하는 모든 단어를 찾으려면 전체 탐색 O(N) 필요\n\n2. **Trie의 특징:**\n   - 시간복잡도: O(k), k는 검색 문자열 길이\n   - 메모리: O(N × K), N은 문자열 개수, K는 평균 길이\n   - 장점: 접두사 공유로 인한 효율적인 prefix 검색, 자동완성에 최적화됨. \"app\" 입력 시 해당 노드 이하의 모든 단어를 빠르게 탐색 가능\n   - 단점: 메모리 사용량이 많고, 각 노드가 하나의 문자만 저장하면 공간 낭비 발생\n\n**검색 자동완성 시스템에서의 선택:**\n- 자동완성은 본질적으로 prefix matching 문제이므로 **Trie가 더 적합**합니다.\n- 사용자가 \"sea\"를 입력하면 \"search\", \"season\", \"seat\" 등을 즉시 제안해야 하는데, HashMap으로는 모든 키를 순회해야 하지만 Trie는 \"s\" → \"e\" → \"a\" 노드로 이동 후 하위 트리만 탐색하면 됩니다.\n\n**Radix Tree(Compact Prefix Tree) 고려:**\n\n1. **Radix Tree의 장점:**\n   - 단일 자식 노드 체인을 압축하여 메모리 효율성 증가\n   - 예: \"test\", \"testing\" 저장 시 일반 Trie는 t→e→s→t→i→n→g로 7개 노드가 필요하지만, Radix Tree는 \"test\" 하나의 엣지로 압축 가능\n\n2. **Radix Tree가 유리한 상황:**\n   - **희소한(sparse) 데이터셋**: 공통 접두사가 적고 각 경로가 길 때\n   - **메모리 제약**: 수백만 개의 문자열을 저장해야 하는 경우\n   - **API 라우팅, 파일 시스템 경로**: \"/api/v1/users\", \"/api/v1/products\"처럼 긴 공통 경로가 많을 때\n\n3. **일반 Trie가 유리한 상황:**\n   - **밀집한(dense) 데이터셋**: 짧은 문자열이 많고 분기가 많을 때\n   - **구현 단순성**: Radix Tree는 구현이 복잡하고 노드 분할/병합 로직 필요\n\n**실무 설계 고려사항:**\n\n1. **하이브리드 접근**: 상위 레벨은 Trie로 빠른 접근, 리프 노드에서는 배열이나 HashMap으로 최적화\n2. **캐싱 전략**: 인기 있는 prefix 결과를 Redis 등에 캐싱\n3. **스레드 안전성**: Trie는 기본적으로 thread-safe하지 않으므로 동시성 제어 필요 (CopyOnWrite, Lock 등)\n4. **페이징/제한**: 자동완성 결과를 제한(top-10 등)하여 응답 시간 보장\n5. **Fuzzy matching**: 오타 허용이 필요하면 Levenshtein distance 등과 결합\n\n**결론:**\n대규모 검색 자동완성에는 Trie가 적합하며, 메모리 최적화가 중요하다면 Radix Tree를 고려해야 합니다. 하지만 구현 복잡도와 실제 데이터 특성을 분석하여 트레이드오프를 신중히 평가해야 합니다.",
+      "tags": [
+        "datastructures",
+        "trie",
+        "design",
+        "tradeoffs",
+        "system-design"
+      ],
+      "references": [
+        {
+          "title": "DIGITAL TREE",
+          "url": "/wiki/datastructures/datastructures-trie"
+        },
+        {
+          "title": "Difference Stack and Heap",
+          "url": "/wiki/datastructures/datastructures-stack-heap"
+        }
+      ]
+    }
+  ]
+}

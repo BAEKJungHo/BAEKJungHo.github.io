@@ -10,7 +10,6 @@ comment : true
 public  : true
 parent  : [[/network]]
 latex   : true
-favorite: true
 ---
 * TOC
 {:toc}

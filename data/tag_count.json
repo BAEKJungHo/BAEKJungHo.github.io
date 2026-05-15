@@ -41,7 +41,7 @@
  },
  {
   "name": "artifact",
-  "size": 3
+  "size": 4
  },
  {
   "name": "atlassian",
@@ -577,7 +577,7 @@
  },
  {
   "name": "magazine",
-  "size": 17
+  "size": 16
  },
  {
   "name": "mapstruct",

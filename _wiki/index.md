@@ -12,6 +12,7 @@ regenerate: true
 
 * [[/artifact/magazine-productivity-stability]
 * [[/artifact/sdv-tesla-signed-command-protocol]
+* [[/artifact/magazine-tradeoff]]
 
 ## Magazine
 
@@ -85,7 +86,6 @@ regenerate: true
 * [[/mobility/mobility-connected-service]]
 * [[/mobility/mobility-vent-heat]]
 * [[/magazine/magazine-broaden-horizons]]
-* [[/magazine/magazine-tradeoff]]
 * [[/magazine/magazine-tdd-after-tdd-ai]]
 
 ## System Design

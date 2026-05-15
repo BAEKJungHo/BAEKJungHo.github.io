@@ -1,8 +1,8 @@
 [
  "architecture/architecture-software",
  "architecture/architecture-software-fundamental",
+ "artifact/magazine-tradeoff",
  "magazine/magazine-critical-thinking",
  "magazine/magazine-nature",
- "magazine/magazine-tdd-after-tdd-ai",
- "magazine/magazine-tradeoff"
+ "magazine/magazine-tdd-after-tdd-ai"
 ]

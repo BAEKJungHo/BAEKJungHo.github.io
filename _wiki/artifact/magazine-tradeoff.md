@@ -4,12 +4,13 @@ title   : TRADEOFF
 summary : 
 date    : 2025-12-25 20:54:32 +0900
 updated : 2025-12-25 21:15:24 +0900
-tag     : magazine tradeoff software architecture
+tag     : artifact tradeoff software architecture
 toc     : true
 comment : true
 public  : true
-parent  : [[/magazine]]
+parent  : [[/artifact]]
 latex   : true
+favorite: true
 ---
 * TOC
 {:toc}

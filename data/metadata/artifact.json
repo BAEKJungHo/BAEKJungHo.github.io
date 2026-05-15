@@ -6,6 +6,7 @@
  "updated": "2022-01-01 20:55:09 +0900",
  "children": [
   "artifact/magazine-productivity-stability",
+  "artifact/magazine-tradeoff",
   "artifact/sdv-tesla-signed-command-protocol"
  ]
 }

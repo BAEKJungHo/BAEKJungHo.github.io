@@ -3,6 +3,7 @@
  "architecture/architecture-distributed-transaction",
  "architecture/architecture-software-fundamental",
  "architecture/architecture-stream",
+ "artifact/sdv-tesla-signed-command-protocol",
  "book/tdd-knight-complex-business-logic-improved-tdd",
  "database/database-tx",
  "designpattern/designpattern-factory",
@@ -10,6 +11,5 @@
  "magazine/magazine-nature",
  "magazine/magazine-objects-reduce-dependency",
  "magazine/magazine-tdd-after-tdd-ai",
- "magazine/magazine-tradeoff",
- "sdv/sdv-tesla-signed-command-protocol"
+ "magazine/magazine-tradeoff"
 ]

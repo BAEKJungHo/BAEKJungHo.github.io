@@ -8,9 +8,13 @@ updated : 2023-08-19 15:39:22 +0900
 regenerate: true
 ---
 
+## Artifacts
+
+* [[/artifact/magazine-productivity-stability]
+* [[/artifact/sdv-tesla-signed-command-protocol]
+
 ## Magazine
 
-* [[/magazine/magazine-productivity-stability]]
 * [[/magazine/magazine-objects-reduce-dependency]]
 * [[/magazine/magazine-future-developers]]
 * [[/magazine/magazine-towards-higher]]
@@ -542,7 +546,6 @@ regenerate: true
 * [[/sdv/sdv-history]]
 * [[/sdv/sdv-vehicle-to-grid]]
 * [[/sdv/sdv-digital-twin]]
-* [[/sdv/sdv-tesla-signed-command-protocol]]
 
 ## GRPC
 

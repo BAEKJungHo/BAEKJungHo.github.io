@@ -47,24 +47,25 @@ regenerate: true
     </section>
 
     <!-- Content Section: Favorite Documents -->
-<!--    <section class="content-section">-->
-<!--        <div class="content-wrapper">-->
-<!--            <div class="favorite-documents">-->
-<!--                <h3><strong>FAVORITES</strong></h3>-->
-<!--                <ul class="favorite-list">-->
-<!--                    {% assign favorite_docs = site.wiki | where: "favorite", true | where: "public", true | sort: 'date' | reverse %}-->
-<!--                    {% for doc in favorite_docs %}-->
-<!--                    <li>-->
-<!--                        <a href="{{ doc.url | prepend: site.baseurl }}">-->
-<!--                            <span class="doc-title">{{ doc.title }}</span>-->
-<!--                            <span class="doc-date">{{ doc.date | date: "%Y-%m-%d" }}</span>-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    {% endfor %}-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </section>-->
+    <section class="content-section">
+        <div class="content-wrapper">
+            <div class="favorite-documents">
+                <h3><strong>FAVORITES</strong></h3>
+                <ul class="favorite-list">
+                    {% assign favorite_docs = site.wiki | where: "favorite", true | where: "public", true | sort: 'updated' | reverse %}
+                    {% for doc in favorite_docs %}
+                    <li>
+                        <a href="{{ doc.url | prepend: site.baseurl }}">
+                            <span class="doc-date">{{ doc.updated | date: "%b %-d %Y" }}</span>
+                            <span class="fav-star">★</span>
+                            <span class="doc-title">{{ doc.title }}</span>
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
 </div>
 
 {% include createLink.html %}
@@ -245,7 +246,7 @@ regenerate: true
     .favorite-documents h3 {
         margin: 0 0 1.5rem 0;
         font-size: 1.5rem;
-        color: #2563eb;
+        color: #FFD700;
     }
 
     .favorite-list {
@@ -260,7 +261,6 @@ regenerate: true
 
     .favorite-list a {
         display: flex;
-        justify-content: space-between;
         align-items: center;
         text-decoration: none;
         color: #333;
@@ -274,14 +274,21 @@ regenerate: true
         border-bottom-color: #0000EE;
     }
 
-    .favorite-list .doc-title {
-        flex: 1;
-    }
-
     .favorite-list .doc-date {
         font-size: 0.85rem;
         color: #888;
-        margin-left: 1rem;
+        margin-right: 1rem;
+        flex-shrink: 0;
+    }
+
+    .favorite-list .fav-star {
+        color: #FFD700;
+        margin-right: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .favorite-list .doc-title {
+        flex: 1;
     }
 
     @media (max-width: 768px) {

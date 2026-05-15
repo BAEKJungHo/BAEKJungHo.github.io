@@ -1,0 +1,21 @@
+---
+layout: home
+adsense: false
+---
+{% assign documents = site.wiki | where: "favorite", true | where: "public", true | sort: 'updated' | reverse %}
+<div id="app">
+    <H3 class="indent">Favorites {{ documents | size }} items</H3>
+    <ul class="post-list">
+{% for doc in documents %}
+        <li>
+            <div>
+                <a class="post-link" href="{{ doc.url }}">
+                    <div class="post-meta">{{ doc.updated | date: "%Y.%m.%d" }} <span style="color: #FFD700;">★</span> {{ doc.title }}</div>
+                    <div class="post-excerpt">{{ doc.summary }}</div>
+                </a>
+            </div>
+        </li>
+{% endfor %}
+    </ul>
+</div>
+{% include createLink.html %}

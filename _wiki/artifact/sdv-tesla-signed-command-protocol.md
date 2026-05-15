@@ -4,12 +4,13 @@ title   : TESLA SIGNED COMMAND PROTOCOL
 summary :
 date    : 2026-02-08 19:02:32 +0900
 updated : 2026-02-08 19:02:32 +0900
-tag     : sdv tesla crypto protocol security tradeoff
+tag     : artifact sdv tesla crypto protocol security tradeoff
 toc     : true
 comment : true
 public  : true
-parent  : [[/sdv]]
+parent  : [[/artifact]]
 latex   : true
+favorite: true
 ---
 
 * TOC

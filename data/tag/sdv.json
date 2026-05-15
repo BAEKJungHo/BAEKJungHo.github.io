@@ -1,5 +1,6 @@
 [
  "architecture/architecture-zero-trust",
+ "artifact/sdv-tesla-signed-command-protocol",
  "designpattern/designpattern-desired-actual",
  "network/network-nat",
  "network/network-socket-protocol",
@@ -9,7 +10,6 @@
  "sdv/sdv-digital-twin",
  "sdv/sdv-history",
  "sdv/sdv-proximity-based-auth",
- "sdv/sdv-tesla-signed-command-protocol",
  "sdv/sdv-vehicle-to-grid",
  "security/security-signed-certificates"
 ]

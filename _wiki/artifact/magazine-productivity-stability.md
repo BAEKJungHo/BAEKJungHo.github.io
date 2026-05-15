@@ -1,14 +1,14 @@
 ---
 layout  : wiki
-title   : The Importance of Architecture
-summary : 아키텍처의 중요성과 개발 설계의 생산성과 안정성
+title   : Architecture, Stability, and Productivity
+summary : 
 date    : 2022-10-21 20:54:32 +0900
 updated : 2022-10-21 21:15:24 +0900
-tag     : magazine
+tag     : artifact
 toc     : true
 comment : true
 public  : true
-parent  : [[/magazine]]
+parent  : [[/artifact]]
 latex   : true
 ---
 * TOC

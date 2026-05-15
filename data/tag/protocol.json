@@ -1,8 +1,8 @@
 [
  "architecture/architecture-gossip",
  "architecture/architecture-mqtt",
+ "artifact/sdv-tesla-signed-command-protocol",
  "blockchain/blockchain-smart-contract",
  "network/network-binary-based-protocol",
- "network/network-socket-protocol",
- "sdv/sdv-tesla-signed-command-protocol"
+ "network/network-socket-protocol"
 ]

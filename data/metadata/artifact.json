@@ -1,0 +1,11 @@
+{
+ "type": "wiki",
+ "title": "Artifact",
+ "parent": "index",
+ "url": "/wiki/artifact",
+ "updated": "2022-01-01 20:55:09 +0900",
+ "children": [
+  "artifact/magazine-productivity-stability",
+  "artifact/sdv-tesla-signed-command-protocol"
+ ]
+}

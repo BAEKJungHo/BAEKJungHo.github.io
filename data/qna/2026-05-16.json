@@ -1,0 +1,34 @@
+{
+  "date": "2026-05-16",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처를 Kubernetes 환경에 배포할 때, 네임스페이스(Namespace)를 어떻게 설계하고 활용하시겠습니까? 또한, 서로 다른 네임스페이스 간 서비스 통신이 필요한 경우와 네임스페이스 내부로 통신을 제한해야 하는 경우의 트레이드오프에 대해 설명해주세요.",
+      "answer": "네임스페이스 설계는 조직 구조, 환경 분리, 리소스 격리 요구사항을 종합적으로 고려해야 합니다.\n\n**네임스페이스 설계 전략:**\n\n1. **환경 기반 분리 (dev, staging, production)**: 각 환경을 별도의 네임스페이스로 분리하여 동일한 설정을 재사용하면서도 환경 간 격리를 보장합니다. 예를 들어, 컨테이너가 'database-service'를 호출하면 자동으로 같은 네임스페이스 내의 서비스로 연결되므로 환경별 설정 변경이 최소화됩니다.\n\n2. **팀/도메인 기반 분리**: 대규모 조직에서는 팀별(payment, order, user) 또는 비즈니스 도메인별로 네임스페이스를 분리하여 리소스 할당량(Resource Quota)과 접근 제어(RBAC)를 독립적으로 관리합니다.\n\n3. **공유 서비스 네임스페이스**: 모니터링(prometheus), 로깅(elasticsearch), 서비스 메시(istio-system) 등 공통 인프라 컴포넌트는 별도 네임스페이스에 배치합니다.\n\n**서비스 간 통신 시나리오:**\n\n1. **네임스페이스 내부 통신**: 서비스명만 사용 (예: `http://api-server`). DNS가 자동으로 같은 네임스페이스 내 서비스로 해석하므로 설정이 간단하고 네트워크 정책으로 격리하기 쉽습니다.\n\n2. **네임스페이스 간 통신**: FQDN 사용 (예: `http://payment-service.production.svc.cluster.local`). 명시적이고 예측 가능하지만, 네임스페이스 간 의존성이 생기고 네트워크 정책 설정이 복잡해집니다.\n\n**트레이드오프 분석:**\n\n**네임스페이스 내부로 제한하는 경우:**\n- 장점: 강력한 격리, NetworkPolicy로 쉬운 보안 설정, 장애 전파 방지, 명확한 경계\n- 단점: 공유 서비스 접근 시 복잡도 증가, 마이크로서비스 간 협업 제한\n- 적용 시나리오: 멀티테넌시 환경, 규제 준수가 중요한 금융/의료 시스템\n\n**네임스페이스 간 통신 허용하는 경우:**\n- 장점: 유연한 서비스 구성, 공통 컴포넌트 재사용, 마이크로서비스 아키텍처에 적합\n- 단점: 복잡한 의존성 그래프, NetworkPolicy 관리 어려움, 보안 위험 증가\n- 적용 시나리오: 통합된 플랫폼, 내부 개발 환경\n\n**실무 권장사항:**\n\n1. **기본 거부(Deny All) 정책**: NetworkPolicy로 기본적으로 모든 트래픽을 차단하고, 필요한 통신만 명시적으로 허용합니다.\n\n2. **서비스 메시 활용**: Istio 같은 서비스 메시를 사용하면 네임스페이스 간 통신을 세밀하게 제어하고, mTLS로 보안을 강화하며, 트래픽 관찰성을 확보할 수 있습니다.\n\n3. **DNS 기반 라우팅**: 환경별로 동일한 서비스명을 사용하되, 크로스 네임스페이스 호출이 필요한 경우에만 FQDN을 사용하여 의존성을 명확히 합니다.\n\n4. **리소스 격리**: ResourceQuota와 LimitRange를 사용하여 네임스페이스별 리소스 사용량을 제한하고, 한 네임스페이스의 리소스 고갈이 다른 네임스페이스에 영향을 주지 않도록 합니다.\n\n5. **모니터링 및 감사**: 네임스페이스 간 트래픽 패턴을 모니터링하고, 예상치 못한 통신이 발생하면 알림을 받도록 설정합니다.\n\n결론적으로, 보안과 격리가 중요하면 네임스페이스 경계를 엄격히 하고, 유연성과 협업이 중요하면 제어된 방식으로 크로스 네임스페이스 통신을 허용하되 서비스 메시와 네트워크 정책을 통해 관리하는 것이 좋습니다.",
+      "tags": [
+        "kubernetes",
+        "namespace",
+        "networking",
+        "security",
+        "architecture",
+        "microservices"
+      ],
+      "references": [
+        {
+          "title": "Kubernetes Namespace",
+          "url": "/wiki/kubernetes/kubernetes-namespace"
+        },
+        {
+          "title": "Kubernetes Architectures",
+          "url": "/wiki/kubernetes/kubernetes-architecture"
+        },
+        {
+          "title": "Istio Traffic management",
+          "url": "/wiki/kubernetes/kubernetes-istio"
+        }
+      ]
+    }
+  ]
+}

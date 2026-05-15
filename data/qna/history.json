@@ -711,10 +711,12 @@
       "2026-05-09"
     ],
     "docker/docker-dockerizing": [
-      "2026-04-04"
+      "2026-04-04",
+      "2026-05-16"
     ],
     "docker/docker-overlay-network": [
-      "2026-04-04"
+      "2026-04-04",
+      "2026-05-16"
     ],
     "tdd/tdd-ai": [
       "2026-04-05"
@@ -789,22 +791,28 @@
       "2026-04-09"
     ],
     "kubernetes/kubernetes-architecture": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-16"
     ],
     "kubernetes/kubernetes-container-hierarchy": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-16"
     ],
     "kubernetes/kubernetes-helm": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-16"
     ],
     "kubernetes/kubernetes-istio": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-16"
     ],
     "kubernetes/kubernetes-keda": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-16"
     ],
     "kubernetes/kubernetes-namespace": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-16"
     ],
     "kubernetes/kubernetes-open-container-initiative": [
       "2026-04-11"
@@ -1119,6 +1127,6 @@
       "2026-05-14"
     ]
   },
-  "totalQuestionsGenerated": 67,
-  "lastGenerated": "2026-05-15"
+  "totalQuestionsGenerated": 68,
+  "lastGenerated": "2026-05-16"
 }

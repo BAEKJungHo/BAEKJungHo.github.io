@@ -241,10 +241,12 @@
       "2026-05-10"
     ],
     "designpattern/designpattern-composite": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-17"
     ],
     "designpattern/designpattern-decorator": [
-      "2026-03-15"
+      "2026-03-15",
+      "2026-05-17"
     ],
     "network/network-latency-bandwidth": [
       "2026-03-16",
@@ -407,22 +409,28 @@
       "2026-05-02"
     ],
     "designpattern/designpattern-desired-actual": [
-      "2026-03-22"
+      "2026-03-22",
+      "2026-05-17"
     ],
     "designpattern/designpattern-facade": [
-      "2026-03-22"
+      "2026-03-22",
+      "2026-05-17"
     ],
     "designpattern/designpattern-factory": [
-      "2026-03-22"
+      "2026-03-22",
+      "2026-05-17"
     ],
     "designpattern/designpattern-fire-and-forget": [
-      "2026-03-22"
+      "2026-03-22",
+      "2026-05-17"
     ],
     "designpattern/designpattern-flyweight": [
-      "2026-03-22"
+      "2026-03-22",
+      "2026-05-17"
     ],
     "designpattern/designpattern-intercepting-filter": [
-      "2026-03-22"
+      "2026-03-22",
+      "2026-05-17"
     ],
     "designpattern/designpattern-interface-design-thought": [
       "2026-03-22"
@@ -1127,6 +1135,6 @@
       "2026-05-14"
     ]
   },
-  "totalQuestionsGenerated": 68,
-  "lastGenerated": "2026-05-16"
+  "totalQuestionsGenerated": 69,
+  "lastGenerated": "2026-05-17"
 }

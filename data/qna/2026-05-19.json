@@ -1,0 +1,38 @@
+{
+  "date": "2026-05-19",
+  "dayOfWeek": "화요일",
+  "topic": "Distributed Systems",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처에서 이벤트 기반으로 서비스 간 통신을 구현할 때, 데이터베이스 트랜잭션과 이벤트 발행의 원자성을 보장해야 하는 상황입니다. Transactional Outbox 패턴과 Polling Publisher, 그리고 CDC(Change Data Capture) 방식 중 어떤 접근법을 선택하시겠습니까? 각 방식의 트레이드오프를 설명하고, Eventual Consistency를 달성하는 과정에서 발생할 수 있는 문제점과 해결 방안을 실무 관점에서 논해주세요.",
+      "answer": "이 질문은 분산 시스템에서 데이터 일관성과 메시지 전달 보장이라는 핵심 문제를 다룹니다.\n\n**1. 각 접근법의 특징과 트레이드오프:**\n\n**Transactional Outbox 패턴:**\n- 비즈니스 데이터와 이벤트를 같은 로컬 트랜잭션으로 Outbox 테이블에 저장하여 원자성 보장\n- 장점: 데이터베이스 트랜잭션의 ACID 특성을 활용하여 메시지 유실 방지\n- 단점: Outbox 테이블 관리 오버헤드, 추가적인 Message Relay 프로세스 필요\n\n**Polling Publisher:**\n- 주기적으로 Outbox 테이블을 폴링하여 미발행 이벤트를 찾아 발행\n- 장점: 구현이 단순하고, 기존 인프라 변경 최소화\n- 단점: 폴링 주기에 따른 지연 발생, 데이터베이스 부하 증가 가능성, 실시간성 부족\n\n**CDC (Change Data Capture):**\n- 데이터베이스의 트랜잭션 로그(MySQL binlog, PostgreSQL WAL)를 읽어 변경사항 캡처\n- 장점: 거의 실시간 이벤트 발행, 애플리케이션 로직과 분리되어 성능 영향 최소화, 폴링 오버헤드 없음\n- 단점: 데이터베이스별 구현 차이, 인프라 복잡도 증가, 트랜잭션 로그 의존성\n\n**2. 실무 선택 기준:**\n\n제가 선택하는 기준은 다음과 같습니다:\n\n- **초기 구축 또는 이벤트 발행 빈도가 낮은 경우**: Polling Publisher로 시작. 구현이 단순하고 운영 부담이 적습니다.\n- **실시간성이 중요하고 트래픽이 높은 경우**: CDC 방식 선택. Debezium 같은 성숙한 오픈소스 활용\n- **폴리글랏 퍼시스턴스 환경**: CDC가 데이터베이스별로 구현이 다르므로, 추상화 레이어 구축 비용 고려 필요\n\n**3. Eventual Consistency 달성 과정의 문제점과 해결 방안:**\n\n**문제점 1: 메시지 중복 발행**\n- Message Relay 프로세스 재시작 시 같은 이벤트를 여러 번 발행 가능\n- 해결: 이벤트에 고유 ID 부여, Consumer 측에서 멱등성(idempotency) 보장, 중복 검사 테이블 또는 Redis 활용\n\n**문제점 2: 메시지 순서 보장**\n- 분산 환경에서 이벤트 발행 순서와 처리 순서가 다를 수 있음\n- 해결: Outbox 테이블에 sequence 번호 부여, Kafka의 파티션 키 활용하여 같은 aggregate의 이벤트는 같은 파티션으로 전송, version 필드로 낙관적 락 구현\n\n**문제점 3: 메시지 브로커 장애**\n- Message Broker(Kafka, RabbitMQ) 다운 시 이벤트 발행 실패\n- 해결: Retry 메커니즘 구현, Circuit Breaker 패턴(Resilience4j) 적용, Dead Letter Queue 활용하여 실패한 메시지 별도 처리\n\n**문제점 4: Outbox 테이블 증가**\n- 발행된 이벤트가 계속 쌓여 테이블 크기 증가\n- 해결: 발행 완료된 이벤트 정기적 삭제 또는 아카이빙, 파티셔닝 전략 적용\n\n**4. 실무 경험 관점의 추가 고려사항:**\n\n- **모니터링**: Outbox 테이블의 미발행 이벤트 수, Message Relay 지연시간, 실패율을 지속적으로 모니터링\n- **Fault Tolerance**: Message Relay 프로세스의 다중화, Health Check 구현\n- **테스트 전략**: Chaos Monkey 같은 도구로 장애 시나리오 테스트, 이벤트 유실/중복 검증\n- **Cloud Native 고려**: AWS의 경우 DynamoDB Streams, Azure의 경우 Event Grid 같은 관리형 서비스 활용 검토\n\n결론적으로, 초기에는 Polling Publisher로 시작하여 빠르게 검증하고, 트래픽 증가와 실시간성 요구사항에 따라 CDC로 진화하는 단계적 접근을 권장합니다. 이때 Eventual Consistency의 본질은 '일관성 포기'가 아니라 '일관성 달성 시점을 늦추는 대신 가용성 확보'라는 점을 팀 전체가 이해하고, 비즈니스 로직에서 이를 적절히 처리하는 것이 중요합니다.",
+      "tags": [
+        "msa",
+        "distributed-systems",
+        "eventual-consistency",
+        "event-driven",
+        "transactional-outbox",
+        "cdc"
+      ],
+      "references": [
+        {
+          "title": "Message Delivery in Event Driven Architecture",
+          "url": "/wiki/msa/msa-message-delivery"
+        },
+        {
+          "title": "EVENTUAL CONSISTENCY",
+          "url": "/wiki/msa/msa-eventual-consistency"
+        },
+        {
+          "title": "Fault Tolerance",
+          "url": "/wiki/msa/msa-fault-tolerance"
+        },
+        {
+          "title": "Polyglot Persistence",
+          "url": "/wiki/msa/msa-polyglot"
+        }
+      ]
+    }
+  ]
+}

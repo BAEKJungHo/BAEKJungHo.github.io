@@ -120,10 +120,12 @@
       "2026-05-13"
     ],
     "architecture/architecture-aws-well": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-20"
     ],
     "architecture/architecture-backend-for-frontend": [
-      "2026-03-11"
+      "2026-03-11",
+      "2026-05-20"
     ],
     "go/go-concurrency": [
       "2026-03-12"
@@ -344,22 +346,28 @@
       "2026-05-05"
     ],
     "architecture/architecture-backward-compatibility": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-20"
     ],
     "architecture/architecture-branchbyabstraction": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-20"
     ],
     "architecture/architecture-bulkhead": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-20"
     ],
     "architecture/architecture-callback": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-20"
     ],
     "architecture/architecture-canary": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-20"
     ],
     "architecture/architecture-cap": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-20"
     ],
     "architecture/architecture-cdn": [
       "2026-03-18"
@@ -1151,6 +1159,6 @@
       "2026-05-14"
     ]
   },
-  "totalQuestionsGenerated": 71,
-  "lastGenerated": "2026-05-19"
+  "totalQuestionsGenerated": 72,
+  "lastGenerated": "2026-05-20"
 }

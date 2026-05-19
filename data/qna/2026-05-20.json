@@ -1,0 +1,39 @@
+{
+  "date": "2026-05-20",
+  "dayOfWeek": "수요일",
+  "topic": "System Architecture Design",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 글로벌 서비스를 설계한다고 가정할 때, CAP 이론의 세 가지 속성 중 두 가지만 선택할 수 있습니다. 금융 거래 시스템과 소셜 미디어 피드 시스템을 각각 설계한다면 어떤 속성을 선택하시겠습니까? 각 선택의 이유와 트레이드오프, 그리고 선택하지 않은 속성을 보완하기 위한 실무적인 설계 전략을 설명해주세요.",
+      "answer": "## 금융 거래 시스템: CP (Consistency + Partition Tolerance)\n\n**선택 이유:**\n금융 거래 시스템에서는 데이터 정합성이 가장 중요합니다. 잔액 불일치, 이중 출금 등의 문제는 심각한 비즈니스 리스크를 초래하므로 Consistency를 포기할 수 없습니다. 또한 분산 환경에서 운영되므로 Partition Tolerance도 필수입니다.\n\n**트레이드오프:**\n- 네트워크 분할 상황에서 일부 노드가 응답하지 못할 수 있어 가용성이 일시적으로 저하될 수 있습니다.\n- 강한 일관성 보장을 위해 동기식 복제를 사용하므로 응답 시간이 증가할 수 있습니다.\n\n**Availability 보완 전략:**\n1. **Retry with Exponential Backoff**: 클라이언트 레벨에서 지능형 재시도 로직 구현\n2. **Circuit Breaker Pattern**: 특정 노드 장애 시 빠른 실패 처리로 전체 시스템 안정성 유지\n3. **Read Replica**: 조회 성능 향상을 위한 읽기 전용 복제본 활용 (eventual consistency 허용 범위 내)\n4. **Multi-Region Active-Passive**: 장애 발생 시 자동 페일오버를 통한 가용성 확보\n5. **Saga Pattern**: 분산 트랜잭션을 보상 트랜잭션으로 처리하여 부분적 가용성 확보\n\n## 소셜 미디어 피드 시스템: AP (Availability + Partition Tolerance)\n\n**선택 이유:**\n소셜 미디어는 사용자 경험이 핵심이며, 서비스가 항상 응답해야 합니다. 일시적인 데이터 불일치(예: 좋아요 수가 잠시 다르게 보임)는 비즈니스에 치명적이지 않으므로 Availability를 우선시합니다.\n\n**트레이드오프:**\n- Eventual Consistency로 인해 사용자마다 다른 데이터를 일시적으로 볼 수 있습니다.\n- 동시 업데이트 시 충돌 해결(conflict resolution) 로직이 필요합니다.\n\n**Consistency 보완 전략:**\n1. **Eventual Consistency with Vector Clocks**: 분산 환경에서 데이터 버전 관리 및 충돌 해결\n2. **CRDT (Conflict-free Replicated Data Types)**: 수학적으로 충돌이 발생하지 않는 데이터 구조 사용 (좋아요 카운터 등)\n3. **Read-Your-Writes Consistency**: 사용자가 자신이 쓴 데이터는 즉시 볼 수 있도록 세션 기반 라우팅\n4. **Anti-Entropy Process**: 백그라운드에서 주기적으로 데이터 동기화 및 불일치 해소\n5. **Versioning + Last-Write-Wins**: 타임스탬프 기반 충돌 해결 정책\n6. **Hybrid Approach**: 중요한 데이터(결제 정보)는 Strong Consistency, 피드는 Eventual Consistency 적용\n\n## 실무적 고려사항\n\n**CAP은 이분법이 아닌 스펙트럼:**\n- 실제로는 'Tunable Consistency' 개념을 사용 (예: Cassandra의 Quorum 설정)\n- 비즈니스 요구사항에 따라 API별로 다른 일관성 수준 적용 가능\n\n**PACELC 이론 확장:**\n- 네트워크가 정상일 때(E)도 Latency와 Consistency 간의 트레이드오프 존재\n- 금융 시스템: PC/EC (일관성 우선)\n- 소셜 미디어: PA/EL (가용성과 낮은 지연시간 우선)\n\n**모니터링 및 측정:**\n- SLI/SLO 정의: 각 시스템의 일관성/가용성 목표 수치화\n- Distributed Tracing으로 일관성 문제 디버깅\n- Chaos Engineering으로 네트워크 분할 시나리오 테스트",
+      "tags": [
+        "architecture",
+        "distributed-system",
+        "CAP",
+        "tradeoff",
+        "system-design",
+        "consistency",
+        "availability"
+      ],
+      "references": [
+        {
+          "title": "AWS Well-Architected Framework",
+          "url": "/wiki/architecture/architecture-aws-well"
+        },
+        {
+          "title": "CAP Theory of Design Principles for Distributed Systems",
+          "url": "/wiki/architecture/architecture-cap"
+        },
+        {
+          "title": "Bulkhead Pattern",
+          "url": "/wiki/architecture/architecture-bulkhead"
+        },
+        {
+          "title": "Circuit Breaker Pattern",
+          "url": "/wiki/architecture/architecture-circuit-breaker"
+        }
+      ]
+    }
+  ]
+}

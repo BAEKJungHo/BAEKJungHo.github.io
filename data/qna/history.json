@@ -1157,8 +1157,32 @@
     ],
     "kotlin/kotlin-preconditions": [
       "2026-05-14"
+    ],
+    "kotlin/kotlin-property": [
+      "2026-05-21"
+    ],
+    "kotlin/kotlin-range-progression": [
+      "2026-05-21"
+    ],
+    "kotlin/kotlin-range": [
+      "2026-05-21"
+    ],
+    "kotlin/kotlin-receiver-lambda": [
+      "2026-05-21"
+    ],
+    "kotlin/kotlin-relaxed-mockk": [
+      "2026-05-21"
+    ],
+    "kotlin/kotlin-restdocs-api-enum-design": [
+      "2026-05-21"
+    ],
+    "kotlin/kotlin-sealed": [
+      "2026-05-21"
+    ],
+    "kotlin/kotlin-sequence": [
+      "2026-05-21"
     ]
   },
-  "totalQuestionsGenerated": 72,
-  "lastGenerated": "2026-05-20"
+  "totalQuestionsGenerated": 73,
+  "lastGenerated": "2026-05-21"
 }

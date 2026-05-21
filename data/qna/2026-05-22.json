@@ -1,0 +1,29 @@
+{
+  "date": "2026-05-22",
+  "dayOfWeek": "금요일",
+  "topic": "Data Structures & Algorithms",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대규모 실시간 검색 자동완성 시스템을 설계한다고 가정해봅시다. HashMap과 Trie 자료구조 중 어떤 것을 선택하시겠습니까? 각 자료구조의 트레이드오프를 설명하고, 어떤 상황에서 Trie를 선택하는 것이 더 유리한지, 그리고 Radix Tree로의 최적화를 고려해야 하는 시점은 언제인지 실무 관점에서 설명해주세요.",
+      "answer": "**핵심 트레이드오프 분석:**\n\n**HashMap 방식:**\n- 시간복잡도: O(1) 평균 조회 시간\n- 공간복잡도: O(N×M), N은 키 개수, M은 평균 키 길이\n- 장점: 정확한 키 매칭이 매우 빠름\n- 단점: 접두사 검색(prefix search)이 불가능하거나 비효율적. 모든 가능한 접두사를 키로 저장해야 하므로 메모리 낭비가 심각함\n\n**Trie 방식:**\n- 시간복잡도: O(K), K는 검색어 길이\n- 공간복잡도: O(N×K), 공통 접두사를 공유하여 메모리 절약\n- 장점: 접두사 기반 검색에 최적화, 와일드카드 매칭 가능, 사전순 순회 가능\n- 단점: 포인터 오버헤드로 인한 메모리 사용, HashMap보다 캐시 지역성이 낮음\n\n**실무적 선택 기준:**\n\n검색 자동완성 시스템에서는 **Trie를 선택**하는 것이 명백히 유리합니다. 이유는:\n\n1. **접두사 검색의 필수성**: 사용자가 'aut'를 입력하면 'auto', 'author', 'autumn' 등을 제안해야 하는데, HashMap으로는 모든 접두사 조합을 키로 저장해야 하므로 비현실적입니다.\n\n2. **공간 효율성**: 수백만 개의 단어가 있어도 공통 접두사를 공유하므로 메모리 사용이 합리적입니다. 예를 들어 'search', 'searching', 'searchable'은 'search'까지 경로를 공유합니다.\n\n3. **순위 정보 통합**: 각 노드에 빈도수나 인기도 점수를 저장하여, 검색하면서 동시에 정렬된 결과를 반환할 수 있습니다.\n\n**Radix Tree 최적화 시점:**\n\nRadix Tree(압축 Trie)로의 전환을 고려해야 하는 경우:\n\n1. **긴 공통 서브스트링**: URL 라우팅('/api/v1/users', '/api/v1/products')처럼 긴 공통 경로가 많은 경우\n2. **희소한 분기**: 노드의 대부분이 단일 자식만 가지는 경우 (공간 낭비)\n3. **메모리 압박**: 수억 개의 키를 다루면서 메모리 최적화가 중요한 경우\n\n**실제 구현 고려사항:**\n\n```java\n// 하이브리드 접근\nclass AutoCompleteSystem {\n    private TrieNode root;\n    private LRUCache<String, List<String>> cache; // 빈번한 쿼리 캐싱\n    \n    // Trie + 캐싱으로 실시간 성능 보장\n    public List<String> search(String prefix) {\n        if (cache.containsKey(prefix)) {\n            return cache.get(prefix);\n        }\n        \n        List<String> results = trieSearch(prefix);\n        cache.put(prefix, results);\n        return results;\n    }\n}\n```\n\n4. **분산 시스템 고려**: 대규모 시스템에서는 Trie를 샤딩하거나, Elasticsearch 같은 inverted index 기반 검색 엔진과 조합하여 사용합니다.\n\n5. **실시간 업데이트**: Trie는 삽입/삭제가 O(K)로 효율적이므로, 실시간으로 인기 검색어를 업데이트하는 시나리오에 적합합니다.\n\n**결론**: 검색 자동완성은 Trie의 대표적인 활용 사례이며, 메모리 제약이 심각하거나 경로가 길고 희소한 경우에만 Radix Tree로 최적화를 고려합니다.",
+      "tags": [
+        "datastructures",
+        "trie",
+        "hashmap",
+        "system-design",
+        "tradeoff"
+      ],
+      "references": [
+        {
+          "title": "DIGITAL TREE",
+          "url": "/wiki/datastructures/datastructures-trie"
+        },
+        {
+          "title": "Recursion and Memoization",
+          "url": "/wiki/datastructures/datastructures-recursion"
+        }
+      ]
+    }
+  ]
+}

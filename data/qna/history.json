@@ -205,19 +205,23 @@
     ],
     "infra/infra-availability": [
       "2026-03-14",
-      "2026-04-18"
+      "2026-04-18",
+      "2026-05-23"
     ],
     "infra/infra-awsec2ssh": [
       "2026-03-14",
-      "2026-04-18"
+      "2026-04-18",
+      "2026-05-23"
     ],
     "infra/infra-bashrc": [
       "2026-03-14",
-      "2026-04-18"
+      "2026-04-18",
+      "2026-05-23"
     ],
     "infra/infra-bastion": [
       "2026-03-14",
-      "2026-04-18"
+      "2026-04-18",
+      "2026-05-23"
     ],
     "infra/infra-ci-cd": [
       "2026-03-14",
@@ -851,10 +855,12 @@
       "2026-05-16"
     ],
     "kubernetes/kubernetes-open-container-initiative": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-23"
     ],
     "kubernetes/kubernetes-qos": [
-      "2026-04-11"
+      "2026-04-11",
+      "2026-05-23"
     ],
     "ddd/ddd-cqrs": [
       "2026-04-12"
@@ -929,10 +935,12 @@
       "2026-04-16"
     ],
     "kubernetes/kubernetes-service-mesh": [
-      "2026-04-18"
+      "2026-04-18",
+      "2026-05-23"
     ],
     "aws/aws-ssm": [
-      "2026-04-18"
+      "2026-04-18",
+      "2026-05-23"
     ],
     "ddd/ddd-reduce-dependency": [
       "2026-04-19"
@@ -1187,6 +1195,6 @@
       "2026-05-21"
     ]
   },
-  "totalQuestionsGenerated": 74,
-  "lastGenerated": "2026-05-22"
+  "totalQuestionsGenerated": 75,
+  "lastGenerated": "2026-05-23"
 }

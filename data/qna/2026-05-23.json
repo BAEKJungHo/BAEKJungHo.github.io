@@ -1,0 +1,33 @@
+{
+  "date": "2026-05-23",
+  "dayOfWeek": "토요일",
+  "topic": "AI, Infrastructure (K8s, Docker, AWS)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "프로덕션 환경의 Kubernetes 클러스터에서 여러 마이크로서비스가 운영되고 있습니다. 일부 서비스는 배치 작업이고, 일부는 실시간 API 서버입니다. 노드 리소스가 부족한 상황에서 어떤 Pod를 먼저 제거(evict)해야 할지 결정해야 합니다. (1) Kubernetes QoS 클래스의 종류와 각각의 특징을 설명하고, (2) 실시간 API 서버와 배치 작업에 각각 어떤 QoS 클래스를 할당해야 하는지 그 이유와 함께 설명해주세요. (3) 추가로, Service Mesh(예: Istio)를 도입하는 경우 리소스 관리 측면에서 어떤 점을 고려해야 하는지 트레이드오프를 포함하여 설명해주세요.",
+      "answer": "## (1) Kubernetes QoS 클래스의 종류와 특징\n\nKubernetes는 Pod에 세 가지 QoS 클래스를 할당합니다:\n\n**Guaranteed:**\n- 모든 컨테이너에 CPU와 Memory의 requests와 limits가 명시되어 있고, 그 값이 동일한 경우\n- 가장 높은 우선순위를 가지며, 노드 압박 상황에서 가장 마지막에 제거됨\n- 예측 가능한 성능이 필요한 중요한 워크로드에 적합\n\n**Burstable:**\n- 최소 하나의 컨테이너에 CPU 또는 Memory의 requests 또는 limits가 설정되어 있지만 Guaranteed 조건을 만족하지 못하는 경우\n- 중간 우선순위를 가지며, Best-Effort 다음으로 제거됨\n- 일반적인 애플리케이션 워크로드에 적합\n\n**Best-Effort:**\n- CPU와 Memory의 requests와 limits가 전혀 설정되지 않은 경우\n- 가장 낮은 우선순위를 가지며, 노드 압박 상황에서 가장 먼저 제거됨\n- 중요하지 않은 배치 작업이나 개발/테스트 환경에 적합\n\n## (2) 실시간 API 서버와 배치 작업의 QoS 클래스 할당\n\n**실시간 API 서버: Guaranteed**\n- 이유:\n  - 사용자 요청에 즉각적으로 응답해야 하므로 예측 가능한 성능이 필수\n  - 노드 압박 상황에서도 서비스 중단을 최소화해야 함\n  - SLA(Service Level Agreement) 준수가 중요\n- 설정 예시:\n```yaml\nresources:\n  requests:\n    memory: \"1Gi\"\n    cpu: \"500m\"\n  limits:\n    memory: \"1Gi\"\n    cpu: \"500m\"\n```\n\n**배치 작업: Best-Effort 또는 Burstable**\n- 이유:\n  - 작업 완료 시간이 유연하고 즉각적인 응답이 불필요\n  - 리소스를 효율적으로 활용하되, 중요한 서비스에 영향을 주지 않아야 함\n  - 재시도 가능한 작업이므로 eviction 되어도 큰 문제 없음\n- Best-Effort: 완전히 중요하지 않은 배치 작업\n- Burstable: 어느 정도 보장이 필요한 배치 작업 (requests만 설정)\n\n## (3) Service Mesh 도입 시 리소스 관리 고려사항과 트레이드오프\n\n**고려사항:**\n\n1. **Sidecar Proxy 리소스 오버헤드:**\n   - 각 Pod마다 Envoy Proxy와 같은 사이드카가 추가되어 메모리와 CPU 사용량 증가\n   - 예: Istio의 경우 Pod당 약 50-100MB의 추가 메모리 필요\n\n2. **QoS 클래스 재설정:**\n   - Sidecar의 리소스 설정이 전체 Pod의 QoS 클래스에 영향\n   - 애플리케이션 컨테이너가 Guaranteed여도, Sidecar가 Burstable이면 전체 Pod는 Burstable이 됨\n\n3. **Control Plane 리소스:**\n   - Istiod 등 Control Plane 컴포넌트의 리소스 요구사항\n   - 서비스 수가 증가하면 Control Plane의 부하도 증가\n\n**트레이드오프:**\n\n**장점:**\n- 네트워크 정책, 트래픽 관리, 보안, 관찰성(observability)을 코드 변경 없이 적용 가능\n- 서비스 간 통신의 중앙 집중식 제어 및 모니터링\n- Circuit Breaking, Retry, Timeout 등의 탄력성 패턴 자동 적용\n\n**단점:**\n- 15-20%의 추가 레이턴시 발생 (Proxy를 경유하므로)\n- 클러스터 전체적으로 30-50%의 리소스 오버헤드 증가\n- 복잡성 증가로 인한 디버깅 및 문제 해결 난이도 상승\n- 작은 규모의 서비스에서는 오버엔지니어링 가능성\n\n**권장 전략:**\n- 초기에는 중요한 서비스에만 선택적으로 적용 (Opt-in 방식)\n- Sidecar에도 적절한 리소스 requests/limits 설정하여 QoS 보장\n- 리소스 사용량과 성능 메트릭을 지속적으로 모니터링\n- 서비스 규모와 복잡도가 충분히 크고, Service Mesh의 이점이 명확한 경우에만 도입",
+      "tags": [
+        "kubernetes",
+        "qos",
+        "service-mesh",
+        "resource-management",
+        "architecture"
+      ],
+      "references": [
+        {
+          "title": "Quality of Service",
+          "url": "/wiki/kubernetes/kubernetes-qos"
+        },
+        {
+          "title": "Service Mesh Architecture",
+          "url": "/wiki/kubernetes/kubernetes-service-mesh"
+        },
+        {
+          "title": "Availability and Performance",
+          "url": "/wiki/infra/infra-availability"
+        }
+      ]
+    }
+  ]
+}

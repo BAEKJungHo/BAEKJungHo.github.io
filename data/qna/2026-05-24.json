@@ -1,0 +1,33 @@
+{
+  "date": "2026-05-24",
+  "dayOfWeek": "일요일",
+  "topic": "Design Patterns, TDD, DDD, FP, OOP",
+  "questions": [
+    {
+      "id": 1,
+      "question": "귀하의 팀에서 복잡한 비즈니스 로직을 처리하는 시스템을 개발 중입니다. 초기에는 단일 알고리즘으로 충분했지만, 고객사마다 다른 정책을 요구하게 되었습니다. 템플릿 메서드 패턴과 전략 패턴 중 어떤 것을 선택하시겠습니까? 각 패턴의 트레이드오프를 설명하고, 실무에서 어떤 상황에서 어떤 패턴을 선택해야 하는지 구체적인 판단 기준을 제시해주세요.",
+      "answer": "**템플릿 메서드 패턴 vs 전략 패턴 비교:**\n\n**1. 템플릿 메서드 패턴의 특징과 트레이드오프:**\n- **장점:** 알고리즘의 골격을 상위 클래스에서 정의하고, 세부 구현만 서브클래스에서 오버라이드합니다. 공통 로직의 중복을 효과적으로 제거할 수 있으며, 전체 알고리즘 흐름을 한눈에 파악할 수 있습니다.\n- **단점:** 상속을 사용하므로 결합도가 높아집니다. 컴파일 타임에 알고리즘이 결정되며, 런타임에 유연한 전환이 어렵습니다. 서브클래스가 필요 없는 메서드까지 상속받아야 하는 경우가 발생할 수 있습니다.\n\n**2. 전략 패턴의 특징과 트레이드오프:**\n- **장점:** 구성(Composition)을 사용하여 낮은 결합도를 유지합니다. 런타임에 알고리즘을 동적으로 변경할 수 있으며, Context는 Strategy 인터페이스에만 의존하므로 OCP(Open-Closed Principle)를 잘 준수합니다. 스프링의 DI와 자연스럽게 결합됩니다.\n- **단점:** 전략 객체가 많아질 경우 클래스 수가 증가합니다. Context와 Strategy 간의 데이터 전달이 복잡해질 수 있습니다.\n\n**3. 실무 선택 기준:**\n\n**템플릿 메서드 패턴을 선택하는 경우:**\n- 알고리즘의 전체 흐름이 고정되어 있고, 일부 단계만 다를 때\n- 서브클래스의 수가 제한적이고, 변경 빈도가 낮을 때\n- 상속 관계가 명확하고, IS-A 관계가 성립할 때\n- 예: 프레임워크의 생명주기 메서드(Spring의 InitializingBean), 데이터베이스 연결 템플릿\n\n**전략 패턴을 선택하는 경우:**\n- 런타임에 알고리즘을 동적으로 변경해야 할 때\n- 고객사마다 다른 정책을 적용해야 하는 멀티 테넌트 환경\n- 알고리즘이 자주 추가/변경되는 경우\n- 테스트 용이성이 중요할 때 (Mock 객체 주입이 쉬움)\n- 예: 결제 시스템(카드/현금/포인트), 할인 정책, 인증 방식\n\n**4. 질문의 시나리오 해결:**\n고객사마다 다른 정책을 요구하는 상황에서는 **전략 패턴이 더 적합**합니다.\n\n**이유:**\n- 고객사별로 런타임에 다른 전략을 주입할 수 있습니다\n- 새로운 고객사 정책 추가 시 기존 코드를 수정하지 않아도 됩니다 (OCP)\n- Spring의 DI를 활용하여 @Qualifier나 Factory 패턴으로 고객사별 전략을 쉽게 관리할 수 있습니다\n\n**구현 예시:**\n```java\n// Strategy Interface\npublic interface PricingStrategy {\n    BigDecimal calculatePrice(Order order);\n}\n\n// Context\npublic class OrderService {\n    private final PricingStrategy pricingStrategy;\n    \n    public OrderService(PricingStrategy pricingStrategy) {\n        this.pricingStrategy = pricingStrategy;\n    }\n    \n    public void processOrder(Order order) {\n        // 공통 로직\n        BigDecimal price = pricingStrategy.calculatePrice(order);\n        // 후처리\n    }\n}\n```\n\n**5. 하이브리드 접근:**\n실무에서는 두 패턴을 함께 사용하는 것도 고려할 수 있습니다. 예를 들어, 전략 인터페이스의 구현체들이 공통 로직을 가지는 경우, Abstract Strategy 클래스를 두어 템플릿 메서드 패턴을 적용할 수 있습니다.\n\n**결론:** 확장성, 유연성, 테스트 용이성이 중요한 현대적인 애플리케이션에서는 전략 패턴이 일반적으로 더 나은 선택입니다. 특히 멀티 테넌트, MSA, 클라우드 환경에서는 런타임 유연성이 핵심이므로 전략 패턴을 우선 고려해야 합니다.",
+      "tags": [
+        "designpattern",
+        "strategy",
+        "template-method",
+        "oop",
+        "design-principles"
+      ],
+      "references": [
+        {
+          "title": "Template Method Pattern",
+          "url": "/wiki/designpattern/designpattern-template-method"
+        },
+        {
+          "title": "Strategy Pattern",
+          "url": "/wiki/designpattern/designpattern-strategy"
+        },
+        {
+          "title": "Interface Design Thought",
+          "url": "/wiki/designpattern/designpattern-interface-design-thought"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "date": "2026-05-25",
+  "dayOfWeek": "월요일",
+  "topic": "Network",
+  "questions": [
+    {
+      "id": 1,
+      "question": "대용량 트래픽을 처리하는 결제 시스템에서 네트워크 재시도로 인한 중복 결제 문제가 발생했습니다. Redis를 활용한 멱등성 키(Idempotency Key) 패턴을 적용하려고 할 때, 어떤 설계 요소들을 고려해야 하며, 각 선택지마다 어떤 트레이드오프가 존재하는지 설명해주세요.",
+      "answer": "Redis 기반 멱등성 키 설계 시 다음의 핵심 요소들을 고려해야 합니다.\n\n**1. 멱등성 키 생성 전략**\n- 클라이언트 생성 방식: UUID v4 등을 클라이언트가 생성하여 전송. 클라이언트 제어권이 있지만, 악의적인 재사용 가능성 존재\n- 서버 생성 방식: 요청 파라미터 기반 해시(orderId + userId + amount). 동일 파라미터에 대한 자동 중복 방지 가능하지만, 정상적인 재시도와 악의적 재시도 구분 어려움\n- 하이브리드: 클라이언트 생성 + 서버 측 파라미터 검증\n\n**2. Redis 키 설계 및 TTL 전략**\n- 키 구조: `idempotency:{service}:{idempotency_key}`\n- TTL 설정: 비즈니스 요구사항에 따라 결정 (결제의 경우 24시간 권장)\n- 짧은 TTL: 메모리 효율적이지만 정당한 재시도 시 중복 처리 가능성\n- 긴 TTL: 안전하지만 메모리 사용량 증가\n\n**3. 상태 관리 및 처리 흐름**\n```\n1. 요청 수신 → Redis GET idempotency_key\n2. 키 없음 → SETNX로 PROCESSING 상태 저장 (TTL 설정)\n3. 비즈니스 로직 실행\n4. 성공 → Redis에 결과 저장 (COMPLETED + result)\n5. 실패 → 키 삭제 또는 FAILED 상태 저장\n6. 키 존재 시:\n   - PROCESSING: 409 Conflict 또는 대기 후 재조회\n   - COMPLETED: 저장된 결과 반환 (200 OK)\n   - FAILED: 재처리 허용 또는 에러 반환\n```\n\n**4. 핵심 트레이드오프**\n\n*동시성 처리:*\n- SETNX 사용: 원자적 처리 보장, 하지만 Redis 장애 시 중복 가능\n- Lua Script: 복잡한 로직 원자적 실행, 하지만 디버깅 어려움\n- Redlock 패턴: 분산 환경 안전성 보장, 하지만 성능 오버헤드\n\n*일관성 vs 성가용성:*\n- Redis 단일 노드: 빠르지만 SPOF\n- Redis Sentinel: HA 제공, 하지만 페일오버 시 짧은 순간 일관성 깨질 수 있음\n- Redis Cluster: 확장성 좋지만 복잡도 증가\n\n*저장 데이터 크기:*\n- 결과 전체 저장: 빠른 응답, 하지만 메모리 사용량 큼\n- 결과 참조만 저장: 메모리 효율적, 하지만 DB 조회 필요\n\n**5. 실무적 고려사항**\n- 네트워크 타임아웃보다 긴 TTL 설정\n- 모니터링: 중복 요청 비율, PROCESSING 상태 장기 유지 건 추적\n- 클라이언트 가이드: 재시도 시 동일 키 사용, 지수 백오프 적용\n- DB 트랜잭션과의 관계: Redis 저장 시점을 트랜잭션 커밋 전/후 중 선택 (트레이드오프 존재)\n\n**6. 장애 시나리오 대응**\n- Redis 장애: 폴백 전략(DB 기반 락, 최종 일관성 허용 등)\n- PROCESSING 상태 영구 고착: 백그라운드 작업으로 오래된 PROCESSING 상태 정리\n- 네트워크 파티션: 클라이언트 타임아웃 < 서버 처리 시간인 경우 대응 전략\n\nStripe, Toss 등 실제 결제 시스템들은 이러한 요소들을 종합적으로 고려하여, 비즈니스 요구사항(금융 규제, SLA, 비용)에 맞는 최적의 균형점을 찾아 설계합니다.",
+      "tags": [
+        "network",
+        "idempotency",
+        "redis",
+        "distributed-systems",
+        "payment"
+      ],
+      "references": [
+        {
+          "title": "Idempotency with Redis",
+          "url": "/wiki/network/network-idempotency"
+        },
+        {
+          "title": "Idempotency Key that resolve consistency issues with retries",
+          "url": "https://baekjungho.github.io/wiki/troubleshooting/troubleshooting-idempotency/#idempotent"
+        }
+      ]
+    }
+  ]
+}

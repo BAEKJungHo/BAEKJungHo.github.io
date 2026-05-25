@@ -1,0 +1,35 @@
+{
+  "date": "2026-05-26",
+  "dayOfWeek": "화요일",
+  "topic": "Distributed Systems",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처 환경에서 분산 트랜잭션을 관리해야 하는 시나리오가 있습니다. Two-Phase Commit(2PC)과 Saga 패턴 중 어떤 것을 선택하시겠습니까? 각 패턴의 트레이드오프를 설명하고, 실무에서 어떤 상황에 어떤 패턴을 적용할지 판단 기준을 제시해주세요.",
+      "answer": "**Two-Phase Commit(2PC)의 특징과 트레이드오프:**\n\n2PC는 강한 일관성(Strong Consistency)을 보장하는 분산 트랜잭션 프로토콜입니다.\n\n*장점:*\n- ACID 속성을 완벽하게 보장하며 즉각적인 일관성 제공\n- 비즈니스 로직이 단순하며 rollback 로직을 별도로 구현할 필요가 없음\n- 데이터 정합성이 중요한 금융 시스템 등에 적합\n\n*단점:*\n- 동기식 블로킹 방식으로 성능 저하 (MySQL 기준 단일 노드 대비 10배 이상 느림)\n- 코디네이터가 단일 실패 지점(Single Point of Failure)이 될 수 있음\n- 참여자 중 하나라도 응답하지 않으면 전체 트랜잭션 실패 (내결함성 저하)\n- 클라우드 네이티브 환경에서 운영 복잡도 증가\n- 락 홀딩 시간이 길어 동시성 저하\n\n**Saga 패턴의 특징과 트레이드오ფ:**\n\nSaga는 각 서비스의 로컬 트랜잭션을 순차적으로 실행하고 실패 시 보상 트랜잭션(Compensating Transaction)을 통해 일관성을 유지하는 패턴입니다.\n\n*장점:*\n- 높은 가용성과 확장성 제공\n- 비동기 처리로 각 서비스의 독립성 보장\n- 부분 실패에 대한 탄력성(Resilience) 제공\n- Database per Service 패턴과 자연스럽게 결합\n- 클라우드 네이티브 환경에 적합\n\n*단점:*\n- 최종 일관성(Eventual Consistency)만 보장\n- 보상 트랜잭션 로직 구현의 복잡도\n- 중간 상태가 다른 서비스에 노출될 수 있음\n- 디버깅과 모니터링이 어려움\n- 격리성(Isolation) 보장이 약함\n\n**실무 적용 판단 기준:**\n\n*2PC를 선택하는 경우:*\n1. 강한 일관성이 필수적인 금융 거래, 재고 관리 등\n2. 트랜잭션 범위가 작고 참여 서비스가 2-3개 이하\n3. 레거시 시스템과의 통합이 필요한 경우\n4. 성능보다 정확성이 우선시되는 비즈니스\n\n*Saga를 선택하는 경우:*\n1. 마이크로서비스 간 느슨한 결합이 중요한 경우\n2. 높은 가용성과 확장성이 요구되는 시스템\n3. 장기 실행 트랜잭션(Long-Running Transaction)\n4. 최종 일관성이 허용되는 비즈니스 (주문-결제-배송 등)\n5. 클라우드 네이티브 환경\n\n**권장 접근 방식:**\n\n실무에서는 Saga 패턴을 기본으로 하되, 핵심 금융 트랜잭션 등 강한 일관성이 필수적인 부분만 2PC를 제한적으로 사용하는 하이브리드 접근을 권장합니다. Saga 패턴 구현 시에는 Choreography 방식보다는 Orchestration 방식이 복잡도 관리에 유리하며, 이벤트 소싱과 CQRS 패턴을 함께 적용하면 시스템의 추적성과 복구 능력을 향상시킬 수 있습니다.\n\n또한 Reactive Manifesto의 원칙(응답성, 탄력성, 유연성, 메시지 기반)을 고려할 때, 대부분의 MSA 환경에서는 Saga 패턴이 더 적합한 선택입니다.",
+      "tags": [
+        "distributed-systems",
+        "msa",
+        "saga",
+        "two-phase-commit",
+        "transaction",
+        "consistency",
+        "trade-off"
+      ],
+      "references": [
+        {
+          "title": "Saga Pattern in Microservices",
+          "url": "/wiki/msa/msa-saga"
+        },
+        {
+          "title": "Two-Phase Commit and Distributed Transactions",
+          "url": "/wiki/msa/msa-xa"
+        },
+        {
+          "title": "Reactive Manifesto",
+          "url": "/wiki/msa/msa-reactive-manifesto"
+        }
+      ]
+    }
+  ]
+}

@@ -392,10 +392,12 @@
       "2026-05-20"
     ],
     "architecture/architecture-cdn": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-27"
     ],
     "architecture/architecture-character-architectures": [
-      "2026-03-18"
+      "2026-03-18",
+      "2026-05-27"
     ],
     "go/go-polymorphism-function": [
       "2026-03-19"
@@ -568,22 +570,28 @@
       "2026-05-12"
     ],
     "architecture/architecture-circuit-breaker": [
-      "2026-03-25"
+      "2026-03-25",
+      "2026-05-27"
     ],
     "architecture/architecture-clean-impl": [
-      "2026-03-25"
+      "2026-03-25",
+      "2026-05-27"
     ],
     "architecture/architecture-clean": [
-      "2026-03-25"
+      "2026-03-25",
+      "2026-05-27"
     ],
     "architecture/architecture-cloud-native": [
-      "2026-03-25"
+      "2026-03-25",
+      "2026-05-27"
     ],
     "architecture/architecture-components": [
-      "2026-03-25"
+      "2026-03-25",
+      "2026-05-27"
     ],
     "architecture/architecture-consistent-hash": [
-      "2026-03-25"
+      "2026-03-25",
+      "2026-05-27"
     ],
     "architecture/architecture-crdts": [
       "2026-03-25"
@@ -1219,6 +1227,6 @@
       "2026-05-21"
     ]
   },
-  "totalQuestionsGenerated": 78,
-  "lastGenerated": "2026-05-26"
+  "totalQuestionsGenerated": 79,
+  "lastGenerated": "2026-05-27"
 }

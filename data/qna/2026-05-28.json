@@ -1,0 +1,43 @@
+{
+  "date": "2026-05-28",
+  "dayOfWeek": "목요일",
+  "topic": "Programming Languages (Go, Java, Kotlin)",
+  "questions": [
+    {
+      "id": 1,
+      "question": "Kotlin의 코루틴과 Go의 고루틴(Goroutine)은 동시성 문제를 해결하기 위한 서로 다른 접근 방식을 취하고 있습니다. 두 언어의 동시성 모델을 비교하고, 각각의 설계 철학과 트레이드오프를 설명해주세요. 특히 'Share memory by communicating'과 'Structured Concurrency' 개념을 중심으로 설명하고, 실무에서 어떤 상황에 어떤 모델이 더 적합한지 판단 근거를 제시해주세요.",
+      "answer": "**Kotlin 코루틴의 설계 철학:**\n\nKotlin은 Structured Concurrency 원칙을 따릅니다. 이는 동시성 작업이 명확한 진입점과 종료점을 가진 제어 흐름 구조로 캡슐화되어야 한다는 개념입니다. 핵심 원칙은:\n- 작업이 동시 하위 작업으로 분할되면 모두 같은 위치(작업의 코드 블록)로 돌아와야 함\n- 상위 작업은 하위 작업의 결과를 기다리고 실패를 모니터링함\n- 코루틴은 suspend/resume 메커니즘으로 작동하며, suspend point에서 중단되고 재개될 수 있음\n\n장점:\n- 비동기 코드를 동기 코드처럼 작성하여 Callback Hell 회피\n- 스레드가 블로킹되지 않고 다른 작업 수행 가능\n- 라이브러리 레벨에서 제공되어 유연한 확장 가능\n- CoroutineScope를 통한 생명주기 관리와 취소 전파가 구조화됨\n\n**Go 고루틴의 설계 철학:**\n\nGo는 CSP(Communicating Sequential Processes) 모델을 따릅니다. 'Do not communicate by sharing memory; instead, share memory by communicating' 원칙을 핵심으로 합니다:\n- 고루틴 간 데이터 공유를 공유 메모리가 아닌 채널(channel)을 통한 통신으로 해결\n- 언어 레벨에서 고루틴을 지원하여 생성 비용이 매우 낮음\n- CSP primitives를 통해 복잡한 mutex/lock 설계의 단점 해소\n\n장점:\n- 언어 차원의 지원으로 일관된 동시성 모델 제공\n- 채널을 통한 명시적 통신으로 데이터 레이스 방지\n- 매우 가벼운 고루틴으로 수만~수십만 개 동시 실행 가능\n- 간단하고 직관적인 동시성 코드 작성\n\n**트레이드오프 분석:**\n\n1. **메모리 공유 방식:**\n   - Kotlin: 공유 상태를 허용하되 Structured Concurrency로 안전성 확보. 필요시 mutex/lock도 사용 가능\n   - Go: 채널 기반 통신을 권장하지만, 필요시 sync 패키지의 mutex 사용 가능\n   - 트레이드오프: Go의 채널 방식이 더 안전하지만 학습 곡선이 있고, Kotlin은 기존 멀티스레딩 경험을 활용하기 쉬움\n\n2. **구조화 수준:**\n   - Kotlin: Structured Concurrency로 작업 계층 구조와 취소 전파가 명확\n   - Go: 고루틴은 독립적이며 context 패키지로 취소를 관리해야 함\n   - 트레이드오프: Kotlin이 더 구조화되어 있어 복잡한 작업 트리 관리에 유리하지만, Go는 더 유연함\n\n3. **성능 특성:**\n   - Kotlin: JVM 위에서 동작하여 JVM의 스레드 모델 영향을 받음 (Java의 Virtual Thread와 통합 가능)\n   - Go: 런타임 스케줄러가 M:N 스케줄링으로 OS 스레드와 고루틴 매핑\n   - 트레이드오프: Go가 일반적으로 더 가볍고 빠르지만, Kotlin은 JVM 생태계 활용 가능\n\n**실무 적용 판단 기준:**\n\n**Go를 선택해야 할 상황:**\n- 수만 개 이상의 동시 연결을 처리하는 네트워크 서버 (예: API Gateway, Proxy)\n- 단순하고 독립적인 동시 작업이 많은 시스템\n- 마이크로서비스 아키텍처에서 경량 서비스 구현\n- 채널 기반의 파이프라인 처리가 자연스러운 워크플로우\n\n**Kotlin을 선택해야 할 상황:**\n- 복잡한 작업 계층 구조와 의존성이 있는 비동기 작업 (예: 여러 API 호출 조합)\n- Android 앱이나 JVM 기반 엔터프라이즈 애플리케이션\n- 기존 Java/Spring 생태계와의 통합이 필요한 경우\n- UI 프로그래밍처럼 명확한 생명주기 관리가 중요한 경우\n\n**결론:**\n두 모델 모두 우수하며, 선택은 프로젝트의 특성, 팀의 경험, 생태계 요구사항에 따라 달라집니다. Go는 '통신으로 공유'하는 철학으로 더 안전한 기본값을 제공하고, Kotlin은 구조화된 동시성으로 복잡성 관리에 강점이 있습니다.",
+      "tags": [
+        "kotlin",
+        "go",
+        "concurrency",
+        "goroutine",
+        "coroutine",
+        "architecture",
+        "design-philosophy"
+      ],
+      "references": [
+        {
+          "title": "Kotlin Structured Concurrency",
+          "url": "/wiki/kotlin/kotlin-structured-concurrency"
+        },
+        {
+          "title": "Go Concurrency - Share memory by communicating",
+          "url": "/wiki/go/go-concurrency"
+        },
+        {
+          "title": "Kotlin Suspend Mechanism",
+          "url": "/wiki/kotlin/kotlin-suspend"
+        },
+        {
+          "title": "Effective Go - Concurrency",
+          "url": "https://go.dev/doc/effective_go#concurrency"
+        },
+        {
+          "title": "JEP 428: Structured Concurrency",
+          "url": "https://openjdk.org/jeps/428"
+        }
+      ]
+    }
+  ]
+}

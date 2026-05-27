@@ -129,10 +129,12 @@
       "2026-05-20"
     ],
     "go/go-concurrency": [
-      "2026-03-12"
+      "2026-03-12",
+      "2026-05-28"
     ],
     "go/go-empty-interface-generics": [
-      "2026-03-12"
+      "2026-03-12",
+      "2026-05-28"
     ],
     "go/go-error-std": [
       "2026-03-12"
@@ -1225,8 +1227,26 @@
     ],
     "kotlin/kotlin-sequence": [
       "2026-05-21"
+    ],
+    "kotlin/kotlin-simplesyntax": [
+      "2026-05-28"
+    ],
+    "kotlin/kotlin-source-machine": [
+      "2026-05-28"
+    ],
+    "kotlin/kotlin-structured-concurrency": [
+      "2026-05-28"
+    ],
+    "kotlin/kotlin-suspend": [
+      "2026-05-28"
+    ],
+    "kotlin/kotlin-utils": [
+      "2026-05-28"
+    ],
+    "kotlin/kotlin-value-object": [
+      "2026-05-28"
     ]
   },
-  "totalQuestionsGenerated": 79,
-  "lastGenerated": "2026-05-27"
+  "totalQuestionsGenerated": 80,
+  "lastGenerated": "2026-05-28"
 }

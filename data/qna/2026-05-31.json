@@ -1,0 +1,43 @@
+{
+  "date": "2026-05-31",
+  "dayOfWeek": "일요일",
+  "topic": "Design Patterns, TDD, DDD, FP, OOP",
+  "questions": [
+    {
+      "id": 1,
+      "question": "마이크로서비스 아키텍처에서 외부 결제 시스템(PG사)을 연동해야 하는 상황입니다. 외부 결제 시스템은 레거시 SOAP 기반이며, 복잡한 XML 구조를 사용합니다. 이를 도메인 주도 설계(DDD) 관점에서 통합할 때 고려해야 할 설계 전략과 트레이드오프에 대해 설명해주세요. 특히 Anticorruption Layer, Aggregate 경계 설정, 그리고 TDD 접근 방식을 어떻게 결합할 것인지 구체적으로 논의해주세요.",
+      "answer": "이 문제는 여러 DDD 패턴과 개발 방법론을 종합적으로 적용해야 하는 실무 시나리오입니다.\n\n## 1. Anticorruption Layer 설계 전략\n\n**핵심 목적**: 외부 레거시 시스템의 복잡한 모델이 우리 도메인 모델을 오염시키지 않도록 보호하는 것입니다.\n\n**구현 접근**:\n- PaymentGatewayAdapter를 구현하여 SOAP/XML 복잡성을 캡슐화합니다\n- 도메인 영역에서는 깨끗한 인터페이스(예: PaymentProcessor)만 의존하도록 설계합니다\n- Adapter 내부에서 XML 파싱, SOAP 호출, 에러 코드 변환 등을 처리합니다\n\n```java\n// 도메인 인터페이스 (깨끗한 추상화)\npublic interface PaymentProcessor {\n    PaymentResult process(PaymentRequest request);\n}\n\n// Anticorruption Layer 구현\npublic class LegacyPaymentGatewayAdapter implements PaymentProcessor {\n    private final LegacySoapClient soapClient;\n    \n    @Override\n    public PaymentResult process(PaymentRequest request) {\n        // 도메인 모델 -> 레거시 XML 변환\n        LegacyXmlRequest xmlRequest = convertToLegacyFormat(request);\n        LegacyXmlResponse xmlResponse = soapClient.call(xmlRequest);\n        // 레거시 응답 -> 도메인 모델 변환\n        return convertToDomainResult(xmlResponse);\n    }\n}\n```\n\n## 2. Aggregate 경계 설정\n\n**결제 도메인 모델링**:\n- Payment Aggregate의 루트는 Payment Entity입니다\n- Payment는 PaymentLineItem, PaymentMethod 등을 포함할 수 있습니다\n- 중요한 것은 외부 PG사의 복잡한 데이터 구조를 그대로 가져오지 않는 것입니다\n\n**경계 설정 원칙**:\n```java\npublic class Payment { // Aggregate Root\n    private PaymentId id;\n    private Money amount;\n    private PaymentStatus status;\n    private List<PaymentLineItem> lineItems;\n    \n    // 불변식 보장: 결제 금액은 항목들의 합과 일치해야 함\n    public void addLineItem(PaymentLineItem item) {\n        validateInvariant(item);\n        this.lineItems.add(item);\n    }\n    \n    // 도메인 로직: 결제 처리\n    public PaymentResult process(PaymentProcessor processor) {\n        if (this.status != PaymentStatus.PENDING) {\n            throw new IllegalStateException(\"Only pending payments can be processed\");\n        }\n        PaymentResult result = processor.process(toPaymentRequest());\n        this.status = result.isSuccess() ? PaymentStatus.COMPLETED : PaymentStatus.FAILED;\n        return result;\n    }\n}\n```\n\n**Order와 Payment의 경계**:\n- Order Aggregate와 Payment Aggregate는 분리되어야 합니다\n- Order가 Payment를 직접 참조하지 않고, PaymentId로 참조합니다\n- 이유: 변경 주체가 다르고(주문 관리 vs 결제 처리), 라이프사이클이 독립적이기 때문입니다\n\n## 3. TDD 접근 방식\n\n**Outside-In TDD with Acceptance Test**:\n\n1단계 - Acceptance Test (외부 피드백 루프):\n```java\n@Test\nvoid 외부_결제_시스템을_통한_결제_처리_시나리오() {\n    // Given: 결제 대기 상태의 Payment\n    Payment payment = Payment.create(Money.of(10000), items);\n    \n    // When: 결제 처리\n    PaymentResult result = payment.process(paymentProcessor);\n    \n    // Then: 결제 완료 및 상태 변경\n    assertTrue(result.isSuccess());\n    assertEquals(PaymentStatus.COMPLETED, payment.getStatus());\n}\n```\n\n2단계 - Unit Test (내부 피드백 루프):\n```java\n@Test\nvoid Adapter는_도메인_모델을_레거시_형식으로_변환한다() {\n    // Given\n    PaymentRequest domainRequest = new PaymentRequest(Money.of(10000));\n    LegacyPaymentGatewayAdapter adapter = new LegacyPaymentGatewayAdapter(mockSoapClient);\n    \n    // When\n    adapter.process(domainRequest);\n    \n    // Then: SOAP 클라이언트가 올바른 XML 형식으로 호출되었는지 검증\n    verify(mockSoapClient).call(argThat(xml -> \n        xml.getAmount().equals(\"10000\") && \n        xml.getCurrency().equals(\"KRW\")\n    ));\n}\n\n@Test\nvoid Adapter는_레거시_에러를_도메인_예외로_변환한다() {\n    // Given: 레거시 시스템이 특정 에러 코드 반환\n    when(mockSoapClient.call(any())).thenReturn(errorResponseWithCode(\"E001\"));\n    \n    // When & Then: 도메인 예외로 변환되는지 검증\n    assertThrows(InsufficientBalanceException.class, () -> \n        adapter.process(request)\n    );\n}\n```\n\n**Watchdog 패턴 적용 (안정성 확보)**:\n```java\npublic class ResilientPaymentGatewayAdapter implements PaymentProcessor {\n    private final PaymentProcessor delegate;\n    private final Watchdog watchdog;\n    \n    @Override\n    public PaymentResult process(PaymentRequest request) {\n        watchdog.reset(); // heartbeat\n        try {\n            return delegate.process(request);\n        } catch (TimeoutException e) {\n            // watchdog이 타임아웃을 감지하여 복구 로직 실행\n            return handleTimeout(request);\n        }\n    }\n}\n```\n\n## 4. 주요 트레이드오프\n\n**Anticorruption Layer의 복잡도 vs 도메인 순수성**:\n- 장점: 도메인 모델이 깨끗하게 유지되고, 외부 시스템 변경에 격리됨\n- 단점: 변환 로직의 복잡도 증가, 추가 레이어로 인한 성능 오버헤드\n- 판단 기준: 외부 시스템이 자주 변경되거나 여러 레거시 시스템과 통합해야 한다면 ACL의 가치가 큽니다\n\n**Aggregate 크기**:\n- 너무 큰 Aggregate: 동시성 문제, 성능 저하\n- 너무 작은 Aggregate: 불변식 보장 어려움, 복잡한 조율 로직 필요\n- 권장: 트랜잭션 일관성이 반드시 필요한 범위만 하나의 Aggregate로 묶습니다\n\n**TDD의 테스트 범위**:\n- Integration Test로 실제 SOAP 호출을 테스트할지 여부\n- 권장: Contract Test를 활용하여 외부 시스템과의 계약을 검증하되, 대부분은 Mock을 사용한 단위 테스트로 빠른 피드백을 확보합니다\n\n## 5. 실무 권장사항\n\n1. **점진적 개선**: 처음부터 완벽한 ACL을 만들지 말고, 실패하는 테스트부터 작성하며 필요한 변환 로직을 점진적으로 추가합니다\n2. **명시적 변환 로직**: Converter/Translator 클래스를 별도로 분리하여 단일 책임 원칙을 준수합니다\n3. **회로차단기 패턴**: 외부 시스템 장애 시 빠른 실패를 위해 Circuit Breaker를 함께 적용합니다\n4. **관찰 가능성**: ACL 계층에서 변환 실패, 응답 시간 등을 모니터링하여 외부 시스템 문제를 조기에 감지합니다",
+      "tags": [
+        "DDD",
+        "Anticorruption Layer",
+        "Aggregate",
+        "TDD",
+        "Design Pattern",
+        "Integration",
+        "Microservices"
+      ],
+      "references": [
+        {
+          "title": "Anticorruption Layer - DDD",
+          "url": "/wiki/ddd/ddd-anticorruption-layer"
+        },
+        {
+          "title": "Aggregate - DDD",
+          "url": "/wiki/ddd/ddd-aggregate"
+        },
+        {
+          "title": "The Fundamental Test-Driven Development Cycle",
+          "url": "/wiki/tdd/tdd-red-green-refactor"
+        },
+        {
+          "title": "Acceptance Testing",
+          "url": "/wiki/tdd/tdd-acceptance-test"
+        },
+        {
+          "title": "WatchDog Design Pattern",
+          "url": "/wiki/designpattern/designpattern-watch-dog"
+        }
+      ]
+    }
+  ]
+}

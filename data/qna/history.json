@@ -694,10 +694,12 @@
       "2026-05-24"
     ],
     "designpattern/designpattern-watch-dog": [
-      "2026-03-29"
+      "2026-03-29",
+      "2026-05-31"
     ],
     "tdd/tdd-acceptance-test": [
-      "2026-03-29"
+      "2026-03-29",
+      "2026-05-31"
     ],
     "network/network-webrtc": [
       "2026-03-30",
@@ -805,22 +807,28 @@
       "2026-05-16"
     ],
     "tdd/tdd-ai": [
-      "2026-04-05"
+      "2026-04-05",
+      "2026-05-31"
     ],
     "tdd/tdd-dontblame": [
-      "2026-04-05"
+      "2026-04-05",
+      "2026-05-31"
     ],
     "tdd/tdd-interface-design-decisions": [
-      "2026-04-05"
+      "2026-04-05",
+      "2026-05-31"
     ],
     "tdd/tdd-red-green-refactor": [
-      "2026-04-05"
+      "2026-04-05",
+      "2026-05-31"
     ],
     "ddd/ddd-aggregate": [
-      "2026-04-05"
+      "2026-04-05",
+      "2026-05-31"
     ],
     "ddd/ddd-anticorruption-layer": [
-      "2026-04-05"
+      "2026-04-05",
+      "2026-05-31"
     ],
     "ddd/ddd-bounded-context": [
       "2026-04-05"
@@ -1259,6 +1267,6 @@
       "2026-05-28"
     ]
   },
-  "totalQuestionsGenerated": 82,
-  "lastGenerated": "2026-05-30"
+  "totalQuestionsGenerated": 83,
+  "lastGenerated": "2026-05-31"
 }

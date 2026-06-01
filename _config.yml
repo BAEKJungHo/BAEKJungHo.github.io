@@ -1,14 +1,14 @@
 # Site settings
-title: Klarc
+title: Hacker
 url: "https://klarciel.net"
 baseurl: "https://klarciel.net"
 description: >
-  Klarc Blog
+  Hacker
 
 # My information
 email: qjxjfld13@gmail.com
-author: Klarc
-profile: ISFJ
+author: Hacker
+profile: INTJ
 twitter_username:
 github_username: BAEKJungHo
 comment-support: utterances

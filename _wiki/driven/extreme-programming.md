@@ -4,7 +4,7 @@ title   : Extreme Programming
 summary : 
 date    : 2022-04-15 19:54:32 +0900
 updated : 2022-04-16 21:15:24 +0900
-tag     : methodology
+tag     : methodology xp
 toc     : true
 comment : true
 public  : true

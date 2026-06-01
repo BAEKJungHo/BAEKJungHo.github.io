@@ -1,4 +1,5 @@
 [
+ "artifact/test-fundamental",
  "blockchain/blockchain-bitnode",
  "blockchain/blockchain-bitnode-crypto-hash",
  "blockchain/blockchain-bitnode-encoding-endians",

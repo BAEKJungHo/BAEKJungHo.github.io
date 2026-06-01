@@ -13,6 +13,7 @@ regenerate: true
 * [[/artifact/magazine-productivity-stability]
 * [[/artifact/sdv-tesla-signed-command-protocol]
 * [[/artifact/magazine-tradeoff]]
+* [[/artifact/test-fundamental]]
 
 ## Magazine
 
@@ -347,6 +348,7 @@ regenerate: true
 * [[/test/tdd-dont-mock-what-you-dont-own]]
 * [[/test/test-software-regression]]
 * [[/test/test-quadrants-pyramid]]
+* [[/artifact/test-fundamental]]
 
 ## TDD
 

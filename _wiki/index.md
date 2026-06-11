@@ -548,6 +548,7 @@ regenerate: true
 * [[/sdv/sdv-history]]
 * [[/sdv/sdv-vehicle-to-grid]]
 * [[/sdv/sdv-digital-twin]]
+* [[/sdv/digital-key]]
 
 ## GRPC
 

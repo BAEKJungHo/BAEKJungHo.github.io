@@ -9,7 +9,6 @@
  "mobility/mobility-can",
  "mobility/mobility-ccs",
  "mobility/mobility-connected-service",
- "mobility/mobility-digital-key",
  "mobility/mobility-digital-twin",
  "mobility/mobility-language-dictionary",
  "mobility/mobility-lidar-radar",
@@ -20,5 +19,6 @@
  "mobility/mobility-vehicle-signal-specification",
  "mobility/mobility-vent-heat",
  "mobility/mobility-vin",
- "realworld/realworld-vehicle-controls"
+ "realworld/realworld-vehicle-controls",
+ "sdv/digital-key"
 ]

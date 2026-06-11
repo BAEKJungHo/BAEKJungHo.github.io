@@ -7,6 +7,7 @@
  "network/network-vpn",
  "network/network-webrtc",
  "sdv",
+ "sdv/digital-key",
  "sdv/sdv-digital-twin",
  "sdv/sdv-history",
  "sdv/sdv-proximity-based-auth",

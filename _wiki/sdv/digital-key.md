@@ -415,6 +415,16 @@ Vehicle OEM Server --> 사용자/디바이스 (App/URL):
 이 5가지가 전달되면, Phase 2는 완전히 오프라인으로 동작한다.
 ```
 
+## CERTIFICATE
+
+**Variant1 - SE root of trust based on CASD**:
+
+![](/resource/wiki/digital-key/cert-var1.png)
+
+**Variant2 - SE root of trust based on DK applet associated security domain**:
+
+![](/resource/wiki/digital-key/cert-var2.png)
+
 ## References
 
 - Digital Key Technical Specification / Car Connectivity Consortium

@@ -8,6 +8,7 @@
   "artifact/magazine-productivity-stability",
   "artifact/magazine-tradeoff",
   "artifact/sdv-tesla-signed-command-protocol",
-  "artifact/test-fundamental"
+  "artifact/test-fundamental",
+  "philosophy"
  ]
 }

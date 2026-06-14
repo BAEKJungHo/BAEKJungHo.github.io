@@ -14,6 +14,7 @@
  "kotlin/kotlin-action-calculate",
  "kotlin/kotlin-mockk",
  "kotlin/kotlin-relaxed-mockk",
+ "philosophy",
  "spring/spring-psa",
  "tdd/tdd-acceptance-test",
  "tdd/tdd-ai",

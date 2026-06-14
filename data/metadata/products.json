@@ -1,0 +1,10 @@
+{
+ "type": "wiki",
+ "title": "Products",
+ "parent": "index",
+ "url": "/wiki/products",
+ "updated": "2026-06-14 09:00:00 +0900",
+ "children": [
+  "products/knowly"
+ ]
+}

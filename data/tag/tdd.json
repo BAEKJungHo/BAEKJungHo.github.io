@@ -1,5 +1,4 @@
 [
- "artifact/test-fundamental",
  "blockchain/blockchain-bitnode",
  "blockchain/blockchain-bitnode-crypto-hash",
  "blockchain/blockchain-bitnode-encoding-endians",
@@ -24,6 +23,7 @@
  "tddknight",
  "test/test-design-driven-testing",
  "test/test-enable-refactoring",
+ "test/test-fundamental",
  "test/test-quadrants-pyramid",
  "test/test-the-practical-test-pyramid"
 ]

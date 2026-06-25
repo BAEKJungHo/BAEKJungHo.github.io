@@ -8,7 +8,7 @@ tag     : test tdd bdd xp
 toc     : true
 comment : true
 public  : true
-parent  : [[/artifact]]
+parent  : [[/test]]
 latex   : true
 favorite: true
 ---

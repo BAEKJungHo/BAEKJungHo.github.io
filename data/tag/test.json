@@ -1,6 +1,5 @@
 [
  "architecture/architecture-functional",
- "artifact/test-fundamental",
  "book/tdd-knight-complex-business-logic-improved-tdd",
  "book/tdd-knight-first-tdd-experience",
  "book/tdd-knight-legacy-code",
@@ -39,6 +38,7 @@
  "test/test-effective-unittest",
  "test/test-enable-refactoring",
  "test/test-fixtures",
+ "test/test-fundamental",
  "test/test-harness",
  "test/test-integration",
  "test/test-intuitive-naming",

@@ -4,7 +4,7 @@ title   : FUNDAMENTAL TESTING
 summary :
 date    : 2026-05-31 19:02:32 +0900
 updated : 2026-05-31 19:02:32 +0900
-tag     : artifact test tdd bdd xp
+tag     : test tdd bdd xp
 toc     : true
 comment : true
 public  : true

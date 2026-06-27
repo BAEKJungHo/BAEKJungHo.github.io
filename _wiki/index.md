@@ -725,6 +725,7 @@ regenerate: true
 * [[/driven/oop-solid]]
 * [[/driven/driven-data]]
 * [[/driven/driven-data-analysis-three-rule]]
+* [[/driven/spec-driven-development]]
 
 ## AWS
 

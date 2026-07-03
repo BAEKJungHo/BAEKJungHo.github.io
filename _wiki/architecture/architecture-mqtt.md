@@ -574,6 +574,25 @@ __[AWS IoT Core](https://aws.amazon.com/ko/iot-core/)__ 같은 관리형 서비�
 
 > Kafka 는 AMQP, STOMP, MQTT 같은 표준 프로토콜을 지원하지 않고, 자체 바이너리 프로토콜을 사용한다. 그럼에도 뛰어난 성능과 이벤트 전달 보장 특성으로 널리 사용된다. MQTT 와 Kafka 를 함께 사용하는 아키텍처도 흔하다. ***MQTT 브로커가 디바이스의 메시지를 수집하고, 브로커가 이를 Kafka 로 전달***하여 스트림 처리하는 패턴이다.
 
+## MQTT in IoT Devices
+
+Vehicle, IVI 와 같은 IoT Device 들은 데이터를 서버와 주고 받곤 한다. 이때 IoT Devices 로 부터 데이터를 전달받고 제공하는 클라우드 서버는 일반적으로 MQTT 를 사용한다.
+
+왜 Kafka 를 사용하지 않는 것일까? 
+
+Kafka 는 분산 로그/스트림 처리에 특화된 제품이다. 대용량 데이터를 안정적으로 저장/재생하는 특징을 가지고 있다. 
+설계 전제는 Producer/Consumer 모두 데이터센터/VPC 와 같은 안정적인 네트워크 환경에서 데이터를 주고 받는다. 
+또한, Consumer 는 Offset 을 관리하면서 능동적으로 읽어가는 **Pull** 방식이다.
+
+반면, MQTT 는 태생이 디바이스간 실시간 알림, 저용량 데이터 전송 등을 위해서 만들어진 **경량 Pub/Sub 메시징** 제품이다.
+설계 전제는 Publisher/Subscriber 중 하나 이상이 **저사양/저대역폭/간헐적 연결** 특징을 갖는다는 것이다.
+그리고 Subscriber 는 데이터를 MQTT Broker 로 부터 Push 받는다.
+즉, 클라이언트(e.g IVI)가 터널 진입, Handover, 음영 지역 등으로 인해 네트워크가 일시적으로 끊기더라도, MQTT 에는 세션 개념이 있어서 재 연결 후
+세션을 이어 진행할 수 있다. 즉, MQTT 브로커가 Connection, Session 등 메시지 브로커로써 많은 부분을 처리하기 때문에 MQTT 를 사용하는 클라우드 서버는
+Connectivity 관리에 신경을 쓸 필요가 없다.
+
+
+
 ## Links
 
 - [OASIS MQTT 3.1.1 Specification](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html)

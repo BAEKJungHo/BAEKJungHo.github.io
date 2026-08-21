@@ -244,11 +244,6 @@ favorite: true
 > - 높은 수준의 모듈은 낮은 수준의 모듈에 의존하지 않아야 한다. 두 모듈 모두 추상화에 의존해야 한다.
 > - 추상화는 세부 사항에 의존하지 않아야 한다. 세부 사항은 추상화에 의존해야 한다.
 
-## Links
-
-- [SOLID Relevance - UncleBob](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)
-  - [번역본 - 객체지향 5원칙 (SOLID)은 구시대의 유물 ?](https://mangsby.com/blog/programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-5%EC%9B%90%EC%B9%99-solid%EC%9D%80-%EA%B5%AC%EC%8B%9C%EB%8C%80%EC%9D%98-%EC%9C%A0%EB%AC%BC%EC%9D%B8%EA%B0%80/)
-
 ## References
 
 - Clean Architecture / Robert C. Martin 저 / 인사이트
@@ -257,3 +252,5 @@ favorite: true
 - 한 번 읽으면 두 번 깨닫는 객체지향 프로그래밍 / 김동헌 저 / e 비즈북스
 - Real-World Software Development 실전 자바 소프트웨어 개발 / 라울-게이브리얼 우르마, 리처드 워버턴 저 / O'REILLY
 - Architecture Patterns with Python / 해리 퍼시벌, 밥 그레고리 저 / O'REILLY
+- [SOLID Relevance - UncleBob](https://blog.cleancoder.com/uncle-bob/2020/10/18/Solid-Relevance.html)
+- [번역본 - 객체지향 5원칙 (SOLID)은 구시대의 유물 ?](https://mangsby.com/blog/programming/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-5%EC%9B%90%EC%B9%99-solid%EC%9D%80-%EA%B5%AC%EC%8B%9C%EB%8C%80%EC%9D%98-%EC%9C%A0%EB%AC%BC%EC%9D%B8%EA%B0%80/)

@@ -10,9 +10,8 @@
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
-{% assign documents = site.wiki | sort: 'updated' | reverse %}
-{% for doc in documents limit: 100 %}
-    {% if doc.public == true and doc.title != 'wiki'%}
+{% assign documents = site.wiki | where_exp: "doc", "doc.public == true" | where_exp: "doc", "doc.title != 'wiki'" | sort: 'updated' | reverse %}
+{% for doc in documents %}
       <item>
         <title>{{ doc.title | xml_escape }}</title>
         <description>{{ doc.summary | xml_escape }}</description>
@@ -26,9 +25,8 @@
         <category>{{ cat | xml_escape }}</category>
         {% endfor %}
       </item>
-    {% endif %}
 {% endfor %}
-{% for post in site.posts limit:30 %}
+{% for post in site.posts %}
       <item>
         <title>{{ post.title | xml_escape }}</title>
         <description>{{ post.content | xml_escape }}</description>
